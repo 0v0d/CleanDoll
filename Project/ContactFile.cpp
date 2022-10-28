@@ -14,7 +14,7 @@ void ContactFile::Initialize() {
 void ContactFile::LoadStage(std::string stageName) {
 	//çÌèú
 	Delete();
-	//div
+	//lllllll
 	OpenFile(stageName.c_str());
 
 	_blockValueX = atoi(strtok(_buffer, ","));
