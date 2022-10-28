@@ -1,5 +1,5 @@
 #include "AudioSetting.h"
-
+//test
 void AudioSetting::Initialize(){
 	_sliderArray = new Slider[_sliderValue];
 	Vector2 _barSize = Vector2(500, 20);
