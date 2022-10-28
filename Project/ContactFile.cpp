@@ -13,8 +13,8 @@ void ContactFile::Initialize() {
 }
 
 void ContactFile::LoadStage(std::string stageName) {
-	//íœ
 	Delete();
+
 	OpenFile(stageName.c_str());
 
 	_blockValueX = atoi(strtok(_buffer, ","));
