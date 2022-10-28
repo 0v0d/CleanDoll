@@ -1,0 +1,171 @@
+#include "Field.h"
+#include "Doll.h"
+#include "SceneManager.h"
+
+Doll _doll;
+
+void Field::Initialize(){
+	_doll.SetField(this);
+
+	_blockManager.Initialize();
+	_doll.Initialize();
+	_energyVessels.Initialize();
+
+	_adjoinBlockValue = _blockManager.GetAdjoinBlockValue();
+
+	_remainDistance = _maxDistance;
+	_doll.SetDumpValue(&_dustDumpValue, &_waterDumpValue);
+
+	_energyVessels.SetMaxEnergyValue(_maxDistance);
+	_energyVessels.SetCurrentEnergyValue(&_remainDistance);
+	_energyVessels.CheckChangeEnergyColor();
+}
+
+void Field::ReLoad(){
+	_blockManager.ReLoad();
+	_doll.ReLoad();
+
+	_doll.CalcuScale(_blockManager.GetBlock(0, 0)->GetBlockSize().y, _blockManager.GetScale());
+	SetDollPosition(_dollInitialPositionX, _dollInitialPositionY);
+	_pickedBlock = _lastDistanceBlock = _blockManager.GetBlock(_dollInitialPositionX, _dollInitialPositionY);
+	_pickedBlock->SetPassedFlg(true);
+	
+	_routeBlockArray.clear();
+	_recoveryDifferentialArray.clear();
+
+	_remainDistance = _maxDistance;
+	
+	_onMoveDoll = false;
+}
+
+void Field::SetDollPosition(int x,int y) { 
+	_doll.SetPosition(_blockManager.GetBlock(x, y)->GetCenterPosition());
+
+	_dollInitialPositionX = x;
+	_dollInitialPositionY = y;
+}
+
+void Field::Update(){
+	_blockManager.Update();
+	_doll.Update();
+
+	if (g_pInput->IsMouseKeyPush(MOFMOUSE_RBUTTON)) ReSetStage();
+}
+
+//ブロックを押したとき
+void Field::PassedMouse(Vector2 mousePosition) {
+	if (_onMoveDoll) return;
+
+	Block* mouseOnBlock = _blockManager.GetMouseOnBlock(mousePosition);
+	if (mouseOnBlock == nullptr) return;
+
+	for (int i = 0;i < _adjoinBlockValue;i++) {
+		if (mouseOnBlock != _pickedBlock->GetAdjoinBlockArray()[i]) continue;
+
+		//押されていないブロックを押したとき、押したブロックを記録
+		if (!mouseOnBlock->IsPassed()) AdvanceRoute(mouseOnBlock);
+
+		//1回以上入力していて、既に押されているブロックを押したとき、巻き戻し
+		else if (_distanceCount > 0) BackRoute(mouseOnBlock);
+		return;
+	}
+}
+
+//押したブロックを記録
+void Field::AdvanceRoute(Block* mouseOnBlock) {
+	if (_remainDistance <= 0||mouseOnBlock->IsHeldObject()) return;
+
+	_pickedBlock = mouseOnBlock;
+	_pickedBlock->SetPassedFlg(true);
+	_routeBlockArray.push_back(_pickedBlock);
+	_distanceCount++;
+	_remainDistance--;
+	_energyVessels.CheckChangeEnergyColor();
+
+	if (_pickedBlock->GetAccessories() != nullptr) {
+		if (_pickedBlock->GetAccessories()->GetType() == ACCESSORIES_TYPE::ITEM) {
+			_recoveryDifferentialArray.push_back(_maxDistance - _remainDistance);
+			_remainDistance += _maxDistance - _remainDistance;
+			_pickedBlock->HiddenAccessoriesFlg(true);
+			_energyVessels.CheckChangeEnergyColor();
+		}
+	}
+}
+
+//巻き戻し
+void Field::BackRoute(Block* mouseOnBlock) {
+
+	//2つ以上のブロックを押している時に、1つ前に押したブロックを押すか、
+	//1つしか押していない時に、前回の最後に押したブロックを押せば巻き戻す
+	if (_distanceCount == 1 && mouseOnBlock != _lastDistanceBlock) return;
+	else if (_distanceCount >= 2 && _routeBlockArray[_distanceCount - 2] != mouseOnBlock) return;
+	//[_distanceCount - 2]は1つ前に押したブロックの要素を表す
+
+	//巻き戻し処理
+	if (_pickedBlock->GetAccessories() != nullptr) {
+		if (_pickedBlock->GetAccessories()->GetType() == ACCESSORIES_TYPE::ITEM) {
+			_remainDistance -= _recoveryDifferentialArray.back();
+			_recoveryDifferentialArray.pop_back();
+			_pickedBlock->HiddenAccessoriesFlg(false);
+		}
+	}
+
+	_pickedBlock->SetPassedFlg(false);
+	_pickedBlock = mouseOnBlock;
+	_routeBlockArray.pop_back();
+	_distanceCount--;
+	_remainDistance++;
+	_energyVessels.CheckChangeEnergyColor();
+}
+
+//入力終了
+void Field::EndOfPassed() {
+	if (_distanceCount <= 0) return;
+
+	_doll.SetRouteBlockArray(_routeBlockArray);
+	_lastDistanceBlock = _routeBlockArray.back();
+	_routeBlockArray.clear();
+	_distanceCount = 0;
+	_remainDistance = _maxDistance;
+	_onMoveDoll = true;
+	_recoveryDifferentialArray.clear();
+}
+
+void Field::EndMoveDoll() {
+	_onMoveDoll = false;
+	if (_dustDumpValue <= 0 && _waterDumpValue <= 0) {
+		//ゲームクリア
+		_blockManager.Delete();
+		Delete();
+		SceneManager::Instance().ChangeScene(SCENE_TYPE::STAGESELECT);
+	}
+}
+
+void Field::ReSetStage() {
+
+	ReLoad();
+}
+
+
+void Field::Render(){
+	_blockManager.Render();
+	_doll.Render();
+
+	_energyVessels.Render();
+
+	CGraphicsUtilities::RenderString(30, 60, "%d/%d", _remainDistance, _maxDistance);
+}
+
+void Field::Delete() {
+	_routeBlockArray.clear();
+	_recoveryDifferentialArray.clear();
+}
+
+void Field::Release(){
+	_blockManager.Release();
+	_doll.Release();
+
+	_energyVessels.Release();
+
+	Delete();
+}
