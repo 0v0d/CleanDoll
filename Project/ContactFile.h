@@ -22,6 +22,7 @@ class ContactFile
 	TextureArray _mapTextureArray;
 	TextureArray _objectTextureArray;
 	TextureArray _itemTextureArray;
+	TextureArray _galleryTextureArray;
 	TextureArray _mopTextureArray;
 	TextureArray _dustDumpTextureArray;
 	TextureArray _waterDumpTextureArray;
