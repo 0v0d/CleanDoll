@@ -13,6 +13,7 @@ void ContactFile::Initialize() {
 }
 
 void ContactFile::LoadStage(std::string stageName) {
+
 	Delete();
 
 	OpenFile(stageName.c_str());
