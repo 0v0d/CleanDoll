@@ -11,7 +11,6 @@ GameScene game;
 
 void SceneManager::Initialize()
 {
-
 	_sceneArray[SCENE_TYPE::TITLE] = &title;
 	_sceneArray[SCENE_TYPE::STAGESELECT] = &stageSelect;
 	_sceneArray[SCENE_TYPE::GAME] = &game;
@@ -27,6 +26,7 @@ void SceneManager::Initialize()
 	_menu.Initialize();
 
 	_currentScene = _sceneArray[SCENE_TYPE::STAGESELECT];
+	//_currentScene = _sceneArray[SCENE_TYPE::TITLE];
 }
 
 void SceneManager::Update()
