@@ -7,6 +7,7 @@
 
 class GameScene :public IBaseScene
 {
+private:
 	Field _field;
 	InputInGame _inputInGaame;
 	ContactFile* _contactFile;
@@ -15,7 +16,6 @@ class GameScene :public IBaseScene
 public:
 	void SetContactFile(ContactFile* contactFile) { _contactFile = contactFile; }
 	void SetMenu(Menu* menu) { _menu = menu; }
-
 	void Initialize();
 	void ReLoad();
 	void Update();

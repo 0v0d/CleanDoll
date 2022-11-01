@@ -1,18 +1,22 @@
 #include	"GameApp.h"
 #include	"SceneManager.h"
 
-MofBool CGameApp::Initialize(void){
+MofBool CGameApp::Initialize()
+{
 	CUtilities::SetCurrentDirectory("Resource");
 	SceneManager::Instance().Initialize();
 	return TRUE;
 }
-MofBool CGameApp::Update(void){
-	g_pInput->RefreshKey();
 
+MofBool CGameApp::Update()
+{
+	g_pInput->RefreshKey();
 	SceneManager::Instance().Update();
 	return TRUE;
 }
-MofBool CGameApp::Render(void){
+
+MofBool CGameApp::Render()
+{
 	g_pGraphics->RenderStart();
 	g_pGraphics->ClearTarget(0.0f,0.0f,1.0f,0.0f,1.0f,0);
 
@@ -20,8 +24,9 @@ MofBool CGameApp::Render(void){
 	g_pGraphics->RenderEnd();
 	return TRUE;
 }
-MofBool CGameApp::Release(void){
 
+MofBool CGameApp::Release()
+{
 	SceneManager::Instance().Release();
 	return TRUE;
 }

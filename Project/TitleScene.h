@@ -3,7 +3,6 @@
 
 class TitleScene :public IBaseScene
 {
-
 public:
 	void Initialize();
 	void ReLoad();

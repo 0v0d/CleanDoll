@@ -16,7 +16,8 @@ void Bar::Initialize()
 
 }
 
-void Bar::SetStatu(int stageNumber, std::string previewTextureName, std::string stageName, int difficulty, std::string stageDataTextName){
+void Bar::SetStatu(int stageNumber, std::string previewTextureName, std::string stageName, int difficulty, std::string stageDataTextName)
+{
 	_stageNumber = stageNumber;
 	_previewTexture.Load(previewTextureName.c_str());
 	_stageName = stageName;

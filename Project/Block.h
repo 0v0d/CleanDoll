@@ -6,6 +6,7 @@
 
 class Block
 {
+private:
 	CTexture* _blockTexture = nullptr;
 	Vector2 _position;
 	const float _hitBoxScale = 0.2f;
@@ -29,7 +30,6 @@ class Block
 	bool _hiddenAccessories;
 
 public:
-
 	void SetTexture(CTexture* blockTexture);
 	void SetPosition(int x, int y, int blockValueY);
 	void SetScale(float scale) { _scale = scale; }

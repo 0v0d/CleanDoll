@@ -6,6 +6,7 @@
 
 class Field
 {
+private:
 	BlockManager _blockManager;
 
 	int _blockValueX, _blockValueY;
@@ -36,7 +37,6 @@ class Field
 
 public:
 	void SetDollPosition(int x,int y);
-
 	void Initialize();
 	void ReLoad();
 	void Update();
@@ -44,16 +44,13 @@ public:
 	void EndOfPassed();
 	void EndMoveDoll();
 	void ReSetStage();
-
 	void SetDustDumpValue(int dumpValue) { _dustDumpValue = dumpValue; }
 	void SetWaterDumpValue(int dumpValue) { _waterDumpValue = dumpValue; }
 	int* GetDustDumpValue() {return &_dustDumpValue; }
 	int* GetWaterDumpValue() { return &_waterDumpValue; }
-
 	void Render();
 	void Delete();
 	void Release();
-
 	BlockManager* GetBlockManager() { return &_blockManager; }
 
 private:

@@ -2,13 +2,15 @@
 #include	"Mof.h"
 #include	"IBaseAccessories.h"
 
-enum class DUMP_TYPE {
-		DUST,
-		WATER
+enum class DUMP_TYPE
+{
+	DUST,
+	WATER
 };
 
 class Dump :public IBaseAccessories
 {
+private:
 	CTexture* _dumpTexture;
 	Vector2 _position;
 	float _scale;

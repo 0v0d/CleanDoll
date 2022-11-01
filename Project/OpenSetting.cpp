@@ -1,6 +1,7 @@
 #include "OpenSetting.h"
 
-void OpenSetting::Initialize() {
+void OpenSetting::Initialize()
+{
 	_openSettingPosition = Vector2(500, 300);
 	_size = Vector2(50, 50);
 
@@ -8,10 +9,12 @@ void OpenSetting::Initialize() {
 		CRectangle(_openSettingPosition.x, _openSettingPosition.y, _openSettingPosition.x + _size.x, _openSettingPosition.y + _size.y);
 }
 
-void OpenSetting::Render() {
+void OpenSetting::Render()
+{
 	CGraphicsUtilities::RenderFillRect(_openSettingButton, MOF_COLOR_HGREEN);
 }
 
-void OpenSetting::Release() {
+void OpenSetting::Release()
+{
 
 }

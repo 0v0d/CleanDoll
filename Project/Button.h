@@ -1,7 +1,9 @@
 #pragma once
 #include	"Mof.h"
+
 class Button
 {
+private:
 	Vector2 _position, _size;
 	CRectangle _button;
 public:

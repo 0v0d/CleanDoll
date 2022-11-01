@@ -11,13 +11,11 @@ private:
 	Bar* _barArray = nullptr;
 	int _stageValue;
 	Preview _preview;
-
 public:
 	void Initialize();
 	void SetContactFile(ContactFile* contactFile) { _contactFile = contactFile; }
 	void CreateBarArray(int stageValue);
 	void SetBarStatu(int stageNumber,std::string previewTextureName,std::string stageName,int difficulty,std::string stageDataTextName);
-
 	void Update();
 	void PushBar(Vector2 mPos);
 	void PickStage(Vector2 mPos);

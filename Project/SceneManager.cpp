@@ -9,7 +9,8 @@ TitleScene title;
 StageSelectScene stageSelect;
 GameScene game;
 
-void SceneManager::Initialize() {
+void SceneManager::Initialize()
+{
 
 	_sceneArray[SCENE_TYPE::TITLE] = &title;
 	_sceneArray[SCENE_TYPE::STAGESELECT] = &stageSelect;
@@ -19,28 +20,42 @@ void SceneManager::Initialize() {
 	game.SetMenu(&_menu);
 	stageSelect.SetMenu(&_menu);
 
-	for (auto iter = _sceneArray.begin();iter != _sceneArray.end();iter++) iter->second->Initialize();
+	for (auto iter = _sceneArray.begin(); iter != _sceneArray.end(); iter++) 
+	{
+		iter->second->Initialize();
+	}
 	_menu.Initialize();
 
 	_currentScene = _sceneArray[SCENE_TYPE::STAGESELECT];
 }
 
-void SceneManager::Update() {
+void SceneManager::Update()
+{
 	_menu.Update();
-	if (!_menu.IsOpenMenu())_currentScene->Update();
+
+	if (!_menu.IsOpenMenu())
+	{
+		_currentScene->Update();
+	}
 }
 
-void SceneManager::Render() {
+void SceneManager::Render()
+{
 	_currentScene->Render();
 	_menu.Render();
 }
 
-void SceneManager::Release() {
-	for (auto iter = _sceneArray.begin();iter != _sceneArray.end();iter++) iter->second->Release();
+void SceneManager::Release()
+{
+	for (auto iter = _sceneArray.begin(); iter != _sceneArray.end(); iter++)
+	{
+		iter->second->Release();
+	}
 	_menu.Release();
 }
 
-void SceneManager::ChangeScene(SCENE_TYPE nextScene) {
+void SceneManager::ChangeScene(SCENE_TYPE nextScene)
+{
 	_currentScene = _sceneArray[nextScene];
 	_currentScene->ReLoad();
 }

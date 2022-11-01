@@ -5,7 +5,8 @@ void InputStageSelect::Update()
 	InputMouse();
 }
 
-void InputStageSelect::InputMouse() {
+void InputStageSelect::InputMouse()
+{
 	g_pInput->GetMousePos(_mousePos);
 
 	if (g_pInput->IsMouseKeyPush(MOFMOUSE_LBUTTON))

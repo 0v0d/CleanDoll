@@ -1,6 +1,5 @@
 #include "Slider.h"
 
-
 void Slider::SetBarStatu(Vector2 barSize, Vector2 buttonSize, Vector2 barPos, DRECTION_TYPE drectionType)
 {
 	_drectionType = drectionType;
@@ -27,6 +26,7 @@ void Slider::Update()
 {
 	_buttonRect = CRectangle(_buttonPos.x, _buttonPos.y,
 		_buttonPos.x + _buttonSize.x, _buttonPos.y + _buttonSize.y);
+
 	switch (_drectionType)
 	{
 	case DRECTION_TYPE::HORIZON:
@@ -85,12 +85,20 @@ void Slider::Render()
 void Slider::MouseWheelMove(float  moveWheel)
 {
 	if (moveWheel > 0 && _buttonPos.y - _wheelSensitivity < _barPos.y )
+	{
 		_buttonPos.y = _barPos.y + _wheelSensitivity;
+	}		
 	if (moveWheel < 0 && _buttonPos.y + _buttonSize.y + _wheelSensitivity > _barPos.y + _barSize.y )
-		_buttonPos.y = _barPos.y + _barSize.y - _buttonSize.y - _wheelSensitivity;
+	{
 
+		_buttonPos.y = _barPos.y + _barSize.y - _buttonSize.y - _wheelSensitivity;
+	}
 	if ( moveWheel > 0)
+	{
 		_buttonPos.y -= _wheelSensitivity;
+	}
 	if ( moveWheel < 0)
+	{
 		_buttonPos.y += _wheelSensitivity;
+	}
 }

@@ -1,13 +1,11 @@
 #pragma once
-#include <string>
-
 #include "BarManager.h"
+#include <string>
 
 class StageSelect
 {
 private:
 	BarManager _barManager;
-
 public:
 	void Initialize();
 	void SetStageStatu(int stageValue, std::string* stageNameArray);

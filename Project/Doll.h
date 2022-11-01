@@ -2,8 +2,10 @@
 #include	"Mof.h"
 #include	"Block.h"
 #include	"vector"
+
 class Doll
 {
+private:
 	CTexture _dollTexture;
 	Vector2 _dollPosition;
 	CRectangle _renderRect;
@@ -27,9 +29,7 @@ class Doll
 	int* _waterDumpValue;
 
 	bool _heldMop;
-	
 public:
-
 	void Initialize();
 	void SetField(Field* field) { _field = field; }
 	void SetPosition(Vector2 blockCenterPosisiton);
@@ -39,10 +39,8 @@ public:
 	void Update();
 	void SetRouteBlockArray(std::vector<Block*> blockArray);
 	void Move();
-
 	void Render();
 	void Release();
-
 private:
 	void SetNextPosition();
 	void ArrivalBlock();

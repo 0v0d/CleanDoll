@@ -4,7 +4,7 @@ void StageSelect::Initialize()
 
 }
 
-void StageSelect::SetStageStatu(int stageValue, std::string* stageNameArray) {
-
+void StageSelect::SetStageStatu(int stageValue, std::string* stageNameArray)
+{
 	_barManager.CreateBarArray(stageValue);
 }

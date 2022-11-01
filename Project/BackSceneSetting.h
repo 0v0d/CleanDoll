@@ -1,11 +1,12 @@
 #pragma once
 #include	"Mof.h"
 #include	"IBaseSetting.h"
+
 class BackSceneSetting :public IBaseSetting
 {
+private:
 	bool* _openBackSceneSetting;
 	CRectangle _closeButton;
-
 public:
 	void Initialize();
 	void Update();
@@ -14,7 +15,6 @@ public:
 	void Pull(Vector2 mousePos);
 	void Render();
 	void Release();
-
 private:
 	void PushButton(Vector2 mousePos);
 };

@@ -1,8 +1,10 @@
 #pragma once
 #include	"Mof.h"
 #include	"IBaseAccessories.h"
+
 class Item :public IBaseAccessories
 {
+private:
 	CTexture* _itemTexture;
 	Vector2 _position;
 	float _scale;
@@ -15,7 +17,6 @@ public:
 	void Update();
 	void Render();
 	void Release();
-
 	void SetPosotion(Vector2 pos);
 	ACCESSORIES_TYPE GetType() { return _accessoriesType; }
 };

@@ -4,7 +4,8 @@
 
 Doll _doll;
 
-void Field::Initialize(){
+void Field::Initialize()
+{
 	_doll.SetField(this);
 
 	_blockManager.Initialize();
@@ -21,13 +22,17 @@ void Field::Initialize(){
 	_energyVessels.CheckChangeEnergyColor();
 }
 
-void Field::ReLoad(){
+void Field::ReLoad()
+{
 	_blockManager.ReLoad();
 	_doll.ReLoad();
 
 	_doll.CalcuScale(_blockManager.GetBlock(0, 0)->GetBlockSize().y, _blockManager.GetScale());
+
 	SetDollPosition(_dollInitialPositionX, _dollInitialPositionY);
+
 	_pickedBlock = _lastDistanceBlock = _blockManager.GetBlock(_dollInitialPositionX, _dollInitialPositionY);
+
 	_pickedBlock->SetPassedFlg(true);
 	
 	_routeBlockArray.clear();
@@ -38,41 +43,56 @@ void Field::ReLoad(){
 	_onMoveDoll = false;
 }
 
-void Field::SetDollPosition(int x,int y) { 
+void Field::SetDollPosition(int x,int y)
+{ 
 	_doll.SetPosition(_blockManager.GetBlock(x, y)->GetCenterPosition());
 
 	_dollInitialPositionX = x;
 	_dollInitialPositionY = y;
 }
 
-void Field::Update(){
+void Field::Update()
+{
 	_blockManager.Update();
 	_doll.Update();
 
-	if (g_pInput->IsMouseKeyPush(MOFMOUSE_RBUTTON)) ReSetStage();
+	if (g_pInput->IsMouseKeyPush(MOFMOUSE_RBUTTON))
+	{
+		ReSetStage();
+	}
 }
 
 //ブロックを押したとき
-void Field::PassedMouse(Vector2 mousePosition) {
+void Field::PassedMouse(Vector2 mousePosition)
+{
 	if (_onMoveDoll) return;
 
 	Block* mouseOnBlock = _blockManager.GetMouseOnBlock(mousePosition);
 	if (mouseOnBlock == nullptr) return;
 
-	for (int i = 0;i < _adjoinBlockValue;i++) {
-		if (mouseOnBlock != _pickedBlock->GetAdjoinBlockArray()[i]) continue;
-
+	for (int i = 0;i < _adjoinBlockValue;i++)
+	{
+		if (mouseOnBlock != _pickedBlock->GetAdjoinBlockArray()[i])
+		{
+			continue;
+		}
 		//押されていないブロックを押したとき、押したブロックを記録
-		if (!mouseOnBlock->IsPassed()) AdvanceRoute(mouseOnBlock);
-
+		if (!mouseOnBlock->IsPassed())
+		{
+			AdvanceRoute(mouseOnBlock);
+		}
 		//1回以上入力していて、既に押されているブロックを押したとき、巻き戻し
-		else if (_distanceCount > 0) BackRoute(mouseOnBlock);
+		else if (_distanceCount > 0) 
+		{
+			BackRoute(mouseOnBlock);
+		}
 		return;
 	}
 }
 
 //押したブロックを記録
-void Field::AdvanceRoute(Block* mouseOnBlock) {
+void Field::AdvanceRoute(Block* mouseOnBlock)
+{
 	if (_remainDistance <= 0||mouseOnBlock->IsHeldObject()) return;
 
 	_pickedBlock = mouseOnBlock;
@@ -82,8 +102,10 @@ void Field::AdvanceRoute(Block* mouseOnBlock) {
 	_remainDistance--;
 	_energyVessels.CheckChangeEnergyColor();
 
-	if (_pickedBlock->GetAccessories() != nullptr) {
-		if (_pickedBlock->GetAccessories()->GetType() == ACCESSORIES_TYPE::ITEM) {
+	if (_pickedBlock->GetAccessories() != nullptr)
+	{
+		if (_pickedBlock->GetAccessories()->GetType() == ACCESSORIES_TYPE::ITEM)
+		{
 			_recoveryDifferentialArray.push_back(_maxDistance - _remainDistance);
 			_remainDistance += _maxDistance - _remainDistance;
 			_pickedBlock->HiddenAccessoriesFlg(true);
@@ -93,7 +115,8 @@ void Field::AdvanceRoute(Block* mouseOnBlock) {
 }
 
 //巻き戻し
-void Field::BackRoute(Block* mouseOnBlock) {
+void Field::BackRoute(Block* mouseOnBlock)
+{
 
 	//2つ以上のブロックを押している時に、1つ前に押したブロックを押すか、
 	//1つしか押していない時に、前回の最後に押したブロックを押せば巻き戻す
@@ -102,8 +125,10 @@ void Field::BackRoute(Block* mouseOnBlock) {
 	//[_distanceCount - 2]は1つ前に押したブロックの要素を表す
 
 	//巻き戻し処理
-	if (_pickedBlock->GetAccessories() != nullptr) {
-		if (_pickedBlock->GetAccessories()->GetType() == ACCESSORIES_TYPE::ITEM) {
+	if (_pickedBlock->GetAccessories() != nullptr)
+	{
+		if (_pickedBlock->GetAccessories()->GetType() == ACCESSORIES_TYPE::ITEM)
+		{
 			_remainDistance -= _recoveryDifferentialArray.back();
 			_recoveryDifferentialArray.pop_back();
 			_pickedBlock->HiddenAccessoriesFlg(false);
@@ -119,7 +144,8 @@ void Field::BackRoute(Block* mouseOnBlock) {
 }
 
 //入力終了
-void Field::EndOfPassed() {
+void Field::EndOfPassed()
+{
 	if (_distanceCount <= 0) return;
 
 	_doll.SetRouteBlockArray(_routeBlockArray);
@@ -131,9 +157,11 @@ void Field::EndOfPassed() {
 	_recoveryDifferentialArray.clear();
 }
 
-void Field::EndMoveDoll() {
+void Field::EndMoveDoll()
+{
 	_onMoveDoll = false;
-	if (_dustDumpValue <= 0 && _waterDumpValue <= 0) {
+	if (_dustDumpValue <= 0 && _waterDumpValue <= 0)
+	{
 		//ゲームクリア
 		_blockManager.Delete();
 		Delete();
@@ -141,13 +169,14 @@ void Field::EndMoveDoll() {
 	}
 }
 
-void Field::ReSetStage() {
-
+void Field::ReSetStage()
+{
 	ReLoad();
 }
 
 
-void Field::Render(){
+void Field::Render()
+{
 	_blockManager.Render();
 	_doll.Render();
 
@@ -156,12 +185,14 @@ void Field::Render(){
 	CGraphicsUtilities::RenderString(30, 60, "%d/%d", _remainDistance, _maxDistance);
 }
 
-void Field::Delete() {
+void Field::Delete()
+{
 	_routeBlockArray.clear();
 	_recoveryDifferentialArray.clear();
 }
 
-void Field::Release(){
+void Field::Release()
+{
 	_blockManager.Release();
 	_doll.Release();
 

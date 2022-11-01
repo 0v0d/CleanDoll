@@ -8,21 +8,18 @@
 
 class StageSelectScene :public IBaseScene
 {
+private:
 	GetDataFromFile _getDataFromFile;
 	InputStageSelect _inputInStageSelect;
 	BarManager _barManager;
 	Slider _slider;
 	Menu* _menu;
-
 public:
 	void SetMenu(Menu* menu) { _menu = menu; }
 	void Initialize();
 	void ReLoad();
-	
 	void Update();
-	
 	void Render();
 	void Release();
-
 	GetDataFromFile* GetGetDataFromFile() { return &_getDataFromFile; }
 };
