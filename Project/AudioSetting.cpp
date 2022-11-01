@@ -25,12 +25,18 @@ void AudioSetting::Update()
 void AudioSetting::Push(Vector2 mousePos)
 {
 	PushButton(mousePos);
-	for (int i = 0; i < _sliderValue; i++)_sliderArray[i].PushSlider(mousePos);
+	for (int i = 0; i < _sliderValue; i++)
+	{
+		_sliderArray[i].PushSlider(mousePos);
+	}
 }
 
 void AudioSetting::Pull(Vector2 mousePos)
 {
-	for (int i = 0; i < _sliderValue; i++)_sliderArray[i].PullSlider();
+	for (int i = 0; i < _sliderValue; i++)
+	{
+		_sliderArray[i].PullSlider();
+	}
 }
 
 void AudioSetting::PushButton(Vector2 mousePos)
