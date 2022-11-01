@@ -4,7 +4,7 @@ void ContactFile::Initialize() {
 	_mapTextureArray.LineXValue = 1;
 	_objectTextureArray.LineXValue = 1;
 	_itemTextureArray.LineXValue = 1;
-	_galleryTextureArray.LineXValue = 1;
+	//_galleryTextureArray.LineXValue = 1;
 	_mopTextureArray.LineXValue = 1;
 	_dustDumpTextureArray.LineXValue = 1;
 	_waterDumpTextureArray.LineXValue = 1;
@@ -39,9 +39,9 @@ void ContactFile::LoadStage(std::string stageName) {
 	DeleteChipData(&_itemTextureArray);
 
 	//ÉMÉÉÉâÉäÅ[
-	LoadTexture(&_galleryTextureArray);
-	_createField.SetItemData(_galleryTextureArray.textureArray, _chipDataArray, false);
-	DeleteChipData(&_galleryTextureArray);
+	//LoadTexture(&_galleryTextureArray);
+	//_createField.SetItemData(_galleryTextureArray.textureArray, _chipDataArray, false);
+	//DeleteChipData(&_galleryTextureArray);
 
 	//ÉÇÉbÉv
 	LoadTexture(&_mopTextureArray);
@@ -140,7 +140,7 @@ void ContactFile::Delete() {
 	DeleteTextureArray(&_mapTextureArray);
 	DeleteTextureArray(&_objectTextureArray);
 	DeleteTextureArray(&_itemTextureArray);
-	DeleteTextureArray(&_galleryTextureArray);
+	//DeleteTextureArray(&_galleryTextureArray);
 	DeleteTextureArray(&_mopTextureArray);
 	DeleteTextureArray(&_dustDumpTextureArray);
 	DeleteTextureArray(&_waterDumpTextureArray);

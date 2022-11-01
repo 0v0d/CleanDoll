@@ -9,7 +9,7 @@ void Menu::Initialize() {
 }
 
 void Menu::Update() {
-	//_inputMenu.Update();
+	_inputMenu.Update();
 	_settingManager.Update();
 }
 

@@ -7,7 +7,7 @@ class Menu
 {
 	InputMenu _inputMenu;
 	SettingManager _settingManager;
-	
+
 public:
 	void Initialize();
 	void Update();

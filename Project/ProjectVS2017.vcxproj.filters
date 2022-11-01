@@ -128,13 +128,19 @@
     <ClCompile Include="DollOnEnergyVessels.cpp">
       <Filter>ソース ファイル</Filter>
     </ClCompile>
-    <ClCompile Include="IBaseSetting.cpp">
-      <Filter>ソース ファイル</Filter>
+    <ClCompile Include="SetUpSetting.cpp">
+      <Filter>ソース ファイル\Menu</Filter>
     </ClCompile>
     <ClCompile Include="OpenSetting.cpp">
-      <Filter>ソース ファイル</Filter>
+      <Filter>ソース ファイル\Menu</Filter>
     </ClCompile>
-    <ClCompile Include="SetUpSetting.cpp">
+    <ClCompile Include="BackSceneSetting.cpp">
+      <Filter>ソース ファイル\Menu</Filter>
+    </ClCompile>
+    <ClCompile Include="IBaseSetting.cpp">
+      <Filter>ソース ファイル\Menu</Filter>
+    </ClCompile>
+    <ClCompile Include="Button.cpp">
       <Filter>ソース ファイル\Menu</Filter>
     </ClCompile>
   </ItemGroup>
@@ -239,10 +245,19 @@
       <Filter>ソース ファイル</Filter>
     </ClInclude>
     <ClInclude Include="OpenSetting.h">
-      <Filter>ソース ファイル</Filter>
+      <Filter>ソース ファイル\Menu</Filter>
+    </ClInclude>
+    <ClInclude Include="BackSceneSetting.h">
+      <Filter>ソース ファイル\Menu</Filter>
     </ClInclude>
     <ClInclude Include="IBaseSetting.h">
-      <Filter>ソース ファイル</Filter>
+      <Filter>ソース ファイル\Menu</Filter>
+    </ClInclude>
+    <ClInclude Include="Button.h">
+      <Filter>ソース ファイル\Menu</Filter>
+    </ClInclude>
+    <ClInclude Include="SetUpSetting.h">
+      <Filter>ソース ファイル\Menu</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

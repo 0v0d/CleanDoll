@@ -3,7 +3,7 @@
 class OpenSetting
 {
 
-	Vector2 _openSettingPosition,_size;
+	Vector2 _openSettingPosition, _size;
 	CRectangle _openSettingButton;
 public:
 	void Initialize();
