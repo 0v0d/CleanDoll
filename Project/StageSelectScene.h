@@ -19,6 +19,7 @@ public:
 	void Initialize();
 	void ReLoad();
 	void Update();
+	void StartNextStage() { _barManager.StartNextStage(); }
 	void Render();
 	void Release();
 	GetDataFromFile* GetGetDataFromFile() { return &_getDataFromFile; }

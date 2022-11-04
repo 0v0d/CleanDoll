@@ -4,10 +4,9 @@
 class LetNextStage
 {
 private:
-	Vector2 _pos = Vector2(200, 60);
-	Vector2 _size = Vector2(200, 60);
+	Vector2 _pos;
+	Vector2 _size;
 	Button _button;
-	Vector2 _mousePos;
 public:
 	void Initialize();
 	void Render();

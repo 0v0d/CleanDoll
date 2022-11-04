@@ -3,7 +3,6 @@
 
 void Menu::Initialize()
 {
-
 	_inputMenu.SetSettingManager(&_settingManager);
 	_settingManager.Initialize();
 }

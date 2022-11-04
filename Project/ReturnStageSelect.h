@@ -3,8 +3,8 @@
 class ReturnStageSelect
 {
 private:
-	Vector2 _pos = Vector2(200, 500);
-	Vector2 _size = Vector2(200, 120);
+	Vector2 _pos;
+	Vector2 _size;
 	Button _button;
 public:
 	void Initialize();

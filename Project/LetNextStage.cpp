@@ -2,7 +2,8 @@
 
 void LetNextStage::Initialize()
 {
-	_mousePos = Vector2(0, 0);
+	_pos = Vector2(200, 300);
+	_size = Vector2(200, 120);
 	_button.SetStatu(_pos, _size);
 }
 

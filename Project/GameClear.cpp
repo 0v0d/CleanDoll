@@ -37,10 +37,10 @@ void GameClear::Render()
 {
 	if(IsGoal())
 	{
-		_nextStage.Render();
-		_RetrunStageSelect.Render();
+		
 	}
-	
+	_nextStage.Render();
+	_RetrunStageSelect.Render();
 }
 
 void GameClear::Release()

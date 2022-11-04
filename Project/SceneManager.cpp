@@ -1,61 +1,37 @@
-#include "SceneManager.h"
-#include "TitleScene.h"
-#include "StageSelectScene.h"
-#include "GameScene.h"
+#pragma once
+#include	"map"
+#include	"Menu.h"
+#include	"IBaseScene.h"
 
-SceneManager* SceneManager::_instance = nullptr;
-
-TitleScene title;
-StageSelectScene stageSelect;
-GameScene game;
-
-void SceneManager::Initialize()
+enum class SCENE_TYPE
 {
-	_sceneArray[SCENE_TYPE::TITLE] = &title;
-	_sceneArray[SCENE_TYPE::STAGESELECT] = &stageSelect;
-	_sceneArray[SCENE_TYPE::GAME] = &game;
+	TITLE,
+	STAGESELECT,
+	GAME
+};
 
-	game.SetContactFile(stageSelect.GetGetDataFromFile()->GetContactFile());
-	game.SetMenu(&_menu);
-	stageSelect.SetMenu(&_menu);
+class SceneManager
+{
+	static SceneManager* _instance;
+	IBaseScene* _currentScene;
+	std::map<SCENE_TYPE, IBaseScene*> _sceneArray;
+	Menu _menu;
+public:
+	void Initialize();
+	void Update();
+	void Render();
+	void Release();
 
-	for (auto iter = _sceneArray.begin(); iter != _sceneArray.end(); iter++) 
+	static SceneManager& Instance()
 	{
-		iter->second->Initialize();
+		if (_instance == nullptr)
+		{
+			_instance = new SceneManager();
+		}
+		return *_instance;
+
 	}
-	_menu.Initialize();
 
-	_currentScene = _sceneArray[SCENE_TYPE::STAGESELECT];
-	//_currentScene = _sceneArray[SCENE_TYPE::TITLE];
-}
-
-void SceneManager::Update()
-{
-	_menu.Update();
-
-	if (!_menu.IsOpenMenu())
-	{
-		_currentScene->Update();
-	}
-}
-
-void SceneManager::Render()
-{
-	_currentScene->Render();
-	_menu.Render();
-}
-
-void SceneManager::Release()
-{
-	for (auto iter = _sceneArray.begin(); iter != _sceneArray.end(); iter++)
-	{
-		iter->second->Release();
-	}
-	_menu.Release();
-}
-
-void SceneManager::ChangeScene(SCENE_TYPE nextScene)
-{
-	_currentScene = _sceneArray[nextScene];
-	_currentScene->ReLoad();
-}
+	void ChangeScene(SCENE_TYPE nextScene);
+	IBaseScene* GetScene(SCENE_TYPE scene) { return _sceneArray[scene]; }
+};
