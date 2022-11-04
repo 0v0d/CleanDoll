@@ -1,7 +1,6 @@
 #pragma once
 #include "Button.h"
-
-class LetNextStage
+class RetryGame
 {
 private:
 	Vector2 _pos;
@@ -11,7 +10,7 @@ public:
 	void Initialize();
 	void Render();
 	void Release();
-	void ClickButton(Vector2 mousePos);
+	bool CheckOnMouse(Vector2 mousePos) { return _button.CheckOnButton(mousePos); }
 private:
 	void TextureLoad();
 };

@@ -1,15 +1,16 @@
 #pragma once
-#include "Mof.h"
 #include "LetNextStage.h"
+#include "RetryGame.h"
 #include "ReturnStageSelect.h"
 
-class GameClear
+class GameOver
 {
 private:
 	bool _goal;
 	Vector2 _mousePos;
 	LetNextStage _nextStage;
 	ReturnStageSelect _RetrunStageSelect;
+	RetryGame _retryGame;
 public:
 	void Initialize();
 	void Update();

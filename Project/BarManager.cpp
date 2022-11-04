@@ -59,7 +59,10 @@ void BarManager::PickStage(Vector2 mPos)
 
 void BarManager::StartNextStage() {
 	_currentStage++;
-	if (_currentStage > _stageValue)_currentStage = _stageValue;
+	if (_currentStage > _stageValue)
+	{
+		_currentStage = _stageValue;
+	}
 	_contactFile->LoadStage(_barArray[_currentStage].GetStageDataTextName());
 	SceneManager::Instance().ChangeScene(SCENE_TYPE::GAME);
 }

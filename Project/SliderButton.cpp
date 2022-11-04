@@ -5,8 +5,8 @@ void SliderButton::SetButtonStatu(Vector2 barSize, Vector2 barPos, Vector2 butto
 	_barPos = barPos;
 	_value = value;
 	_buttonSize = buttonSize;
-	_buttonHalfSize = _buttonSize * _half;
-	_barHalfSize = _barSize * _half;
+	_buttonHalfSize = _buttonSize * 0.5;
+	_barHalfSize = _barSize * 0.5;
 }
 void SliderButton::ButtonHorizonStatu()
 {
@@ -15,6 +15,7 @@ void SliderButton::ButtonHorizonStatu()
 	_barRect = CRectangle(_barPos.x, _barPos.y, _barPos.x + _barSize.x, _barPos.y + _barSize.y);
 	_buttonRect = CRectangle(_buttonPos.x, _buttonPos.y, _buttonPos.x + _buttonSize.x, _buttonPos.y + _buttonSize.y);
 }
+
 void SliderButton::ButtonVerticalStatu()
 {
 	_buttonPos.x = _barPos.x + _barHalfSize.x - _buttonHalfSize.x;
@@ -28,6 +29,7 @@ void SliderButton::Update()
 	_buttonRect = CRectangle(_buttonPos.x, _buttonPos.y,
 		_buttonPos.x + _buttonSize.x, _buttonPos.y + _buttonSize.y);
 }
+
 void SliderButton::HorizonValue()
 {
 	_value = (_buttonPos.x - _barRect.Left) / ((_barSize.x - _buttonSize.x) / _maxValue);

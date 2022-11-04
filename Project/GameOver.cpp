@@ -1,21 +1,21 @@
-#include "GameClear.h"
-#include "SceneManager.h"
+#include "GameOver.h"
 
-void GameClear::Initialize()
+void GameOver::Initialize()
 {
 	TextureLoad();
 	_RetrunStageSelect.Initialize();
 	_nextStage.Initialize();
+	_retryGame.Initialize();
 	_goal = false;
 	_mousePos = Vector2(0, 0);
 }
 
-void GameClear::Reload()
+void GameOver::Reload()
 {
 	_goal = false;
 }
 
-void GameClear::Update()
+void GameOver::Update()
 {
 	g_pInput->GetMousePos(_mousePos);
 	if (g_pInput->IsMouseKeyPush(MOFMOUSE_LBUTTON))
@@ -25,21 +25,21 @@ void GameClear::Update()
 	}
 }
 
-void GameClear::Render()
+void GameOver::Render()
 {
-	if(IsGoal())
+	if (IsGoal())
 	{
 		_nextStage.Render();
 		_RetrunStageSelect.Render();
 	}
 }
 
-void GameClear::Release()
+void GameOver::Release()
 {
-	
+
 }
 
-void GameClear::TextureLoad()
+void GameOver::TextureLoad()
 {
-	
+
 }

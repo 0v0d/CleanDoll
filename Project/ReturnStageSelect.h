@@ -1,5 +1,6 @@
 #pragma once
 #include "Button.h"
+#include "SceneManager.h"
 class ReturnStageSelect
 {
 private:
@@ -10,7 +11,7 @@ public:
 	void Initialize();
 	void Render();
 	void Release();
-	bool CheckOnMouse(Vector2 mousePos) { return _button.CheckPushButton(mousePos); }
+	void ClickButton(Vector2 mousePos);
 private:
 	void TextureLoad();
 };

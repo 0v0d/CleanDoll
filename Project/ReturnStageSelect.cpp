@@ -6,6 +6,14 @@ void ReturnStageSelect::Initialize()
 	_button.SetStatu(_pos, _size);
 }
 
+void  ReturnStageSelect::ClickButton(Vector2 mousePos)
+{
+	if (_button.CheckOnButton(mousePos))
+	{
+		SceneManager::Instance().ChangeScene(SCENE_TYPE::STAGESELECT);
+	}
+}
+
 void ReturnStageSelect::Render()
 {
 	_button.Render();

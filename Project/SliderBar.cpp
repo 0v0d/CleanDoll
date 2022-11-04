@@ -11,6 +11,5 @@ void SliderBar::SetBarStatu(Vector2 barSize, Vector2 barPos)
 
 void SliderBar::Render()
 {
-	
 	CGraphicsUtilities::RenderRect(_barRect, MOF_COLOR_GREEN);
 }

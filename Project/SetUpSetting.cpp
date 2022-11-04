@@ -42,7 +42,7 @@ void SetUpSetting::Push(Vector2 mousePos)
 
 		for (auto itr = _buttonArray.begin(); itr != _buttonArray.end(); itr++)
 		{
-			if (itr->first->CheckPushButton(mousePos))
+			if (itr->first->CheckOnButton(mousePos))
 			{
 				_openSetting = true;
 				_currentSetting = itr->second;

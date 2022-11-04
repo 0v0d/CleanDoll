@@ -7,6 +7,14 @@ void LetNextStage::Initialize()
 	_button.SetStatu(_pos, _size);
 }
 
+void LetNextStage::ClickButton(Vector2 mousePos)
+{
+	if (_button.CheckOnButton(mousePos))
+	{
+		//次のステージへ
+	}
+}
+
 void LetNextStage::Render()
 {
 	_button.Render();
