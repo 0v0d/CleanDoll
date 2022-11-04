@@ -8,7 +8,7 @@ void ReturnStageSelect::Initialize()
 
 void  ReturnStageSelect::ClickButton(Vector2 mousePos)
 {
-	if (_button.CheckOnButton(mousePos))
+	if(_button.CheckOnButton(mousePos))
 	{
 		SceneManager::Instance().ChangeScene(SCENE_TYPE::STAGESELECT);
 	}

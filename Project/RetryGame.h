@@ -10,7 +10,7 @@ public:
 	void Initialize();
 	void Render();
 	void Release();
-	bool CheckOnMouse(Vector2 mousePos) { return _button.CheckOnButton(mousePos); }
+	void ClickButton(Vector2 mousePos);
 private:
 	void TextureLoad();
 };

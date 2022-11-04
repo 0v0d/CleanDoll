@@ -18,19 +18,21 @@ void GameOver::Reload()
 void GameOver::Update()
 {
 	g_pInput->GetMousePos(_mousePos);
-	if (g_pInput->IsMouseKeyPush(MOFMOUSE_LBUTTON))
+	if(g_pInput->IsMouseKeyPush(MOFMOUSE_LBUTTON))
 	{
 		_nextStage.ClickButton(_mousePos);
 		_RetrunStageSelect.ClickButton(_mousePos);
+		_retryGame.ClickButton(_mousePos);
 	}
 }
 
 void GameOver::Render()
 {
-	if (IsGoal())
+	if(IsGoal())
 	{
 		_nextStage.Render();
 		_RetrunStageSelect.Render();
+		_retryGame.Render();
 	}
 }
 
