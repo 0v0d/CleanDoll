@@ -1,104 +1,45 @@
 #include "Slider.h"
 
-void Slider::SetBarStatu(Vector2 barSize, Vector2 buttonSize, Vector2 barPos, DRECTION_TYPE drectionType)
+void Slider::SetStatu(Vector2 barPos,Vector2 barSize, Vector2 buttonSize, float value, DIRECTION_TYPE direction)
 {
-	_drectionType = drectionType;
-	_barSize = barSize;
-	_buttonSize = buttonSize;
-	_barPos = barPos;
-	_barRect = CRectangle(_barPos.x, _barPos.y, _barPos.x + _barSize.x, _barPos.y + _barSize.y);
-	_halfButtonSize = _buttonSize * _half;
-	_halfBarSize = _barSize * _half;
-	switch (_drectionType)
-	{
-	case DRECTION_TYPE::HORIZON:
-		_buttonPos.x = _barPos.x + _barSize.x * _iniPos - _buttonSize.x * _iniPos;
-		_buttonPos.y = _barPos.y + _halfBarSize.y - _halfButtonSize.y;
-		break;
-	case DRECTION_TYPE::VERTICAL:
-		_buttonPos.x = _barPos.x + _halfBarSize.x - _halfButtonSize.x;
-		_buttonPos.y = _barPos.y;
-		break;
-	}
+	_direction = direction;
+	_bar.SetBarStatu(barSize, barPos);
+	_button.SetButtonStatu(barSize, barPos, buttonSize, value);
+
+	if (_direction == HORIZON)	_button.ButtonHorizonStatu();
+	else if (_direction == VERTICAL)  _button.ButtonVerticalStatu();
+
 }
 
 void Slider::Update()
 {
-	_buttonRect = CRectangle(_buttonPos.x, _buttonPos.y,
-		_buttonPos.x + _buttonSize.x, _buttonPos.y + _buttonSize.y);
-
-	switch (_drectionType)
-	{
-	case DRECTION_TYPE::HORIZON:
-		_moveValue = (_buttonPos.x - _barPos.x) / ((_barSize.x - _buttonSize.x) / _maxValue);
-		break;
-	case DRECTION_TYPE::VERTICAL:
-		_moveValue = (_buttonPos.y - _barPos.y) / ((_barSize.y - _buttonSize.y) / _maxValue);
-		break;
-	}
-
+	_button.Update();
+	if (_direction == HORIZON)	_button.HorizonValue();
+	else if (_direction == VERTICAL)  _button.VerticalValue();
 }
 
-void Slider::PushSlider(Vector2 mousePos)
+void Slider::PushSlider()
 {
-	if (CheckClickBar(mousePos) || CheckClickButton(mousePos))
+	g_pInput->GetMousePos(_mousePos);
+	if (_bar.IsCollisionBar(_mousePos) || _button.IsCollisionButton(_mousePos))
 	{
-		SetClick(true);
+		SetClickFlg(true);
 	}
-}
+
+	if (IsClick())
+	{
+		if (_direction == HORIZON)	_button.MoveHorizonButton(_mousePos);
+		else if (_direction == VERTICAL)  _button.MoveVerticalButton(_mousePos);
+	}
+};
 
 void Slider::PullSlider()
 {
-	SetClick(false);
-}
-
-void Slider::ClickSlider(Vector2 mousePos)
-{
-	if (IsClick())
-	{
-		Move(mousePos);
-	}
-}
-
-void Slider::Move(Vector2 mousePos)
-{
-	switch (_drectionType)
-	{
-	case DRECTION_TYPE::HORIZON:
-		_buttonPos.x = _barRect.Left > mousePos.x - _halfButtonSize.x ?
-			_barRect.Left : min(_barRect.Right - _buttonSize.x, mousePos.x - _halfButtonSize.x);
-		break;
-	case DRECTION_TYPE::VERTICAL:
-		_buttonPos.y = _barRect.Top > mousePos.y - _halfButtonSize.y ?
-			_barRect.Top : min(_barRect.Bottom - _buttonSize.y, mousePos.y - _halfButtonSize.y);
-		break;
-	}
-}
+	SetClickFlg(false);
+};
 
 void Slider::Render()
 {
-	CGraphicsUtilities::RenderRect(_barRect, MOF_COLOR_GREEN);
-	CGraphicsUtilities::RenderRect(_buttonRect, MOF_COLOR_RED);
-	CGraphicsUtilities::RenderString(0, 0, "%f", _moveValue);
-}
-
-void Slider::MouseWheelMove(float  moveWheel)
-{
-	if (moveWheel > 0 && _buttonPos.y - _wheelSensitivity < _barPos.y )
-	{
-		_buttonPos.y = _barPos.y + _wheelSensitivity;
-	}		
-	if (moveWheel < 0 && _buttonPos.y + _buttonSize.y + _wheelSensitivity > _barPos.y + _barSize.y )
-	{
-
-		_buttonPos.y = _barPos.y + _barSize.y - _buttonSize.y - _wheelSensitivity;
-	}
-	if ( moveWheel > 0)
-	{
-		_buttonPos.y -= _wheelSensitivity;
-	}
-	if ( moveWheel < 0)
-	{
-		_buttonPos.y += _wheelSensitivity;
-	}
+	_bar.Render();
+	_button.Render();
 }

@@ -20,6 +20,8 @@ void Field::Initialize()
 	_energyVessels.SetMaxEnergyValue(_maxDistance);
 	_energyVessels.SetCurrentEnergyValue(&_remainDistance);
 	_energyVessels.CheckChangeEnergyColor();
+
+	_stageClear.Initialize();
 }
 
 void Field::ReLoad()
@@ -34,7 +36,9 @@ void Field::ReLoad()
 	_pickedBlock = _lastDistanceBlock = _blockManager.GetBlock(_dollInitialPositionX, _dollInitialPositionY);
 
 	_pickedBlock->SetPassedFlg(true);
-	
+
+	_stageClear.Reload();
+
 	_routeBlockArray.clear();
 	_recoveryDifferentialArray.clear();
 
@@ -60,6 +64,8 @@ void Field::Update()
 	{
 		ReSetStage();
 	}
+	_stageClear.Update();
+	
 }
 
 //ブロックを押したとき
@@ -152,9 +158,14 @@ void Field::EndOfPassed()
 	_lastDistanceBlock = _routeBlockArray.back();
 	_routeBlockArray.clear();
 	_distanceCount = 0;
-	_remainDistance = _maxDistance;
+	//_remainDistance = _maxDistance;
 	_onMoveDoll = true;
 	_recoveryDifferentialArray.clear();
+	//ゲームオーバー
+	if (_remainDistance <= 0)
+	{
+		
+	}
 }
 
 void Field::EndMoveDoll()
@@ -165,7 +176,8 @@ void Field::EndMoveDoll()
 		//ゲームクリア
 		_blockManager.Delete();
 		Delete();
-		SceneManager::Instance().ChangeScene(SCENE_TYPE::STAGESELECT);
+		_stageClear.SetGoal(true);
+		
 	}
 }
 
@@ -181,7 +193,7 @@ void Field::Render()
 	_doll.Render();
 
 	_energyVessels.Render();
-
+	_stageClear.Render();
 	CGraphicsUtilities::RenderString(30, 60, "%d/%d", _remainDistance, _maxDistance);
 }
 
@@ -197,6 +209,6 @@ void Field::Release()
 	_doll.Release();
 
 	_energyVessels.Release();
-
+	_stageClear.Release();
 	Delete();
 }

@@ -3,7 +3,7 @@
 #include	"vector"
 #include	"BlockManager.h"
 #include	"EnergyVessels.h"
-
+#include	"GameClear.h"
 class Field
 {
 private:
@@ -34,6 +34,7 @@ private:
 	int _dustDumpValue, _waterDumpValue;
 
 	EnergyVessels _energyVessels;
+	GameClear _stageClear;
 
 public:
 	void SetDollPosition(int x,int y);

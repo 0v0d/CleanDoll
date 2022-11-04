@@ -9,7 +9,7 @@ void StageSelectScene::Initialize()
 	_inputInStageSelect.SetBarManager(&_barManager);
 	_inputInStageSelect.SetSlider(&_slider);
 	_getDataFromFile.SetBarManager(&_barManager);
-	_slider.SetBarStatu(_barSize2, _buttonSize2, _barPos2, VERTICAL);
+	_slider.SetStatu(_barPos2,_barSize2, _buttonSize2, 0,VERTICAL);
 	_getDataFromFile.LoadStageSelectData();
 	_getDataFromFile.Initialize();
 	_barManager.Initialize();
@@ -25,7 +25,7 @@ void StageSelectScene::Update()
 	_inputInStageSelect.Update();
 	_barManager.Update();
 	_slider.Update();
-	_barManager.MoveBar(_slider.GetMoveValue());
+	_barManager.MoveBar(_slider.GetValue());
 }
 
 void StageSelectScene::Render()

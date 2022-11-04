@@ -9,7 +9,7 @@ void AudioSetting::Initialize()
 
 	for (int i = 0; i < _sliderValue; i++)
 	{
-		_sliderArray[i].SetBarStatu(_barSize, _buttonSize, Vector2(_barPos.x, _barPos.y * i + 60), HORIZON);
+		_sliderArray[i].SetStatu(Vector2(_barPos.x, _barPos.y * i + 60),_barSize, _buttonSize, 0.7, HORIZON);
 	}
 	_closeButton = CRectangle(g_pGraphics->GetTargetWidth() / 2 - 50, 400, g_pGraphics->GetTargetWidth() / 2 + 50, 450);
 }
@@ -24,10 +24,10 @@ void AudioSetting::Update()
 
 void AudioSetting::Push(Vector2 mousePos)
 {
-	PushButton(mousePos);
+
 	for (int i = 0; i < _sliderValue; i++)
 	{
-		_sliderArray[i].PushSlider(mousePos);
+		_sliderArray[i].PushSlider();
 	}
 }
 
