@@ -2,8 +2,8 @@
 
 void LetNextStage::Initialize()
 {
-	_pos = Vector2(200, 300);
-	_size = Vector2(200, 120);
+	_pos = Vector2(400, 300);
+	_size = Vector2(300, 120);
 	_button.SetStatu(_pos, _size);
 }
 
