@@ -20,7 +20,7 @@ private:
 public:
 	Dump(CTexture* texture, DUMP_TYPE dumpType);
 	void Initialize();
-	void SetScale(float scale) { _scale = scale; }
+	void CalcuScale(float blockSizeX) { _scale = blockSizeX / _dumpTexture->GetWidth(); }
 	void Update();
 	void Render();
 	void Release();

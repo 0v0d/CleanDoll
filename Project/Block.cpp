@@ -33,7 +33,7 @@ void Block::SetAdjoinBlock(Block* block, int number)
 void Block::SetObject(Object* object, bool onSwap)
 {
 	_object = object;
-	_object->SetScale(_scale);
+	_object->CalcuScale(_blockSizeX*_scale);
 	_object->SetBlockSize(_blockSizeX, _blockSizeY);
 	_object->SetPosition(GetCenterPosition());
 	if (onSwap)
@@ -45,7 +45,7 @@ void Block::SetObject(Object* object, bool onSwap)
 void Block::SetAccessories(IBaseAccessories* accessories)
 {
 	_accessories = accessories;
-	_accessories->SetScale(_scale);
+	_accessories->CalcuScale(_blockSizeX*_scale);
 	_accessories->SetPosotion(GetCenterPosition());
 }
 

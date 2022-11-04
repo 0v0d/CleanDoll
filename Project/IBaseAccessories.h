@@ -17,6 +17,6 @@ public:
 	virtual void Render() = 0;
 	virtual void Release() = 0;
 	virtual void SetPosotion(Vector2 pos) = 0;
-	virtual void SetScale(float scale) = 0;
+	virtual void CalcuScale(float) = 0;
 	virtual ACCESSORIES_TYPE GetType() = 0;
 };
