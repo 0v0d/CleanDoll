@@ -1,26 +1,13 @@
 #pragma once
-#include	"IBaseScene.h"
-#include	"GetDataFromFile.h"
-#include	"InputStageSelect.h"
-#include	"BarManager.h"
-#include	"Slider.h"
-#include	"Menu.h"
+#include "BarManager.h"
+#include <string>
 
-class StageSelectScene :public IBaseScene
+class StageSelect
 {
 private:
-	GetDataFromFile _getDataFromFile;
-	InputStageSelect _inputInStageSelect;
 	BarManager _barManager;
-	Slider _slider;
-	Menu* _menu;
 public:
-	void SetMenu(Menu* menu) { _menu = menu; }
 	void Initialize();
-	void ReLoad();
-	void Update();
-	void StartNextStage() { _barManager.StartNextStage(); }
-	void Render();
-	void Release();
-	GetDataFromFile* GetGetDataFromFile() { return &_getDataFromFile; }
+	void SetStageStatu(int stageValue, std::string* stageNameArray);
+	void SetBarData(int barNumber, std::string _previewTextureName, std::string stageName, int difficulty, std::string stageDataTxtName);
 };
