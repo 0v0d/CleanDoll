@@ -29,7 +29,6 @@ void AudioSetting::Push(Vector2 mousePos)
 	for (int i = 0; i < _sliderValue; i++)
 	{
 		_sliderArray[i].PushSlider();
-
 	}
 	PushButton(mousePos);
 }

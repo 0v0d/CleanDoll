@@ -14,7 +14,8 @@ void SetUpSetting::Initialize()
 	_buttonArray[&_audioButton] = new AudioSetting;
 	_buttonArray[&_backSceneButton] = new BackSceneSetting;
 
-	for (auto itr = _buttonArray.begin(); itr != _buttonArray.end(); itr++) {
+	for (auto itr = _buttonArray.begin(); itr != _buttonArray.end(); itr++)
+	{
 		itr->second->Initialize();
 		itr->second->SetOpenSetting(&_openSetting);
 	}
