@@ -20,6 +20,7 @@ public:
 	void Push(Vector2 mousePos);
 	void Render();
 	void Release();
+	void Pull(Vector2 mousePos);
 private:
 	bool CheckPuchButton(Vector2 mousePos, CRectangle button) { return button.CollisionPoint(mousePos); }
 };

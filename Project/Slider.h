@@ -15,16 +15,15 @@ class Slider
 	SliderBar    _bar;
 	DIRECTION_TYPE _direction;
 	Vector2 _mousePos;
-
 	bool _onClick;
-
 public:
 	void SetStatu(Vector2 barPos, Vector2 barSize,  Vector2 buttonSize, float value, DIRECTION_TYPE direction);
 	float GetValue() { return _button.GetValue(); }
 	void PushSlider();
 	void PullSlider();
-	void SetClickFlg(bool flg) { _onClick = flg; }
-	bool IsClick() { return _onClick; }
 	void Update();
 	void Render();
+private:
+	void SetClickFlg(bool flg) { _onClick = flg; }
+	bool IsClick() { return _onClick; }
 };

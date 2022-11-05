@@ -52,6 +52,14 @@ void SetUpSetting::Push(Vector2 mousePos)
 	}
 }
 
+void SetUpSetting::Pull(Vector2 mousePos)
+{
+	if (_openSetting)
+	{
+		_currentSetting->Pull(mousePos);
+	}
+}
+
 void SetUpSetting::Render()
 {
 	if (_openSetting)

@@ -14,6 +14,7 @@ void Slider::SetStatu(Vector2 barPos,Vector2 barSize, Vector2 buttonSize, float 
 	{
 		_button.ButtonVerticalStatu();
 	}
+	_onClick = false;
 }
 
 void Slider::Update()
@@ -31,8 +32,9 @@ void Slider::Update()
 	if (IsClick())
 	{
 		g_pInput->GetMousePos(_mousePos);
-		if (_direction == HORIZON)	_button.MoveHorizonButton(_mousePos);
-		else if (_direction == VERTICAL)  _button.MoveVerticalButton(_mousePos);
+
+		if (_direction == HORIZON) _button.MoveHorizonButton(_mousePos);
+		else if (_direction == VERTICAL) _button.MoveVerticalButton(_mousePos);
 	}
 }
 
@@ -42,12 +44,6 @@ void Slider::PushSlider()
 	if (_bar.IsCollisionBar(_mousePos) || _button.IsCollisionButton(_mousePos))
 	{
 		SetClickFlg(true);
-	}
-
-	if (IsClick())
-	{
-		if (_direction == HORIZON)	_button.MoveHorizonButton(_mousePos);
-		else if (_direction == VERTICAL)  _button.MoveVerticalButton(_mousePos);
 	}
 }
 

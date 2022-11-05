@@ -44,7 +44,7 @@ void SettingManager::Pull(Vector2 mousePos)
 	}
 	else 
 	{
-		_setUpSetting.Push(mousePos);
+		_setUpSetting.Pull(mousePos);
 	}
 }
 

@@ -50,8 +50,7 @@ void GameOver::Render()
 
 void GameOver::Release()
 {
-	_retryButton.Release();
-	_stageSelectButton.Render();
+
 }
 
 void GameOver::TextureLoad()
