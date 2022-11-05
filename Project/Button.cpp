@@ -1,14 +1,16 @@
 #include "Button.h"
 
-void Button::SetStatu(Vector2 position, Vector2 size)
+void Button::SetStatu(Vector2 position, CTexture* texture)
 {
 	_position = position;
-	_size = size;
+	_texture = texture;
+	_size = Vector2(_texture->GetWidth(), _texture->GetHeight());
 	_button = CRectangle(_position.x, _position.y, _position.x + _size.x, _position.y + _size.y);
 }
+
 
 void Button::Render()
 {
 	CGraphicsUtilities::RenderFillRect(_button, MOF_COLOR_GREEN);
+	_texture->Render(_position.x, _position.y);
 }
-
