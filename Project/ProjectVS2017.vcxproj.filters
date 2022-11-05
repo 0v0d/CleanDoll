@@ -110,9 +110,6 @@
     <ClCompile Include="InputStageSelect.cpp">
       <Filter>ソース ファイル\StageSelectScene</Filter>
     </ClCompile>
-    <ClCompile Include="StageSelect.cpp">
-      <Filter>ソース ファイル\StageSelectScene</Filter>
-    </ClCompile>
     <ClCompile Include="GetDataFromFile.cpp">
       <Filter>ソース ファイル</Filter>
     </ClCompile>
@@ -142,6 +139,18 @@
     </ClCompile>
     <ClCompile Include="Button.cpp">
       <Filter>ソース ファイル\Menu</Filter>
+    </ClCompile>
+    <ClCompile Include="GameClear.cpp">
+      <Filter>ソース ファイル\GameScene</Filter>
+    </ClCompile>
+    <ClCompile Include="SliderButton.cpp">
+      <Filter>ソース ファイル\Menu</Filter>
+    </ClCompile>
+    <ClCompile Include="SliderBar.cpp">
+      <Filter>ソース ファイル\Menu</Filter>
+    </ClCompile>
+    <ClCompile Include="GameOver.cpp">
+      <Filter>ソース ファイル\GameScene</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -223,9 +232,6 @@
     <ClInclude Include="InputStageSelect.h">
       <Filter>ソース ファイル\StageSelectScene</Filter>
     </ClInclude>
-    <ClInclude Include="StageSelect.h">
-      <Filter>ソース ファイル\StageSelectScene</Filter>
-    </ClInclude>
     <ClInclude Include="EnergyVessels.h">
       <Filter>ソース ファイル\GameScene</Filter>
     </ClInclude>
@@ -258,6 +264,18 @@
     </ClInclude>
     <ClInclude Include="SetUpSetting.h">
       <Filter>ソース ファイル\Menu</Filter>
+    </ClInclude>
+    <ClInclude Include="GameClear.h">
+      <Filter>ソース ファイル\GameScene</Filter>
+    </ClInclude>
+    <ClInclude Include="SliderBar.h">
+      <Filter>ソース ファイル\Menu</Filter>
+    </ClInclude>
+    <ClInclude Include="SliderButton.h">
+      <Filter>ソース ファイル\Menu</Filter>
+    </ClInclude>
+    <ClInclude Include="GameOver.h">
+      <Filter>ソース ファイル\GameScene</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

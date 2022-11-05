@@ -2,7 +2,7 @@
 
 void OpenSetting::Initialize()
 {
-	_openSettingPosition = Vector2(500, 300);
+	_openSettingPosition = Vector2(1920-100, 50);
 	_size = Vector2(50, 50);
 
 	_openSettingButton =

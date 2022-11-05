@@ -9,7 +9,7 @@ private:
 public:
 	void SetStatu(Vector2 position, Vector2 size);
 	void Initialzie();
-	bool CheckPushButton(Vector2 mousePos) { return _button.CollisionPoint(mousePos); }
+	bool CheckOnButton(Vector2 mousePos) { return _button.CollisionPoint(mousePos); }
 	void Render();
 	void Release();
 };
