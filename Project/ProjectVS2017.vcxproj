@@ -134,7 +134,6 @@
     <ClCompile Include="InputStageSelect.cpp" />
     <ClCompile Include="SliderBar.cpp" />
     <ClCompile Include="SliderButton.cpp" />
-    <ClCompile Include="StageSelect.cpp" />
     <ClCompile Include="StageSelectScene.cpp" />
     <ClCompile Include="TitleScene.cpp" />
     <ClCompile Include="Wall.cpp" />
@@ -179,7 +178,6 @@
     <ClInclude Include="InputStageSelect.h" />
     <ClInclude Include="SliderBar.h" />
     <ClInclude Include="SliderButton.h" />
-    <ClInclude Include="StageSelect.h" />
     <ClInclude Include="StageSelectScene.h" />
     <ClInclude Include="TitleScene.h" />
     <ClInclude Include="Wall.h" />

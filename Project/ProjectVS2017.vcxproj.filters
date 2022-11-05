@@ -110,9 +110,6 @@
     <ClCompile Include="InputStageSelect.cpp">
       <Filter>ソース ファイル\StageSelectScene</Filter>
     </ClCompile>
-    <ClCompile Include="StageSelect.cpp">
-      <Filter>ソース ファイル\StageSelectScene</Filter>
-    </ClCompile>
     <ClCompile Include="GetDataFromFile.cpp">
       <Filter>ソース ファイル</Filter>
     </ClCompile>
@@ -233,9 +230,6 @@
       <Filter>ソース ファイル\StageSelectScene</Filter>
     </ClInclude>
     <ClInclude Include="InputStageSelect.h">
-      <Filter>ソース ファイル\StageSelectScene</Filter>
-    </ClInclude>
-    <ClInclude Include="StageSelect.h">
       <Filter>ソース ファイル\StageSelectScene</Filter>
     </ClInclude>
     <ClInclude Include="EnergyVessels.h">
