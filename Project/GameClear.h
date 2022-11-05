@@ -1,15 +1,16 @@
 #pragma once
-#include "Mof.h"
-#include "LetNextStage.h"
-#include "ReturnStageSelect.h"
+#include "Button.h"
 
 class GameClear
 {
 private:
+	const int _menuValue = 2;
 	bool _goal;
 	Vector2 _mousePos;
-	LetNextStage _nextStage;
-	ReturnStageSelect _RetrunStageSelect;
+	Vector2 _firstButtonPos;
+	Vector2 _secondButtonPos;
+	Button _nextStageButton;
+	Button _stageSelectButton;
 public:
 	void Initialize();
 	void Update();
@@ -21,4 +22,3 @@ private:
 	void TextureLoad();
 	bool IsGoal() const { return _goal; }
 };
-

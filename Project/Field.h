@@ -4,6 +4,8 @@
 #include	"BlockManager.h"
 #include	"EnergyVessels.h"
 #include	"GameClear.h"
+#include "GameOver.h"
+
 class Field
 {
 private:
@@ -35,9 +37,9 @@ private:
 
 	EnergyVessels _energyVessels;
 	GameClear _stageClear;
-
+	GameOver _gameOver;
 public:
-	void SetDollPosition(int x,int y);
+	void SetDollPosition(int x, int y);
 	void Initialize();
 	void ReLoad();
 	void Update();
@@ -47,7 +49,7 @@ public:
 	void ReSetStage();
 	void SetDustDumpValue(int dumpValue) { _dustDumpValue = dumpValue; }
 	void SetWaterDumpValue(int dumpValue) { _waterDumpValue = dumpValue; }
-	int* GetDustDumpValue() {return &_dustDumpValue; }
+	int* GetDustDumpValue() { return &_dustDumpValue; }
 	int* GetWaterDumpValue() { return &_waterDumpValue; }
 	void Render();
 	void Delete();

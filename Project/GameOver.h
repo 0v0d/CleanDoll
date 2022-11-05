@@ -1,25 +1,23 @@
 #pragma once
-#include "LetNextStage.h"
-#include "RetryGame.h"
-#include "ReturnStageSelect.h"
+#include "Button.h"
 
 class GameOver
 {
 private:
-	bool _goal;
+	bool _gameOver;
 	Vector2 _mousePos;
-	LetNextStage _nextStage;
-	ReturnStageSelect _RetrunStageSelect;
-	RetryGame _retryGame;
+	Button _retryButton;
+	Button _stageSelectButton;
+	Vector2 _firstButtonPos;
+	Vector2 _secondButtonPos;
 public:
 	void Initialize();
 	void Update();
 	void Render();
 	void Release();
-	void SetGoal(bool goal) { _goal = goal; }
 	void Reload();
+	void SetGameOver(bool gameOver) { _gameOver = gameOver; }
 private:
 	void TextureLoad();
-	bool IsGoal() const { return _goal; }
+	bool IsGameOver() const { return _gameOver; }
 };
-

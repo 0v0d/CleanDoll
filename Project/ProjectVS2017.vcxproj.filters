@@ -146,17 +146,14 @@
     <ClCompile Include="GameClear.cpp">
       <Filter>ソース ファイル\GameScene</Filter>
     </ClCompile>
-    <ClCompile Include="ReturnStageSelect.cpp">
-      <Filter>ソース ファイル\GameScene</Filter>
-    </ClCompile>
-    <ClCompile Include="LetNextStage.cpp">
-      <Filter>ソース ファイル\GameScene</Filter>
-    </ClCompile>
     <ClCompile Include="SliderButton.cpp">
       <Filter>ソース ファイル\Menu</Filter>
     </ClCompile>
     <ClCompile Include="SliderBar.cpp">
       <Filter>ソース ファイル\Menu</Filter>
+    </ClCompile>
+    <ClCompile Include="GameOver.cpp">
+      <Filter>ソース ファイル\GameScene</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -277,17 +274,14 @@
     <ClInclude Include="GameClear.h">
       <Filter>ソース ファイル\GameScene</Filter>
     </ClInclude>
-    <ClInclude Include="LetNextStage.h">
-      <Filter>ソース ファイル\GameScene</Filter>
-    </ClInclude>
-    <ClInclude Include="ReturnStageSelect.h">
-      <Filter>ソース ファイル\GameScene</Filter>
-    </ClInclude>
     <ClInclude Include="SliderBar.h">
       <Filter>ソース ファイル\Menu</Filter>
     </ClInclude>
     <ClInclude Include="SliderButton.h">
       <Filter>ソース ファイル\Menu</Filter>
+    </ClInclude>
+    <ClInclude Include="GameOver.h">
+      <Filter>ソース ファイル\GameScene</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

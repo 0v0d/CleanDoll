@@ -124,12 +124,9 @@
     <ClCompile Include="Item.cpp" />
     <ClCompile Include="BarManager.cpp" />
     <ClCompile Include="Menu.cpp" />
-    <ClCompile Include="LetNextStage.cpp" />
     <ClCompile Include="Object.cpp" />
     <ClCompile Include="OpenSetting.cpp" />
     <ClCompile Include="Preview.cpp" />
-    <ClCompile Include="RetryGame.cpp" />
-    <ClCompile Include="ReturnStageSelect.cpp" />
     <ClCompile Include="SceneManager.cpp" />
     <ClCompile Include="SettingManager.cpp" />
     <ClCompile Include="SetUpSetting.cpp" />
@@ -171,13 +168,10 @@
     <ClInclude Include="Item.h" />
     <ClInclude Include="BarManager.h" />
     <ClInclude Include="Menu.h" />
-    <ClInclude Include="LetNextStage.h" />
     <ClInclude Include="Object.h" />
     <ClInclude Include="OpenSetting.h" />
     <ClInclude Include="Preview.h" />
     <ClInclude Include="resource.h" />
-    <ClInclude Include="RetryGame.h" />
-    <ClInclude Include="ReturnStageSelect.h" />
     <ClInclude Include="SceneManager.h" />
     <ClInclude Include="SettingManager.h" />
     <ClInclude Include="SetUpSetting.h" />
