@@ -54,10 +54,7 @@ void SettingManager::Render()
 	{
 		_setUpSetting.Render();
 	}
-	else
-	{
-		_openSettingButton.Render();
-	}
+	_openSettingButton.Render();
 }
 
 void SettingManager::Release()

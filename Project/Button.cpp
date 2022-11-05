@@ -11,6 +11,6 @@ void Button::SetStatu(Vector2 position, CTexture* texture)
 
 void Button::Render()
 {
-	CGraphicsUtilities::RenderFillRect(_button, MOF_COLOR_GREEN);
+	CGraphicsUtilities::RenderFillRect(_button, MOF_COLOR_WHITE);
 	_texture->Render(_position.x, _position.y);
 }

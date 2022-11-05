@@ -11,7 +11,9 @@ void AudioSetting::Initialize()
 	{
 		_sliderArray[i].SetStatu(Vector2(_barPos.x, _barPos.y * i + 60),_barSize, _buttonSize, 0.7, HORIZON);
 	}
-	_closeButton = CRectangle(g_pGraphics->GetTargetWidth() / 2 - 50, 400, g_pGraphics->GetTargetWidth() / 2 + 50, 450);
+	_closeButtonPos = Vector2(g_pGraphics->GetTargetWidth() / 2 - 50, 400);
+	_closeButtonTexture.Load("戻る　テキスト.png");
+	_closeButton.SetStatu(_closeButtonPos, &_closeButtonTexture);
 }
 
 void AudioSetting::Update()
@@ -42,7 +44,7 @@ void AudioSetting::Pull(Vector2 mousePos)
 
 void AudioSetting::PushButton(Vector2 mousePos)
 {
-	if (_closeButton.CollisionPoint(mousePos))
+	if (_closeButton.CheckOnButton(mousePos))
 	{
 		*_openAudioSetting = false;
 	}
@@ -54,11 +56,13 @@ void AudioSetting::Render()
 	{
 		_sliderArray[i].Render();
 	}
-	CGraphicsUtilities::RenderFillRect(_closeButton, MOF_COLOR_HGREEN);
+	_closeButton.Render();
 }
 
 void AudioSetting::Release()
 {
+	_closeButtonTexture.Release();
 	//for (int i = 0;i < _sliderValue;i++) _sliderArray[i].Release();
+	
 	delete[] _sliderArray;
 }

@@ -1,4 +1,5 @@
 #pragma once
+#include "Button.h"
 #include	"IBaseSetting.h"
 #include	"Slider.h"
 
@@ -6,11 +7,13 @@ class AudioSetting :public IBaseSetting
 {
 private:
 	bool* _openAudioSetting;
-	CRectangle _closeButton;
 
 	const int _sliderValue = 2;
 	Slider* _sliderArray;
 	int _BGMVolume, _SEVolume;
+	Button _closeButton;
+	Vector2 _closeButtonPos;
+	CTexture _closeButtonTexture;
 public:
 	void Initialize();
 	void SetOpenSetting(bool* openSetting) { _openAudioSetting = openSetting; }

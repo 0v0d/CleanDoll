@@ -6,7 +6,7 @@ void SetUpSetting::Initialize()
 {
 	_audioButtonTexure.Load("サウンド設定　.png");
 	_backSceneTexture.Load("サウンド設定　.png");
-	_closeMenuTexture.Load("戻る　テキスト.png");
+	_closeMenuTexture.Load("閉じる.png");
 	_audioButton.SetStatu(Vector2(g_pGraphics->GetTargetWidth()/2 - _audioButtonTexure.GetWidth()/2, 250), &_audioButtonTexure);
 	_backSceneButton.SetStatu(Vector2(g_pGraphics->GetTargetWidth() / 2 - _backSceneTexture.GetWidth()/2, 450), &_backSceneTexture);
 	_closeMenuButton.SetStatu(Vector2(g_pGraphics->GetTargetWidth() / 2 - _closeMenuTexture.GetWidth() / 2, 650), &_closeMenuTexture);
@@ -83,4 +83,8 @@ void SetUpSetting::Release()
 	_audioButtonTexure.Release();
 	_backSceneTexture.Release();
 	_closeMenuTexture.Release();
+	for (auto itr = _buttonArray.begin(); itr != _buttonArray.end(); itr++) {
+		itr->second->Release();
+	}
+
 }
