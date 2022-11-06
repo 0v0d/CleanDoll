@@ -4,18 +4,21 @@
 
 void SetUpSetting::Initialize()
 {
-	_audioButton.SetStatu(Vector2(700, 250), Vector2(100, 50));
-	_backSceneButton.SetStatu(Vector2(700, 450), Vector2(100, 50));
+	_audioButtonTexure.Load("サウンド設定　.png");
+	_backSceneTexture.Load("ステージ選択へ.png");
+	_closeMenuTexture.Load("閉じる.png");
+	_audioButton.SetStatu(Vector2(g_pGraphics->GetTargetWidth()/2 - _audioButtonTexure.GetWidth()/2, 250), &_audioButtonTexure);
+	_backSceneButton.SetStatu(Vector2(g_pGraphics->GetTargetWidth() / 2 - _backSceneTexture.GetWidth()/2, 450), &_backSceneTexture);
+	_closeMenuButton.SetStatu(Vector2(g_pGraphics->GetTargetWidth() / 2 - _closeMenuTexture.GetWidth() / 2, 650), &_closeMenuTexture);
 
 	_buttonArray[&_audioButton] = new AudioSetting;
 	_buttonArray[&_backSceneButton] = new BackSceneSetting;
 
-	for (auto itr = _buttonArray.begin(); itr != _buttonArray.end(); itr++) {
+	for (auto itr = _buttonArray.begin(); itr != _buttonArray.end(); itr++)
+	{
 		itr->second->Initialize();
 		itr->second->SetOpenSetting(&_openSetting);
 	}
-
-	_closeMenuButton = CRectangle(700, 700, 800, 750);
 }
 
 void SetUpSetting::Update()
@@ -34,7 +37,7 @@ void SetUpSetting::Push(Vector2 mousePos)
 	}
 	else 
 	{
-		if (CheckPuchButton(mousePos, _closeMenuButton))
+		if (_closeMenuButton.CheckOnButton(mousePos))
 		{
 			*_openMenu = false;
 			return;
@@ -52,6 +55,14 @@ void SetUpSetting::Push(Vector2 mousePos)
 	}
 }
 
+void SetUpSetting::Pull(Vector2 mousePos)
+{
+	if (_openSetting)
+	{
+		_currentSetting->Pull(mousePos);
+	}
+}
+
 void SetUpSetting::Render()
 {
 	if (_openSetting)
@@ -64,11 +75,17 @@ void SetUpSetting::Render()
 		{
 			itr->first->Render();
 		}
-		CGraphicsUtilities::RenderFillRect(_closeMenuButton, MOF_COLOR_GREEN);
+		_closeMenuButton.Render();
 	}
 }
 
 void SetUpSetting::Release()
 {
+	_audioButtonTexure.Release();
+	_backSceneTexture.Release();
+	_closeMenuTexture.Release();
+	for (auto itr = _buttonArray.begin(); itr != _buttonArray.end(); itr++) {
+		itr->second->Release();
+	}
 
 }

@@ -10,6 +10,8 @@ private:
 	Button _stageSelectButton;
 	Vector2 _firstButtonPos;
 	Vector2 _secondButtonPos;
+	CTexture _retryTexture;
+	CTexture _stageSelectTexture;
 public:
 	void Initialize();
 	void Update();

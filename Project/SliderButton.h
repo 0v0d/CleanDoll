@@ -6,8 +6,6 @@ private:
 	//�T�C�Y�֌W
 	Vector2 _buttonSize;
 	Vector2 _barSize;
-	Vector2 _buttonHalfSize;
-	Vector2 _barHalfSize;
 	//���W�֌W
 	Vector2 _buttonPos;
 	Vector2 _barPos;
@@ -23,11 +21,11 @@ private:
 
 public:
 	void SetButtonStatu(Vector2 buttonSize, Vector2 buttonPos, Vector2 barSize, float value);
-	void ButtonHorizonStatu();
-	void ButtonVerticalStatu();
+	void CalcuButtonHorizonStatu();
+	void CalcuButtonVerticalStatu();
 	void Update();
-	void HorizonValue();
-	void VerticalValue();
+	void CalcuHorizonValue();
+	void CalcuVerticalValue();
 	void MoveHorizonButton(Vector2 mousePos);
 	void MoveVerticalButton(Vector2 mousePos);
 	void Render();

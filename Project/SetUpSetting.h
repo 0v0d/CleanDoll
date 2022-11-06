@@ -11,8 +11,10 @@ private:
 	bool* _openMenu;
 	IBaseSetting* _currentSetting = nullptr;
 	std::map<Button*, IBaseSetting*> _buttonArray;
-	CRectangle _closeMenuButton;
-	Button _audioButton, _backSceneButton;
+	Button _audioButton, _backSceneButton, _closeMenuButton;
+	CTexture _audioButtonTexure;
+	CTexture _backSceneTexture;
+	CTexture _closeMenuTexture;
 public:
 	void Initialize();
 	void SetOpenMenu(bool* openMenu) { _openMenu = openMenu; }
@@ -20,6 +22,5 @@ public:
 	void Push(Vector2 mousePos);
 	void Render();
 	void Release();
-private:
-	bool CheckPuchButton(Vector2 mousePos, CRectangle button) { return button.CollisionPoint(mousePos); }
+	void Pull(Vector2 mousePos);
 };

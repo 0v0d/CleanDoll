@@ -6,10 +6,8 @@ void GameOver::Initialize()
 	TextureLoad();
 	_firstButtonPos = Vector2(400, 300);
 	_secondButtonPos = Vector2(400, 500);
-	Vector2 _size = Vector2(300, 120);
-	Vector2 _size2 = Vector2(300, 120);
-	_retryButton.SetStatu(_firstButtonPos, _size);
-	_stageSelectButton.SetStatu(_secondButtonPos, _size2);
+	_retryButton.SetStatu(_firstButtonPos, &_retryTexture);
+	_stageSelectButton.SetStatu(_secondButtonPos, &_stageSelectTexture);
 	_gameOver = false;
 	_mousePos = Vector2(0, 0);
 }
@@ -50,11 +48,12 @@ void GameOver::Render()
 
 void GameOver::Release()
 {
-	_retryButton.Release();
-	_stageSelectButton.Render();
+	_retryTexture.Release();
+	_stageSelectTexture.Release();
 }
 
 void GameOver::TextureLoad()
 {
-
+	_retryTexture.Load("ステージ選択へ.png");
+	_stageSelectTexture.Load("ステージ選択へ.png");
 }
