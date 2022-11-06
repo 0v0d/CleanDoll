@@ -7,6 +7,7 @@ void SettingManager::Initialize()
 	_openSettingButton.Initialize();
 	_openMenu = false;
 	_menuTexture.Load("ƒƒjƒ…[@UI.png");
+	_menuBackTexture.Load("menu_back.png");
 }
 
 void SettingManager::Update()
@@ -51,6 +52,7 @@ void SettingManager::Render()
 {
 	if (_openMenu)
 	{
+		_menuBackTexture.Render(g_pGraphics->GetTargetWidth() / 2 - _menuBackTexture.GetWidth() / 2, 30);
 		_setUpSetting.Render();
 		_menuTexture.Render(g_pGraphics->GetTargetWidth() / 2 - _menuTexture.GetWidth() / 2, 50);
 	}
@@ -62,4 +64,5 @@ void SettingManager::Release()
 	_setUpSetting.Release();
 	_openSettingButton.Release();
 	_menuTexture.Release();
+	_menuBackTexture.Release();
 }

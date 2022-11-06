@@ -9,10 +9,11 @@ void AudioSetting::Initialize()
 
 	for (int i = 0; i < _sliderValue; i++)
 	{
-		_sliderArray[i].SetStatu(Vector2(_barPos.x, _barPos.y * i + 60),_barSize, _buttonSize, 0.7, HORIZON);
+		_sliderArray[i].SetStatu(Vector2(_barPos.x, _barPos.y +(i * 170)),_barSize, _buttonSize, 0.7, HORIZON);
 	}
-	_closeButtonPos = Vector2(g_pGraphics->GetTargetWidth() / 2 - 50, 400);
 	_closeButtonTexture.Load("戻る　テキスト.png");
+	_closeButtonPos = Vector2(g_pGraphics->GetTargetWidth() / 2 - _closeButtonTexture.GetWidth()/2 , 600);
+
 	_closeButton.SetStatu(_closeButtonPos, &_closeButtonTexture);
 }
 

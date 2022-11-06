@@ -5,7 +5,7 @@
 void SetUpSetting::Initialize()
 {
 	_audioButtonTexure.Load("サウンド設定　.png");
-	_backSceneTexture.Load("サウンド設定　.png");
+	_backSceneTexture.Load("ステージ選択へ.png");
 	_closeMenuTexture.Load("閉じる.png");
 	_audioButton.SetStatu(Vector2(g_pGraphics->GetTargetWidth()/2 - _audioButtonTexure.GetWidth()/2, 250), &_audioButtonTexure);
 	_backSceneButton.SetStatu(Vector2(g_pGraphics->GetTargetWidth() / 2 - _backSceneTexture.GetWidth()/2, 450), &_backSceneTexture);
