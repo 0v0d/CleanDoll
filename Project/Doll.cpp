@@ -137,7 +137,7 @@ void Doll::Render()
 	_inversion ? _dollTexture.RenderScale(_dollPosition.x, _dollPosition.y, _scale, _inversionRenderRect) :
 		_dollTexture.RenderScale(_dollPosition.x, _dollPosition.y, _scale, _renderRect);
 
-	CGraphicsUtilities::RenderRect(_dollPosition.x, _dollPosition.y, _dollPosition.x + _dollTexture.GetWidth() * _scale, _dollPosition.y + _dollTexture.GetHeight() * _scale, MOF_COLOR_RED);
+	//CGraphicsUtilities::RenderRect(_dollPosition.x, _dollPosition.y, _dollPosition.x + _dollTexture.GetWidth() * _scale, _dollPosition.y + _dollTexture.GetHeight() * _scale, MOF_COLOR_RED);
 }
 
 void Doll::Release()
