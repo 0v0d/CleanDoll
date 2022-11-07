@@ -5,6 +5,8 @@
 
 class TitleScene :public IBaseScene
 {
+	CTexture _titleBackTexture;
+	CRectangle _titleBackRect;
 public:
 	void Initialize();
 	void ReLoad();
@@ -12,4 +14,6 @@ public:
 	void InputMouseKey();
 	void Render();
 	void Release();
+private:
+	void Load();
 };
