@@ -13,5 +13,5 @@ void SliderBar::SetBarStatu(CTexture* barTexture, Vector2 barPos)
 void SliderBar::Render()
 {
 	_barTexture->Render(_barRect);
-	CGraphicsUtilities::RenderRect(_barRect, MOF_COLOR_GREEN);
+	//CGraphicsUtilities::RenderRect(_barRect, MOF_COLOR_GREEN);
 }

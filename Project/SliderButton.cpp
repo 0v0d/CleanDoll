@@ -51,5 +51,5 @@ void SliderButton::MoveVerticalButton(Vector2 mousePos)
 void SliderButton::Render()
 {
 	_buttonTexture->Render(_buttonRect);
-	CGraphicsUtilities::RenderRect(_buttonRect, MOF_COLOR_RED);
+	//CGraphicsUtilities::RenderRect(_buttonRect, MOF_COLOR_RED);
 }
