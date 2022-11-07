@@ -17,10 +17,10 @@ private:
 	const float  _half = 0.5;
 	const int   _maxValue = 100;
 	bool		_onClick;
-
+	CTexture* _buttonTexture;
 
 public:
-	void SetButtonStatu(Vector2 buttonSize, Vector2 buttonPos, Vector2 barSize, float value);
+	void SetButtonStatu(Vector2 barSize, Vector2 barPos, CTexture* buttonTexture, float value);
 	void CalcuButtonHorizonStatu();
 	void CalcuButtonVerticalStatu();
 	void Update();

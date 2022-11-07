@@ -1,11 +1,12 @@
 #include "SliderButton.h"
 
-void SliderButton::SetButtonStatu(Vector2 barSize, Vector2 barPos, Vector2 buttonSize, float value)
+void SliderButton::SetButtonStatu(Vector2 barSize, Vector2 barPos, CTexture* buttonTexture, float value)
 {
 	_barSize = barSize;
 	_barPos = barPos;
 	_value = value;
-	_buttonSize = buttonSize;
+	_buttonTexture = buttonTexture;
+	_buttonSize = Vector2(buttonTexture->GetWidth(),buttonTexture->GetHeight());
 }
 
 void SliderButton::CalcuButtonHorizonStatu()
@@ -49,5 +50,6 @@ void SliderButton::MoveVerticalButton(Vector2 mousePos)
 }
 void SliderButton::Render()
 {
+	_buttonTexture->Render(_buttonRect);
 	CGraphicsUtilities::RenderRect(_buttonRect, MOF_COLOR_RED);
 }

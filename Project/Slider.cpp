@@ -1,10 +1,10 @@
 #include "Slider.h"
 
-void Slider::SetStatu(Vector2 barPos,Vector2 barSize, Vector2 buttonSize, float value, DIRECTION_TYPE direction)
+void Slider::SetStatu(Vector2 barPos,CTexture* barTexture, CTexture* buttonTexture, float value, DIRECTION_TYPE direction)
 {
 	_direction = direction;
-	_bar.SetBarStatu(barSize, barPos);
-	_button.SetButtonStatu(barSize, barPos, buttonSize, value);
+	_bar.SetBarStatu(barTexture, barPos);
+	_button.SetButtonStatu(Vector2(barTexture->GetWidth(),barTexture->GetHeight()), barPos, buttonTexture, value);
 
 	if (_direction == HORIZON)	_button.CalcuButtonHorizonStatu();
 	else if (_direction == VERTICAL)  _button.CalcuButtonVerticalStatu();

@@ -14,6 +14,8 @@ private:
 	Button _closeButton;
 	Vector2 _closeButtonPos;
 	CTexture _closeButtonTexture;
+	CTexture _buttonTexture;
+	CTexture _barTexture;
 public:
 	void Initialize();
 	void SetOpenSetting(bool* openSetting) { _openAudioSetting = openSetting; }

@@ -14,6 +14,8 @@ private:
 	BarManager _barManager;
 	Slider _slider;
 	Menu* _menu;
+	CTexture _barTexture;
+	CTexture _buttonTexture;
 public:
 	void SetMenu(Menu* menu) { _menu = menu; }
 	void Initialize();
