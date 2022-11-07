@@ -7,7 +7,6 @@ void SettingManager::Initialize()
 	_openSettingButton.Initialize();
 	_openMenu = false;
 	_menuTexture.Load("ƒƒjƒ…[@UI.png");
-	_menuBackTexture.Load("menu_back.png");
 }
 
 void SettingManager::Update()
@@ -50,13 +49,14 @@ void SettingManager::Pull(Vector2 mousePos)
 
 void SettingManager::Render()
 {
+	_openSettingButton.Render();
 	if (_openMenu)
 	{
-		_menuBackTexture.Render(g_pGraphics->GetTargetWidth() / 2 - _menuBackTexture.GetWidth() / 2, 30);
+		CGraphicsUtilities::RenderFillRect(0, 0, g_pGraphics->GetTargetWidth(), g_pGraphics->GetTargetHeight(), MOF_ARGB(125, 0, 0, 0));
 		_setUpSetting.Render();
 		_menuTexture.Render(g_pGraphics->GetTargetWidth() / 2 - _menuTexture.GetWidth() / 2, 50);
 	}
-	_openSettingButton.Render();
+	
 }
 
 void SettingManager::Release()
@@ -64,5 +64,4 @@ void SettingManager::Release()
 	_setUpSetting.Release();
 	_openSettingButton.Release();
 	_menuTexture.Release();
-	_menuBackTexture.Release();
 }
