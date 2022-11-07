@@ -12,19 +12,19 @@ void AudioSetting::Initialize()
 	_buttonTexture.Load("s (2).png");
 	for (int i = 0; i < _sliderValue; i++)
 	{
-		_sliderArray[i].SetStatu(Vector2(_barPos.x, _barPos.y +(i * 170)),&_barTexture, &_buttonTexture, 0.7, HORIZON);
+		_sliderArray[i].SetStatu(Vector2(_barPos.x, _barPos.y * i + 250),&_barTexture, &_buttonTexture, 0.7, HORIZON);
 	}
 	_closeButtonTexture.Load("戻る　テキスト.png");
-	_closeButtonPos = Vector2(g_pGraphics->GetTargetWidth() / 2 - _closeButtonTexture.GetWidth()/2 , 600);
+	_closeButtonPos = Vector2(g_pGraphics->GetTargetWidth() / 2 - _closeButtonTexture.GetWidth()/2 , 650);
 
 	_closeButton.SetStatu(_closeButtonPos, &_closeButtonTexture);
 	for (int i = 0; i < _sliderValue; i++) 
 	{
-		_audioPos[i] = Vector2(_barPos.x - _audioTexture[i].GetWidth() * _audioScale, (_barPos.y * i + 60) + _barSize.y / 2 - _audioTexture[i].GetHeight() * _audioScale / 2);
+		_audioPos[i] = Vector2(_barPos.x - _audioTexture[i].GetWidth() * _audioScale -10, (_barPos.y * i + 250) + _barSize.y / 2 - _audioTexture[i].GetHeight() * _audioScale / 2);
 	}
 
-	_BGMPos = Vector2(_audioPos[0].x - _BGMTexture.GetWidth() * _BGMScale, _audioPos[0].y + _audioTexture[0].GetHeight() * _audioScale / 2 - _BGMTexture.GetHeight() * _BGMScale / 2);
-	_SEPos = Vector2(_audioPos[1].x - _SETexture.GetWidth() * _SEScale, _audioPos[1].y + _audioTexture[1].GetHeight() * _audioScale / 2 - _SETexture.GetHeight() * _SEScale / 2);
+	_BGMPos = Vector2(_audioPos[0].x - _BGMTexture.GetWidth() * _BGMScale-10, _audioPos[0].y + _audioTexture[0].GetHeight() * _audioScale / 2 - _BGMTexture.GetHeight() * _BGMScale / 2);
+	_SEPos = Vector2(_audioPos[1].x - _SETexture.GetWidth() * _SEScale-10, _audioPos[1].y + _audioTexture[1].GetHeight() * _audioScale / 2 - _SETexture.GetHeight() * _SEScale / 2);
 }
 
 void AudioSetting::LoadTexture() {

@@ -9,8 +9,8 @@ void StageSelectScene::Initialize()
 	_inputInStageSelect.SetBarManager(&_barManager);
 	_inputInStageSelect.SetSlider(&_slider);
 	_getDataFromFile.SetBarManager(&_barManager);
-	_barTexture.Load("s (1).png");
-	_buttonTexture.Load("s (2).png");
+	_barTexture.Load("âπó ÉoÅ[.png");
+	_buttonTexture.Load("s (3).png");
 	_slider.SetStatu(_barPos2, &_barTexture, &_buttonTexture, 0,VERTICAL);
 	_getDataFromFile.LoadStageSelectData();
 	_getDataFromFile.Initialize();
