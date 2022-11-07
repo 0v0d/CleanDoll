@@ -17,7 +17,7 @@ class Slider
 	Vector2 _mousePos;
 	bool _onClick;
 public:
-	void SetStatu(Vector2 barSize, Vector2 barPos, Vector2 buttonSize, float value, DIRECTION_TYPE direction);
+	void SetStatu(Vector2 barPos, CTexture* barTexture, CTexture* buttonTexture, float value, DIRECTION_TYPE direction);
 	float GetValue() { return _button.GetValue(); }
 	void PushSlider();
 	void PullSlider();

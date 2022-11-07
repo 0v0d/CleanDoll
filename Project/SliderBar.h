@@ -1,4 +1,5 @@
 ﻿#pragma once
+#pragma once
 #include	"Mof.h"
 class SliderBar
 {
@@ -6,8 +7,9 @@ private:
 	Vector2 _barSize;
 	Vector2 _barPos;
 	CRectangle	_barRect;
+	CTexture* _barTexture;
 public:
-	void SetBarStatu(Vector2 barSize, Vector2 barPos);
+	void SetBarStatu(CTexture* barTexture, Vector2 barPos);
 	bool IsCollisionBar(Vector2 mousepos) { return  _barRect.CollisionPoint(mousepos); }
 	void Render();
 };

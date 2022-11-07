@@ -14,6 +14,15 @@ private:
 	Button _closeButton;
 	Vector2 _closeButtonPos;
 	CTexture _closeButtonTexture;
+	CTexture _buttonTexture;
+	CTexture _barTexture;
+	CTexture* _audioTexture = new CTexture[_sliderValue];
+	Vector2* _audioPos = new Vector2[_sliderValue];
+
+	CTexture _BGMTexture, _SETexture;
+	Vector2 _BGMPos, _SEPos;
+	const float _textureHeight = 50;
+	float _audioScale, _BGMScale, _SEScale;
 public:
 	void Initialize();
 	void SetOpenSetting(bool* openSetting) { _openAudioSetting = openSetting; }
@@ -26,4 +35,6 @@ public:
 	void Release();
 private:
 	void PushButton(Vector2 mousePos);
+	void LoadTexture();
+	void CalcuScale();
 };
