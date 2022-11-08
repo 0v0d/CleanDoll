@@ -16,6 +16,8 @@ private:
 	Menu* _menu;
 	CTexture _barTexture;
 	CTexture _buttonTexture;
+	CTexture _stageBackTexture;
+	CRectangle _stageBackRect;
 public:
 	void SetMenu(Menu* menu) { _menu = menu; }
 	void Initialize();
@@ -25,4 +27,6 @@ public:
 	void Render();
 	void Release();
 	GetDataFromFile* GetGetDataFromFile() { return &_getDataFromFile; }
+private:
+	void Load();
 };
