@@ -53,3 +53,17 @@ void SliderButton::Render()
 	_buttonTexture->Render(_buttonRect);
 	//CGraphicsUtilities::RenderRect(_buttonRect, MOF_COLOR_RED);
 }
+
+void SliderButton::MouseWheelMove(float movewheel)
+{
+	if (movewheel > 0 && _buttonPos.y - _wheelSensitivity < _barPos.y)
+		_buttonPos.y = _barPos.y + _wheelSensitivity;
+	if (movewheel < 0 && _buttonPos.y + _buttonSize.y + _wheelSensitivity > _barPos.y + _barSize.y)
+		_buttonPos.y = _barPos.y + _barSize.y - _buttonSize.y - _wheelSensitivity;
+
+	if (movewheel > 0)
+		_buttonPos.y -= _wheelSensitivity;
+	if (movewheel < 0)
+		_buttonPos.y += _wheelSensitivity;
+		
+}
