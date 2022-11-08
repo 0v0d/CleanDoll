@@ -18,7 +18,7 @@ private:
 	const int   _maxValue = 100;
 	bool		_onClick;
 	CTexture* _buttonTexture;
-
+	const float _wheelSensitivity = 20;
 public:
 	void SetButtonStatu(Vector2 barSize, Vector2 barPos, CTexture* buttonTexture, float value);
 	void CalcuButtonHorizonStatu();
@@ -31,5 +31,6 @@ public:
 	void Render();
 	bool IsCollisionButton(Vector2 mousePos) { return _buttonRect.CollisionPoint(mousePos); }
 	float GetValue() { return _value; }
+	void MouseWheelMove(float movewheel);
 };
 

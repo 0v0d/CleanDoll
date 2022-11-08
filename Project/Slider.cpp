@@ -14,7 +14,7 @@ void Slider::SetStatu(Vector2 barPos,CTexture* barTexture, CTexture* buttonTextu
 void Slider::Update()
 {
 	_button.Update();
-	if (_direction == HORIZON)	_button.CalcuHorizonValue();
+	if (_direction == HORIZON) _button.CalcuHorizonValue();
 	else if (_direction == VERTICAL)  _button.CalcuVerticalValue();
 
 	if (IsClick())
@@ -23,6 +23,8 @@ void Slider::Update()
 		if (_direction == HORIZON)	_button.MoveHorizonButton(_mousePos);
 		else if (_direction == VERTICAL)  _button.MoveVerticalButton(_mousePos);
 	}
+	_button.MouseWheelMove(g_pInput->GetMouseWheelMove());
+
 }
 
 void Slider::PushSlider()
