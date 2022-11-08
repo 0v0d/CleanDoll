@@ -4,20 +4,15 @@
 
 void Wall::SetWallPosition(Vector2 blockCenterPosition)
 {
-	if (_number == 2)
-	{
+	if (_number == 2) {
 		_wallPosition.x = blockCenterPosition.x - _wallTexture->GetWidth() * _scale / 2;
-		_wallPosition.y = blockCenterPosition.y - _blockSizeY * _scale / 2 - _wallTexture->GetHeight() * _scale;
+		_wallPosition.y = blockCenterPosition.y - _blockSizeY / 2 * _scale - _wallTexture->GetHeight() * _scale;
 	}
-	else 
-	{
+	else {
 		_wallPosition.x = blockCenterPosition.x - _wallTexture->GetWidth() * _scale;
-		_wallPosition.y = blockCenterPosition.y + _blockSizeY * _scale / 2 - _wallTexture->GetHeight() * _scale;
+		_wallPosition.y = blockCenterPosition.y - _wallTexture->GetHeight() * _scale;
 
-		if (_number == 1)
-		{
-			_wallPosition.x = blockCenterPosition.x;
-		}
+		if (_number == 1)_wallPosition.x = blockCenterPosition.x;
 	}
 }
 
