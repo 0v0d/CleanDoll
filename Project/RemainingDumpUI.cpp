@@ -5,17 +5,20 @@ void RemainingDumpUI::Initialize() {
 	_objectiveSizeX = 400;
 	CalcuScale();
 
-	_iconArray = new RemainingIcon[_iconValue];
-	_iconArray[0].SetTexture(&_dustIconTexture, &_markTexture, &_notExistTexture);
-	_iconArray[1].SetTexture(&_waterIconTexture, &_markTexture, &_notExistTexture);
-	_iconArray[2].SetTexture(&_coinIconTexture, &_markTexture, &_notExistTexture);
+	_iconArray[ICON_TYPE::DUST] = new RemainingIcon();
+	_iconArray[ICON_TYPE::WATER] = new RemainingIcon();
+	_iconArray[ICON_TYPE::COIN] = new RemainingIcon();
+
+	IconSetTexture(ICON_TYPE::DUST, &_dustIconTexture);
+	IconSetTexture(ICON_TYPE::WATER, &_waterIconTexture);
+	IconSetTexture(ICON_TYPE::COIN, &_coinIconTexture);
 
 	_basePosition = Vector2(100, 650);
 	const float iconSizeX = _dustIconTexture.GetWidth();
-	const float space = (_baseTexture.GetWidth() * _scale - iconSizeX * _scale * _iconValue) / (_iconValue * 2);
-	for (int i = 0; i < _iconValue; i++) {
-		_iconArray[i].SetScale(_scale);
-		_iconArray[i].SetPosition(Vector2(_basePosition.x + space * (i * 2 + 1) + iconSizeX * _scale * i, _basePosition.y + _baseTexture.GetHeight() * _scale - space));
+	const float space = (_baseTexture.GetWidth() * _scale - iconSizeX * _scale * _iconArray.size()) / (_iconArray.size() * 2);
+	for (auto itr = _iconArray.begin(); itr != _iconArray.end(); itr++) {
+		itr->second->SetScale(_scale);
+		itr->second->SetPosition(Vector2(_basePosition.x + space * ((int)itr->first * 2 + 1) + iconSizeX * _scale * (int)itr->first, _basePosition.y + _baseTexture.GetHeight() * _scale - space));
 	}
 }
 
@@ -28,9 +31,13 @@ void RemainingDumpUI::LoadTexture() {
 	_coinIconTexture.Load("icon_coin.png");
 }
 
+void RemainingDumpUI::IconSetTexture(ICON_TYPE iconType, CTexture* iconTexture) {
+	_iconArray[iconType]->SetTexture(iconTexture, &_markTexture, &_notExistTexture);
+}
+
 void RemainingDumpUI::ReLoad() {
-	for (int i = 0; i < _iconValue; i++) {
-		_iconArray[i].ReLoad();
+	for (auto itr = _iconArray.begin(); itr != _iconArray.end(); itr++) {
+		itr->second->ReLoad();
 	}
 }
 
@@ -41,31 +48,39 @@ void RemainingDumpUI::CalcuScale() {
 void RemainingDumpUI::SetDumpValue(int dustValue, int waterValue) {
 	_dustValue = dustValue;
 	_waterValue = waterValue;
+
+	if (_dustValue <= 0) _iconArray[ICON_TYPE::DUST]->NotExistIcon();
+	if (_waterValue <= 0) _iconArray[ICON_TYPE::WATER]->NotExistIcon();
 }
 
 void RemainingDumpUI::CleanDust() {
 	_dustValue--;
-	if (CheckLostDump(_dustValue))MarkIcon(0);
+	if (CheckLostDump(_dustValue))MarkIcon(ICON_TYPE::DUST);
 }
 
 void RemainingDumpUI::CleanWater() {
 	_waterValue--;
-	if (CheckLostDump(_waterValue))MarkIcon(1);
+	if (CheckLostDump(_waterValue))MarkIcon(ICON_TYPE::WATER);
 }
 
-void RemainingDumpUI::MarkIcon(int iconNumber) {
-	_iconArray[iconNumber].MarkIcon();
+void RemainingDumpUI::MarkIcon(ICON_TYPE iconType) {
+	_iconArray[iconType]->MarkIcon();
 }
 
 void RemainingDumpUI::Render() {
 
 	_baseTexture.RenderScale(_basePosition.x, _basePosition.y, _scale);
-	for (int i = 0; i < _iconValue; i++) {
-		_iconArray[i].Render();
+	for (auto itr = _iconArray.begin(); itr != _iconArray.end(); itr++) {
+		itr->second->Render();
 	}
 }
 
 void RemainingDumpUI::Release() {
+
+	for (auto itr = _iconArray.begin(); itr != _iconArray.end(); itr++) {
+		delete itr->second;
+	}
+
 	_baseTexture.Release();
 	_markTexture.Release();
 	_notExistTexture.Release();

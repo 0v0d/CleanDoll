@@ -27,6 +27,9 @@
     <Filter Include="ソース ファイル\Menu">
       <UniqueIdentifier>{14e421b9-fd95-47d7-91bc-1bd5f44d6bf2}</UniqueIdentifier>
     </Filter>
+    <Filter Include="ソース ファイル\GameScene\UI">
+      <UniqueIdentifier>{e0288a8b-2b26-4472-b8ac-88de56ea53b1}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="WinMain.cpp">
@@ -113,18 +116,6 @@
     <ClCompile Include="GetDataFromFile.cpp">
       <Filter>ソース ファイル</Filter>
     </ClCompile>
-    <ClCompile Include="Preview.cpp">
-      <Filter>ソース ファイル</Filter>
-    </ClCompile>
-    <ClCompile Include="EnergyBar.cpp">
-      <Filter>ソース ファイル\GameScene</Filter>
-    </ClCompile>
-    <ClCompile Include="EnergyVessels.cpp">
-      <Filter>ソース ファイル\GameScene</Filter>
-    </ClCompile>
-    <ClCompile Include="DollOnEnergyVessels.cpp">
-      <Filter>ソース ファイル</Filter>
-    </ClCompile>
     <ClCompile Include="SetUpSetting.cpp">
       <Filter>ソース ファイル\Menu</Filter>
     </ClCompile>
@@ -153,10 +144,22 @@
       <Filter>ソース ファイル\GameScene</Filter>
     </ClCompile>
     <ClCompile Include="RemainingDumpUI.cpp">
-      <Filter>ソース ファイル\GameScene</Filter>
+      <Filter>ソース ファイル\GameScene\UI</Filter>
     </ClCompile>
     <ClCompile Include="RemainingIcon.cpp">
-      <Filter>ソース ファイル\GameScene</Filter>
+      <Filter>ソース ファイル\GameScene\UI</Filter>
+    </ClCompile>
+    <ClCompile Include="EnergyBar.cpp">
+      <Filter>ソース ファイル\GameScene\UI</Filter>
+    </ClCompile>
+    <ClCompile Include="EnergyVessels.cpp">
+      <Filter>ソース ファイル\GameScene\UI</Filter>
+    </ClCompile>
+    <ClCompile Include="Preview.cpp">
+      <Filter>ソース ファイル\StageSelectScene</Filter>
+    </ClCompile>
+    <ClCompile Include="DollOnEnergyVessels.cpp">
+      <Filter>ソース ファイル\GameScene\UI</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -238,22 +241,10 @@
     <ClInclude Include="InputStageSelect.h">
       <Filter>ソース ファイル\StageSelectScene</Filter>
     </ClInclude>
-    <ClInclude Include="EnergyVessels.h">
-      <Filter>ソース ファイル\GameScene</Filter>
-    </ClInclude>
-    <ClInclude Include="EnergyBar.h">
-      <Filter>ソース ファイル\GameScene</Filter>
-    </ClInclude>
     <ClInclude Include="resource.h">
       <Filter>リソース ファイル</Filter>
     </ClInclude>
-    <ClInclude Include="Preview.h">
-      <Filter>ソース ファイル</Filter>
-    </ClInclude>
     <ClInclude Include="GetDataFromFile.h">
-      <Filter>ソース ファイル</Filter>
-    </ClInclude>
-    <ClInclude Include="DollOnEnergyVessels.h">
       <Filter>ソース ファイル</Filter>
     </ClInclude>
     <ClInclude Include="OpenSetting.h">
@@ -284,10 +275,22 @@
       <Filter>ソース ファイル\GameScene</Filter>
     </ClInclude>
     <ClInclude Include="RemainingDumpUI.h">
-      <Filter>ソース ファイル\GameScene</Filter>
+      <Filter>ソース ファイル\GameScene\UI</Filter>
     </ClInclude>
     <ClInclude Include="RemainingIcon.h">
-      <Filter>ソース ファイル\GameScene</Filter>
+      <Filter>ソース ファイル\GameScene\UI</Filter>
+    </ClInclude>
+    <ClInclude Include="EnergyBar.h">
+      <Filter>ソース ファイル\GameScene\UI</Filter>
+    </ClInclude>
+    <ClInclude Include="EnergyVessels.h">
+      <Filter>ソース ファイル\GameScene\UI</Filter>
+    </ClInclude>
+    <ClInclude Include="Preview.h">
+      <Filter>ソース ファイル\StageSelectScene</Filter>
+    </ClInclude>
+    <ClInclude Include="DollOnEnergyVessels.h">
+      <Filter>ソース ファイル\GameScene\UI</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
