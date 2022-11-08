@@ -21,7 +21,7 @@ public:
 	void Update();
 	void Render();
 	void Release();
-	
+
 	static SceneManager& Instance()
 	{
 		if (_instance == nullptr)
@@ -33,4 +33,5 @@ public:
 	}
 
 	void ChangeScene(SCENE_TYPE nextScene);
+	IBaseScene* GetScene(SCENE_TYPE scene) { return _sceneArray[scene]; }
 };

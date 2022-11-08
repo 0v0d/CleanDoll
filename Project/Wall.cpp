@@ -1,24 +1,19 @@
+
+
 #include "Wall.h"
 
 void Wall::SetWallPosition(Vector2 blockCenterPosition)
 {
-	if (_number == 2)
-	{
+	if (_number == 2) {
 		_wallPosition.x = blockCenterPosition.x - _wallTexture->GetWidth() * _scale / 2;
-		_wallPosition.y = blockCenterPosition.y - _blockSizeY * _scale / 2 - _wallTexture->GetHeight() * _scale;
+		_wallPosition.y = blockCenterPosition.y - _blockSizeY / 2 * _scale - _wallTexture->GetHeight() * _scale;
 	}
-	else 
-	{
+	else {
 		_wallPosition.x = blockCenterPosition.x - _wallTexture->GetWidth() * _scale;
-		_wallPosition.y = blockCenterPosition.y + _blockSizeY * _scale / 2 - _wallTexture->GetHeight() * _scale;
+		_wallPosition.y = blockCenterPosition.y - _wallTexture->GetHeight() * _scale;
 
-		if (_number == 1)
-		{
-			_wallPosition.x = blockCenterPosition.x;
-		}
+		if (_number == 1)_wallPosition.x = blockCenterPosition.x;
 	}
-	_wallPosition.y += 4;
-	_wallRenderRect = CRectangle(2, 0, _wallTexture->GetWidth() - 2, _wallTexture->GetHeight() - 2);
 }
 
 void Wall::SetWallObjectPosition(Vector2 blockCenterPosition)
@@ -41,7 +36,7 @@ void Wall::Render()
 {
 	if (_wallTexture != nullptr)
 	{
-		_wallTexture->RenderScale(_wallPosition.x, _wallPosition.y, _scale, _wallRenderRect);
+		_wallTexture->RenderScale(_wallPosition.x, _wallPosition.y, _scale);
 	}
 
 	if (_wallObjectTexture != nullptr)

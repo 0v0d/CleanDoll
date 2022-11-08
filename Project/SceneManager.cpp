@@ -25,8 +25,8 @@ void SceneManager::Initialize()
 	}
 	_menu.Initialize();
 
-	_currentScene = _sceneArray[SCENE_TYPE::STAGESELECT];
-	//_currentScene = _sceneArray[SCENE_TYPE::TITLE];
+	//_currentScene = _sceneArray[SCENE_TYPE::STAGESELECT];
+	_currentScene = _sceneArray[SCENE_TYPE::TITLE];
 }
 
 void SceneManager::Update()

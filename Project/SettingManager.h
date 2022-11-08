@@ -9,6 +9,7 @@ private:
 
 	SetUpSetting _setUpSetting;
 	OpenSetting _openSettingButton;
+	CTexture _menuTexture;
 public:
 	void Initialize();
 	void Update();

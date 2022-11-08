@@ -6,6 +6,7 @@ void Doll::Initialize()
 {
 	_dollTexture.Load("test.png");
 	_renderRect = CRectangle(0, 0, _dollTexture.GetWidth(), _dollTexture.GetHeight());
+	_field->SetDollMove(&_move);
 }
 
 void Doll::ReLoad()
@@ -24,7 +25,7 @@ void Doll::CalcuScale(float boxSizeY, float scale)
 	_scale = boxSizeY * blockPercentDoll * scale / _dollTexture.GetHeight();
 }
 
-void Doll::SetDumpValue(int* dustDumpValue, int* waterDumpValue)
+void Doll::SetDumpValue(int dustDumpValue, int waterDumpValue)
 {
 	_dustDumpValue = dustDumpValue;
 	_waterDumpValue = waterDumpValue;
@@ -118,7 +119,16 @@ void Doll::CleanDump()
 		(_heldMop && dynamic_cast<Dump*> (_routeBlockArray[_currentUnderBlockNumber]->GetAccessories())->GetDumpType() == DUMP_TYPE::DUST))return;
 
 	_routeBlockArray[_currentUnderBlockNumber]->HiddenAccessoriesFlg(true);
-	_heldMop ? *_waterDumpValue -= 1 : *_dustDumpValue -= 1;
+	if (_heldMop) {
+		_waterDumpValue--;
+		_field->SetWaterDumpValue(_waterDumpValue);
+		_field->CleanWater();
+	}
+	else {
+		_dustDumpValue--;
+		_field->SetDustDumpValue(_dustDumpValue);
+		_field->CleanDust();
+	}
 }
 
 void Doll::SwitchToMop()
@@ -126,9 +136,11 @@ void Doll::SwitchToMop()
 	_heldMop = true;
 	_routeBlockArray[_currentUnderBlockNumber]->HiddenAccessoriesFlg(true);
 
-	if (*_waterDumpValue > 0)
+	if (_dustDumpValue > 0)
 	{
 		//ゲームオーバー
+		_field->GameOver();
+		_move = false;
 	}
 }
 
@@ -137,7 +149,7 @@ void Doll::Render()
 	_inversion ? _dollTexture.RenderScale(_dollPosition.x, _dollPosition.y, _scale, _inversionRenderRect) :
 		_dollTexture.RenderScale(_dollPosition.x, _dollPosition.y, _scale, _renderRect);
 
-	CGraphicsUtilities::RenderRect(_dollPosition.x, _dollPosition.y, _dollPosition.x + _dollTexture.GetWidth() * _scale, _dollPosition.y + _dollTexture.GetHeight() * _scale, MOF_COLOR_RED);
+	//CGraphicsUtilities::RenderRect(_dollPosition.x, _dollPosition.y, _dollPosition.x + _dollTexture.GetWidth() * _scale, _dollPosition.y + _dollTexture.GetHeight() * _scale, MOF_COLOR_RED);
 }
 
 void Doll::Release()

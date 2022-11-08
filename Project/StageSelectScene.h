@@ -14,12 +14,19 @@ private:
 	BarManager _barManager;
 	Slider _slider;
 	Menu* _menu;
+	CTexture _barTexture;
+	CTexture _buttonTexture;
+	CTexture _stageBackTexture;
+	CRectangle _stageBackRect;
 public:
 	void SetMenu(Menu* menu) { _menu = menu; }
 	void Initialize();
 	void ReLoad();
 	void Update();
+	void StartNextStage() { _barManager.StartNextStage(); }
 	void Render();
 	void Release();
 	GetDataFromFile* GetGetDataFromFile() { return &_getDataFromFile; }
+private:
+	void Load();
 };

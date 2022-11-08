@@ -175,9 +175,13 @@ void ContactFile::DeleteTextureArray(TextureArray* textureArray)
 
 void ContactFile::NewChipData(TextureArray* textureArray)
 {
-
 	_chipDataArray = new char* [_blockValueX * textureArray->LineXValue];
 	for (int i = 0;i < _blockValueX * textureArray->LineXValue;i++)_chipDataArray[i] = new char[_blockValueY];
+
+	for (int y = 0; y < _blockValueY; y++) {
+		for (int x = 0; x < _blockValueX * textureArray->LineXValue; x++)
+			_chipDataArray[x][y] = 0;
+	}
 }
 
 void ContactFile::DeleteChipData(TextureArray* textureArray)
