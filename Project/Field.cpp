@@ -12,11 +12,11 @@ void Field::Initialize()
 	_blockManager.Initialize();
 	_doll.Initialize();
 	_energyVessels.Initialize();
-
+	_remainingDumpUI.Initialize();
 	_adjoinBlockValue = _blockManager.GetAdjoinBlockValue();
 
 	_remainDistance = _maxDistance;
-	_doll.SetDumpValue(&_dustDumpValue, &_waterDumpValue);
+	_doll.SetDumpValue(_dustDumpValue, _waterDumpValue);
 
 	_energyVessels.SetMaxEnergyValue(_maxDistance);
 	_energyVessels.SetCurrentEnergyValue(&_remainDistance);
@@ -29,11 +29,11 @@ void Field::ReLoad()
 {
 	_blockManager.ReLoad();
 	_doll.ReLoad();
-
+	_remainingDumpUI.ReLoad();
 	_doll.CalcuScale(_blockManager.GetBlock(0, 0)->GetBlockSize().y, _blockManager.GetScale());
-
+	_remainingDumpUI.SetDumpValue(_dustDumpValue, _waterDumpValue);
 	SetDollPosition(_dollInitialPositionX, _dollInitialPositionY);
-
+	_doll.SetDumpValue(_dustDumpValue, _waterDumpValue);
 	_pickedBlock = _lastDistanceBlock = _blockManager.GetBlock(_dollInitialPositionX, _dollInitialPositionY);
 
 	_pickedBlock->SetPassedFlg(true);
@@ -44,8 +44,6 @@ void Field::ReLoad()
 	_recoveryDifferentialArray.clear();
 
 	_remainDistance = _maxDistance;
-
-	_onMoveDoll = false;
 }
 
 void Field::SetDollPosition(int x, int y)
@@ -73,7 +71,7 @@ void Field::Update()
 //ブロックを押したとき
 void Field::PassedMouse(Vector2 mousePosition)
 {
-	if (_onMoveDoll) return;
+	if (*_onMoveDoll) return;
 
 	Block* mouseOnBlock = _blockManager.GetMouseOnBlock(mousePosition);
 	if (mouseOnBlock == nullptr) return;
@@ -161,7 +159,6 @@ void Field::EndOfPassed()
 	_routeBlockArray.clear();
 	_distanceCount = 0;
 	//_remainDistance = _maxDistance;
-	_onMoveDoll = true;
 	_recoveryDifferentialArray.clear();
 
 
@@ -169,7 +166,6 @@ void Field::EndOfPassed()
 
 void Field::EndMoveDoll()
 {
-	_onMoveDoll = false;
 	if (_dustDumpValue <= 0 && _waterDumpValue <= 0)
 	{
 		//ゲームクリア
@@ -180,7 +176,7 @@ void Field::EndMoveDoll()
 	}
 	if (_remainDistance <= 0)
 	{
-		_gameOver.SetGameOver(true);
+		GameOver();
 	}
 }
 
@@ -189,12 +185,16 @@ void Field::ReSetStage()
 	ReLoad();
 }
 
+void Field::GameOver()
+{
+	_gameOver.SetGameOver(true);
+}
 
 void Field::Render()
 {
 	_blockManager.Render();
 	_doll.Render();
-
+	_remainingDumpUI.Render();
 	_energyVessels.Render();
 	_stageClear.Render();
 	_gameOver.Render();
@@ -213,6 +213,7 @@ void Field::Release()
 	_blockManager.Release();
 	_doll.Release();
 	_energyVessels.Release();
+	_remainingDumpUI.Release();
 	_stageClear.Release();
 	_gameOver.Release();
 	Delete();

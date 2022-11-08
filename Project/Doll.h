@@ -25,8 +25,7 @@ private:
 	bool _inversion;
 	CRectangle _inversionRenderRect;
 
-	int* _dustDumpValue;
-	int* _waterDumpValue;
+	int _dustDumpValue,_waterDumpValue;
 
 	bool _heldMop;
 public:
@@ -35,7 +34,7 @@ public:
 	void SetPosition(Vector2 blockCenterPosisiton);
 	void ReLoad();
 	void CalcuScale(float boxSizeY, float scale);
-	void SetDumpValue(int* dustDumpValue, int* waterDumpValue);
+	void SetDumpValue(int dustDumpValue, int waterDumpValue);
 	void Update();
 	void SetRouteBlockArray(std::vector<Block*> blockArray);
 	void Move();

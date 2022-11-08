@@ -152,6 +152,12 @@
     <ClCompile Include="GameOver.cpp">
       <Filter>ソース ファイル\GameScene</Filter>
     </ClCompile>
+    <ClCompile Include="RemainingDumpUI.cpp">
+      <Filter>ソース ファイル\GameScene</Filter>
+    </ClCompile>
+    <ClCompile Include="RemainingIcon.cpp">
+      <Filter>ソース ファイル\GameScene</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GameApp.h">
@@ -275,6 +281,12 @@
       <Filter>ソース ファイル\Menu</Filter>
     </ClInclude>
     <ClInclude Include="GameOver.h">
+      <Filter>ソース ファイル\GameScene</Filter>
+    </ClInclude>
+    <ClInclude Include="RemainingDumpUI.h">
+      <Filter>ソース ファイル\GameScene</Filter>
+    </ClInclude>
+    <ClInclude Include="RemainingIcon.h">
       <Filter>ソース ファイル\GameScene</Filter>
     </ClInclude>
   </ItemGroup>

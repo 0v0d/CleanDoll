@@ -52,6 +52,7 @@ void GameClear::Render()
 {
 	if (IsGoal())
 	{
+		CGraphicsUtilities::RenderFillRect(0, 0, g_pGraphics->GetTargetWidth(), g_pGraphics->GetTargetHeight(), MOF_ARGB(125, 0, 0, 0));
 		_nextStageButton.Render();
 		_stageSelectButton.Render();
 	}
