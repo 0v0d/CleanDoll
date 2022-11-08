@@ -30,6 +30,15 @@
     <Filter Include="ソース ファイル\GameScene\UI">
       <UniqueIdentifier>{e0288a8b-2b26-4472-b8ac-88de56ea53b1}</UniqueIdentifier>
     </Filter>
+    <Filter Include="ソース ファイル\GameScene\UI\RemainningDump">
+      <UniqueIdentifier>{73009d71-3341-49f0-b938-fbb83d857334}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\GameScene\UI\EnergyUI">
+      <UniqueIdentifier>{3fb623dd-534d-4c0f-a7d2-d3954fe91928}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\Menu\Slider">
+      <UniqueIdentifier>{7e101e4d-a843-4922-9bab-9a1509e72b38}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="WinMain.cpp">
@@ -92,9 +101,6 @@
     <ClCompile Include="Menu.cpp">
       <Filter>ソース ファイル\Menu</Filter>
     </ClCompile>
-    <ClCompile Include="Slider.cpp">
-      <Filter>ソース ファイル\Menu</Filter>
-    </ClCompile>
     <ClCompile Include="AudioSetting.cpp">
       <Filter>ソース ファイル\Menu</Filter>
     </ClCompile>
@@ -134,32 +140,35 @@
     <ClCompile Include="GameClear.cpp">
       <Filter>ソース ファイル\GameScene</Filter>
     </ClCompile>
-    <ClCompile Include="SliderButton.cpp">
-      <Filter>ソース ファイル\Menu</Filter>
-    </ClCompile>
-    <ClCompile Include="SliderBar.cpp">
-      <Filter>ソース ファイル\Menu</Filter>
-    </ClCompile>
     <ClCompile Include="GameOver.cpp">
       <Filter>ソース ファイル\GameScene</Filter>
-    </ClCompile>
-    <ClCompile Include="RemainingDumpUI.cpp">
-      <Filter>ソース ファイル\GameScene\UI</Filter>
-    </ClCompile>
-    <ClCompile Include="RemainingIcon.cpp">
-      <Filter>ソース ファイル\GameScene\UI</Filter>
-    </ClCompile>
-    <ClCompile Include="EnergyBar.cpp">
-      <Filter>ソース ファイル\GameScene\UI</Filter>
-    </ClCompile>
-    <ClCompile Include="EnergyVessels.cpp">
-      <Filter>ソース ファイル\GameScene\UI</Filter>
     </ClCompile>
     <ClCompile Include="Preview.cpp">
       <Filter>ソース ファイル\StageSelectScene</Filter>
     </ClCompile>
+    <ClCompile Include="RemainingDumpUI.cpp">
+      <Filter>ソース ファイル\GameScene\UI\RemainningDump</Filter>
+    </ClCompile>
+    <ClCompile Include="RemainingIcon.cpp">
+      <Filter>ソース ファイル\GameScene\UI\RemainningDump</Filter>
+    </ClCompile>
     <ClCompile Include="DollOnEnergyVessels.cpp">
-      <Filter>ソース ファイル\GameScene\UI</Filter>
+      <Filter>ソース ファイル\GameScene\UI\EnergyUI</Filter>
+    </ClCompile>
+    <ClCompile Include="EnergyBar.cpp">
+      <Filter>ソース ファイル\GameScene\UI\EnergyUI</Filter>
+    </ClCompile>
+    <ClCompile Include="EnergyVessels.cpp">
+      <Filter>ソース ファイル\GameScene\UI\EnergyUI</Filter>
+    </ClCompile>
+    <ClCompile Include="SliderBar.cpp">
+      <Filter>ソース ファイル\Menu\Slider</Filter>
+    </ClCompile>
+    <ClCompile Include="Slider.cpp">
+      <Filter>ソース ファイル\Menu\Slider</Filter>
+    </ClCompile>
+    <ClCompile Include="SliderButton.cpp">
+      <Filter>ソース ファイル\Menu\Slider</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -220,9 +229,6 @@
     <ClInclude Include="Menu.h">
       <Filter>ソース ファイル\Menu</Filter>
     </ClInclude>
-    <ClInclude Include="Slider.h">
-      <Filter>ソース ファイル\Menu</Filter>
-    </ClInclude>
     <ClInclude Include="AudioSetting.h">
       <Filter>ソース ファイル\Menu</Filter>
     </ClInclude>
@@ -265,32 +271,35 @@
     <ClInclude Include="GameClear.h">
       <Filter>ソース ファイル\GameScene</Filter>
     </ClInclude>
-    <ClInclude Include="SliderBar.h">
-      <Filter>ソース ファイル\Menu</Filter>
-    </ClInclude>
-    <ClInclude Include="SliderButton.h">
-      <Filter>ソース ファイル\Menu</Filter>
-    </ClInclude>
     <ClInclude Include="GameOver.h">
       <Filter>ソース ファイル\GameScene</Filter>
-    </ClInclude>
-    <ClInclude Include="RemainingDumpUI.h">
-      <Filter>ソース ファイル\GameScene\UI</Filter>
-    </ClInclude>
-    <ClInclude Include="RemainingIcon.h">
-      <Filter>ソース ファイル\GameScene\UI</Filter>
-    </ClInclude>
-    <ClInclude Include="EnergyBar.h">
-      <Filter>ソース ファイル\GameScene\UI</Filter>
-    </ClInclude>
-    <ClInclude Include="EnergyVessels.h">
-      <Filter>ソース ファイル\GameScene\UI</Filter>
     </ClInclude>
     <ClInclude Include="Preview.h">
       <Filter>ソース ファイル\StageSelectScene</Filter>
     </ClInclude>
+    <ClInclude Include="RemainingDumpUI.h">
+      <Filter>ソース ファイル\GameScene\UI\RemainningDump</Filter>
+    </ClInclude>
+    <ClInclude Include="RemainingIcon.h">
+      <Filter>ソース ファイル\GameScene\UI\RemainningDump</Filter>
+    </ClInclude>
     <ClInclude Include="DollOnEnergyVessels.h">
-      <Filter>ソース ファイル\GameScene\UI</Filter>
+      <Filter>ソース ファイル\GameScene\UI\EnergyUI</Filter>
+    </ClInclude>
+    <ClInclude Include="EnergyBar.h">
+      <Filter>ソース ファイル\GameScene\UI\EnergyUI</Filter>
+    </ClInclude>
+    <ClInclude Include="EnergyVessels.h">
+      <Filter>ソース ファイル\GameScene\UI\EnergyUI</Filter>
+    </ClInclude>
+    <ClInclude Include="Slider.h">
+      <Filter>ソース ファイル\Menu\Slider</Filter>
+    </ClInclude>
+    <ClInclude Include="SliderBar.h">
+      <Filter>ソース ファイル\Menu\Slider</Filter>
+    </ClInclude>
+    <ClInclude Include="SliderButton.h">
+      <Filter>ソース ファイル\Menu\Slider</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
