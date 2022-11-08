@@ -1,8 +1,10 @@
 #pragma once
 #include	"Mof.h"
 #include	"IBaseAccessories.h"
+
 class Item :public IBaseAccessories
 {
+private:
 	CTexture* _itemTexture;
 	Vector2 _position;
 	float _scale;
@@ -11,11 +13,10 @@ class Item :public IBaseAccessories
 public:
 	Item(CTexture* itemTexture, ACCESSORIES_TYPE accessoriesType);
 	void Initialize();
-	void SetScale(float scale) { _scale = scale; }
+	void CalcuScale(float blockSizeX) { _scale = blockSizeX / _itemTexture->GetWidth(); }
 	void Update();
 	void Render();
 	void Release();
-
 	void SetPosotion(Vector2 pos);
 	ACCESSORIES_TYPE GetType() { return _accessoriesType; }
 };

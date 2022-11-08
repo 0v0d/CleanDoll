@@ -5,8 +5,8 @@
 #include	"map"
 class EnergyVessels
 {
+private:
 	DollOnEnergyVessels _dollOnEnergyVessels;
-
 	int* _currentEnergyValue;
 	int _maxEnergyValue;
 	EnergyBar* _energyBarArray = nullptr;

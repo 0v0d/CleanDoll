@@ -1,49 +1,29 @@
 #pragma once
 #include	"Mof.h"
+#include	"SliderBar.h"
+#include	"SliderButton.h"
 
-enum DRECTION_TYPE
+enum  DIRECTION_TYPE
 {
 	HORIZON,
-	VERTICAL
+	VERTICAL,
 };
 
-class  Slider
+class Slider
 {
-private:
-	//ÉTÉCÉYä÷åW
-	Vector2 _barSize;
-	Vector2 _buttonSize;
-	//ç¿ïWä÷åW
-	Vector2 _barPos;
-	Vector2 _buttonPos;
-	Vector2 _halfButtonSize;
-	Vector2 _halfBarSize;
-	//ìñÇΩÇËîªíË
-	CRectangle _barRect;
-	CRectangle _buttonRect;
-	CTexture _barTexture;
-	CTexture _buttonTexture;
-	DRECTION_TYPE _drectionType;
+	SliderButton _button;
+	SliderBar    _bar;
+	DIRECTION_TYPE _direction;
+	Vector2 _mousePos;
 	bool _onClick;
-	const float _half = 0.5;
-	const int _maxValue = 100;
-	float _moveValue;
-	const float _iniPos = 0.7;
-	const float _wheelSensitivity = 40;
 public:
-	void PushSlider(Vector2 mousepos);
+	void SetStatu(Vector2 barPos, CTexture* barTexture, CTexture* buttonTexture, float value, DIRECTION_TYPE direction);
+	float GetValue() { return _button.GetValue(); }
+	void PushSlider();
 	void PullSlider();
-
-	void ClickSlider(Vector2 mousePos);
-	void SetBarStatu(Vector2 barSize, Vector2 buttonSize, Vector2 barPos, DRECTION_TYPE drectionType);
 	void Update();
 	void Render();
-	float GetMoveValue() { return _moveValue; }
-	void MouseWheelMove(float moveWheel);
 private:
-	void Move(Vector2 mousePos);
+	void SetClickFlg(bool flg) { _onClick = flg; }
 	bool IsClick() { return _onClick; }
-	bool CheckClickButton(Vector2 mousePos) { return _buttonRect.CollisionPoint(mousePos); }
-	bool CheckClickBar(Vector2 mousePos) { return _barRect.CollisionPoint(mousePos); }
-	void SetClick(bool flg) { _onClick = flg; }
 };

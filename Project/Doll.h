@@ -2,8 +2,10 @@
 #include	"Mof.h"
 #include	"Block.h"
 #include	"vector"
+
 class Doll
 {
+private:
 	CTexture _dollTexture;
 	Vector2 _dollPosition;
 	CRectangle _renderRect;
@@ -23,26 +25,21 @@ class Doll
 	bool _inversion;
 	CRectangle _inversionRenderRect;
 
-	int* _dustDumpValue;
-	int* _waterDumpValue;
+	int _dustDumpValue,_waterDumpValue;
 
 	bool _heldMop;
-	
 public:
-
 	void Initialize();
 	void SetField(Field* field) { _field = field; }
 	void SetPosition(Vector2 blockCenterPosisiton);
 	void ReLoad();
 	void CalcuScale(float boxSizeY, float scale);
-	void SetDumpValue(int* dustDumpValue, int* waterDumpValue);
+	void SetDumpValue(int dustDumpValue, int waterDumpValue);
 	void Update();
 	void SetRouteBlockArray(std::vector<Block*> blockArray);
 	void Move();
-
 	void Render();
 	void Release();
-
 private:
 	void SetNextPosition();
 	void ArrivalBlock();

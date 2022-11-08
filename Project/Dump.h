@@ -2,13 +2,15 @@
 #include	"Mof.h"
 #include	"IBaseAccessories.h"
 
-enum class DUMP_TYPE {
-		DUST,
-		WATER
+enum class DUMP_TYPE
+{
+	DUST,
+	WATER
 };
 
 class Dump :public IBaseAccessories
 {
+private:
 	CTexture* _dumpTexture;
 	Vector2 _position;
 	float _scale;
@@ -18,7 +20,7 @@ class Dump :public IBaseAccessories
 public:
 	Dump(CTexture* texture, DUMP_TYPE dumpType);
 	void Initialize();
-	void SetScale(float scale) { _scale = scale; }
+	void CalcuScale(float blockSizeX) { _scale = blockSizeX / _dumpTexture->GetWidth(); }
 	void Update();
 	void Render();
 	void Release();

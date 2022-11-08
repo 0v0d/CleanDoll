@@ -28,12 +28,9 @@ public:
 	void Initialize();
 	void SetStatu(int stageNumber, std::string previewTextureName, std::string stageName, int difficulty, std::string stageDataTextName);
 	void SetStageValue(int stageValue) { _stageValue = stageValue; }
-
 	void Move(float moveValue);
-
 	void Render();
 	void Release();
-
 	bool IsRenderRange() { return _barHitBox.CollisionRect(_screenEdge); }
 	bool CheckOnMouse(Vector2 mousePos) { return _barHitBox.CollisionPoint(mousePos); }
 	int GetStageNumber() { return _stageNumber; }
