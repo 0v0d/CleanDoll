@@ -1,9 +1,11 @@
 #include "ContactFile.h"
 
-void ContactFile::Initialize() {
+void ContactFile::Initialize()
+{
 	_mapTextureArray.LineXValue = 1;
 	_objectTextureArray.LineXValue = 1;
 	_itemTextureArray.LineXValue = 1;
+	//_galleryTextureArray.LineXValue = 1;
 	_mopTextureArray.LineXValue = 1;
 	_dustDumpTextureArray.LineXValue = 1;
 	_waterDumpTextureArray.LineXValue = 1;
@@ -11,8 +13,9 @@ void ContactFile::Initialize() {
 	_wallObjectTextureArray.LineXValue = 2;
 }
 
-void ContactFile::LoadStage(std::string stageName) {
-	//çÌèú
+void ContactFile::LoadStage(std::string stageName)
+{
+
 	Delete();
 
 	OpenFile(stageName.c_str());
@@ -36,6 +39,11 @@ void ContactFile::LoadStage(std::string stageName) {
 	LoadTexture(&_itemTextureArray);
 	_createField.SetItemData(_itemTextureArray.textureArray, _chipDataArray,true);
 	DeleteChipData(&_itemTextureArray);
+
+	//ÉMÉÉÉâÉäÅ[
+	//LoadTexture(&_galleryTextureArray);
+	//_createField.SetItemData(_galleryTextureArray.textureArray, _chipDataArray, false);
+	//DeleteChipData(&_galleryTextureArray);
 
 	//ÉÇÉbÉv
 	LoadTexture(&_mopTextureArray);
@@ -67,7 +75,8 @@ void ContactFile::LoadStage(std::string stageName) {
 	CloseFile();
 }
 
-void ContactFile::LoadTexture(TextureArray* textureArray) {
+void ContactFile::LoadTexture(TextureArray* textureArray)
+{
 
 	NewChipData(textureArray);
 
@@ -81,15 +90,22 @@ void ContactFile::LoadTexture(TextureArray* textureArray) {
 
 	for (int y = 0;y < _blockValueY;y++) {
 		for (int x = 0;x < _blockValueX * textureArray->LineXValue;x++)
+		{
 			_chipDataArray[x][y] = atoi(strtok(NULL, ","));
+		}
+		
 	}
 }
 
-void ContactFile::LoadDoll() {
+void ContactFile::LoadDoll()
+{
 
-	for (int y = 0;y < _blockValueY;y++){
-		for (int x = 0; x < _blockValueX; x++) {
-			if (atoi(strtok(NULL, ",")) != 0) {
+	for (int y = 0;y < _blockValueY;y++)
+	{
+		for (int x = 0; x < _blockValueX; x++) 
+		{
+			if (atoi(strtok(NULL, ",")) != 0) 
+			{
 				SetDoll(x, y);
 				return;
 			}
@@ -97,11 +113,13 @@ void ContactFile::LoadDoll() {
 	}
 }
 
-void ContactFile::SetDoll(int x,int y) {
+void ContactFile::SetDoll(int x,int y)
+{
 	_createField.SetDoll(x, y);
 }
 
-void ContactFile::OpenFile(std::string fileName) {
+void ContactFile::OpenFile(std::string fileName)
+{
 
 	_file = fopen(fileName.c_str(), "rt");
 	if (_file == NULL) return;
@@ -109,31 +127,34 @@ void ContactFile::OpenFile(std::string fileName) {
 	fseek(_file, 0, SEEK_END);
 	_fileSize = ftell(_file);
 	fseek(_file, 0, SEEK_SET);
-
-	_buffer = (char*)malloc(_fileSize + 1);
+	_buffer = new char[_fileSize + 1];
 	_fileSize = fread(_buffer, 1, _fileSize, _file);
 	_buffer[_fileSize] = '\0';
 }
 
-void ContactFile::CloseFile() {
-
+void ContactFile::CloseFile()
+{
 	fclose(_file);
-	free(_buffer);
+	delete _buffer;
 }
 
-int ContactFile::GetValue(bool firstContact) {
+int ContactFile::GetValue(bool firstContact)
+{
 	return firstContact ? atoi(strtok(_buffer, ",")) : atoi(strtok(NULL, ","));
 }
 
-std::string ContactFile::GetString(bool firstContact) {
+std::string ContactFile::GetString(bool firstContact)
+{
 	return firstContact ? strtok(_buffer, ",") : strtok(NULL, ",");
 }
 
 
-void ContactFile::Delete() {
+void ContactFile::Delete()
+{
 	DeleteTextureArray(&_mapTextureArray);
 	DeleteTextureArray(&_objectTextureArray);
 	DeleteTextureArray(&_itemTextureArray);
+	//DeleteTextureArray(&_galleryTextureArray);
 	DeleteTextureArray(&_mopTextureArray);
 	DeleteTextureArray(&_dustDumpTextureArray);
 	DeleteTextureArray(&_waterDumpTextureArray);
@@ -141,7 +162,8 @@ void ContactFile::Delete() {
 	DeleteTextureArray(&_wallObjectTextureArray);
 }
 
-void ContactFile::DeleteTextureArray(TextureArray* textureArray) {
+void ContactFile::DeleteTextureArray(TextureArray* textureArray)
+{
 	if (textureArray->textureValue == 0)return;
 
 	for (int i = 0;i < textureArray->textureValue;i++) textureArray->textureArray[i].Release();
@@ -151,19 +173,26 @@ void ContactFile::DeleteTextureArray(TextureArray* textureArray) {
 	textureArray->textureValue = 0;
 }
 
-void ContactFile::NewChipData(TextureArray* textureArray) {
-
+void ContactFile::NewChipData(TextureArray* textureArray)
+{
 	_chipDataArray = new char* [_blockValueX * textureArray->LineXValue];
 	for (int i = 0;i < _blockValueX * textureArray->LineXValue;i++)_chipDataArray[i] = new char[_blockValueY];
+
+	for (int y = 0; y < _blockValueY; y++) {
+		for (int x = 0; x < _blockValueX * textureArray->LineXValue; x++)
+			_chipDataArray[x][y] = 0;
+	}
 }
 
-void ContactFile::DeleteChipData(TextureArray* textureArray) {
+void ContactFile::DeleteChipData(TextureArray* textureArray)
+{
 
 	for (int i = 0;i < _blockValueX * textureArray->LineXValue;i++) delete[] _chipDataArray[i];
 	delete[] _chipDataArray;
 }
 
-void ContactFile::Release() {
+void ContactFile::Release()
+{
 
 	Delete();
 }

@@ -1,7 +1,9 @@
 #pragma once
 #include	"Mof.h"
+
 class Preview
 {
+private:
 	CTexture* _previewTexture;
 	Vector2 _previewPosition;
 	const int _space = 50;

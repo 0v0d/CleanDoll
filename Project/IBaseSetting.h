@@ -1,8 +1,8 @@
 #pragma once
 #include	"Mof.h"
+
 class IBaseSetting
 {
-
 public:
 	virtual void Initialize() = 0;
 	virtual void Update() = 0;

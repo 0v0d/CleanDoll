@@ -1,7 +1,6 @@
 #pragma once
 class IBaseScene
 {
-
 public:
 	virtual void Initialize() = 0;
 	virtual void ReLoad() = 0;

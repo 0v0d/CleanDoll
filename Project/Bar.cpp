@@ -16,7 +16,8 @@ void Bar::Initialize()
 
 }
 
-void Bar::SetStatu(int stageNumber, std::string previewTextureName, std::string stageName, int difficulty, std::string stageDataTextName){
+void Bar::SetStatu(int stageNumber, std::string previewTextureName, std::string stageName, int difficulty, std::string stageDataTextName)
+{
 	_stageNumber = stageNumber;
 	_previewTexture.Load(previewTextureName.c_str());
 	_stageName = stageName;
@@ -38,7 +39,7 @@ void Bar::Render()
 {
 	if (IsRenderRange())
 	{
-		CGraphicsUtilities::RenderRect(_barHitBox, MOF_COLOR_YELLOW);
+		CGraphicsUtilities::RenderRect(_barHitBox, MOF_COLOR_BLACK);
 		_barTexture.Render(_barHitBox);
 		CGraphicsUtilities::RenderString(_barHitBox.Left, _barHitBox.Top, "%d", _stageNumber + 1);
 	}

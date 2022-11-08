@@ -1,11 +1,12 @@
 #pragma once
 #include	"Mof.h"
+
 class Wall
 {
+private:
 	CTexture* _wallTexture = nullptr;
 	CTexture* _wallObjectTexture = nullptr;
 	int _number;
-
 	float _blockSizeY;
 	float _scale;
 

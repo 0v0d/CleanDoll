@@ -2,17 +2,17 @@
 #include	"Block.h"
 class BlockManager
 {
+private:
 	Block** _blockArray;
 	int _blockValueX, _blockValueY;
-
-	float _space = 250;
+	float _topSpace, _bottomSpace;
 	float _scale;
 
 	const int _adjoinBlockValue = 4;
-
 public:
 	void Initialize();
 	void ReLoad();
+	void CalcuBlockPosition();
 	void Update();
 	void Render();
 	void Delete();
