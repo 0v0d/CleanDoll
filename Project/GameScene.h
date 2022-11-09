@@ -4,17 +4,19 @@
 #include    "InputInGame.h"
 #include    "ContactFile.h"
 #include    "Menu.h"
+#include "BackGround.h"
+
+
 
 class GameScene :public IBaseScene
 {
 private:
     Field _field;
-    InputInGame _inputInGaame;
+    BackGround _backGround;
+    InputInGame _inputInGame;
     ContactFile* _contactFile;
     Menu* _menu;
     CTexture _gameBackTexture;
-    CRectangle _gameBackRect;
-
 public:
     void SetContactFile(ContactFile* contactFile) { _contactFile = contactFile; }
     void SetMenu(Menu* menu) { _menu = menu; }
@@ -23,6 +25,5 @@ public:
     void Update();
     void Render();
     void Release();
-private:
-    void Load();
+
 };

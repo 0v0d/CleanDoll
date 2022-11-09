@@ -2,13 +2,10 @@
 
 void TitleScene::Initialize()
 {
-	Load();
-	_titleBackRect = CRectangle(0, 0, g_pGraphics->GetTargetWidth(), g_pGraphics->GetTargetHeight());
-}
-void TitleScene::Load()
-{
 	_titleBackTexture.Load("titleback.png");
+	_backGround.SetTextureName(&_titleBackTexture);
 }
+
 
 void TitleScene::ReLoad()
 {
@@ -31,7 +28,7 @@ void TitleScene::InputMouseKey()
 
 void TitleScene::Render()
 {
-	_titleBackTexture.Render(0, 0, _titleBackRect);
+	_backGround.Render();
 	CGraphicsUtilities::RenderString(30, 30, "TitleScene");
 }
 
