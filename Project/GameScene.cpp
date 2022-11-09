@@ -1,16 +1,13 @@
 #include "GameScene.h"
 
+
 void GameScene::Initialize()
 {
 	_contactFile->GetCreateField()->SetField(&_field);
-	_inputInGaame.SetField(&_field);
-	Load();
-	_gameBackRect = CRectangle(0, 0, g_pGraphics->GetTargetWidth(), g_pGraphics->GetTargetHeight());
-	_field.Initialize();
-}
-void GameScene::Load()
-{
+	_inputInGame.SetField(&_field);
 	_gameBackTexture.Load("menu_back.png");
+	_backGround.SetTextureName(&_gameBackTexture);
+	_field.Initialize();
 }
 
 void GameScene::ReLoad()
@@ -20,13 +17,13 @@ void GameScene::ReLoad()
 
 void GameScene::Update()
 {
-	_inputInGaame.Update();
+	_inputInGame.Update();
 	_field.Update();
 }
 
 void GameScene::Render()
 {
-	_gameBackTexture.Render(0, 0, _gameBackRect);
+	_backGround.Render();
 	_field.Render();
 
 	CGraphicsUtilities::RenderString(30, 30, "Game");

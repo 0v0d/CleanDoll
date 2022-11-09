@@ -1,6 +1,9 @@
 #include "StageSelectScene.h"
 #include    "SceneManager.h"
 
+
+BackGround _backGround;
+
 void StageSelectScene::Initialize()
 {
     Vector2 _barSize2 = Vector2(30, 680);
@@ -10,7 +13,7 @@ void StageSelectScene::Initialize()
     _inputInStageSelect.SetSlider(&_slider);
     _getDataFromFile.SetBarManager(&_barManager);
     Load();
-    _stageBackRect = CRectangle(0, 0, g_pGraphics->GetTargetWidth(), g_pGraphics->GetTargetHeight());
+    _backGround.SetTextureName(&_stageBackTexture);
     _slider.SetStatu(_barPos2, &_barTexture, &_buttonTexture, 0, VERTICAL);
     _getDataFromFile.LoadStageSelectData();
     _getDataFromFile.Initialize();
@@ -39,7 +42,7 @@ void StageSelectScene::Update()
 
 void StageSelectScene::Render()
 {
-    _stageBackTexture.Render(0, 0, _stageBackRect);
+    _backGround.Render();
     CGraphicsUtilities::RenderString(30, 30, "StageSelect");
     _barManager.Render();
     _slider.Render();
@@ -48,6 +51,7 @@ void StageSelectScene::Render()
 
 void StageSelectScene::Release()
 {
+    _stageBackTexture.Release();
     _barTexture.Release();
     _buttonTexture.Release();
     _barManager.Release();

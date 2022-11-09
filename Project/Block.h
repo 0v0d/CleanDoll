@@ -31,7 +31,7 @@ private:
 
 public:
 	void SetTexture(CTexture* blockTexture);
-	void SetPosition(int x, int y, int blockValueY);
+	void SetPosition(int x, int y, float topSpace);
 	void SetScale(float scale) { _scale = scale; }
 	void SetAdjoinBlockValue(int adjoinBlockValue);
 	void SetAdjoinBlock(Block* block, int number);
