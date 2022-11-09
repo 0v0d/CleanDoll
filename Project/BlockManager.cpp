@@ -2,7 +2,8 @@
 
 void BlockManager::Initialize()
 {
-
+	_topSpace = 300;
+	_bottomSpace = 100;
 }
 
 void BlockManager::ReLoad()
@@ -27,6 +28,16 @@ void BlockManager::CreateField(int blockValueX, int blockValueY)
 		_blockArray[i] = new Block[_blockValueY];
 	}
 	SetAdjoinBlock();
+}
+
+void BlockManager::CalcuBlockPosition() {
+	for (int y = 0; y < _blockValueY; y++)
+	{
+		for (int x = 0; x < _blockValueX; x++)
+		{
+			_blockArray[x][y].SetPosition(x, y, _topSpace);
+		}
+	}
 }
 
 void BlockManager::SetAdjoinBlock()
@@ -57,7 +68,7 @@ void BlockManager::SetAdjoinBlock()
 }
 
 void BlockManager::CalcuScale(float blockSizeY) {
-	_scale = (g_pGraphics->GetTargetHeight() - _space * 2) / ((0.5f * _blockValueY + 0.5f * _blockValueX) * blockSizeY);
+	_scale = (g_pGraphics->GetTargetHeight() - (_topSpace + _bottomSpace)) / ((0.5f * _blockValueY + 0.5f * _blockValueX) * blockSizeY);
 
 	for (int y = 0;y < _blockValueY;y++) 
 	{

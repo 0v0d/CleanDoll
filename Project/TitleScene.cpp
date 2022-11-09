@@ -7,7 +7,7 @@ void TitleScene::Initialize()
 }
 void TitleScene::Load()
 {
-	_titleBackTexture.Load("menu_back.png");
+	_titleBackTexture.Load("titleback.png");
 }
 
 void TitleScene::ReLoad()

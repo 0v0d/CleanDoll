@@ -31,7 +31,7 @@ void CreateField::SetBlockData(CTexture* TextureArray, char** dataArray)
 
 			Block* block = _blockManager->GetBlock(x, y);
 			block->SetTexture(&TextureArray[dataArray[x][y] - 1]);
-			block->SetPosition(x, y, _blockValueY);
+			_blockManager->CalcuBlockPosition();
 			block->Initialize();
 		}
 	}

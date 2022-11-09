@@ -13,10 +13,10 @@ void Block::SetTexture(CTexture* blockTexture)
 	_blockSizeY = _blockTexture->GetHeight();
 }
 
-void Block::SetPosition(int x, int y, int blockValueY)
+void Block::SetPosition(int x, int y, float topSpace)
 {
 	_position.x = g_pGraphics->GetTargetWidth() / 2 - _blockSizeX * _scale / 2 + (_blockSizeX * _scale / 2 * x) - (_blockSizeX * _scale / 2 * y);
-	_position.y = g_pGraphics->GetTargetHeight() / 2 - blockValueY * _blockSizeY * _scale / 2  + (_blockSizeY * _scale / 2 * y) + (_blockSizeY * _scale / 2 * x);
+	_position.y = topSpace + (_blockSizeY * _scale / 2 * y) + (_blockSizeY * _scale / 2 * x);
 }
 
 
