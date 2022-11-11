@@ -3,7 +3,7 @@
 void TitleScene::Initialize()
 {
 	_titleBackTexture.Load("titleback.png");
-	_backGround.SetTextureName(&_titleBackTexture);
+	_backGround.SetTextureStatus(&_titleBackTexture, FULLSCREEN);
 }
 
 
@@ -28,7 +28,7 @@ void TitleScene::InputMouseKey()
 
 void TitleScene::Render()
 {
-	_backGround.Render(FULLSCREEN);
+	_backGround.Render();
 	CGraphicsUtilities::RenderString(30, 30, "TitleScene");
 }
 
