@@ -35,7 +35,7 @@ void Field::ReLoad()
 	SetDollPosition(_dollInitialPositionX, _dollInitialPositionY);
 	_doll.SetDumpValue(_dustDumpValue, _waterDumpValue);
 	_pickedBlock = _lastDistanceBlock = _blockManager.GetBlock(_dollInitialPositionX, _dollInitialPositionY);
-	_energyVessels.ReLoad();
+
 	_pickedBlock->SetPassedFlg(true);
 
 	_stageClear.Reload();
