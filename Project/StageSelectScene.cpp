@@ -15,6 +15,8 @@ void StageSelectScene::Initialize()
     _getDataFromFile.LoadStageSelectData();
     _getDataFromFile.Initialize();
     _barManager.Initialize();
+    _StDiaLog.Initialize();
+
 }
 
 void StageSelectScene::Load()
@@ -53,4 +55,5 @@ void StageSelectScene::Release()
     _barManager.Release();
     _getDataFromFile.Release();
     _stageBackTexture.Release();
+    _StDiaLog.Release();
 }

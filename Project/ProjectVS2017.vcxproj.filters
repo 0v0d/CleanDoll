@@ -170,6 +170,9 @@
     <ClCompile Include="SliderButton.cpp">
       <Filter>ソース ファイル\Menu\Slider</Filter>
     </ClCompile>
+    <ClCompile Include="StageSelectDialog.cpp">
+      <Filter>ソース ファイル\StageSelectScene</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GameApp.h">
@@ -300,6 +303,9 @@
     </ClInclude>
     <ClInclude Include="SliderButton.h">
       <Filter>ソース ファイル\Menu\Slider</Filter>
+    </ClInclude>
+    <ClInclude Include="StageSelectDialog.h">
+      <Filter>ソース ファイル\StageSelectScene</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

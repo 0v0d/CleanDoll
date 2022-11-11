@@ -5,6 +5,7 @@
 #include	"BarManager.h"
 #include	"Slider.h"
 #include	"Menu.h"
+#include	"StageSelectDialog.h"
 
 class StageSelectScene :public IBaseScene
 {
@@ -13,6 +14,7 @@ private:
 	InputStageSelect _inputInStageSelect;
 	BarManager _barManager;
 	Slider _slider;
+	StageSelectDialog _StDiaLog;
 	Menu* _menu;
 	CTexture _barTexture;
 	CTexture _buttonTexture;
