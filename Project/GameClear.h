@@ -6,6 +6,7 @@ class GameClear
 private:
 	const int _menuValue = 2;
 	bool _goal;
+	bool _remove;
 	Vector2 _mousePos;
 	Vector2 _firstButtonPos;
 	Vector2 _secondButtonPos;
@@ -15,12 +16,14 @@ private:
 	Button _retryButton;
 	CTexture _nextStageTexture;
 	CTexture _stageSelectTexture;
+	CTexture _retryTexture;
 public:
 	void Initialize();
 	void Update();
 	void Render();
 	void Release();
 	void SetGoal(bool goal){ _goal = goal; }
+	bool IsRemove() {return _remove; }
 	void Reload();
 private:
 	void TextureLoad();

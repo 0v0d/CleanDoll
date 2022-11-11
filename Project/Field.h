@@ -4,7 +4,7 @@
 #include	"BlockManager.h"
 #include	"EnergyVessels.h"
 #include	"GameClear.h"
-#include "GameOver.h"
+#include	"GameOver.h"
 #include	"RemainingDumpUI.h"
 
 class Field

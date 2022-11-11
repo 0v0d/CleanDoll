@@ -61,7 +61,7 @@ void Field::Update()
 
 	if (g_pInput->IsMouseKeyPush(MOFMOUSE_RBUTTON))
 	{
-		ReSetStage();
+		SceneManager::Instance().GetScene(SCENE_TYPE::GAME)->ReLoad();
 	}
 	_stageClear.Update();
 	_gameOver.Update();
@@ -169,9 +169,12 @@ void Field::EndMoveDoll()
 	if (_dustDumpValue <= 0 && _waterDumpValue <= 0)
 	{
 		//ƒQ[ƒ€ƒNƒŠƒA
-		_blockManager.Delete();
-		Delete();
 		_stageClear.SetGoal(true);
+		if (_stageClear.IsRemove())
+		{
+			_blockManager.Delete();
+			Delete();
+		}
 
 	}
 	if (_remainDistance <= 0)
