@@ -18,8 +18,13 @@ void BarManager::Initialize()
 		_barArray[i].Initialize();
 	}
 
-	_slider.SetStatu(Vector2(_basePosition.x + _baseTexture.GetWidth() - _space * _baseBarScale, _basePosition.y + _baseTexture.GetHeight() / 2)
-		, &_barTexture, &_buttonTexture, 0, VERTICAL);
+	_slider.SetStatu(Vector2(_basePosition.x + _baseTexture.GetWidth() - _space * _baseBarScale, _basePosition.y + _baseTexture.GetHeight() / 2),
+		&_barTexture, &_buttonTexture, 0, VERTICAL);
+
+	_preview.Initialize();
+	_preview.CalcuBaseScale(_baseTexture.GetHeight());
+	_preview.CalcuBasePos(_space * _baseBarScale);
+	_preview.SetPreviewTexture(_barArray->GetPreviewTexture());
 }
 
 void BarManager::ReLoad() {
@@ -125,7 +130,7 @@ void BarManager::Release()
 		_barArray[i].Release();
 	}
 	delete[] _barArray;
-
+	_preview.Release();
 	_baseTexture.Release();
 	_baseCleanBarTexture.Release();
 	_baseDirtyBarTexture.Release();
