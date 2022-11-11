@@ -3,6 +3,7 @@
 #include	"EnergyBar.h"
 #include	"DollOnEnergyVessels.h"
 #include	"map"
+
 class EnergyVessels
 {
 private:
@@ -25,7 +26,7 @@ public:
 	
 	void Update();
 	void CheckChangeEnergyColor();
-
+	void ReLoad();
 	void Render();
 	void Release();
 
