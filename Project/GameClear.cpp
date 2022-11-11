@@ -14,10 +14,12 @@ void GameClear::Initialize()
 	TextureLoad();
 	_firstButtonPos = Vector2(400, 300);
 	_secondButtonPos = Vector2(400, 500);
+	_thirdButtonPos = Vector2(400,700);
 	Vector2 _size = Vector2(300, 120);
 
 	_nextStageButton.SetStatu(_firstButtonPos, &_nextStageTexture);
 	_stageSelectButton.SetStatu(_secondButtonPos, &_stageSelectTexture);
+	_retryButton.SetStatu(_thirdButtonPos, &_stageSelectTexture);
 	_goal = false;
 	_mousePos = Vector2(0, 0);
 }
@@ -44,6 +46,7 @@ void GameClear::Update()
 			{
 				SceneManager::Instance().ChangeScene(SCENE_TYPE::STAGESELECT);
 			}
+			
 		}
 	}
 }

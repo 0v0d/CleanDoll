@@ -9,8 +9,10 @@ private:
 	Vector2 _mousePos;
 	Vector2 _firstButtonPos;
 	Vector2 _secondButtonPos;
+	Vector2 _thirdButtonPos;
 	Button _nextStageButton;
 	Button _stageSelectButton;
+	Button _retryButton;
 	CTexture _nextStageTexture;
 	CTexture _stageSelectTexture;
 public:
