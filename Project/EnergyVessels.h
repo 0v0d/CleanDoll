@@ -25,7 +25,7 @@ public:
 	
 	void Update();
 	void CheckChangeEnergyColor();
-
+	void ReLoad();
 	void Render();
 	void Release();
 

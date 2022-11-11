@@ -35,14 +35,14 @@ void Field::ReLoad()
 	SetDollPosition(_dollInitialPositionX, _dollInitialPositionY);
 	_doll.SetDumpValue(_dustDumpValue, _waterDumpValue);
 	_pickedBlock = _lastDistanceBlock = _blockManager.GetBlock(_dollInitialPositionX, _dollInitialPositionY);
-
+	
 	_pickedBlock->SetPassedFlg(true);
-
+	_energyVessels.ReLoad();
 	_stageClear.Reload();
 	_gameOver.Reload();
 	_routeBlockArray.clear();
 	_recoveryDifferentialArray.clear();
-
+	
 	_remainDistance = _maxDistance;
 }
 

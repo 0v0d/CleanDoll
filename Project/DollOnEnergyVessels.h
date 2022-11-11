@@ -20,7 +20,6 @@ public:
 	void SetFacialExpressionValue(int value);
 	void Update() {}
 	void ChangeFaceEzpression(int facialExpressionNumber);
-	
 	void Render();
 	void Release();
 };
