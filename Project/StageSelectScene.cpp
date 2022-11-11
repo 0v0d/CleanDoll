@@ -13,7 +13,7 @@ void StageSelectScene::Initialize()
     _inputInStageSelect.SetSlider(&_slider);
     _getDataFromFile.SetBarManager(&_barManager);
     Load();
-    _backGround.SetTextureName(&_stageBackTexture);
+    _backGround.SetTextureStatus(&_stageBackTexture, REPEATSCREEN);
     _slider.SetStatu(_barPos2, &_barTexture, &_buttonTexture, 0, VERTICAL);
     _getDataFromFile.LoadStageSelectData();
     _getDataFromFile.Initialize();
@@ -42,7 +42,7 @@ void StageSelectScene::Update()
 
 void StageSelectScene::Render()
 {
-    _backGround.Render(REPEATSCREEN);
+    _backGround.Render();
     CGraphicsUtilities::RenderString(30, 30, "StageSelect");
     _barManager.Render();
     _slider.Render();

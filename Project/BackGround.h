@@ -8,11 +8,12 @@ enum SCREEN_TYPE
 class BackGround
 {
 private:
+	SCREEN_TYPE	_typeName;
 	CTexture* _backTexture;
 	CRectangle _backRect;
 public:
-	void	SetTextureName(CTexture* textureName);
-	void	Render(SCREEN_TYPE typeName);
+	void	SetTextureStatus(CTexture* backGroundTexture, SCREEN_TYPE typeName);
+	void	Render();
 
 
 };
