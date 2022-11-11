@@ -22,6 +22,16 @@ void EnergyVessels::Initialize()
 		_vesselsPosition.y + _energyVesselsTexture.GetHeight() * _scale / 2));
 }
 
+void EnergyVessels::ReLoad()
+{
+
+	for (int i = 0; i < _maxEnergyValue; i++)
+	{
+		_energyBarArray[i].ChangeColor(&_renderColorArray[5]);
+	}
+	_dollOnEnergyVessels.ChangeFaceEzpression(_variationValue);
+}
+
 void EnergyVessels::LoadTexture()
 {
 	_energyVesselsTexture.Load("EnergyVessels.png");
