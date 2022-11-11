@@ -6,7 +6,7 @@ void GameScene::Initialize()
 	_contactFile->GetCreateField()->SetField(&_field);
 	_inputInGame.SetField(&_field);
 	_gameBackTexture.Load("menu_back.png");
-	_backGround.SetTextureName(&_gameBackTexture);
+	_backGround.SetTextureStatus(&_gameBackTexture, REPEATSCREEN);
 	_field.Initialize();
 }
 
@@ -23,7 +23,7 @@ void GameScene::Update()
 
 void GameScene::Render()
 {
-	_backGround.Render(REPEATSCREEN);
+	_backGround.Render();
 	_field.Render();
 
 	CGraphicsUtilities::RenderString(30, 30, "Game");
