@@ -6,6 +6,7 @@
 #include	"Slider.h"
 #include	"Menu.h"
 #include	"BackGround.h"
+
 class StageSelectScene :public IBaseScene
 {
 private:
