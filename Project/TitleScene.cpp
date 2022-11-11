@@ -28,7 +28,7 @@ void TitleScene::InputMouseKey()
 
 void TitleScene::Render()
 {
-	_backGround.Render();
+	_backGround.Render(FULLSCREEN);
 	CGraphicsUtilities::RenderString(30, 30, "TitleScene");
 }
 

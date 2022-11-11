@@ -3,10 +3,12 @@
 void BackGround::SetTextureName(CTexture* textureName)
 {
 	_backTexture = textureName;
-	_backRect = CRectangle(0, 0,
-		g_pGraphics->GetTargetWidth(), g_pGraphics->GetTargetHeight());
+	_backRect = CRectangle(0, 0, g_pGraphics->GetTargetWidth(), g_pGraphics->GetTargetHeight());
 }
-void BackGround::Render()
+
+
+void BackGround::Render(SCREEN_TYPE typeName)
 {
-	_backTexture->Render(0, 0, _backRect);
+	if(typeName==REPEATSCREEN)_backTexture->Render(0, 0, _backRect);
+	else if (typeName== FULLSCREEN)_backTexture->Render(_backRect);
 }

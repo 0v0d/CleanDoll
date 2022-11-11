@@ -42,7 +42,7 @@ void StageSelectScene::Update()
 
 void StageSelectScene::Render()
 {
-    _backGround.Render();
+    _backGround.Render(REPEATSCREEN);
     CGraphicsUtilities::RenderString(30, 30, "StageSelect");
     _barManager.Render();
     _slider.Render();

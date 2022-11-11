@@ -23,7 +23,7 @@ void GameScene::Update()
 
 void GameScene::Render()
 {
-	_backGround.Render();
+	_backGround.Render(REPEATSCREEN);
 	_field.Render();
 
 	CGraphicsUtilities::RenderString(30, 30, "Game");
