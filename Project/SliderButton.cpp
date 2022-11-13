@@ -3,22 +3,24 @@
 void SliderButton::SetButtonStatu(Vector2 barSize, Vector2 barPos, CTexture* buttonTexture, float value)
 {
 	_barSize = barSize;
-	_barPos = barPos;
+	_barPos.x = barPos.x;
+	_barPos.y = barPos.y - _barSize.y / 2;
 	_value = value;
 	_buttonTexture = buttonTexture;
-	_buttonSize = Vector2(buttonTexture->GetWidth(),buttonTexture->GetHeight());
+	_buttonSize = Vector2(buttonTexture->GetWidth(), buttonTexture->GetHeight());
 }
 
 void SliderButton::CalcuButtonHorizonStatu()
 {
 	_buttonPos.x = _barPos.x + _barSize.x * _value - _buttonSize.x * _value;
-	_buttonPos.y = _barPos.y + _barSize.y * _half - _buttonSize.y * _half;
+	_buttonPos.y = _barPos.y + _barSize.y / 2 - _buttonSize.y / 2;
 	_barRect = CRectangle(_barPos.x, _barPos.y, _barPos.x + _barSize.x, _barPos.y + _barSize.y);
 	_buttonRect = CRectangle(_buttonPos.x, _buttonPos.y, _buttonPos.x + _buttonSize.x, _buttonPos.y + _buttonSize.y);
 }
+
 void SliderButton::CalcuButtonVerticalStatu()
 {
-	_buttonPos.x = _barPos.x + _barSize.x * _half - _buttonSize.x * _half;
+	_buttonPos.x = _barPos.x - _buttonSize.x / 2;
 	_buttonPos.y = _barPos.y;
 	_barRect = CRectangle(_barPos.x, _barPos.y, _barPos.x + _barSize.x, _barPos.y + _barSize.y);
 	_buttonRect = CRectangle(_buttonPos.x, _buttonPos.y, _buttonPos.x + _buttonSize.x, _buttonPos.y + _buttonSize.y);
@@ -40,13 +42,14 @@ void SliderButton::CalcuVerticalValue()
 
 void SliderButton::MoveHorizonButton(Vector2 mousePos)
 {
-	_buttonPos.x = _barRect.Left > mousePos.x - _buttonSize.x * _half ?
-		_barRect.Left : min(_barRect.Right - _buttonSize.x, mousePos.x - _buttonSize.x * _half);
+	_buttonPos.x = _barRect.Left > mousePos.x - _buttonSize.x / 2 ?
+		_barRect.Left : min(_barRect.Right - _buttonSize.x, mousePos.x - _buttonSize.x / 2);
 }
+
 void SliderButton::MoveVerticalButton(Vector2 mousePos)
 {
-	_buttonPos.y = _barRect.Top > mousePos.y - _buttonSize.y * _half ?
-		_barRect.Top : min(_barRect.Bottom - _buttonSize.y, mousePos.y - _buttonSize.y * _half);
+	_buttonPos.y = _barRect.Top > mousePos.y - _buttonSize.y / 2 ?
+		_barRect.Top : min(_barRect.Bottom - _buttonSize.y, mousePos.y - _buttonSize.y / 2);
 }
 void SliderButton::Render()
 {
