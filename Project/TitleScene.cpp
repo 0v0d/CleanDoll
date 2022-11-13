@@ -6,7 +6,6 @@ void TitleScene::Initialize()
 	_backGround.SetTextureStatus(&_titleBackTexture, FULLSCREEN);
 }
 
-
 void TitleScene::ReLoad()
 {
 

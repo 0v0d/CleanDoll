@@ -6,8 +6,6 @@
 #include    "Menu.h"
 #include "BackGround.h"
 
-
-
 class GameScene :public IBaseScene
 {
 private:
