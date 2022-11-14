@@ -8,6 +8,8 @@ void Bar::Initialize()
 	_pos = _initialPos;
 	_barHitBox = CRectangle(_pos.x, _pos.y, _pos.x + _baseBarTexture->GetWidth() * _scale, _pos.y + _baseBarTexture->GetHeight() * _scale);
 	_maxMovePosY = (_space / 2 + _basePos.y + (_baseBarTexture->GetHeight() * _scale + _space) * _stageValue) - _screenEdge.Bottom;
+
+	_clear = false;
 }
 
 void Bar::SetBaseStatu(Vector2 basePos, Vector2 baseSize) {
@@ -40,7 +42,7 @@ void Bar::Move(float sliderValue)
 }
 
 CRectangle Bar::GetRenderRect() {
-	if (_barHitBox.Top < _basePos.y && _barHitBox.Bottom > _basePos.y) {
+	if (CheckOnTopLine()) {
 		return CRectangle(0, (_basePos.y - _barHitBox.Top) / _scale, _baseBarTexture->GetWidth(), _baseBarTexture->GetHeight());
 	}
 
@@ -51,14 +53,17 @@ CRectangle Bar::GetRenderRect() {
 	return CRectangle(0, 0, _baseBarTexture->GetWidth(), _baseBarTexture->GetHeight());
 }
 
+bool Bar::CheckOnTopLine() {
+	return _barHitBox.Top < _basePos.y&& _barHitBox.Bottom > _basePos.y;
+}
+
 void Bar::Render()
 {
 	if (IsRenderRange())
 	{
-		if (_barHitBox.Top < _basePos.y && _barHitBox.Bottom > _basePos.y)
-			_baseBarTexture->RenderScale(_pos.x, _basePos.y, _scale, GetRenderRect());
+		if (CheckOnTopLine())_baseBarTexture->RenderScale(_pos.x, _basePos.y, _scale, GetRenderRect());
 		else _baseBarTexture->RenderScale(_pos.x, _pos.y, _scale, GetRenderRect());
-		_barTexture.RenderScale(_pos.x, _pos.y, _scale, GetRenderRect());
+		_barTexture.RenderScale(_pos.x, _pos.y, _scale);
 	}
 }
 

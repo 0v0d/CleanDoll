@@ -33,6 +33,7 @@ public:
 	void PickStage(Vector2 mPos);
 	void MoveBar(float moveValue);
 	void StartNextStage();
+	void StageClear();
 
 	void Render();
 	void Release();
