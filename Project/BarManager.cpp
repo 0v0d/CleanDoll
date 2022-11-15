@@ -30,6 +30,7 @@ void BarManager::Initialize()
 void BarManager::ReLoad() {
 	for (int i = 0; i < _stageValue; i++) {
 		_barArray[i].ReLoad();
+		_barArray[i].SetBaseBarTexture(_barArray[i].IsClear() ? &_baseCleanBarTexture : &_baseDirtyBarTexture);
 	}
 }
 
@@ -104,6 +105,11 @@ void BarManager::StartNextStage() {
 	_contactFile->LoadStage(_barArray[_currentStage].GetStageDataTextName());
 	SceneManager::Instance().ChangeScene(SCENE_TYPE::GAME);
 }
+
+void BarManager::StageClear() {
+	_barArray[_currentStage].Clear();
+}
+
 void BarManager::MoveBar(float moveValue)
 {
 	for (int i = 0; i < _stageValue; i++)

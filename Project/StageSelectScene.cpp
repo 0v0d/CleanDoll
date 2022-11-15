@@ -23,7 +23,9 @@ void StageSelectScene::Load()
 
 void StageSelectScene::ReLoad()
 {
+    _barManager.ReLoad();
 }
+
 void StageSelectScene::Update()
 {
     _inputInStageSelect.Update();
