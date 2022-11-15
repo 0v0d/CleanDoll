@@ -22,10 +22,10 @@ void TitleScene::Update()
 
 void TitleScene::InputMouseKey()
 {
-	/*if (g_pInput->IsMouseKeyPush(MOFMOUSE_LBUTTON))
+	if (g_pInput->IsMouseKeyPush(MOFMOUSE_LBUTTON))
 	{
 		SceneManager::Instance().ChangeScene(SCENE_TYPE::STAGESELECT);
-	}*/
+	}
 }
 
 void TitleScene::Render()

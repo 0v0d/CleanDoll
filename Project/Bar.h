@@ -20,6 +20,7 @@ private:
 	std::string _stageDataTextName;
 
 	Vector2 _basePos, _baseSize;
+	bool _clear;
 public:
 	void Initialize();
 	void ReLoad();
@@ -30,7 +31,7 @@ public:
 	void SetBaseBarTexture(CTexture* texture) { _baseBarTexture = texture; }
 
 	void Move(float sliderValue);
-
+	void Clear() { _clear = true; }
 	void Render();
 	void Release();
 
@@ -38,8 +39,10 @@ public:
 	bool CheckOnMouse(Vector2 mousePos) { return _barHitBox.CollisionPoint(mousePos); }
 	CTexture* GetPreviewTexture() { return &_previewTexture; }
 	std::string GetStageDataTextName() { return _stageDataTextName; }
+	bool IsClear() { return _clear; }
 
 private:
+	bool CheckOnTopLine();
 	CRectangle GetRenderRect();
 };
 
