@@ -77,15 +77,13 @@ void ContactFile::LoadStage(std::string stageName)
 
 void ContactFile::LoadTexture(TextureArray* textureArray)
 {
-
 	NewChipData(textureArray);
 
 	textureArray->textureValue = atoi(strtok(NULL, ","));
-	if (textureArray->textureValue == 0) return;
 	textureArray->textureArray = new CTexture[textureArray->textureValue];
 
 	for (int i = 0;i < textureArray->textureValue; i++) {
-		if (!textureArray->textureArray[i].Load(strtok(NULL, ",")))return;
+		if (!textureArray->textureArray[i].Load(strtok(NULL, ","))) return;
 	}
 
 	for (int y = 0;y < _blockValueY;y++) {
@@ -93,18 +91,16 @@ void ContactFile::LoadTexture(TextureArray* textureArray)
 		{
 			_chipDataArray[x][y] = atoi(strtok(NULL, ","));
 		}
-		
 	}
 }
 
 void ContactFile::LoadDoll()
 {
-
 	for (int y = 0;y < _blockValueY;y++)
 	{
-		for (int x = 0; x < _blockValueX; x++) 
+		for (int x = 0; x < _blockValueX; x++)
 		{
-			if (atoi(strtok(NULL, ",")) != 0) 
+			if (GetValue(false) != 0)
 			{
 				SetDoll(x, y);
 				return;

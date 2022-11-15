@@ -6,11 +6,11 @@
 1,1,1,1,1,
 1,1,1,1,1,
 
-4,.\bookshelf.png,.\isu_back.png,.\isu_front.png,.\desk.png,
+3,.\bookshelf.png,.\isu_front.png,.\desk.png,
 0,0,0,0,0,
 0,0,0,0,0,
-1,0,0,-3,0,
-1,0,3,4,0,
+1,0,0,-2,0,
+1,0,2,3,0,
 0,0,0,0,0,
 
 1,.\candy.png,

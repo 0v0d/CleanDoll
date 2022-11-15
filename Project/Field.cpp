@@ -23,6 +23,8 @@ void Field::Initialize()
 	_energyVessels.CheckChangeEnergyColor();
 	_stageClear.Initialize();
 	_gameOver.Initialize();
+
+	_dollInitialPositionX = _dollInitialPositionY = 1;
 }
 
 void Field::ReLoad()
@@ -32,8 +34,9 @@ void Field::ReLoad()
 	_remainingDumpUI.ReLoad();
 	_doll.CalcuScale(_blockManager.GetBlock(0, 0)->GetBlockSize().y, _blockManager.GetScale());
 	_remainingDumpUI.SetDumpValue(_dustDumpValue, _waterDumpValue);
-	SetDollPosition(_dollInitialPositionX, _dollInitialPositionY);
+	if (_dollInitialPositionX >= 0 && _dollInitialPositionY >= 0)SetDollPosition(_dollInitialPositionX, _dollInitialPositionY);
 	_doll.SetDumpValue(_dustDumpValue, _waterDumpValue);
+
 	_pickedBlock = _lastDistanceBlock = _blockManager.GetBlock(_dollInitialPositionX, _dollInitialPositionY);
 	_energyVessels.ReLoad();
 	_pickedBlock->SetPassedFlg(true);

@@ -41,6 +41,7 @@ private:
 	GameClear _stageClear;
 	GameOver _gameOver;
 public:
+
 	void SetDollPosition(int x, int y);
 	void Initialize();
 	void ReLoad();
