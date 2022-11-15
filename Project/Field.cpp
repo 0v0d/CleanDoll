@@ -23,6 +23,7 @@ void Field::Initialize()
 	_energyVessels.CheckChangeEnergyColor();
 	_stageClear.Initialize();
 	_gameOver.Initialize();
+	_dollInitialPositionX = _dollInitialPositionY = 1;
 }
 
 void Field::ReLoad()
@@ -31,11 +32,13 @@ void Field::ReLoad()
 	_doll.ReLoad();
 	_remainingDumpUI.ReLoad();
 	_doll.CalcuScale(_blockManager.GetBlock(0, 0)->GetBlockSize().y, _blockManager.GetScale());
+	_dustDumpValue = _initalDustValue;
+	_waterDumpValue = _initalWaterValue;
 	_remainingDumpUI.SetDumpValue(_dustDumpValue, _waterDumpValue);
-	SetDollPosition(_dollInitialPositionX, _dollInitialPositionY);
+	if (_dollInitialPositionX >= 0 && _dollInitialPositionY >= 0)SetDollPosition(_dollInitialPositionX, _dollInitialPositionY);
 	_doll.SetDumpValue(_dustDumpValue, _waterDumpValue);
 	_pickedBlock = _lastDistanceBlock = _blockManager.GetBlock(_dollInitialPositionX, _dollInitialPositionY);
-
+	_energyVessels.ReLoad();
 	_pickedBlock->SetPassedFlg(true);
 
 	_stageClear.Reload();
@@ -61,7 +64,7 @@ void Field::Update()
 
 	if (g_pInput->IsMouseKeyPush(MOFMOUSE_RBUTTON))
 	{
-		ReSetStage();
+		SceneManager::Instance().GetScene(SCENE_TYPE::GAME)->ReLoad();
 	}
 	_stageClear.Update();
 	_gameOver.Update();
@@ -169,15 +172,31 @@ void Field::EndMoveDoll()
 	if (_dustDumpValue <= 0 && _waterDumpValue <= 0)
 	{
 		//ゲームクリア
-		_blockManager.Delete();
-		Delete();
 		_stageClear.SetGoal(true);
-
+		dynamic_cast<StageSelectScene*>(SceneManager::Instance().GetScene(SCENE_TYPE::STAGESELECT))->StageClear();
+		if (_stageClear.IsRemove())
+		{
+			_blockManager.Delete();
+			Delete();
+		}
 	}
+	//ゲームオーバー
 	if (_remainDistance <= 0)
 	{
 		GameOver();
 	}
+}
+
+void Field::CleanDust()
+{
+	_dustDumpValue--;
+	_remainingDumpUI.CleanDust();
+}
+
+void Field::CleanWater()
+{
+	_waterDumpValue--;
+	_remainingDumpUI.CleanWater();
 }
 
 void Field::ReSetStage()

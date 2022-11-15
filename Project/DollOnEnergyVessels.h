@@ -18,9 +18,7 @@ public:
 	void SetScale(float scale) { _scale = scale; }
 	void SetPosition(Vector2 vesselsCenterPosition);
 	void SetFacialExpressionValue(int value);
-	void Update() {}
 	void ChangeFaceEzpression(int facialExpressionNumber);
-	
 	void Render();
 	void Release();
 };

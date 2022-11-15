@@ -176,6 +176,9 @@
     <ClCompile Include="Button.cpp">
       <Filter>ソース ファイル\UI\Button</Filter>
     </ClCompile>
+    <ClCompile Include="BackGround.cpp">
+      <Filter>ソース ファイル\UI</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GameApp.h">
@@ -306,6 +309,9 @@
     </ClInclude>
     <ClInclude Include="Button.h">
       <Filter>ソース ファイル\UI\Button</Filter>
+    </ClInclude>
+    <ClInclude Include="BackGround.h">
+      <Filter>ソース ファイル\UI</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

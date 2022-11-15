@@ -11,12 +11,11 @@ void InputStageSelect::InputMouse()
 
 	if (g_pInput->IsMouseKeyPush(MOFMOUSE_LBUTTON))
 	{
-		_barManager->PushBar(_mousePos);
-		_slider->PushSlider();
+		_barManager->Push(_mousePos);
 	}
 	if (g_pInput->IsMouseKeyPull(MOFMOUSE_LBUTTON))
 	{
-		_slider->PullSlider();
+		_barManager->Pull(_mousePos);
 	}
 	if (g_pInput->IsMouseKeyPush(MOFMOUSE_RBUTTON))
 	{

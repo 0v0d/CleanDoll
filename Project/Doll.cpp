@@ -121,12 +121,10 @@ void Doll::CleanDump()
 	_routeBlockArray[_currentUnderBlockNumber]->HiddenAccessoriesFlg(true);
 	if (_heldMop) {
 		_waterDumpValue--;
-		_field->SetWaterDumpValue(_waterDumpValue);
 		_field->CleanWater();
 	}
 	else {
 		_dustDumpValue--;
-		_field->SetDustDumpValue(_dustDumpValue);
 		_field->CleanDust();
 	}
 }

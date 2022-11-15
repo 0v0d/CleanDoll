@@ -101,13 +101,17 @@ Block* BlockManager::GetMouseOnBlock(Vector2 mousePos)
 
 void BlockManager::Render()
 {
-	for (int y = 0;y < _blockValueY;y++)
-	{
-		for (int x = 0; x < _blockValueX; x++)
-		{
+	for (int y = 0;y < _blockValueY;y++) {
+		for (int x = 0; x < _blockValueX; x++) {
 			_blockArray[x][y].Render();
 		}
 	}
+	for (int y = 0;y < _blockValueY;y++) {
+		for (int x = 0; x < _blockValueX; x++) {
+			_blockArray[x][y].RenderBlcokOnObject();
+		}
+	}
+
 }
 
 void BlockManager::Delete()

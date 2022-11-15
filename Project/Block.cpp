@@ -35,11 +35,9 @@ void Block::SetObject(Object* object, bool onSwap)
 	_object = object;
 	_object->CalcuScale(_blockSizeX*_scale);
 	_object->SetBlockSize(_blockSizeX, _blockSizeY);
-	_object->SetPosition(GetCenterPosition());
-	if (onSwap)
-	{
-		_object->Swap();
-	}
+	_object->SetPosition(Vector2(GetCenterPosition().x, _position.y + _blockSizeY * _scale));
+	if (onSwap)_object->Swap();
+	
 }
 
 void Block::SetAccessories(IBaseAccessories* accessories)
@@ -99,30 +97,27 @@ void Block::Render()
 {
 	if (_blockTexture == nullptr) return;
 
-	if (_passed) 
-	{
+	if (_passed) {
 		_blockTexture->RenderScale(_position.x, _position.y, _scale, _passedBlockColor);
 	}
-	else
-	{
+	else{
 		_blockTexture->RenderScale(_position.x, _position.y, _scale);
 	}
 
-	if (_wallArray != nullptr)
-	{
-		for (int i = _wallValue - 1; i >= 0; i--)
-		{
+	if (_wallArray != nullptr){
+		for (int i = _wallValue - 1; i >= 0; i--){
 			_wallArray[i].Render();
 		}
 	}
+}
 
-	if (_object != nullptr)
-	{
+void Block::RenderBlcokOnObject() {
+	if (_object != nullptr){
 		_object->Render();
+		return;
 	}
 
-	if (_accessories != nullptr && !_hiddenAccessories)
-	{
+	if (_accessories != nullptr && !_hiddenAccessories){
 		_accessories->Render();
 	}
 }

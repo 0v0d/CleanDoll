@@ -5,36 +5,45 @@
 class Bar
 {
 private:
-	CTexture _barTexture;
-	const Vector2 _barSize = Vector2(700, 70);
-	Vector2 _movePos;
-	const int _space = 20;
+	CTexture _barTexture, _previewTexture;
+	CTexture* _baseBarTexture;
+	Vector2 _pos, _initialPos;
+	float _space;
 	CRectangle _barHitBox;
-	float _initializePosY;
+	float _scale;
 
-	CTexture _previewTexture;
-
-	Vector2 _screenPos;
 	CRectangle _screenEdge;
-	float _maxPos;
+	float _maxMovePosY;
 
-	int _stageValue;
-	int _stageNumber;
-	std::string _stageName;
+	int _stageValue, _stageNumber;
 	int _difficulty;
 	std::string _stageDataTextName;
-	const int _maxValue = 100;
+
+	Vector2 _screenPos, _screenSize;
+
+	bool _clear;
 public:
 	void Initialize();
-	void SetStatu(int stageNumber, std::string previewTextureName, std::string stageName, int difficulty, std::string stageDataTextName);
+	void ReLoad();
+	void SetStatu(float scale, float space);
+	void SetScreenStatu(Vector2 screenPos, Vector2 screenSize);
+	void SetData(int stageNumber, std::string previewTextureName, std::string barTextureName, int difficulty, std::string stageDataTextName);
 	void SetStageValue(int stageValue) { _stageValue = stageValue; }
-	void Move(float moveValue);
+	void SetBaseBarTexture(CTexture* texture) { _baseBarTexture = texture; }
+
+	void Move(float sliderValue);
+	void Clear() { _clear = true; }
+
 	void Render();
 	void Release();
-	bool IsRenderRange() { return _barHitBox.CollisionRect(_screenEdge); }
+
 	bool CheckOnMouse(Vector2 mousePos) { return _barHitBox.CollisionPoint(mousePos); }
-	int GetStageNumber() { return _stageNumber; }
 	CTexture* GetPreviewTexture() { return &_previewTexture; }
 	std::string GetStageDataTextName() { return _stageDataTextName; }
-};
+	bool IsClear() { return _clear; }
 
+private:
+	bool CheckOnScreenTopLine(CTexture*);
+	CRectangle GetRenderRect(Vector2, CTexture*);
+	bool IsRenderRange(CTexture*, Vector2, float scale);
+};

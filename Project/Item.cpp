@@ -23,7 +23,7 @@ void Item::Update()
 
 void Item::Render()
 {
-	_itemTexture->RenderScale(_position.x, _position.y,_scale,MOF_COLOR_HYELLOW);
+	_itemTexture->RenderScale(_position.x, _position.y,_scale);
 }
 
 void Item::Release()
