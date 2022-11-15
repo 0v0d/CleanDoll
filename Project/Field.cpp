@@ -170,12 +170,14 @@ void Field::EndMoveDoll()
 	{
 		//ゲームクリア
 		_stageClear.SetGoal(true);
+		dynamic_cast<StageSelectScene*>(SceneManager::Instance().GetScene(SCENE_TYPE::STAGESELECT))->StageClear();
 		if (_stageClear.IsRemove())
 		{
 			_blockManager.Delete();
 			Delete();
 		}
 	}
+	//ゲームオーバー
 	if (_remainDistance <= 0)
 	{
 		GameOver();

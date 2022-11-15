@@ -26,6 +26,7 @@ public:
 	void ReLoad();
 	void Update();
 	void StartNextStage() { _barManager.StartNextStage(); }
+	void StageClear() { _barManager.StageClear(); }
 	void Render();
 	void Release();
 	GetDataFromFile* GetGetDataFromFile() { return &_getDataFromFile; }
