@@ -1,1 +1,1 @@
-10.png,1-10,2,test.txt,
+10.png,title_stage10.png,2,test.txt,
