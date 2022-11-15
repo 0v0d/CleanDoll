@@ -35,7 +35,7 @@ void Block::SetObject(Object* object, bool onSwap)
 	_object = object;
 	_object->CalcuScale(_blockSizeX*_scale);
 	_object->SetBlockSize(_blockSizeX, _blockSizeY);
-	_object->SetPosition(GetCenterPosition());
+	_object->SetPosition(Vector2(GetCenterPosition().x, _position.y + _blockSizeY * _scale));
 	if (onSwap)
 	{
 		_object->Swap();
