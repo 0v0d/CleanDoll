@@ -17,7 +17,6 @@ void Field::Initialize()
 
 	_remainDistance = _maxDistance;
 	_doll.SetDumpValue(_dustDumpValue, _waterDumpValue);
-
 	_energyVessels.SetMaxEnergyValue(_maxDistance);
 	_energyVessels.SetCurrentEnergyValue(&_remainDistance);
 	_energyVessels.CheckChangeEnergyColor();
@@ -31,6 +30,9 @@ void Field::ReLoad()
 	_doll.ReLoad();
 	_remainingDumpUI.ReLoad();
 	_doll.CalcuScale(_blockManager.GetBlock(0, 0)->GetBlockSize().y, _blockManager.GetScale());
+	//
+	_dustDumpValue = _initalDustValue;
+	_waterDumpValue = _initalWaterValue;
 	_remainingDumpUI.SetDumpValue(_dustDumpValue, _waterDumpValue);
 	SetDollPosition(_dollInitialPositionX, _dollInitialPositionY);
 	_doll.SetDumpValue(_dustDumpValue, _waterDumpValue);
@@ -180,6 +182,15 @@ void Field::EndMoveDoll()
 	{
 		GameOver();
 	}
+}
+
+void Field::CleanDust() { 
+	_dustDumpValue--;
+	_remainingDumpUI.CleanDust();
+}
+void Field::CleanWater() { 
+	_waterDumpValue--;
+	_remainingDumpUI.CleanWater();
 }
 
 void Field::ReSetStage()

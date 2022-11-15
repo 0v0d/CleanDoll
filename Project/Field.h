@@ -34,12 +34,17 @@ private:
 	//アイテムで回復した移動回数
 	std::vector<int> _recoveryDifferentialArray;
 
+	//ゴミの数と水汚れの数を保持する
+	int _initalDustValue, _initalWaterValue;
+
 	int _dustDumpValue, _waterDumpValue;
 
 	RemainingDumpUI _remainingDumpUI;
 	EnergyVessels _energyVessels;
 	GameClear _stageClear;
 	GameOver _gameOver;
+
+
 public:
 	void SetDollPosition(int x, int y);
 	void Initialize();
@@ -49,14 +54,15 @@ public:
 	void EndOfPassed();
 	void EndMoveDoll();
 	void ReSetStage();
-	void SetDustDumpValue(int dumpValue) { _dustDumpValue = dumpValue; }
-	void SetWaterDumpValue(int dumpValue) { _waterDumpValue = dumpValue; }
+	void SetDustDumpValue(int dumpValue) { _initalDustValue= _dustDumpValue = dumpValue; }
+	void SetWaterDumpValue(int dumpValue) { _initalWaterValue = _waterDumpValue = dumpValue; }
+	void CleanDust();
+	void CleanWater();
+
 	void Render();
 	void Delete();
 	void Release();
 	BlockManager* GetBlockManager() { return &_blockManager; }
-	void CleanDust() { _remainingDumpUI.CleanDust(); }
-	void CleanWater() { _remainingDumpUI.CleanWater(); }
 	void GameOver();
 	void SetDollMove(bool* onMoveDoll) { _onMoveDoll = onMoveDoll; }
 private:
