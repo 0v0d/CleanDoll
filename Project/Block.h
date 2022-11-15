@@ -53,6 +53,7 @@ public:
 	bool IsHeldObject() { return _object != nullptr; }
 
 	void Render();
+	void RenderBlcokOnObject();
 	void Release();
 
 	void Delete();
