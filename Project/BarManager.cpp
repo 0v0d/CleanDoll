@@ -14,7 +14,7 @@ void BarManager::Initialize()
 	for (int i = 0; i < _stageValue; i++) {
 		_barArray[i].SetStatu(_baseBarScale, _space);
 		_barArray[i].SetBaseBarTexture(&_baseDirtyBarTexture);
-		_barArray[i].SetBaseStatu(_basePosition, Vector2(_baseTexture.GetWidth(), _baseTexture.GetHeight()));
+		_barArray[i].SetScreenStatu(_basePosition, Vector2(_baseTexture.GetWidth(), _baseTexture.GetHeight()));
 		_barArray[i].Initialize();
 	}
 
@@ -70,7 +70,7 @@ void BarManager::Push(Vector2 mPos)
 {
 	for (int i = 0; i < _stageValue; i++)
 	{
-		if (_barArray[i].CheckOnMouse(mPos) && _barArray[i].IsRenderRange())
+		if (_barArray[i].CheckOnMouse(mPos))
 		{
 			_preview.SetPreviewTexture(_barArray[i].GetPreviewTexture());
 			break;
@@ -89,7 +89,7 @@ void BarManager::PickStage(Vector2 mPos)
 {
 	for (int i = 0; i < _stageValue; i++)
 	{
-		if (_barArray[i].CheckOnMouse(mPos) && _barArray[i].IsRenderRange())
+		if (_barArray[i].CheckOnMouse(mPos))
 		{
 			_contactFile->LoadStage(_barArray[i].GetStageDataTextName());
 			_currentStage = i;

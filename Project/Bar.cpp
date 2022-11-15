@@ -2,19 +2,19 @@
 
 void Bar::Initialize()
 {
-	_initialPos = Vector2(_basePos.x + _space, _basePos.y + _space / 2 + (_baseBarTexture->GetHeight() * _scale + _space) * _stageNumber);
-	_screenEdge = CRectangle(_basePos.x, _basePos.y, _basePos.x + _baseSize.x, _basePos.y + _baseSize.y);
+	_initialPos = Vector2(_screenPos.x + _space, _screenPos.y + _space / 2 + (_baseBarTexture->GetHeight() * _scale + _space) * _stageNumber);
+	_screenEdge = CRectangle(_screenPos.x, _screenPos.y, _screenPos.x + _screenSize.x, _screenPos.y + _screenSize.y);
 
 	_pos = _initialPos;
 	_barHitBox = CRectangle(_pos.x, _pos.y, _pos.x + _baseBarTexture->GetWidth() * _scale, _pos.y + _baseBarTexture->GetHeight() * _scale);
-	_maxMovePosY = (_space / 2 + _basePos.y + (_baseBarTexture->GetHeight() * _scale + _space) * _stageValue) - _screenEdge.Bottom;
+	_maxMovePosY = (_space / 2 + _screenPos.y + (_baseBarTexture->GetHeight() * _scale + _space) * _stageValue) - _screenEdge.Bottom;
 
 	_clear = false;
 }
 
-void Bar::SetBaseStatu(Vector2 basePos, Vector2 baseSize) {
-	_basePos = basePos;
-	_baseSize = baseSize;
+void Bar::SetScreenStatu(Vector2 screenPos, Vector2 screenSize) {
+	_screenPos = screenPos;
+	_screenSize = screenSize;
 }
 
 void Bar::SetStatu(float scale, float space) {
@@ -41,30 +41,33 @@ void Bar::Move(float sliderValue)
 	_barHitBox = CRectangle(_pos.x, _pos.y, _pos.x + _baseBarTexture->GetWidth() * _scale, _pos.y + _baseBarTexture->GetHeight() * _scale);
 }
 
-CRectangle Bar::GetRenderRect() {
-	if (CheckOnTopLine()) {
-		return CRectangle(0, (_basePos.y - _barHitBox.Top) / _scale, _baseBarTexture->GetWidth(), _baseBarTexture->GetHeight());
+CRectangle Bar::GetRenderRect(Vector2 pos, CTexture* texture) {
+	if (CheckOnScreenTopLine(texture)) {
+		return CRectangle(0, (_screenPos.y - pos.y) / _scale, texture->GetWidth(), texture->GetHeight());
 	}
 
-	if (_barHitBox.Top < _basePos.y + _baseSize.y && _barHitBox.Bottom > _basePos.y + _baseSize.y) {
-		return CRectangle(0, 0, _baseBarTexture->GetWidth(), ((_basePos.y + _baseSize.y) - _barHitBox.Top) / _scale);
+	if (pos.y < _screenPos.y + _screenSize.y && pos.y + texture->GetHeight() * _scale> _screenPos.y + _screenSize.y) {
+		return CRectangle(0, 0, texture->GetWidth(), ((_screenPos.y + _screenSize.y) - pos.y) / _scale);
 	}
 
-	return CRectangle(0, 0, _baseBarTexture->GetWidth(), _baseBarTexture->GetHeight());
+	return CRectangle(0, 0, texture->GetWidth(), texture->GetHeight());
 }
 
-bool Bar::CheckOnTopLine() {
-	return _barHitBox.Top < _basePos.y&& _barHitBox.Bottom > _basePos.y;
+bool Bar::CheckOnScreenTopLine(CTexture* texture) {
+	return _barHitBox.Top < _screenPos.y&& _barHitBox.Bottom > _screenPos.y;
+}
+
+bool Bar::IsRenderRange(CTexture* texture, Vector2 pos, float scale) {
+	return CRectangle(pos.x, pos.y, pos.x + texture->GetWidth() * scale, pos.y + texture->GetHeight() * scale).CollisionRect(_screenEdge);
 }
 
 void Bar::Render()
 {
-	if (IsRenderRange())
-	{
-		if (CheckOnTopLine())_baseBarTexture->RenderScale(_pos.x, _basePos.y, _scale, GetRenderRect());
-		else _baseBarTexture->RenderScale(_pos.x, _pos.y, _scale, GetRenderRect());
-		_barTexture.RenderScale(_pos.x, _pos.y, _scale);
-	}
+	float posY = CheckOnScreenTopLine(_baseBarTexture) ? _screenPos.y : _pos.y;
+
+	if (IsRenderRange(_baseBarTexture, _pos, _scale))_baseBarTexture->RenderScale(_pos.x, posY, _scale, GetRenderRect(_pos, _baseBarTexture));
+	if (IsRenderRange(&_barTexture, _pos, _scale))_barTexture.RenderScale(_pos.x, posY, _scale, GetRenderRect(_pos, &_barTexture));
+
 }
 
 void Bar::Release()
