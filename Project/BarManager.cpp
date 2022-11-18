@@ -43,18 +43,12 @@ void BarManager::PushBar(Vector2 mPos)
 	}
 }
 
-void BarManager::PickStage(Vector2 mPos)
+void BarManager::PickStage(int bernumber)
 {
-	for (int i = 0; i < _stageValue; i++)
-	{
-		if (_barArray[i].CheckOnMouse(mPos) && _barArray[i].IsRenderRange())
-		{
-			_contactFile->LoadStage(_barArray[i].GetStageDataTextName());
-			_currentStage = i;
+			_contactFile->LoadStage(_barArray[bernumber].GetStageDataTextName());
+			_currentStage = bernumber;
 			SceneManager::Instance().ChangeScene(SCENE_TYPE::GAME);
 			return;
-		}
-	}
 }
 
 void BarManager::StartNextStage() {
@@ -73,6 +67,18 @@ void BarManager::MoveBar(float moveValue)
 	{
 		_barArray[i].Move(moveValue);
 	}
+}
+
+int BarManager::GetPushBarNumber(Vector2 mousePos) {
+
+	for (int i = 0; i < _stageValue; i++)
+	{
+		if (_barArray[i].CheckOnMouse(mousePos) && _barArray[i].IsRenderRange())
+		{
+			return i;
+		}
+	}
+	return -1;
 }
 
 void BarManager::Render()
