@@ -15,15 +15,16 @@ class TitleScene :public IBaseScene
 	CRectangle _titleLogoRect;
 	CRectangle  _titleLogoLoopRect;
 	uint8_t _alpha;
+	
 	bool _end;
-	bool _loop;
 	float _time;
 	const float _increase = 0.003;
 
+	//titleLogo
+	bool _loop;//Loop‚³‚ê‚½‚©‚Ì”»’è
 	int _logoCount = 0;
-	int _logoLoopCount = 0;
-	DWORD _nowTime;
-	DWORD _beginTime;
+	Vector2 _titleLogoPos = Vector2(-220, -500);
+	const float _titleLogoScale=3.0f;
 public:
 	void Initialize();
 	void ReLoad();

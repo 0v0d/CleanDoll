@@ -126,13 +126,14 @@ void TitleScene::Update()
 	_alpha = CalcSequence(fmod(_time, 1));
 
 	_logo.AddTimer(CUtilities::GetFrameSecond());
-
+	//最初に流れるアニメーション
 	if (_logo.IsEndMotion()&&_logoCount<=9)
 	{
 		_logo.ChangeMotion(_logoCount);
 		_logoCount += 1;
 		
 	}
+	//ループ用のアニメーション
 	if (_logo.IsEndMotion() && _logoCount >= 10)
 	{
 		_loop = true;
@@ -161,11 +162,11 @@ void TitleScene::Render()
 	_startTexture.Render(g_pGraphics->GetTargetWidth() / 2 - _startTexture.GetWidth() / 2, 800, MOF_ARGB(_alpha, 255, 255, 255));
 	if (!_loop)
 	{
-		_titleLogoTexture.RenderScale(-200, -550, 3.0f, _titleLogoRect);
+		_titleLogoTexture.RenderScale(_titleLogoPos.x, _titleLogoPos.y, _titleLogoScale, _titleLogoRect);
 	}
 	else
 	{
-		_titleLogoLoopTexture.RenderScale(-200, -550, 3.0f, _titleLogoRect);
+		_titleLogoLoopTexture.RenderScale(_titleLogoPos.x, _titleLogoPos.y, _titleLogoScale, _titleLogoRect);
 	}
 	
 
