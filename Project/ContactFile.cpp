@@ -32,12 +32,12 @@ void ContactFile::LoadStage(std::string stageName)
 
 	//オブジェクト
 	LoadTexture(&_objectTextureArray);
-	_createField.SetObjectData(_objectTextureArray.textureArray,_chipDataArray);
+	_createField.SetObjectData(_objectTextureArray.textureArray, _chipDataArray);
 	DeleteChipData(&_objectTextureArray);
 
 	//アイテム
 	LoadTexture(&_itemTextureArray);
-	_createField.SetItemData(_itemTextureArray.textureArray, _chipDataArray,true);
+	_createField.SetItemData(_itemTextureArray.textureArray, _chipDataArray, true);
 	DeleteChipData(&_itemTextureArray);
 
 	//ギャラリー
@@ -52,7 +52,7 @@ void ContactFile::LoadStage(std::string stageName)
 
 	//埃
 	LoadTexture(&_dustDumpTextureArray);
-	_createField.SetDumpData(_dustDumpTextureArray.textureArray,_chipDataArray,true);
+	_createField.SetDumpData(_dustDumpTextureArray.textureArray, _chipDataArray, true);
 	DeleteChipData(&_dustDumpTextureArray);
 
 	//水汚れ
@@ -62,12 +62,12 @@ void ContactFile::LoadStage(std::string stageName)
 
 	//壁
 	LoadTexture(&_wallTextureArray);
-	_createField.SetWallData(_wallTextureArray.textureArray,_chipDataArray,_wallTextureArray.LineXValue);
+	_createField.SetWallData(_wallTextureArray.textureArray, _chipDataArray, _wallTextureArray.LineXValue);
 	DeleteChipData(&_wallTextureArray);
 
 	//壁用オブジェクト
 	LoadTexture(&_wallObjectTextureArray);
-	_createField.SetWallObjectkData(_wallObjectTextureArray.textureArray,_chipDataArray, _wallObjectTextureArray.LineXValue);
+	_createField.SetWallObjectkData(_wallObjectTextureArray.textureArray, _chipDataArray, _wallObjectTextureArray.LineXValue);
 	DeleteChipData(&_wallObjectTextureArray);
 
 	LoadDoll();
@@ -77,23 +77,20 @@ void ContactFile::LoadStage(std::string stageName)
 
 void ContactFile::LoadTexture(TextureArray* textureArray)
 {
-
 	NewChipData(textureArray);
 
 	textureArray->textureValue = atoi(strtok(NULL, ","));
-	if (textureArray->textureValue == 0) return;
 	textureArray->textureArray = new CTexture[textureArray->textureValue];
 
-	for (int i = 0;i < textureArray->textureValue; i++) {
+	for (int i = 0; i < textureArray->textureValue; i++) {
 		if (!textureArray->textureArray[i].Load(strtok(NULL, ","))) return;
 	}
 
-	for (int y = 0;y < _blockValueY;y++) {
-		for (int x = 0;x < _blockValueX * textureArray->LineXValue;x++)
+	for (int y = 0; y < _blockValueY; y++) {
+		for (int x = 0; x < _blockValueX * textureArray->LineXValue; x++)
 		{
 			_chipDataArray[x][y] = atoi(strtok(NULL, ","));
 		}
-		
 	}
 }
 
@@ -112,7 +109,7 @@ void ContactFile::LoadDoll()
 	}
 }
 
-void ContactFile::SetDoll(int x,int y)
+void ContactFile::SetDoll(int x, int y)
 {
 	_createField.SetDoll(x, y);
 }
@@ -165,7 +162,7 @@ void ContactFile::DeleteTextureArray(TextureArray* textureArray)
 {
 	if (textureArray->textureValue == 0)return;
 
-	for (int i = 0;i < textureArray->textureValue;i++) textureArray->textureArray[i].Release();
+	for (int i = 0; i < textureArray->textureValue; i++) textureArray->textureArray[i].Release();
 	delete[] textureArray->textureArray;
 	textureArray->textureArray = nullptr;
 
@@ -175,7 +172,7 @@ void ContactFile::DeleteTextureArray(TextureArray* textureArray)
 void ContactFile::NewChipData(TextureArray* textureArray)
 {
 	_chipDataArray = new char* [_blockValueX * textureArray->LineXValue];
-	for (int i = 0;i < _blockValueX * textureArray->LineXValue;i++)_chipDataArray[i] = new char[_blockValueY];
+	for (int i = 0; i < _blockValueX * textureArray->LineXValue; i++)_chipDataArray[i] = new char[_blockValueY];
 
 	for (int y = 0; y < _blockValueY; y++) {
 		for (int x = 0; x < _blockValueX * textureArray->LineXValue; x++)
@@ -186,7 +183,7 @@ void ContactFile::NewChipData(TextureArray* textureArray)
 void ContactFile::DeleteChipData(TextureArray* textureArray)
 {
 
-	for (int i = 0;i < _blockValueX * textureArray->LineXValue;i++) delete[] _chipDataArray[i];
+	for (int i = 0; i < _blockValueX * textureArray->LineXValue; i++) delete[] _chipDataArray[i];
 	delete[] _chipDataArray;
 }
 
