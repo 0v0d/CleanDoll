@@ -114,6 +114,7 @@ void TitleScene::InputMouseKey()
 		SceneManager::Instance().ChangeScene(SCENE_TYPE::STAGESELECT);
 	}
 }
+
 void TitleScene::Render()
 {
 	_backGround.Render();
