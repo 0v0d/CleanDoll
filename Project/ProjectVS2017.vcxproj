@@ -103,6 +103,7 @@
     <ClCompile Include="Bar.cpp" />
     <ClCompile Include="Block.cpp" />
     <ClCompile Include="BlockManager.cpp" />
+    <ClCompile Include="BlockOnObject.cpp" />
     <ClCompile Include="Button.cpp" />
     <ClCompile Include="ContactFile.cpp" />
     <ClCompile Include="CreateField.cpp" />
@@ -149,6 +150,7 @@
     <ClInclude Include="Bar.h" />
     <ClInclude Include="Block.h" />
     <ClInclude Include="BlockManager.h" />
+    <ClInclude Include="BlockOnObject.h" />
     <ClInclude Include="Button.h" />
     <ClInclude Include="ContactFile.h" />
     <ClInclude Include="CreateField.h" />

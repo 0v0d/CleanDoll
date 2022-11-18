@@ -79,6 +79,11 @@ void BlockManager::CalcuScale(float blockSizeY) {
 	}
 }
 
+void BlockManager::SetDollOnPositon(int blockX, int blockY) {
+	_dollOnBlockX = blockX;
+	_dollOnBlockY = blockY;
+}
+
 void BlockManager::Update()
 {
 
@@ -109,9 +114,14 @@ void BlockManager::Render()
 	for (int y = 0;y < _blockValueY;y++) {
 		for (int x = 0; x < _blockValueX; x++) {
 			_blockArray[x][y].RenderBlcokOnObject();
+			if (x == _dollOnBlockX && y == _dollOnBlockY)_doll->Render();
 		}
 	}
-
+	for (int y = 0;y < _blockValueY;y++) {
+		for (int x = 0; x < _blockValueX; x++) {
+			if (x == _dollOnBlockX && y == _dollOnBlockY)_doll->Render();
+		}
+	}
 }
 
 void BlockManager::Delete()

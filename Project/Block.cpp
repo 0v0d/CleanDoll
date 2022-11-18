@@ -3,7 +3,9 @@
 void Block::Initialize()
 {
 	_passed = false;
-	_hiddenAccessories = false;
+	_blockOnObject.SetBlockCenterPosition(GetCenterPosition());
+	_blockOnObject.SetBlockSize(Vector2(_blockSizeX, _blockSizeY));
+	_blockOnObject.SetBlockScale(_scale);
 }
 
 void Block::SetTexture(CTexture* blockTexture)
@@ -28,23 +30,6 @@ void Block::SetAdjoinBlockValue(int adjoinBlockValue)
 void Block::SetAdjoinBlock(Block* block, int number)
 {
 	_adjoinBlockArray[number] = block;
-}
-
-void Block::SetObject(Object* object, bool onSwap)
-{
-	_object = object;
-	_object->CalcuScale(_blockSizeX*_scale);
-	_object->SetBlockSize(_blockSizeX, _blockSizeY);
-	_object->SetPosition(Vector2(GetCenterPosition().x, _position.y + _blockSizeY * _scale));
-	if (onSwap)_object->Swap();
-	
-}
-
-void Block::SetAccessories(IBaseAccessories* accessories)
-{
-	_accessories = accessories;
-	_accessories->CalcuScale(_blockSizeX*_scale);
-	_accessories->SetPosotion(GetCenterPosition());
 }
 
 void Block::CreateWall()
@@ -72,9 +57,9 @@ void Block::SetWallObject(CTexture* wallTexture, int number)
 void Block::ReLoad()
 {
 	_passed = false;
-	if (_accessories != nullptr)
+	if (_blockOnObject.GetAccessories() != nullptr)
 	{
-		_hiddenAccessories = false;
+		_blockOnObject.HiddenAccessoriesFlg(false);
 	}
 }
 
@@ -112,42 +97,12 @@ void Block::Render()
 }
 
 void Block::RenderBlcokOnObject() {
-	if (_object != nullptr){
-		_object->Render();
-		return;
-	}
-
-	if (_accessories != nullptr && !_hiddenAccessories){
-		_accessories->Render();
-	}
+	_blockOnObject.Render();
 }
 
 void Block::Delete()
 {
-
-	if (_object != nullptr) 
-	{
-		DeleteObject();
-	}
-
-	if (_accessories != nullptr)
-	{
-		DeleteAccessories();
-	}
-}
-
-void Block::DeleteObject()
-{
-	_object->Release();
-	delete _object;
-	_object = nullptr;
-}
-
-void Block::DeleteAccessories()
-{
-	_accessories->Release();
-	delete _accessories;
-	_accessories = nullptr;
+	_blockOnObject.Delete();
 }
 
 void Block::Release()

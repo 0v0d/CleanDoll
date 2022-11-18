@@ -56,7 +56,7 @@ void CreateField::SetObjectData(CTexture* TextureArray, char** dataArray)
 				textureNumber *= -1;
 				onSwap = true;
 			}
-			block->SetObject(new Object(&TextureArray[textureNumber - 1]), onSwap);
+			block->GetBlockOnObject()->SetObject(new Object(&TextureArray[textureNumber - 1]), onSwap);
 		}
 	}
 }
@@ -75,7 +75,7 @@ void CreateField::SetItemData(CTexture* TextureArray, char** dataArray, bool isC
 			Block* block = _blockManager->GetBlock(x, y);
 
 			ACCESSORIES_TYPE accessoriesType = isCandy ? ACCESSORIES_TYPE::ITEM : ACCESSORIES_TYPE::MOP;
-			block->SetAccessories(new Item(&TextureArray[dataArray[x][y] - 1], accessoriesType));
+			block->GetBlockOnObject()->SetAccessories(new Item(&TextureArray[dataArray[x][y] - 1], accessoriesType), accessoriesType);
 		}
 	}
 }
@@ -97,7 +97,7 @@ void CreateField::SetDumpData(CTexture* TextureArray, char** dataArray, bool isD
 			Block* block = _blockManager->GetBlock(x, y);
 
 			DUMP_TYPE dumpType = isDustDump ? DUMP_TYPE::DUST : DUMP_TYPE::WATER;
-			block->SetAccessories(new Dump(&TextureArray[dataArray[x][y] - 1], dumpType));
+			block->GetBlockOnObject()->SetAccessories(new Dump(&TextureArray[dataArray[x][y] - 1], dumpType), ACCESSORIES_TYPE::DUMP);
 		}
 	}
 

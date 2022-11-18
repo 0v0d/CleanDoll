@@ -1,8 +1,7 @@
 #pragma once
 #include	"Mof.h"
-#include	"Object.h"
-#include	"IBaseAccessories.h"
 #include	"Wall.h"
+#include	"BlockOnObject.h"
 
 class Block
 {
@@ -16,18 +15,14 @@ private:
 	//周りのブロック　0:左, 1:上, 2:右, 3:下
 	Block** _adjoinBlockArray;
 
-	Object* _object = nullptr;
-	IBaseAccessories* _accessories = nullptr;
-
 	//0:左, 1:右, 2:中
 	Wall* _wallArray = nullptr;
 	const int _wallValue = 3;
 
 	bool _passed;
-
 	MofU32 _passedBlockColor = MOF_COLOR_RED;
 
-	bool _hiddenAccessories;
+	BlockOnObject _blockOnObject;
 
 public:
 	void SetTexture(CTexture* blockTexture);
@@ -37,8 +32,6 @@ public:
 	void SetAdjoinBlock(Block* block, int number);
 	Block** GetAdjoinBlockArray() { return _adjoinBlockArray; }
 
-	void SetObject(Object* object,bool onSwap);
-	void SetAccessories(IBaseAccessories* accessories);
 	void CreateWall();
 	void SetWall(CTexture* wallTexture, int number);
 	void SetWallObject(CTexture* wallTexture, int number);
@@ -49,20 +42,15 @@ public:
 
 	void SetPassedFlg(bool flg) { _passed = flg; }
 	bool IsPassed() { return _passed; }
-	void HiddenAccessoriesFlg(bool flg) { _hiddenAccessories = flg; }
-	bool IsHeldObject() { return _object != nullptr; }
 
 	void Render();
+
 	void RenderBlcokOnObject();
 	void Release();
-
 	void Delete();
-	void DeleteObject();
-	void DeleteAccessories();
 
 	Vector2 GetBlockSize() { return Vector2(_blockSizeX,_blockSizeY); }
-
-	IBaseAccessories* GetAccessories() { return _accessories; }
 	Vector2 GetCenterPosition() { return Vector2(_position.x + _blockTexture->GetWidth() * _scale /2, _position.y + _blockTexture->GetHeight() * _scale /2); }
 	bool CheckMouseOnBlock(Vector2 mousePos);
+	BlockOnObject* GetBlockOnObject() { return &_blockOnObject; }
 };
