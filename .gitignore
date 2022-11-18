@@ -363,5 +363,3 @@ MigrationBackup/
 FodyWeavers.xsd
 
 *.exe
-/Project/ProjectVS2017.vcxproj
-/Project/ProjectVS2017.vcxproj.filters
