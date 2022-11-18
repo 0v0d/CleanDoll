@@ -5,9 +5,9 @@
 
 void GameClear::TextureLoad()
 {
-	_nextStageTexture.Load("ステージ選択へ.png");
-	_stageSelectTexture.Load("ステージ選択へ.png");
-	_retryTexture.Load("ステージ選択へ.png");
+	_nextStageTexture.Load("nextStage.png");
+	_stageSelectTexture.Load("returnstageselect.png");
+	_retryTexture.Load("retry.png");
 }
 
 void GameClear::Initialize()
