@@ -24,6 +24,7 @@ void SettingManager::Push(Vector2 mousePos)
 		if (_openSettingButton.CheckPushButton(mousePos))
 		{
 			_openMenu = true;
+			_setUpSetting.DetermineBackScene();
 		}
 	}
 	else
@@ -34,14 +35,7 @@ void SettingManager::Push(Vector2 mousePos)
 
 void SettingManager::Pull(Vector2 mousePos)
 {
-	if (!_openMenu)
-	{
-		if (_openSettingButton.CheckPushButton(mousePos))
-		{
-			_openMenu = true;
-		}
-	}
-	else 
+	if (_openMenu)
 	{
 		_setUpSetting.Pull(mousePos);
 	}

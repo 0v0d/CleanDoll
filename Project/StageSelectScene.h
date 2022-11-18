@@ -4,7 +4,6 @@
 #include	"InputStageSelect.h"
 #include	"BarManager.h"
 #include	"Slider.h"
-#include	"Menu.h"
 #include	"BackGround.h"
 
 class StageSelectScene :public IBaseScene
@@ -15,13 +14,11 @@ private:
 	BarManager _barManager;
 	Slider _slider;
 	BackGround _backGround;
-	Menu* _menu;
 	CTexture _barTexture;
 	CTexture _buttonTexture;
 	CTexture _stageBackTexture;
 	CRectangle _stageBackRect;
 public:
-	void SetMenu(Menu* menu) { _menu = menu; }
 	void Initialize();
 	void ReLoad();
 	void Update();

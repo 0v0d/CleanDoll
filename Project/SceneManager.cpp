@@ -16,14 +16,11 @@ void SceneManager::Initialize()
 	_sceneArray[SCENE_TYPE::GAME] = &game;
 
 	game.SetContactFile(stageSelect.GetGetDataFromFile()->GetContactFile());
-	game.SetMenu(&_menu);
-	stageSelect.SetMenu(&_menu);
 
 	for (auto iter = _sceneArray.begin(); iter != _sceneArray.end(); iter++) 
 	{
 		iter->second->Initialize();
 	}
-	_menu.Initialize();
 
 	//_currentScene = _sceneArray[SCENE_TYPE::STAGESELECT];
 	_currentScene = _sceneArray[SCENE_TYPE::TITLE];
@@ -31,18 +28,13 @@ void SceneManager::Initialize()
 
 void SceneManager::Update()
 {
-	_menu.Update();
-
-	if (!_menu.IsOpenMenu())
-	{
-		_currentScene->Update();
-	}
+	_currentScene->Update();
+	
 }
 
 void SceneManager::Render()
 {
 	_currentScene->Render();
-	_menu.Render();
 }
 
 void SceneManager::Release()
@@ -51,11 +43,18 @@ void SceneManager::Release()
 	{
 		iter->second->Release();
 	}
-	_menu.Release();
 }
 
 void SceneManager::ChangeScene(SCENE_TYPE nextScene)
 {
 	_currentScene = _sceneArray[nextScene];
 	_currentScene->ReLoad();
+}
+
+SCENE_TYPE SceneManager::GetCurrentSceneType() {
+
+	for (auto itr = _sceneArray.begin(); itr != _sceneArray.end(); itr++) {
+		if (itr->second == _currentScene) return itr->first;
+	}
+	return SCENE_TYPE::TITLE;
 }
