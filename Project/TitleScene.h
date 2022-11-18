@@ -35,6 +35,6 @@ public:
 private:
 	int CalcSequence(float x);
 	void SetTitleLogoAnimationStatus();
-	void SetTitleLogoLoopAnimationStatus();
+	
 };
 
