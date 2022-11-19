@@ -179,6 +179,7 @@ void Field::EndMoveDoll()
 			_blockManager.Delete();
 			Delete();
 		}
+		return;
 	}
 	//ゲームオーバー
 	if (_remainDistance <= 0)
