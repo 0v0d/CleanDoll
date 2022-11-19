@@ -19,6 +19,9 @@ void Block::SetPosition(int x, int y, float topSpace)
 {
 	_position.x = g_pGraphics->GetTargetWidth() / 2 - _blockSizeX * _scale / 2 + (_blockSizeX * _scale / 2 * x) - (_blockSizeX * _scale / 2 * y);
 	_position.y = topSpace + (_blockSizeY * _scale / 2 * y) + (_blockSizeY * _scale / 2 * x);
+
+	_x = x;
+	_y = y;
 }
 
 
@@ -94,6 +97,8 @@ void Block::Render()
 			_wallArray[i].Render();
 		}
 	}
+
+	CGraphicsUtilities::RenderString(_position.x, _position.y, "%d:%d", _x, _y);
 }
 
 void Block::RenderBlcokOnObject() {

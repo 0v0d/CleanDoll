@@ -23,7 +23,7 @@ private:
 	MofU32 _passedBlockColor = MOF_COLOR_RED;
 
 	BlockOnObject _blockOnObject;
-
+	int _x, _y;
 public:
 	void SetTexture(CTexture* blockTexture);
 	void SetPosition(int x, int y, float topSpace);

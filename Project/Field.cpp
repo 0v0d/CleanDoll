@@ -57,7 +57,7 @@ void Field::SetDollPosition(int x, int y)
 	_dollInitialPositionX = x;
 	_dollInitialPositionY = y;
 
-	_blockManager.SetDollOnPositon(x, y);
+	SetDollOnBlockNumber(_blockManager.GetBlock(x,y));
 }
 
 void Field::Update()
@@ -188,6 +188,10 @@ void Field::EndMoveDoll()
 	{
 		GameOver();
 	}
+}
+
+void Field::SetDollOnBlockNumber(Block* dollOnBlock) {
+	_blockManager.SetDollOnBlock(dollOnBlock);
 }
 
 void Field::CleanDust()

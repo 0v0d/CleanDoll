@@ -89,6 +89,7 @@ void Doll::ArrivalBlock()
 
 	if (_currentUnderBlockNumber < _routeBlockArray.size()) 
 	{
+		_field->SetDollOnBlockNumber(_routeBlockArray[_currentUnderBlockNumber]);
 		SetNextPosition();
 		return;
 	}

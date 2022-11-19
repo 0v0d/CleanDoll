@@ -31,7 +31,7 @@ public:
 
 	void CreateField(int blockValueX, int blockValueY);
 	void CalcuScale(float blockSizeY);
-	void SetDollOnPositon(int blockX, int blockY);
+	void SetDollOnBlock(Block* dollOnBlock);
 private:
 	void SetAdjoinBlock();
 };
