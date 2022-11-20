@@ -16,6 +16,7 @@ void Field::Initialize()
 	_adjoinBlockValue = _blockManager.GetAdjoinBlockValue();
 
 	_remainDistance = _maxDistance;
+	_blockManager.SetDoll(&_doll);
 	_doll.SetDumpValue(_dustDumpValue, _waterDumpValue);
 
 	_energyVessels.SetMaxEnergyValue(_maxDistance);
@@ -55,6 +56,8 @@ void Field::SetDollPosition(int x, int y)
 
 	_dollInitialPositionX = x;
 	_dollInitialPositionY = y;
+
+	SetDollOnBlockNumber(_blockManager.GetBlock(x,y));
 }
 
 void Field::Update()
@@ -102,7 +105,7 @@ void Field::PassedMouse(Vector2 mousePosition)
 //押したブロックを記録
 void Field::AdvanceRoute(Block* mouseOnBlock)
 {
-	if (_remainDistance <= 0 || mouseOnBlock->IsHeldObject()) return;
+	if (_remainDistance <= 0 || mouseOnBlock->GetBlockOnObject()->GetFurniture() != nullptr) return;
 
 	_pickedBlock = mouseOnBlock;
 	_pickedBlock->SetPassedFlg(true);
@@ -111,13 +114,13 @@ void Field::AdvanceRoute(Block* mouseOnBlock)
 	_remainDistance--;
 	_energyVessels.CheckChangeEnergyColor();
 
-	if (_pickedBlock->GetAccessories() != nullptr)
+	if (_pickedBlock->GetBlockOnObject()->GetAccessories() != nullptr)
 	{
-		if (_pickedBlock->GetAccessories()->GetType() == ACCESSORIES_TYPE::ITEM)
+		if (_pickedBlock->GetBlockOnObject()->GetAccessories()->GetType() == ACCESSORIES_TYPE::ITEM)
 		{
 			_recoveryDifferentialArray.push_back(_maxDistance - _remainDistance);
 			_remainDistance += _maxDistance - _remainDistance;
-			_pickedBlock->HiddenAccessoriesFlg(true);
+			_pickedBlock->GetBlockOnObject()->HiddenAccessoriesFlg(true);
 			_energyVessels.CheckChangeEnergyColor();
 		}
 	}
@@ -134,13 +137,13 @@ void Field::BackRoute(Block* mouseOnBlock)
 	//[_distanceCount - 2]は1つ前に押したブロックの要素を表す
 
 	//巻き戻し処理
-	if (_pickedBlock->GetAccessories() != nullptr)
+	if (_pickedBlock->GetBlockOnObject()->GetAccessories() != nullptr)
 	{
-		if (_pickedBlock->GetAccessories()->GetType() == ACCESSORIES_TYPE::ITEM)
+		if (_pickedBlock->GetBlockOnObject()->GetAccessories()->GetType() == ACCESSORIES_TYPE::ITEM)
 		{
 			_remainDistance -= _recoveryDifferentialArray.back();
 			_recoveryDifferentialArray.pop_back();
-			_pickedBlock->HiddenAccessoriesFlg(false);
+			_pickedBlock->GetBlockOnObject()->HiddenAccessoriesFlg(false);
 		}
 	}
 
@@ -188,6 +191,10 @@ void Field::EndMoveDoll()
 	}
 }
 
+void Field::SetDollOnBlockNumber(Block* dollOnBlock) {
+	_blockManager.SetDollOnBlock(dollOnBlock);
+}
+
 void Field::CleanDust()
 {
 	_dustDumpValue--;
@@ -213,7 +220,6 @@ void Field::GameOver()
 void Field::Render()
 {
 	_blockManager.Render();
-	_doll.Render();
 	_remainingDumpUI.Render();
 	_energyVessels.Render();
 	_stageClear.Render();

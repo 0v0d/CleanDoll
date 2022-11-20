@@ -79,6 +79,19 @@ void BlockManager::CalcuScale(float blockSizeY) {
 	}
 }
 
+void BlockManager::SetDollOnBlock(Block* dollOnBlock) {
+
+	for (int y = 0;y < _blockValueY;y++){
+		for (int x = 0; x < _blockValueX; x++){
+			if (&_blockArray[x][y] == dollOnBlock) {
+				_dollOnBlockX = x;
+				_dollOnBlockY = y;
+				return;
+			}
+		}
+	}
+}
+
 void BlockManager::Update()
 {
 
@@ -108,10 +121,13 @@ void BlockManager::Render()
 	}
 	for (int y = 0;y < _blockValueY;y++) {
 		for (int x = 0; x < _blockValueX; x++) {
+			if (x == _dollOnBlockX && y == _dollOnBlockY)_doll->Render();
 			_blockArray[x][y].RenderBlcokOnObject();
 		}
 	}
 
+
+	CGraphicsUtilities::RenderString(30, 90,MOF_COLOR_HWHITE, "%d:%d", _dollOnBlockX, _dollOnBlockY);
 }
 
 void BlockManager::Delete()

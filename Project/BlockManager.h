@@ -1,5 +1,6 @@
 #pragma once
 #include	"Block.h"
+#include	"Doll.h"
 class BlockManager
 {
 private:
@@ -7,11 +8,16 @@ private:
 	int _blockValueX, _blockValueY;
 	float _topSpace, _bottomSpace;
 	float _scale;
+	int _dollOnBlockX, _dollOnBlockY;
 
 	const int _adjoinBlockValue = 4;
+
+	Doll* _doll;
 public:
 	void Initialize();
+	void SetDoll(Doll* doll) { _doll = doll; }
 	void ReLoad();
+
 	void CalcuBlockPosition();
 	void Update();
 	void Render();
@@ -25,6 +31,7 @@ public:
 
 	void CreateField(int blockValueX, int blockValueY);
 	void CalcuScale(float blockSizeY);
+	void SetDollOnBlock(Block* dollOnBlock);
 private:
 	void SetAdjoinBlock();
 };
