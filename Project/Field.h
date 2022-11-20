@@ -59,6 +59,7 @@ public:
 	BlockManager* GetBlockManager() { return &_blockManager; }
 	void GameOver();
 	void SetDollMove(bool* onMoveDoll) { _onMoveDoll = onMoveDoll; }
+	void SetDollOnBlockNumber( Block* dollOnBlock);
 private:
 	void AdvanceRoute(Block* mouseOnBlock);
 	void BackRoute(Block* mouseOnBlock);
