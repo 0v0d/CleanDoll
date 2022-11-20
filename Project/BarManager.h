@@ -30,14 +30,18 @@ public:
 	void Update();
 	void Push(Vector2 mPos);
 	void Pull(Vector2 mPos);
-	void PickStage(Vector2 mPos);
 	void MoveBar(float moveValue);
+
+	void StartStage(int barNumber);
 	void StartNextStage();
+	void SetPreview(int barNumber);
 	void StageClear();
 
 	void Render();
 	void Release();
+
 	Bar* GetBar(int barNumber) { return &_barArray[barNumber]; }
+	int GetBarNumber(Vector2 mousePos);
 
 private:
 	void LoadTexture();
