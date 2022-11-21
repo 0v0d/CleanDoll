@@ -1,26 +1,30 @@
 #include "StageSelectDialog.h"
 
 void StageSelectDialog::Initialize() {
-	_Pos.x = g_pGraphics->GetTargetWidth()/2;
-	_Pos.y = g_pGraphics->GetTargetHeight() / 3;
-	_YesTexture.Load("ŠÛ.png");
-	_NoTexture.Load("ƒoƒc.png");
-	_OpenStaSeleDia = false;
-	SetYesButton();
-	SetNoButton();
+	_basePos.x = g_pGraphics->GetTargetWidth()/2;
+	_basePos.y = g_pGraphics->GetTargetHeight() / 3;
+
+	LoadTexture();
+
+	_openStaSeleDialog = false;
+	CreateButton(&_yesButton, Vector2(_basePos.x - _space / 2 - _yesTexture.GetWidth(), _basePos.y), &_yesTexture);
+	CreateButton(&_noButton, Vector2(_basePos.x + _space / 2, _basePos.y), &_noTexture);
+}
+
+void StageSelectDialog::ReLoad() {
+	_pushYesButton = false;
+	_openStaSeleDialog = false;
 	_clickCount = 0;
-	_mPosX = 0;
-	_mPosY = 0;
+	_pickStageNumber = -1;
 }
 
-void StageSelectDialog::SetYesButton() {
-	_YesButtonPos = Vector2(_Pos.x-_YesTexture.GetWidth()-10,_Pos.y);
-	_YesButton.SetStatu(_YesButtonPos, &_YesTexture);
+void StageSelectDialog::LoadTexture() {
+	_yesTexture.Load("‚Í‚¢.png");
+	_noTexture.Load("‚¢‚¢‚¦.png");
 }
 
-void StageSelectDialog::SetNoButton() {
-	_NoButtonPos = Vector2(_Pos.x , _Pos.y);
-	_NoButton.SetStatu(_NoButtonPos, &_NoTexture);
+void StageSelectDialog::CreateButton(Button* button, Vector2 pos, CTexture* texture) {
+	button->SetStatu(pos, texture);
 }
 
 void StageSelectDialog::Update() {
@@ -28,47 +32,50 @@ void StageSelectDialog::Update() {
 }
 
 void StageSelectDialog:: SetStageNumber(int stagenumber) {
-	if (stagenumber ==-1) return;
-	if (_clickCount == 0) {
-		_stagenumber = stagenumber;
+	if (stagenumber == -1 || _openStaSeleDialog) return;
+
+	switch (_clickCount)
+	{
+	case 0:
+		_pickStageNumber = stagenumber;
 		_clickCount = 1;
-	}
-	else if (_clickCount == 1 && _stagenumber == stagenumber) {
-		_clickCount += 1;
-	}
-	else if (_clickCount == 1 && _stagenumber != stagenumber) {
-		_clickCount = 0;
-	}
+		break;
 
-	if (_clickCount >= 2) {
-		_OpenStaSeleDia = true;
-	}
-}
-
-
-void StageSelectDialog ::CloseDialog (Vector2 mousePos) {
-	if (_OpenStaSeleDia) {
-		if (CheckNoButton(mousePos)) {
-			_OpenStaSeleDia = false;
-			_clickCount = 0;
+	case 1:
+		if (_pickStageNumber == stagenumber) {
+			_clickCount = 2;
+			_openStaSeleDialog = true;
 		}
+		else {
+			_pickStageNumber = stagenumber;
+		}
+		break;
 	}
 }
+
 void StageSelectDialog::Push(Vector2 mousePos){
-	if (_OpenStaSeleDia) {
-		CheckYesButton(mousePos);
+	if (!_openStaSeleDialog) return;
+
+	if (_yesButton.CheckOnButton(mousePos)) {
+		_pushYesButton = true;
+	}
+
+	if (_noButton.CheckOnButton(mousePos)) {
+		_openStaSeleDialog = false;
+		_clickCount = 0;
+		_pickStageNumber = -1;
 	}
 }
 
 void StageSelectDialog::Render() {
-	if (_OpenStaSeleDia) {
-		CGraphicsUtilities::RenderFillRect(0, 0, g_pGraphics->GetTargetWidth(), g_pGraphics->GetTargetHeight(), MOF_ARGB(125, 0, 0, 0));
-		_YesButton.Render();
-		_NoButton.Render();
-	}
+	if (!_openStaSeleDialog) return;
+
+	CGraphicsUtilities::RenderFillRect(0, 0, g_pGraphics->GetTargetWidth(), g_pGraphics->GetTargetHeight(), MOF_ARGB(125, 0, 0, 0));
+	_yesButton.Render();
+	_noButton.Render();
 }
 
 void StageSelectDialog::Release() {
-	_YesTexture.Release();
-	_NoTexture.Release();
+	_yesTexture.Release();
+	_noTexture.Release();
 }

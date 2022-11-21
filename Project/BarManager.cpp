@@ -68,15 +68,6 @@ void BarManager::Update()
 
 void BarManager::Push(Vector2 mPos)
 {
-	for (int i = 0; i < _stageValue; i++)
-	{
-		if (_barArray[i].CheckOnMouse(mPos))
-		{
-			_preview.SetPreviewTexture(_barArray[i].GetPreviewTexture());
-			break;
-		}
-	}
-
 	_slider.PushSlider();
 }
 
@@ -85,29 +76,27 @@ void BarManager::Pull(Vector2 mPos)
 	_slider.PullSlider();
 }
 
-void BarManager::PickStage(Vector2 mPos)
+void BarManager::StartStage(int barNumber)
 {
-	for (int i = 0; i < _stageValue; i++)
-	{
-		if (_barArray[i].CheckOnMouse(mPos))
-		{
-			_contactFile->LoadStage(_barArray[i].GetStageDataTextName());
-			_currentStage = i;
-			SceneManager::Instance().ChangeScene(SCENE_TYPE::GAME);
-			return;
-		}
-	}
+	_currentStage = barNumber;
+	_contactFile->LoadStage(_barArray[barNumber].GetStageDataTextName());
+
+	SceneManager::Instance().ChangeScene(SCENE_TYPE::GAME);
 }
 
 void BarManager::StartNextStage() {
 	_currentStage++;
 	if (_currentStage > _stageValue)_currentStage = _stageValue;
-	_contactFile->LoadStage(_barArray[_currentStage].GetStageDataTextName());
-	SceneManager::Instance().ChangeScene(SCENE_TYPE::GAME);
+	
+	StartStage(_currentStage);
 }
 
 void BarManager::StageClear() {
 	_barArray[_currentStage].Clear();
+}
+
+void BarManager::SetPreview(int barNumber) {
+	_preview.SetPreviewTexture(_barArray[barNumber].GetPreviewTexture()); 
 }
 
 void BarManager::MoveBar(float moveValue)
@@ -116,6 +105,15 @@ void BarManager::MoveBar(float moveValue)
 	{
 		_barArray[i].Move(moveValue);
 	}
+}
+
+int BarManager::GetBarNumber(Vector2 mousePos) {
+	for (int i = 0; i < _stageValue; i++){
+		if (_barArray[i].CheckOnMouse(mousePos)){
+			return i;
+		}
+	}
+	return -1;
 }
 
 void BarManager::Render()
