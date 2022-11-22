@@ -36,8 +36,7 @@ void Doll::DollAnimationInit()
 		320,320,
 		true,{{_wait,0,0},{_wait,1,0},{_wait,2,0},{_wait,3,0},{_wait,4,0},{_wait,5,0},{_wait,6,0},{_wait,7,0},
 		{_wait,8,0},{_wait,9,0} ,{_wait,10,0},{_wait,11,0},{_wait,12,0},{_wait,13,0},{_wait,14,0},{_wait,15,0},{_wait,16,0},
-		{_wait,17,0},{_wait,18,0},{_wait,19,0},{_wait,20,0},{_wait,21,0},{_wait,22,0},{_wait,23,0},{_wait,24,0},{_wait,25,0},
-		{_wait,26,0},{_wait,27,0},{_wait,28,0},{_wait,29,0}}
+		{_wait,17,0},{_wait,18,0},{_wait,19,0}}
 	}
 
 	};
@@ -63,7 +62,7 @@ void Doll::DollAnimationUpdate()
 
 	if (_motionController.IsEndMotion())
 	{
-		_motionController.ChangeMotion(AnimationRoop());
+		_motionController.ChangeMotion(1);
 	}
 	if (_move)
 	{
