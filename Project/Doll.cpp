@@ -4,9 +4,83 @@
 
 void Doll::Initialize()
 {
-	_dollTexture.Load("test.png");
-	_renderRect = CRectangle(0, 0, _dollTexture.GetWidth(), _dollTexture.GetHeight());
+	_dollTexture.Load("doll.png");
 	_field->SetDollMove(&_move);
+	_motionCount = 0;
+	_dollTextureSize = Vector2(_dollTexture.GetWidth() / _textureValue, _dollTexture.GetHeight() / MOTION_COUNT);
+	DollAnimationInit();
+}
+
+void Doll::DollAnimationInit() 
+{
+	SpriteAnimationCreate _dollAnimation[] = {
+	{
+		"Wait",
+		0,0,
+		320,320,
+		false,{{wait,0,0},{wait,1,0},{wait,2,0},{wait,3,0},{wait,4,0},{wait,5,0},{wait,6,0},{wait,7,0},
+		{wait,8,0},{wait,9,0} ,{wait,10,0},{wait,11,0},{wait,12,0},{wait,13,0},{wait,14,0},{wait,15,0},{wait,16,0},
+		{wait,17,0},{wait,18,0},{wait,19,0},}
+	},
+	{
+		"Wait",
+		0,320,
+		320,320,
+		false,{{wait,0,0},{wait,1,0},{wait,2,0},{wait,3,0},{wait,4,0},{wait,5,0},{wait,6,0},{wait,7,0},
+		{wait,8,0},{wait,9,0} ,{wait,10,0},{wait,11,0},{wait,12,0},{wait,13,0},{wait,14,0},{wait,15,0},{wait,16,0},
+		{wait,17,0},{wait,18,0},{wait,19,0},}
+	},
+	{
+		"Walk",
+		0,640,
+		320,320,
+		true,{{wait,0,0},{wait,1,0},{wait,2,0},{wait,3,0},{wait,4,0},{wait,5,0},{wait,6,0},{wait,7,0},
+		{wait,8,0},{wait,9,0} ,{wait,10,0},{wait,11,0},{wait,12,0},{wait,13,0},{wait,14,0},{wait,15,0},{wait,16,0},
+		{wait,17,0},{wait,18,0},{wait,19,0},{wait,20,0},{wait,21,0},{wait,22,0},{wait,23,0},{wait,24,0},{wait,25,0},
+		{wait,26,0},{wait,27,0},{wait,28,0},{wait,29,0}}
+	}
+
+	};
+	_motionController.Create(_dollAnimation, MOTION_COUNT);
+}
+
+int Doll::AnimationRoop()
+{
+	return _motionCount = (_motionCount + 1) % 2;
+}
+
+void Doll::DollAnimationUpdate() 
+{
+	_motionController.AddTimer(CUtilities::GetFrameSecond());
+	_renderRect = _motionController.GetSrcRect();
+
+	if (_inversion)
+	{
+		_inversionRenderRect = _renderRect;
+		_inversionRenderRect.Right = _renderRect.Left;
+		_inversionRenderRect.Left = _renderRect.Right;
+	}
+
+	if (_motionController.IsEndMotion())
+	{
+		_motionController.ChangeMotion(AnimationRoop());
+	}
+	if (_move)
+	{
+		if (_motionController.GetMotionNo() == WAIT_1 || _motionController.GetMotionNo() == WAIT_2)
+		{
+			_motionController.ChangeMotion(WALK);
+
+		}
+	}
+	else
+	{
+		if (_motionController.GetMotionNo() == WALK)
+		{
+			_motionController.ChangeMotion(AnimationRoop());
+		}
+	}
+	
 }
 
 void Doll::ReLoad()
@@ -22,7 +96,7 @@ void Doll::ReLoad()
 void Doll::CalcuScale(float boxSizeY, float scale)
 {
 	const float blockPercentDoll = 2;
-	_scale = boxSizeY * blockPercentDoll * scale / _dollTexture.GetHeight();
+	_scale = boxSizeY * blockPercentDoll * scale / _dollTextureSize.y;
 }
 
 void Doll::SetDumpValue(int dustDumpValue, int waterDumpValue)
@@ -33,8 +107,8 @@ void Doll::SetDumpValue(int dustDumpValue, int waterDumpValue)
 
 void Doll::SetPosition(Vector2 blockCenterPosition)
 {
-	_dollPosition.x = blockCenterPosition.x - _dollTexture.GetWidth() * _scale / 2;
-	_dollPosition.y = blockCenterPosition.y - _dollTexture.GetHeight() * _scale;
+	_dollPosition.x = blockCenterPosition.x - _dollTextureSize.x * _scale / 2;
+	_dollPosition.y = blockCenterPosition.y - _dollTextureSize.y * _scale;
 }
 
 void Doll::SetRouteBlockArray(std::vector<Block*> blockArray)
@@ -48,15 +122,13 @@ void Doll::SetRouteBlockArray(std::vector<Block*> blockArray)
 void Doll::SetNextPosition()
 {
 
-	_nextPosition.x =  _routeBlockArray[_currentUnderBlockNumber]->GetCenterPosition().x -_dollPosition.x - _dollTexture.GetWidth() * _scale / 2;
-	_nextPosition.y =  _routeBlockArray[_currentUnderBlockNumber]->GetCenterPosition().y -_dollPosition.y - _dollTexture.GetHeight() * _scale;
+	_nextPosition.x =  _routeBlockArray[_currentUnderBlockNumber]->GetCenterPosition().x -_dollPosition.x - _dollTextureSize.x * _scale / 2;
+	_nextPosition.y =  _routeBlockArray[_currentUnderBlockNumber]->GetCenterPosition().y -_dollPosition.y - _dollTextureSize.y * _scale;
 
 	if (_nextPosition.x > 0)
 	{
 		_inversion = true;
-		_inversionRenderRect = _renderRect;
-		_inversionRenderRect.Right = _renderRect.Left;
-		_inversionRenderRect.Left = _renderRect.Right;
+
 	}
 	else _inversion = false;
 }
@@ -67,6 +139,8 @@ void Doll::Update()
 	{
 		Move();
 	}
+
+	DollAnimationUpdate();
 }
 
 void Doll::Move()
@@ -155,3 +229,4 @@ void Doll::Release()
 	_dollTexture.Release();
 	_routeBlockArray.clear();
 }
+
