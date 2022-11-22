@@ -40,7 +40,7 @@ void StageSelectScene::Update()
 void StageSelectScene::Render()
 {
     _StSelectbackGround.Render();
-    CGraphicsUtilities::RenderString(30, 30, "StageSelect");
+    //CGraphicsUtilities::RenderString(30, 30, "StageSelect");
     _barManager.Render();
     _stageSelectDialog.Render();
 }

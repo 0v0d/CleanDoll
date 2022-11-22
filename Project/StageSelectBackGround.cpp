@@ -1,12 +1,11 @@
 #include "StageSelectBackGround.h"
 
 void StageSelectBackGround::Initialize() {
-	_ScrollY = 0;
-	_ScrollSpeed = 1;
+	_scrollY = 0;
 }
 void StageSelectBackGround::Update(){
-	_ScrollY -= _ScrollSpeed;
-	_ScrollX += _ScrollSpeed;
+	_scrollY -= _scrollSpeed;
+	_scrollX += _scrollSpeed;
 }
 
 void StageSelectBackGround::SetTextureStatus(CTexture* backGroundTexture)
@@ -22,8 +21,8 @@ void StageSelectBackGround::Render()
 	int w = _backTexture->GetWidth();
 	int scw = g_pGraphics->GetTargetWidth();
 	
-	for (float y = ((int)_ScrollY % h) - h; y < sch; y += h) {
-		for (float x = ((int)_ScrollX % w) - h; x < scw; x += h) {
+	for (float y = ((int)_scrollY % h) - h; y < sch; y += h) {
+		for (float x = ((int)_scrollX % w) - h; x < scw; x += h) {
 			_backTexture->Render(x, y);
 
 		}

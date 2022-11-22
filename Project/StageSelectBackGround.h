@@ -7,9 +7,9 @@ private:
 	CTexture* _backTexture;
 	CRectangle _backRect;
 
-	float     _ScrollY;
-	float     _ScrollX;
-	int      _ScrollSpeed;
+	float     _scrollY;
+	float     _scrollX;
+	const int _scrollSpeed = 1;
 public:
 	void	Initialize();
 	void    Update();
