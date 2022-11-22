@@ -125,9 +125,7 @@ void BlockManager::Render()
 			_blockArray[x][y].RenderBlcokOnObject();
 		}
 	}
-
-
-	CGraphicsUtilities::RenderString(30, 90,MOF_COLOR_HWHITE, "%d:%d", _dollOnBlockX, _dollOnBlockY);
+	//CGraphicsUtilities::RenderString(30, 90,MOF_COLOR_HWHITE, "%d:%d", _dollOnBlockX, _dollOnBlockY);
 }
 
 void BlockManager::Delete()
