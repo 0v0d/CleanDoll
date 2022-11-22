@@ -10,7 +10,7 @@ class BarManager
 private:
 	ContactFile* _contactFile;
 	Bar* _barArray = nullptr;
-	CTexture _baseTexture, _baseCleanBarTexture, _baseDirtyBarTexture;
+	CTexture _baseTexture, _baseCleanBarTexture, _baseDirtyBarTexture,_BrackFrame;
 	Vector2 _basePosition;
 	int _stageValue, _currentStage;
 	Preview _preview;

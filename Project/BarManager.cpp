@@ -40,6 +40,7 @@ void BarManager::LoadTexture() {
 	_baseDirtyBarTexture.Load("BaseDirtyBar.png");
 	_barTexture.Load("スクロールバー1.png");
 	_buttonTexture.Load("スクロールバー2.png");
+	_BrackFrame.Load("stageselect_flame.png");
 }
 
 void BarManager::CalcuScale() {
@@ -125,6 +126,8 @@ void BarManager::Render()
 	}
 	_preview.Render();
 	_slider.Render();
+	_BrackFrame.Render(_basePosition.x, _basePosition.y);
+
 }
 
 void BarManager::Release()
@@ -140,4 +143,5 @@ void BarManager::Release()
 	_baseDirtyBarTexture.Release();
 	_barTexture.Release();
 	_buttonTexture.Release();
+	_BrackFrame.Release();
 }

@@ -6,6 +6,7 @@ void Preview::Initialize() {
 
 void Preview::LoadTexture() {
 	_baseTexture.Load("プレビュー枠.png");
+	_BrackFrame.Load("stagepreview_base2.png");
 }
 
 
@@ -39,8 +40,12 @@ void Preview::Render()
 {
 	_baseTexture.RenderScale(_basePos.x, _basePos.y, _baseScale);
 	_previewTexture->RenderScale(_previewPosition.x, _previewPosition.y, _previewScale);
+	_BrackFrame.RenderScale(_basePos.x, _basePos.y, _baseScale);
+
+
 }
 
 void Preview::Release() {
 	_baseTexture.Release();
+	_BrackFrame.Release();
 }
