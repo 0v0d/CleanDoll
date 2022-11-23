@@ -4,7 +4,7 @@
 class Preview
 {
 private:
-	CTexture _baseTexture;
+	CTexture _baseTexture,_BrackFrame;
 	CTexture* _previewTexture;
 	Vector2 _previewPosition, _basePos;
 	float _baseScale, _previewScale;

@@ -98,7 +98,6 @@ void Block::Render()
 		}
 	}
 
-	CGraphicsUtilities::RenderString(_position.x, _position.y, "%d:%d", _x, _y);
 }
 
 void Block::RenderBlcokOnObject() {
