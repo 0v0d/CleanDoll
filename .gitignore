@@ -361,3 +361,10 @@ MigrationBackup/
 
 # Fody - auto-generated XML schema
 FodyWeavers.xsd
+<<<<<<< HEAD
+CleanDoll.exe
+=======
+
+>>>>>>> d94651214528db52762808b7ae9267b8e456a274
+*.exe
+/.gitignore

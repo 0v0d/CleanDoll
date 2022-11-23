@@ -179,6 +179,9 @@
     <ClCompile Include="BackGround.cpp">
       <Filter>ソース ファイル\UI</Filter>
     </ClCompile>
+    <ClCompile Include="BlockOnObject.cpp">
+      <Filter>ソース ファイル\GameScene</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GameApp.h">
@@ -312,6 +315,9 @@
     </ClInclude>
     <ClInclude Include="BackGround.h">
       <Filter>ソース ファイル\UI</Filter>
+    </ClInclude>
+    <ClInclude Include="BlockOnObject.h">
+      <Filter>ソース ファイル\GameScene</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

@@ -1,8 +1,10 @@
 #pragma once
 #include	"Mof.h"
+#include	"Menu.h"
 
 class CGameApp : public CSingleGameApplication
 {
+	Menu _menu;
 public:
 	CGameApp(){}
 	virtual ~CGameApp(){	Release();	}

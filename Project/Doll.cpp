@@ -89,6 +89,7 @@ void Doll::ArrivalBlock()
 
 	if (_currentUnderBlockNumber < _routeBlockArray.size()) 
 	{
+		_field->SetDollOnBlockNumber(_routeBlockArray[_currentUnderBlockNumber]);
 		SetNextPosition();
 		return;
 	}
@@ -101,13 +102,13 @@ void Doll::ArrivalBlock()
 
 void Doll::ActionAccessories()
 {
-	if (_routeBlockArray[_currentUnderBlockNumber]->GetAccessories() == nullptr) return;
+	if (_routeBlockArray[_currentUnderBlockNumber]->GetBlockOnObject()->GetAccessories() == nullptr) return;
 
-	if (_routeBlockArray[_currentUnderBlockNumber]->GetAccessories()->GetType() == ACCESSORIES_TYPE::DUMP)
+	if (_routeBlockArray[_currentUnderBlockNumber]->GetBlockOnObject()->GetAccessories()->GetType() == ACCESSORIES_TYPE::DUMP)
 	{
 		CleanDump();
 	}
-	else if (_routeBlockArray[_currentUnderBlockNumber]->GetAccessories()->GetType() == ACCESSORIES_TYPE::MOP) 
+	else if (_routeBlockArray[_currentUnderBlockNumber]->GetBlockOnObject()->GetAccessories()->GetType() == ACCESSORIES_TYPE::MOP)
 	{
 		SwitchToMop();
 	}
@@ -115,10 +116,10 @@ void Doll::ActionAccessories()
 
 void Doll::CleanDump()
 {
-	if ((!_heldMop && dynamic_cast<Dump*> (_routeBlockArray[_currentUnderBlockNumber]->GetAccessories())->GetDumpType() == DUMP_TYPE::WATER) ||
-		(_heldMop && dynamic_cast<Dump*> (_routeBlockArray[_currentUnderBlockNumber]->GetAccessories())->GetDumpType() == DUMP_TYPE::DUST))return;
+	if ((!_heldMop && dynamic_cast<Dump*> (_routeBlockArray[_currentUnderBlockNumber]->GetBlockOnObject()->GetAccessories())->GetDumpType() == DUMP_TYPE::WATER) ||
+		(_heldMop && dynamic_cast<Dump*> (_routeBlockArray[_currentUnderBlockNumber]->GetBlockOnObject()->GetAccessories())->GetDumpType() == DUMP_TYPE::DUST))return;
 
-	_routeBlockArray[_currentUnderBlockNumber]->HiddenAccessoriesFlg(true);
+	_routeBlockArray[_currentUnderBlockNumber]->GetBlockOnObject()->HiddenAccessoriesFlg(true);
 	if (_heldMop) {
 		_waterDumpValue--;
 		_field->CleanWater();
@@ -132,7 +133,7 @@ void Doll::CleanDump()
 void Doll::SwitchToMop()
 {
 	_heldMop = true;
-	_routeBlockArray[_currentUnderBlockNumber]->HiddenAccessoriesFlg(true);
+	_routeBlockArray[_currentUnderBlockNumber]->GetBlockOnObject()->HiddenAccessoriesFlg(true);
 
 	if (_dustDumpValue > 0)
 	{

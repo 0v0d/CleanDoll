@@ -1,6 +1,5 @@
 #pragma once
 #include	"map"
-#include	"Menu.h"
 #include	"IBaseScene.h"
 
 enum class SCENE_TYPE
@@ -15,7 +14,6 @@ class SceneManager
 	static SceneManager* _instance;
 	IBaseScene* _currentScene;
 	std::map<SCENE_TYPE, IBaseScene*> _sceneArray;
-	Menu _menu;
 public:
 	void Initialize();
 	void Update();
@@ -34,4 +32,5 @@ public:
 
 	void ChangeScene(SCENE_TYPE nextScene);
 	IBaseScene* GetScene(SCENE_TYPE scene) { return _sceneArray[scene]; }
+	SCENE_TYPE GetCurrentSceneType();
 };
