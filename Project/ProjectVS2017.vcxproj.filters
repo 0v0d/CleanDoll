@@ -182,6 +182,12 @@
     <ClCompile Include="BlockOnObject.cpp">
       <Filter>ソース ファイル\GameScene</Filter>
     </ClCompile>
+    <ClCompile Include="StageSelectDialog.cpp">
+      <Filter>ソース ファイル\StageSelectScene</Filter>
+    </ClCompile>
+    <ClCompile Include="StageSelectBackGround.cpp">
+      <Filter>ソース ファイル\StageSelectScene</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GameApp.h">
@@ -318,6 +324,12 @@
     </ClInclude>
     <ClInclude Include="BlockOnObject.h">
       <Filter>ソース ファイル\GameScene</Filter>
+    </ClInclude>
+    <ClInclude Include="StageSelectDialog.h">
+      <Filter>ソース ファイル\StageSelectScene</Filter>
+    </ClInclude>
+    <ClInclude Include="StageSelectBackGround.h">
+      <Filter>ソース ファイル\StageSelectScene</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

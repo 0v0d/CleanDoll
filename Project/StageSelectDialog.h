@@ -1,33 +1,34 @@
 #pragma once
 #include    "Button.h"
 #include	"Mof.h"
+
 class StageSelectDialog
 {
-private:
-	float  _mPosX,_mPosY;
-	Vector2  _Pos;
-	Vector2  _YesButtonPos;
-	Vector2  _NoButtonPos;
-	CTexture _YesTexture;
-	CTexture _NoTexture;
-	Button  _YesButton;
-	Button  _NoButton;
-	bool  _OpenStaSeleDia;
+	Vector2  _basePos;
+	CTexture _yesTexture,_noTexture;
+	Button  _yesButton, _noButton;
+	const float _space = 100;
+
+	bool  _openStaSeleDialog, _pushYesButton;
 	int   _clickCount;
-	int   _stagenumber;
+	int   _pickStageNumber;
+
 public:
 	void Initialize();
-	void SetYesButton();
-	void SetNoButton();
-	bool CheckYesButton(Vector2 mousePos) { return _YesButton.CheckOnButton(mousePos); }
-	bool CheckNoButton(Vector2 mousePos) { return _NoButton.CheckOnButton(mousePos); }
-	void CloseDialog(Vector2 mousePos);
-	void Push(Vector2 mousePos);
+	void ReLoad();
+
 	void Update();
+	void Push(Vector2 mousePos);
+	void SetStageNumber(int stagenumber);
+
 	void Render();
 	void Release();
-	int GetStageNumber() { return _stagenumber; }
-	bool IsOpenStDialog() { return _OpenStaSeleDia; }
-	void  SetStageNumber(int stagenumber);
-	void ClickCheck(Vector2 mousePos);
+
+	int GetStageNumber() { return _pickStageNumber; }
+	bool IsOpenStDialog() { return _openStaSeleDialog; }
+	bool CheckPushYesButton() { return _pushYesButton; }
+
+private:
+	void LoadTexture();
+	void CreateButton(Button*, Vector2 pos, CTexture*);
 };

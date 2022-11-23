@@ -224,7 +224,7 @@ void Field::Render()
 	_energyVessels.Render();
 	_stageClear.Render();
 	_gameOver.Render();
-	CGraphicsUtilities::RenderString(30, 60, "%d/%d", _remainDistance, _maxDistance);
+	//CGraphicsUtilities::RenderString(30, 60, "%d/%d", _remainDistance, _maxDistance);
 }
 
 void Field::Delete()
