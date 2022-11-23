@@ -22,8 +22,10 @@ void Slider::Update()
 		if (_direction == HORIZON)	_button.MoveHorizonButton(_mousePos);
 		else if (_direction == VERTICAL)  _button.MoveVerticalButton(_mousePos);
 	}
-	_button.MouseWheelMove(g_pInput->GetMouseWheelMove());
-
+	if (_direction == VERTICAL) 
+	{
+		_button.MouseWheelMove(g_pInput->GetMouseWheelMove());
+	}
 }
 
 void Slider::PushSlider()

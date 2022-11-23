@@ -26,7 +26,7 @@ void GameScene::Render()
 	_backGround.Render();
 	_field.Render();
 
-	CGraphicsUtilities::RenderString(30, 30, "Game");
+	//CGraphicsUtilities::RenderString(30, 30, "Game");
 }
 
 void GameScene::Release()

@@ -12,9 +12,9 @@ void SliderButton::SetButtonStatu(Vector2 barSize, Vector2 barPos, CTexture* but
 
 void SliderButton::CalcuButtonHorizonStatu()
 {
-	_buttonPos.x = _barPos.x + _barSize.x * _value - _buttonSize.x * _value;
+	_buttonPos.x = _barPos.x + _barSize.x / 2 * _value - _buttonSize.x * _value;
 	_buttonPos.y = _barPos.y + _barSize.y / 2 - _buttonSize.y / 2;
-	_barRect = CRectangle(_barPos.x, _barPos.y, _barPos.x + _barSize.x, _barPos.y + _barSize.y);
+	_barRect = CRectangle(_barPos.x - _barSize.x/2, _barPos.y - _barSize.y / 2, _barPos.x + _barSize.x/2, _barPos.y + _barSize.y);
 	_buttonRect = CRectangle(_buttonPos.x, _buttonPos.y, _buttonPos.x + _buttonSize.x, _buttonPos.y + _buttonSize.y);
 }
 
@@ -63,10 +63,8 @@ void SliderButton::MouseWheelMove(float movewheel)
 		_buttonPos.y = _barPos.y + _wheelSensitivity;
 	if (movewheel < 0 && _buttonPos.y + _buttonSize.y + _wheelSensitivity > _barPos.y + _barSize.y)
 		_buttonPos.y = _barPos.y + _barSize.y - _buttonSize.y - _wheelSensitivity;
-
 	if (movewheel > 0)
 		_buttonPos.y -= _wheelSensitivity;
 	if (movewheel < 0)
 		_buttonPos.y += _wheelSensitivity;
-		
 }
