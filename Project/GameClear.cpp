@@ -5,6 +5,7 @@
 
 void GameClear::TextureLoad()
 {
+	_stageClearTecture.Load("ƒQ[ƒ€ƒNƒŠƒA.png");
 	_nextStageTexture.Load("nextStage.png");
 	_stageSelectTexture.Load("returnstageselect.png");
 	_retryTexture.Load("retry.png");
