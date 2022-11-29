@@ -71,7 +71,6 @@ void StageSelectDialog::Push(Vector2 mousePos){
 void StageSelectDialog::Render() {
 	if (!_openStaSeleDialog) return;
 
-	CGraphicsUtilities::RenderFillRect(0, 0, g_pGraphics->GetTargetWidth(), g_pGraphics->GetTargetHeight(), MOF_ARGB(125, 0, 0, 0));
 	_backTexture.Render(0,0);
 	_yesButton.Render();
 	_noButton.Render();
