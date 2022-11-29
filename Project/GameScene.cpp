@@ -12,6 +12,7 @@ void GameScene::Initialize()
 
 void GameScene::ReLoad()
 {
+	_gameSceneBGM.Initialize();
 	_field.ReLoad();
 }
 
@@ -31,6 +32,12 @@ void GameScene::Render()
 
 void GameScene::Release()
 {
+	_gameSceneBGM.Release();
 	_gameBackTexture.Release();
 	_field.Release();
+}
+
+void GameScene::StopBGM()
+{
+	_gameSceneBGM.Stop();
 }

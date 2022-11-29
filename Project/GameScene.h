@@ -4,7 +4,7 @@
 #include    "InputInGame.h"
 #include    "ContactFile.h"
 #include "BackGround.h"
-
+#include  "GameSceneBGM.h"
 class GameScene :public IBaseScene
 {
 private:
@@ -13,6 +13,7 @@ private:
     InputInGame _inputInGame;
     ContactFile* _contactFile;
     CTexture _gameBackTexture;
+    GameSceneBGM _gameSceneBGM;
 public:
     void SetContactFile(ContactFile* contactFile) { _contactFile = contactFile; }
     void Initialize();
@@ -20,5 +21,5 @@ public:
     void Update();
     void Render();
     void Release();
-
+    void StopBGM();
 };

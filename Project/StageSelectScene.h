@@ -7,9 +7,11 @@
 #include	"BackGround.h"
 #include	"StageSelectDialog.h"
 #include    "StageSelectBackGround.h"
+#include	"StageSelectSceneBGM.h"
 class StageSelectScene :public IBaseScene
 {
 private:
+	StageSelectSceneBGM _stageSelectSceneBGM;
 	GetDataFromFile _getDataFromFile;
 	InputStageSelect _inputInStageSelect;
 	BarManager _barManager;
@@ -29,6 +31,7 @@ public:
 	void StageClear() { _barManager.StageClear(); }
 	void Render();
 	void Release();
+	void StopBGM();
 	GetDataFromFile* GetGetDataFromFile() { return &_getDataFromFile; }
 private:
 	void Load();

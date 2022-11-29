@@ -28,6 +28,7 @@ void StageSelectScene::ReLoad()
 {
     _barManager.ReLoad();
     _stageSelectDialog.ReLoad();
+    _stageSelectSceneBGM.Initialize();
 }
 
 void StageSelectScene::Update()
@@ -47,9 +48,15 @@ void StageSelectScene::Render()
 
 void StageSelectScene::Release()
 {
+    _stageSelectSceneBGM.Release();
     _stageBackTexture.Release();
     _barManager.Release();
     _getDataFromFile.Release();
     _stageBackTexture.Release();
     _stageSelectDialog.Release();
+}
+
+void StageSelectScene::StopBGM()
+{
+    _stageSelectSceneBGM.Stop();
 }

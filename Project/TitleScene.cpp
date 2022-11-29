@@ -7,7 +7,7 @@ void TitleScene::Initialize()
 	_titleLogoTexture.Load("taitlelog.png");
 	_titleLogoLoopTexture.Load("titleloop.png");
 	SetTitleLogoAnimationStatus();
-
+	_titleBGM.Initialize();
 	_alpha = 255;
 }
 void TitleScene::SetTitleLogoAnimationStatus()
@@ -117,6 +117,7 @@ void TitleScene::SetTitleLogoAnimationStatus()
 
 void TitleScene::ReLoad()
 {
+	_titleBGM.Initialize();
 }
 void TitleScene::Update()
 {
@@ -154,6 +155,7 @@ void TitleScene::InputMouseKey()
 	if (g_pInput->IsMouseKeyPush(MOFMOUSE_LBUTTON))
 	{
 		SceneManager::Instance().ChangeScene(SCENE_TYPE::STAGESELECT);
+		
 	}
 }
 
@@ -179,6 +181,12 @@ void TitleScene::Release()
 	_startTexture.Release();
 	_titleLogoTexture.Release();
 	_titleLogoLoopTexture.Release();
+	_titleBGM.Release();
+}
+
+void TitleScene::StopBGM()
+{
+	_titleBGM.Stop();
 }
 
 namespace detail

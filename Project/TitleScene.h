@@ -3,9 +3,12 @@
 #include	"IBaseScene.h"
 #include	"BackGround.h"
 #include    "Mof.h"
+#include "TitleSceneBGM.h"
+
 class TitleScene :public IBaseScene
 {
 	BackGround _backGround;
+	TitleSceneBGM _titleBGM;
 	CSpriteMotionController	_logo;
 	CTexture _titleBackTexture;
 	CTexture _startTexture;
@@ -14,6 +17,7 @@ class TitleScene :public IBaseScene
 	CRectangle _titleBackRect;
 	CRectangle _titleLogoRect;
 	CRectangle  _titleLogoLoopRect;
+	
 	uint8_t _alpha;
 	
 	bool _end;
@@ -32,6 +36,7 @@ public:
 	void InputMouseKey();
 	void Render();
 	void Release();
+	void StopBGM();
 private:
 	int CalcSequence(float x);
 	void SetTitleLogoAnimationStatus();

@@ -119,6 +119,7 @@
     <ClCompile Include="GameClearLogoAnimation.cpp" />
     <ClCompile Include="GameOver.cpp" />
     <ClCompile Include="GameScene.cpp" />
+    <ClCompile Include="GameSceneBGM.cpp" />
     <ClCompile Include="GetDataFromFile.cpp" />
     <ClCompile Include="IBaseAccessories.cpp" />
     <ClCompile Include="IBaseScene.cpp" />
@@ -143,7 +144,9 @@
     <ClCompile Include="StageSelectBackGround.cpp" />
     <ClCompile Include="StageSelectDialog.cpp" />
     <ClCompile Include="StageSelectScene.cpp" />
+    <ClCompile Include="StageSelectSceneBGM.cpp" />
     <ClCompile Include="TitleScene.cpp" />
+    <ClCompile Include="TitleSceneBGM.cpp" />
     <ClCompile Include="Wall.cpp" />
     <ClCompile Include="WinMain.cpp" />
   </ItemGroup>
@@ -170,6 +173,7 @@
     <ClInclude Include="GameClearLogoAnimation.h" />
     <ClInclude Include="GameOver.h" />
     <ClInclude Include="GameScene.h" />
+    <ClInclude Include="GameSceneBGM.h" />
     <ClInclude Include="GetDataFromFile.h" />
     <ClInclude Include="IBaseAccessories.h" />
     <ClInclude Include="IBaseScene.h" />
@@ -195,7 +199,9 @@
     <ClInclude Include="StageSelectBackGround.h" />
     <ClInclude Include="StageSelectDialog.h" />
     <ClInclude Include="StageSelectScene.h" />
+    <ClInclude Include="StageSelectSceneBGM.h" />
     <ClInclude Include="TitleScene.h" />
+    <ClInclude Include="TitleSceneBGM.h" />
     <ClInclude Include="Wall.h" />
   </ItemGroup>
   <ItemGroup>
