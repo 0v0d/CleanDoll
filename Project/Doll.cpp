@@ -18,26 +18,25 @@ void Doll::DollAnimationInit()
 		"Wait",
 		0,0,
 		320,320,
-		false,{{wait,0,0},{wait,1,0},{wait,2,0},{wait,3,0},{wait,4,0},{wait,5,0},{wait,6,0},{wait,7,0},
-		{wait,8,0},{wait,9,0} ,{wait,10,0},{wait,11,0},{wait,12,0},{wait,13,0},{wait,14,0},{wait,15,0},{wait,16,0},
-		{wait,17,0},{wait,18,0},{wait,19,0},}
+		false,{{_wait,0,0},{_wait,1,0},{_wait,2,0},{_wait,3,0},{_wait,4,0},{_wait,5,0},{_wait,6,0},{_wait,7,0},
+		{_wait,8,0},{_wait,9,0} ,{_wait,10,0},{_wait,11,0},{_wait,12,0},{_wait,13,0},{_wait,14,0},{_wait,15,0},{_wait,16,0},
+		{_wait,17,0},{_wait,18,0},{_wait,19,0},}
 	},
 	{
 		"Wait",
 		0,320,
 		320,320,
-		false,{{wait,0,0},{wait,1,0},{wait,2,0},{wait,3,0},{wait,4,0},{wait,5,0},{wait,6,0},{wait,7,0},
-		{wait,8,0},{wait,9,0} ,{wait,10,0},{wait,11,0},{wait,12,0},{wait,13,0},{wait,14,0},{wait,15,0},{wait,16,0},
-		{wait,17,0},{wait,18,0},{wait,19,0},}
+		false,{{_wait,0,0},{_wait,1,0},{_wait,2,0},{_wait,3,0},{_wait,4,0},{_wait,5,0},{_wait,6,0},{_wait,7,0},
+		{_wait,8,0},{_wait,9,0} ,{_wait,10,0},{_wait,11,0},{_wait,12,0},{_wait,13,0},{_wait,14,0},{_wait,15,0},{_wait,16,0},
+		{_wait,17,0},{_wait,18,0},{_wait,19,0},}
 	},
 	{
 		"Walk",
 		0,640,
 		320,320,
-		true,{{wait,0,0},{wait,1,0},{wait,2,0},{wait,3,0},{wait,4,0},{wait,5,0},{wait,6,0},{wait,7,0},
-		{wait,8,0},{wait,9,0} ,{wait,10,0},{wait,11,0},{wait,12,0},{wait,13,0},{wait,14,0},{wait,15,0},{wait,16,0},
-		{wait,17,0},{wait,18,0},{wait,19,0},{wait,20,0},{wait,21,0},{wait,22,0},{wait,23,0},{wait,24,0},{wait,25,0},
-		{wait,26,0},{wait,27,0},{wait,28,0},{wait,29,0}}
+		true,{{_wait,0,0},{_wait,1,0},{_wait,2,0},{_wait,3,0},{_wait,4,0},{_wait,5,0},{_wait,6,0},{_wait,7,0},
+		{_wait,8,0},{_wait,9,0} ,{_wait,10,0},{_wait,11,0},{_wait,12,0},{_wait,13,0},{_wait,14,0},{_wait,15,0},{_wait,16,0},
+		{_wait,17,0},{_wait,18,0},{_wait,19,0}}
 	}
 
 	};
