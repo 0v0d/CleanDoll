@@ -47,6 +47,7 @@ void SceneManager::Release()
 
 void SceneManager::ChangeScene(SCENE_TYPE nextScene)
 {
+	_currentScene->StopBGM();
 	_currentScene = _sceneArray[nextScene];
 	_currentScene->ReLoad();
 }
