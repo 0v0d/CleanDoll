@@ -114,6 +114,8 @@
     <ClCompile Include="Field.cpp" />
     <ClCompile Include="GameApp.cpp" />
     <ClCompile Include="GameClear.cpp" />
+    <ClCompile Include="GameClearBackGround.cpp" />
+    <ClCompile Include="GameClearLogoAnimation.cpp" />
     <ClCompile Include="GameOver.cpp" />
     <ClCompile Include="GameScene.cpp" />
     <ClCompile Include="GetDataFromFile.cpp" />
@@ -160,6 +162,8 @@
     <ClInclude Include="Field.h" />
     <ClInclude Include="GameApp.h" />
     <ClInclude Include="GameClear.h" />
+    <ClInclude Include="GameClearBackGround.h" />
+    <ClInclude Include="GameClearLogoAnimation.h" />
     <ClInclude Include="GameOver.h" />
     <ClInclude Include="GameScene.h" />
     <ClInclude Include="GetDataFromFile.h" />

@@ -1,19 +1,26 @@
 #pragma once
 #include "Button.h"
+#include "GameClearLogoAnimation.h"
+#include "GameClearBackGround.h"
+
 
 class GameClear
 {
 private:
-	CSpriteMotionController _animation;
+	GameClearLogoAnimation _gameClearAnim;
+	GameClearBackGround _clearBackGround;
 	const int _menuValue = 2;
 	bool _goal;
 	bool _remove;
 	float _scale;
 	Vector2 _mousePos;
 
-	Vector2 _backStageClearPos, _stageClearPos, _nextButtonPos,_stageSelectButtonPos, _retryButtonPos;
-	CTexture _backStageClearTexture,_stageClearTecture, _nextStageTexture, _stageSelectTexture, _retryTexture;
+	Vector2  _nextButtonPos,_stageSelectButtonPos, _retryButtonPos;
+	CTexture _nextStageTexture, _stageSelectTexture, _retryTexture;
 	Button _nextStageButton,_stageSelectButton, _retryButton;
+	
+	Vector2 _backStageClearPos;
+	CTexture _backStageClearTexture;
 public:
 	void Initialize();
 	void Update();
@@ -25,6 +32,6 @@ public:
 private:
 	void TextureLoad();
 	bool IsGoal() const{ return _goal; }
-	void SetAnimation();
+	
 
 };
