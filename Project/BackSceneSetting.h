@@ -2,15 +2,17 @@
 #include	"Mof.h"
 #include	"IBaseSetting.h"
 #include	"SceneManager.h"
-
+#include    "Button.h"
 
 class BackSceneSetting :public IBaseSetting
 {
 private:
 	bool* _openBackSceneSetting;
 	bool* _openMenu;
-	CRectangle _closeButton, _backButton;
+	Button	 _closeButton, _backButton;
+	CTexture _closeTexture, _backTexture;
 	SCENE_TYPE _backScene;
+	
 
 public:
 	void Initialize();
@@ -26,4 +28,6 @@ public:
 	void Release();
 private:
 	void PushButton(Vector2 mousePos);
+	void CreateButton(Button*, Vector2 pos, CTexture*);
+
 };
