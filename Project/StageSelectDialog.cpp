@@ -2,7 +2,7 @@
 
 void StageSelectDialog::Initialize() {
 	_basePos.x = g_pGraphics->GetTargetWidth()/2;
-	_basePos.y = g_pGraphics->GetTargetHeight()*0.6;
+	_basePos.y = g_pGraphics->GetTargetHeight()/2;
 
 	LoadTexture();
 
