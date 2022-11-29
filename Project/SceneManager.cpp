@@ -15,14 +15,13 @@ void SceneManager::Initialize()
 	_sceneArray[SCENE_TYPE::STAGESELECT] = &stageSelect;
 	_sceneArray[SCENE_TYPE::GAME] = &game;
 
-	game.SetContactFile(stageSelect.GetGetDataFromFile()->GetContactFile());
+	stageSelect.GetCreateField()->SetField(game.GetField());
 
 	for (auto iter = _sceneArray.begin(); iter != _sceneArray.end(); iter++) 
 	{
 		iter->second->Initialize();
 	}
 
-	//_currentScene = _sceneArray[SCENE_TYPE::STAGESELECT];
 	_currentScene = _sceneArray[SCENE_TYPE::TITLE];
 }
 
@@ -30,6 +29,18 @@ void SceneManager::Update()
 {
 	_currentScene->Update();
 	
+}
+
+void SceneManager::SetMousePos(Vector2 mousePos) {
+	_currentScene->SetMousePos(mousePos);
+}
+
+void SceneManager::Push() {
+	_currentScene->Push();
+}
+
+void SceneManager::Pull() {
+	_currentScene->Pull();
 }
 
 void SceneManager::Render()

@@ -1,31 +1,25 @@
 #pragma once
-#include "Button.h"
+#include	"IBaseEndGameProcess.h"
+#include	"Button.h"
 
-class GameClear
+class GameClear:public IBaseEndGameProcess
 {
-private:
-	const int _menuValue = 2;
-	bool _goal;
-	bool _remove;
 	Vector2 _mousePos;
-	Vector2 _firstButtonPos;
-	Vector2 _secondButtonPos;
-	Vector2 _thirdButtonPos;
-	Button _nextStageButton;
-	Button _stageSelectButton;
-	Button _retryButton;
-	CTexture _nextStageTexture;
-	CTexture _stageSelectTexture;
-	CTexture _retryTexture;
+
+	Vector2 _firstButtonPos,_secondButtonPos,_thirdButtonPos;
+	Button _nextStageButton, _stageSelectButton, _retryButton;
+	CTexture _nextStageTexture, _stageSelectTexture, _retryTexture;
 public:
 	void Initialize();
+	void ReLoad();
+
 	void Update();
+	void SetMousePos(Vector2);
+	void Push();
+	void Pull();
+
 	void Render();
 	void Release();
-	void SetGoal(bool goal){ _goal = goal; }
-	void Reload();
-	bool IsRemove() { return _remove; }
 private:
-	void TextureLoad();
-	bool IsGoal() const{ return _goal; }
+	void LoadTexture();
 };

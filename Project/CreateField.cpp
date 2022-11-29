@@ -11,6 +11,7 @@ void CreateField::SetFieldStatu(int blockValueX, int blockValueY)
 	_blockValueX = blockValueX;
 	_blockValueY = blockValueY;
 
+	_blockManager->Delete();
 	_blockManager->CreateField(blockValueX, blockValueY);
 }
 

@@ -4,7 +4,7 @@
 class BlockManager
 {
 private:
-	Block** _blockArray;
+	Block** _blockArray = nullptr;
 	int _blockValueX, _blockValueY;
 	float _topSpace, _bottomSpace;
 	float _scale;

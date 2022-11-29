@@ -16,7 +16,12 @@ class SceneManager
 	std::map<SCENE_TYPE, IBaseScene*> _sceneArray;
 public:
 	void Initialize();
+
 	void Update();
+	void SetMousePos(Vector2);
+	void Push();
+	void Pull();
+
 	void Render();
 	void Release();
 

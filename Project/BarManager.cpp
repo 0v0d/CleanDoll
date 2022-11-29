@@ -4,7 +4,6 @@
 void BarManager::Initialize()
 {
 	LoadTexture();
-	_preview.SetPreviewTexture(_barArray->GetPreviewTexture());
 
 	_space = 300;
 	CalcuScale();
@@ -21,10 +20,6 @@ void BarManager::Initialize()
 	_slider.SetStatu(Vector2(_basePosition.x + _baseTexture.GetWidth() - _space * _baseBarScale, _basePosition.y + _baseTexture.GetHeight() / 2),
 		&_barTexture, &_buttonTexture, 0, VERTICAL);
 
-	_preview.Initialize();
-	_preview.CalcuBaseScale(_baseTexture.GetHeight());
-	_preview.CalcuBasePos(_space * _baseBarScale);
-	_preview.SetPreviewTexture(_barArray->GetPreviewTexture());
 }
 
 void BarManager::ReLoad() {
@@ -36,11 +31,11 @@ void BarManager::ReLoad() {
 
 void BarManager::LoadTexture() {
 	_baseTexture.Load("stageselect_base.png");
+	_frameTexture.Load("stageselect_flame.png");
 	_baseCleanBarTexture.Load("BaseCleanBar.png");
 	_baseDirtyBarTexture.Load("BaseDirtyBar.png");
 	_barTexture.Load("スクロールバー1.png");
 	_buttonTexture.Load("スクロールバー2.png");
-	_BrackFrame.Load("stageselect_flame.png");
 }
 
 void BarManager::CalcuScale() {
@@ -67,22 +62,23 @@ void BarManager::Update()
 	MoveBar(_slider.GetValue());
 }
 
-void BarManager::Push(Vector2 mPos)
+void BarManager::Push()
 {
 	_slider.PushSlider();
+
+	int stageNumber = GetBarNumber(_mousePos);
+	if (stageNumber != 1) {
+		StartStage(stageNumber);
+	}
 }
 
-void BarManager::Pull(Vector2 mPos)
+void BarManager::Pull()
 {
 	_slider.PullSlider();
 }
 
-void BarManager::StartStage(int barNumber)
-{
+void BarManager::StartStage(int barNumber){
 	_currentStage = barNumber;
-	_contactFile->LoadStage(_barArray[barNumber].GetStageDataTextName());
-
-	SceneManager::Instance().ChangeScene(SCENE_TYPE::GAME);
 }
 
 void BarManager::StartNextStage() {
@@ -96,16 +92,17 @@ void BarManager::StageClear() {
 	_barArray[_currentStage].Clear();
 }
 
-void BarManager::SetPreview(int barNumber) {
-	_preview.SetPreviewTexture(_barArray[barNumber].GetPreviewTexture()); 
-}
-
 void BarManager::MoveBar(float moveValue)
 {
 	for (int i = 0; i < _stageValue; i++)
 	{
 		_barArray[i].Move(moveValue);
 	}
+}
+
+Bar* BarManager::GetBar(int barNumber) {
+	if (barNumber < 0 || barNumber >= _stageValue) return nullptr;
+	return &_barArray[barNumber]; 
 }
 
 int BarManager::GetBarNumber(Vector2 mousePos) {
@@ -124,10 +121,9 @@ void BarManager::Render()
 	{
 		_barArray[i].Render();
 	}
-	_preview.Render();
-	_slider.Render();
-	_BrackFrame.Render(_basePosition.x, _basePosition.y);
 
+	_slider.Render();
+	_frameTexture.Render(_basePosition.x, _basePosition.y);
 }
 
 void BarManager::Release()
@@ -137,11 +133,10 @@ void BarManager::Release()
 		_barArray[i].Release();
 	}
 	delete[] _barArray;
-	_preview.Release();
 	_baseTexture.Release();
+	_frameTexture.Release();
 	_baseCleanBarTexture.Release();
 	_baseDirtyBarTexture.Release();
 	_barTexture.Release();
 	_buttonTexture.Release();
-	_BrackFrame.Release();
 }

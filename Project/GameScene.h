@@ -1,24 +1,27 @@
 #pragma once
 #include    "IBaseScene.h"
 #include    "Field.h"
-#include    "InputInGame.h"
-#include    "ContactFile.h"
-#include "BackGround.h"
+#include    "FieldUI.h"
+#include    "BackGround.h"
 
 class GameScene :public IBaseScene
 {
 private:
     Field _field;
+    FieldUI _fieldUI;
     BackGround _backGround;
-    InputInGame _inputInGame;
-    ContactFile* _contactFile;
     CTexture _gameBackTexture;
 public:
-    void SetContactFile(ContactFile* contactFile) { _contactFile = contactFile; }
     void Initialize();
     void ReLoad();
+
     void Update();
+    void SetMousePos(Vector2);
+    void Push();
+    void Pull();
+
     void Render();
     void Release();
 
+    Field* GetField() { return &_field; }
 };

@@ -1,25 +1,27 @@
 #pragma once
-#include "Button.h"
+#include	"IBaseEndGameProcess.h"
+#include	"Button.h"
 
-class GameOver
+class GameOver:public IBaseEndGameProcess
 {
 private:
-	bool _gameOver;
 	Vector2 _mousePos;
-	Button _retryButton;
-	Button _stageSelectButton;
-	Vector2 _firstButtonPos;
-	Vector2 _secondButtonPos;
-	CTexture _retryTexture;
-	CTexture _stageSelectTexture;
+
+	Button _retryButton, _stageSelectButton;
+	Vector2 _firstButtonPos, _secondButtonPos;
+	CTexture _retryTexture, _stageSelectTexture;
+
 public:
 	void Initialize();
+	void ReLoad();
+
 	void Update();
+	void SetMousePos(Vector2);
+	void Push();
+	void Pull();
+
 	void Render();
 	void Release();
-	void Reload();
-	void SetGameOver(bool gameOver) { _gameOver = gameOver; }
 private:
-	void TextureLoad();
-	bool IsGameOver() const { return _gameOver; }
+	void LoadTexture();
 };

@@ -1,6 +1,6 @@
 #pragma once
-#include	"BlockManager.h"
 #include	"Field.h"
+#include	"BlockManager.h"
 #include	"Object.h"
 #include	"Item.h"
 #include	"Dump.h"
@@ -8,8 +8,8 @@
 class CreateField
 {
 private:
-	BlockManager* _blockManager;
 	Field* _field;
+	BlockManager* _blockManager;
 	int _blockValueX, _blockValueY;
 public:
 	void SetField(Field* field);

@@ -1,8 +1,8 @@
 #pragma once
 #include	"Mof.h"
+#include	"string"
 #include	"CreateField.h"
-#include <string>
-
+#include	"BarManager.h"
 
 struct TextureArray
 {
@@ -14,7 +14,7 @@ struct TextureArray
 
 class ContactFile
 {
-	CreateField _createField;
+	CreateField* _createField;
 	FILE* _file;
 	char* _buffer;
 	long _fileSize;
@@ -31,21 +31,33 @@ class ContactFile
 	TextureArray _wallObjectTextureArray;
 	int _blockValueX, _blockValueY;
 
+	BarManager* _barManager;
+
 public:
 	~ContactFile() { Release(); }
 	void Initialize();
+	void SetCreateField(CreateField* createField) { _createField = createField; }
+	void SetBarManager(BarManager* barManager) { _barManager = barManager; }
+
 	void LoadStage(std::string stageName);
-	void LoadTexture(TextureArray* textureArray);
 	void LoadDoll();
-	void SetDoll(int x,int y);
+
+	void Release();
+	void Delete();
+
+	CreateField* GetCreateField() { return _createField; }
+
+private:
+	void LoadStageSelectData();
+
+	void LoadTexture(TextureArray* textureArray);
+	void SetDoll(int x, int y);
 	void NewChipData(TextureArray* textureArray);
 	void DeleteChipData(TextureArray* textureArray);
 	void DeleteTextureArray(TextureArray* textureArray);
+
 	void OpenFile(std::string fileName);
 	void CloseFile();
 	int GetValue(bool firstContact);
 	std::string GetString(bool firstContact);
-	void Release();
-	void Delete();
-	CreateField* GetCreateField() { return &_createField; }
 };

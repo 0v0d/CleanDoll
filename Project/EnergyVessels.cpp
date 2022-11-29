@@ -20,16 +20,19 @@ void EnergyVessels::Initialize()
 	_dollOnEnergyVessels.SetScale(_scale);
 	_dollOnEnergyVessels.SetPosition(Vector2(_vesselsPosition.x + _energyVesselsTexture.GetWidth() * _scale / 2,
 		_vesselsPosition.y + _energyVesselsTexture.GetHeight() * _scale / 2));
+
+	//åƒÇ—èoÇµèáÇ™Ç®Ç©ÇµÇ¢
+	if (_energyBarArray != nullptr) SetBarStatu();
 }
 
 void EnergyVessels::ReLoad()
 {
-
 	for (int i = 0; i < _maxEnergyValue; i++)
 	{
 		_energyBarArray[i].ChangeColor(&_renderColorArray[5]);
 	}
 	_dollOnEnergyVessels.ChangeFaceEzpression(_variationValue);
+	ChangeEnergyColor();
 }
 
 void EnergyVessels::LoadTexture()
@@ -71,15 +74,20 @@ void EnergyVessels::Update()
 
 }
 
-void EnergyVessels::CheckChangeEnergyColor()
+void EnergyVessels::SetCurrentEnergyValue(int currentEnergyValue) {
+	_currentEnergyValue = currentEnergyValue; 
+	ChangeEnergyColor();
+}
+
+void EnergyVessels::ChangeEnergyColor()
 {
 	int energyColorCount = 0;
 
 	for (auto itr = _renderColorArray.begin();itr != _renderColorArray.end();itr++) 
 	{
-		if (*_currentEnergyValue >= itr->first) 
+		if (_currentEnergyValue >= itr->first) 
 		{
-			for (int i = 0;i < *_currentEnergyValue;i++)
+			for (int i = 0;i < _currentEnergyValue;i++)
 			{
 				_energyBarArray[i].ChangeColor(&itr->second);
 			}
@@ -94,7 +102,7 @@ void EnergyVessels::Render()
 {	
 	for (int i = 0;i < _maxEnergyValue;i++) 
 	{
-		*_currentEnergyValue > i ? _energyBarArray[i].Render() : _energyBarArray[i].UsedEnergyRender();
+		_currentEnergyValue > i ? _energyBarArray[i].Render() : _energyBarArray[i].UsedEnergyRender();
 	}
 
 	_energyVesselsTexture.RenderScale(_vesselsPosition.x, _vesselsPosition.y, _scale);

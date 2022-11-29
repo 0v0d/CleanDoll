@@ -6,7 +6,6 @@ void StageSelectDialog::Initialize() {
 
 	LoadTexture();
 
-	_openStaSeleDialog = false;
 	CreateButton(&_yesButton, Vector2(_basePos.x - _space / 2 - _yesTexture.GetWidth(), _basePos.y), &_yesTexture);
 	CreateButton(&_noButton, Vector2(_basePos.x + _space / 2, _basePos.y), &_noTexture);
 }

@@ -120,7 +120,6 @@ void TitleScene::ReLoad()
 }
 void TitleScene::Update()
 {
-	InputMouseKey();
 	//Click to startのアニメーション用
 	_time += _increase;
 	_alpha = CalcSequence(fmod(_time, 1));
@@ -149,12 +148,16 @@ void TitleScene::Update()
 	
 }
 
-void TitleScene::InputMouseKey()
-{
-	if (g_pInput->IsMouseKeyPush(MOFMOUSE_LBUTTON))
-	{
-		SceneManager::Instance().ChangeScene(SCENE_TYPE::STAGESELECT);
-	}
+void TitleScene::SetMousePos(Vector2) {
+
+}
+
+void TitleScene::Push() {
+	SceneManager::Instance().ChangeScene(SCENE_TYPE::STAGESELECT);
+}
+
+void TitleScene::Pull() {
+
 }
 
 void TitleScene::Render()
