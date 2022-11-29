@@ -5,8 +5,8 @@ void Preview::Initialize() {
 }
 
 void Preview::LoadTexture() {
-	_baseTexture.Load("プレビュー枠.png");
-	_BrackFrame.Load("stagepreview_base2.png");
+	_baseTexture.Load("stagepreview_base.png");
+	_BrackFrame.Load("stagepreview_flame.png");
 }
 
 
