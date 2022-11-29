@@ -5,6 +5,7 @@
 class StageSelectDialog
 {
 	Vector2  _basePos;
+	CTexture _backTexture;
 	CTexture _yesTexture,_noTexture;
 	Button  _yesButton, _noButton;
 	const float _space = 100;
