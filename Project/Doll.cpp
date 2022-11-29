@@ -62,7 +62,7 @@ void Doll::DollAnimationUpdate()
 
 	if (_motionController.IsEndMotion())
 	{
-		_motionController.ChangeMotion(1);
+		_motionController.ChangeMotion(AnimationRoop());
 	}
 	if (_move)
 	{
