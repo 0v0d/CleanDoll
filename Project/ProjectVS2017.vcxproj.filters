@@ -188,19 +188,6 @@
     <ClCompile Include="StageSelectBackGround.cpp">
       <Filter>ソース ファイル\StageSelectScene</Filter>
     </ClCompile>
-    <ClCompile Include="GameClearBackGround.cpp">
-      <Filter>ソース ファイル\GameScene</Filter>
-    </ClCompile>
-    <ClCompile Include="GameClearLogoAnimation.cpp">
-    <ClCompile Include="TitleSceneBGM.cpp">
-      <Filter>ソース ファイル\TitleScene</Filter>
-    </ClCompile>
-    <ClCompile Include="StageSelectSceneBGM.cpp">
-      <Filter>ソース ファイル\StageSelectScene</Filter>
-    </ClCompile>
-    <ClCompile Include="GameSceneBGM.cpp">
-      <Filter>ソース ファイル\GameScene</Filter>
-    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GameApp.h">
@@ -343,19 +330,6 @@
     </ClInclude>
     <ClInclude Include="StageSelectBackGround.h">
       <Filter>ソース ファイル\StageSelectScene</Filter>
-    </ClInclude>
-    <ClInclude Include="GameClearBackGround.h">
-      <Filter>ソース ファイル\GameScene</Filter>
-    </ClInclude>
-    <ClInclude Include="GameClearLogoAnimation.h">
-    <ClInclude Include="TitleSceneBGM.h">
-      <Filter>ソース ファイル\TitleScene</Filter>
-    </ClInclude>
-    <ClInclude Include="StageSelectSceneBGM.h">
-      <Filter>ソース ファイル\StageSelectScene</Filter>
-    </ClInclude>
-    <ClInclude Include="GameSceneBGM.h">
-      <Filter>ソース ファイル\GameScene</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
