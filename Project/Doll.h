@@ -34,7 +34,7 @@ private:
 	int _dustDumpValue,_waterDumpValue;
 	CSpriteMotionController	_motionController;
 	bool _heldMop;
-	const int wait = 3;
+	const int _wait = 3;
 	int _motionCount;
 	const int _textureValue = 30;
 	Vector2 _dollTextureSize;
