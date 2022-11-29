@@ -187,6 +187,11 @@
     </ClCompile>
     <ClCompile Include="StageSelectBackGround.cpp">
       <Filter>ソース ファイル\StageSelectScene</Filter>
+    <ClCompile Include="GameClearLogoAnimation.cpp">
+      <Filter>ソース ファイル</Filter>
+    </ClCompile>
+    <ClCompile Include="GameClearBackGround.cpp">
+      <Filter>ソース ファイル</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -330,6 +335,11 @@
     </ClInclude>
     <ClInclude Include="StageSelectBackGround.h">
       <Filter>ソース ファイル\StageSelectScene</Filter>
+    <ClInclude Include="GameClearLogoAnimation.h">
+      <Filter>ソース ファイル</Filter>
+    </ClInclude>
+    <ClInclude Include="GameClearBackGround.h">
+      <Filter>ソース ファイル</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

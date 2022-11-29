@@ -1,6 +1,12 @@
 #include "GameOver.h"
 #include "SceneManager.h"
 
+void GameOver::TextureLoad()
+{
+	_stageSelectTexture.Load("returnstageselect.png");
+	_retryTexture.Load("retry.png");
+}
+
 void GameOver::Initialize()
 {
 	TextureLoad();
@@ -51,10 +57,4 @@ void GameOver::Release()
 {
 	_retryTexture.Release();
 	_stageSelectTexture.Release();
-}
-
-void GameOver::TextureLoad()
-{
-	_retryTexture.Load("ステージ選択へ.png");
-	_stageSelectTexture.Load("ステージ選択へ.png");
 }
