@@ -4,7 +4,7 @@ void OpenSetting::Initialize()
 {
 
 	_openButtonTexture.Load("ê›íËÉçÉS.png");
-	_openSettingPosition = Vector2(1920-200, 50);
+	_openSettingPosition = Vector2(1920-150, 30);
 	_openButton.SetStatu(_openSettingPosition, &_openButtonTexture);
 }
 
