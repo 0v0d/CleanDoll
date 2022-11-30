@@ -21,7 +21,4 @@ public:
 	void SetWallData(CTexture* TextureArray, char** dataArray,int lineValueX);
 	void SetWallObjectkData(CTexture* TextureArray, char** dataArray, int lineValueX);
 	void SetDoll(int x, int y);
-
-private:
-	void SetBlockManager() { _blockManager = _field->GetBlockManager(); }
 };

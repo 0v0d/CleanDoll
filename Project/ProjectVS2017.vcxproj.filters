@@ -9,15 +9,6 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
-    <Filter Include="ソース ファイル\StageSelectScene">
-      <UniqueIdentifier>{e0cbfe92-2b12-4faa-8eb0-bbe219cafb77}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="ソース ファイル\TitleScene">
-      <UniqueIdentifier>{d355c8fb-3574-4325-9b91-3afbed38e2a2}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="ソース ファイル\GameScene">
-      <UniqueIdentifier>{7a1eff15-0d49-4c5e-9642-65ba8353c068}</UniqueIdentifier>
-    </Filter>
     <Filter Include="ソース ファイル\Interface">
       <UniqueIdentifier>{6958bea7-901f-4509-a267-eeeb502ebf24}</UniqueIdentifier>
     </Filter>
@@ -33,26 +24,50 @@
     <Filter Include="ソース ファイル\UI\Button">
       <UniqueIdentifier>{c0ccf73d-ff63-4b72-845f-dd1b3334b46f}</UniqueIdentifier>
     </Filter>
-    <Filter Include="ソース ファイル\GameScene\FieldUI">
+    <Filter Include="ソース ファイル\Menu\SettingManager">
+      <UniqueIdentifier>{cb099dee-c207-450c-a9c4-bed3d7bd753d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\Menu\SettingManager\SetUpSetting">
+      <UniqueIdentifier>{af1855bd-797e-46aa-9e48-9f29292dca7a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\Scene">
+      <UniqueIdentifier>{93934022-e01d-4d07-afc2-50d6bbbacd25}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\Scene\ContactFile">
+      <UniqueIdentifier>{e9b3f711-f046-452b-b5d2-a76e6662195d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\Scene\GameScene">
+      <UniqueIdentifier>{7a1eff15-0d49-4c5e-9642-65ba8353c068}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\Scene\GameScene\FieldUI">
       <UniqueIdentifier>{e0288a8b-2b26-4472-b8ac-88de56ea53b1}</UniqueIdentifier>
     </Filter>
-    <Filter Include="ソース ファイル\GameScene\FieldUI\RemainningDump">
+    <Filter Include="ソース ファイル\Scene\GameScene\FieldUI\RemainningDump">
       <UniqueIdentifier>{73009d71-3341-49f0-b938-fbb83d857334}</UniqueIdentifier>
     </Filter>
-    <Filter Include="ソース ファイル\GameScene\FieldUI\EnergyUI">
+    <Filter Include="ソース ファイル\Scene\GameScene\FieldUI\EnergyUI">
       <UniqueIdentifier>{3fb623dd-534d-4c0f-a7d2-d3954fe91928}</UniqueIdentifier>
     </Filter>
-    <Filter Include="ソース ファイル\GameScene\EndGameProcess">
+    <Filter Include="ソース ファイル\Scene\GameScene\EndGameProcess">
       <UniqueIdentifier>{387d070d-2621-4043-9612-081dceeaa528}</UniqueIdentifier>
     </Filter>
-    <Filter Include="ソース ファイル\GameScene\Field">
+    <Filter Include="ソース ファイル\Scene\GameScene\Field">
       <UniqueIdentifier>{a8e4a4f3-3938-4a36-ad39-bde9519aa032}</UniqueIdentifier>
     </Filter>
-    <Filter Include="ソース ファイル\GameScene\Field\BlockManager">
+    <Filter Include="ソース ファイル\Scene\GameScene\Field\BlockManager">
       <UniqueIdentifier>{7ff9268f-cc25-46c2-bac3-3099a1b3a322}</UniqueIdentifier>
     </Filter>
-    <Filter Include="ソース ファイル\GameScene\Field\BlockManager\Object">
+    <Filter Include="ソース ファイル\Scene\GameScene\Field\BlockManager\Object">
       <UniqueIdentifier>{4c867a4f-ad7c-45c9-9605-3faedbf79073}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\Scene\TitleScene">
+      <UniqueIdentifier>{d355c8fb-3574-4325-9b91-3afbed38e2a2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\Scene\StageSelectScene">
+      <UniqueIdentifier>{e0cbfe92-2b12-4faa-8eb0-bbe219cafb77}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\Scene\StageSelectScene\BarManager">
+      <UniqueIdentifier>{db711112-292a-43c0-8905-1d947db95d03}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -62,68 +77,35 @@
     <ClCompile Include="GameApp.cpp">
       <Filter>ソース ファイル</Filter>
     </ClCompile>
-    <ClCompile Include="SceneManager.cpp">
-      <Filter>ソース ファイル</Filter>
-    </ClCompile>
     <ClCompile Include="IBaseScene.cpp">
       <Filter>ソース ファイル\Interface</Filter>
     </ClCompile>
     <ClCompile Include="TitleScene.cpp">
-      <Filter>ソース ファイル\TitleScene</Filter>
+      <Filter>ソース ファイル\Scene\TitleScene</Filter>
     </ClCompile>
     <ClCompile Include="StageSelectScene.cpp">
-      <Filter>ソース ファイル\StageSelectScene</Filter>
-    </ClCompile>
-    <ClCompile Include="ContactFile.cpp">
-      <Filter>ソース ファイル</Filter>
-    </ClCompile>
-    <ClCompile Include="CreateField.cpp">
-      <Filter>ソース ファイル</Filter>
+      <Filter>ソース ファイル\Scene\StageSelectScene</Filter>
     </ClCompile>
     <ClCompile Include="Menu.cpp">
       <Filter>ソース ファイル\Menu</Filter>
     </ClCompile>
-    <ClCompile Include="AudioSetting.cpp">
-      <Filter>ソース ファイル\Menu</Filter>
-    </ClCompile>
-    <ClCompile Include="InputMenu.cpp">
-      <Filter>ソース ファイル\Menu</Filter>
-    </ClCompile>
-    <ClCompile Include="SettingManager.cpp">
-      <Filter>ソース ファイル\Menu</Filter>
-    </ClCompile>
-    <ClCompile Include="Bar.cpp">
-      <Filter>ソース ファイル\StageSelectScene</Filter>
-    </ClCompile>
-    <ClCompile Include="BarManager.cpp">
-      <Filter>ソース ファイル\StageSelectScene</Filter>
-    </ClCompile>
-    <ClCompile Include="SetUpSetting.cpp">
-      <Filter>ソース ファイル\Menu</Filter>
-    </ClCompile>
-    <ClCompile Include="OpenSetting.cpp">
-      <Filter>ソース ファイル\Menu</Filter>
-    </ClCompile>
-    <ClCompile Include="BackSceneSetting.cpp">
-      <Filter>ソース ファイル\Menu</Filter>
-    </ClCompile>
     <ClCompile Include="Preview.cpp">
-      <Filter>ソース ファイル\StageSelectScene</Filter>
+      <Filter>ソース ファイル\Scene\StageSelectScene</Filter>
     </ClCompile>
     <ClCompile Include="RemainingDumpUI.cpp">
-      <Filter>ソース ファイル\GameScene\FieldUI\RemainningDump</Filter>
+      <Filter>ソース ファイル\Scene\GameScene\FieldUI\RemainningDump</Filter>
     </ClCompile>
     <ClCompile Include="RemainingIcon.cpp">
-      <Filter>ソース ファイル\GameScene\FieldUI\RemainningDump</Filter>
+      <Filter>ソース ファイル\Scene\GameScene\FieldUI\RemainningDump</Filter>
     </ClCompile>
     <ClCompile Include="DollOnEnergyVessels.cpp">
-      <Filter>ソース ファイル\GameScene\FieldUI\EnergyUI</Filter>
+      <Filter>ソース ファイル\Scene\GameScene\FieldUI\EnergyUI</Filter>
     </ClCompile>
     <ClCompile Include="EnergyBar.cpp">
-      <Filter>ソース ファイル\GameScene\FieldUI\EnergyUI</Filter>
+      <Filter>ソース ファイル\Scene\GameScene\FieldUI\EnergyUI</Filter>
     </ClCompile>
     <ClCompile Include="EnergyVessels.cpp">
-      <Filter>ソース ファイル\GameScene\FieldUI\EnergyUI</Filter>
+      <Filter>ソース ファイル\Scene\GameScene\FieldUI\EnergyUI</Filter>
     </ClCompile>
     <ClCompile Include="SliderBar.cpp">
       <Filter>ソース ファイル\UI\Slider</Filter>
@@ -141,10 +123,10 @@
       <Filter>ソース ファイル\UI</Filter>
     </ClCompile>
     <ClCompile Include="StageSelectDialog.cpp">
-      <Filter>ソース ファイル\StageSelectScene</Filter>
+      <Filter>ソース ファイル\Scene\StageSelectScene</Filter>
     </ClCompile>
     <ClCompile Include="StageSelectBackGround.cpp">
-      <Filter>ソース ファイル\StageSelectScene</Filter>
+      <Filter>ソース ファイル\Scene\StageSelectScene</Filter>
     </ClCompile>
     <ClCompile Include="IBaseAccessories.cpp">
       <Filter>ソース ファイル\Interface</Filter>
@@ -156,120 +138,120 @@
       <Filter>ソース ファイル</Filter>
     </ClCompile>
     <ClCompile Include="EndGameProcess.cpp">
-      <Filter>ソース ファイル\GameScene\EndGameProcess</Filter>
+      <Filter>ソース ファイル\Scene\GameScene\EndGameProcess</Filter>
     </ClCompile>
     <ClCompile Include="GameOver.cpp">
-      <Filter>ソース ファイル\GameScene\EndGameProcess</Filter>
+      <Filter>ソース ファイル\Scene\GameScene\EndGameProcess</Filter>
     </ClCompile>
     <ClCompile Include="GameClear.cpp">
-      <Filter>ソース ファイル\GameScene\EndGameProcess</Filter>
+      <Filter>ソース ファイル\Scene\GameScene\EndGameProcess</Filter>
     </ClCompile>
     <ClCompile Include="IBaseEndGameProcess.cpp">
       <Filter>ソース ファイル\Interface</Filter>
     </ClCompile>
     <ClCompile Include="Doll.cpp">
-      <Filter>ソース ファイル\GameScene\Field</Filter>
+      <Filter>ソース ファイル\Scene\GameScene\Field</Filter>
     </ClCompile>
     <ClCompile Include="Field.cpp">
-      <Filter>ソース ファイル\GameScene\Field</Filter>
+      <Filter>ソース ファイル\Scene\GameScene\Field</Filter>
     </ClCompile>
     <ClCompile Include="Block.cpp">
-      <Filter>ソース ファイル\GameScene\Field\BlockManager</Filter>
+      <Filter>ソース ファイル\Scene\GameScene\Field\BlockManager</Filter>
     </ClCompile>
     <ClCompile Include="BlockManager.cpp">
-      <Filter>ソース ファイル\GameScene\Field\BlockManager</Filter>
+      <Filter>ソース ファイル\Scene\GameScene\Field\BlockManager</Filter>
     </ClCompile>
     <ClCompile Include="BlockOnObject.cpp">
-      <Filter>ソース ファイル\GameScene\Field\BlockManager</Filter>
+      <Filter>ソース ファイル\Scene\GameScene\Field\BlockManager</Filter>
     </ClCompile>
     <ClCompile Include="Wall.cpp">
-      <Filter>ソース ファイル\GameScene\Field\BlockManager</Filter>
+      <Filter>ソース ファイル\Scene\GameScene\Field\BlockManager</Filter>
     </ClCompile>
     <ClCompile Include="FieldUI.cpp">
-      <Filter>ソース ファイル\GameScene\FieldUI</Filter>
+      <Filter>ソース ファイル\Scene\GameScene\FieldUI</Filter>
     </ClCompile>
     <ClCompile Include="Dump.cpp">
-      <Filter>ソース ファイル\GameScene\Field\BlockManager\Object</Filter>
+      <Filter>ソース ファイル\Scene\GameScene\Field\BlockManager\Object</Filter>
     </ClCompile>
     <ClCompile Include="Item.cpp">
-      <Filter>ソース ファイル\GameScene\Field\BlockManager\Object</Filter>
+      <Filter>ソース ファイル\Scene\GameScene\Field\BlockManager\Object</Filter>
     </ClCompile>
     <ClCompile Include="Object.cpp">
-      <Filter>ソース ファイル\GameScene\Field\BlockManager\Object</Filter>
+      <Filter>ソース ファイル\Scene\GameScene\Field\BlockManager\Object</Filter>
     </ClCompile>
     <ClCompile Include="GameScene.cpp">
-      <Filter>ソース ファイル\GameScene</Filter>
+      <Filter>ソース ファイル\Scene\GameScene</Filter>
+    </ClCompile>
+    <ClCompile Include="SettingManager.cpp">
+      <Filter>ソース ファイル\Menu\SettingManager</Filter>
+    </ClCompile>
+    <ClCompile Include="OpenSetting.cpp">
+      <Filter>ソース ファイル\Menu\SettingManager</Filter>
+    </ClCompile>
+    <ClCompile Include="AudioSetting.cpp">
+      <Filter>ソース ファイル\Menu\SettingManager\SetUpSetting</Filter>
+    </ClCompile>
+    <ClCompile Include="BackSceneSetting.cpp">
+      <Filter>ソース ファイル\Menu\SettingManager\SetUpSetting</Filter>
+    </ClCompile>
+    <ClCompile Include="SetUpSetting.cpp">
+      <Filter>ソース ファイル\Menu\SettingManager\SetUpSetting</Filter>
+    </ClCompile>
+    <ClCompile Include="Bar.cpp">
+      <Filter>ソース ファイル\Scene\StageSelectScene\BarManager</Filter>
+    </ClCompile>
+    <ClCompile Include="BarManager.cpp">
+      <Filter>ソース ファイル\Scene\StageSelectScene\BarManager</Filter>
+    </ClCompile>
+    <ClCompile Include="OperateDoll.cpp">
+      <Filter>ソース ファイル\Scene\GameScene\Field</Filter>
+    </ClCompile>
+    <ClCompile Include="ContactFile.cpp">
+      <Filter>ソース ファイル\Scene\ContactFile</Filter>
+    </ClCompile>
+    <ClCompile Include="CreateField.cpp">
+      <Filter>ソース ファイル\Scene\ContactFile</Filter>
+    </ClCompile>
+    <ClCompile Include="SceneManager.cpp">
+      <Filter>ソース ファイル\Scene</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GameApp.h">
       <Filter>ソース ファイル</Filter>
     </ClInclude>
-    <ClInclude Include="SceneManager.h">
-      <Filter>ソース ファイル</Filter>
-    </ClInclude>
     <ClInclude Include="IBaseScene.h">
       <Filter>ソース ファイル\Interface</Filter>
     </ClInclude>
     <ClInclude Include="TitleScene.h">
-      <Filter>ソース ファイル\TitleScene</Filter>
+      <Filter>ソース ファイル\Scene\TitleScene</Filter>
     </ClInclude>
     <ClInclude Include="StageSelectScene.h">
-      <Filter>ソース ファイル\StageSelectScene</Filter>
-    </ClInclude>
-    <ClInclude Include="ContactFile.h">
-      <Filter>ソース ファイル</Filter>
-    </ClInclude>
-    <ClInclude Include="CreateField.h">
-      <Filter>ソース ファイル</Filter>
+      <Filter>ソース ファイル\Scene\StageSelectScene</Filter>
     </ClInclude>
     <ClInclude Include="Menu.h">
       <Filter>ソース ファイル\Menu</Filter>
     </ClInclude>
-    <ClInclude Include="AudioSetting.h">
-      <Filter>ソース ファイル\Menu</Filter>
-    </ClInclude>
-    <ClInclude Include="InputMenu.h">
-      <Filter>ソース ファイル\Menu</Filter>
-    </ClInclude>
-    <ClInclude Include="SettingManager.h">
-      <Filter>ソース ファイル\Menu</Filter>
-    </ClInclude>
-    <ClInclude Include="Bar.h">
-      <Filter>ソース ファイル\StageSelectScene</Filter>
-    </ClInclude>
-    <ClInclude Include="BarManager.h">
-      <Filter>ソース ファイル\StageSelectScene</Filter>
-    </ClInclude>
     <ClInclude Include="resource.h">
       <Filter>リソース ファイル</Filter>
     </ClInclude>
-    <ClInclude Include="OpenSetting.h">
-      <Filter>ソース ファイル\Menu</Filter>
-    </ClInclude>
-    <ClInclude Include="BackSceneSetting.h">
-      <Filter>ソース ファイル\Menu</Filter>
-    </ClInclude>
-    <ClInclude Include="SetUpSetting.h">
-      <Filter>ソース ファイル\Menu</Filter>
-    </ClInclude>
     <ClInclude Include="Preview.h">
-      <Filter>ソース ファイル\StageSelectScene</Filter>
+      <Filter>ソース ファイル\Scene\StageSelectScene</Filter>
     </ClInclude>
     <ClInclude Include="RemainingDumpUI.h">
-      <Filter>ソース ファイル\GameScene\FieldUI\RemainningDump</Filter>
+      <Filter>ソース ファイル\Scene\GameScene\FieldUI\RemainningDump</Filter>
     </ClInclude>
     <ClInclude Include="RemainingIcon.h">
-      <Filter>ソース ファイル\GameScene\FieldUI\RemainningDump</Filter>
+      <Filter>ソース ファイル\Scene\GameScene\FieldUI\RemainningDump</Filter>
     </ClInclude>
     <ClInclude Include="DollOnEnergyVessels.h">
-      <Filter>ソース ファイル\GameScene\FieldUI\EnergyUI</Filter>
+      <Filter>ソース ファイル\Scene\GameScene\FieldUI\EnergyUI</Filter>
     </ClInclude>
     <ClInclude Include="EnergyBar.h">
-      <Filter>ソース ファイル\GameScene\FieldUI\EnergyUI</Filter>
+      <Filter>ソース ファイル\Scene\GameScene\FieldUI\EnergyUI</Filter>
     </ClInclude>
     <ClInclude Include="EnergyVessels.h">
-      <Filter>ソース ファイル\GameScene\FieldUI\EnergyUI</Filter>
+      <Filter>ソース ファイル\Scene\GameScene\FieldUI\EnergyUI</Filter>
     </ClInclude>
     <ClInclude Include="Slider.h">
       <Filter>ソース ファイル\UI\Slider</Filter>
@@ -287,10 +269,10 @@
       <Filter>ソース ファイル\UI</Filter>
     </ClInclude>
     <ClInclude Include="StageSelectDialog.h">
-      <Filter>ソース ファイル\StageSelectScene</Filter>
+      <Filter>ソース ファイル\Scene\StageSelectScene</Filter>
     </ClInclude>
     <ClInclude Include="StageSelectBackGround.h">
-      <Filter>ソース ファイル\StageSelectScene</Filter>
+      <Filter>ソース ファイル\Scene\StageSelectScene</Filter>
     </ClInclude>
     <ClInclude Include="IBaseAccessories.h">
       <Filter>ソース ファイル\Interface</Filter>
@@ -302,49 +284,82 @@
       <Filter>ソース ファイル</Filter>
     </ClInclude>
     <ClInclude Include="EndGameProcess.h">
-      <Filter>ソース ファイル\GameScene\EndGameProcess</Filter>
+      <Filter>ソース ファイル\Scene\GameScene\EndGameProcess</Filter>
     </ClInclude>
     <ClInclude Include="GameOver.h">
-      <Filter>ソース ファイル\GameScene\EndGameProcess</Filter>
+      <Filter>ソース ファイル\Scene\GameScene\EndGameProcess</Filter>
     </ClInclude>
     <ClInclude Include="GameClear.h">
-      <Filter>ソース ファイル\GameScene\EndGameProcess</Filter>
+      <Filter>ソース ファイル\Scene\GameScene\EndGameProcess</Filter>
     </ClInclude>
     <ClInclude Include="IBaseEndGameProcess.h">
       <Filter>ソース ファイル\Interface</Filter>
     </ClInclude>
     <ClInclude Include="Doll.h">
-      <Filter>ソース ファイル\GameScene\Field</Filter>
+      <Filter>ソース ファイル\Scene\GameScene\Field</Filter>
     </ClInclude>
     <ClInclude Include="Field.h">
-      <Filter>ソース ファイル\GameScene\Field</Filter>
+      <Filter>ソース ファイル\Scene\GameScene\Field</Filter>
     </ClInclude>
     <ClInclude Include="Block.h">
-      <Filter>ソース ファイル\GameScene\Field\BlockManager</Filter>
+      <Filter>ソース ファイル\Scene\GameScene\Field\BlockManager</Filter>
     </ClInclude>
     <ClInclude Include="BlockManager.h">
-      <Filter>ソース ファイル\GameScene\Field\BlockManager</Filter>
+      <Filter>ソース ファイル\Scene\GameScene\Field\BlockManager</Filter>
     </ClInclude>
     <ClInclude Include="BlockOnObject.h">
-      <Filter>ソース ファイル\GameScene\Field\BlockManager</Filter>
+      <Filter>ソース ファイル\Scene\GameScene\Field\BlockManager</Filter>
     </ClInclude>
     <ClInclude Include="Wall.h">
-      <Filter>ソース ファイル\GameScene\Field\BlockManager</Filter>
+      <Filter>ソース ファイル\Scene\GameScene\Field\BlockManager</Filter>
     </ClInclude>
     <ClInclude Include="FieldUI.h">
-      <Filter>ソース ファイル\GameScene\FieldUI</Filter>
+      <Filter>ソース ファイル\Scene\GameScene\FieldUI</Filter>
     </ClInclude>
     <ClInclude Include="Dump.h">
-      <Filter>ソース ファイル\GameScene\Field\BlockManager\Object</Filter>
+      <Filter>ソース ファイル\Scene\GameScene\Field\BlockManager\Object</Filter>
     </ClInclude>
     <ClInclude Include="Item.h">
-      <Filter>ソース ファイル\GameScene\Field\BlockManager\Object</Filter>
+      <Filter>ソース ファイル\Scene\GameScene\Field\BlockManager\Object</Filter>
     </ClInclude>
     <ClInclude Include="Object.h">
-      <Filter>ソース ファイル\GameScene\Field\BlockManager\Object</Filter>
+      <Filter>ソース ファイル\Scene\GameScene\Field\BlockManager\Object</Filter>
     </ClInclude>
     <ClInclude Include="GameScene.h">
-      <Filter>ソース ファイル\GameScene</Filter>
+      <Filter>ソース ファイル\Scene\GameScene</Filter>
+    </ClInclude>
+    <ClInclude Include="SettingManager.h">
+      <Filter>ソース ファイル\Menu\SettingManager</Filter>
+    </ClInclude>
+    <ClInclude Include="OpenSetting.h">
+      <Filter>ソース ファイル\Menu\SettingManager</Filter>
+    </ClInclude>
+    <ClInclude Include="AudioSetting.h">
+      <Filter>ソース ファイル\Menu\SettingManager\SetUpSetting</Filter>
+    </ClInclude>
+    <ClInclude Include="BackSceneSetting.h">
+      <Filter>ソース ファイル\Menu\SettingManager\SetUpSetting</Filter>
+    </ClInclude>
+    <ClInclude Include="SetUpSetting.h">
+      <Filter>ソース ファイル\Menu\SettingManager\SetUpSetting</Filter>
+    </ClInclude>
+    <ClInclude Include="Bar.h">
+      <Filter>ソース ファイル\Scene\StageSelectScene\BarManager</Filter>
+    </ClInclude>
+    <ClInclude Include="BarManager.h">
+      <Filter>ソース ファイル\Scene\StageSelectScene\BarManager</Filter>
+    </ClInclude>
+    <ClInclude Include="OperateDoll.h">
+      <Filter>ソース ファイル\Scene\GameScene\Field</Filter>
+    </ClInclude>
+    <ClInclude Include="CreateField.h">
+      <Filter>ソース ファイル\Scene\ContactFile</Filter>
+    </ClInclude>
+    <ClInclude Include="ContactFile.h">
+      <Filter>ソース ファイル\Scene\ContactFile</Filter>
+    </ClInclude>
+    <ClInclude Include="SceneManager.h">
+      <Filter>ソース ファイル\Scene</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

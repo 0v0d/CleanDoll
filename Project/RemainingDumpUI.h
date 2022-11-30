@@ -20,7 +20,8 @@ class RemainingDumpUI
 public:
 	void Initialize();
 	void ReLoad();
-	void SetDumpValue(int dustValue, int waterValue);
+	void SetDustValue(int dumpValue);
+	void SetWaterValue(int dumpValue);
 	void CleanDust();
 	void CleanWater();
 	void Render();

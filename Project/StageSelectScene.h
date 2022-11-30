@@ -37,4 +37,5 @@ public:
 	CreateField* GetCreateField() { return &_createField; }
 private:
 	void LoadTexture();
+	void LoadStage(int stageNumber);
 };

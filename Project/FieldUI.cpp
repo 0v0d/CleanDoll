@@ -14,8 +14,12 @@ void FieldUI::SetMaxEnergyValue(int energyValue) {
 	_energyVessels.SetMaxEnergyValue(energyValue);
 }
 
-void FieldUI::SetDumpValue(int dustValue, int waterValue) {
-	_remainingDumpUI.SetDumpValue(dustValue, waterValue);
+void FieldUI::SetDustDumpValue(int dumpValue) {
+	_remainingDumpUI.SetDustValue(dumpValue);
+}
+
+void FieldUI::SetWaterDumpValue(int dumpValue) {
+	_remainingDumpUI.SetWaterValue(dumpValue);
 }
 
 void FieldUI::Update(){

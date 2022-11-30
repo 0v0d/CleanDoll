@@ -11,7 +11,6 @@ void StageSelectDialog::Initialize() {
 }
 
 void StageSelectDialog::ReLoad() {
-	_pushYesButton = false;
 	_openStaSeleDialog = false;
 	_clickCount = 0;
 	_pickStageNumber = -1;
@@ -30,11 +29,10 @@ void StageSelectDialog::Update() {
 
 }
 
-void StageSelectDialog:: SetStageNumber(int stagenumber) {
+void StageSelectDialog::SetStageNumber(int stagenumber) {
 	if (stagenumber == -1 || _openStaSeleDialog) return;
 
-	switch (_clickCount)
-	{
+	switch (_clickCount) {
 	case 0:
 		_pickStageNumber = stagenumber;
 		_clickCount = 1;
@@ -42,7 +40,6 @@ void StageSelectDialog:: SetStageNumber(int stagenumber) {
 
 	case 1:
 		if (_pickStageNumber == stagenumber) {
-			_clickCount = 2;
 			_openStaSeleDialog = true;
 		}
 		else {
@@ -52,18 +49,26 @@ void StageSelectDialog:: SetStageNumber(int stagenumber) {
 	}
 }
 
-void StageSelectDialog::Push(Vector2 mousePos){
+void StageSelectDialog::SetMousePos(Vector2 mousePos) {
+	_mousePos = mousePos;
+}
+
+void StageSelectDialog::Push(){
 	if (!_openStaSeleDialog) return;
 
-	if (_yesButton.CheckOnButton(mousePos)) {
-		_pushYesButton = true;
+	if (_yesButton.CheckOnButton(_mousePos)) {
+		_loadStageMethod(_pickStageNumber);
 	}
 
-	if (_noButton.CheckOnButton(mousePos)) {
+	if (_noButton.CheckOnButton(_mousePos)) {
 		_openStaSeleDialog = false;
 		_clickCount = 0;
 		_pickStageNumber = -1;
 	}
+}
+
+void StageSelectDialog::Pull() {
+
 }
 
 void StageSelectDialog::Render() {

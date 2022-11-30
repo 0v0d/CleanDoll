@@ -23,7 +23,7 @@ void RemainingIcon::CalcuMarkPosition() {
 }
 
 void RemainingIcon::ReLoad() {
-	_mark = _notExist = false;
+	_mark = false;
 }
 
 void RemainingIcon::Render() {

@@ -4,11 +4,15 @@
 #include	"BlockManager.h"
 #include	"FieldUI.h"
 #include	"EndGameProcess.h"
+#include	"Doll.h"
+#include	"OperateDoll.h"
 
 class Field
 {
 private:
 	BlockManager _blockManager;
+	OperateDoll _operateDoll;
+	Doll _doll;
 
 	Vector2 _mousePos;
 	int _blockValueX, _blockValueY;
@@ -54,8 +58,8 @@ public:
 	void EndMoveDoll();
 	void ReSetStage();
 
-	void SetDustDumpValue(int dumpValue) { _initalDustValue = dumpValue; }
-	void SetWaterDumpValue(int dumpValue) { _initalWaterValue = dumpValue; }
+	void SetDustDumpValue(int dumpValue);
+	void SetWaterDumpValue(int dumpValue);
 	void CleanDust();
 	void CleanWater();
 	void GameOver();

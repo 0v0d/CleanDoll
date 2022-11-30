@@ -17,11 +17,15 @@ void SettingManager::Update()
 	}
 }
 
-void SettingManager::Push(Vector2 mousePos)
-{
-	if (!_openMenu) 
+void SettingManager::SetMousePos(Vector2 mousePos) {
+	_mousePos = mousePos;
+	_setUpSetting.SetMousePos(mousePos);
+}
+
+void SettingManager::Push() {
+	if (!_openMenu)
 	{
-		if (_openSettingButton.CheckPushButton(mousePos))
+		if (_openSettingButton.CheckPushButton(_mousePos))
 		{
 			_openMenu = true;
 			_setUpSetting.DetermineBackScene();
@@ -29,15 +33,13 @@ void SettingManager::Push(Vector2 mousePos)
 	}
 	else
 	{
-		_setUpSetting.Push(mousePos);
+		_setUpSetting.Push();
 	}
 }
 
-void SettingManager::Pull(Vector2 mousePos)
-{
-	if (_openMenu)
-	{
-		_setUpSetting.Pull(mousePos);
+void SettingManager::Pull() {
+	if (_openMenu){
+		_setUpSetting.Pull();
 	}
 }
 
@@ -50,7 +52,6 @@ void SettingManager::Render()
 		_setUpSetting.Render();
 		_menuTexture.Render(g_pGraphics->GetTargetWidth() / 2 - _menuTexture.GetWidth() / 2, 50);
 	}
-	
 }
 
 void SettingManager::Release()

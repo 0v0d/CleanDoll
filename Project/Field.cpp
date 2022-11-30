@@ -1,12 +1,11 @@
 #include "Field.h"
-#include "Doll.h"
 #include "SceneManager.h"
 #include "StageSelectScene.h"
 
-Doll _doll;
-
 void Field::Initialize()
 {
+	_operateDoll.SetBlockManager(&_blockManager);
+	_operateDoll.SetDoll(&_doll);
 	_doll.SetField(this);
 	_blockManager.SetDoll(&_doll);
 
@@ -15,6 +14,7 @@ void Field::Initialize()
 	_fieldUI.SetMaxEnergyValue(_maxDistance);
 
 	_blockManager.Initialize();
+	_operateDoll.Initialize();
 	_doll.Initialize();
 	_fieldUI.Initialize();
 	_endGameProcess.Initialize();
@@ -60,6 +60,16 @@ void Field::SetDollPosition(int x, int y)
 	_dollInitialPositionY = y;
 
 	SetDollOnBlockNumber(_blockManager.GetBlock(x,y));
+}
+
+void Field::SetDustDumpValue(int dumpValue) {
+	_initalDustValue = _dustDumpValue = dumpValue;
+	_fieldUI.SetDustDumpValue(_initalDustValue);
+}
+
+void Field::SetWaterDumpValue(int dumpValue) {
+	_initalWaterValue = _waterDumpValue = dumpValue;
+	_fieldUI.SetWaterDumpValue(_initalWaterValue);
 }
 
 void Field::Update()
@@ -169,7 +179,7 @@ void Field::EndOfPassed()
 {
 	if (_routeBlockArray.size() <= 0) return;
 
-	_doll.SetRouteBlockArray(_routeBlockArray);
+	_operateDoll.SetRouteBlockArray(_routeBlockArray);
 	_lastDistanceBlock = _routeBlockArray.back();
 	_routeBlockArray.clear();
 	_recoveryDifferentialArray.clear();
@@ -227,6 +237,7 @@ void Field::Render()
 void Field::Release()
 {
 	_blockManager.Release();
+	_operateDoll.Release();
 	_doll.Release();
 	_fieldUI.Release();
 	_endGameProcess.Release();

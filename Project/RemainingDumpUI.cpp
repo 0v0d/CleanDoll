@@ -45,12 +45,17 @@ void RemainingDumpUI::CalcuScale() {
 	_scale = _objectiveSizeX / _baseTexture.GetWidth();
 }
 
-void RemainingDumpUI::SetDumpValue(int dustValue, int waterValue) {
-	_dustValue = dustValue;
-	_waterValue = waterValue;
 
-	if (_dustValue <= 0) _iconArray[ICON_TYPE::DUST]->NotExistIcon();
-	if (_waterValue <= 0) _iconArray[ICON_TYPE::WATER]->NotExistIcon();
+void RemainingDumpUI::SetDustValue(int dumpValue) {
+	_dustValue = dumpValue;
+	if (_dustValue <= 0) _iconArray[ICON_TYPE::DUST]->SetNotExistFlg(true);
+	else _iconArray[ICON_TYPE::DUST]->SetNotExistFlg(false);
+}
+
+void RemainingDumpUI::SetWaterValue(int dumpValue) {
+	_waterValue = dumpValue;
+	if (_waterValue <= 0) _iconArray[ICON_TYPE::WATER]->SetNotExistFlg(true);
+	else _iconArray[ICON_TYPE::DUST]->SetNotExistFlg(false);
 }
 
 void RemainingDumpUI::CleanDust() {

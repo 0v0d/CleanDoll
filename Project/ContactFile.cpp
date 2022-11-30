@@ -172,6 +172,24 @@ std::string ContactFile::GetString(bool firstContact)
 	return firstContact ? strtok(_buffer, ",") : strtok(NULL, ",");
 }
 
+void ContactFile::NewChipData(TextureArray* textureArray)
+{
+	_chipDataArray = new char* [_blockValueX * textureArray->LineXValue];
+	for (int i = 0; i < _blockValueX * textureArray->LineXValue; i++)_chipDataArray[i] = new char[_blockValueY];
+
+	for (int y = 0; y < _blockValueY; y++) {
+		for (int x = 0; x < _blockValueX * textureArray->LineXValue; x++)
+			_chipDataArray[x][y] = 0;
+	}
+}
+
+void ContactFile::DeleteChipData(TextureArray* textureArray)
+{
+	for (int i = 0; i < _blockValueX * textureArray->LineXValue; i++) delete[] _chipDataArray[i];
+	delete[] _chipDataArray;
+}
+
+
 
 void ContactFile::Delete()
 {
@@ -197,26 +215,7 @@ void ContactFile::DeleteTextureArray(TextureArray* textureArray)
 	textureArray->textureValue = 0;
 }
 
-void ContactFile::NewChipData(TextureArray* textureArray)
-{
-	_chipDataArray = new char* [_blockValueX * textureArray->LineXValue];
-	for (int i = 0; i < _blockValueX * textureArray->LineXValue; i++)_chipDataArray[i] = new char[_blockValueY];
-
-	for (int y = 0; y < _blockValueY; y++) {
-		for (int x = 0; x < _blockValueX * textureArray->LineXValue; x++)
-			_chipDataArray[x][y] = 0;
-	}
-}
-
-void ContactFile::DeleteChipData(TextureArray* textureArray)
-{
-
-	for (int i = 0; i < _blockValueX * textureArray->LineXValue; i++) delete[] _chipDataArray[i];
-	delete[] _chipDataArray;
-}
-
 void ContactFile::Release()
 {
-
 	Delete();
 }

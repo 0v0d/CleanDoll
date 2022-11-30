@@ -3,6 +3,7 @@
 
 MofBool CGameApp::Initialize()
 {
+	_input.SetMenu(&_menu);
 	CUtilities::SetCurrentDirectory("Resource");
 	SceneManager::Instance().Initialize();
 	_menu.Initialize();

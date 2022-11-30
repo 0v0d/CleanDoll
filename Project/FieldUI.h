@@ -10,7 +10,8 @@ public:
 	void Initialize();
 	void ReLoad();
 	void SetMaxEnergyValue(int energyValue);
-	void SetDumpValue(int dustValue, int waterValue);
+	void SetDustDumpValue(int dumpValue);
+	void SetWaterDumpValue(int dumpValue);
 
 	void Update();
 	void SetCurrentEnergyValue(int energyValue);

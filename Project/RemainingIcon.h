@@ -15,7 +15,7 @@ public:
 	void SetScale(float scale);
 
 	void MarkIcon() { _mark = true; }
-	void NotExistIcon() { _notExist = true; }
+	void SetNotExistFlg(bool flg) { _notExist = flg; }
 	void Render();
 
 private:

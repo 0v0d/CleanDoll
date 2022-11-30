@@ -2,6 +2,7 @@
 #include	"Mof.h"
 #include	"Block.h"
 #include	"vector"
+#include	"functional"
 
 class Doll
 {
@@ -12,42 +13,46 @@ private:
 		WALK,
 		MOTION_COUNT
 	};
+
 	CTexture _dollTexture;
 	Vector2 _dollPosition;
 	CRectangle _renderRect;
-
 	float _scale = 0.03;
-	
-	class Field* _field;
-	std::vector<Block*> _routeBlockArray;
-
-	bool _move;
-	int _currentUnderBlockNumber;
-	Vector2 _nextPosition;
-	//移動速度: 変数分のフレームで目的地に着く
-	const int _moveSpeed =40;
-	int _moveCount;
-
 	bool _inversion;
 	CRectangle _inversionRenderRect;
+	
+	class Field* _field;
+	Block* _nextBlock = nullptr;
+
+	bool _move;
+	Vector2 _nextPosition;
+	//1ブロック移動するのにかかるフレーム数
+	const int _moveSpeed =40;
+	int _moveCount;
+	std::function<void()> _endMoveMethod;
 
 	int _dustDumpValue,_waterDumpValue;
-	CSpriteMotionController	_motionController;
 	bool _heldMop;
+
+	CSpriteMotionController	_motionController;
 	const int wait = 3;
 	int _motionCount;
 	const int _textureValue = 30;
 	Vector2 _dollTextureSize;
 public:
 	void Initialize();
+	void ReLoad();
 	void SetField(Field* field) { _field = field; }
 	void SetPosition(Vector2 blockCenterPosisiton);
-	void ReLoad();
 	void CalcuScale(float boxSizeY, float scale);
 	void SetDumpValue(int dustDumpValue, int waterDumpValue);
+	void SetEndMoveMethod(std::function<void()> method) { _endMoveMethod = method; }
+
 	void Update();
-	void SetRouteBlockArray(std::vector<Block*> blockArray);
+	void SetNextBlock(Block* blcok);
 	void Move();
+	void EndMove();
+
 	void Render();
 	void Release();
 private:
@@ -55,7 +60,6 @@ private:
 	void DollAnimationUpdate();
 	int AnimationRoop();
 	void SetNextPosition();
-	void ArrivalBlock();
 	void ActionAccessories();
 	void CleanDump();
 	void SwitchToMop();

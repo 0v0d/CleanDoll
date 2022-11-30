@@ -94,15 +94,14 @@ void BarManager::StageClear() {
 
 void BarManager::MoveBar(float moveValue)
 {
-	for (int i = 0; i < _stageValue; i++)
-	{
+	for (int i = 0; i < _stageValue; i++){
 		_barArray[i].Move(moveValue);
 	}
 }
 
 Bar* BarManager::GetBar(int barNumber) {
 	if (barNumber < 0 || barNumber >= _stageValue) return nullptr;
-	return &_barArray[barNumber]; 
+	return &_barArray[barNumber];
 }
 
 int BarManager::GetBarNumber(Vector2 mousePos) {

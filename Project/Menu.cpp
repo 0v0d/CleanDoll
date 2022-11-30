@@ -3,14 +3,24 @@
 
 void Menu::Initialize()
 {
-	_inputMenu.SetSettingManager(&_settingManager);
 	_settingManager.Initialize();
 }
 
 void Menu::Update()
 {
-	_inputMenu.Update();
 	_settingManager.Update();
+}
+
+void Menu::SetMousePos(Vector2 mousePos) {
+	_settingManager.SetMousePos(mousePos);
+}
+
+void Menu::Push() {
+	_settingManager.Push();
+}
+
+void Menu::Pull() {
+	_settingManager.Pull();
 }
 
 void Menu::Render()

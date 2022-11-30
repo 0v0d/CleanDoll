@@ -15,9 +15,11 @@ void StageSelectScene::Initialize()
     _stageSelectDialog.Initialize();
     _preview.Initialize();
 
-    _preview.SetPreviewTexture(_barManager.GetBar(0)->GetPreviewTexture());
     _preview.CalcuBaseScale(_barManager.GetBaseSizeY());
     _preview.CalcuBasePos();
+    _preview.SetPreviewTexture(_barManager.GetBar(0)->GetPreviewTexture());
+
+    _stageSelectDialog.SetLoadStageMethod([&](int stageNumber) {return LoadStage(stageNumber);});
 }
 
 void StageSelectScene::LoadTexture()
@@ -40,6 +42,7 @@ void StageSelectScene::Update()
 void StageSelectScene::SetMousePos(Vector2 mousePos) {
     _mousePos = mousePos;
     _barManager.SetMousePos(mousePos);
+    _stageSelectDialog.SetMousePos(mousePos);
 }
 
 void StageSelectScene::Push() {
@@ -48,16 +51,15 @@ void StageSelectScene::Push() {
     Bar* mouseOnBar = _barManager.GetBar(_barManager.GetBarNumber(_mousePos));
     if (mouseOnBar != nullptr) {
         _preview.SetPreviewTexture(mouseOnBar->GetPreviewTexture());
+        _stageSelectDialog.SetStageNumber(_barManager.GetBarNumber(_mousePos));
     }
 
-    if (mouseOnBar != nullptr) {
-        _contactFile.LoadStage(_barManager.GetBar(_barManager.GetBarNumber(_mousePos))->GetStageDataTextName());
-        SceneManager::Instance().ChangeScene(SCENE_TYPE::GAME);
-    }
+    _stageSelectDialog.Push();
 }
 
 void StageSelectScene::Pull() {
     _barManager.Pull();
+    _stageSelectDialog.Pull();
 }
 
 void StageSelectScene::StartNextStage() {
@@ -69,15 +71,19 @@ void StageSelectScene::StageClear() {
     _barManager.StageClear(); 
 }
 
+void StageSelectScene::LoadStage(int stageNumber) {
+    _contactFile.LoadStage(_barManager.GetBar(stageNumber)->GetStageDataTextName());
+    SceneManager::Instance().ChangeScene(SCENE_TYPE::GAME);
+}
+
 
 void StageSelectScene::Render()
 {
     _StSelectbackGround.Render();
-    //CGraphicsUtilities::RenderString(30, 30, "StageSelect");
     _barManager.Render();
-    _stageSelectDialog.Render();
-
     _preview.Render();
+
+    _stageSelectDialog.Render();
 }
 
 void StageSelectScene::Release()
