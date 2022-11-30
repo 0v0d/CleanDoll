@@ -11,8 +11,6 @@ void StageSelectScene::Initialize()
     _inputInStageSelect.SetStageSelectDialog(&_stageSelectDialog);
     _getDataFromFile.SetBarManager(&_barManager);
     Load();
-    _StSelectbackGround.Initialize();
-    _StSelectbackGround.SetTextureStatus(&_stageBackTexture);
     _getDataFromFile.LoadStageSelectData();
     _getDataFromFile.Initialize();
     _barManager.Initialize();
@@ -35,12 +33,11 @@ void StageSelectScene::Update()
 {
     _inputInStageSelect.Update();
     _barManager.Update();
-    _StSelectbackGround.Update();
 }
 
 void StageSelectScene::Render()
 {
-    _StSelectbackGround.Render();
+    _stageBackTexture.Render(0, 0);
     //CGraphicsUtilities::RenderString(30, 30, "StageSelect");
     _barManager.Render();
     _stageSelectDialog.Render();

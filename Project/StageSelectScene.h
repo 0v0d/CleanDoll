@@ -6,7 +6,6 @@
 #include	"Slider.h"
 #include	"BackGround.h"
 #include	"StageSelectDialog.h"
-#include    "StageSelectBackGround.h"
 #include	"StageSelectSceneBGM.h"
 class StageSelectScene :public IBaseScene
 {
@@ -16,7 +15,6 @@ private:
 	InputStageSelect _inputInStageSelect;
 	BarManager _barManager;
 	Slider _slider;
-	StageSelectBackGround _StSelectbackGround;
 	CTexture _barTexture;
 	CTexture _buttonTexture;
 	CTexture _stageBackTexture;
