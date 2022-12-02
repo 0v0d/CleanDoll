@@ -51,7 +51,6 @@ void StageSelectDialog::SetStageNumber(int stagenumber) {
 }
 
 void StageSelectDialog::SetMousePos(Vector2 mousePos) {
-	if (!_openStaSeleDialog) return;
 	_mousePos = mousePos;
 }
 
