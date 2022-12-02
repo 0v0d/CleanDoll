@@ -6,42 +6,8 @@ void Doll::Initialize()
 {
 	_dollTexture.Load("doll.png");
 	_field->SetDollMove(&_move);
-	_motionCount = 0;
-	_dollTextureSize = Vector2(_dollTexture.GetWidth() / _textureValue, _dollTexture.GetHeight() / MOTION_COUNT);
-	DollAnimationInit();
-}
-
-void Doll::DollAnimationInit() 
-{
-	SpriteAnimationCreate _dollAnimation[] = {
-	{
-		"Wait",
-		0,0,
-		320,320,
-		false,{{wait,0,0},{wait,1,0},{wait,2,0},{wait,3,0},{wait,4,0},{wait,5,0},{wait,6,0},{wait,7,0},
-		{wait,8,0},{wait,9,0} ,{wait,10,0},{wait,11,0},{wait,12,0},{wait,13,0},{wait,14,0},{wait,15,0},{wait,16,0},
-		{wait,17,0},{wait,18,0},{wait,19,0},}
-	},
-	{
-		"Wait",
-		0,320,
-		320,320,
-		false,{{wait,0,0},{wait,1,0},{wait,2,0},{wait,3,0},{wait,4,0},{wait,5,0},{wait,6,0},{wait,7,0},
-		{wait,8,0},{wait,9,0} ,{wait,10,0},{wait,11,0},{wait,12,0},{wait,13,0},{wait,14,0},{wait,15,0},{wait,16,0},
-		{wait,17,0},{wait,18,0},{wait,19,0},}
-	},
-	{
-		"Walk",
-		0,640,
-		320,320,
-		true,{{wait,0,0},{wait,1,0},{wait,2,0},{wait,3,0},{wait,4,0},{wait,5,0},{wait,6,0},{wait,7,0},
-		{wait,8,0},{wait,9,0} ,{wait,10,0},{wait,11,0},{wait,12,0},{wait,13,0},{wait,14,0},{wait,15,0},{wait,16,0},
-		{wait,17,0},{wait,18,0},{wait,19,0},{wait,20,0},{wait,21,0},{wait,22,0},{wait,23,0},{wait,24,0},{wait,25,0},
-		{wait,26,0},{wait,27,0},{wait,28,0},{wait,29,0}}
-	}
-
-	};
-	_motionController.Create(_dollAnimation, MOTION_COUNT);
+	_animation.Initialize();
+	_dollTextureSize = Vector2(_dollTexture.GetWidth() / _textureValue, _dollTexture.GetHeight() / _animation.GetMotionValue());
 }
 
 void Doll::ReLoad()
@@ -50,6 +16,9 @@ void Doll::ReLoad()
 	_moveCount = 0;
 	_inversion = false;
 	_heldMop = false;
+	_cleanAnimation = false;
+
+	_animation.ReLoad();
 }
 
 void Doll::CalcuScale(float boxSizeY, float scale)
@@ -76,7 +45,9 @@ void Doll::SetNextBlock(Block* blcok) {
 	_nextBlock = blcok;
 	_field->SetDollOnBlockNumber(_nextBlock);
 	SetNextPosition();
+
 	_move = true;
+	if (!_cleanAnimation)_animation.SetMoveAnimationFlg(_move);
 }
 
 void Doll::SetNextPosition()
@@ -98,17 +69,26 @@ void Doll::Update()
 
 void Doll::Move()
 {
+	if (_cleanAnimation) return;
+
 	_dollPosition.x += _nextPosition.x / _moveSpeed;
 	_dollPosition.y += _nextPosition.y / _moveSpeed;
 	_moveCount++;
 
+	//目的のマスに移動した
 	if (_moveCount >= _moveSpeed)
 	{
 		_moveCount = 0;
 		ActionAccessories();
-		_move = false;
 		_endMoveMethod();
 	}
+}
+
+//残りの移動マスが無い時に呼ばれる関数
+void Doll::EndMove() {
+	_field->EndMoveDoll();
+	_move = false;
+	if (!_cleanAnimation)_animation.SetMoveAnimationFlg(false);
 }
 
 void Doll::ActionAccessories()
@@ -142,6 +122,8 @@ void Doll::CleanDump()
 		_dustDumpValue--;
 		_field->CleanDust();
 	}
+	_animation.StartCleanAnimation();
+	_cleanAnimation = true;
 }
 
 void Doll::SwitchToMop()
@@ -156,14 +138,15 @@ void Doll::SwitchToMop()
 	}
 }
 
-void Doll::EndMove() {
-	_field->EndMoveDoll();
-}
-
 void Doll::DollAnimationUpdate()
 {
-	_motionController.AddTimer(CUtilities::GetFrameSecond());
-	_renderRect = _motionController.GetSrcRect();
+	if (_cleanAnimation && _animation.IsEndCurrentAnimation()) {
+		_cleanAnimation = false;
+		_animation.SetMoveAnimationFlg(_move);
+	}
+
+	_animation.Update();
+	_renderRect = _animation.GetRenderRect();
 
 	if (_inversion)
 	{
@@ -171,31 +154,6 @@ void Doll::DollAnimationUpdate()
 		_inversionRenderRect.Right = _renderRect.Left;
 		_inversionRenderRect.Left = _renderRect.Right;
 	}
-
-	if (_motionController.IsEndMotion())
-	{
-		_motionController.ChangeMotion(AnimationRoop());
-	}
-	if (_move)
-	{
-		if (_motionController.GetMotionNo() == WAIT_1 || _motionController.GetMotionNo() == WAIT_2)
-		{
-			_motionController.ChangeMotion(WALK);
-
-		}
-	}
-	else
-	{
-		if (_motionController.GetMotionNo() == WALK)
-		{
-			_motionController.ChangeMotion(AnimationRoop());
-		}
-	}
-}
-
-int Doll::AnimationRoop()
-{
-	return _motionCount = (_motionCount + 1) % 2;
 }
 
 void Doll::Render()

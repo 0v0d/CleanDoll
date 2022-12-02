@@ -108,6 +108,7 @@
     <ClCompile Include="ContactFile.cpp" />
     <ClCompile Include="CreateField.cpp" />
     <ClCompile Include="Doll.cpp" />
+    <ClCompile Include="DollAnimation.cpp" />
     <ClCompile Include="DollOnEnergyVessels.cpp" />
     <ClCompile Include="Dump.cpp" />
     <ClCompile Include="EndGameProcess.cpp" />
@@ -117,6 +118,8 @@
     <ClCompile Include="FieldUI.cpp" />
     <ClCompile Include="GameApp.cpp" />
     <ClCompile Include="GameClear.cpp" />
+    <ClCompile Include="GameClearBackGround.cpp" />
+    <ClCompile Include="GameClearLogoAnimation.cpp" />
     <ClCompile Include="GameOver.cpp" />
     <ClCompile Include="GameScene.cpp" />
     <ClCompile Include="IBaseAccessories.cpp" />
@@ -158,6 +161,7 @@
     <ClInclude Include="ContactFile.h" />
     <ClInclude Include="CreateField.h" />
     <ClInclude Include="Doll.h" />
+    <ClInclude Include="DollAnimation.h" />
     <ClInclude Include="DollOnEnergyVessels.h" />
     <ClInclude Include="Dump.h" />
     <ClInclude Include="EndGameProcess.h" />
@@ -167,6 +171,8 @@
     <ClInclude Include="FieldUI.h" />
     <ClInclude Include="GameApp.h" />
     <ClInclude Include="GameClear.h" />
+    <ClInclude Include="GameClearBackGround.h" />
+    <ClInclude Include="GameClearLogoAnimation.h" />
     <ClInclude Include="GameOver.h" />
     <ClInclude Include="GameScene.h" />
     <ClInclude Include="IBaseAccessories.h" />

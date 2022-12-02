@@ -1,19 +1,13 @@
 #pragma once
 #include	"Mof.h"
 #include	"Block.h"
+#include	"DollAnimation.h"
 #include	"vector"
 #include	"functional"
 
 class Doll
 {
-private:
-	enum {
-		WAIT_1,
-		WAIT_2,
-		WALK,
-		MOTION_COUNT
-	};
-
+	DollAnimation _animation;
 	CTexture _dollTexture;
 	Vector2 _dollPosition;
 	CRectangle _renderRect;
@@ -32,7 +26,7 @@ private:
 	std::function<void()> _endMoveMethod;
 
 	int _dustDumpValue,_waterDumpValue;
-	bool _heldMop;
+	bool _heldMop,_cleanAnimation;
 
 	CSpriteMotionController	_motionController;
 	const int wait = 3;
@@ -56,9 +50,7 @@ public:
 	void Render();
 	void Release();
 private:
-	void DollAnimationInit();
 	void DollAnimationUpdate();
-	int AnimationRoop();
 	void SetNextPosition();
 	void ActionAccessories();
 	void CleanDump();

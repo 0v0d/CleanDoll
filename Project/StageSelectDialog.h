@@ -7,6 +7,7 @@ class StageSelectDialog
 {
 	Vector2 _basePos;
 	Vector2 _mousePos;
+	CTexture _backTexture;
 	CTexture _yesTexture,_noTexture;
 	Button  _yesButton, _noButton;
 	const float _space = 100;
@@ -32,6 +33,7 @@ public:
 	void Release();
 
 	int GetStageNumber() { return _pickStageNumber; }
+	bool IsOpenDialog() { return _openStaSeleDialog; }
 
 private:
 	void LoadTexture();

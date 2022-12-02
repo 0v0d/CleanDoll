@@ -2,7 +2,7 @@
 
 void StageSelectDialog::Initialize() {
 	_basePos.x = g_pGraphics->GetTargetWidth()/2;
-	_basePos.y = g_pGraphics->GetTargetHeight() / 3;
+	_basePos.y = g_pGraphics->GetTargetHeight() / 2;
 
 	LoadTexture();
 
@@ -19,6 +19,7 @@ void StageSelectDialog::ReLoad() {
 void StageSelectDialog::LoadTexture() {
 	_yesTexture.Load("はい.png");
 	_noTexture.Load("いいえ.png");
+	_backTexture.Load("ステージ選択後背景.png");
 }
 
 void StageSelectDialog::CreateButton(Button* button, Vector2 pos, CTexture* texture) {
@@ -50,6 +51,7 @@ void StageSelectDialog::SetStageNumber(int stagenumber) {
 }
 
 void StageSelectDialog::SetMousePos(Vector2 mousePos) {
+	if (!_openStaSeleDialog) return;
 	_mousePos = mousePos;
 }
 
@@ -75,6 +77,7 @@ void StageSelectDialog::Render() {
 	if (!_openStaSeleDialog) return;
 
 	CGraphicsUtilities::RenderFillRect(0, 0, g_pGraphics->GetTargetWidth(), g_pGraphics->GetTargetHeight(), MOF_ARGB(125, 0, 0, 0));
+	_backTexture.Render(0, 0);
 	_yesButton.Render();
 	_noButton.Render();
 }
@@ -82,4 +85,5 @@ void StageSelectDialog::Render() {
 void StageSelectDialog::Release() {
 	_yesTexture.Release();
 	_noTexture.Release();
+	_backTexture.Release();
 }

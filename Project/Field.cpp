@@ -30,6 +30,7 @@ void Field::ReLoad()
 	_blockManager.ReLoad();
 	_doll.ReLoad();
 	_fieldUI.ReLoad();
+	_operateDoll.ReLoad();
 
 	_doll.CalcuScale(_blockManager.GetBlock(0, 0)->GetBlockSize().y, _blockManager.GetScale());
 	_dustDumpValue = _initalDustValue;
@@ -46,8 +47,9 @@ void Field::ReLoad()
 	_recoveryDifferentialArray.clear();
 
 	_remainDistance = _maxDistance;
-
 	_fieldUI.SetCurrentEnergyValue(_remainDistance);
+	_fieldUI.SetDustDumpValue(_initalDustValue);
+	_fieldUI.SetWaterDumpValue(_initalWaterValue);
 
 	_push = false;
 }

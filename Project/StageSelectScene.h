@@ -3,7 +3,7 @@
 #include	"BarManager.h"
 #include	"Slider.h"
 #include	"StageSelectDialog.h"
-#include    "StageSelectBackGround.h"
+#include	"BackGround.h"
 #include	"CreateField.h"
 #include	"ContactFile.h"
 
@@ -16,9 +16,8 @@ private:
 	BarManager _barManager;
 	StageSelectDialog _stageSelectDialog;
 	Preview _preview;
-
-	StageSelectBackGround _StSelectbackGround;
-	CTexture _stageBackTexture;
+	CTexture _backGroundTexture;
+	BackGround _backGround;
 
 	Vector2 _mousePos;
 

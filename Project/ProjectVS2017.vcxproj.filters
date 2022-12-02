@@ -69,6 +69,15 @@
     <Filter Include="ソース ファイル\Scene\StageSelectScene\BarManager">
       <UniqueIdentifier>{db711112-292a-43c0-8905-1d947db95d03}</UniqueIdentifier>
     </Filter>
+    <Filter Include="ソース ファイル\Scene\GameScene\Field\Doll">
+      <UniqueIdentifier>{cb65fd1d-fbb2-4019-b623-1d252ef52348}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\Scene\GameScene\EndGameProcess\GameClear">
+      <UniqueIdentifier>{73bfc494-cf70-4005-87e1-8b3e44d786e2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\Scene\GameScene\EndGameProcess\GameOver">
+      <UniqueIdentifier>{d83f4657-a914-436e-b0c4-3903a42ce6c6}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="WinMain.cpp">
@@ -140,17 +149,8 @@
     <ClCompile Include="EndGameProcess.cpp">
       <Filter>ソース ファイル\Scene\GameScene\EndGameProcess</Filter>
     </ClCompile>
-    <ClCompile Include="GameOver.cpp">
-      <Filter>ソース ファイル\Scene\GameScene\EndGameProcess</Filter>
-    </ClCompile>
-    <ClCompile Include="GameClear.cpp">
-      <Filter>ソース ファイル\Scene\GameScene\EndGameProcess</Filter>
-    </ClCompile>
     <ClCompile Include="IBaseEndGameProcess.cpp">
       <Filter>ソース ファイル\Interface</Filter>
-    </ClCompile>
-    <ClCompile Include="Doll.cpp">
-      <Filter>ソース ファイル\Scene\GameScene\Field</Filter>
     </ClCompile>
     <ClCompile Include="Field.cpp">
       <Filter>ソース ファイル\Scene\GameScene\Field</Filter>
@@ -203,9 +203,6 @@
     <ClCompile Include="BarManager.cpp">
       <Filter>ソース ファイル\Scene\StageSelectScene\BarManager</Filter>
     </ClCompile>
-    <ClCompile Include="OperateDoll.cpp">
-      <Filter>ソース ファイル\Scene\GameScene\Field</Filter>
-    </ClCompile>
     <ClCompile Include="ContactFile.cpp">
       <Filter>ソース ファイル\Scene\ContactFile</Filter>
     </ClCompile>
@@ -214,6 +211,27 @@
     </ClCompile>
     <ClCompile Include="SceneManager.cpp">
       <Filter>ソース ファイル\Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="Doll.cpp">
+      <Filter>ソース ファイル\Scene\GameScene\Field\Doll</Filter>
+    </ClCompile>
+    <ClCompile Include="OperateDoll.cpp">
+      <Filter>ソース ファイル\Scene\GameScene\Field\Doll</Filter>
+    </ClCompile>
+    <ClCompile Include="GameClear.cpp">
+      <Filter>ソース ファイル\Scene\GameScene\EndGameProcess\GameClear</Filter>
+    </ClCompile>
+    <ClCompile Include="GameOver.cpp">
+      <Filter>ソース ファイル\Scene\GameScene\EndGameProcess\GameOver</Filter>
+    </ClCompile>
+    <ClCompile Include="GameClearLogoAnimation.cpp">
+      <Filter>ソース ファイル\Scene\GameScene\EndGameProcess\GameClear</Filter>
+    </ClCompile>
+    <ClCompile Include="GameClearBackGround.cpp">
+      <Filter>ソース ファイル\Scene\GameScene\EndGameProcess\GameClear</Filter>
+    </ClCompile>
+    <ClCompile Include="DollAnimation.cpp">
+      <Filter>ソース ファイル\Scene\GameScene\Field\Doll</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -286,17 +304,8 @@
     <ClInclude Include="EndGameProcess.h">
       <Filter>ソース ファイル\Scene\GameScene\EndGameProcess</Filter>
     </ClInclude>
-    <ClInclude Include="GameOver.h">
-      <Filter>ソース ファイル\Scene\GameScene\EndGameProcess</Filter>
-    </ClInclude>
-    <ClInclude Include="GameClear.h">
-      <Filter>ソース ファイル\Scene\GameScene\EndGameProcess</Filter>
-    </ClInclude>
     <ClInclude Include="IBaseEndGameProcess.h">
       <Filter>ソース ファイル\Interface</Filter>
-    </ClInclude>
-    <ClInclude Include="Doll.h">
-      <Filter>ソース ファイル\Scene\GameScene\Field</Filter>
     </ClInclude>
     <ClInclude Include="Field.h">
       <Filter>ソース ファイル\Scene\GameScene\Field</Filter>
@@ -349,9 +358,6 @@
     <ClInclude Include="BarManager.h">
       <Filter>ソース ファイル\Scene\StageSelectScene\BarManager</Filter>
     </ClInclude>
-    <ClInclude Include="OperateDoll.h">
-      <Filter>ソース ファイル\Scene\GameScene\Field</Filter>
-    </ClInclude>
     <ClInclude Include="CreateField.h">
       <Filter>ソース ファイル\Scene\ContactFile</Filter>
     </ClInclude>
@@ -360,6 +366,27 @@
     </ClInclude>
     <ClInclude Include="SceneManager.h">
       <Filter>ソース ファイル\Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="Doll.h">
+      <Filter>ソース ファイル\Scene\GameScene\Field\Doll</Filter>
+    </ClInclude>
+    <ClInclude Include="OperateDoll.h">
+      <Filter>ソース ファイル\Scene\GameScene\Field\Doll</Filter>
+    </ClInclude>
+    <ClInclude Include="GameClear.h">
+      <Filter>ソース ファイル\Scene\GameScene\EndGameProcess\GameClear</Filter>
+    </ClInclude>
+    <ClInclude Include="GameOver.h">
+      <Filter>ソース ファイル\Scene\GameScene\EndGameProcess\GameOver</Filter>
+    </ClInclude>
+    <ClInclude Include="GameClearLogoAnimation.h">
+      <Filter>ソース ファイル\Scene\GameScene\EndGameProcess\GameClear</Filter>
+    </ClInclude>
+    <ClInclude Include="GameClearBackGround.h">
+      <Filter>ソース ファイル\Scene\GameScene\EndGameProcess\GameClear</Filter>
+    </ClInclude>
+    <ClInclude Include="DollAnimation.h">
+      <Filter>ソース ファイル\Scene\GameScene\Field\Doll</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
