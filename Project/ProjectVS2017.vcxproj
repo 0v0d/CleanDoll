@@ -137,6 +137,7 @@
     <ClCompile Include="Preview.cpp" />
     <ClCompile Include="RemainingDumpUI.cpp" />
     <ClCompile Include="RemainingIcon.cpp" />
+    <ClCompile Include="RemainingValue.cpp" />
     <ClCompile Include="SceneManager.cpp" />
     <ClCompile Include="SettingManager.cpp" />
     <ClCompile Include="SetUpSetting.cpp" />
@@ -191,6 +192,7 @@
     <ClInclude Include="Preview.h" />
     <ClInclude Include="RemainingDumpUI.h" />
     <ClInclude Include="RemainingIcon.h" />
+    <ClInclude Include="RemainingValue.h" />
     <ClInclude Include="resource.h" />
     <ClInclude Include="SceneManager.h" />
     <ClInclude Include="SettingManager.h" />

@@ -83,6 +83,7 @@ void Field::Update()
 	_blockManager.Update();
 	_doll.Update();
 	_endGameProcess.Update();
+	_fieldUI.Update();
 }
 
 void Field::SetMousePos(Vector2 mousePos){
