@@ -3,7 +3,7 @@
 void CreateField::SetField(Field* field)
 {
 	_field = field;
-	SetBlockManager();
+	_blockManager = _field->GetBlockManager();
 }
 
 void CreateField::SetFieldStatu(int blockValueX, int blockValueY)
@@ -11,6 +11,7 @@ void CreateField::SetFieldStatu(int blockValueX, int blockValueY)
 	_blockValueX = blockValueX;
 	_blockValueY = blockValueY;
 
+	_blockManager->Delete();
 	_blockManager->CreateField(blockValueX, blockValueY);
 }
 
@@ -24,10 +25,7 @@ void CreateField::SetBlockData(CTexture* TextureArray, char** dataArray)
 	{
 		for (int x = 0;x < _blockValueX;x++)
 		{
-			if (dataArray[x][y] == 0)
-			{
-				continue;
-			}
+			if (dataArray[x][y] == 0)continue;
 
 			Block* block = _blockManager->GetBlock(x, y);
 			block->SetTexture(&TextureArray[dataArray[x][y] - 1]);
@@ -44,10 +42,7 @@ void CreateField::SetObjectData(CTexture* TextureArray, char** dataArray)
 		for (int x = 0;x < _blockValueX;x++)
 		{
 			int textureNumber = dataArray[x][y];
-			if (textureNumber == 0)
-			{
-				continue;
-			}
+			if (textureNumber == 0)continue;
 
 			Block* block = _blockManager->GetBlock(x, y);
 			bool onSwap = false;

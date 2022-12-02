@@ -7,8 +7,8 @@ class EnergyVessels
 {
 private:
 	DollOnEnergyVessels _dollOnEnergyVessels;
-	int* _currentEnergyValue;
-	int _maxEnergyValue;
+	int _currentEnergyValue, _maxEnergyValue;
+
 	EnergyBar* _energyBarArray = nullptr;
 	CTexture _energyVesselsTexture, _energyBarTexture, _remainEnergyTexture;
 	Vector2 _vesselsPosition,_remainPosition;
@@ -20,12 +20,12 @@ private:
 
 public:
 	void Initialize();
+	void ReLoad();
 	void SetMaxEnergyValue(int energyValue);
-	void SetCurrentEnergyValue(int* currentEnergyValue) { _currentEnergyValue = currentEnergyValue; }
 	
 	void Update();
-	void CheckChangeEnergyColor();
-	void ReLoad();
+	void SetCurrentEnergyValue(int currentEnergyValue);
+
 	void Render();
 	void Release();
 
@@ -33,4 +33,5 @@ private:
 	void LoadTexture();
 	void CreateEnergyBarArray();
 	void SetBarStatu();
+	void ChangeEnergyColor();
 };

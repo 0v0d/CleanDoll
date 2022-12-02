@@ -29,7 +29,10 @@ public:
 	void Initialize();
 	void ReLoad();
 	void Update();
-	void InputMouseKey();
+	void SetMousePos(Vector2);
+	void Push();
+	void Pull();
+
 	void Render();
 	void Release();
 private:

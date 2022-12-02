@@ -73,6 +73,7 @@ void Block::Update()
 
 bool Block::CheckMouseOnBlock(Vector2 mousePos)
 {
+	if (_blockTexture == nullptr) return false;
 	if (mousePos.y<_position.y || mousePos.y>_position.y + _blockTexture->GetHeight() * _scale)return false;
 
 	float wariai = mousePos.y < _position.y + _blockTexture->GetHeight() * _scale / 2 ? (mousePos.y - _position.y) / (_blockTexture->GetHeight() * _scale / 2) : 1 - ((mousePos.y - _position.y - _blockTexture->GetHeight() * _scale / 2) / (_blockTexture->GetHeight() * _scale / 2));

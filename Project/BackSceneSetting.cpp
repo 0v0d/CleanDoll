@@ -2,11 +2,18 @@
 
 void BackSceneSetting::Initialize()
 {
-	_closeButton = CRectangle(g_pGraphics->GetTargetWidth() / 2 - 50, 400, g_pGraphics->GetTargetWidth() / 2 + 50, 450);
-	_backButton = CRectangle(g_pGraphics->GetTargetWidth() / 2 - 50, 300, g_pGraphics->GetTargetWidth() / 2 + 50, 350);
+	_backTexture.Load("‚Í‚¢.png");
+	_closeTexture.Load("‚¢‚¢‚¦.png");
+
+	CreateButton(&_backButton, Vector2(g_pGraphics->GetTargetWidth() / 2 - _backTexture.GetWidth() - 30, 450), &_backTexture);
+	CreateButton(&_closeButton, Vector2(g_pGraphics->GetTargetWidth() / 2 + 20, 450), &_closeTexture);
 }
 
-void BackSceneSetting::Update(){
+void BackSceneSetting::CreateButton(Button* button, Vector2 pos, CTexture* texture) {
+	button->SetStatu(pos, texture);
+}
+
+void BackSceneSetting::Update() {
 
 }
 
@@ -26,12 +33,12 @@ void BackSceneSetting::SetBackScene(SCENE_TYPE backScene) {
 
 void BackSceneSetting::PushButton(Vector2 mousePos)
 {
-	if(_closeButton.CollisionPoint(mousePos))
+	if (_closeButton.CheckOnButton(mousePos))
 	{
 		*_openBackSceneSetting = false;
 		return;
 	}
-	if (_backButton.CollisionPoint(mousePos)) {
+	if (_backButton.CheckOnButton(mousePos)) {
 		SceneManager::Instance().ChangeScene(_backScene);
 		*_openMenu = false;
 		*_openBackSceneSetting = false;
@@ -42,11 +49,12 @@ void BackSceneSetting::PushButton(Vector2 mousePos)
 
 void BackSceneSetting::Render()
 {
-	CGraphicsUtilities::RenderFillRect(_backButton, MOF_COLOR_HGREEN);
-	CGraphicsUtilities::RenderFillRect(_closeButton, MOF_COLOR_HGREEN);
+	_backButton.Render();
+	_closeButton.Render();
 }
 
 void BackSceneSetting::Release()
 {
-
+	_backTexture.Release();
+	_closeTexture.Release();
 }

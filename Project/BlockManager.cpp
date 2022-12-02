@@ -47,22 +47,10 @@ void BlockManager::SetAdjoinBlock()
 		for (int x = 0;x < _blockValueX;x++)
 		{
 			_blockArray[x][y].SetAdjoinBlockValue(_adjoinBlockValue);
-			if (x > 0)
-			{
-				_blockArray[x][y].SetAdjoinBlock(&_blockArray[x - 1][y], 0);
-			}
-			if (y > 0) 
-			{
-				_blockArray[x][y].SetAdjoinBlock(&_blockArray[x][y - 1], 1);
-			}
-			if (x + 1 < _blockValueX)
-			{
-				_blockArray[x][y].SetAdjoinBlock(&_blockArray[x + 1][y], 2);
-			}
-			if (y + 1 < _blockValueY)
-			{
-				_blockArray[x][y].SetAdjoinBlock(&_blockArray[x][y + 1], 3);
-			}
+			if (x > 0)_blockArray[x][y].SetAdjoinBlock(&_blockArray[x - 1][y], 0);
+			if (y > 0)_blockArray[x][y].SetAdjoinBlock(&_blockArray[x][y - 1], 1);
+			if (x + 1 < _blockValueX)_blockArray[x][y].SetAdjoinBlock(&_blockArray[x + 1][y], 2);
+			if (y + 1 < _blockValueY)_blockArray[x][y].SetAdjoinBlock(&_blockArray[x][y + 1], 3);
 		}
 	}
 }
@@ -125,7 +113,6 @@ void BlockManager::Render()
 			_blockArray[x][y].RenderBlcokOnObject();
 		}
 	}
-	//CGraphicsUtilities::RenderString(30, 90,MOF_COLOR_HWHITE, "%d:%d", _dollOnBlockX, _dollOnBlockY);
 }
 
 void BlockManager::Delete()
@@ -137,17 +124,16 @@ void BlockManager::Delete()
 			_blockArray[x][y].Delete();
 		}
 	}
-		
+
+	if (_blockArray != nullptr) {
+		for (int i = 0; i < _blockValueX; i++) delete[] _blockArray[i];
+		delete[] _blockArray;
+
+		_blockArray = nullptr;
+	}
 }
 
 void BlockManager::Release()
 {
-	for (int y = 0;y < _blockValueY;y++)
-	{
-		for (int x = 0; x < _blockValueX; x++)
-		{
-			_blockArray[x][y].Delete();
-		}
-	}
 	Delete();
 }

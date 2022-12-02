@@ -38,15 +38,19 @@ void SetUpSetting::Update()
 	}
 }
 
-void SetUpSetting::Push(Vector2 mousePos)
+void SetUpSetting::SetMousePos(Vector2 mousePos) {
+	_mousePos = mousePos;
+}
+
+void SetUpSetting::Push()
 {
 	if (_openSetting)
 	{
-		_currentSetting->Push(mousePos);
+		_currentSetting->Push(_mousePos);
 	}
 	else 
 	{
-		if (_closeMenuButton.CheckOnButton(mousePos))
+		if (_closeMenuButton.CheckOnButton(_mousePos))
 		{
 			*_openMenu = false;
 			return;
@@ -54,7 +58,7 @@ void SetUpSetting::Push(Vector2 mousePos)
 
 		for (auto itr = _buttonArray.begin(); itr != _buttonArray.end(); itr++)
 		{
-			if (itr->first->CheckOnButton(mousePos))
+			if (itr->first->CheckOnButton(_mousePos))
 			{
 				_openSetting = true;
 				_currentSetting = itr->second;
@@ -64,11 +68,11 @@ void SetUpSetting::Push(Vector2 mousePos)
 	}
 }
 
-void SetUpSetting::Pull(Vector2 mousePos)
+void SetUpSetting::Pull()
 {
 	if (_openSetting)
 	{
-		_currentSetting->Pull(mousePos);
+		_currentSetting->Pull(_mousePos);
 	}
 }
 

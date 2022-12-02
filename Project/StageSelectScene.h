@@ -1,35 +1,40 @@
 #pragma once
 #include	"IBaseScene.h"
-#include	"GetDataFromFile.h"
-#include	"InputStageSelect.h"
 #include	"BarManager.h"
 #include	"Slider.h"
-#include	"BackGround.h"
 #include	"StageSelectDialog.h"
-#include    "StageSelectBackGround.h"
+#include	"BackGround.h"
+#include	"CreateField.h"
+#include	"ContactFile.h"
+
 class StageSelectScene :public IBaseScene
 {
 private:
-	GetDataFromFile _getDataFromFile;
-	InputStageSelect _inputInStageSelect;
-	BarManager _barManager;
-	Slider _slider;
-	StageSelectBackGround _StSelectbackGround;
-	CTexture _barTexture;
-	CTexture _buttonTexture;
-	CTexture _stageBackTexture;
-	CRectangle _stageBackRect;
+	CreateField _createField;
+	ContactFile _contactFile;
 
+	BarManager _barManager;
 	StageSelectDialog _stageSelectDialog;
+	Preview _preview;
+	CTexture _backGroundTexture;
+	BackGround _backGround;
+
+	Vector2 _mousePos;
+
 public:
 	void Initialize();
 	void ReLoad();
 	void Update();
-	void StartNextStage() { _barManager.StartNextStage(); }
-	void StageClear() { _barManager.StageClear(); }
+	void SetMousePos(Vector2);
+	void Push();
+	void Pull();
+	void StartNextStage();
+	void StageClear();
 	void Render();
 	void Release();
-	GetDataFromFile* GetGetDataFromFile() { return &_getDataFromFile; }
+
+	CreateField* GetCreateField() { return &_createField; }
 private:
-	void Load();
+	void LoadTexture();
+	void LoadStage(int stageNumber);
 };

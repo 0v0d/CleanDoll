@@ -1,27 +1,29 @@
 #include "StageSelectScene.h"
 #include "SceneManager.h"
 
-
-BackGround _backGround;
-
 void StageSelectScene::Initialize()
 {
-    Vector2 _barPos = Vector2(g_pGraphics->GetTargetWidth() / 2, g_pGraphics->GetTargetHeight() / 2);
-    _inputInStageSelect.SetBarManager(&_barManager);
-    _inputInStageSelect.SetStageSelectDialog(&_stageSelectDialog);
-    _getDataFromFile.SetBarManager(&_barManager);
-    Load();
-    _StSelectbackGround.Initialize();
-    _StSelectbackGround.SetTextureStatus(&_stageBackTexture);
-    _getDataFromFile.LoadStageSelectData();
-    _getDataFromFile.Initialize();
+    _contactFile.SetCreateField(&_createField);
+    _contactFile.SetBarManager(&_barManager);
+    _contactFile.Initialize();
+    
+    LoadTexture();
+
     _barManager.Initialize();
     _stageSelectDialog.Initialize();
+    _preview.Initialize();
+    _backGround.SetTextureStatus(&_backGroundTexture,SCREEN_TYPE::FULLSCREEN);
+
+    _preview.CalcuBaseScale(_barManager.GetBaseSizeY());
+    _preview.CalcuBasePos();
+    _preview.SetPreviewTexture(_barManager.GetBar(0)->GetPreviewTexture());
+
+    _stageSelectDialog.SetLoadStageMethod([&](int stageNumber) {return LoadStage(stageNumber);});
 }
 
-void StageSelectScene::Load()
+void StageSelectScene::LoadTexture()
 {
-    _stageBackTexture.Load("menu_back.png");
+    _backGroundTexture.Load("menu_back.png");
 }
 
 void StageSelectScene::ReLoad()
@@ -32,24 +34,72 @@ void StageSelectScene::ReLoad()
 
 void StageSelectScene::Update()
 {
-    _inputInStageSelect.Update();
     _barManager.Update();
-    _StSelectbackGround.Update();
 }
+
+void StageSelectScene::SetMousePos(Vector2 mousePos) {
+    _mousePos = mousePos;
+
+    if (!_stageSelectDialog.IsOpenDialog()) {
+        _barManager.SetMousePos(mousePos);
+    }
+
+    _stageSelectDialog.SetMousePos(mousePos);
+}
+
+void StageSelectScene::Push() {
+
+    if (!_stageSelectDialog.IsOpenDialog()) {
+        _barManager.Push();
+
+        Bar* mouseOnBar = _barManager.GetBar(_barManager.GetBarNumber(_mousePos));
+        if (mouseOnBar != nullptr) {
+            _preview.SetPreviewTexture(mouseOnBar->GetPreviewTexture());
+            _stageSelectDialog.SetStageNumber(_barManager.GetBarNumber(_mousePos));
+        }
+    }
+
+    _stageSelectDialog.Push();
+}
+
+void StageSelectScene::Pull() {
+    if (!_stageSelectDialog.IsOpenDialog()) {
+        _barManager.Pull();
+    }
+    _stageSelectDialog.Pull();
+}
+
+void StageSelectScene::StartNextStage() {
+    _barManager.StartNextStage();
+    _contactFile.LoadStage(_barManager.GetBar(_barManager.GetCurrentStageNumber())->GetStageDataTextName());
+}
+
+void StageSelectScene::StageClear() {
+    _barManager.StageClear(); 
+}
+
+void StageSelectScene::LoadStage(int stageNumber) {
+    _contactFile.LoadStage(_barManager.GetBar(stageNumber)->GetStageDataTextName());
+    SceneManager::Instance().ChangeScene(SCENE_TYPE::GAME);
+}
+
 
 void StageSelectScene::Render()
 {
-    _StSelectbackGround.Render();
-    //CGraphicsUtilities::RenderString(30, 30, "StageSelect");
+    _backGround.Render();
     _barManager.Render();
+    _preview.Render();
+
     _stageSelectDialog.Render();
 }
 
 void StageSelectScene::Release()
 {
-    _stageBackTexture.Release();
+    _backGroundTexture.Release();
+
     _barManager.Release();
-    _getDataFromFile.Release();
-    _stageBackTexture.Release();
     _stageSelectDialog.Release();
+    _preview.Release();
+
+    _contactFile.Release();
 }

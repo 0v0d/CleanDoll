@@ -11,33 +11,61 @@ void ContactFile::Initialize()
 	_waterDumpTextureArray.LineXValue = 1;
 	_wallTextureArray.LineXValue = 3;
 	_wallObjectTextureArray.LineXValue = 2;
+
+	LoadStageSelectData();
+}
+
+void ContactFile::LoadStageSelectData()
+{
+	OpenFile("StageManager.txt");
+	int stageValue = GetValue(true);
+	std::string* stageFileNameArray = new std::string[stageValue];
+	for (int i = 0;i < stageValue;i++)
+	{
+		stageFileNameArray[i] = GetString(false);
+	}
+	CloseFile();
+
+	_barManager->CreateBarArray(stageValue);
+	for (int i = 0;i < stageValue;i++)
+	{
+		OpenFile(stageFileNameArray[i]);
+
+		std::string a = GetString(true);
+		std::string b = GetString(false);
+		int c = GetValue(false);
+		std::string d = GetString(false);
+
+		_barManager->SetBarStatu(i, a, b, c, d);
+		CloseFile();
+	}
+
+	delete[] stageFileNameArray;
 }
 
 void ContactFile::LoadStage(std::string stageName)
 {
-
 	Delete();
-
 	OpenFile(stageName.c_str());
 
 	_blockValueX = atoi(strtok(_buffer, ","));
 	_blockValueY = atoi(strtok(NULL, ","));
 
-	_createField.SetFieldStatu(_blockValueX, _blockValueY);
+	_createField->SetFieldStatu(_blockValueX, _blockValueY);
 
 	//マップ
 	LoadTexture(&_mapTextureArray);
-	_createField.SetBlockData(_mapTextureArray.textureArray, _chipDataArray);
+	_createField->SetBlockData(_mapTextureArray.textureArray, _chipDataArray);
 	DeleteChipData(&_mapTextureArray);
 
 	//オブジェクト
 	LoadTexture(&_objectTextureArray);
-	_createField.SetObjectData(_objectTextureArray.textureArray, _chipDataArray);
+	_createField->SetObjectData(_objectTextureArray.textureArray, _chipDataArray);
 	DeleteChipData(&_objectTextureArray);
 
 	//アイテム
 	LoadTexture(&_itemTextureArray);
-	_createField.SetItemData(_itemTextureArray.textureArray, _chipDataArray, true);
+	_createField->SetItemData(_itemTextureArray.textureArray, _chipDataArray, true);
 	DeleteChipData(&_itemTextureArray);
 
 	//ギャラリー
@@ -47,27 +75,27 @@ void ContactFile::LoadStage(std::string stageName)
 
 	//モップ
 	LoadTexture(&_mopTextureArray);
-	_createField.SetItemData(_mopTextureArray.textureArray, _chipDataArray, false);
+	_createField->SetItemData(_mopTextureArray.textureArray, _chipDataArray, false);
 	DeleteChipData(&_mopTextureArray);
 
 	//埃
 	LoadTexture(&_dustDumpTextureArray);
-	_createField.SetDumpData(_dustDumpTextureArray.textureArray, _chipDataArray, true);
+	_createField->SetDumpData(_dustDumpTextureArray.textureArray, _chipDataArray, true);
 	DeleteChipData(&_dustDumpTextureArray);
 
 	//水汚れ
 	LoadTexture(&_waterDumpTextureArray);
-	_createField.SetDumpData(_waterDumpTextureArray.textureArray, _chipDataArray, false);
+	_createField->SetDumpData(_waterDumpTextureArray.textureArray, _chipDataArray, false);
 	DeleteChipData(&_waterDumpTextureArray);
 
 	//壁
 	LoadTexture(&_wallTextureArray);
-	_createField.SetWallData(_wallTextureArray.textureArray, _chipDataArray, _wallTextureArray.LineXValue);
+	_createField->SetWallData(_wallTextureArray.textureArray, _chipDataArray, _wallTextureArray.LineXValue);
 	DeleteChipData(&_wallTextureArray);
 
 	//壁用オブジェクト
 	LoadTexture(&_wallObjectTextureArray);
-	_createField.SetWallObjectkData(_wallObjectTextureArray.textureArray, _chipDataArray, _wallObjectTextureArray.LineXValue);
+	_createField->SetWallObjectkData(_wallObjectTextureArray.textureArray, _chipDataArray, _wallObjectTextureArray.LineXValue);
 	DeleteChipData(&_wallObjectTextureArray);
 
 	LoadDoll();
@@ -111,7 +139,7 @@ void ContactFile::LoadDoll()
 
 void ContactFile::SetDoll(int x, int y)
 {
-	_createField.SetDoll(x, y);
+	_createField->SetDoll(x, y);
 }
 
 void ContactFile::OpenFile(std::string fileName)
@@ -144,6 +172,24 @@ std::string ContactFile::GetString(bool firstContact)
 	return firstContact ? strtok(_buffer, ",") : strtok(NULL, ",");
 }
 
+void ContactFile::NewChipData(TextureArray* textureArray)
+{
+	_chipDataArray = new char* [_blockValueX * textureArray->LineXValue];
+	for (int i = 0; i < _blockValueX * textureArray->LineXValue; i++)_chipDataArray[i] = new char[_blockValueY];
+
+	for (int y = 0; y < _blockValueY; y++) {
+		for (int x = 0; x < _blockValueX * textureArray->LineXValue; x++)
+			_chipDataArray[x][y] = 0;
+	}
+}
+
+void ContactFile::DeleteChipData(TextureArray* textureArray)
+{
+	for (int i = 0; i < _blockValueX * textureArray->LineXValue; i++) delete[] _chipDataArray[i];
+	delete[] _chipDataArray;
+}
+
+
 
 void ContactFile::Delete()
 {
@@ -169,26 +215,7 @@ void ContactFile::DeleteTextureArray(TextureArray* textureArray)
 	textureArray->textureValue = 0;
 }
 
-void ContactFile::NewChipData(TextureArray* textureArray)
-{
-	_chipDataArray = new char* [_blockValueX * textureArray->LineXValue];
-	for (int i = 0; i < _blockValueX * textureArray->LineXValue; i++)_chipDataArray[i] = new char[_blockValueY];
-
-	for (int y = 0; y < _blockValueY; y++) {
-		for (int x = 0; x < _blockValueX * textureArray->LineXValue; x++)
-			_chipDataArray[x][y] = 0;
-	}
-}
-
-void ContactFile::DeleteChipData(TextureArray* textureArray)
-{
-
-	for (int i = 0; i < _blockValueX * textureArray->LineXValue; i++) delete[] _chipDataArray[i];
-	delete[] _chipDataArray;
-}
-
 void ContactFile::Release()
 {
-
 	Delete();
 }

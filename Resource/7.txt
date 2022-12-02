@@ -1,1 +1,1 @@
-7.png,title_stage7.png,2,test.txt,
+7.png,title_stage7.png,2,stage7.txt,

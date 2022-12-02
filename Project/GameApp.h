@@ -1,9 +1,11 @@
 #pragma once
 #include	"Mof.h"
 #include	"Menu.h"
+#include	"Input.h"
 
 class CGameApp : public CSingleGameApplication
 {
+	Input _input;
 	Menu _menu;
 public:
 	CGameApp(){}

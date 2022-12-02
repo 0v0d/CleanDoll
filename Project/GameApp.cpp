@@ -3,6 +3,7 @@
 
 MofBool CGameApp::Initialize()
 {
+	_input.SetMenu(&_menu);
 	CUtilities::SetCurrentDirectory("Resource");
 	SceneManager::Instance().Initialize();
 	_menu.Initialize();
@@ -12,6 +13,7 @@ MofBool CGameApp::Initialize()
 MofBool CGameApp::Update()
 {
 	g_pInput->RefreshKey();
+	_input.Update();
 	if (!_menu.IsOpenMenu())SceneManager::Instance().Update();
 	_menu.Update();
 	return TRUE;
