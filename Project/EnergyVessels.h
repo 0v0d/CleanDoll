@@ -2,10 +2,12 @@
 #include	"Mof.h"
 #include	"EnergyBar.h"
 #include	"DollOnEnergyVessels.h"
+#include "EnergyValue.h"
 #include	"map"
 class EnergyVessels
 {
 private:
+	EnergyValue _energyValue;
 	DollOnEnergyVessels _dollOnEnergyVessels;
 	int _currentEnergyValue, _maxEnergyValue;
 

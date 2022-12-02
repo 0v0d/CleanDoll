@@ -113,6 +113,7 @@
     <ClCompile Include="Dump.cpp" />
     <ClCompile Include="EndGameProcess.cpp" />
     <ClCompile Include="EnergyBar.cpp" />
+    <ClCompile Include="EnergyValue.cpp" />
     <ClCompile Include="EnergyVessels.cpp" />
     <ClCompile Include="Field.cpp" />
     <ClCompile Include="FieldUI.cpp" />
@@ -166,6 +167,7 @@
     <ClInclude Include="Dump.h" />
     <ClInclude Include="EndGameProcess.h" />
     <ClInclude Include="EnergyBar.h" />
+    <ClInclude Include="EnergyValue.h" />
     <ClInclude Include="EnergyVessels.h" />
     <ClInclude Include="Field.h" />
     <ClInclude Include="FieldUI.h" />
