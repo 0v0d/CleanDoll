@@ -20,10 +20,10 @@ void RemainingDumpUI::Initialize() {
 		itr->second->SetScale(_scale);
 		itr->second->SetPosition(Vector2(_basePosition.x + space * ((int)itr->first * 2 + 1) + iconSizeX * _scale * (int)itr->first, _basePosition.y + _baseTexture.GetHeight() * _scale - space));
 	}
-	
+	_remainingValue.Initialize();
 	_remainingValue.SetOnValueCircleScale(_scale);
 	_remainingValue.SetPosition(_basePosition);
-	_remainingValue.Initialize();
+	
 }
 
 void RemainingDumpUI::LoadTexture() {

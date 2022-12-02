@@ -16,7 +16,7 @@ public:
 	void Initialize();
 	void Render();
 	void Release();
-	void SetMaxRemaingingValue(int maxRemainingValue) { _currentRemaingValue = 8; }
+	void SetMaxRemaingingValue(int maxRemainingValue) { _currentRemaingValue = maxRemainingValue; }
 	void SupRemaingValue();
 	void SetOnValueCircleScale(float scale) { _onValueCircleScale = scale; }
 	void SetPosition(Vector2 basePosition);
