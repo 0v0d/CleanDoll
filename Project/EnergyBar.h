@@ -9,7 +9,7 @@ private:
 	int _barValue,_number;
 	float _rotate, _scale;
 
-	const float _doublePie = 3.14 * 2;
+	const float _doublePie = 3.14f * 2;
 
 	MofU32* _renderColor;
 

@@ -4,7 +4,7 @@ class DollAnimation
 {
 	CSpriteMotionController	_motionController;
 	CTexture* _dollTexture;
-	const int _wait = 3;
+	const float _wait = 3;
 	enum {
 		WAIT_1,
 		WAIT_2,

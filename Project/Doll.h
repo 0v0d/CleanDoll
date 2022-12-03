@@ -11,7 +11,7 @@ class Doll
 	CTexture _dollTexture;
 	Vector2 _dollPosition;
 	CRectangle _renderRect;
-	float _scale = 0.03;
+	float _scale;
 	bool _inversion;
 	CRectangle _inversionRenderRect;
 	

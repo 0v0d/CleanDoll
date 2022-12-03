@@ -18,7 +18,7 @@ class TitleScene :public IBaseScene
 	
 	bool _end;
 	float _time;
-	const float _increase = 0.003;
+	const float _increase = 0.003f;
 
 	//titleLogo
 	bool _loop;//Loop‚³‚ê‚½‚©‚Ì”»’è
