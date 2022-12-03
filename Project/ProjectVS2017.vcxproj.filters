@@ -233,6 +233,12 @@
     <ClCompile Include="DollAnimation.cpp">
       <Filter>ソース ファイル\Scene\GameScene\Field\Doll</Filter>
     </ClCompile>
+    <ClCompile Include="EnergyValue.cpp">
+      <Filter>ソース ファイル\Scene\GameScene\FieldUI\EnergyUI</Filter>
+    </ClCompile>
+    <ClCompile Include="RemainingValue.cpp">
+      <Filter>ソース ファイル\Scene\GameScene\FieldUI\RemainningDump</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GameApp.h">
@@ -387,6 +393,12 @@
     </ClInclude>
     <ClInclude Include="DollAnimation.h">
       <Filter>ソース ファイル\Scene\GameScene\Field\Doll</Filter>
+    </ClInclude>
+    <ClInclude Include="EnergyValue.h">
+      <Filter>ソース ファイル\Scene\GameScene\FieldUI\EnergyUI</Filter>
+    </ClInclude>
+    <ClInclude Include="RemainingValue.h">
+      <Filter>ソース ファイル\Scene\GameScene\FieldUI\RemainningDump</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

@@ -20,6 +20,10 @@ void RemainingDumpUI::Initialize() {
 		itr->second->SetScale(_scale);
 		itr->second->SetPosition(Vector2(_basePosition.x + space * ((int)itr->first * 2 + 1) + iconSizeX * _scale * (int)itr->first, _basePosition.y + _baseTexture.GetHeight() * _scale - space));
 	}
+	_remainingValue.Initialize();
+	_remainingValue.SetOnValueCircleScale(_scale);
+	_remainingValue.SetPosition(_basePosition);
+	
 }
 
 void RemainingDumpUI::LoadTexture() {
@@ -29,6 +33,12 @@ void RemainingDumpUI::LoadTexture() {
 	_dustIconTexture.Load("icon_hokori.png");
 	_waterIconTexture.Load("icon_mizu.png");
 	_coinIconTexture.Load("icon_coin.png");
+}
+
+void RemainingDumpUI::Update()
+{
+	_remainingValue.SetMaxRemaingingValue(_dustValue+_waterValue);
+	_remainingValue.CalucRect();
 }
 
 void RemainingDumpUI::IconSetTexture(ICON_TYPE iconType, CTexture* iconTexture) {
@@ -60,11 +70,13 @@ void RemainingDumpUI::SetWaterValue(int dumpValue) {
 
 void RemainingDumpUI::CleanDust() {
 	_dustValue--;
+	_remainingValue.SupRemaingValue();
 	if (CheckLostDump(_dustValue))MarkIcon(ICON_TYPE::DUST);
 }
 
 void RemainingDumpUI::CleanWater() {
 	_waterValue--;
+	_remainingValue.SupRemaingValue();
 	if (CheckLostDump(_waterValue))MarkIcon(ICON_TYPE::WATER);
 }
 
@@ -78,6 +90,7 @@ void RemainingDumpUI::Render() {
 	for (auto itr = _iconArray.begin(); itr != _iconArray.end(); itr++) {
 		itr->second->Render();
 	}
+	_remainingValue.Render();
 }
 
 void RemainingDumpUI::Release() {
@@ -92,4 +105,5 @@ void RemainingDumpUI::Release() {
 	_dustIconTexture.Release();
 	_waterIconTexture.Release();
 	_coinIconTexture.Release();
+	_remainingValue.Release();
 }
