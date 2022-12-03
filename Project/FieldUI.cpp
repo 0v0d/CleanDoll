@@ -23,7 +23,7 @@ void FieldUI::SetWaterDumpValue(int dumpValue) {
 }
 
 void FieldUI::Update(){
-
+	_remainingDumpUI.Update();
 }
 
 void FieldUI::SetCurrentEnergyValue(int energyValue) {

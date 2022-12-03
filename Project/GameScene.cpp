@@ -3,7 +3,7 @@
 
 void GameScene::Initialize()
 {
-	_gameBackTexture.Load("menu_back.png");
+	_gameBackTexture.Load("ƒQ[ƒ€ƒvƒŒƒC@”wŒi@‰ü—Ç‚P.png");
 	_backGround.SetTextureStatus(&_gameBackTexture, REPEATSCREEN);
 	_field.Initialize();
 }
