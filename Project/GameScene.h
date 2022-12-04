@@ -25,6 +25,6 @@ public:
 
     void Render();
     void Release();
-
+    void StopBGM();
     Field* GetField() { return &_field; }
 };

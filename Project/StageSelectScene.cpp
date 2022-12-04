@@ -106,3 +106,8 @@ void StageSelectScene::Release()
     _contactFile.Release();
     _music.Release();
 }
+
+void StageSelectScene::StopBGM()
+{
+    _bgm.Stop();
+}
