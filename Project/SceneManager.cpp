@@ -28,7 +28,6 @@ void SceneManager::Initialize()
 void SceneManager::Update()
 {
 	_currentScene->Update();
-	
 }
 
 void SceneManager::SetMousePos(Vector2 mousePos) {
@@ -54,6 +53,11 @@ void SceneManager::Release()
 	{
 		iter->second->Release();
 	}
+}
+
+void SceneManager::StopBGM()
+{
+	_currentScene->StopBGM();
 }
 
 void SceneManager::ChangeScene(SCENE_TYPE nextScene)

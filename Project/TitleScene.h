@@ -37,6 +37,7 @@ public:
 
 	void Render();
 	void Release();
+	void StopBGM() ;
 private:
 	int CalcSequence(float x);
 	void SetTitleLogoAnimationStatus();

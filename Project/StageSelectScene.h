@@ -4,6 +4,7 @@
 #include	"Slider.h"
 #include	"StageSelectDialog.h"
 #include	"BackGround.h"
+#include "BGM.h"
 #include	"CreateField.h"
 #include	"ContactFile.h"
 
@@ -18,6 +19,8 @@ private:
 	Preview _preview;
 	CTexture _backGroundTexture;
 	BackGround _backGround;
+	BGM _bgm;
+	CSoundBuffer _music;
 
 	Vector2 _mousePos;
 
@@ -32,7 +35,7 @@ public:
 	void StageClear();
 	void Render();
 	void Release();
-
+	void StopBGM();
 	CreateField* GetCreateField() { return &_createField; }
 private:
 	void LoadTexture();

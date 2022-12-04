@@ -1,4 +1,5 @@
 #include "TitleScene.h"
+
 void TitleScene::Initialize()
 {
 	_titleBackTexture.Load("titleback.png");
@@ -12,6 +13,7 @@ void TitleScene::Initialize()
 	_bgm.Play();
 	_alpha = 255;
 }
+
 void TitleScene::SetTitleLogoAnimationStatus()
 {
 	SpriteAnimationCreate anim[] = 
@@ -121,6 +123,7 @@ void TitleScene::ReLoad()
 {
 	_bgm.Play();
 }
+
 void TitleScene::Update()
 {
 	//Click to startのアニメーション用
@@ -148,7 +151,6 @@ void TitleScene::Update()
 	}
 	
 	_titleLogoRect = _logo.GetSrcRect();
-	
 }
 
 void TitleScene::SetMousePos(Vector2) {
@@ -176,8 +178,6 @@ void TitleScene::Render()
 	{
 		_titleLogoLoopTexture.RenderScale(_titleLogoPos.x, _titleLogoPos.y, _titleLogoScale, _titleLogoRect);
 	}
-	
-
 }
 
 void TitleScene::Release()
@@ -187,6 +187,11 @@ void TitleScene::Release()
 	_titleLogoTexture.Release();
 	_titleLogoLoopTexture.Release();
 	_music.Release();
+}
+
+void TitleScene::StopBGM()
+{
+	_bgm.Stop();
 }
 
 namespace detail

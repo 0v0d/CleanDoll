@@ -24,6 +24,7 @@ public:
 
 	void Render();
 	void Release();
+	void StopBGM();
 
 	static SceneManager& Instance()
 	{
