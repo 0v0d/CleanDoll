@@ -4,7 +4,6 @@ void BGM::SetBGM(CSoundBuffer* bgm, bool loop)
 {
 	_bgm = bgm;
 	_bgm->SetLoop(loop);
-	
 }
 
 void BGM::Play ()
