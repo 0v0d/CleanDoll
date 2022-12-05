@@ -20,8 +20,8 @@ void Block::SetPosition(int x, int y, float topSpace)
 	_position.x = g_pGraphics->GetTargetWidth() / 2 - _blockSizeX * _scale / 2 + (_blockSizeX * _scale / 2 * x) - (_blockSizeX * _scale / 2 * y);
 	_position.y = topSpace + (_blockSizeY * _scale / 2 * y) + (_blockSizeY * _scale / 2 * x);
 
-	_x = x;
-	_y = y;
+	_position.x -= _scale * (float)(x - y) / 2;
+	_position.y -= _scale * (float)(x + y) / 2;
 }
 
 
@@ -108,6 +108,7 @@ void Block::RenderBlcokOnObject() {
 void Block::Delete()
 {
 	_blockOnObject.Delete();
+	delete[] _wallArray;
 }
 
 void Block::Release()
