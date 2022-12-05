@@ -2,6 +2,7 @@
 #include	"SceneManager.h"
 #include	"IBaseScene.h"
 #include	"BackGround.h"
+#include	"BGM.h"
 #include    "Mof.h"
 class TitleScene :public IBaseScene
 {
@@ -15,7 +16,8 @@ class TitleScene :public IBaseScene
 	CRectangle _titleLogoRect;
 	CRectangle  _titleLogoLoopRect;
 	uint8_t _alpha;
-	
+	BGM _bgm;
+	CSoundBuffer _music;
 	bool _end;
 	float _time;
 	const float _increase = 0.003f;
@@ -35,6 +37,7 @@ public:
 
 	void Render();
 	void Release();
+	void StopBGM() ;
 private:
 	int CalcSequence(float x);
 	void SetTitleLogoAnimationStatus();
