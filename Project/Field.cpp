@@ -20,9 +20,6 @@ void Field::Initialize()
 	_endGameProcess.Initialize();
 
 	_doll.SetDumpValue(_dustDumpValue, _waterDumpValue);
-
-	//•K—v‚È‚¢?
-	_dollInitialPositionX = _dollInitialPositionY = 1;
 }
 
 void Field::ReLoad()

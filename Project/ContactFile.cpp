@@ -31,12 +31,12 @@ void ContactFile::LoadStageSelectData()
 	{
 		OpenFile(stageFileNameArray[i]);
 
-		std::string a = GetString(true);
-		std::string b = GetString(false);
-		int c = GetValue(false);
-		std::string d = GetString(false);
+		std::string previewTextureName = GetString(true);
+		std::string  barTextureName = GetString(false);
+		int  difficulty = GetValue(false);
+		std::string stageDataTextName = GetString(false);
 
-		_barManager->SetBarStatu(i, a, b, c, d);
+		_barManager->SetBarStatu(i, previewTextureName, barTextureName, difficulty, stageDataTextName);
 		CloseFile();
 	}
 

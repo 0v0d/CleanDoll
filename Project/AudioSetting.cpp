@@ -12,7 +12,7 @@ void AudioSetting::Initialize()
 
 	for (int i = 0; i < _sliderValue; i++)
 	{
-		_sliderArray[i].SetStatu(Vector2(_barPos.x, _barPos.y * i + 250),&_barTexture, &_buttonTexture, 0.7, HORIZON);
+		_sliderArray[i].SetStatu(Vector2(_barPos.x, _barPos.y * i + 250),&_barTexture, &_buttonTexture, 0.7f, HORIZON);
 	}
 	
 	_closeButtonPos = Vector2(g_pGraphics->GetTargetWidth() / 2 - _closeButtonTexture.GetWidth()/2 , 650);
