@@ -1,11 +1,10 @@
 #pragma once
-#include "Button.h"
+#include	"Button.h"
 #include	"IBaseSetting.h"
 #include	"Slider.h"
 
 class AudioSetting :public IBaseSetting
 {
-private:
 	bool* _openAudioSetting;
 
 	const int _sliderValue = 2;
