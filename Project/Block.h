@@ -8,7 +8,6 @@ class Block
 private:
 	CTexture* _blockTexture = nullptr;
 	Vector2 _position;
-	const float _hitBoxScale = 0.2f;
 	float _blockSizeX, _blockSizeY;
 	float _scale;
 
@@ -23,7 +22,6 @@ private:
 	MofU32 _passedBlockColor = MOF_COLOR_RED;
 
 	BlockOnObject _blockOnObject;
-	int _x, _y;
 public:
 	void SetTexture(CTexture* blockTexture);
 	void SetPosition(int x, int y, float topSpace);
