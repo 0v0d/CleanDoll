@@ -29,7 +29,8 @@ void Field::ReLoad()
 	_fieldUI.ReLoad();
 	_operateDoll.ReLoad();
 
-	_doll.CalcuScale(_blockManager.GetBlock(0, 0)->GetBlockSize().y, _blockManager.GetScale());
+	
+	_doll.CalcuScale(_blockManager.GetDollOnBlock()->GetBlockSize().y, _blockManager.GetScale());
 	_dustDumpValue = _initalDustValue;
 	_waterDumpValue = _initalWaterValue;
 

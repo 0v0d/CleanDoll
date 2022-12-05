@@ -13,6 +13,7 @@ void AudioSetting::Initialize()
 	for (int i = 0; i < _sliderValue; i++)
 	{
 		_sliderArray[i].SetStatu(Vector2(_barPos.x, _barPos.y * i + 250),&_barTexture, &_buttonTexture, 0.7f, HORIZON);
+		_muted[i] = false;
 	}
 	
 	_closeButtonPos = Vector2(g_pGraphics->GetTargetWidth() / 2 - _closeButtonTexture.GetWidth()/2 , 650);
@@ -28,8 +29,9 @@ void AudioSetting::Initialize()
 }
 
 void AudioSetting::LoadTexture() {
-	for (int i = 0;i < _sliderValue;i++) {
+	for (int i = 0; i < _sliderValue; i++) {
 		_audioTexture[i].Load("音量マーク.png");
+		_mutedTexture[i].Load("speaker_muted.png");
 	}
 	_closeButtonTexture.Load("戻る　テキスト.png");
 	_BGMTexture.Load("BGM 1.png");
@@ -43,12 +45,24 @@ void AudioSetting::Update()
 	{
 		_sliderArray[i].Update();
 	}
+	GetVolume();
 }
 
 void AudioSetting::CalcuScale() {
 	_audioScale = _textureHeight / _audioTexture->GetHeight();
 	_BGMScale = _textureHeight / _BGMTexture.GetHeight();
 	_SEScale = _textureHeight / _SETexture.GetHeight();
+}
+
+void AudioSetting::GetVolume() {
+	for (int i = 0; i < _sliderValue; i++) {
+		if (_sliderArray[i].GetValue() <= 0) {
+			_muted[i] = true;
+		}
+		else {
+			_muted[i] = false;
+		}
+	}
 }
 
 void AudioSetting::Push(Vector2 mousePos)
@@ -85,7 +99,12 @@ void AudioSetting::Render()
 	_closeButton.Render();
 
 	for (int i = 0; i < _sliderValue; i++) {
-		_audioTexture[i].RenderScale(_audioPos[i].x, _audioPos[i].y, _audioScale);
+		if (!_muted[i]) {
+			_audioTexture[i].RenderScale(_audioPos[i].x, _audioPos[i].y, _audioScale);
+		}
+		if (_muted[i]) {
+			_mutedTexture[i].RenderScale(_audioPos[i].x, _audioPos[i].y, _audioScale);
+		}
 	}
 	_BGMTexture.RenderScale(_BGMPos.x, _BGMPos.y, _BGMScale);
 	_SETexture.RenderScale(_SEPos.x, _SEPos.y, _SEScale);
@@ -100,6 +119,7 @@ void AudioSetting::Release()
 
 	for (int i = 0; i < _sliderValue; i++) {
 		_audioTexture[i].Release();
+		_mutedTexture[i].Release();
 	}
 	_BGMTexture.Release();
 	_SETexture.Release();

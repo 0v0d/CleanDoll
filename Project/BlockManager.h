@@ -26,6 +26,7 @@ public:
 
 	Block* GetBlock(int x, int y) { return &_blockArray[x][y]; }
 	Block* GetMouseOnBlock(Vector2 mousePos);
+	Block* GetDollOnBlock() { return &_blockArray[_dollOnBlockX][_dollOnBlockY]; }
 	int GetAdjoinBlockValue() { return _adjoinBlockValue; }
 	float GetScale() { return _scale; }
 
