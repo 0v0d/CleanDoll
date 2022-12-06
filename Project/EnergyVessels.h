@@ -15,7 +15,7 @@ private:
 	CTexture _energyVesselsTexture, _energyBarTexture, _remainEnergyTexture;
 	Vector2 _vesselsPosition,_remainPosition;
 
-	float _scale = 0.4f;
+	const float _scale = 0.5f;
 
 	const int _variationValue = 3;
 	std::map<int, MofU32> _renderColorArray;

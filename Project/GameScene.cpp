@@ -3,7 +3,7 @@
 
 void GameScene::Initialize()
 {
-	_gameBackTexture.Load("ƒQ[ƒ€ƒvƒŒƒC@”wŒi@‰ü—Ç‚P.png");
+	_gameBackTexture.Load("GameSceneBackGround.png");
 	_backGround.SetTextureStatus(&_gameBackTexture, REPEATSCREEN);
 	_field.Initialize();
 	_music.Load("BGM.mp3");
