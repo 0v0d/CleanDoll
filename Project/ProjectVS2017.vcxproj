@@ -112,6 +112,7 @@
     <ClCompile Include="DollAnimation.cpp" />
     <ClCompile Include="DollOnEnergyVessels.cpp" />
     <ClCompile Include="Dump.cpp" />
+    <ClCompile Include="EndGameButtonAnimation.cpp" />
     <ClCompile Include="EndGameProcess.cpp" />
     <ClCompile Include="EnergyBar.cpp" />
     <ClCompile Include="EnergyValue.cpp" />
@@ -169,6 +170,7 @@
     <ClInclude Include="DollAnimation.h" />
     <ClInclude Include="DollOnEnergyVessels.h" />
     <ClInclude Include="Dump.h" />
+    <ClInclude Include="EndGameButtonAnimation.h" />
     <ClInclude Include="EndGameProcess.h" />
     <ClInclude Include="EnergyBar.h" />
     <ClInclude Include="EnergyValue.h" />
