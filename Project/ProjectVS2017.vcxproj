@@ -123,6 +123,7 @@
     <ClCompile Include="GameClearBackGround.cpp" />
     <ClCompile Include="GameClearLogoAnimation.cpp" />
     <ClCompile Include="GameOver.cpp" />
+    <ClCompile Include="GameOverBackGround.cpp" />
     <ClCompile Include="GameScene.cpp" />
     <ClCompile Include="IBaseAccessories.cpp" />
     <ClCompile Include="IBaseEndGameProcess.cpp" />
@@ -179,6 +180,7 @@
     <ClInclude Include="GameClearBackGround.h" />
     <ClInclude Include="GameClearLogoAnimation.h" />
     <ClInclude Include="GameOver.h" />
+    <ClInclude Include="GameOverBackGround.h" />
     <ClInclude Include="GameScene.h" />
     <ClInclude Include="IBaseAccessories.h" />
     <ClInclude Include="IBaseEndGameProcess.h" />
