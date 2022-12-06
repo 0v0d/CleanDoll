@@ -72,13 +72,6 @@ void GameClear::UpdateAnimation()
 		}
 	}
 
-	if (_endGameButton[2].IsEndAnimation())
-	{
-		if (g_pInput->IsMouseKeyPush(MOFMOUSE_LBUTTON))
-		{
-			//Pushの処理が入る
-		}
-	}
 }
 
 void GameClear::SetMousePos(Vector2 mousePos) {
@@ -86,22 +79,27 @@ void GameClear::SetMousePos(Vector2 mousePos) {
 }
 
 void GameClear::Push() {
-	if (_nextStageButton.CheckOnButton(_mousePos))
-	{
-		//次のステージへ
-		dynamic_cast<StageSelectScene*>(SceneManager::Instance().GetScene(SCENE_TYPE::STAGESELECT))->StartNextStage();
-		SceneManager::Instance().GetScene(SCENE_TYPE::GAME)->ReLoad();
-	}
 
-	if (_stageSelectButton.CheckOnButton(_mousePos))
+	if (_endGameButton[2].IsEndAnimation())
 	{
-		SceneManager::Instance().ChangeScene(SCENE_TYPE::STAGESELECT);
-	}
+		if (_nextStageButton.CheckOnButton(_mousePos))
+		{
+			//次のステージへ
+			dynamic_cast<StageSelectScene*>(SceneManager::Instance().GetScene(SCENE_TYPE::STAGESELECT))->StartNextStage();
+			SceneManager::Instance().GetScene(SCENE_TYPE::GAME)->ReLoad();
+		}
 
-	if (_retryButton.CheckOnButton(_mousePos))
-	{
-		SceneManager::Instance().GetScene(SCENE_TYPE::GAME)->ReLoad();
+		if (_stageSelectButton.CheckOnButton(_mousePos))
+		{
+			SceneManager::Instance().ChangeScene(SCENE_TYPE::STAGESELECT);
+		}
+
+		if (_retryButton.CheckOnButton(_mousePos))
+		{
+			SceneManager::Instance().GetScene(SCENE_TYPE::GAME)->ReLoad();
+		}
 	}
+	
 }
 
 void GameClear::Pull() {
@@ -115,9 +113,7 @@ void GameClear::Render()
 	_gameClearAnim.Render();
 	if (_gameClearAnim.IsEndeMotion())
 	{
-		_nextStageTexture.Render(_nextButtonPos.x, _nextButtonPos.y);
-		_stageSelectTexture.Render(_stageSelectButtonPos.x, _stageSelectButtonPos.y);
-		_retryTexture.Render(_retryButtonPos.x, _retryButtonPos.y);
+		
 		_clearDoll.Render();
 		for (int i = 0; i < _menuValue; i++) 
 		{
