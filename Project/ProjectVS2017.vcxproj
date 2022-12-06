@@ -117,6 +117,7 @@
     <ClCompile Include="EnergyBar.cpp" />
     <ClCompile Include="EnergyValue.cpp" />
     <ClCompile Include="EnergyVessels.cpp" />
+    <ClCompile Include="ExitGame.cpp" />
     <ClCompile Include="Field.cpp" />
     <ClCompile Include="FieldUI.cpp" />
     <ClCompile Include="GameApp.cpp" />
@@ -152,6 +153,7 @@
     <ClCompile Include="StageSelectScene.cpp" />
     <ClCompile Include="TitleScene.cpp" />
     <ClCompile Include="Wall.cpp" />
+    <ClCompile Include="WindowProc.cpp" />
     <ClCompile Include="WinMain.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -175,6 +177,7 @@
     <ClInclude Include="EnergyBar.h" />
     <ClInclude Include="EnergyValue.h" />
     <ClInclude Include="EnergyVessels.h" />
+    <ClInclude Include="ExitGame.h" />
     <ClInclude Include="Field.h" />
     <ClInclude Include="FieldUI.h" />
     <ClInclude Include="GameApp.h" />
@@ -211,6 +214,7 @@
     <ClInclude Include="StageSelectScene.h" />
     <ClInclude Include="TitleScene.h" />
     <ClInclude Include="Wall.h" />
+    <ClInclude Include="WindowProc.h" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="Version.rc" />
