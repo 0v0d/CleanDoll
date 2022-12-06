@@ -101,6 +101,7 @@
     <ClCompile Include="BackGround.cpp" />
     <ClCompile Include="BackSceneSetting.cpp" />
     <ClCompile Include="Bar.cpp" />
+    <ClCompile Include="BGM.cpp" />
     <ClCompile Include="Block.cpp" />
     <ClCompile Include="BlockManager.cpp" />
     <ClCompile Include="BlockOnObject.cpp" />
@@ -113,12 +114,14 @@
     <ClCompile Include="Dump.cpp" />
     <ClCompile Include="EndGameProcess.cpp" />
     <ClCompile Include="EnergyBar.cpp" />
+    <ClCompile Include="EnergyValue.cpp" />
     <ClCompile Include="EnergyVessels.cpp" />
     <ClCompile Include="Field.cpp" />
     <ClCompile Include="FieldUI.cpp" />
     <ClCompile Include="GameApp.cpp" />
     <ClCompile Include="GameClear.cpp" />
     <ClCompile Include="GameClearBackGround.cpp" />
+    <ClCompile Include="GameClearDollAnimation.cpp" />
     <ClCompile Include="GameClearLogoAnimation.cpp" />
     <ClCompile Include="GameOver.cpp" />
     <ClCompile Include="GameScene.cpp" />
@@ -136,6 +139,7 @@
     <ClCompile Include="Preview.cpp" />
     <ClCompile Include="RemainingDumpUI.cpp" />
     <ClCompile Include="RemainingIcon.cpp" />
+    <ClCompile Include="RemainingValue.cpp" />
     <ClCompile Include="SceneManager.cpp" />
     <ClCompile Include="SettingManager.cpp" />
     <ClCompile Include="SetUpSetting.cpp" />
@@ -154,6 +158,7 @@
     <ClInclude Include="BackGround.h" />
     <ClInclude Include="BackSceneSetting.h" />
     <ClInclude Include="Bar.h" />
+    <ClInclude Include="BGM.h" />
     <ClInclude Include="Block.h" />
     <ClInclude Include="BlockManager.h" />
     <ClInclude Include="BlockOnObject.h" />
@@ -166,12 +171,14 @@
     <ClInclude Include="Dump.h" />
     <ClInclude Include="EndGameProcess.h" />
     <ClInclude Include="EnergyBar.h" />
+    <ClInclude Include="EnergyValue.h" />
     <ClInclude Include="EnergyVessels.h" />
     <ClInclude Include="Field.h" />
     <ClInclude Include="FieldUI.h" />
     <ClInclude Include="GameApp.h" />
     <ClInclude Include="GameClear.h" />
     <ClInclude Include="GameClearBackGround.h" />
+    <ClInclude Include="GameClearDollAnimation.h" />
     <ClInclude Include="GameClearLogoAnimation.h" />
     <ClInclude Include="GameOver.h" />
     <ClInclude Include="GameScene.h" />
@@ -189,6 +196,7 @@
     <ClInclude Include="Preview.h" />
     <ClInclude Include="RemainingDumpUI.h" />
     <ClInclude Include="RemainingIcon.h" />
+    <ClInclude Include="RemainingValue.h" />
     <ClInclude Include="resource.h" />
     <ClInclude Include="SceneManager.h" />
     <ClInclude Include="SettingManager.h" />

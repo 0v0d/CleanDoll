@@ -82,7 +82,11 @@ void BlockManager::SetDollOnBlock(Block* dollOnBlock) {
 
 void BlockManager::Update()
 {
-
+	for (int y = 0; y < _blockValueY; y++) {
+		for (int x = 0; x < _blockValueX; x++) {
+			_blockArray[x][y].Update();
+		}
+	}
 }
 
 Block* BlockManager::GetMouseOnBlock(Vector2 mousePos)
@@ -99,6 +103,7 @@ Block* BlockManager::GetMouseOnBlock(Vector2 mousePos)
 	}
 	return nullptr;
 }
+
 
 void BlockManager::Render()
 {

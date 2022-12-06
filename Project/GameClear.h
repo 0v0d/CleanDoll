@@ -3,11 +3,13 @@
 #include	"Button.h"
 #include	"GameClearLogoAnimation.h"
 #include	"GameClearBackGround.h"
+#include	"GameClearDollAnimation.h"
 
 class GameClear:public IBaseEndGameProcess
 {
 	GameClearLogoAnimation _gameClearAnim;
 	GameClearBackGround _clearBackGround;
+	GameClearDollAnimation _clearDoll;
 	Vector2 _mousePos;
 
 	Vector2  _nextButtonPos, _stageSelectButtonPos, _retryButtonPos;

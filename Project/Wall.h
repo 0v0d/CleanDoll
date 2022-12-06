@@ -11,7 +11,7 @@ private:
 	float _scale;
 
 	Vector2 _wallPosition, _wallObjectPosition;
-	CRectangle _wallObjectRenderRect;
+	CRectangle _wallRenderRect,_wallObjectRenderRect;
 
 public:
 	void SetBlockSize(float blockSizeY) { _blockSizeY = blockSizeY; }
@@ -22,4 +22,7 @@ public:
 	void SetWallObjectTexture(CTexture* wallObjectTexture) { _wallObjectTexture = wallObjectTexture; }
 	void SetWallObjectPosition(Vector2 blockCenterPosition);
 	void Render();
+
+private:
+	void CalcuWallRenderRect();
 };

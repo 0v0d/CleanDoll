@@ -11,7 +11,7 @@ class Doll
 	CTexture _dollTexture;
 	Vector2 _dollPosition;
 	CRectangle _renderRect;
-	float _scale = 0.03;
+	float _scale;
 	bool _inversion;
 	CRectangle _inversionRenderRect;
 	
@@ -28,7 +28,6 @@ class Doll
 	int _dustDumpValue,_waterDumpValue;
 	bool _heldMop,_cleanAnimation;
 
-	CSpriteMotionController	_motionController;
 	const int wait = 3;
 	int _motionCount;
 	const int _textureValue = 30;

@@ -13,6 +13,7 @@ private:
 public:
 	Item(CTexture* itemTexture, ACCESSORIES_TYPE accessoriesType);
 	void Initialize();
+	void ReLoad();
 	void CalcuScale(float blockSizeX) { _scale = blockSizeX / _itemTexture->GetWidth(); }
 	void Update();
 	void Render();

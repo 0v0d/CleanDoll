@@ -4,7 +4,8 @@ void EnergyVessels::Initialize()
 {
 	LoadTexture();
 
-	_vesselsPosition = Vector2(g_pGraphics->GetTargetWidth() - _energyVesselsTexture.GetWidth() * _scale - 50, 500);
+	_vesselsPosition = Vector2(g_pGraphics->GetTargetWidth() - _energyVesselsTexture.GetWidth() * _scale - 50, 
+		g_pGraphics->GetTargetHeight() - _energyVesselsTexture.GetHeight() * _scale -100);
 	_remainPosition = Vector2
 	(_vesselsPosition.x + _energyVesselsTexture.GetWidth() * _scale / 2 - _remainEnergyTexture.GetWidth() * _scale / 2,
 		_vesselsPosition.y - _remainEnergyTexture.GetHeight() * _scale + _remainEnergyTexture.GetHeight() * _scale * 0.5f);
@@ -15,7 +16,10 @@ void EnergyVessels::Initialize()
 		{3,MOF_COLOR_YELLOW},
 		{0,MOF_COLOR_RED},
 	};
-
+	_energyValue.SetScale(_scale);
+	_energyValue.Initialize();
+	_energyValue.SetPosition(Vector2(_vesselsPosition.x + _energyVesselsTexture.GetWidth() * _scale / 2,
+		_vesselsPosition.y + _energyVesselsTexture.GetHeight() * _scale / 2));
 	_dollOnEnergyVessels.SetFacialExpressionValue(_variationValue);
 	_dollOnEnergyVessels.SetScale(_scale);
 	_dollOnEnergyVessels.SetPosition(Vector2(_vesselsPosition.x + _energyVesselsTexture.GetWidth() * _scale / 2,
@@ -108,6 +112,8 @@ void EnergyVessels::Render()
 	_energyVesselsTexture.RenderScale(_vesselsPosition.x, _vesselsPosition.y, _scale);
 	_remainEnergyTexture.RenderScale(_remainPosition.x, _remainPosition.y, _scale);
 	_dollOnEnergyVessels.Render();
+	_energyValue.CalcuRect(_currentEnergyValue);
+	_energyValue.Render();
 }
 
 void EnergyVessels::Release()
@@ -118,4 +124,5 @@ void EnergyVessels::Release()
 	_energyBarTexture.Release();
 	_remainEnergyTexture.Release();
 	_dollOnEnergyVessels.Release();
+	_energyValue.Release();
 }

@@ -3,14 +3,17 @@
 
 void GameScene::Initialize()
 {
-	_gameBackTexture.Load("menu_back.png");
+	_gameBackTexture.Load("ÉQÅ[ÉÄÉvÉåÉCÅ@îwåiÅ@â¸ó«ÇP.png");
 	_backGround.SetTextureStatus(&_gameBackTexture, REPEATSCREEN);
 	_field.Initialize();
+	_music.Load("BGM.mp3");
+	_bgm.SetBGM(&_music, true);
 }
 
 void GameScene::ReLoad()
 {
 	_field.ReLoad();
+	_bgm.Play();
 }
 
 void GameScene::Update()
@@ -40,4 +43,10 @@ void GameScene::Release()
 {
 	_gameBackTexture.Release();
 	_field.Release();
+	_music.Release();
+}
+
+void GameScene::StopBGM()
+{
+	_bgm.Stop();
 }

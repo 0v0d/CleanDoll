@@ -2,6 +2,7 @@
 #include	"Mof.h"
 #include	"RemainingIcon.h"
 #include	"map"
+#include "RemainingValue.h"
 
 enum ICON_TYPE {
 	DUST,
@@ -11,6 +12,7 @@ enum ICON_TYPE {
 
 class RemainingDumpUI
 {
+	RemainingValue _remainingValue;
 	int _dustValue, _waterValue;
 	CTexture _baseTexture, _markTexture, _notExistTexture;
 	CTexture _dustIconTexture, _waterIconTexture, _coinIconTexture;
@@ -19,6 +21,7 @@ class RemainingDumpUI
 	float _scale, _objectiveSizeX;
 public:
 	void Initialize();
+	void Update();
 	void ReLoad();
 	void SetDustValue(int dumpValue);
 	void SetWaterValue(int dumpValue);
