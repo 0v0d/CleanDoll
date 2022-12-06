@@ -4,7 +4,8 @@ void EnergyVessels::Initialize()
 {
 	LoadTexture();
 
-	_vesselsPosition = Vector2(g_pGraphics->GetTargetWidth() - _energyVesselsTexture.GetWidth() * _scale - 50, 500);
+	_vesselsPosition = Vector2(g_pGraphics->GetTargetWidth() - _energyVesselsTexture.GetWidth() * _scale - 50, 
+		g_pGraphics->GetTargetHeight() - _energyVesselsTexture.GetHeight() * _scale -100);
 	_remainPosition = Vector2
 	(_vesselsPosition.x + _energyVesselsTexture.GetWidth() * _scale / 2 - _remainEnergyTexture.GetWidth() * _scale / 2,
 		_vesselsPosition.y - _remainEnergyTexture.GetHeight() * _scale + _remainEnergyTexture.GetHeight() * _scale * 0.5f);
