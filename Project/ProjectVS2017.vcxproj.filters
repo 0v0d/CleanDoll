@@ -125,9 +125,6 @@
     <ClCompile Include="SliderButton.cpp">
       <Filter>ソース ファイル\UI\Slider</Filter>
     </ClCompile>
-    <ClCompile Include="Button.cpp">
-      <Filter>ソース ファイル\UI\Button</Filter>
-    </ClCompile>
     <ClCompile Include="BackGround.cpp">
       <Filter>ソース ファイル\UI</Filter>
     </ClCompile>
@@ -239,6 +236,12 @@
     <ClCompile Include="RemainingValue.cpp">
       <Filter>ソース ファイル\Scene\GameScene\FieldUI\RemainningDump</Filter>
     </ClCompile>
+    <ClCompile Include="BGM.cpp">
+      <Filter>ソース ファイル</Filter>
+    </ClCompile>
+    <ClCompile Include="Button.cpp">
+      <Filter>ソース ファイル\UI\Button</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GameApp.h">
@@ -285,9 +288,6 @@
     </ClInclude>
     <ClInclude Include="SliderButton.h">
       <Filter>ソース ファイル\UI\Slider</Filter>
-    </ClInclude>
-    <ClInclude Include="Button.h">
-      <Filter>ソース ファイル\UI\Button</Filter>
     </ClInclude>
     <ClInclude Include="BackGround.h">
       <Filter>ソース ファイル\UI</Filter>
@@ -399,6 +399,10 @@
     </ClInclude>
     <ClInclude Include="RemainingValue.h">
       <Filter>ソース ファイル\Scene\GameScene\FieldUI\RemainningDump</Filter>
+    </ClInclude>
+    <ClInclude Include="BGM.h" />
+    <ClInclude Include="Button.h">
+      <Filter>ソース ファイル\UI\Button</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

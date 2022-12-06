@@ -1,13 +1,17 @@
 #include "GameScene.h"
 
-
 void GameScene::Initialize()
 {
-	_gameBackTexture.Load("ƒQ[ƒ€ƒvƒŒƒC@”wŒi@‰ü—Ç‚P.png");
+	LoadTexture();
+
 	_backGround.SetTextureStatus(&_gameBackTexture, REPEATSCREEN);
 	_field.Initialize();
 	_music.Load("BGM.mp3");
 	_bgm.SetBGM(&_music, true);
+}
+
+void GameScene::LoadTexture() {
+	_gameBackTexture.Load("GameBackGround.png");
 }
 
 void GameScene::ReLoad()

@@ -13,6 +13,7 @@ int WINAPI _tWinMain( HINSTANCE hInstance, HINSTANCE hPrevInstance, LPTSTR lpCmd
 	Info.pApplication = new CGameApp();
 	Info.WindowCreateInfo.hIcon = ::LoadIcon(hInstance, MAKEINTRESOURCE(IDI_ICON));
 	//Info.WindowCreateInfo.Style = WS_POPUP;
+	
 	if ( pFrame->Initialize(&Info) )
 	{
 		pFrame->Run();

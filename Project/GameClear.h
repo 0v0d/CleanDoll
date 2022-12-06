@@ -8,7 +8,6 @@ class GameClear:public IBaseEndGameProcess
 {
 	GameClearLogoAnimation _gameClearAnim;
 	GameClearBackGround _clearBackGround;
-	Vector2 _mousePos;
 
 	Vector2  _nextButtonPos, _stageSelectButtonPos, _retryButtonPos;
 	CTexture _nextStageTexture, _stageSelectTexture, _retryTexture;

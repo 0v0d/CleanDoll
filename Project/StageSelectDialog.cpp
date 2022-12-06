@@ -23,7 +23,8 @@ void StageSelectDialog::LoadTexture() {
 }
 
 void StageSelectDialog::CreateButton(Button* button, Vector2 pos, CTexture* texture) {
-	button->SetStatu(pos, texture);
+	button->SetTexture(texture);
+	button->SetPosition(pos);
 }
 
 void StageSelectDialog::Update() {
@@ -52,24 +53,30 @@ void StageSelectDialog::SetStageNumber(int stagenumber) {
 
 void StageSelectDialog::SetMousePos(Vector2 mousePos) {
 	_mousePos = mousePos;
+	_yesButton.SetMousePos(_mousePos);
+	_noButton.SetMousePos(_mousePos);
 }
 
 void StageSelectDialog::Push(){
 	if (!_openStaSeleDialog) return;
 
-	if (_yesButton.CheckOnButton(_mousePos)) {
+	_yesButton.Push();
+	_noButton.Push();
+}
+
+void StageSelectDialog::Pull() {
+	_yesButton.Pull();
+	_noButton.Pull();
+
+	if (_yesButton.IsPullButton()) {
 		_loadStageMethod(_pickStageNumber);
 	}
 
-	if (_noButton.CheckOnButton(_mousePos)) {
+	if (_noButton.IsPullButton()) {
 		_openStaSeleDialog = false;
 		_clickCount = 0;
 		_pickStageNumber = -1;
 	}
-}
-
-void StageSelectDialog::Pull() {
-
 }
 
 void StageSelectDialog::Render() {

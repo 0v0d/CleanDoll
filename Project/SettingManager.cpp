@@ -20,16 +20,13 @@ void SettingManager::Update()
 void SettingManager::SetMousePos(Vector2 mousePos) {
 	_mousePos = mousePos;
 	_setUpSetting.SetMousePos(mousePos);
+	_openSettingButton.SetMousePos(mousePos);
 }
 
 void SettingManager::Push() {
 	if (!_openMenu)
 	{
-		if (_openSettingButton.CheckPushButton(_mousePos))
-		{
-			_openMenu = true;
-			_setUpSetting.DetermineBackScene();
-		}
+		_openSettingButton.Push();
 	}
 	else
 	{
@@ -38,7 +35,15 @@ void SettingManager::Push() {
 }
 
 void SettingManager::Pull() {
-	if (_openMenu){
+	if (!_openMenu) {
+		_openSettingButton.Pull();
+		if (_openSettingButton.CheckPullButton())
+		{
+			_openMenu = true;
+			_setUpSetting.DetermineBackScene();
+		}
+	}
+	else{
 		_setUpSetting.Pull();
 	}
 }

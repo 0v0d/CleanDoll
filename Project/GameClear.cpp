@@ -8,13 +8,18 @@ void GameClear::Initialize()
 	_gameClearAnim.Initialize();
 	_clearBackGround.Initialize();
 
-	_nextButtonPos = Vector2(400, 300);
-	_stageSelectButtonPos = Vector2(400, 500);
-	_retryButtonPos = Vector2(400, 700);
+	_nextButtonPos = Vector2(g_pGraphics->GetTargetWidth() / 2, 400);
+	_stageSelectButtonPos = Vector2(g_pGraphics->GetTargetWidth() / 2, 600);
+	_retryButtonPos = Vector2(g_pGraphics->GetTargetWidth() / 2, 800);
 
-	_nextStageButton.SetStatu(_nextButtonPos, &_nextStageTexture);
-	_stageSelectButton.SetStatu(_stageSelectButtonPos, &_stageSelectTexture);
-	_retryButton.SetStatu(_retryButtonPos, &_retryTexture);
+	_nextStageButton.SetTexture(&_nextStageTexture);
+	_nextStageButton.SetPosition(_nextButtonPos);
+
+	_stageSelectButton.SetTexture(&_stageSelectTexture);
+	_stageSelectButton.SetPosition(_stageSelectButtonPos);
+
+	_retryButton.SetTexture(&_retryTexture);
+	_retryButton.SetPosition(_retryButtonPos);
 }
 
 void GameClear::LoadTexture()
@@ -46,30 +51,34 @@ void GameClear::UpdateAnimation() {
 }
 
 void GameClear::SetMousePos(Vector2 mousePos) {
-	_mousePos = mousePos;
+	_nextStageButton.SetMousePos(mousePos);
+	_stageSelectButton.SetMousePos(mousePos);
+	_retryButton.SetMousePos(mousePos);
 }
 
 void GameClear::Push() {
-	if (_nextStageButton.CheckOnButton(_mousePos))
-	{
+
+	_nextStageButton.Push();
+	_stageSelectButton.Push();
+	_retryButton.Push();
+}
+
+void GameClear::Pull() {
+	_nextStageButton.Pull();
+	_stageSelectButton.Pull();
+	_retryButton.Pull();
+
+	if (_nextStageButton.IsPullButton()) {
 		//次のステージへ
 		dynamic_cast<StageSelectScene*>(SceneManager::Instance().GetScene(SCENE_TYPE::STAGESELECT))->StartNextStage();
 		SceneManager::Instance().GetScene(SCENE_TYPE::GAME)->ReLoad();
 	}
-
-	if (_stageSelectButton.CheckOnButton(_mousePos))
-	{
+	if (_stageSelectButton.IsPullButton()) {
 		SceneManager::Instance().ChangeScene(SCENE_TYPE::STAGESELECT);
 	}
-
-	if (_retryButton.CheckOnButton(_mousePos))
-	{
+	if (_retryButton.IsPullButton()) {
 		SceneManager::Instance().GetScene(SCENE_TYPE::GAME)->ReLoad();
 	}
-}
-
-void GameClear::Pull() {
-
 }
 
 void GameClear::Render()
@@ -79,9 +88,9 @@ void GameClear::Render()
 	_gameClearAnim.Render();
 	if (_gameClearAnim.IsEndeMotion())
 	{
-		_nextStageTexture.Render(_nextButtonPos.x, _nextButtonPos.y);
-		_stageSelectTexture.Render(_stageSelectButtonPos.x, _stageSelectButtonPos.y);
-		_retryTexture.Render(_retryButtonPos.x, _retryButtonPos.y);
+		_nextStageButton.Render();
+		_stageSelectButton.Render();
+		_retryButton.Render();
 	}
 }
 

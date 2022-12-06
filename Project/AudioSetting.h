@@ -11,7 +11,7 @@ class AudioSetting :public IBaseSetting
 	Slider* _sliderArray;
 	int _BGMVolume, _SEVolume;
 	Button _closeButton;
-	Vector2 _closeButtonPos;
+	Vector2 _mousePos;
 	CTexture _closeButtonTexture;
 	CTexture _buttonTexture;
 	CTexture _barTexture;
@@ -26,16 +26,19 @@ class AudioSetting :public IBaseSetting
 public:
 	void Initialize();
 	void SetOpenSetting(bool* openSetting) { _openAudioSetting = openSetting; }
+
 	void Update();
-	void Push(Vector2 mousePos);
-	void Pull(Vector2 mousePos);
-	int GetBGMVolume() { return _BGMVolume; }
-	int GetSEVolume() { return _SEVolume; }
-	void GetVolume();
+	void SetMousePos(Vector2);
+	void Push();
+	void Pull();
+	void SetMute();
+
 	void Render();
 	void Release();
+
+	int GetBGMVolume() { return _BGMVolume; }
+	int GetSEVolume() { return _SEVolume; }
 private:
-	void PushButton(Vector2 mousePos);
 	void LoadTexture();
 	void CalcuScale();
 };
