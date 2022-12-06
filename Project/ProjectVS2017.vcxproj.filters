@@ -239,6 +239,12 @@
     <ClCompile Include="RemainingValue.cpp">
       <Filter>ソース ファイル\Scene\GameScene\FieldUI\RemainningDump</Filter>
     </ClCompile>
+    <ClCompile Include="BGM.cpp">
+      <Filter>ソース ファイル</Filter>
+    </ClCompile>
+    <ClCompile Include="GameClearDollAnimation.cpp">
+      <Filter>ソース ファイル</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GameApp.h">
@@ -400,6 +406,8 @@
     <ClInclude Include="RemainingValue.h">
       <Filter>ソース ファイル\Scene\GameScene\FieldUI\RemainningDump</Filter>
     </ClInclude>
+    <ClInclude Include="BGM.h" />
+    <ClInclude Include="GameClearDollAnimation.h" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="Version.rc">

@@ -7,6 +7,7 @@ void GameClear::Initialize()
 	LoadTexture();
 	_gameClearAnim.Initialize();
 	_clearBackGround.Initialize();
+	_clearDoll.Initialize();
 
 	_nextButtonPos = Vector2(400, 300);
 	_stageSelectButtonPos = Vector2(400, 500);
@@ -34,7 +35,8 @@ void GameClear::Update()
 	UpdateAnimation();
 }
 
-void GameClear::UpdateAnimation() {
+void GameClear::UpdateAnimation() 
+{
 	if (!_clearBackGround.IsFixedScale())
 	{
 		_clearBackGround.Update();
@@ -43,6 +45,12 @@ void GameClear::UpdateAnimation() {
 	{
 		_gameClearAnim.Update();
 	}
+
+	if (_gameClearAnim.IsEndeMotion())
+	{
+		_clearDoll.Update();
+	}
+	
 }
 
 void GameClear::SetMousePos(Vector2 mousePos) {
@@ -82,6 +90,8 @@ void GameClear::Render()
 		_nextStageTexture.Render(_nextButtonPos.x, _nextButtonPos.y);
 		_stageSelectTexture.Render(_stageSelectButtonPos.x, _stageSelectButtonPos.y);
 		_retryTexture.Render(_retryButtonPos.x, _retryButtonPos.y);
+		_clearDoll.Render();
+	
 	}
 }
 
@@ -89,6 +99,7 @@ void GameClear::Release()
 {
 	_gameClearAnim.Release();
 	_clearBackGround.Release();	
+	_clearDoll.Release();
 	_backStageClearTexture.Release();
 	_nextStageTexture.Release();
 	_stageSelectTexture.Release();
