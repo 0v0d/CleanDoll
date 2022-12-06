@@ -11,6 +11,12 @@ void Dump::Initialize()
 
 }
 
+void Dump::ReLoad()
+{
+	_clean = false;
+	_alpha = 255;
+}
+
 void Dump::SetPosotion(Vector2 pos)
 {
 	_position.x = pos.x - _dumpTexture->GetWidth() * _scale / 2;
@@ -19,12 +25,23 @@ void Dump::SetPosotion(Vector2 pos)
 
 void Dump::Update()
 {
-
+	if (_clean)
+	{
+		_alpha -= _cleanTime;
+		if (_alpha <= 0)
+		{
+			_alpha = 0;
+			_clean = false;
+		}
+	}
+	
 }
 
 void Dump::Render()
 {
-	_dumpType == DUMP_TYPE::DUST ? _dumpTexture->RenderScale(_position.x, _position.y, _scale) : _dumpTexture->RenderScale(_position.x, _position.y, _scale, MOF_COLOR_BLUE);
+
+	_dumpType == DUMP_TYPE::DUST ? _dumpTexture->RenderScale(_position.x, _position.y, _scale, MOF_ARGB(_alpha, 255, 255, 255)) :
+		_dumpTexture->RenderScale(_position.x, _position.y, _scale, MOF_COLOR_BLUE);
 }
 
 void Dump::Release()

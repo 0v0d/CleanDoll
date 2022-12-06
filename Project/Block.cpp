@@ -64,11 +64,12 @@ void Block::ReLoad()
 	{
 		_blockOnObject.HiddenAccessoriesFlg(false);
 	}
+	_blockOnObject.ReLoad();
 }
 
 void Block::Update()
 {
-
+	_blockOnObject.Update();
 }
 
 bool Block::CheckMouseOnBlock(Vector2 mousePos)

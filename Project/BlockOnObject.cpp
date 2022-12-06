@@ -2,10 +2,12 @@
 
 void BlockOnObject::Initialzie(){
 	_hiddenAccessories = false;
+	_accessories->Initialize();
 }
 
 void BlockOnObject::ReLoad() {
-	if (_accessories != nullptr)_hiddenAccessories = false;
+	if (_accessories != nullptr)
+	_accessories->ReLoad();
 }
 
 void BlockOnObject::SetObject(Object* object, bool onSwap){
@@ -23,7 +25,8 @@ void BlockOnObject::SetAccessories(IBaseAccessories* accessories, ACCESSORIES_TY
 }
 
 void BlockOnObject::Update(){
-
+	if (_accessories != nullptr) 
+	_accessories->Update();
 }
 
 void BlockOnObject::Render(){
@@ -32,7 +35,7 @@ void BlockOnObject::Render(){
 		return;
 	}
 
-	if (_accessories != nullptr && !_hiddenAccessories) {
+	if (_accessories != nullptr) {
 		_accessories->Render();
 	}
 }

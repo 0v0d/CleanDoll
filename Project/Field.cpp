@@ -77,7 +77,7 @@ void Field::Update()
 	if (_push) {
 		PassedMouse(_mousePos);
 	}
-
+	
 	_blockManager.Update();
 	_doll.Update();
 	_endGameProcess.Update();
