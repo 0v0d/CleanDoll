@@ -112,8 +112,11 @@ void Doll::CleanDump()
 	Dump* blockOnDump = dynamic_cast<Dump*>(_nextBlock->GetBlockOnObject()->GetAccessories());
 	if ((!_heldMop && blockOnDump->GetDumpType() == DUMP_TYPE::WATER) ||
 		(_heldMop && blockOnDump->GetDumpType() == DUMP_TYPE::DUST))return;
-
-	_nextBlock->GetBlockOnObject()->HiddenAccessoriesFlg(true);
+	
+	blockOnDump->CalucAlphaValue(_animation.GetCleanTime());
+	blockOnDump->StartCleanflg(true);
+	//アルファ値のCalucAlphaValue(Cleantime)
+	//ごみ startclean()
 	if (_heldMop) {
 		_waterDumpValue--;
 		_field->CleanWater();
@@ -160,6 +163,7 @@ void Doll::Render()
 {
 	_inversion ? _dollTexture.RenderScale(_dollPosition.x, _dollPosition.y, _scale, _inversionRenderRect) :
 		_dollTexture.RenderScale(_dollPosition.x, _dollPosition.y, _scale, _renderRect);
+	
 }
 
 void Doll::Release()

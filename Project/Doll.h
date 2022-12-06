@@ -28,7 +28,6 @@ class Doll
 	int _dustDumpValue,_waterDumpValue;
 	bool _heldMop,_cleanAnimation;
 
-	CSpriteMotionController	_motionController;
 	const int wait = 3;
 	int _motionCount;
 	const int _textureValue = 30;
