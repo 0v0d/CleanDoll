@@ -8,26 +8,38 @@ void GameClear::Initialize()
 	_gameClearAnim.Initialize();
 	_clearBackGround.Initialize();
 	_clearDoll.Initialize();
+	for (int i = 0; i < _menuValue; i++)
+	{
+		_endGameButton[i].Initialize();
+	}
 
-	_nextButtonPos = Vector2(400, 300);
-	_stageSelectButtonPos = Vector2(400, 500);
-	_retryButtonPos = Vector2(400, 700);
+	_nextButtonPos = Vector2(500, 450);
+	_stageSelectButtonPos = Vector2(500, 650);
+	_retryButtonPos = Vector2(500, 850);
+	Vector2 _size = Vector2(300, 120);
 
 	_nextStageButton.SetStatu(_nextButtonPos, &_nextStageTexture);
 	_stageSelectButton.SetStatu(_stageSelectButtonPos, &_stageSelectTexture);
 	_retryButton.SetStatu(_retryButtonPos, &_retryTexture);
+	_endGameButton[0].SetStatu(_nextButtonPos, &_nextStageTexture);
+	_endGameButton[1].SetStatu(_stageSelectButtonPos, &_stageSelectTexture);
+	_endGameButton[2].SetStatu(_retryButtonPos, &_retryTexture);
 }
 
 void GameClear::LoadTexture()
 {
-	_nextStageTexture.Load("ステージ選択へ.png");
-	_stageSelectTexture.Load("ステージ選択へ.png");
-	_retryTexture.Load("ステージ選択へ.png");
+	_nextStageTexture.Load("次のステージ.png");
+	_stageSelectTexture.Load("ステージ選択に戻る.png");
+	_retryTexture.Load("ステージをやり直す.png");
 }
 
 void GameClear::ReLoad(){
 	_gameClearAnim.ReLoad();
 	_clearBackGround.ReLoad();
+	for (int i = 0; i < _menuValue; i++)
+	{
+		_endGameButton[i].Initialize();
+	}
 }
 
 void GameClear::Update()
@@ -50,7 +62,23 @@ void GameClear::UpdateAnimation()
 	{
 		_clearDoll.Update();
 	}
-	
+
+
+	if (_gameClearAnim.IsEndeMotion())
+	{
+
+		for (int i = 0; i < _menuValue; i++) {
+			_endGameButton[i].Update();
+		}
+	}
+
+	if (_endGameButton[2].IsEndAnimation())
+	{
+		if (g_pInput->IsMouseKeyPush(MOFMOUSE_LBUTTON))
+		{
+			//Pushの処理が入る
+		}
+	}
 }
 
 void GameClear::SetMousePos(Vector2 mousePos) {
@@ -91,6 +119,10 @@ void GameClear::Render()
 		_stageSelectTexture.Render(_stageSelectButtonPos.x, _stageSelectButtonPos.y);
 		_retryTexture.Render(_retryButtonPos.x, _retryButtonPos.y);
 		_clearDoll.Render();
+		for (int i = 0; i < _menuValue; i++) 
+		{
+			_endGameButton[i].Render();
+		}
 	
 	}
 }
@@ -104,4 +136,10 @@ void GameClear::Release()
 	_nextStageTexture.Release();
 	_stageSelectTexture.Release();
 	_retryTexture.Release();
+	for (int i = 0; i < _menuValue; i++) {
+		_endGameButton[i].Release();
+	}
+	_backStageClearTexture.Release();
+
+	delete[] _endGameButton;
 }
