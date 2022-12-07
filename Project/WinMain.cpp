@@ -17,7 +17,7 @@ int WINAPI _tWinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPTSTR lpCmdL
 	proc->SetExitGame(app->GetExitGame());
 	Info.WindowCreateInfo.pProc = proc;
 
-	Info.WindowCreateInfo.Style = WS_POPUP;
+	//Info.WindowCreateInfo.Style = WS_POPUP;
 	if (pFrame->Initialize(&Info))
 	{
 		pFrame->Run();
