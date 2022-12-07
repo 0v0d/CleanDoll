@@ -243,6 +243,8 @@
       <Filter>ソース ファイル</Filter>
     </ClCompile>
     <ClCompile Include="GameClearDollAnimation.cpp">
+	   <Filter>ソース ファイル</Filter>
+	</ClCompile>
     <ClCompile Include="GameOverBackGround.cpp">
       <Filter>ソース ファイル</Filter>
     </ClCompile>
