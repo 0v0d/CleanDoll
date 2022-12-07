@@ -243,6 +243,7 @@
       <Filter>ソース ファイル</Filter>
     </ClCompile>
     <ClCompile Include="GameClearDollAnimation.cpp">
+    <ClCompile Include="GameOverBackGround.cpp">
       <Filter>ソース ファイル</Filter>
     </ClCompile>
   </ItemGroup>
@@ -408,6 +409,11 @@
     </ClInclude>
     <ClInclude Include="BGM.h" />
     <ClInclude Include="GameClearDollAnimation.h" />
+    <ClInclude Include="EndGameButtonAnimation.h" />
+    <ClInclude Include="BGM.h" />
+    <ClInclude Include="GameOverBackGround.h">
+      <Filter>ソース ファイル</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="Version.rc">

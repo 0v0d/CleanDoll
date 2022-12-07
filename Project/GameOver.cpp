@@ -4,10 +4,12 @@
 void GameOver::Initialize()
 {
 	LoadTexture();
-	_firstButtonPos = Vector2(400, 300);
-	_secondButtonPos = Vector2(400, 500);
-	_retryButton.SetStatu(_firstButtonPos, &_retryTexture);
-	_stageSelectButton.SetStatu(_secondButtonPos, &_stageSelectTexture);
+	_backGround.Initialize();
+	_retryPos = Vector2(400, 300);
+	_stageSelectPos = Vector2(400, 500);
+	_button[0].SetStatu(_retryPos, &_retryTexture);
+	_button[1].SetStatu(_stageSelectPos, &_stageSelectTexture);
+
 }
 
 void GameOver::LoadTexture()
@@ -23,7 +25,7 @@ void GameOver::ReLoad()
 
 void GameOver::Update()
 {
-
+	_backGround.Update();
 }
 
 void GameOver::SetMousePos(Vector2 mousePos) {
@@ -31,12 +33,12 @@ void GameOver::SetMousePos(Vector2 mousePos) {
 }
 
 void GameOver::Push() {
-	if (_retryButton.CheckOnButton(_mousePos))
+	if (_button[0].CheckOnButton(_mousePos))
 	{
 		SceneManager::Instance().GetScene(SCENE_TYPE::GAME)->ReLoad();
 	}
 
-	if (_stageSelectButton.CheckOnButton(_mousePos))
+	if (_button[1].CheckOnButton(_mousePos))
 	{
 		SceneManager::Instance().ChangeScene(SCENE_TYPE::STAGESELECT);
 	}
@@ -49,12 +51,16 @@ void GameOver::Pull() {
 void GameOver::Render()
 {
 	CGraphicsUtilities::RenderFillRect(0, 0, g_pGraphics->GetTargetWidth(), g_pGraphics->GetTargetHeight(), MOF_ARGB(125, 0, 0, 0));
-	_retryButton.Render();
-	_stageSelectButton.Render();
+	_backGround.Render();
+	for (int i = 1; i < _menuValue; i++)
+	{
+		_button[i].Render();
+	}
 }
 
 void GameOver::Release()
 {
+	_backGround.Release();
 	_retryTexture.Release();
 	_stageSelectTexture.Release();
 }
