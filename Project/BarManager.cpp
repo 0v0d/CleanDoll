@@ -67,7 +67,7 @@ void BarManager::Push()
 	_slider.PushSlider();
 
 	int stageNumber = GetBarNumber(_mousePos);
-	if (stageNumber != 1) {
+	if (stageNumber != -1) {
 		StartStage(stageNumber);
 	}
 }
