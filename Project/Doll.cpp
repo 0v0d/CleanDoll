@@ -112,7 +112,8 @@ void Doll::CleanDump()
 	Dump* blockOnDump = dynamic_cast<Dump*>(_nextBlock->GetBlockOnObject()->GetAccessories());
 	if ((!_heldMop && blockOnDump->GetDumpType() == DUMP_TYPE::WATER) ||
 		(_heldMop && blockOnDump->GetDumpType() == DUMP_TYPE::DUST))return;
-	
+	blockOnDump->CalucAlphaValue(_animation.GetCleanTime());
+	blockOnDump->StartCleanflg(true);
 	
 	if (_heldMop) {
 		_waterDumpValue--;
@@ -124,8 +125,6 @@ void Doll::CleanDump()
 	}
 	_animation.StartCleanAnimation();
 	_cleanAnimation = true;
-	blockOnDump->CalucAlphaValue(_animation.GetCleanTime());
-	blockOnDump->StartCleanflg(_cleanAnimation);
 }
 
 void Doll::SwitchToMop()

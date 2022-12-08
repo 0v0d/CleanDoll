@@ -34,7 +34,6 @@ void Dump::Update()
 			_clean = false;
 		}
 	}
-	
 }
 
 void Dump::Render()
