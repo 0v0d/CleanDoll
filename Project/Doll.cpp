@@ -112,9 +112,9 @@ void Doll::CleanDump()
 	Dump* blockOnDump = dynamic_cast<Dump*>(_nextBlock->GetBlockOnObject()->GetAccessories());
 	if ((!_heldMop && blockOnDump->GetDumpType() == DUMP_TYPE::WATER) ||
 		(_heldMop && blockOnDump->GetDumpType() == DUMP_TYPE::DUST))return;
+	
 	blockOnDump->CalucAlphaValue(_animation.GetCleanTime());
 	blockOnDump->StartCleanflg(true);
-	
 	if (_heldMop) {
 		_waterDumpValue--;
 		_field->CleanWater();
