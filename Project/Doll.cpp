@@ -113,10 +113,7 @@ void Doll::CleanDump()
 	if ((!_heldMop && blockOnDump->GetDumpType() == DUMP_TYPE::WATER) ||
 		(_heldMop && blockOnDump->GetDumpType() == DUMP_TYPE::DUST))return;
 	
-	blockOnDump->CalucAlphaValue(_animation.GetCleanTime());
-	blockOnDump->StartCleanflg(true);
-	//アルファ値のCalucAlphaValue(Cleantime)
-	//ごみ startclean()
+	
 	if (_heldMop) {
 		_waterDumpValue--;
 		_field->CleanWater();
@@ -127,6 +124,8 @@ void Doll::CleanDump()
 	}
 	_animation.StartCleanAnimation();
 	_cleanAnimation = true;
+	blockOnDump->CalucAlphaValue(_animation.GetCleanTime());
+	blockOnDump->StartCleanflg(_cleanAnimation);
 }
 
 void Doll::SwitchToMop()
