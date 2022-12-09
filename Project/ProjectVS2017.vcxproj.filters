@@ -421,7 +421,6 @@
     <ClInclude Include="RemainingValue.h">
       <Filter>ソース ファイル\Scene\GameScene\FieldUI\RemainningDump</Filter>
     </ClInclude>
-    <ClInclude Include="BGM.h" />
     <ClInclude Include="BGM.h">
       <Filter>ソース ファイル\UI</Filter>
     </ClInclude>
@@ -442,6 +441,9 @@
     </ClInclude>
     <ClInclude Include="GameOverLogoAnimation.h">
       <Filter>ソース ファイル</Filter>
+	</ClInclude>
+    <ClInclude Include="BGM.h">
+      <Filter>ソース ファイル\UI</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
