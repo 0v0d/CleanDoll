@@ -28,13 +28,12 @@ void Dump::Update()
 	if (_clean)
 	{
 		_alpha -= _cleanTime;
-		if (_alpha <= 0)
+		if (_alpha <= 0+_cleanTime)
 		{
 			_alpha = 0;
 			_clean = false;
 		}
 	}
-	
 }
 
 void Dump::Render()

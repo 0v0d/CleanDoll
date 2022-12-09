@@ -115,8 +115,6 @@ void Doll::CleanDump()
 	
 	blockOnDump->CalucAlphaValue(_animation.GetCleanTime());
 	blockOnDump->StartCleanflg(true);
-	//アルファ値のCalucAlphaValue(Cleantime)
-	//ごみ startclean()
 	if (_heldMop) {
 		_waterDumpValue--;
 		_field->CleanWater();
