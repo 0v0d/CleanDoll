@@ -2,7 +2,6 @@
 #include	"Mof.h"
 class IBaseEndGameProcess
 {
-
 public:
 	virtual void Update() = 0;
 	virtual void SetMousePos(Vector2) = 0;

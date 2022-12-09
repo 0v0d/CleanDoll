@@ -127,6 +127,7 @@
     <ClCompile Include="GameClearLogoAnimation.cpp" />
     <ClCompile Include="GameOver.cpp" />
     <ClCompile Include="GameOverBackGround.cpp" />
+    <ClCompile Include="GameOverDollAnimation .cpp" />
     <ClCompile Include="GameOverLogoAnimation .cpp" />
     <ClCompile Include="GameScene.cpp" />
     <ClCompile Include="IBaseAccessories.cpp" />
@@ -189,6 +190,7 @@
     <ClInclude Include="GameClearLogoAnimation.h" />
     <ClInclude Include="GameOver.h" />
     <ClInclude Include="GameOverBackGround.h" />
+    <ClInclude Include="GameOverDollAnimation.h" />
     <ClInclude Include="GameOverLogoAnimation.h" />
     <ClInclude Include="GameScene.h" />
     <ClInclude Include="IBaseAccessories.h" />
