@@ -441,6 +441,7 @@
     </ClInclude>
     <ClInclude Include="GameOverLogoAnimation.h">
       <Filter>ソース ファイル</Filter>
+	</ClInclude>
     <ClInclude Include="BGM.h">
       <Filter>ソース ファイル\UI</Filter>
     </ClInclude>
