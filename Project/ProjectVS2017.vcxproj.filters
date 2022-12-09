@@ -239,6 +239,27 @@
     <ClCompile Include="RemainingValue.cpp">
       <Filter>ソース ファイル\Scene\GameScene\FieldUI\RemainningDump</Filter>
     </ClCompile>
+    <ClCompile Include="ExitGame.cpp">
+      <Filter>ソース ファイル</Filter>
+    </ClCompile>
+    <ClCompile Include="WindowProc.cpp">
+      <Filter>ソース ファイル</Filter>
+    </ClCompile>
+    <ClCompile Include="BGM.cpp">
+      <Filter>ソース ファイル\UI</Filter>
+    </ClCompile>
+    <ClCompile Include="EndGameButtonAnimation.cpp">
+      <Filter>ソース ファイル\Scene\GameScene\EndGameProcess</Filter>
+    </ClCompile>
+    <ClCompile Include="GameClearDollAnimation.cpp">
+      <Filter>ソース ファイル\Scene\GameScene\EndGameProcess\GameClear</Filter>
+    </ClCompile>
+    <ClCompile Include="GameOverBackGround.cpp">
+      <Filter>ソース ファイル\Scene\GameScene\EndGameProcess\GameOver</Filter>
+    </ClCompile>
+    <ClCompile Include="GameOverLogoAnimation .cpp">
+      <Filter>ソース ファイル</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GameApp.h">
@@ -399,6 +420,28 @@
     </ClInclude>
     <ClInclude Include="RemainingValue.h">
       <Filter>ソース ファイル\Scene\GameScene\FieldUI\RemainningDump</Filter>
+    </ClInclude>
+    <ClInclude Include="BGM.h" />
+    <ClInclude Include="BGM.h">
+      <Filter>ソース ファイル\UI</Filter>
+    </ClInclude>
+    <ClInclude Include="EndGameButtonAnimation.h">
+      <Filter>ソース ファイル\Scene\GameScene\EndGameProcess</Filter>
+    </ClInclude>
+    <ClInclude Include="GameClearDollAnimation.h">
+      <Filter>ソース ファイル\Scene\GameScene\EndGameProcess\GameClear</Filter>
+    </ClInclude>
+    <ClInclude Include="ExitGame.h">
+      <Filter>ソース ファイル</Filter>
+    </ClInclude>
+    <ClInclude Include="WindowProc.h">
+      <Filter>ソース ファイル</Filter>
+    </ClInclude>
+    <ClInclude Include="GameOverBackGround.h">
+      <Filter>ソース ファイル\Scene\GameScene\EndGameProcess\GameOver</Filter>
+    </ClInclude>
+    <ClInclude Include="GameOverLogoAnimation.h">
+      <Filter>ソース ファイル</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

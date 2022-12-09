@@ -112,17 +112,22 @@
     <ClCompile Include="DollAnimation.cpp" />
     <ClCompile Include="DollOnEnergyVessels.cpp" />
     <ClCompile Include="Dump.cpp" />
+    <ClCompile Include="EndGameButtonAnimation.cpp" />
     <ClCompile Include="EndGameProcess.cpp" />
     <ClCompile Include="EnergyBar.cpp" />
     <ClCompile Include="EnergyValue.cpp" />
     <ClCompile Include="EnergyVessels.cpp" />
+    <ClCompile Include="ExitGame.cpp" />
     <ClCompile Include="Field.cpp" />
     <ClCompile Include="FieldUI.cpp" />
     <ClCompile Include="GameApp.cpp" />
     <ClCompile Include="GameClear.cpp" />
     <ClCompile Include="GameClearBackGround.cpp" />
+    <ClCompile Include="GameClearDollAnimation.cpp" />
     <ClCompile Include="GameClearLogoAnimation.cpp" />
     <ClCompile Include="GameOver.cpp" />
+    <ClCompile Include="GameOverBackGround.cpp" />
+    <ClCompile Include="GameOverLogoAnimation .cpp" />
     <ClCompile Include="GameScene.cpp" />
     <ClCompile Include="IBaseAccessories.cpp" />
     <ClCompile Include="IBaseEndGameProcess.cpp" />
@@ -150,6 +155,7 @@
     <ClCompile Include="StageSelectScene.cpp" />
     <ClCompile Include="TitleScene.cpp" />
     <ClCompile Include="Wall.cpp" />
+    <ClCompile Include="WindowProc.cpp" />
     <ClCompile Include="WinMain.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -168,17 +174,22 @@
     <ClInclude Include="DollAnimation.h" />
     <ClInclude Include="DollOnEnergyVessels.h" />
     <ClInclude Include="Dump.h" />
+    <ClInclude Include="EndGameButtonAnimation.h" />
     <ClInclude Include="EndGameProcess.h" />
     <ClInclude Include="EnergyBar.h" />
     <ClInclude Include="EnergyValue.h" />
     <ClInclude Include="EnergyVessels.h" />
+    <ClInclude Include="ExitGame.h" />
     <ClInclude Include="Field.h" />
     <ClInclude Include="FieldUI.h" />
     <ClInclude Include="GameApp.h" />
     <ClInclude Include="GameClear.h" />
     <ClInclude Include="GameClearBackGround.h" />
+    <ClInclude Include="GameClearDollAnimation.h" />
     <ClInclude Include="GameClearLogoAnimation.h" />
     <ClInclude Include="GameOver.h" />
+    <ClInclude Include="GameOverBackGround.h" />
+    <ClInclude Include="GameOverLogoAnimation.h" />
     <ClInclude Include="GameScene.h" />
     <ClInclude Include="IBaseAccessories.h" />
     <ClInclude Include="IBaseEndGameProcess.h" />
@@ -207,6 +218,7 @@
     <ClInclude Include="StageSelectScene.h" />
     <ClInclude Include="TitleScene.h" />
     <ClInclude Include="Wall.h" />
+    <ClInclude Include="WindowProc.h" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="Version.rc" />

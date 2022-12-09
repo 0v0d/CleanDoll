@@ -20,7 +20,7 @@ void EnergyValue::LoadTexture()
 
 void EnergyValue::SetPosition(Vector2 vesselsCenterPosition)
 {
-	const int space = 55;
+	const int space = 65;
 	_onValueCirclePos.x = vesselsCenterPosition.x - _onValueCircleTexture.GetWidth() * _onValueCircleScale / 2;
 	_onValueCirclePos.y = vesselsCenterPosition.y - _onValueCircleTexture.GetHeight() * _onValueCircleScale / 2 - space;
 	_numberPos.x = vesselsCenterPosition.x - _numberTexture.GetWidth() / _numberValue * _numberScale / 2;

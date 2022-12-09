@@ -3,13 +3,16 @@
 #include	"Button.h"
 #include	"GameClearLogoAnimation.h"
 #include	"GameClearBackGround.h"
-
+#include	"GameClearDollAnimation.h"
+#include "EndGameButtonAnimation.h"
 class GameClear:public IBaseEndGameProcess
 {
 	GameClearLogoAnimation _gameClearAnim;
 	GameClearBackGround _clearBackGround;
+	GameClearDollAnimation _clearDoll;
 	Vector2 _mousePos;
-
+	const int _menuValue = 3;
+	EndGameButtonAnimation* _endGameButton = new EndGameButtonAnimation[_menuValue];
 	Vector2  _nextButtonPos, _stageSelectButtonPos, _retryButtonPos;
 	CTexture _nextStageTexture, _stageSelectTexture, _retryTexture;
 	Button _nextStageButton, _stageSelectButton, _retryButton;
