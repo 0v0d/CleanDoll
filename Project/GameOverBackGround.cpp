@@ -18,7 +18,7 @@ void GameOverBackGround::Initialize()
 }
 
 void GameOverBackGround::ReLoad() {
-
+	_animation.SetTime(0);
 }
 
 void GameOverBackGround::Update()

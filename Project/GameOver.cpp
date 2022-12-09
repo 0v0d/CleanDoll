@@ -28,7 +28,12 @@ void GameOver::LoadTexture()
 
 void GameOver::ReLoad()
 {
-
+	_backGround.ReLoad();
+	_logoAnim.ReLoad();
+	for (int i = 0; i < _menuValue; i++)
+	{
+		_endButton[i].ReLoad();
+	}
 }
 
 void GameOver::Update()
@@ -80,11 +85,7 @@ void GameOver::Render()
 {
 	CGraphicsUtilities::RenderFillRect(0, 0, g_pGraphics->GetTargetWidth(), g_pGraphics->GetTargetHeight(), MOF_ARGB(125, 0, 0, 0));
 	_backGround.Render();
-	
-	if(_backGround.IsEndeMotion())
-	{
-		_logoAnim.Render();
-	}
+	_logoAnim.Render();
 	
 	if (_logoAnim.IsEndeMotion())
 	{
