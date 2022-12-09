@@ -2,11 +2,13 @@
 #include	"IBaseEndGameProcess.h"
 #include	"Button.h"
 #include	"GameOverBackGround.h"
+#include	"GameOverLogoAnimation.h"
 
 class GameOver:public IBaseEndGameProcess
 {
 private:
 	GameOverBackGround _backGround;
+	GameOverLogoAnimation _logoAnim;
 
 	Vector2 _mousePos;
 

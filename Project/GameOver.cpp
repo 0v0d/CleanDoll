@@ -5,6 +5,7 @@ void GameOver::Initialize()
 {
 	LoadTexture();
 	_backGround.Initialize();
+	_logoAnim.Initialize();
 	_retryPos = Vector2(400, 300);
 	_stageSelectPos = Vector2(400, 500);
 	_button[0].SetStatu(_retryPos, &_retryTexture);
@@ -25,7 +26,14 @@ void GameOver::ReLoad()
 
 void GameOver::Update()
 {
-	_backGround.Update();
+	if (_backGround.IsEndeMotion())
+	{
+		_logoAnim.Update();
+	}
+	else
+	{
+		_backGround.Update();
+	}
 }
 
 void GameOver::SetMousePos(Vector2 mousePos) {
@@ -52,15 +60,26 @@ void GameOver::Render()
 {
 	CGraphicsUtilities::RenderFillRect(0, 0, g_pGraphics->GetTargetWidth(), g_pGraphics->GetTargetHeight(), MOF_ARGB(125, 0, 0, 0));
 	_backGround.Render();
-	for (int i = 1; i < _menuValue; i++)
+	
+	if(_backGround.IsEndeMotion())
 	{
-		_button[i].Render();
+		_logoAnim.Render();
 	}
+	
+	if (_logoAnim.IsEndeMotion())
+	{
+		for (int i = 1; i < _menuValue; i++)
+		{
+			_button[i].Render();
+		}
+	}
+	
 }
 
 void GameOver::Release()
 {
 	_backGround.Release();
+	_logoAnim.Release();
 	_retryTexture.Release();
 	_stageSelectTexture.Release();
 }
