@@ -10,6 +10,7 @@ class EndGameButtonAnimation
     bool _endAnimation;
 public:
     void Initialize();
+    void ReLoad();
     void Update();
     void Render();
     void Release();

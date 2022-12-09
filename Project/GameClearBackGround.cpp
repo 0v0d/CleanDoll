@@ -10,7 +10,7 @@ void GameClearBackGround::LoadTexture() {
 }
 
 void GameClearBackGround::ReLoad() {
-	_scale = 0;
+	_scale = 0.0f;
 	_fixedScale = false;
 }
 

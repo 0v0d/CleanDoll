@@ -8,10 +8,6 @@ void GameClear::Initialize()
 	_gameClearAnim.Initialize();
 	_clearBackGround.Initialize();
 	_clearDoll.Initialize();
-	for (int i = 0; i < _menuValue; i++)
-	{
-		_endGameButton[i].Initialize();
-	}
 
 	_nextButtonPos = Vector2(500, 450);
 	_stageSelectButtonPos = Vector2(500, 650);
@@ -34,11 +30,13 @@ void GameClear::LoadTexture()
 }
 
 void GameClear::ReLoad(){
-	_gameClearAnim.ReLoad();
 	_clearBackGround.ReLoad();
+	_gameClearAnim.ReLoad();
+	_clearDoll.ReLoad();
+
 	for (int i = 0; i < _menuValue; i++)
 	{
-		_endGameButton[i].Initialize();
+		_endGameButton[i].ReLoad();
 	}
 }
 

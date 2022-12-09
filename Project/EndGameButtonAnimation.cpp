@@ -2,6 +2,9 @@
 
 void EndGameButtonAnimation::Initialize()
 {
+}
+void EndGameButtonAnimation::ReLoad()
+{
 	_scaleValeu = 0.0f;
 	_endAnimation = false;
 }
