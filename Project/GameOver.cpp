@@ -21,8 +21,8 @@ void GameOver::Initialize()
 
 void GameOver::LoadTexture()
 {
-	_retryTexture.Load("ステージ選択へ.png");
-	_stageSelectTexture.Load("ステージ選択へ.png");
+	_retryTexture.Load("ステージをやり直す.png");
+	_stageSelectTexture.Load("ステージ選択に戻る.png");
 }
 
 void GameOver::ReLoad()
