@@ -3,11 +3,10 @@
 #include    "Field.h"
 #include    "FieldUI.h"
 #include    "BackGround.h"
-#include "BGM.h"
+#include    "BGM.h"
 
 class GameScene :public IBaseScene
 {
-private:
     Field _field;
     FieldUI _fieldUI;
     BackGround _backGround;
@@ -27,4 +26,7 @@ public:
     void Release();
     void StopBGM();
     Field* GetField() { return &_field; }
+
+private:
+    void LoadTexture();
 };

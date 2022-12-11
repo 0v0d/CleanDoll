@@ -1,24 +1,57 @@
 #pragma once
-#include	"Field.h"
-#include	"BlockManager.h"
-#include	"Object.h"
-#include	"Item.h"
-#include	"Dump.h"
+#include	"Mof.h"
+#include	"string"
+#include	"SetFieldData.h"
+#include	"ContactFile.h"
+#include	"BarManager.h"
+
+struct TextureArray
+{
+	int textureValue;
+	CTexture* textureArray = nullptr;
+	//テキストファイルのx軸の倍率
+	int LineXValue;
+};
 
 class CreateField
 {
-private:
-	Field* _field;
-	BlockManager* _blockManager;
+	SetFieldData _setFieldData;
+	ContactFile _contactFile;
+
+	char** _chipDataArray;
+
+	TextureArray _mapTextureArray;
+	TextureArray _objectTextureArray;
+	TextureArray _itemTextureArray;
+	TextureArray _galleryTextureArray;
+	TextureArray _mopTextureArray;
+	TextureArray _dustDumpTextureArray;
+	TextureArray _waterDumpTextureArray;
+	TextureArray _wallTextureArray;
+	TextureArray _wallObjectTextureArray;
 	int _blockValueX, _blockValueY;
+
+	BarManager* _barManager;
+
 public:
-	void SetField(Field* field);
-	void SetFieldStatu(int blockValueX, int blockValueY);
-	void SetBlockData(CTexture* TextureArray, char** dataArray);
-	void SetObjectData(CTexture* TextureArray, char** dataArray);
-	void SetItemData(CTexture* TextureArray, char** dataArray,bool isCandy);
-	void SetDumpData(CTexture* TextureArray, char** dataArray,bool isDustDump);
-	void SetWallData(CTexture* TextureArray, char** dataArray,int lineValueX);
-	void SetWallObjectkData(CTexture* TextureArray, char** dataArray, int lineValueX);
+	~CreateField() { Release(); }
+	void Initialize();
+	void SetBarManager(BarManager* barManager) { _barManager = barManager; }
+
+	void LoadStage(std::string stageName);
+	void LoadDoll();
+
+	void Release();
+	void Delete();
+
+	SetFieldData* GetSetFieldData() { return &_setFieldData; }
+
+private:
+	void LoadStageSelectData();
+
+	void LoadTexture(TextureArray* textureArray);
 	void SetDoll(int x, int y);
+	void NewChipData(TextureArray* textureArray);
+	void DeleteChipData(TextureArray* textureArray);
+	void DeleteTextureArray(TextureArray* textureArray);
 };

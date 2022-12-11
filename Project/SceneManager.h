@@ -6,7 +6,8 @@ enum class SCENE_TYPE
 {
 	TITLE,
 	STAGESELECT,
-	GAME
+	GAME,
+	GALLERY
 };
 
 class SceneManager

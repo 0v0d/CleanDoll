@@ -10,7 +10,6 @@ class GameClear:public IBaseEndGameProcess
 	GameClearLogoAnimation _gameClearAnim;
 	GameClearBackGround _clearBackGround;
 	GameClearDollAnimation _clearDoll;
-	Vector2 _mousePos;
 	const int _menuValue = 3;
 	EndGameButtonAnimation* _endGameButton = new EndGameButtonAnimation[_menuValue];
 	Vector2  _nextButtonPos, _stageSelectButtonPos, _retryButtonPos;

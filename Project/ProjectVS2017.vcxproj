@@ -108,6 +108,8 @@
     <ClCompile Include="Button.cpp" />
     <ClCompile Include="ContactFile.cpp" />
     <ClCompile Include="CreateField.cpp" />
+    <ClCompile Include="GalleryTexture.cpp" />
+    <ClCompile Include="SetFieldData.cpp" />
     <ClCompile Include="Doll.cpp" />
     <ClCompile Include="DollAnimation.cpp" />
     <ClCompile Include="DollOnEnergyVessels.cpp" />
@@ -120,6 +122,9 @@
     <ClCompile Include="ExitGame.cpp" />
     <ClCompile Include="Field.cpp" />
     <ClCompile Include="FieldUI.cpp" />
+    <ClCompile Include="GalleryBar.cpp" />
+    <ClCompile Include="GalleryBarManager.cpp" />
+    <ClCompile Include="GalleryScene.cpp" />
     <ClCompile Include="GameApp.cpp" />
     <ClCompile Include="GameClear.cpp" />
     <ClCompile Include="GameClearBackGround.cpp" />
@@ -170,6 +175,8 @@
     <ClInclude Include="Button.h" />
     <ClInclude Include="ContactFile.h" />
     <ClInclude Include="CreateField.h" />
+    <ClInclude Include="GalleryTexture.h" />
+    <ClInclude Include="SetFieldData.h" />
     <ClInclude Include="Doll.h" />
     <ClInclude Include="DollAnimation.h" />
     <ClInclude Include="DollOnEnergyVessels.h" />
@@ -182,6 +189,9 @@
     <ClInclude Include="ExitGame.h" />
     <ClInclude Include="Field.h" />
     <ClInclude Include="FieldUI.h" />
+    <ClInclude Include="GalleryBar.h" />
+    <ClInclude Include="GalleryBarManager.h" />
+    <ClInclude Include="GalleryScene.h" />
     <ClInclude Include="GameApp.h" />
     <ClInclude Include="GameClear.h" />
     <ClInclude Include="GameClearBackGround.h" />

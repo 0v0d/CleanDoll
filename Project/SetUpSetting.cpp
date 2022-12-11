@@ -7,8 +7,15 @@ void SetUpSetting::Initialize()
 {
 	LoadTexture();
 
-	_audioButton.SetStatu(Vector2(g_pGraphics->GetTargetWidth()/2 - _audioButtonTexure.GetWidth()/2, 250), &_audioButtonTexure);
-	_closeMenuButton.SetStatu(Vector2(g_pGraphics->GetTargetWidth() / 2 - _closeMenuTexture.GetWidth() / 2, 650), &_closeMenuTexture);
+	_audioButton.SetTexture(&_audioButtonTexure);
+	_audioButton.SetPosition(Vector2(g_pGraphics->GetTargetWidth() / 2, 300));
+
+	_backSceneButton.SetTexture(&_backTitleSceneTexture);
+	_backSceneButton.SetPosition(Vector2(g_pGraphics->GetTargetWidth() / 2, 500));
+
+
+	_closeMenuButton.SetTexture(&_closeMenuTexture);
+	_closeMenuButton.SetPosition(Vector2(g_pGraphics->GetTargetWidth() / 2, 700));
 
 	_buttonArray[&_audioButton] = new AudioSetting();
 	_buttonArray[&_backSceneButton] = new BackSceneSetting();
@@ -40,39 +47,58 @@ void SetUpSetting::Update()
 
 void SetUpSetting::SetMousePos(Vector2 mousePos) {
 	_mousePos = mousePos;
+
+	if (_openSetting) {
+		_currentSetting->SetMousePos(mousePos);
+		return;
+	}
+
+	_closeMenuButton.SetMousePos(mousePos);
+	for (auto itr = _buttonArray.begin(); itr != _buttonArray.end(); itr++) {
+		itr->first->SetMousePos(mousePos);
+	}
 }
 
 void SetUpSetting::Push()
 {
-	if (_openSetting)
-	{
-		_currentSetting->Push(_mousePos);
+	if (_openSetting){
+		_currentSetting->Push();
+		return;
 	}
-	else 
-	{
-		if (_closeMenuButton.CheckOnButton(_mousePos))
-		{
-			*_openMenu = false;
-			return;
-		}
 
-		for (auto itr = _buttonArray.begin(); itr != _buttonArray.end(); itr++)
-		{
-			if (itr->first->CheckOnButton(_mousePos))
-			{
-				_openSetting = true;
-				_currentSetting = itr->second;
-				break;
-			}
-		}
+	_closeMenuButton.Push();
+	for (auto itr = _buttonArray.begin(); itr != _buttonArray.end(); itr++) {
+		itr->first->Push();
 	}
 }
 
 void SetUpSetting::Pull()
 {
-	if (_openSetting)
+	if (_openSetting) {
+		_currentSetting->Pull();
+	}
+	else {
+		_closeMenuButton.Pull();
+		for (auto itr = _buttonArray.begin(); itr != _buttonArray.end(); itr++) {
+			itr->first->Pull();
+		}
+		CheckPullButton();
+	}
+}
+
+void SetUpSetting::CheckPullButton() {
+	if (_closeMenuButton.IsPullButton()) {
+		*_openMenu = false;
+	}
+
+	for (auto itr = _buttonArray.begin(); itr != _buttonArray.end(); itr++)
 	{
-		_currentSetting->Pull(_mousePos);
+		if (itr->first->IsPullButton())
+		{
+			_openSetting = true;
+			_currentSetting = itr->second;
+			break;
+		}
 	}
 }
 
@@ -83,14 +109,15 @@ void SetUpSetting::DetermineBackScene() {
 	switch (currentSceneType) {
 	case  SCENE_TYPE::STAGESELECT:
 		backSceneType = SCENE_TYPE::TITLE;
-		_backSceneButton.SetStatu(Vector2(g_pGraphics->GetTargetWidth() / 2 - _backTitleSceneTexture.GetWidth() / 2, 450), &_backTitleSceneTexture);
+		_backSceneButton.SetTexture(&_backTitleSceneTexture);
 		break;
 
 	case  SCENE_TYPE::GAME:
 		backSceneType = SCENE_TYPE::STAGESELECT;
-		_backSceneButton.SetStatu(Vector2(g_pGraphics->GetTargetWidth() / 2 - _backSelectSceneTexture.GetWidth() / 2, 450), &_backSelectSceneTexture);
+		_backSceneButton.SetTexture(&_backSelectSceneTexture);
 		break;
 	}
+	_backSceneButton.SetPosition(Vector2(g_pGraphics->GetTargetWidth() / 2, 500));
 
 	dynamic_cast<BackSceneSetting*>(_buttonArray[&_backSceneButton])->SetBackScene(backSceneType);
 }

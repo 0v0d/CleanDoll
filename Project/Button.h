@@ -1,14 +1,30 @@
 #pragma once
 #include	"Mof.h"
-
 class Button
 {
-private:
-	Vector2 _position, _size;
-	CRectangle _button;
-	CTexture* _texture;
+	CTexture* _texture = nullptr;
+	Vector2 _centerPos;
+	float _scale;
+	const float _variableScale = 1.1f;
+	CRectangle _hitBox;
+	bool _pushButton, _pullButton, _mouseOnButton;
+
 public:
-	void SetStatu(Vector2 position, CTexture* texture);
-	bool CheckOnButton(Vector2 mousePos) { return _button.CollisionPoint(mousePos); }
+	Button();
+	void SetTexture(CTexture* buttonTexture) { _texture = buttonTexture; }
+	void SetPosition(Vector2 buttonCenterPosition);
+	void SetSize(float buttonSize);
+
+	void SetMousePos(Vector2 mousePosition);
+	void Push();
+	void Pull();
+	bool IsPushButton() { return _pushButton; }
+	bool IsPullButton() { return _pullButton; }
+
 	void Render();
+private:
+	void CalcuScale(float);
+	void CalcuHitBox();
+	bool CheckOnMouse(Vector2 mousePosition);
+	void SetPullFlg(bool flg) { _pullButton = flg; }
 };

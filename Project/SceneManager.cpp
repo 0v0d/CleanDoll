@@ -2,27 +2,29 @@
 #include "TitleScene.h"
 #include "StageSelectScene.h"
 #include "GameScene.h"
+#include "GalleryScene.h"
 
 SceneManager* SceneManager::_instance = nullptr;
 
 TitleScene title;
 StageSelectScene stageSelect;
 GameScene game;
+GalleryScene gallery;
 
 void SceneManager::Initialize()
 {
 	_sceneArray[SCENE_TYPE::TITLE] = &title;
 	_sceneArray[SCENE_TYPE::STAGESELECT] = &stageSelect;
 	_sceneArray[SCENE_TYPE::GAME] = &game;
+	_sceneArray[SCENE_TYPE::GALLERY] = &gallery;
 
-	stageSelect.GetCreateField()->SetField(game.GetField());
+	stageSelect.GetCreateField()->GetSetFieldData()->SetField(game.GetField());
 
-	for (auto iter = _sceneArray.begin(); iter != _sceneArray.end(); iter++) 
-	{
+	for (auto iter = _sceneArray.begin(); iter != _sceneArray.end(); iter++) {
 		iter->second->Initialize();
 	}
 
-	_currentScene = _sceneArray[SCENE_TYPE::TITLE];
+	_currentScene = _sceneArray[SCENE_TYPE::GALLERY];
 }
 
 void SceneManager::Update()

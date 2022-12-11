@@ -78,6 +78,9 @@
     <Filter Include="ソース ファイル\Scene\GameScene\EndGameProcess\GameOver">
       <UniqueIdentifier>{d83f4657-a914-436e-b0c4-3903a42ce6c6}</UniqueIdentifier>
     </Filter>
+    <Filter Include="ソース ファイル\Scene\GalleryScene">
+      <UniqueIdentifier>{fbe22985-7d56-4a5f-bf81-b7427ec129bc}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="WinMain.cpp">
@@ -124,9 +127,6 @@
     </ClCompile>
     <ClCompile Include="SliderButton.cpp">
       <Filter>ソース ファイル\UI\Slider</Filter>
-    </ClCompile>
-    <ClCompile Include="Button.cpp">
-      <Filter>ソース ファイル\UI\Button</Filter>
     </ClCompile>
     <ClCompile Include="BackGround.cpp">
       <Filter>ソース ファイル\UI</Filter>
@@ -203,10 +203,10 @@
     <ClCompile Include="BarManager.cpp">
       <Filter>ソース ファイル\Scene\StageSelectScene\BarManager</Filter>
     </ClCompile>
-    <ClCompile Include="ContactFile.cpp">
+    <ClCompile Include="CreateField.cpp">
       <Filter>ソース ファイル\Scene\ContactFile</Filter>
     </ClCompile>
-    <ClCompile Include="CreateField.cpp">
+    <ClCompile Include="SetFieldData.cpp">
       <Filter>ソース ファイル\Scene\ContactFile</Filter>
     </ClCompile>
     <ClCompile Include="SceneManager.cpp">
@@ -260,6 +260,27 @@
     <ClCompile Include="GameOverLogoAnimation .cpp">
       <Filter>ソース ファイル</Filter>
     </ClCompile>
+    <ClCompile Include="GalleryScene.cpp">
+      <Filter>ソース ファイル\Scene\GalleryScene</Filter>
+    </ClCompile>
+    <ClCompile Include="GalleryBarManager.cpp">
+      <Filter>ソース ファイル\Scene\GalleryScene</Filter>
+    </ClCompile>
+    <ClCompile Include="GalleryBar.cpp">
+      <Filter>ソース ファイル\Scene\GalleryScene</Filter>
+    </ClCompile>
+    <ClCompile Include="ContactFile.cpp">
+      <Filter>ソース ファイル\Scene\ContactFile</Filter>
+    </ClCompile>
+    <ClCompile Include="GalleryTexture.cpp">
+      <Filter>ソース ファイル</Filter>
+    </ClCompile>
+    <ClCompile Include="BGM.cpp">
+      <Filter>ソース ファイル</Filter>
+    </ClCompile>
+    <ClCompile Include="Button.cpp">
+      <Filter>ソース ファイル\UI\Button</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GameApp.h">
@@ -306,9 +327,6 @@
     </ClInclude>
     <ClInclude Include="SliderButton.h">
       <Filter>ソース ファイル\UI\Slider</Filter>
-    </ClInclude>
-    <ClInclude Include="Button.h">
-      <Filter>ソース ファイル\UI\Button</Filter>
     </ClInclude>
     <ClInclude Include="BackGround.h">
       <Filter>ソース ファイル\UI</Filter>
@@ -385,10 +403,10 @@
     <ClInclude Include="BarManager.h">
       <Filter>ソース ファイル\Scene\StageSelectScene\BarManager</Filter>
     </ClInclude>
-    <ClInclude Include="CreateField.h">
+    <ClInclude Include="SetFieldData.h">
       <Filter>ソース ファイル\Scene\ContactFile</Filter>
     </ClInclude>
-    <ClInclude Include="ContactFile.h">
+    <ClInclude Include="CreateField.h">
       <Filter>ソース ファイル\Scene\ContactFile</Filter>
     </ClInclude>
     <ClInclude Include="SceneManager.h">
@@ -444,6 +462,21 @@
 	</ClInclude>
     <ClInclude Include="BGM.h">
       <Filter>ソース ファイル\UI</Filter>
+    <ClInclude Include="GalleryBar.h">
+      <Filter>ソース ファイル\Scene\GalleryScene</Filter>
+    </ClInclude>
+    <ClInclude Include="GalleryBarManager.h">
+      <Filter>ソース ファイル\Scene\GalleryScene</Filter>
+    </ClInclude>
+    <ClInclude Include="GalleryScene.h">
+      <Filter>ソース ファイル\Scene\GalleryScene</Filter>
+    </ClInclude>
+    <ClInclude Include="ContactFile.h">
+      <Filter>ソース ファイル\Scene\ContactFile</Filter>
+    </ClInclude>
+    <ClInclude Include="GalleryTexture.h" />
+    <ClInclude Include="Button.h">
+      <Filter>ソース ファイル\UI\Button</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

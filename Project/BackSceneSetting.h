@@ -19,13 +19,14 @@ public:
 	void SetOpenSetting(bool* openSetting) { _openBackSceneSetting = openSetting; }
 
 	void Update();
-	void Push(Vector2 mousePos);
-	void Pull(Vector2 mousePos);
+	void SetMousePos(Vector2);
+	void Push();
+	void Pull();
 	void SetBackScene(SCENE_TYPE backScene);
 
 	void Render();
 	void Release();
 private:
-	void PushButton(Vector2 mousePos);
+	void CheckPullButtonCheck();
 	void CreateButton(Button*, Vector2 pos, CTexture*);
 };
