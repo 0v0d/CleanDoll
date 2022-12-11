@@ -4,7 +4,7 @@
 #include	"Slider.h"
 #include	"StageSelectDialog.h"
 #include	"BackGround.h"
-#include "BGM.h"
+#include	"BGM.h"
 #include	"CreateField.h"
 #include	"ContactFile.h"
 

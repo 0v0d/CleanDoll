@@ -3,9 +3,8 @@
 
 void StageSelectScene::Initialize()
 {
-    _contactFile.SetCreateField(&_createField);
-    _contactFile.SetBarManager(&_barManager);
-    _contactFile.Initialize();
+    _createField.SetBarManager(&_barManager);
+    _createField.Initialize();
     
     LoadTexture();
 
@@ -73,7 +72,7 @@ void StageSelectScene::Pull() {
 
 void StageSelectScene::StartNextStage() {
     _barManager.StartNextStage();
-    _contactFile.LoadStage(_barManager.GetBar(_barManager.GetCurrentStageNumber())->GetStageDataTextName());
+    _createField.LoadStage(_barManager.GetBar(_barManager.GetCurrentStageNumber())->GetStageDataTextName());
 }
 
 void StageSelectScene::StageClear() {
@@ -81,7 +80,7 @@ void StageSelectScene::StageClear() {
 }
 
 void StageSelectScene::LoadStage(int stageNumber) {
-    _contactFile.LoadStage(_barManager.GetBar(stageNumber)->GetStageDataTextName());
+    _createField.LoadStage(_barManager.GetBar(stageNumber)->GetStageDataTextName());
     SceneManager::Instance().ChangeScene(SCENE_TYPE::GAME);
 }
 
@@ -103,7 +102,7 @@ void StageSelectScene::Release()
     _stageSelectDialog.Release();
     _preview.Release();
 
-    _contactFile.Release();
+    _createField.Release();
     _music.Release();
 }
 
