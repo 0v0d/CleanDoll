@@ -16,8 +16,9 @@ void AudioSetting::Initialize()
 		_muted[i] = false;
 	}
 	
-	_closeButtonPos = Vector2(g_pGraphics->GetTargetWidth() / 2 - _closeButtonTexture.GetWidth()/2 , 650);
-	_closeButton.SetStatu(_closeButtonPos, &_closeButtonTexture);
+
+	_closeButton.SetTexture(&_closeButtonTexture);
+	_closeButton.SetPosition(Vector2(g_pGraphics->GetTargetWidth() / 2, 650));
 
 	for (int i = 0; i < _sliderValue; i++) 
 	{
@@ -45,7 +46,7 @@ void AudioSetting::Update()
 	{
 		_sliderArray[i].Update();
 	}
-	GetVolume();
+	SetMute();
 }
 
 void AudioSetting::CalcuScale() {
@@ -54,7 +55,7 @@ void AudioSetting::CalcuScale() {
 	_SEScale = _textureHeight / _SETexture.GetHeight();
 }
 
-void AudioSetting::GetVolume() {
+void AudioSetting::SetMute() {
 	for (int i = 0; i < _sliderValue; i++) {
 		if (_sliderArray[i].GetValue() <= 0) {
 			_muted[i] = true;
@@ -65,27 +66,29 @@ void AudioSetting::GetVolume() {
 	}
 }
 
-void AudioSetting::Push(Vector2 mousePos)
+void AudioSetting::SetMousePos(Vector2 mousePos) {
+	_mousePos = mousePos;
+	_closeButton.SetMousePos(mousePos);
+}
+
+void AudioSetting::Push()
 {
 	for (int i = 0; i < _sliderValue; i++)
 	{
 		_sliderArray[i].PushSlider();
 	}
-	PushButton(mousePos);
+	_closeButton.Push();
 }
 
-void AudioSetting::Pull(Vector2 mousePos)
+void AudioSetting::Pull()
 {
 	for (int i = 0; i < _sliderValue; i++)
 	{
 		_sliderArray[i].PullSlider();
 	}
-}
 
-void AudioSetting::PushButton(Vector2 mousePos)
-{
-	if (_closeButton.CheckOnButton(mousePos))
-	{
+	_closeButton.Pull();
+	if (_closeButton.IsPullButton()) {
 		*_openAudioSetting = false;
 	}
 }

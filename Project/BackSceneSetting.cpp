@@ -10,35 +10,44 @@ void BackSceneSetting::Initialize()
 }
 
 void BackSceneSetting::CreateButton(Button* button, Vector2 pos, CTexture* texture) {
-	button->SetStatu(pos, texture);
+	button->SetTexture(texture);
+	button->SetPosition(pos);
 }
 
 void BackSceneSetting::Update() {
 
 }
 
-void BackSceneSetting::Push(Vector2 mousePos)
-{
-	PushButton(mousePos);
+void BackSceneSetting::SetMousePos(Vector2 mousePos) {
+	_backButton.SetMousePos(mousePos);
+	_closeButton.SetMousePos(mousePos);
 }
 
-void BackSceneSetting::Pull(Vector2 mousePos)
+void BackSceneSetting::Push()
 {
+	_backButton.Push();
+	_closeButton.Push();
+}
 
+void BackSceneSetting::Pull()
+{
+	_backButton.Pull();
+	_closeButton.Pull();
+
+	CheckPullButtonCheck();
 }
 
 void BackSceneSetting::SetBackScene(SCENE_TYPE backScene) {
 	_backScene = backScene;
 }
 
-void BackSceneSetting::PushButton(Vector2 mousePos)
-{
-	if (_closeButton.CheckOnButton(mousePos))
+void BackSceneSetting::CheckPullButtonCheck(){
+	if (_closeButton.IsPullButton())
 	{
 		*_openBackSceneSetting = false;
 		return;
 	}
-	if (_backButton.CheckOnButton(mousePos)) {
+	if (_backButton.IsPullButton()) {
 		SceneManager::Instance().ChangeScene(_backScene);
 		*_openMenu = false;
 		*_openBackSceneSetting = false;

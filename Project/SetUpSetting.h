@@ -34,4 +34,5 @@ public:
 
 private:
 	void LoadTexture();
+	void CheckPullButton();
 };

@@ -4,12 +4,13 @@
 void GameOver::Initialize()
 {
 	LoadTexture();
-	_backGround.Initialize();
-	_retryPos = Vector2(400, 300);
-	_stageSelectPos = Vector2(400, 500);
-	_button[0].SetStatu(_retryPos, &_retryTexture);
-	_button[1].SetStatu(_stageSelectPos, &_stageSelectTexture);
+	_firstButtonPos = Vector2(g_pGraphics->GetTargetWidth()/2, 400);
+	_secondButtonPos = Vector2(g_pGraphics->GetTargetWidth() / 2, 600);
 
+	_retryButton.SetTexture(&_retryTexture);
+	_retryButton.SetPosition(_firstButtonPos);
+	_stageSelectButton.SetTexture(&_stageSelectTexture);
+	_stageSelectButton.SetPosition(_secondButtonPos);
 }
 
 void GameOver::LoadTexture()
@@ -29,23 +30,25 @@ void GameOver::Update()
 }
 
 void GameOver::SetMousePos(Vector2 mousePos) {
-	_mousePos = mousePos;
+	_retryButton.SetMousePos(mousePos);
+	_stageSelectButton.SetMousePos(mousePos);
 }
 
 void GameOver::Push() {
-	if (_button[0].CheckOnButton(_mousePos))
-	{
-		SceneManager::Instance().GetScene(SCENE_TYPE::GAME)->ReLoad();
-	}
-
-	if (_button[1].CheckOnButton(_mousePos))
-	{
-		SceneManager::Instance().ChangeScene(SCENE_TYPE::STAGESELECT);
-	}
+	_retryButton.Push();
+	_stageSelectButton.Push();
 }
 
 void GameOver::Pull() {
+	_retryButton.Pull();
+	_stageSelectButton.Pull();
 
+	if (_retryButton.IsPullButton()) {
+		SceneManager::Instance().GetScene(SCENE_TYPE::GAME)->ReLoad();
+	}
+	if (_stageSelectButton.IsPullButton()) {
+		SceneManager::Instance().ChangeScene(SCENE_TYPE::STAGESELECT);
+	}
 }
 
 void GameOver::Render()
