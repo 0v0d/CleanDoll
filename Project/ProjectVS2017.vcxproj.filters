@@ -78,6 +78,9 @@
     <Filter Include="ソース ファイル\Scene\GameScene\EndGameProcess\GameOver">
       <UniqueIdentifier>{d83f4657-a914-436e-b0c4-3903a42ce6c6}</UniqueIdentifier>
     </Filter>
+    <Filter Include="ソース ファイル\Scene\GalleryScene">
+      <UniqueIdentifier>{ae3f877f-fdd4-4ceb-8d08-30673d7deae1}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="WinMain.cpp">
@@ -257,8 +260,23 @@
     <ClCompile Include="GameOverBackGround.cpp">
       <Filter>ソース ファイル\Scene\GameScene\EndGameProcess\GameOver</Filter>
     </ClCompile>
+    <ClCompile Include="GalleryBar.cpp">
+      <Filter>ソース ファイル\Scene\GalleryScene</Filter>
+    </ClCompile>
+    <ClCompile Include="GalleryBarManager.cpp">
+      <Filter>ソース ファイル\Scene\GalleryScene</Filter>
+    </ClCompile>
+    <ClCompile Include="GalleryScene.cpp">
+      <Filter>ソース ファイル\Scene\GalleryScene</Filter>
+    </ClCompile>
+    <ClCompile Include="GalleryTexture.cpp">
+      <Filter>ソース ファイル\Scene\GalleryScene</Filter>
+    </ClCompile>
+    <ClCompile Include="SetFieldData.cpp">
+      <Filter>ソース ファイル\Scene\ContactFile</Filter>
+    </ClCompile>
     <ClCompile Include="GameOverLogoAnimation .cpp">
-      <Filter>ソース ファイル</Filter>
+      <Filter>ソース ファイル\Scene\GameScene\EndGameProcess\GameOver</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -439,11 +457,26 @@
     <ClInclude Include="GameOverBackGround.h">
       <Filter>ソース ファイル\Scene\GameScene\EndGameProcess\GameOver</Filter>
     </ClInclude>
-    <ClInclude Include="GameOverLogoAnimation.h">
-      <Filter>ソース ファイル</Filter>
-	</ClInclude>
     <ClInclude Include="BGM.h">
       <Filter>ソース ファイル\UI</Filter>
+    </ClInclude>
+    <ClInclude Include="GalleryBar.h">
+      <Filter>ソース ファイル\Scene\GalleryScene</Filter>
+    </ClInclude>
+    <ClInclude Include="GalleryBarManager.h">
+      <Filter>ソース ファイル\Scene\GalleryScene</Filter>
+    </ClInclude>
+    <ClInclude Include="GalleryScene.h">
+      <Filter>ソース ファイル\Scene\GalleryScene</Filter>
+    </ClInclude>
+    <ClInclude Include="GalleryTexture.h">
+      <Filter>ソース ファイル\Scene\GalleryScene</Filter>
+    </ClInclude>
+    <ClInclude Include="SetFieldData.h">
+      <Filter>ソース ファイル\Scene\ContactFile</Filter>
+    </ClInclude>
+    <ClInclude Include="GameOverLogoAnimation.h">
+      <Filter>ソース ファイル\Scene\GameScene\EndGameProcess\GameOver</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
