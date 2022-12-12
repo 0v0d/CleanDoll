@@ -24,7 +24,7 @@ void SceneManager::Initialize()
 		iter->second->Initialize();
 	}
 
-	_currentScene = _sceneArray[SCENE_TYPE::GALLERY];
+	_currentScene = _sceneArray[SCENE_TYPE::TITLE];
 }
 
 void SceneManager::Update()

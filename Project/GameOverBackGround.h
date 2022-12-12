@@ -16,7 +16,7 @@ public:
 	void CalcuPosition();
 	void Render();
 	void Release();
-	bool IsEndeMotion() { return _animation.IsEndMotion(); }
+	bool IsEndMotion() { return _animation.IsEndMotion(); }
 };
 
 

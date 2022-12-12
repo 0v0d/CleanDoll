@@ -2,43 +2,57 @@
 
 
 void ExitGame::Initialize() {
+	Vector2 _basePos;
 	_basePos.x = g_pGraphics->GetTargetWidth() / 2;
 	_basePos.y = g_pGraphics->GetTargetHeight() / 2;
-	LoadTExture();
-	_openExitDialog = false;
+	LoadTexture();
 	CreateButton(&_yesButton, Vector2(_basePos.x - _space / 2 - _yesTexture.GetWidth(), _basePos.y), &_yesTexture);
 	CreateButton(&_noButton, Vector2(_basePos.x + _space / 2, _basePos.y), &_noTexture);
+
+	_openExitDialog = false;
 }
 
-void ExitGame::LoadTExture() {
+void ExitGame::LoadTexture() {
 	_yesTexture.Load("‚Í‚¢.png");
 	_noTexture.Load("‚¢‚¢‚¦.png");
 }
 
 
-
 void ExitGame::Update() {
-	if (g_pInput->IsKeyPush(MOFKEY_ESCAPE)) {
-		_openExitDialog = true;
-	}
+
 }
 
 void ExitGame::CreateButton(Button* button, Vector2 pos, CTexture* texture) {
-	button->SetStatu(pos, texture);
+	button->SetTexture(texture);
+	button->SetPosition(pos);
 }
-void ExitGame::Push(Vector2 mousePos) {
+
+void ExitGame::SetMousePos(Vector2 mousePos) {
 	if (!_openExitDialog)return;
 
-	if (g_pInput->IsMouseKeyPush(MOFMOUSE_LBUTTON)) {
-		if (_yesButton.CheckOnButton(mousePos)) {
-			PostQuitMessage(0);
-		}
+	_yesButton.SetMousePos(mousePos);
+	_noButton.SetMousePos(mousePos);
+}
 
-		if (_noButton.CheckOnButton(mousePos)) {
-			_openExitDialog = false;
-		}
+void ExitGame::Push() {
+	if (!_openExitDialog)return;
+
+	_yesButton.Push();
+	_noButton.Push();
+}
+
+void ExitGame::Pull() {
+	if (!_openExitDialog)return;
+
+	_yesButton.Pull();
+	_noButton.Pull();
+
+	if (_yesButton.IsPullButton()) {
+		PostQuitMessage(0);
 	}
-
+	if (_noButton.IsPullButton()) {
+		_openExitDialog = false;
+	}
 }
 
 void ExitGame::Render() {

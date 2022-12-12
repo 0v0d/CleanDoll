@@ -12,13 +12,11 @@ private:
 	GameOverBackGround _backGround;
 	GameOverLogoAnimation _logoAnim;
 
-
 	Vector2 _mousePos;
 
 	const int _menuValue = 2;
-	EndGameButtonAnimation* _endButton = new EndGameButtonAnimation[_menuValue];
-	Button* _button=new Button[_menuValue];
-	Vector2 _retryPos, _stageSelectPos;
+	EndGameButtonAnimation* _endButtonAnimation = new EndGameButtonAnimation[_menuValue];
+	Button _retryButton, _stageSelectButton;
 	CTexture _retryTexture, _stageSelectTexture;
 
 public:
@@ -33,4 +31,5 @@ public:
 	void Release();
 private:
 	void LoadTexture();
+	void UpdateAnimation();
 };
