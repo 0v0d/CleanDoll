@@ -3,21 +3,26 @@
 class ExitGame
 {
 private:
-	Vector2		 _basePos;
 	CTexture	 _yesTexture, _noTexture;
 	Button		 _yesButton, _noButton;
 	const float	 _space = 100;
 	bool		 _openExitDialog;
 public:
 	void Initialize();
+
 	void Update();
-	void Push(Vector2 mousePos);
+	void SetMousePos(Vector2);
+	void Push();
+	void Pull();
+	void OpenExitDialog() { _openExitDialog = true; }
+
 	void Render();
 	void Release();
+
 	bool IsOpenExitDialog() { return _openExitDialog; }
 
-	void OpenExitDialog() { _openExitDialog = true; }
-	void LoadTExture();
+private:
+	void LoadTexture();
 	void CreateButton(Button*, Vector2 pos, CTexture*);
 
 };

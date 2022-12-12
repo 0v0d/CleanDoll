@@ -10,16 +10,12 @@ class EndGameButtonAnimation
     bool _endAnimation;
 public:
     void Initialize();
+    void SetStatu(Vector2 buttonAnimPos, CTexture* buttonAnimTexutre);
     void Update();
     void Render();
-    void Release();
-
-    void SetStatu(Vector2 buttonAnimPos, CTexture* buttonAnimTexutre)
-    {
-        _buttonAnimTexture = buttonAnimTexutre;
-        _buttonAnimPos = buttonAnimPos;
-    }
 
     bool IsEndAnimation(){ return _endAnimation; }
 
+private:
+    void UpdateAnimation();
 };

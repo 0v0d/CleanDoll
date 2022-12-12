@@ -25,6 +25,10 @@ void GameClear::Initialize()
 
 	_retryButton.SetTexture(&_retryTexture);
 	_retryButton.SetPosition(_retryButtonPos);
+
+	_endGameButton[0].SetStatu(_nextButtonPos, &_nextStageTexture);
+	_endGameButton[1].SetStatu(_stageSelectButtonPos, &_stageSelectTexture);
+	_endGameButton[2].SetStatu(_retryButtonPos, &_retryTexture);
 }
 
 void GameClear::LoadTexture()
@@ -37,10 +41,6 @@ void GameClear::LoadTexture()
 void GameClear::ReLoad(){
 	_gameClearAnim.ReLoad();
 	_clearBackGround.ReLoad();
-	for (int i = 0; i < _menuValue; i++)
-	{
-		_endGameButton[i].Initialize();
-	}
 }
 
 void GameClear::Update()
@@ -128,9 +128,6 @@ void GameClear::Release()
 	_nextStageTexture.Release();
 	_stageSelectTexture.Release();
 	_retryTexture.Release();
-	for (int i = 0; i < _menuValue; i++) {
-		_endGameButton[i].Release();
-	}
 	_backStageClearTexture.Release();
 
 	delete[] _endGameButton;

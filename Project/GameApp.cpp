@@ -4,6 +4,7 @@
 MofBool CGameApp::Initialize()
 {
 	_input.SetMenu(&_menu);
+	_input.SetExitGame(&_exit);
 	CUtilities::SetCurrentDirectory("Resource");
 	SceneManager::Instance().Initialize();
 	_menu.Initialize();
@@ -14,16 +15,12 @@ MofBool CGameApp::Initialize()
 MofBool CGameApp::Update()
 {
 	g_pInput->RefreshKey();
-	g_pInput->GetMousePos(_mousePos);
 	_input.Update();
 	
-	if (!_exit.IsOpenExitDialog()) {
+	if (!_exit.IsOpenExitDialog()){
 		if (!_menu.IsOpenMenu())SceneManager::Instance().Update();
 		_menu.Update();
 		_exit.Update();
-	}
-	if (_exit.IsOpenExitDialog()) {
-		_exit.Push(_mousePos);
 	}
 	return TRUE;
 }

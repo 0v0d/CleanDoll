@@ -8,7 +8,6 @@ class CGameApp : public CSingleGameApplication
 {
 	Input _input;
 	Menu _menu;
-	Vector2	_mousePos;
 	ExitGame	_exit;
 public:
 	CGameApp(){}
