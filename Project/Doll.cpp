@@ -1,6 +1,7 @@
 #include "Doll.h"
 #include "Field.h"
 #include "Dump.h"
+#include "Item.h"
 
 void Doll::Initialize()
 {
@@ -95,15 +96,18 @@ void Doll::ActionAccessories()
 {
 	IBaseAccessories* blockOnAccessories = _nextBlock->GetBlockOnObject()->GetAccessories();
 	if (blockOnAccessories == nullptr) return;
-
-	if (blockOnAccessories->GetType() == ACCESSORIES_TYPE::DUMP)
+	switch (blockOnAccessories->GetType())
 	{
+	case ACCESSORIES_TYPE::DUMP:
 		CleanDump();
-	}
-	else if (blockOnAccessories->GetType() == ACCESSORIES_TYPE::MOP)
-	{
+		break;
+	case ACCESSORIES_TYPE::MOP:
 		SwitchToMop();
 		_nextBlock->GetBlockOnObject()->HiddenAccessoriesFlg(true);
+		break;
+	case ACCESSORIES_TYPE::ITEM:
+		CollectCandy();
+		break;
 	}
 }
 
@@ -125,6 +129,12 @@ void Doll::CleanDump()
 	}
 	_animation.StartCleanAnimation();
 	_cleanAnimation = true;
+}
+
+void Doll::CollectCandy()
+{
+	Item* blockOnCandy = dynamic_cast<Item*>(_nextBlock->GetBlockOnObject()->GetAccessories());
+	blockOnCandy->SetShow(false);
 }
 
 void Doll::SwitchToMop()
