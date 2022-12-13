@@ -20,6 +20,7 @@ void Field::Initialize()
 	_endGameProcess.Initialize();
 
 	_doll.SetDumpValue(_dustDumpValue, _waterDumpValue);
+	
 }
 
 void Field::ReLoad()
@@ -50,6 +51,7 @@ void Field::ReLoad()
 	_fieldUI.SetWaterDumpValue(_initalWaterValue);
 
 	_push = false;
+	_routeSize = 0;
 }
 
 void Field::SetDollPosition(int x, int y)
@@ -130,11 +132,26 @@ void Field::AdvanceRoute(Block* mouseOnBlock)
 {
 	if (_remainDistance <= 0 || mouseOnBlock->GetBlockOnObject()->GetFurniture() != nullptr) return;
 
-	_pickedBlock = mouseOnBlock;
-	_pickedBlock->SetPassedFlg(true);
-	_routeBlockArray.push_back(_pickedBlock);
-	_remainDistance--;
+	if (!_tutorialClear)
+	{		
+		if (mouseOnBlock == (Block*)_blockManager.GetBlock(_tutorialRouteArray[_routeBlockArray.size()+_routeSize].first, _tutorialRouteArray[_routeBlockArray.size()+ _routeSize].second))
+		{
+			_pickedBlock = mouseOnBlock;
+			_routeBlockArray.push_back(_pickedBlock);
+			_pickedBlock->SetPassedFlg(true);
+			_remainDistance--;
 
+		}
+		
+	}
+	else
+	{
+		_pickedBlock = mouseOnBlock;
+		_routeBlockArray.push_back(_pickedBlock);
+		_pickedBlock->SetPassedFlg(true);
+		_remainDistance--;
+	}
+	
 	if (_pickedBlock->GetBlockOnObject()->GetAccessories() != nullptr)
 	{
 		if (_pickedBlock->GetBlockOnObject()->GetAccessories()->GetType() == ACCESSORIES_TYPE::ITEM)
@@ -180,6 +197,7 @@ void Field::EndOfPassed()
 {
 	if (_routeBlockArray.size() <= 0) return;
 
+	_routeSize += _routeBlockArray.size();
 	_operateDoll.SetRouteBlockArray(_routeBlockArray);
 	_lastDistanceBlock = _routeBlockArray.back();
 	_routeBlockArray.clear();
@@ -242,4 +260,5 @@ void Field::Release()
 	_doll.Release();
 	_fieldUI.Release();
 	_endGameProcess.Release();
+	delete[] _tutorialRouteArray;
 }

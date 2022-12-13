@@ -8,6 +8,10 @@ void GameScene::Initialize()
 	_field.Initialize();
 	_music.Load("BGM.mp3");
 	_bgm.SetBGM(&_music, true);
+	_tutorial.Initialize();
+	_field.SetClearTutorial(_tutorial.IsClear());
+	_field.SetTutorialRouteArray(_tutorial.GetTutorialRouteArray());
+	_field.SetTutorialRoute(_tutorial.GetTutorialRoute()->first,_tutorial.GetTutorialRoute()->second);
 }
 
 void GameScene::LoadTexture() {

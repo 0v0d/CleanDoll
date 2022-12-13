@@ -40,7 +40,7 @@ void Dump::Render()
 {
 
 	_dumpType == DUMP_TYPE::DUST ? _dumpTexture->RenderScale(_position.x, _position.y, _scale, MOF_ARGB(_alpha, 255, 255, 255)) :
-		_dumpTexture->RenderScale(_position.x, _position.y, _scale, MOF_COLOR_BLUE);
+		_dumpTexture->RenderScale(_position.x, _position.y, _scale, MOF_ARGB(_alpha, 255, 255, 255));
 }
 
 void Dump::Release()

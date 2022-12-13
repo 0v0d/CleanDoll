@@ -11,9 +11,6 @@ class GameOver:public IBaseEndGameProcess
 private:
 	GameOverBackGround _backGround;
 	GameOverLogoAnimation _logoAnim;
-
-	Vector2 _mousePos;
-
 	const int _menuValue = 2;
 	EndGameButtonAnimation* _endButtonAnimation = new EndGameButtonAnimation[_menuValue];
 	Button _retryButton, _stageSelectButton;

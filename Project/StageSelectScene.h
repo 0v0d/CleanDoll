@@ -37,6 +37,7 @@ public:
 	void Release();
 	void StopBGM();
 	CreateField* GetCreateField() { return &_createField; }
+	void CreateTutorialField();
 private:
 	void LoadTexture();
 	void LoadStage(int stageNumber);

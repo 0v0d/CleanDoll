@@ -33,14 +33,18 @@ private:
 
 	bool* _onMoveDoll;
 
+	int _routeSize;
+
 	//ÉAÉCÉeÉÄÇ≈âÒïúÇµÇΩà⁄ìÆâÒêî
 	std::vector<int> _recoveryDifferentialArray;
+
+	std::pair<int,int>*_tutorialRouteArray;
 
 	int _dustDumpValue, _waterDumpValue;
 	int  _initalDustValue, _initalWaterValue;
 
 	bool _push;
-
+	bool _tutorialClear;
 	FieldUI _fieldUI;
 	EndGameProcess _endGameProcess;
 public:
@@ -71,7 +75,16 @@ public:
 
 	void SetDollMove(bool* onMoveDoll) { _onMoveDoll = onMoveDoll; }
 	void SetDollOnBlockNumber( Block* dollOnBlock);
+	void SetTutorialRouteArray(std::pair<int, int>** tutorialRouteArray) { _tutorialRouteArray = *tutorialRouteArray; }
+	void SetTutorialRoute(int x, int y)
+	{
+		_tutorialRouteArray[_routeSize].first = x;
+		_tutorialRouteArray[_routeSize].second =y;
+		_routeSize++;
+	}
+	void SetClearTutorial(bool clear) { _tutorialClear = clear; }
 private:
+
 	void AdvanceRoute(Block* mouseOnBlock);
 	void BackRoute(Block* mouseOnBlock);
 };

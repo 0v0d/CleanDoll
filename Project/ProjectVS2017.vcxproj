@@ -108,6 +108,7 @@
     <ClCompile Include="Button.cpp" />
     <ClCompile Include="ContactFile.cpp" />
     <ClCompile Include="CreateField.cpp" />
+    <ClCompile Include="EndTutorial.cpp" />
     <ClCompile Include="GalleryTexture.cpp" />
     <ClCompile Include="SetFieldData.cpp" />
     <ClCompile Include="Doll.cpp" />
@@ -159,6 +160,7 @@
     <ClCompile Include="StageSelectDialog.cpp" />
     <ClCompile Include="StageSelectScene.cpp" />
     <ClCompile Include="TitleScene.cpp" />
+    <ClCompile Include="TutorialScene.cpp" />
     <ClCompile Include="Wall.cpp" />
     <ClCompile Include="WindowProc.cpp" />
     <ClCompile Include="WinMain.cpp" />
@@ -175,6 +177,7 @@
     <ClInclude Include="Button.h" />
     <ClInclude Include="ContactFile.h" />
     <ClInclude Include="CreateField.h" />
+    <ClInclude Include="EndTutorial.h" />
     <ClInclude Include="GalleryTexture.h" />
     <ClInclude Include="SetFieldData.h" />
     <ClInclude Include="Doll.h" />
@@ -227,6 +230,7 @@
     <ClInclude Include="StageSelectDialog.h" />
     <ClInclude Include="StageSelectScene.h" />
     <ClInclude Include="TitleScene.h" />
+    <ClInclude Include="TutorialScene.h" />
     <ClInclude Include="Wall.h" />
     <ClInclude Include="WindowProc.h" />
   </ItemGroup>

@@ -1,5 +1,6 @@
 #include "TitleScene.h"
 
+
 void TitleScene::Initialize()
 {
 	_titleBackTexture.Load("titleback.png");
@@ -12,6 +13,7 @@ void TitleScene::Initialize()
 	_bgm.SetBGM(&_music, true);
 	_bgm.Play();
 	_alpha = 255;
+	_clearTutorial = _tutorial.IsClear();
 }
 
 void TitleScene::SetTitleLogoAnimationStatus()
@@ -122,6 +124,7 @@ void TitleScene::SetTitleLogoAnimationStatus()
 void TitleScene::ReLoad()
 {
 	_bgm.Play();
+
 }
 
 void TitleScene::Update()
@@ -158,7 +161,14 @@ void TitleScene::SetMousePos(Vector2) {
 }
 
 void TitleScene::Push() {
-	SceneManager::Instance().ChangeScene(SCENE_TYPE::STAGESELECT);
+	
+	if (!_clearTutorial){
+		dynamic_cast<StageSelectScene*>(SceneManager::Instance().GetScene(SCENE_TYPE::STAGESELECT))->CreateTutorialField();
+		SceneManager::Instance().ChangeScene(SCENE_TYPE::GAME);
+	}
+	else{
+		SceneManager::Instance().ChangeScene(SCENE_TYPE::STAGESELECT);
+	}
 	_bgm.Stop();
 }
 
