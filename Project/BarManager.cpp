@@ -14,6 +14,7 @@ void BarManager::Initialize()
 		_barArray[i].SetStatu(_baseBarScale, _space);
 		_barArray[i].SetBaseBarTexture(&_baseDirtyBarTexture);
 		_barArray[i].SetScreenStatu(_basePosition, Vector2(_baseTexture.GetWidth(), _baseTexture.GetHeight()));
+		_barArray[i].SetDifficulutyTexture(&_difficultyTexture);
 		_barArray[i].Initialize();
 	}
 
@@ -36,6 +37,7 @@ void BarManager::LoadTexture() {
 	_baseDirtyBarTexture.Load("BaseDirtyBar.png");
 	_barTexture.Load("スクロールバー1.png");
 	_buttonTexture.Load("スクロールバー2.png");
+	_difficultyTexture.Load("difficulty.png");
 }
 
 void BarManager::CalcuScale() {
@@ -138,4 +140,5 @@ void BarManager::Release()
 	_baseDirtyBarTexture.Release();
 	_barTexture.Release();
 	_buttonTexture.Release();
+	_difficultyTexture.Release();
 }

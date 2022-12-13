@@ -16,7 +16,12 @@ private:
 	float _maxMovePosY;
 
 	int _stageValue, _stageNumber;
+	
 	int _difficulty;
+	CTexture** _difficultyTextureArray;
+	Vector2 _difficultyPos;
+	float _difficultyScale;
+	
 	std::string _stageDataTextName;
 
 	Vector2 _screenPos, _screenSize;
@@ -41,9 +46,19 @@ public:
 	CTexture* GetPreviewTexture() { return &_previewTexture; }
 	std::string GetStageDataTextName() { return _stageDataTextName; }
 	bool IsClear() { return _clear; }
+	void SetDifficulutyTexture(CTexture* texture)
+	{
+		for (int i = 0; i < _difficulty; i++)
+		{
+			_difficultyTextureArray[i] = texture;
+		}
+	}
+
+	
 
 private:
-	bool CheckOnScreenTopLine(CTexture*);
-	CRectangle GetRenderRect(Vector2, CTexture*);
+	bool CheckOnScreenTopLine(float top,float bottom);
+	CRectangle GetRenderRect(Vector2, CTexture*,float scale);
 	bool IsRenderRange(CTexture*, Vector2, float scale);
+	
 };
