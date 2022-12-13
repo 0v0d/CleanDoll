@@ -43,6 +43,7 @@ private:
 
 	FieldUI _fieldUI;
 	EndGameProcess _endGameProcess;
+	bool _getCoin;
 public:
 	void SetDollPosition(int x, int y);
 	void Initialize();
@@ -62,6 +63,8 @@ public:
 	void SetWaterDumpValue(int dumpValue);
 	void CleanDust();
 	void CleanWater();
+	void SetGettedCoinFlg(bool flg) { _getCoin = flg; }
+	void GetCoin();
 	void GameOver();
 
 	void Render();

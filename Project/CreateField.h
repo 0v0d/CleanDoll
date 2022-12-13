@@ -3,6 +3,7 @@
 #include	"string"
 #include	"SetFieldData.h"
 #include	"ContactFile.h"
+#include	"Field.h"
 #include	"BarManager.h"
 
 struct TextureArray
@@ -40,6 +41,7 @@ public:
 
 	void LoadStage(std::string stageName);
 	void LoadDoll();
+	void LoadCoin();
 
 	void Release();
 	void Delete();
@@ -50,7 +52,6 @@ private:
 	void LoadStageSelectData();
 
 	void LoadTexture(TextureArray* textureArray);
-	void SetDoll(int x, int y);
 	void NewChipData(TextureArray* textureArray);
 	void DeleteChipData(TextureArray* textureArray);
 	void DeleteTextureArray(TextureArray* textureArray);

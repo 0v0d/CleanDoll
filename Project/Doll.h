@@ -27,6 +27,7 @@ class Doll
 
 	int _dustDumpValue,_waterDumpValue;
 	bool _heldMop,_cleanAnimation;
+	bool _getCoin;
 
 	const int wait = 3;
 	int _motionCount;
@@ -48,6 +49,8 @@ public:
 
 	void Render();
 	void Release();
+
+	bool IsGetCoin(){ return _getCoin; }
 private:
 	void DollAnimationUpdate();
 	void SetNextPosition();

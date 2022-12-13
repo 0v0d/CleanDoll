@@ -9,7 +9,7 @@ void Bar::Initialize()
 	_barHitBox = CRectangle(_pos.x, _pos.y, _pos.x + _baseBarTexture->GetWidth() * _scale, _pos.y + _baseBarTexture->GetHeight() * _scale);
 	_maxMovePosY = (_space / 2 + _screenPos.y + (_baseBarTexture->GetHeight() * _scale + _space) * _stageValue) - _screenEdge.Bottom;
 
-	_clear = false;
+	_clear = _getCoin = false;
 }
 
 void Bar::SetScreenStatu(Vector2 screenPos, Vector2 screenSize) {

@@ -4,6 +4,8 @@ void BlockManager::Initialize()
 {
 	_topSpace = 300;
 	_bottomSpace = 100;
+
+	_galleryCoin->Initialize();
 }
 
 void BlockManager::ReLoad()
@@ -80,6 +82,10 @@ void BlockManager::SetDollOnBlock(Block* dollOnBlock) {
 	}
 }
 
+void BlockManager::SetCoin(int x, int y) {
+	_blockArray[x][y].GetBlockOnObject()->SetAccessories(_galleryCoin);
+}
+
 void BlockManager::Update()
 {
 	for (int y = 0; y < _blockValueY; y++) {
@@ -140,5 +146,6 @@ void BlockManager::Delete()
 
 void BlockManager::Release()
 {
+	_galleryCoin->Release();
 	Delete();
 }

@@ -67,10 +67,7 @@ void GalleryBarManager::SetTexture() {
 }
 
 void GalleryBarManager::Update() {
-	if (g_pInput->IsKeyPush(MOFKEY_SPACE)) {
-		AddCoinValue();
-		ReLoad();
-	}
+
 }
 
 void GalleryBarManager::SetMousePos(Vector2 mousePos) {

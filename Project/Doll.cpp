@@ -17,6 +17,7 @@ void Doll::ReLoad()
 	_inversion = false;
 	_heldMop = false;
 	_cleanAnimation = false;
+	_getCoin = false;
 
 	_animation.ReLoad();
 }
@@ -96,14 +97,22 @@ void Doll::ActionAccessories()
 	IBaseAccessories* blockOnAccessories = _nextBlock->GetBlockOnObject()->GetAccessories();
 	if (blockOnAccessories == nullptr) return;
 
-	if (blockOnAccessories->GetType() == ACCESSORIES_TYPE::DUMP)
+	switch (blockOnAccessories->GetType())
 	{
+	case ACCESSORIES_TYPE::DUMP:
 		CleanDump();
-	}
-	else if (blockOnAccessories->GetType() == ACCESSORIES_TYPE::MOP)
-	{
+		break;
+
+	case ACCESSORIES_TYPE::MOP:
 		SwitchToMop();
 		_nextBlock->GetBlockOnObject()->HiddenAccessoriesFlg(true);
+		break;
+
+	case ACCESSORIES_TYPE::COIN:
+		_getCoin = true;
+		_field->GetCoin();
+		_nextBlock->GetBlockOnObject()->HiddenAccessoriesFlg(true);
+		break;
 	}
 }
 

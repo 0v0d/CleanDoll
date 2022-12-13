@@ -1,13 +1,12 @@
 #include "BlockOnObject.h"
 
 void BlockOnObject::Initialzie(){
-	_hiddenAccessories = false;
-	_accessories->Initialize();
+	if (_accessories->GetType() != ACCESSORIES_TYPE::COIN) _accessories->Initialize();
+	else _hiddenAccessories = false;
 }
 
 void BlockOnObject::ReLoad() {
-	if (_accessories != nullptr)
-	_accessories->ReLoad();
+	if (_accessories != nullptr) _accessories->ReLoad();
 }
 
 void BlockOnObject::SetObject(Object* object, bool onSwap){
@@ -18,7 +17,7 @@ void BlockOnObject::SetObject(Object* object, bool onSwap){
 	if (onSwap)_object->Swap();
 }
 
-void BlockOnObject::SetAccessories(IBaseAccessories* accessories, ACCESSORIES_TYPE type){
+void BlockOnObject::SetAccessories(IBaseAccessories* accessories){
 	_accessories = accessories;
 	_accessories->CalcuScale(_blockSize.x * _blockScale);
 	_accessories->SetPosotion(_blockCenterPos);
@@ -36,7 +35,7 @@ void BlockOnObject::Render(){
 	}
 
 	if (_accessories != nullptr) {
-		_accessories->Render();
+		if (!_hiddenAccessories)_accessories->Render();
 	}
 }
 
@@ -59,6 +58,7 @@ void BlockOnObject::DeleteObject() {
 
 void BlockOnObject::DeleteAccessories() {
 	if (_accessories == nullptr) return;
+	if (_accessories->GetType() == ACCESSORIES_TYPE::COIN) return;
 
 	_accessories->Release();
 	delete _accessories;

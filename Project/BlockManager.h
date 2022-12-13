@@ -1,6 +1,7 @@
 #pragma once
 #include	"Block.h"
 #include	"Doll.h"
+#include	"GalleryCoin.h"
 class BlockManager
 {
 private:
@@ -13,6 +14,7 @@ private:
 	const int _adjoinBlockValue = 4;
 
 	Doll* _doll;
+	GalleryCoin* _galleryCoin = new GalleryCoin(ACCESSORIES_TYPE::COIN);
 public:
 	void Initialize();
 	void SetDoll(Doll* doll) { _doll = doll; }
@@ -33,6 +35,7 @@ public:
 	void CreateField(int blockValueX, int blockValueY);
 	void CalcuScale(float blockSizeY);
 	void SetDollOnBlock(Block* dollOnBlock);
+	void SetCoin(int x, int y);
 private:
 	void SetAdjoinBlock();
 };
