@@ -140,9 +140,7 @@ void Field::AdvanceRoute(Block* mouseOnBlock)
 			_routeBlockArray.push_back(_pickedBlock);
 			_pickedBlock->SetPassedFlg(true);
 			_remainDistance--;
-
 		}
-		
 	}
 	else
 	{
@@ -151,7 +149,6 @@ void Field::AdvanceRoute(Block* mouseOnBlock)
 		_pickedBlock->SetPassedFlg(true);
 		_remainDistance--;
 	}
-	
 	if (_pickedBlock->GetBlockOnObject()->GetAccessories() != nullptr)
 	{
 		if (_pickedBlock->GetBlockOnObject()->GetAccessories()->GetType() == ACCESSORIES_TYPE::ITEM)
@@ -161,7 +158,6 @@ void Field::AdvanceRoute(Block* mouseOnBlock)
 			_pickedBlock->GetBlockOnObject()->HiddenAccessoriesFlg(true);
 		}
 	}
-
 	_fieldUI.SetCurrentEnergyValue(_remainDistance);
 }
 
@@ -217,6 +213,10 @@ void Field::EndMoveDoll()
 	if (_remainDistance <= 0)
 	{
 		GameOver();
+	}
+	if (!_tutorialClear)
+	{
+		
 	}
 }
 

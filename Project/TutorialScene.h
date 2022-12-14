@@ -19,4 +19,5 @@ public:
 
 private:
 	void LoadTexture();
+	void LoadTutorialRoute();
 };
