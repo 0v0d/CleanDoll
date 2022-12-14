@@ -293,6 +293,18 @@
     <ClCompile Include="EndTutorial.cpp">
       <Filter>ソース ファイル\Scene\GameScene\EndGameProcess\EndTutorial</Filter>
     </ClCompile>
+    <ClCompile Include="EndTutorialAnimation.cpp">
+      <Filter>ソース ファイル</Filter>
+    </ClCompile>
+    <ClCompile Include="EndTutorialLogoAnimation.cpp">
+      <Filter>ソース ファイル</Filter>
+    </ClCompile>
+    <ClCompile Include="EndTurorialDollAnimation.cpp">
+      <Filter>ソース ファイル</Filter>
+    </ClCompile>
+    <ClCompile Include="EndTutorialBackGround.cpp">
+      <Filter>ソース ファイル</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GameApp.h">
@@ -499,6 +511,10 @@
     <ClInclude Include="EndTutorial.h">
       <Filter>ソース ファイル\Scene\GameScene\EndGameProcess\EndTutorial</Filter>
     </ClInclude>
+    <ClInclude Include="EndTutorialAnimation.h" />
+    <ClInclude Include="EndTutorialLogoAnimation.h" />
+    <ClInclude Include="EndTurorialDollAnimation.h" />
+    <ClInclude Include="EndTutorialBackGround.h" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="Version.rc">

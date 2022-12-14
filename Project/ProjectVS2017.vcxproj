@@ -108,7 +108,11 @@
     <ClCompile Include="Button.cpp" />
     <ClCompile Include="ContactFile.cpp" />
     <ClCompile Include="CreateField.cpp" />
+    <ClCompile Include="EndTurorialDollAnimation.cpp" />
     <ClCompile Include="EndTutorial.cpp" />
+    <ClCompile Include="EndTutorialAnimation.cpp" />
+    <ClCompile Include="EndTutorialBackGround.cpp" />
+    <ClCompile Include="EndTutorialLogoAnimation.cpp" />
     <ClCompile Include="GalleryTexture.cpp" />
     <ClCompile Include="SetFieldData.cpp" />
     <ClCompile Include="Doll.cpp" />
@@ -177,7 +181,11 @@
     <ClInclude Include="Button.h" />
     <ClInclude Include="ContactFile.h" />
     <ClInclude Include="CreateField.h" />
+    <ClInclude Include="EndTurorialDollAnimation.h" />
     <ClInclude Include="EndTutorial.h" />
+    <ClInclude Include="EndTutorialAnimation.h" />
+    <ClInclude Include="EndTutorialBackGround.h" />
+    <ClInclude Include="EndTutorialLogoAnimation.h" />
     <ClInclude Include="GalleryTexture.h" />
     <ClInclude Include="SetFieldData.h" />
     <ClInclude Include="Doll.h" />
