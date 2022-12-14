@@ -5,7 +5,7 @@
 #include	"EndGameButtonAnimation.h"
 class EndTutorial :public IBaseEndGameProcess
 {
-	EndGameButtonAnimation _endButtonAnimation;
+	EndGameButtonAnimation _endGameButton;
 	Button _stageSelectButton;
 	CTexture _stageSelectTexture;
 public:

@@ -84,6 +84,12 @@
     <Filter Include="ソース ファイル\Scene\GameScene\EndGameProcess\GameOver\Animation">
       <UniqueIdentifier>{dfe4250d-06a1-4184-9b30-d5ee6e703fff}</UniqueIdentifier>
     </Filter>
+    <Filter Include="ソース ファイル\Scene\GameScene\TutorialScene">
+      <UniqueIdentifier>{425e3c01-ea50-4cd1-80f0-08d1047b7d92}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\Scene\GameScene\EndGameProcess\EndTutorial">
+      <UniqueIdentifier>{c7cc2745-923e-4096-a6cb-b6da8fe8d073}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="WinMain.cpp">
@@ -281,11 +287,11 @@
     <ClCompile Include="GameOverLogoAnimation .cpp">
       <Filter>ソース ファイル\Scene\GameScene\EndGameProcess\GameOver\Animation</Filter>
     </ClCompile>
-    <ClCompile Include="EndTutorial.cpp">
-      <Filter>ソース ファイル</Filter>
-    </ClCompile>
     <ClCompile Include="TutorialScene.cpp">
-      <Filter>ソース ファイル\Scene\GameScene</Filter>
+      <Filter>ソース ファイル\Scene\GameScene\TutorialScene</Filter>
+    </ClCompile>
+    <ClCompile Include="EndTutorial.cpp">
+      <Filter>ソース ファイル\Scene\GameScene\EndGameProcess\EndTutorial</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -488,10 +494,10 @@
       <Filter>ソース ファイル\Scene\GameScene\EndGameProcess\GameOver\Animation</Filter>
     </ClInclude>
     <ClInclude Include="TutorialScene.h">
-      <Filter>ソース ファイル\Scene\GameScene</Filter>
+      <Filter>ソース ファイル\Scene\GameScene\TutorialScene</Filter>
     </ClInclude>
     <ClInclude Include="EndTutorial.h">
-      <Filter>ソース ファイル</Filter>
+      <Filter>ソース ファイル\Scene\GameScene\EndGameProcess\EndTutorial</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

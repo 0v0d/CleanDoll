@@ -5,6 +5,7 @@
 #include    "BackGround.h"
 #include    "BGM.h"
 #include "TutorialScene.h"
+
 class GameScene :public IBaseScene
 {
     Field _field;

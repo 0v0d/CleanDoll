@@ -132,23 +132,22 @@ void Field::AdvanceRoute(Block* mouseOnBlock)
 {
 	if (_remainDistance <= 0 || mouseOnBlock->GetBlockOnObject()->GetFurniture() != nullptr) return;
 
-	if (!_tutorialClear)
-	{		
-		if (mouseOnBlock == (Block*)_blockManager.GetBlock(_tutorialRouteArray[_routeBlockArray.size()+_routeSize].first, _tutorialRouteArray[_routeBlockArray.size()+ _routeSize].second))
-		{
+	if (!_tutorialClear){		
+		if (mouseOnBlock == (Block*)_blockManager.GetBlock(_tutorialRouteArray[_routeBlockArray.size()+_routeSize].first, _tutorialRouteArray[_routeBlockArray.size()+ _routeSize].second)){
 			_pickedBlock = mouseOnBlock;
 			_routeBlockArray.push_back(_pickedBlock);
 			_pickedBlock->SetPassedFlg(true);
 			_remainDistance--;
 		}
 	}
-	else
-	{
+	else{
 		_pickedBlock = mouseOnBlock;
 		_routeBlockArray.push_back(_pickedBlock);
 		_pickedBlock->SetPassedFlg(true);
 		_remainDistance--;
 	}
+
+
 	if (_pickedBlock->GetBlockOnObject()->GetAccessories() != nullptr)
 	{
 		if (_pickedBlock->GetBlockOnObject()->GetAccessories()->GetType() == ACCESSORIES_TYPE::ITEM)
@@ -189,8 +188,7 @@ void Field::BackRoute(Block* mouseOnBlock)
 }
 
 //入力終了
-void Field::EndOfPassed()
-{
+void Field::EndOfPassed(){
 	if (_routeBlockArray.size() <= 0) return;
 
 	_routeSize += _routeBlockArray.size();
@@ -200,23 +198,23 @@ void Field::EndOfPassed()
 	_recoveryDifferentialArray.clear();
 }
 
-void Field::EndMoveDoll()
-{
+void Field::EndMoveDoll(){
 	//ゲームクリア
-	if (_dustDumpValue <= 0 && _waterDumpValue <= 0)
-	{
-		_endGameProcess.SetCurrentProcess(ProcessType::GameClear);
-		dynamic_cast<StageSelectScene*>(SceneManager::Instance().GetScene(SCENE_TYPE::STAGESELECT))->StageClear();
+	if (_dustDumpValue <= 0 && _waterDumpValue <= 0){
+		if (!_tutorialClear){
+			_endGameProcess.SetCurrentProcess(ProcessType::GameClear);
+			dynamic_cast<StageSelectScene*>(SceneManager::Instance().GetScene(SCENE_TYPE::STAGESELECT))->StageClear();
+		}
+		else{
+			_endGameProcess.SetCurrentProcess(ProcessType::GameClear);
+			dynamic_cast<StageSelectScene*>(SceneManager::Instance().GetScene(SCENE_TYPE::STAGESELECT))->StageClear();
+		}
+		
 		return;
 	}
 	//ゲームオーバー
-	if (_remainDistance <= 0)
-	{
+	if (_remainDistance <= 0){
 		GameOver();
-	}
-	if (!_tutorialClear)
-	{
-		
 	}
 }
 

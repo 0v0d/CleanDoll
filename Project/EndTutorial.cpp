@@ -1,48 +1,42 @@
 #include "EndTutorial.h"
 
-void EndTutorial::Initialize()
-{
+void EndTutorial::Initialize(){
 	LoadTexture();
-	_endButtonAnimation.Initialize();
-	Vector2 stageSelectPos = Vector2(400, 500);
-	_endButtonAnimation.SetStatu(stageSelectPos, &_stageSelectTexture);
+	_endGameButton.Initialize();
+	Vector2 _stageSelectButtonPos = Vector2(400, 500);
+	_endGameButton.SetStatu(_stageSelectButtonPos, &_stageSelectTexture);
 	_stageSelectButton.SetTexture(&_stageSelectTexture);
-	_stageSelectButton.SetPosition(stageSelectPos);
+	_stageSelectButton.SetPosition(_stageSelectButtonPos);
+	_endGameButton.SetStatu(_stageSelectButtonPos, &_stageSelectTexture);
 }
 
-void EndTutorial::LoadTexture()
-{
+void EndTutorial::LoadTexture(){
 	_stageSelectTexture.Load("ステージ選択に戻る.png");
 }
 
-void EndTutorial::ReLoad()
-{
+void EndTutorial::ReLoad(){
 
 }
 
-void EndTutorial::Update()
-{
-	if (!_endButtonAnimation.IsEndAnimation());
+void EndTutorial::Update(){
+	if (!_endGameButton.IsEndAnimation());
 }
 
-void EndTutorial::SetMousePos(Vector2)
-{
+void EndTutorial::SetMousePos(Vector2){
+
 }
 
-void EndTutorial::Push()
-{
+void EndTutorial::Push(){
 }
 
-void EndTutorial::Pull()
-{
+void EndTutorial::Pull(){
 }
 
-void EndTutorial::Render()
-{
+void EndTutorial::Render(){
+
 }
 
-void EndTutorial::Release()
-{
+void EndTutorial::Release(){
 }
 
 
