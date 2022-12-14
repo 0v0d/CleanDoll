@@ -260,5 +260,4 @@ void Field::Release()
 	_doll.Release();
 	_fieldUI.Release();
 	_endGameProcess.Release();
-	delete[] _tutorialRouteArray;
 }
