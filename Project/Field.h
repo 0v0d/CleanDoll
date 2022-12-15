@@ -45,6 +45,7 @@ private:
 
 	bool _push;
 	bool _tutorialClear;
+	int _tutorialArrayMaxValue;
 	FieldUI _fieldUI;
 	EndGameProcess _endGameProcess;
 public:
@@ -83,6 +84,8 @@ public:
 		_routeSize++;
 	}
 	void SetClearTutorial(bool clear) { _tutorialClear = clear; }
+	void SetTutorialArrayMaxValue(int maxValue) { _tutorialArrayMaxValue = maxValue; }
+	bool GetTutorialClear() const { return _tutorialClear; }
 private:
 
 	void AdvanceRoute(Block* mouseOnBlock);

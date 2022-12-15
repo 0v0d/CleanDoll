@@ -37,6 +37,7 @@ void EndTutorial::Render(){
 }
 
 void EndTutorial::Release(){
+	_stageSelectTexture.Release();
 }
 
 

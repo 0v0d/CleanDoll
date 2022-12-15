@@ -1,16 +1,15 @@
 #include "TutorialScene.h"
 
 void TutorialScene::Initialize(){
-	_clear = false;
-	LoadTutorialRoute();
+	
 }
 
 void TutorialScene::LoadTutorialRoute(){
 	_contactFile.OpenFile("tutorialRoute.txt");
-	int index = _contactFile.GetValue(true);
-	_tutorialRouteArray = new std::pair<int, int>[index];
+	_routeValue = _contactFile.GetValue(true);
+	_tutorialRouteArray = new std::pair<int, int>[_routeValue];
 
-	for (int i = 0; i < index; i++){
+	for (int i = 0; i < _routeValue; i++){
 		_tutorialRouteArray[i].first = _contactFile.GetValue(false);
 		_tutorialRouteArray[i].second = _contactFile.GetValue(false);
 	}

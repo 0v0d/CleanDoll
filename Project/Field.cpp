@@ -133,7 +133,9 @@ void Field::AdvanceRoute(Block* mouseOnBlock)
 	if (_remainDistance <= 0 || mouseOnBlock->GetBlockOnObject()->GetFurniture() != nullptr) return;
 
 	if (!_tutorialClear){		
-		if (mouseOnBlock == (Block*)_blockManager.GetBlock(_tutorialRouteArray[_routeBlockArray.size()+_routeSize].first, _tutorialRouteArray[_routeBlockArray.size()+ _routeSize].second)){
+		if (mouseOnBlock == _blockManager.GetBlock(_tutorialRouteArray[_routeBlockArray.size()+_routeSize].first,
+			_tutorialRouteArray[_routeBlockArray.size()+ _routeSize].second)){
+
 			_pickedBlock = mouseOnBlock;
 			_routeBlockArray.push_back(_pickedBlock);
 			_pickedBlock->SetPassedFlg(true);
@@ -199,22 +201,27 @@ void Field::EndOfPassed(){
 }
 
 void Field::EndMoveDoll(){
-	//ゲームクリア
-	if (_dustDumpValue <= 0 && _waterDumpValue <= 0){
-		if (!_tutorialClear){
+
+	if (!_tutorialClear) {
+		if (_blockManager.GetDollOnBlock() == _blockManager.GetBlock(_tutorialRouteArray[_tutorialArrayMaxValue-1].first, _tutorialRouteArray[_tutorialArrayMaxValue-1].second))
+		{
+			_tutorialClear = true;
 			_endGameProcess.SetCurrentProcess(ProcessType::GameClear);
 			dynamic_cast<StageSelectScene*>(SceneManager::Instance().GetScene(SCENE_TYPE::STAGESELECT))->StageClear();
 		}
-		else{
-			_endGameProcess.SetCurrentProcess(ProcessType::GameClear);
-			dynamic_cast<StageSelectScene*>(SceneManager::Instance().GetScene(SCENE_TYPE::STAGESELECT))->StageClear();
-		}
-		
-		return;
 	}
-	//ゲームオーバー
-	if (_remainDistance <= 0){
-		GameOver();
+	else
+	{
+		//ゲームクリア
+		if (_dustDumpValue <= 0 && _waterDumpValue <= 0) {
+			_endGameProcess.SetCurrentProcess(ProcessType::GameClear);
+			dynamic_cast<StageSelectScene*>(SceneManager::Instance().GetScene(SCENE_TYPE::STAGESELECT))->StageClear();
+			return;
+		}
+		//ゲームオーバー
+		if (_remainDistance <= 0) {
+			GameOver();
+		}
 	}
 }
 

@@ -13,6 +13,7 @@ void TitleScene::Initialize()
 	_bgm.SetBGM(&_music, true);
 	_bgm.Play();
 	_alpha = 255;
+	_tutorial.Initialize();
 	_clearTutorial = _tutorial.IsClear();
 }
 
@@ -124,7 +125,7 @@ void TitleScene::SetTitleLogoAnimationStatus()
 void TitleScene::ReLoad()
 {
 	_bgm.Play();
-
+	_clearTutorial = _tutorial.Clear();
 }
 
 void TitleScene::Update()
@@ -167,6 +168,7 @@ void TitleScene::Push() {
 		SceneManager::Instance().ChangeScene(SCENE_TYPE::GAME);
 	}
 	else{
+
 		SceneManager::Instance().ChangeScene(SCENE_TYPE::STAGESELECT);
 	}
 	_bgm.Stop();
