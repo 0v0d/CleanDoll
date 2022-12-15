@@ -1,14 +1,14 @@
 #pragma once
 #include "Mof.h"
-class EndTutorialLogoAnimation
+class EndTutorialDollAnimation
 {
 private:
 	CSpriteMotionController _animation;
-	CTexture _clearTexture;
+	CTexture _clearDollTexture;
 	Vector2 _pos;
-	CRectangle _clearLogRect;
+	CRectangle _clearDollRect;
 
-	const float _scale = 4.0f;
+	const float _scale = 2.0f;
 public:
 	void Initialize();
 	void ReLoad();

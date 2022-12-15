@@ -33,7 +33,7 @@ private:
 
 	bool* _onMoveDoll;
 
-	int _routeSize;
+
 
 	//ƒAƒCƒeƒ€‚Å‰ñ•œ‚µ‚½ˆÚ“®‰ñ”
 	std::vector<int> _recoveryDifferentialArray;
@@ -45,7 +45,9 @@ private:
 
 	bool _push;
 	bool _tutorialClear;
+	int _routeSize;
 	int _tutorialArrayMaxValue;
+
 	FieldUI _fieldUI;
 	EndGameProcess _endGameProcess;
 public:
@@ -83,9 +85,7 @@ public:
 		_tutorialRouteArray[_routeSize].second =y;
 		_routeSize++;
 	}
-	void SetClearTutorial(bool clear) { _tutorialClear = clear; }
 	void SetTutorialArrayMaxValue(int maxValue) { _tutorialArrayMaxValue = maxValue; }
-	bool GetTutorialClear() const { return _tutorialClear; }
 private:
 
 	void AdvanceRoute(Block* mouseOnBlock);

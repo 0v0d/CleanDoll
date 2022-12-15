@@ -13,8 +13,7 @@ void TitleScene::Initialize()
 	_bgm.SetBGM(&_music, true);
 	_bgm.Play();
 	_alpha = 255;
-	_tutorial.Initialize();
-	_clearTutorial = _tutorial.IsClear();
+	_clearTutorial = false;
 }
 
 void TitleScene::SetTitleLogoAnimationStatus()
@@ -125,7 +124,7 @@ void TitleScene::SetTitleLogoAnimationStatus()
 void TitleScene::ReLoad()
 {
 	_bgm.Play();
-	_clearTutorial = _tutorial.Clear();
+	_clearTutorial = true;
 }
 
 void TitleScene::Update()

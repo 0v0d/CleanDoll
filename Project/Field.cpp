@@ -20,7 +20,7 @@ void Field::Initialize()
 	_endGameProcess.Initialize();
 
 	_doll.SetDumpValue(_dustDumpValue, _waterDumpValue);
-	
+	_tutorialClear = false;
 }
 
 void Field::ReLoad()
@@ -206,7 +206,7 @@ void Field::EndMoveDoll(){
 		if (_blockManager.GetDollOnBlock() == _blockManager.GetBlock(_tutorialRouteArray[_tutorialArrayMaxValue-1].first, _tutorialRouteArray[_tutorialArrayMaxValue-1].second))
 		{
 			_tutorialClear = true;
-			_endGameProcess.SetCurrentProcess(ProcessType::GameClear);
+			_endGameProcess.SetCurrentProcess(ProcessType::EndTutorial);
 			dynamic_cast<StageSelectScene*>(SceneManager::Instance().GetScene(SCENE_TYPE::STAGESELECT))->StageClear();
 		}
 	}
