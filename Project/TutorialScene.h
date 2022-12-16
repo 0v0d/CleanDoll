@@ -7,6 +7,8 @@ private:
 	ContactFile _contactFile;
 	int _routeValue, _routeSize;
 	std::pair<int, int>* _tutorialRouteArray;
+	int* _inputLimitArray;
+	int _inputLimitValue;
 public:
 	void Initialize();
 	void Update();
@@ -16,7 +18,9 @@ public:
 	std::pair<int, int>**GetTutorialRouteArray() { return &_tutorialRouteArray; }
 	std::pair<int,int>* GetTutorialRoute() { return _tutorialRouteArray; }
 	int GetRouteValue() const{ return _routeValue; }
-	void LoadTutorialRoute();
+	
 private:
+	void LoadTutorialRoute();
+	void LoadInputLimit();
 	void LoadTexture();
 };

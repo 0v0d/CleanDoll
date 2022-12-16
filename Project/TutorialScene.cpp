@@ -1,7 +1,8 @@
 #include "TutorialScene.h"
 
 void TutorialScene::Initialize(){
-	
+	LoadTutorialRoute();
+
 }
 
 void TutorialScene::LoadTutorialRoute(){
@@ -16,6 +17,17 @@ void TutorialScene::LoadTutorialRoute(){
 	_contactFile.CloseFile();
 }
 
+void TutorialScene::LoadInputLimit()
+{
+	_contactFile.OpenFile("InputLimit.txt");
+	_inputLimitValue = _contactFile.GetValue(true);
+	_inputLimitArray = new int[_inputLimitValue];
+	for (int i = 0; i < _routeValue; i++) {
+		_inputLimitArray[i] = _contactFile.GetValue(false);
+	}
+	_contactFile.CloseFile();
+}
+
 void TutorialScene::Update(){
 
 }
@@ -26,6 +38,7 @@ void TutorialScene::Render(){
 
 void TutorialScene::Release(){
 	delete[] _tutorialRouteArray;
+	delete[] _inputLimitArray;
 }
 
 void TutorialScene::LoadTexture(){

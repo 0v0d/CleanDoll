@@ -21,6 +21,7 @@ void Field::Initialize()
 
 	_doll.SetDumpValue(_dustDumpValue, _waterDumpValue);
 	_tutorialClear = false;
+	
 }
 
 void Field::ReLoad()
@@ -132,15 +133,26 @@ void Field::AdvanceRoute(Block* mouseOnBlock)
 {
 	if (_remainDistance <= 0 || mouseOnBlock->GetBlockOnObject()->GetFurniture() != nullptr) return;
 
-	if (!_tutorialClear){		
-		if (mouseOnBlock == _blockManager.GetBlock(_tutorialRouteArray[_routeBlockArray.size()+_routeSize].first,
-			_tutorialRouteArray[_routeBlockArray.size()+ _routeSize].second)){
+	if (!_tutorialClear){
+		if (_routeBlockArray.size() >= _nyuryokuSeigennArray[_currentNumber]) {
+			_currentNumber++;
 
-			_pickedBlock = mouseOnBlock;
-			_routeBlockArray.push_back(_pickedBlock);
-			_pickedBlock->SetPassedFlg(true);
-			_remainDistance--;
+			if (mouseOnBlock == _blockManager.GetBlock(_tutorialRouteArray[_routeBlockArray.size() + _routeSize].first,
+				_tutorialRouteArray[_routeBlockArray.size() + _routeSize].second)) {
+				_pickedBlock = mouseOnBlock;
+				_routeBlockArray.push_back(_pickedBlock);
+				_pickedBlock->SetPassedFlg(true);
+				_remainDistance--;
+
+
+			}
+
+			if (_currentNumber > yousosuu)
+			{
+				_tutorialClear = true;
+			}
 		}
+	
 	}
 	else{
 		_pickedBlock = mouseOnBlock;
@@ -203,11 +215,7 @@ void Field::EndOfPassed(){
 void Field::EndMoveDoll(){
 
 	if (!_tutorialClear) {
-		if (_blockManager.GetDollOnBlock() == _blockManager.GetBlock(_tutorialRouteArray[_tutorialArrayMaxValue-1].first, _tutorialRouteArray[_tutorialArrayMaxValue-1].second))
-		{
-			_tutorialClear = true;
 			_endGameProcess.SetCurrentProcess(ProcessType::EndTutorial);
-		}
 	}
 	else
 	{

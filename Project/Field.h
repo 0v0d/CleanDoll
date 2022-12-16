@@ -39,7 +39,11 @@ private:
 	std::vector<int> _recoveryDifferentialArray;
 
 	std::pair<int,int>*_tutorialRouteArray;
+	int* _InputLimitArray;//txtfileの要素を格納する
 
+	int _currentNumber;//要素番号
+	//_routeBlockArray.size() 入力回数
+	int _inputLimitValue;//テキストファイルの一番上;
 	int _dustDumpValue, _waterDumpValue;
 	int  _initalDustValue, _initalWaterValue;
 
@@ -47,6 +51,7 @@ private:
 	bool _tutorialClear;
 	int _routeSize;
 	int _tutorialArrayMaxValue;
+	
 
 	FieldUI _fieldUI;
 	EndGameProcess _endGameProcess;
