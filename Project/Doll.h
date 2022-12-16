@@ -21,14 +21,16 @@ class Doll
 	bool _move;
 	Vector2 _nextPosition;
 	//1ブロック移動するのにかかるフレーム数
-	const int _moveSpeed =40;
+	//const int _moveSpeed =40;
+	const int _moveSpeed =1;
 	int _moveCount;
 	std::function<void()> _endMoveMethod;
 
 	int _dustDumpValue,_waterDumpValue;
 	bool _heldMop,_cleanAnimation;
 
-	const int wait = 3;
+	//const int wait = 3;
+	const int wait = 0.1;
 	int _motionCount;
 	const int _textureValue = 30;
 	Vector2 _dollTextureSize;

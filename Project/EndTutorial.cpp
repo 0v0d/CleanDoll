@@ -3,7 +3,7 @@
 void EndTutorial::Initialize(){
 	LoadTexture();
 	_endGameButton.Initialize();
-	Vector2 _stageSelectButtonPos = Vector2(400, 500);
+	Vector2 _stageSelectButtonPos = Vector2(g_pGraphics->GetTargetWidth()/2 - _stageSelectTexture.GetWidth()/2, g_pGraphics->GetTargetHeight()/2);
 	_endGameButton.SetStatu(_stageSelectButtonPos, &_stageSelectTexture);
 	_stageSelectButton.SetTexture(&_stageSelectTexture);
 	_stageSelectButton.SetPosition(_stageSelectButtonPos);

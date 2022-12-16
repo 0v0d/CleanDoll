@@ -18,7 +18,8 @@ void EndTutorialBackGround::ReLoad()
 
 void EndTutorialBackGround::Update()
 {
-	_backGroundTexture.RenderScale(_pos.x, _pos.y, _scale);
+	CalcuScale();
+	CalcuPosition();
 }
 
 void EndTutorialBackGround::CalcuScale()
