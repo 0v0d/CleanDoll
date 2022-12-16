@@ -56,12 +56,11 @@ void Doll::SetNextPosition()
 {
 	_nextPosition.x = _nextBlock->GetCenterPosition().x -_dollPosition.x - _dollTextureSize.x * _scale / 2;
 	_nextPosition.y = _nextBlock->GetCenterPosition().y -_dollPosition.y - _dollTextureSize.y * _scale;
-
-	_inversion = _nextPosition.x > 0;
 }
 
 void Doll::Update()
 {
+	
 	if (_move){
 		Move();
 	}
@@ -169,6 +168,10 @@ void Doll::DollAnimationUpdate()
 	_animation.Update();
 	_renderRect = _animation.GetRenderRect();
 
+	if (!_cleanAnimation)
+	{
+		_inversion = _nextPosition.x > 0;
+	}
 	if (_inversion)
 	{
 		_inversionRenderRect = _renderRect;
