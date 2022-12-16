@@ -20,7 +20,8 @@ void GameOverLogoAnimation::Initialize()
 }
 
 void GameOverLogoAnimation::ReLoad() {
-
+	_animation.SetTime(0);
+	_missTakeLogRect = CRectangle(0, 0, 0, 0);
 }
 
 void GameOverLogoAnimation::Update()

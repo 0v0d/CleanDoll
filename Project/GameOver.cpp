@@ -32,7 +32,12 @@ void GameOver::LoadTexture()
 
 void GameOver::ReLoad()
 {
-
+	_backGround.ReLoad();
+	_logoAnim.ReLoad();
+	for (int i = 0; i < _menuValue; i++)
+	{
+		_endButton[i].ReLoad();
+	}
 }
 
 void GameOver::Update()

@@ -20,7 +20,7 @@ void GameClearDollAnimation::Initialize()
 }
 
 void GameClearDollAnimation::ReLoad() {
-
+	_animation.SetTime(0);
 }
 
 void GameClearDollAnimation::Update()

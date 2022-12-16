@@ -11,6 +11,7 @@ class EndGameButtonAnimation
 public:
     void Initialize();
     void SetStatu(Vector2 buttonAnimPos, CTexture* buttonAnimTexutre);
+    void ReLoad();
     void Update();
     void Render();
 
