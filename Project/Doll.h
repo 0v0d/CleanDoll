@@ -21,8 +21,7 @@ class Doll
 	bool _move;
 	Vector2 _nextPosition;
 	//1ブロック移動するのにかかるフレーム数
-	//const int _moveSpeed =40;
-	const int _moveSpeed =1;
+	const int _moveSpeed =40;
 	int _moveCount;
 	std::function<void()> _endMoveMethod;
 
