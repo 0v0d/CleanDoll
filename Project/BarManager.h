@@ -18,6 +18,10 @@ private:
 	Slider _slider;
 	CTexture _barTexture,_buttonTexture;
 
+	CTexture _difficultyTexture;
+	
+	
+	
 	Vector2 _mousePos;
 
 public:
