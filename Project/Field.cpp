@@ -207,7 +207,6 @@ void Field::EndMoveDoll(){
 		{
 			_tutorialClear = true;
 			_endGameProcess.SetCurrentProcess(ProcessType::EndTutorial);
-			dynamic_cast<StageSelectScene*>(SceneManager::Instance().GetScene(SCENE_TYPE::STAGESELECT))->StageClear();
 		}
 	}
 	else

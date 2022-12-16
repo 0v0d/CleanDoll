@@ -2,6 +2,7 @@
 
 void EndTutorialDollAnimation::Initialize()
 {
+	LoadTexture();
 	_pos = Vector2(1000, 350);
 	SpriteAnimationCreate anim[] =
 	{

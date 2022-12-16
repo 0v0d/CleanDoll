@@ -64,6 +64,7 @@ void EndTutorial::Render(){
 	_logoAnimation.Render();
 	if (_logoAnimation.IsEndeMotion())
 	{
+		_dollAnimation.Render();
 		_stageSelectButton.Render();
 	}
 }
