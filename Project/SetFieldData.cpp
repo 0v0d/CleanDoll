@@ -1,4 +1,7 @@
 #include "SetFieldData.h"
+#include	"Object.h"
+#include	"Item.h"
+#include	"Dump.h"
 
 void SetFieldData::SetField(Field* field)
 {
@@ -70,7 +73,7 @@ void SetFieldData::SetItemData(CTexture* TextureArray, char** dataArray, bool is
 			Block* block = _blockManager->GetBlock(x, y);
 
 			ACCESSORIES_TYPE accessoriesType = isCandy ? ACCESSORIES_TYPE::ITEM : ACCESSORIES_TYPE::MOP;
-			block->GetBlockOnObject()->SetAccessories(new Item(&TextureArray[dataArray[x][y] - 1], accessoriesType), accessoriesType);
+			block->GetBlockOnObject()->SetAccessories(new Item(&TextureArray[dataArray[x][y] - 1], accessoriesType));
 		}
 	}
 }
@@ -92,7 +95,7 @@ void SetFieldData::SetDumpData(CTexture* TextureArray, char** dataArray, bool is
 			Block* block = _blockManager->GetBlock(x, y);
 
 			DUMP_TYPE dumpType = isDustDump ? DUMP_TYPE::DUST : DUMP_TYPE::WATER;
-			block->GetBlockOnObject()->SetAccessories(new Dump(&TextureArray[dataArray[x][y] - 1], dumpType), ACCESSORIES_TYPE::DUMP);
+			block->GetBlockOnObject()->SetAccessories(new Dump(&TextureArray[dataArray[x][y] - 1], dumpType));
 		}
 	}
 
@@ -141,4 +144,9 @@ void SetFieldData::SetWallObjectkData(CTexture* TextureArray, char** dataArray,i
 void SetFieldData::SetDoll(int x, int y)
 {
 	_field->SetDollPosition(x,y);
+}
+
+void SetFieldData::SetCoin(int x, int y,bool getCoin) {
+	if(getCoin)_field->SetGettedCoinFlg(true);
+	else _blockManager->SetCoin(x, y);
 }

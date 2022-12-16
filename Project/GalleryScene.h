@@ -14,7 +14,7 @@ public:
 	void Push();
 	void Pull();
 	void Update();
-	void AddCoin();
+	void AddCoin() { _barManager.AddCoinValue();}
 
 	void Render();
 	void Release();

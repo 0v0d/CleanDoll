@@ -1,4 +1,5 @@
 #include "GalleryScene.h"
+#include "SceneManager.h"
 
 void GalleryScene::Initialize(){
 	_barManager.Initialize();
@@ -22,6 +23,8 @@ void GalleryScene::ReLoad(){
 
 void GalleryScene::Update() {
 	_barManager.Update();
+
+	if (g_pInput->IsKeyPush(MOFKEY_SPACE)) SceneManager::Instance().ChangeScene(SCENE_TYPE::TITLE);
 }
 
 void GalleryScene::SetMousePos(Vector2 mousePos){

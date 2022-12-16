@@ -7,7 +7,7 @@ class BlockOnObject
 	Object* _object = nullptr;
 	IBaseAccessories* _accessories = nullptr;
 
-	bool _hiddenAccessories;
+	bool _hiddenAccessories = false;
 
 	Vector2 _blockCenterPos;
 	Vector2 _blockSize;
@@ -21,7 +21,7 @@ public:
 	void ReLoad();
 
 	void SetObject(Object* object, bool onSwap);
-	void SetAccessories(IBaseAccessories* , ACCESSORIES_TYPE);
+	void SetAccessories(IBaseAccessories*);
 
 	void Update();
 	void HiddenAccessoriesFlg(bool flg) { _hiddenAccessories = flg; }

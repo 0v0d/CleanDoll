@@ -62,7 +62,7 @@ void Block::ReLoad()
 	_passed = false;
 	if (_blockOnObject.GetAccessories() != nullptr)
 	{
-		_blockOnObject.HiddenAccessoriesFlg(false);
+		if (_blockOnObject.GetAccessoriesTypr() != ACCESSORIES_TYPE::COIN)_blockOnObject.HiddenAccessoriesFlg(false);
 	}
 	_blockOnObject.ReLoad();
 }

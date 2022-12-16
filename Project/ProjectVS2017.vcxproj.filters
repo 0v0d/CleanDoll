@@ -281,6 +281,9 @@
     <ClCompile Include="GameOverLogoAnimation .cpp">
       <Filter>ソース ファイル\Scene\GameScene\EndGameProcess\GameOver\Animation</Filter>
     </ClCompile>
+    <ClCompile Include="GalleryCoin.cpp">
+      <Filter>ソース ファイル\Scene\GameScene\Field\BlockManager\Object</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GameApp.h">
@@ -480,6 +483,9 @@
     </ClInclude>
     <ClInclude Include="GameOverLogoAnimation.h">
       <Filter>ソース ファイル\Scene\GameScene\EndGameProcess\GameOver\Animation</Filter>
+    </ClInclude>
+    <ClInclude Include="GalleryCoin.h">
+      <Filter>ソース ファイル\Scene\GameScene\Field\BlockManager\Object</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

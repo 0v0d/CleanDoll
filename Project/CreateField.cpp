@@ -5,7 +5,6 @@ void CreateField::Initialize()
 	_mapTextureArray.LineXValue = 1;
 	_objectTextureArray.LineXValue = 1;
 	_itemTextureArray.LineXValue = 1;
-	//_galleryTextureArray.LineXValue = 1;
 	_mopTextureArray.LineXValue = 1;
 	_dustDumpTextureArray.LineXValue = 1;
 	_waterDumpTextureArray.LineXValue = 1;
@@ -68,11 +67,6 @@ void CreateField::LoadStage(std::string stageName)
 	_setFieldData.SetItemData(_itemTextureArray.textureArray, _chipDataArray, true);
 	DeleteChipData(&_itemTextureArray);
 
-	//ƒMƒƒƒ‰ƒŠ[
-	//LoadTexture(&_galleryTextureArray);
-	//_createField.SetItemData(_galleryTextureArray.textureArray, _chipDataArray, false);
-	//DeleteChipData(&_galleryTextureArray);
-
 	//ƒ‚ƒbƒv
 	LoadTexture(&_mopTextureArray);
 	_setFieldData.SetItemData(_mopTextureArray.textureArray, _chipDataArray, false);
@@ -99,6 +93,7 @@ void CreateField::LoadStage(std::string stageName)
 	DeleteChipData(&_wallObjectTextureArray);
 
 	LoadDoll();
+	LoadCoin();
 
 	_contactFile.CloseFile();
 }
@@ -130,16 +125,28 @@ void CreateField::LoadDoll()
 		{
 			if (_contactFile.GetValue(false) != 0)
 			{
-				SetDoll(x, y);
-				return;
+				_setFieldData.SetDoll(x, y);
 			}
 		}
 	}
 }
 
-void CreateField::SetDoll(int x, int y)
-{
-	_setFieldData.SetDoll(x, y);
+void CreateField::LoadCoin() {
+	if (_barManager->GetBar(_barManager->GetCurrentStageNumber())->IsGetCoin()) {
+		_setFieldData.SetCoin(0, 0, true);
+		return;
+	}
+
+	for (int y = 0; y < _blockValueY; y++)
+	{
+		for (int x = 0; x < _blockValueX; x++)
+		{
+			if (_contactFile.GetValue(false) != 0)
+			{
+				_setFieldData.SetCoin(x, y, false);
+			}
+		}
+	}
 }
 
 void CreateField::NewChipData(TextureArray* textureArray)
@@ -159,14 +166,11 @@ void CreateField::DeleteChipData(TextureArray* textureArray)
 	delete[] _chipDataArray;
 }
 
-
-
 void CreateField::Delete()
 {
 	DeleteTextureArray(&_mapTextureArray);
 	DeleteTextureArray(&_objectTextureArray);
 	DeleteTextureArray(&_itemTextureArray);
-	//DeleteTextureArray(&_galleryTextureArray);
 	DeleteTextureArray(&_mopTextureArray);
 	DeleteTextureArray(&_dustDumpTextureArray);
 	DeleteTextureArray(&_waterDumpTextureArray);

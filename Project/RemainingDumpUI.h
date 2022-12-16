@@ -21,12 +21,17 @@ class RemainingDumpUI
 	float _scale, _objectiveSizeX;
 public:
 	void Initialize();
-	void Update();
 	void ReLoad();
+	
+	void Update();
 	void SetDustValue(int dumpValue);
 	void SetWaterValue(int dumpValue);
+	void GettedCoin() { _iconArray[ICON_TYPE::COIN]->SetNotExistFlg(true); }
 	void CleanDust();
 	void CleanWater();
+	void MarkIcon(ICON_TYPE);
+
+
 	void Render();
 	void Release();
 
@@ -35,5 +40,4 @@ private:
 	void IconSetTexture(ICON_TYPE, CTexture*);
 	void CalcuScale();
 	bool CheckLostDump(int dumpValue) { return dumpValue <= 0; }
-	void MarkIcon(ICON_TYPE);
 };

@@ -1,6 +1,7 @@
 #include "Field.h"
 #include "SceneManager.h"
 #include "StageSelectScene.h"
+#include "GalleryScene.h"
 
 void Field::Initialize()
 {
@@ -48,6 +49,7 @@ void Field::ReLoad()
 	_fieldUI.SetCurrentEnergyValue(_remainDistance);
 	_fieldUI.SetDustDumpValue(_initalDustValue);
 	_fieldUI.SetWaterDumpValue(_initalWaterValue);
+	if (_getCoin)_fieldUI.GettedGalleryCoin();
 
 	_push = false;
 }
@@ -191,8 +193,16 @@ void Field::EndMoveDoll()
 	//ゲームクリア
 	if (_dustDumpValue <= 0 && _waterDumpValue <= 0)
 	{
+		StageSelectScene* stageSelect = dynamic_cast<StageSelectScene*>(SceneManager::Instance().GetScene(SCENE_TYPE::STAGESELECT));
+		if (_doll.IsGetCoin()) {
+			if (!_getCoin) {
+				dynamic_cast<GalleryScene*>(SceneManager::Instance().GetScene(SCENE_TYPE::GALLERY))->AddCoin();
+				stageSelect->GetCoin();
+				_getCoin = true;
+			}
+		}
 		_endGameProcess.SetCurrentProcess(ProcessType::GameClear);
-		dynamic_cast<StageSelectScene*>(SceneManager::Instance().GetScene(SCENE_TYPE::STAGESELECT))->StageClear();
+		stageSelect->StageClear();
 		return;
 	}
 	//ゲームオーバー
@@ -204,6 +214,11 @@ void Field::EndMoveDoll()
 
 void Field::SetDollOnBlockNumber(Block* dollOnBlock) {
 	_blockManager.SetDollOnBlock(dollOnBlock);
+}
+
+void Field::GetCoin() {
+	if (_getCoin) return;
+	_fieldUI.GetGalleryCoin();
 }
 
 void Field::CleanDust()

@@ -21,7 +21,7 @@ private:
 
 	Vector2 _screenPos, _screenSize;
 
-	bool _clear;
+	bool _clear, _getCoin;
 public:
 	void Initialize();
 	void ReLoad();
@@ -33,6 +33,7 @@ public:
 
 	void Move(float sliderValue);
 	void Clear() { _clear = true; }
+	void GetCoin() { _getCoin = true; }
 
 	void Render();
 	void Release();
@@ -41,6 +42,7 @@ public:
 	CTexture* GetPreviewTexture() { return &_previewTexture; }
 	std::string GetStageDataTextName() { return _stageDataTextName; }
 	bool IsClear() { return _clear; }
+	bool IsGetCoin() { return _getCoin; }
 
 private:
 	bool CheckOnScreenTopLine(CTexture*);

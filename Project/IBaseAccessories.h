@@ -7,6 +7,7 @@ enum class ACCESSORIES_TYPE
 	DUMP,
 	MOP,
 	ITEM,
+	COIN,
 };
 
 class IBaseAccessories

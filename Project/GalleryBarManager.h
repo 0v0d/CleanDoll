@@ -28,7 +28,7 @@ public:
 	void Push();
 	void Pull();
 	void Update();
-	void AddCoinValue() { _gettedCoinValue++; }
+ 	void AddCoinValue() { _gettedCoinValue++; }
 
 	void Render();
 	void Release();

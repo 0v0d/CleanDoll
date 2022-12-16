@@ -84,6 +84,10 @@ void StageSelectScene::LoadStage(int stageNumber) {
     SceneManager::Instance().ChangeScene(SCENE_TYPE::GAME);
 }
 
+void StageSelectScene::GetCoin() {
+    _barManager.GetBar(_barManager.GetCurrentStageNumber())->GetCoin();
+}
+
 
 void StageSelectScene::Render()
 {

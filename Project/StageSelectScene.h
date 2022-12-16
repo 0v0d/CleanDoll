@@ -33,6 +33,8 @@ public:
 	void Pull();
 	void StartNextStage();
 	void StageClear();
+	void GetCoin();
+
 	void Render();
 	void Release();
 	void StopBGM();

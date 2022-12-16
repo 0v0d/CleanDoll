@@ -1,9 +1,6 @@
 #pragma once
 #include	"Field.h"
 #include	"BlockManager.h"
-#include	"Object.h"
-#include	"Item.h"
-#include	"Dump.h"
 
 class SetFieldData
 {
@@ -21,4 +18,5 @@ public:
 	void SetWallData(CTexture* TextureArray, char** dataArray,int lineValueX);
 	void SetWallObjectkData(CTexture* TextureArray, char** dataArray, int lineValueX);
 	void SetDoll(int x, int y);
+	void SetCoin(int x, int y,bool getCoin);
 };

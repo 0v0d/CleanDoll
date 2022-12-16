@@ -151,6 +151,9 @@ void TitleScene::Update()
 	}
 	
 	_titleLogoRect = _logo.GetSrcRect();
+
+	//デバッグ
+	if (g_pInput->IsKeyPush(MOFKEY_SPACE)) SceneManager::Instance().ChangeScene(SCENE_TYPE::GALLERY);
 }
 
 void TitleScene::SetMousePos(Vector2) {
