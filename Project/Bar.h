@@ -47,15 +47,8 @@ public:
 	CTexture* GetPreviewTexture() { return &_previewTexture; }
 	std::string GetStageDataTextName() { return _stageDataTextName; }
 	bool IsClear() { return _clear; }
-	void SetDifficulutyTexture(CTexture* texture)
-	{
-		for (int i = 0; i < _difficulty; i++)
-		{
-			_difficultyTextureArray[i] = texture;
-		}
-	}
-
-	
+	bool IsGetCoin() { return _getCoin; }
+	void SetDifficulutyTexture(CTexture* texture);
 
 private:
 	bool CheckOnScreenTopLine(float top,float bottom);

@@ -23,7 +23,6 @@ void Bar::SetStatu(float scale, float space) {
 	_space = space * _scale;
 }
 
-
 void Bar::SetData(int stageNumber, std::string previewTextureName, std::string barTextureName, int difficulty, std::string stageDataTextName)
 {
 	_stageNumber = stageNumber;
@@ -33,6 +32,14 @@ void Bar::SetData(int stageNumber, std::string previewTextureName, std::string b
 	_stageDataTextName = stageDataTextName;
 
 	_difficultyTextureArray = new CTexture * [_difficulty];
+}
+
+void Bar::SetDifficulutyTexture(CTexture* texture)
+{
+	for (int i = 0; i < _difficulty; i++)
+	{
+		_difficultyTextureArray[i] = texture;
+	}
 }
 
 void Bar::ReLoad() {
