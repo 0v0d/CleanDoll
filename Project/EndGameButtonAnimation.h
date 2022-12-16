@@ -15,7 +15,7 @@ public:
     void Update();
     void Render();
 
-    bool IsEndAnimation(){ return _endAnimation; }
+    bool IsEndAnimation() { return _endAnimation; }
 
 private:
     void UpdateAnimation();

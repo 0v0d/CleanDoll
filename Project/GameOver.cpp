@@ -36,7 +36,7 @@ void GameOver::ReLoad()
 	_logoAnim.ReLoad();
 	for (int i = 0; i < _menuValue; i++)
 	{
-		_endButton[i].ReLoad();
+		_endButtonAnimation[i].ReLoad();
 	}
 }
 
