@@ -57,4 +57,5 @@ private:
 	void ActionAccessories();
 	void CleanDump();
 	void SwitchToMop();
+	void CollectCandy();
 };

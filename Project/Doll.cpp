@@ -1,6 +1,7 @@
 #include "Doll.h"
 #include "Field.h"
 #include "Dump.h"
+#include "Item.h"
 
 void Doll::Initialize()
 {
@@ -108,6 +109,10 @@ void Doll::ActionAccessories()
 		_nextBlock->GetBlockOnObject()->HiddenAccessoriesFlg(true);
 		break;
 
+	case ACCESSORIES_TYPE::ITEM:
+		CollectCandy();
+		break;
+
 	case ACCESSORIES_TYPE::COIN:
 		_getCoin = true;
 		_field->GetCoin();
@@ -134,6 +139,12 @@ void Doll::CleanDump()
 	}
 	_animation.StartCleanAnimation();
 	_cleanAnimation = true;
+}
+
+void Doll::CollectCandy()
+{
+	Item* blockOnCandy = dynamic_cast<Item*>(_nextBlock->GetBlockOnObject()->GetAccessories());
+	blockOnCandy->SetShow(false);
 }
 
 void Doll::SwitchToMop()
