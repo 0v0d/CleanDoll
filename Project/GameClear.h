@@ -1,22 +1,19 @@
 #pragma once
 #include	"IBaseEndGameProcess.h"
-#include	"Button.h"
 #include	"GameClearLogoAnimation.h"
 #include	"GameClearBackGround.h"
 #include	"GameClearDollAnimation.h"
-#include "EndGameButtonAnimation.h"
+#include	"EndGameButtonManager.h"
+
 class GameClear:public IBaseEndGameProcess
 {
-	GameClearLogoAnimation _gameClearAnim;
+	GameClearLogoAnimation _clearLog;
 	GameClearBackGround _clearBackGround;
 	GameClearDollAnimation _clearDoll;
-	const int _menuValue = 3;
-	EndGameButtonAnimation* _endGameButton = new EndGameButtonAnimation[_menuValue];
-	Vector2  _nextButtonPos, _stageSelectButtonPos, _retryButtonPos;
+
+	EndGameButtonManager _endGameButtonManager;
 	CTexture _nextStageTexture, _stageSelectTexture, _retryTexture;
-	Button _nextStageButton, _stageSelectButton, _retryButton;
-	Vector2 _backStageClearPos;
-	CTexture _backStageClearTexture;
+
 public:
 	void Initialize();
 	void ReLoad();
@@ -30,5 +27,6 @@ public:
 	void Release();
 private:
 	void LoadTexture();
+	void CreateButtonArray();
 	void UpdateAnimation();
 };

@@ -13,7 +13,7 @@ public:
 	Button();
 	void SetTexture(CTexture* buttonTexture) { _texture = buttonTexture; }
 	void SetPosition(Vector2 buttonCenterPosition);
-	void SetSize(float buttonSize);
+	void CalcuScale(float sizeX,float sizeY);
 
 	void SetMousePos(Vector2 mousePosition);
 	void Push();
@@ -23,7 +23,6 @@ public:
 
 	void Render();
 private:
-	void CalcuScale(float);
 	void CalcuHitBox();
 	bool CheckOnMouse(Vector2 mousePosition);
 	void SetPullFlg(bool flg) { _pullButton = flg; }

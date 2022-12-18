@@ -1,6 +1,5 @@
 #include "GameClearDollAnimation.h"
 
-
 void GameClearDollAnimation::Initialize()
 {
 	_clearDollTexture.Load("gamecleardoll.png");
@@ -31,7 +30,6 @@ void GameClearDollAnimation::Update()
 
 void GameClearDollAnimation::Render()
 {
-	
 	_clearDollTexture.RenderScale(_pos.x, _pos.y, _scale, _clearDollRect);
 }
 
