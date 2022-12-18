@@ -14,10 +14,13 @@ public:
 	void Update();
 	void Render();
 	void Release();
-	
+
+	int* GetInputLimitArray() const { return _inputLimitArray; }
+	int GetInputLimitValue()const { return _inputLimitValue; }
 	std::pair<int, int>**GetTutorialRouteArray() { return &_tutorialRouteArray; }
 	std::pair<int,int>* GetTutorialRoute() { return _tutorialRouteArray; }
 	int GetRouteValue() const{ return _routeValue; }
+	
 	
 private:
 	void LoadTutorialRoute();

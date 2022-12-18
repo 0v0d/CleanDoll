@@ -134,8 +134,7 @@ void Field::AdvanceRoute(Block* mouseOnBlock)
 	if (_remainDistance <= 0 || mouseOnBlock->GetBlockOnObject()->GetFurniture() != nullptr) return;
 
 	if (!_tutorialClear){
-		if (_routeBlockArray.size() >= _nyuryokuSeigennArray[_currentNumber]) {
-			_currentNumber++;
+		
 
 			if (mouseOnBlock == _blockManager.GetBlock(_tutorialRouteArray[_routeBlockArray.size() + _routeSize].first,
 				_tutorialRouteArray[_routeBlockArray.size() + _routeSize].second)) {
@@ -146,12 +145,14 @@ void Field::AdvanceRoute(Block* mouseOnBlock)
 
 
 			}
+			if (_routeSize > _inputLimitArray[_currentNumber]) {
+				_currentNumber++;
 
-			if (_currentNumber > yousosuu)
-			{
-				_tutorialClear = true;
+				if (_currentNumber > _inputLimitValue)
+				{
+					_tutorialClear = true;
+				}
 			}
-		}
 	
 	}
 	else{
@@ -214,7 +215,7 @@ void Field::EndOfPassed(){
 
 void Field::EndMoveDoll(){
 
-	if (!_tutorialClear) {
+	if (_tutorialClear) {
 			_endGameProcess.SetCurrentProcess(ProcessType::EndTutorial);
 	}
 	else

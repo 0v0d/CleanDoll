@@ -39,7 +39,7 @@ private:
 	std::vector<int> _recoveryDifferentialArray;
 
 	std::pair<int,int>*_tutorialRouteArray;
-	int* _InputLimitArray;//txtfile‚Ì—v‘f‚ğŠi”[‚·‚é
+	int* _inputLimitArray;//txtfile‚Ì—v‘f‚ğŠi”[‚·‚é
 
 	int _currentNumber;//—v‘f”Ô†
 	//_routeBlockArray.size() “ü—Í‰ñ”
@@ -91,8 +91,11 @@ public:
 		_routeSize++;
 	}
 	void SetTutorialArrayMaxValue(int maxValue) { _tutorialArrayMaxValue = maxValue; }
+	void SetInputLimitValue(int inputLimitValue) { _inputLimitValue = inputLimitValue; }
+	void SetInputLimitArray(int* inputLimitArray) { _inputLimitArray = inputLimitArray; }
 private:
 
 	void AdvanceRoute(Block* mouseOnBlock);
 	void BackRoute(Block* mouseOnBlock);
 };
+ 
