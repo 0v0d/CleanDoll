@@ -14,12 +14,11 @@ void Button::SetPosition(Vector2 buttonCenterPosition) {
 	CalcuHitBox();
 }
 
-void Button::SetSize(float buttonSize) {
-	CalcuScale(buttonSize);
-}
+void Button::CalcuScale(float sizeX, float sizeY) {
 
-void Button::CalcuScale(float buttonSize) {
-	_scale = buttonSize / _texture->GetWidth();
+	if (sizeX != 0) _scale = sizeX / _texture->GetWidth();
+	if (sizeY != 0) _scale = sizeY / _texture->GetHeight();
+
 	CalcuHitBox();
 }
 

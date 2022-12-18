@@ -6,12 +6,17 @@ class EndGameButtonAnimation
     Vector2 _buttonAnimPos;
     CRectangle _buttonAnimRect;
 
-    float _scaleValeu;
+    float _scale, _targetScale;
+    float _animationSpeed;
     bool _endAnimation;
 public:
     void Initialize();
-    void SetStatu(Vector2 buttonAnimPos, CTexture* buttonAnimTexutre);
+    void SetTexture(CTexture* buttonAnimTexutre);
+    void CalcuTargetScale(float targetSizeY);
+    void CalcuCenterPos(Vector2 buttonAnimCenterPos);
+    void CalcuAnimationSpeed(int animationTime);
     void ReLoad();
+
     void Update();
     void Render();
 
@@ -19,4 +24,5 @@ public:
 
 private:
     void UpdateAnimation();
+    void CalcuButtonRect();
 };

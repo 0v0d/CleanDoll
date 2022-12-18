@@ -1,10 +1,9 @@
 #pragma once
 #include	"Mof.h"
 #include	"IBaseEndGameProcess.h"
-#include	"Button.h"
 #include	"GameOverBackGround.h"
 #include	"GameOverLogoAnimation.h"
-#include	"EndGameButtonAnimation.h"
+#include	"EndGameButtonManager.h"
 
 class GameOver:public IBaseEndGameProcess
 {
@@ -12,11 +11,7 @@ private:
 	GameOverBackGround _backGround;
 	GameOverLogoAnimation _logoAnim;
 
-	Vector2 _mousePos;
-
-	const int _menuValue = 2;
-	EndGameButtonAnimation* _endButtonAnimation = new EndGameButtonAnimation[_menuValue];
-	Button _retryButton, _stageSelectButton;
+	EndGameButtonManager _endGameButtonManager;
 	CTexture _retryTexture, _stageSelectTexture;
 
 public:
@@ -31,5 +26,6 @@ public:
 	void Release();
 private:
 	void LoadTexture();
+	void CreateButtonArray();
 	void UpdateAnimation();
 };

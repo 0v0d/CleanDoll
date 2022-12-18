@@ -84,6 +84,12 @@
     <Filter Include="ソース ファイル\Scene\GameScene\EndGameProcess\GameOver\Animation">
       <UniqueIdentifier>{dfe4250d-06a1-4184-9b30-d5ee6e703fff}</UniqueIdentifier>
     </Filter>
+    <Filter Include="ソース ファイル\Scene\GameScene\EndGameProcess\GameClear\Animation">
+      <UniqueIdentifier>{93ecb077-1e35-4f33-bd89-1f2f09ca4615}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\Scene\GameScene\EndGameProcess\EndGameButton">
+      <UniqueIdentifier>{e9c96865-c321-46bd-8b7e-9577162e512f}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="WinMain.cpp">
@@ -230,12 +236,6 @@
     <ClCompile Include="GameOver.cpp">
       <Filter>ソース ファイル\Scene\GameScene\EndGameProcess\GameOver</Filter>
     </ClCompile>
-    <ClCompile Include="GameClearLogoAnimation.cpp">
-      <Filter>ソース ファイル\Scene\GameScene\EndGameProcess\GameClear</Filter>
-    </ClCompile>
-    <ClCompile Include="GameClearBackGround.cpp">
-      <Filter>ソース ファイル\Scene\GameScene\EndGameProcess\GameClear</Filter>
-    </ClCompile>
     <ClCompile Include="DollAnimation.cpp">
       <Filter>ソース ファイル\Scene\GameScene\Field\Doll</Filter>
     </ClCompile>
@@ -253,12 +253,6 @@
     </ClCompile>
     <ClCompile Include="BGM.cpp">
       <Filter>ソース ファイル\UI</Filter>
-    </ClCompile>
-    <ClCompile Include="EndGameButtonAnimation.cpp">
-      <Filter>ソース ファイル\Scene\GameScene\EndGameProcess</Filter>
-    </ClCompile>
-    <ClCompile Include="GameClearDollAnimation.cpp">
-      <Filter>ソース ファイル\Scene\GameScene\EndGameProcess\GameClear</Filter>
     </ClCompile>
     <ClCompile Include="GalleryBar.cpp">
       <Filter>ソース ファイル\Scene\GalleryScene</Filter>
@@ -283,7 +277,21 @@
     </ClCompile>
     <ClCompile Include="GalleryCoin.cpp">
       <Filter>ソース ファイル\Scene\GameScene\Field\BlockManager\Object</Filter>
-      <Filter>ソース ファイル\Scene\GameScene\EndGameProcess\GameOver</Filter>
+    </ClCompile>
+    <ClCompile Include="GameClearBackGround.cpp">
+      <Filter>ソース ファイル\Scene\GameScene\EndGameProcess\GameClear\Animation</Filter>
+    </ClCompile>
+    <ClCompile Include="GameClearDollAnimation.cpp">
+      <Filter>ソース ファイル\Scene\GameScene\EndGameProcess\GameClear\Animation</Filter>
+    </ClCompile>
+    <ClCompile Include="GameClearLogoAnimation.cpp">
+      <Filter>ソース ファイル\Scene\GameScene\EndGameProcess\GameClear\Animation</Filter>
+    </ClCompile>
+    <ClCompile Include="EndGameButtonAnimation.cpp">
+      <Filter>ソース ファイル\Scene\GameScene\EndGameProcess\EndGameButton</Filter>
+    </ClCompile>
+    <ClCompile Include="EndGameButtonManager.cpp">
+      <Filter>ソース ファイル\Scene\GameScene\EndGameProcess\EndGameButton</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -431,12 +439,6 @@
     <ClInclude Include="GameOver.h">
       <Filter>ソース ファイル\Scene\GameScene\EndGameProcess\GameOver</Filter>
     </ClInclude>
-    <ClInclude Include="GameClearLogoAnimation.h">
-      <Filter>ソース ファイル\Scene\GameScene\EndGameProcess\GameClear</Filter>
-    </ClInclude>
-    <ClInclude Include="GameClearBackGround.h">
-      <Filter>ソース ファイル\Scene\GameScene\EndGameProcess\GameClear</Filter>
-    </ClInclude>
     <ClInclude Include="DollAnimation.h">
       <Filter>ソース ファイル\Scene\GameScene\Field\Doll</Filter>
     </ClInclude>
@@ -448,12 +450,6 @@
     </ClInclude>
     <ClInclude Include="BGM.h">
       <Filter>ソース ファイル\UI</Filter>
-    </ClInclude>
-    <ClInclude Include="EndGameButtonAnimation.h">
-      <Filter>ソース ファイル\Scene\GameScene\EndGameProcess</Filter>
-    </ClInclude>
-    <ClInclude Include="GameClearDollAnimation.h">
-      <Filter>ソース ファイル\Scene\GameScene\EndGameProcess\GameClear</Filter>
     </ClInclude>
     <ClInclude Include="ExitGame.h">
       <Filter>ソース ファイル</Filter>
@@ -488,11 +484,27 @@
     <ClInclude Include="GalleryCoin.h">
       <Filter>ソース ファイル\Scene\GameScene\Field\BlockManager\Object</Filter>
 	</ClInclude>
+    </ClInclude>
     <ClInclude Include="BGM.h">
       <Filter>ソース ファイル\UI</Filter>
     </ClInclude>
     <ClInclude Include="GameOverLogoAnimation.h">
       <Filter>ソース ファイル\Scene\GameScene\EndGameProcess\GameOver</Filter>
+    </ClInclude>
+    <ClInclude Include="GameClearBackGround.h">
+      <Filter>ソース ファイル\Scene\GameScene\EndGameProcess\GameClear\Animation</Filter>
+    </ClInclude>
+    <ClInclude Include="GameClearDollAnimation.h">
+      <Filter>ソース ファイル\Scene\GameScene\EndGameProcess\GameClear\Animation</Filter>
+    </ClInclude>
+    <ClInclude Include="GameClearLogoAnimation.h">
+      <Filter>ソース ファイル\Scene\GameScene\EndGameProcess\GameClear\Animation</Filter>
+    </ClInclude>
+    <ClInclude Include="EndGameButtonAnimation.h">
+      <Filter>ソース ファイル\Scene\GameScene\EndGameProcess\EndGameButton</Filter>
+    </ClInclude>
+    <ClInclude Include="EndGameButtonManager.h">
+      <Filter>ソース ファイル\Scene\GameScene\EndGameProcess\EndGameButton</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
