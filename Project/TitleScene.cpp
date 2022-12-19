@@ -127,8 +127,11 @@ void TitleScene::ReLoad()
 void TitleScene::Update()
 {
 	//Click to startのアニメーション用
-	_time += _increase;
-	_alpha = CalcSequence(fmod(_time, 1));
+//_alphaIncreaseが1秒の増加量
+	_time += _alphaIncrease;
+	//増加量が0.5を超えて丸めるためにfmodを使っている
+	//0.5というのは、yの増加量が0になるときのxの増加量
+	_alpha = CalcAlpha(fmod(_time, 0.5));
 
 	_logo.AddTimer(CUtilities::GetFrameSecond());
 	//最初に流れるアニメーション
@@ -200,25 +203,19 @@ void TitleScene::StopBGM()
 namespace detail
 {
 	//Easing(表示の仕方)
-	float f(float x)
+	//2次関数を使うことで、アルファ値の増加と減少を表しやすくなる
+	//時間の経過に伴うパラメーターの変化率
+	float EasingFunction(float time)
 	{
-		//式
-		return  -pow((4 * x - 1), 2) + 1;
+		//2次関数y=-(4 x-1)^(2)+1
+		return  -pow((4 * time - 1), 2) + 1;
 	}
-	float g(float x)
-	{
-		//式
-		return  -pow((4 * x - 3), 2) + 1;
-	}
+
 }
-int TitleScene::CalcSequence(float x)
+
+int TitleScene::CalcAlpha(float time)
 {
-	if (x >= 0.5f)
-	{
-		return detail::g(x) * 255;
-	}
-	else
-	{
-		return detail::f(x) * 255;
-	}
+	//255はアルファ値の最大値
+	const uint8_t _maxAlpha = 255;
+	return detail::EasingFunction(time) * _maxAlpha;
 }
