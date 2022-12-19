@@ -93,6 +93,9 @@
     <Filter Include="ソース ファイル\Scene\Effect">
       <UniqueIdentifier>{7b766522-eb19-4355-8dd4-ea5843387e62}</UniqueIdentifier>
     </Filter>
+    <Filter Include="ソース ファイル\Scene\TitleScene\Animation">
+      <UniqueIdentifier>{f767e989-0e97-4e47-b2cf-fefe10d4691c}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="WinMain.cpp">
@@ -304,6 +307,12 @@
     </ClCompile>
     <ClCompile Include="FadeOut.cpp">
       <Filter>ソース ファイル\Scene\Effect</Filter>
+    </ClCompile>
+    <ClCompile Include="TitleLogoAnimation.cpp">
+      <Filter>ソース ファイル\Scene\TitleScene\Animation</Filter>
+    </ClCompile>
+    <ClCompile Include="TitleClickAnimation.cpp">
+      <Filter>ソース ファイル\Scene\TitleScene\Animation</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -532,6 +541,12 @@
     </ClInclude>
     <ClInclude Include="FadeOut.h">
       <Filter>ソース ファイル\Scene\Effect</Filter>
+    </ClInclude>
+    <ClInclude Include="TitleLogoAnimation.h">
+      <Filter>ソース ファイル\Scene\TitleScene\Animation</Filter>
+    </ClInclude>
+    <ClInclude Include="TitleClickAnimation.h">
+      <Filter>ソース ファイル\Scene\TitleScene\Animation</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
