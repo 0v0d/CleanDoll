@@ -122,6 +122,8 @@
     <ClCompile Include="EnergyValue.cpp" />
     <ClCompile Include="EnergyVessels.cpp" />
     <ClCompile Include="ExitGame.cpp" />
+    <ClCompile Include="FadeIn.cpp" />
+    <ClCompile Include="FadeOut.cpp" />
     <ClCompile Include="Field.cpp" />
     <ClCompile Include="FieldUI.cpp" />
     <ClCompile Include="GalleryBar.cpp" />
@@ -192,6 +194,8 @@
     <ClInclude Include="EnergyValue.h" />
     <ClInclude Include="EnergyVessels.h" />
     <ClInclude Include="ExitGame.h" />
+    <ClInclude Include="FadeIn.h" />
+    <ClInclude Include="FadeOut.h" />
     <ClInclude Include="Field.h" />
     <ClInclude Include="FieldUI.h" />
     <ClInclude Include="GalleryBar.h" />
