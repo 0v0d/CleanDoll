@@ -134,24 +134,27 @@ void Field::AdvanceRoute(Block* mouseOnBlock)
 	if (_remainDistance <= 0 || mouseOnBlock->GetBlockOnObject()->GetFurniture() != nullptr) return;
 
 	if (!_tutorialClear){
-		if (_routeBlockArray.size() >= _inputLimitArray[_currentNumber]) {
-			_currentNumber++;
+	
 
 			if (mouseOnBlock == _blockManager.GetBlock(_tutorialRouteArray[_routeBlockArray.size() + _routeSize].first,
 				_tutorialRouteArray[_routeBlockArray.size() + _routeSize].second)) {
-				_pickedBlock = mouseOnBlock;
-				_routeBlockArray.push_back(_pickedBlock);
-				_pickedBlock->SetPassedFlg(true);
-				_remainDistance--;
+				
+				if (_routeBlockArray.size() < _inputLimitArray[_currentNumber]) {
+					_pickedBlock = mouseOnBlock;
+					_routeBlockArray.push_back(_pickedBlock);
+					
+					_pickedBlock->SetPassedFlg(true);
+					_remainDistance--;
 
+					if (_currentNumber > _inputLimitValue)
+					{
+						_tutorialClear = true;
+					}
+				}
+				
 
 			}
-
-			if (_currentNumber > _inputLimitValue)
-			{
-				_tutorialClear = true;
-			}
-		}
+		
 	
 	}
 	else{
@@ -206,6 +209,11 @@ void Field::EndOfPassed(){
 	if (_routeBlockArray.size() <= 0) return;
 
 	_routeSize += _routeBlockArray.size();
+	if(_routeSize >_inputLimitArray[_currentNumber])
+	{
+		_currentNumber++;
+	}
+	
 	_operateDoll.SetRouteBlockArray(_routeBlockArray);
 	_lastDistanceBlock = _routeBlockArray.back();
 	_routeBlockArray.clear();
