@@ -4,12 +4,14 @@
 class FadeIn
 {
 private:
-	int		Alpha;
-	bool	fadeIn;
+	int _alpha,_subAlphaValue;
+	const int _maxAlpha = 255;
+	bool _end;
 public:
-	void Initialize();
+	FadeIn();
+	void SetTime(int fadeInFrame);
+	void Start();
 	void Update();
 	void Render();
-	void GetIn() { fadeIn = true; }
-	bool IsIn() { return fadeIn; }
+	bool IsEnd() { return _end; }
 };

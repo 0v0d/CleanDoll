@@ -1,16 +1,17 @@
 #pragma once
+#include	"Mof.h"
+
 class FadeOut
 {
 private:
-	int		Alpha;
-	bool	fadeOut;
-	bool Change;
-
+	int _alpha, _addAlphaValue;
+	const int _maxAlpha = 255;
+	bool _end;
 public:
-	void Initialize();
+	FadeOut();
+	void SetTime(int fadeInFrame);
+	void Start();
 	void Update();
 	void Render();
-	void GetOut() { fadeOut = true; }
-	bool IsChange() { return Change; }
-	bool ISEnd() { return fadeOut; }
+	bool IsEnd() { return _end; }
 };

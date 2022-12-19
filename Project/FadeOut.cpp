@@ -1,25 +1,27 @@
 #include "FadeOut.h"
-#include "Mof.h"
 
-void FadeOut::Initialize() {
-	Alpha = 0;
-	fadeOut = false;
-	Change = false;
+FadeOut::FadeOut() :_addAlphaValue(1) {}
+
+void FadeOut::SetTime(int FadeOutFrame) {
+	_addAlphaValue = _maxAlpha / FadeOutFrame;
+}
+
+void FadeOut::Start() {
+	_alpha = 0;
+	_end = false;
 }
 
 void FadeOut::Update() {
-	if (fadeOut) {
-		if (Alpha <255) {
-			Alpha += 5;
-		}
-		else {
-			Change = true;
-		}
+	if (_end) return;
+
+	_alpha += _addAlphaValue;
+	if (_alpha >=_maxAlpha) {
+		_alpha = _maxAlpha;
+		_end = true;
 	}
-	
 }
 
 void FadeOut::Render() {
-	if (fadeOut)
-	CGraphicsUtilities::RenderFillRect(0, 0, g_pGraphics->GetTargetWidth(), g_pGraphics->GetTargetHeight(), MOF_ARGB(Alpha, 0, 0, 0));
+	if (_end) return;
+	CGraphicsUtilities::RenderFillRect(0, 0, g_pGraphics->GetTargetWidth(), g_pGraphics->GetTargetHeight(), MOF_ARGB(_alpha, 0, 0, 0));
 }
