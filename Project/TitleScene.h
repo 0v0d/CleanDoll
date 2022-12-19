@@ -20,7 +20,7 @@ class TitleScene :public IBaseScene
 	CSoundBuffer _music;
 	bool _end;
 	float _time;
-	const float _increase = 0.003f;
+	const float _alphaIncrease = 0.003f;
 
 	//titleLogo
 	bool _loop;//Loop‚³‚ê‚½‚©‚Ì”»’è
@@ -39,7 +39,7 @@ public:
 	void Release();
 	void StopBGM() ;
 private:
-	int CalcSequence(float x);
+	int CalcAlpha(float time);
 	void SetTitleLogoAnimationStatus();
 	
 };
