@@ -292,10 +292,9 @@
     </ClCompile>
     <ClCompile Include="EndGameButtonManager.cpp">
       <Filter>ソース ファイル\Scene\GameScene\EndGameProcess\EndGameButton</Filter>
-      <Filter>ソース ファイル\Scene\GameScene\EndGameProcess\GameOver</Filter>
     </ClCompile>
     <ClCompile Include="GameOverDollAnimation .cpp">
-      <Filter>ソース ファイル\Scene\GameScene\EndGameProcess\GameOver</Filter>
+      <Filter>ソース ファイル\Scene\GameScene\EndGameProcess\GameOver\Animation</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -487,7 +486,7 @@
     </ClInclude>
     <ClInclude Include="GalleryCoin.h">
       <Filter>ソース ファイル\Scene\GameScene\Field\BlockManager\Object</Filter>
-	</ClInclude>
+    </ClInclude>
     <ClInclude Include="BGM.h">
       <Filter>ソース ファイル\UI</Filter>
     </ClInclude>
@@ -508,15 +507,15 @@
     </ClInclude>
     <ClInclude Include="EndGameButtonManager.h">
       <Filter>ソース ファイル\Scene\GameScene\EndGameProcess\EndGameButton</Filter>
-	</ClInclude>
+    </ClInclude>
     <ClInclude Include="BGM.h">
       <Filter>ソース ファイル\UI</Filter>
     </ClInclude>
-    <ClInclude Include="GameOverDollAnimation.h">
-      <Filter>ソース ファイル\Scene\GameScene\EndGameProcess\GameOver</Filter>
-    </ClInclude>
     <ClInclude Include="GameOverLogoAnimation.h">
       <Filter>ソース ファイル\Scene\GameScene\EndGameProcess\GameOver</Filter>
+    </ClInclude>
+    <ClInclude Include="GameOverDollAnimation.h">
+      <Filter>ソース ファイル\Scene\GameScene\EndGameProcess\GameOver\Animation</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

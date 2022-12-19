@@ -3,13 +3,15 @@
 #include	"IBaseEndGameProcess.h"
 #include	"GameOverBackGround.h"
 #include	"GameOverLogoAnimation.h"
+#include	"GameOverDollAnimation.h"
 #include	"EndGameButtonManager.h"
 
 class GameOver:public IBaseEndGameProcess
 {
 private:
-	GameOverBackGround _backGround;
+	GameOverBackGround _backGroundAnim;
 	GameOverLogoAnimation _logoAnim;
+	GameOverDollAnimation _dollAnim;
 
 	EndGameButtonManager _endGameButtonManager;
 	CTexture _retryTexture, _stageSelectTexture;

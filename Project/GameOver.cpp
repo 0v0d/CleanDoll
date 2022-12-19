@@ -4,8 +4,9 @@
 void GameOver::Initialize()
 {
 	LoadTexture();
-	_backGround.Initialize();
+	_backGroundAnim.Initialize();
 	_logoAnim.Initialize();
+	_dollAnim.Initialize();
 
 	CreateButtonArray();
 }
@@ -35,8 +36,9 @@ void GameOver::CreateButtonArray() {
 
 void GameOver::ReLoad()
 {
-	_backGround.ReLoad();
+	_backGroundAnim.ReLoad();
 	_logoAnim.ReLoad();
+	_dollAnim.ReLoad();
 	_endGameButtonManager.ReLoad();
 }
 
@@ -47,8 +49,8 @@ void GameOver::Update()
 
 void GameOver::UpdateAnimation() {
 		
-	if (!_backGround.IsEndMotion()){
-		_backGround.Update();
+	if (!_backGroundAnim.IsEndMotion()){
+		_backGroundAnim.Update();
 		return;
 	}
 
@@ -57,6 +59,7 @@ void GameOver::UpdateAnimation() {
 		return;
 	}
 
+	_dollAnim.Update();
 	_endGameButtonManager.Update();
 }
 
@@ -75,19 +78,19 @@ void GameOver::Pull() {
 void GameOver::Render()
 {
 	CGraphicsUtilities::RenderFillRect(0, 0, g_pGraphics->GetTargetWidth(), g_pGraphics->GetTargetHeight(), MOF_ARGB(125, 0, 0, 0));
-	_backGround.Render();
+	_backGroundAnim.Render();
 	_logoAnim.Render();
 
 	if (!_logoAnim.IsEndMotion()) return;
-	
+	_dollAnim.Render();
 	_endGameButtonManager.Render();
 }
 
 void GameOver::Release()
 {
-	_backGround.Release();
+	_backGroundAnim.Release();
 	_logoAnim.Release();
-
+	_dollAnim.Release();
 	_endGameButtonManager.Release();
 
 	_retryTexture.Release();

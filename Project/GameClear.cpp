@@ -5,9 +5,9 @@
 void GameClear::Initialize()
 {
 	LoadTexture();
-	_clearLog.Initialize();
-	_clearBackGround.Initialize();
-	_clearDoll.Initialize();
+	_logoAnim.Initialize();
+	_backGroundAnim.Initialize();
+	_dollAnim.Initialize();
 
 	CreateButtonArray();
 }
@@ -41,11 +41,11 @@ void GameClear::CreateButtonArray() {
 }
 
 void GameClear::ReLoad() {
-	_clearBackGround.ReLoad();
-	_clearLog.ReLoad();
-	_clearDoll.ReLoad();
+	_backGroundAnim.ReLoad();
+	_logoAnim.ReLoad();
+	_dollAnim.ReLoad();
 
-	_clearBackGround.ReLoad();
+	_backGroundAnim.ReLoad();
 	_endGameButtonManager.ReLoad();
 }
 
@@ -56,17 +56,17 @@ void GameClear::Update()
 
 void GameClear::UpdateAnimation() {
 
-	if (!_clearBackGround.IsFixedScale()) {
-		_clearBackGround.Update();
+	if (!_backGroundAnim.IsFixedScale()) {
+		_backGroundAnim.Update();
 		return;
 	}
 
-	if (!_clearLog.IsEndeMotion()) {
-		_clearLog.Update();
+	if (!_logoAnim.IsEndeMotion()) {
+		_logoAnim.Update();
 		return;
 	}
 
-	_clearDoll.Update();
+	_dollAnim.Update();
 	_endGameButtonManager.Update();
 }
 
@@ -85,20 +85,20 @@ void GameClear::Pull() {
 void GameClear::Render()
 {
 	CGraphicsUtilities::RenderFillRect(0, 0, g_pGraphics->GetTargetWidth(), g_pGraphics->GetTargetHeight(), MOF_ARGB(125, 0, 0, 0));
-	_clearBackGround.Render();
-	_clearLog.Render();
+	_backGroundAnim.Render();
+	_logoAnim.Render();
 
-	if (!_clearLog.IsEndeMotion()) return;
+	if (!_logoAnim.IsEndeMotion()) return;
 
-	_clearDoll.Render();
+	_dollAnim.Render();
 	_endGameButtonManager.Render();
 }
 
 void GameClear::Release()
 {
-	_clearLog.Release();
-	_clearBackGround.Release();	
-	_clearDoll.Release();
+	_logoAnim.Release();
+	_backGroundAnim.Release();	
+	_dollAnim.Release();
 	_endGameButtonManager.Release();
 
 	_nextStageTexture.Release();

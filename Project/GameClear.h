@@ -7,9 +7,9 @@
 
 class GameClear:public IBaseEndGameProcess
 {
-	GameClearLogoAnimation _clearLog;
-	GameClearBackGround _clearBackGround;
-	GameClearDollAnimation _clearDoll;
+	GameClearLogoAnimation _logoAnim;
+	GameClearBackGround _backGroundAnim;
+	GameClearDollAnimation _dollAnim;
 
 	EndGameButtonManager _endGameButtonManager;
 	CTexture _nextStageTexture, _stageSelectTexture, _retryTexture;
