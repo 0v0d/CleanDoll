@@ -1,13 +1,13 @@
 #include "FadeIn.h"
 
-FadeIn::FadeIn():_subAlphaValue(1){}
+FadeIn::FadeIn() :_subAlphaValue(1) {}
 
 void FadeIn::SetTime(int fadeInFrame) {
 	_subAlphaValue = _maxAlpha / fadeInFrame;
 }
 
 void FadeIn::Start() {
-	_alpha = _maxAlpha;
+	_alpha = 0;
 	_end = false;
 }
 
@@ -15,7 +15,7 @@ void FadeIn::Update() {
 	if (_end) return;
 
 	_alpha -= _subAlphaValue;
-	if (_alpha <= 0) {
+	if (_alpha <=0) {
 		_alpha = 0;
 		_end = true;
 	}
