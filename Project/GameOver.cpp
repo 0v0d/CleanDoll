@@ -46,7 +46,6 @@ void GameOver::Update()
 }
 
 void GameOver::UpdateAnimation() {
-	if (_endGameButtonManager.IsEndAnimation()) return;
 		
 	if (!_backGround.IsEndMotion()){
 		_backGround.Update();

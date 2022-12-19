@@ -55,7 +55,6 @@ void GameClear::Update()
 }
 
 void GameClear::UpdateAnimation() {
-	if (_endGameButtonManager.IsEndAnimation()) return;
 
 	if (!_clearBackGround.IsFixedScale()) {
 		_clearBackGround.Update();
