@@ -206,8 +206,10 @@ void Field::EndMoveDoll()
 		return;
 	}
 	//ゲームオーバー
-	if (_remainDistance <= 0)
-	{
+	if (_remainDistance <= 0) {
+		GameOver();
+	}
+	if (CheckCantMoveDoll()) {
 		GameOver();
 	}
 }
@@ -242,6 +244,19 @@ void Field::GameOver()
 {
 	_endGameProcess.SetCurrentProcess(ProcessType::GameOver);
 }
+
+bool Field::CheckCantMoveDoll() {
+	Block** adjoinBlockArray = _blockManager.GetDollOnBlock()->GetAdjoinBlockArray();
+
+	for (int i = 0;i < _adjoinBlockValue;i++) {
+		if (adjoinBlockArray[i] == nullptr) continue;
+		if (!adjoinBlockArray[i]->IsPassed() || adjoinBlockArray[i]->GetBlockOnObject()->GetFurniture() == nullptr) {
+			return false;
+		}
+	}
+	return true;
+}
+
 
 void Field::Render()
 {
