@@ -250,7 +250,7 @@ bool Field::CheckCantMoveDoll() {
 
 	for (int i = 0;i < _adjoinBlockValue;i++) {
 		if (adjoinBlockArray[i] == nullptr) continue;
-		if (!adjoinBlockArray[i]->IsPassed() || adjoinBlockArray[i]->GetBlockOnObject()->GetFurniture() == nullptr) {
+		if (!adjoinBlockArray[i]->IsPassed() && adjoinBlockArray[i]->GetBlockOnObject()->GetFurniture() == nullptr) {
 			return false;
 		}
 	}
