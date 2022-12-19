@@ -89,7 +89,8 @@
     </Filter>
     <Filter Include="ソース ファイル\Scene\GameScene\EndGameProcess\EndGameButton">
       <UniqueIdentifier>{e9c96865-c321-46bd-8b7e-9577162e512f}</UniqueIdentifier>
-    <Filter Include="ソース ファイル\Effect">
+    </Filter>
+    <Filter Include="ソース ファイル\Scene\Effect">
       <UniqueIdentifier>{7b766522-eb19-4355-8dd4-ea5843387e62}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
@@ -299,10 +300,10 @@
       <Filter>ソース ファイル\Scene\GameScene\EndGameProcess\GameOver\Animation</Filter>
     </ClCompile>
     <ClCompile Include="FadeIn.cpp">
-      <Filter>ソース ファイル\Effect</Filter>
+      <Filter>ソース ファイル\Scene\Effect</Filter>
     </ClCompile>
     <ClCompile Include="FadeOut.cpp">
-      <Filter>ソース ファイル\Effect</Filter>
+      <Filter>ソース ファイル\Scene\Effect</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -525,11 +526,12 @@
     </ClInclude>
     <ClInclude Include="GameOverDollAnimation.h">
       <Filter>ソース ファイル\Scene\GameScene\EndGameProcess\GameOver\Animation</Filter>
+    </ClInclude>
     <ClInclude Include="FadeIn.h">
-      <Filter>ソース ファイル\Effect</Filter>
+      <Filter>ソース ファイル\Scene\Effect</Filter>
     </ClInclude>
     <ClInclude Include="FadeOut.h">
-      <Filter>ソース ファイル\Effect</Filter>
+      <Filter>ソース ファイル\Scene\Effect</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
