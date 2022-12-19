@@ -1,6 +1,9 @@
 #include "FadeOut.h"
 
-FadeOut::FadeOut() :_addAlphaValue(1) {}
+FadeOut::FadeOut() :
+	_addAlphaValue(1),
+	_end(true)
+{}
 
 void FadeOut::SetTime(int FadeOutFrame) {
 	_addAlphaValue = _maxAlpha / FadeOutFrame;

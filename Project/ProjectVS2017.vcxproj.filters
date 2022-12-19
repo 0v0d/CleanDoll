@@ -314,6 +314,9 @@
     <ClCompile Include="TitleClickAnimation.cpp">
       <Filter>ソース ファイル\Scene\TitleScene\Animation</Filter>
     </ClCompile>
+    <ClCompile Include="ChangeSceneEffect.cpp">
+      <Filter>ソース ファイル\Scene\Effect</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GameApp.h">
@@ -547,6 +550,9 @@
     </ClInclude>
     <ClInclude Include="TitleClickAnimation.h">
       <Filter>ソース ファイル\Scene\TitleScene\Animation</Filter>
+    </ClInclude>
+    <ClInclude Include="ChangeSceneEffect.h">
+      <Filter>ソース ファイル\Scene\Effect</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
