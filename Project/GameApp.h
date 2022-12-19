@@ -2,13 +2,13 @@
 #include	"Mof.h"
 #include	"Menu.h"
 #include	"Input.h"
-#include "ExitGame.h"
+#include	"ExitGame.h"
 
 class CGameApp : public CSingleGameApplication
 {
 	Input _input;
 	Menu _menu;
-	ExitGame	_exit;
+	ExitGame _exit;
 public:
 	CGameApp(){}
 	virtual ~CGameApp(){	Release();	}
