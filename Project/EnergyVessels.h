@@ -12,10 +12,11 @@ private:
 	int _currentEnergyValue, _maxEnergyValue;
 
 	EnergyBar* _energyBarArray = nullptr;
-	CTexture _energyVesselsTexture, _energyBarTexture, _remainEnergyTexture;
+	CTexture _energyVesselsTexture, _energyBarTexture, _remainEnergyTexture, _energyVesselsCenterTexture;
 	Vector2 _vesselsPosition,_remainPosition;
 
-	const float _scale = 0.5f;
+	const float _energyVesselsScale = 0.2f;
+	float _remainEnergyScale;
 
 	const int _variationValue = 3;
 	std::map<int, MofU32> _renderColorArray;
@@ -30,7 +31,7 @@ public:
 
 	void Render();
 	void Release();
-
+	void CalucScale();
 private:
 	void LoadTexture();
 	void CreateEnergyBarArray();
