@@ -5,8 +5,8 @@ class EnergyValue
 private:
 	CTexture _numberTexture;
 	CRectangle _renderRect;
-	//const int _numberValue = 10;
-	const int _numberValue = 9;
+	const int _numberValue = 10;
+	//const int _numberValue = 9;
 	float _numberScale;
 	Vector2 _numberPos;
 

@@ -3,7 +3,7 @@
 void EnergyValue::Initialize()
 {
 	LoadTexture();
-	CalcuScale();
+	//CalcuScale();
 }
 
 void EnergyValue::CalcuScale()
@@ -13,8 +13,8 @@ void EnergyValue::CalcuScale()
 }
 void EnergyValue::LoadTexture()
 {
-	//_numberTexture.Load("num.png");
-	_numberTexture.Load("numbers.png");
+	_numberTexture.Load("num.png");
+	//_numberTexture.Load("numbers.png");
 }
 
 void EnergyValue::SetPosition(Vector2 vesselsCenterPosition)
