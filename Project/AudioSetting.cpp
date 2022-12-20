@@ -8,25 +8,26 @@ void AudioSetting::Initialize()
 	_sliderArray = new Slider[_sliderValue];
 	Vector2 _barSize = Vector2(_barTexture.GetWidth(), _barTexture.GetHeight());
 	Vector2 _buttonSize = Vector2(_buttonTexture.GetWidth(), _buttonTexture.GetHeight());
-	Vector2 _barPos = Vector2(g_pGraphics->GetTargetWidth() / 2 , 300);
+	Vector2 _barPos = Vector2(g_pGraphics->GetTargetWidth() / 2+100, 400);
 
 	for (int i = 0; i < _sliderValue; i++)
 	{
-		_sliderArray[i].SetStatu(Vector2(_barPos.x, _barPos.y * i + 250),&_barTexture, &_buttonTexture, 0.7f, HORIZON);
+		_sliderArray[i].SetStatu(Vector2(_barPos.x, (_barPos.y + _barSize.y/2) + i * 250),&_barTexture, &_buttonTexture, 0.7f, HORIZON);
 		_muted[i] = false;
 	}
 	
 
 	_closeButton.SetTexture(&_closeButtonTexture);
-	_closeButton.SetPosition(Vector2(g_pGraphics->GetTargetWidth() / 2, 650));
+	_closeButton.SetPosition(Vector2(g_pGraphics->GetTargetWidth() / 2, 870));
 
 	for (int i = 0; i < _sliderValue; i++) 
 	{
-		_audioPos[i] = Vector2(_barPos.x - _barSize.x / 2 - _audioTexture[i].GetWidth() * _audioScale - 10, (_barPos.y * i + 250) + _barSize.y / 2 - _audioTexture[i].GetHeight() * _audioScale / 2);
+		_audioPos[i] = Vector2(_barPos.x - _barSize.x / 2 - _audioTexture[i].GetWidth() * _audioScale -20,
+			((_barPos.y + _barSize.y/2) + i * 250) - _audioTexture[i].GetHeight() * _audioScale/2);
 	}
 
-	_BGMPos = Vector2(_audioPos[0].x - _BGMTexture.GetWidth() * _BGMScale-10, _audioPos[0].y + _audioTexture[0].GetHeight() * _audioScale / 2 - _BGMTexture.GetHeight() * _BGMScale / 2);
-	_SEPos = Vector2(_audioPos[1].x - _SETexture.GetWidth() * _SEScale-10, _audioPos[1].y + _audioTexture[1].GetHeight() * _audioScale / 2 - _SETexture.GetHeight() * _SEScale / 2);
+	_BGMPos = Vector2(_audioPos[0].x - _BGMTexture.GetWidth() * _BGMScale-25, _audioPos[0].y + _audioTexture[0].GetHeight() * _audioScale / 2 - _BGMTexture.GetHeight() * _BGMScale / 2);
+	_SEPos = Vector2(_audioPos[1].x - _SETexture.GetWidth() * _SEScale-25, _audioPos[1].y + _audioTexture[1].GetHeight() * _audioScale / 2 - _SETexture.GetHeight() * _SEScale / 2);
 }
 
 void AudioSetting::LoadTexture() {
@@ -50,9 +51,9 @@ void AudioSetting::Update()
 }
 
 void AudioSetting::CalcuScale() {
-	_audioScale = _textureHeight / _audioTexture->GetHeight();
-	_BGMScale = _textureHeight / _BGMTexture.GetHeight();
-	_SEScale = _textureHeight / _SETexture.GetHeight();
+	_audioScale = _textureHeight / _audioTexture->GetHeight()*2;
+	_BGMScale = _textureHeight / _BGMTexture.GetHeight() * 1.8;
+	_SEScale = _textureHeight / _SETexture.GetHeight() * 1.8;
 }
 
 void AudioSetting::SetMute() {

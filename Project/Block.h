@@ -12,7 +12,7 @@ private:
 	float _scale;
 
 	//周りのブロック　0:左, 1:上, 2:右, 3:下
-	Block** _adjoinBlockArray;
+	Block** _adjoinBlockArray = nullptr;
 
 	//0:左, 1:右, 2:中
 	Wall* _wallArray = nullptr;

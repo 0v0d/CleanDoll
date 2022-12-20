@@ -4,24 +4,11 @@
 void GameOver::Initialize()
 {
 	LoadTexture();
-	_backGround.Initialize();
-	for (int i = 0; i < _menuValue; i++)
-	{
-		_endButtonAnimation[i].Initialize();
-	}
-	
+	_backGroundAnim.Initialize();
 	_logoAnim.Initialize();
+	_dollAnim.Initialize();
 
-	Vector2 retryPos = Vector2(400, 300);
-	Vector2 stageSelectPos = Vector2(400, 500);
-
-	_endButtonAnimation[0].SetStatu(retryPos, &_retryTexture);
-	_endButtonAnimation[1].SetStatu(stageSelectPos, &_stageSelectTexture);
-
-	_retryButton.SetTexture(&_retryTexture);
-	_retryButton.SetPosition(retryPos);
-	_stageSelectButton.SetTexture(&_stageSelectTexture);
-	_stageSelectButton.SetPosition(stageSelectPos);
+	CreateButtonArray();
 }
 
 void GameOver::LoadTexture()
@@ -30,90 +17,82 @@ void GameOver::LoadTexture()
 	_stageSelectTexture.Load("ステージ選択に戻る.png");
 }
 
+void GameOver::CreateButtonArray() {
+
+	float posX = 200;
+	Vector2 retryButtonPos = Vector2(g_pGraphics->GetTargetWidth() / 2 - posX, 300);
+	Vector2 stageSelectButtonPos = Vector2(g_pGraphics->GetTargetWidth() / 2 - posX, 500);
+
+	const float targetSizeY = 80;
+	_endGameButtonManager.CreateButton(&_retryTexture, 0, targetSizeY, retryButtonPos, [&]() {
+		SceneManager::Instance().GetScene(SCENE_TYPE::GAME)->ReLoad();
+		});
+
+	_endGameButtonManager.CreateButton(&_stageSelectTexture, 0, targetSizeY, stageSelectButtonPos, [&]() {
+		SceneManager::Instance().ChangeScene(SCENE_TYPE::STAGESELECT);
+		});
+}
+
+
 void GameOver::ReLoad()
 {
-	_backGround.ReLoad();
+	_backGroundAnim.ReLoad();
 	_logoAnim.ReLoad();
-	for (int i = 0; i < _menuValue; i++)
-	{
-		_endButtonAnimation[i].ReLoad();
-	}
+	_dollAnim.ReLoad();
+	_endGameButtonManager.ReLoad();
 }
 
 void GameOver::Update()
 {
-	if (!_endButtonAnimation[_menuValue - 1].IsEndAnimation())UpdateAnimation();
+	UpdateAnimation();
 }
 
 void GameOver::UpdateAnimation() {
-	if (!_backGround.IsEndMotion())
-	{
-		_backGround.Update();
+		
+	if (!_backGroundAnim.IsEndMotion()){
+		_backGroundAnim.Update();
 		return;
 	}
-	if (!_logoAnim.IsEndMotion())
-	{
+
+	if (!_logoAnim.IsEndMotion()){
 		_logoAnim.Update();
 		return;
 	}
 
-	for (int i = 0; i < _menuValue; i++)
-	{
-		_endButtonAnimation[i].Update();
-	}
+	_dollAnim.Update();
+	_endGameButtonManager.Update();
 }
 
 void GameOver::SetMousePos(Vector2 mousePos) {
-	_retryButton.SetMousePos(mousePos);
-	_stageSelectButton.SetMousePos(mousePos);
+	_endGameButtonManager.SetMousePos(mousePos);
 }
 
 void GameOver::Push() {
-	if (!_endButtonAnimation[_menuValue - 1].IsEndAnimation()) return;
-
-	_retryButton.Push();
-	_stageSelectButton.Push();
+	_endGameButtonManager.Push();
 }
 
 void GameOver::Pull() {
-	if (!_endButtonAnimation[_menuValue - 1].IsEndAnimation()) return;
-
-	_retryButton.Pull();
-	_stageSelectButton.Pull();
-
-	if (_retryButton.IsPullButton()) {
-		SceneManager::Instance().GetScene(SCENE_TYPE::GAME)->ReLoad();
-	}
-	if (_stageSelectButton.IsPullButton()) {
-		SceneManager::Instance().ChangeScene(SCENE_TYPE::STAGESELECT);
-	}
+	_endGameButtonManager.Pull();
 }
 
 void GameOver::Render()
 {
 	CGraphicsUtilities::RenderFillRect(0, 0, g_pGraphics->GetTargetWidth(), g_pGraphics->GetTargetHeight(), MOF_ARGB(125, 0, 0, 0));
-	_backGround.Render();
-	
-	if(_backGround.IsEndMotion())
-	{
-		_logoAnim.Render();
-	}
-	
-	if (_logoAnim.IsEndMotion())
-	{
-		for (int i = 0; i < _menuValue; i++)
-		{
-			_endButtonAnimation[i].Render();
-		}
-	}
+	_backGroundAnim.Render();
+	_logoAnim.Render();
+
+	if (!_logoAnim.IsEndMotion()) return;
+	_dollAnim.Render();
+	_endGameButtonManager.Render();
 }
 
 void GameOver::Release()
 {
-	_backGround.Release();
+	_backGroundAnim.Release();
 	_logoAnim.Release();
+	_dollAnim.Release();
+	_endGameButtonManager.Release();
+
 	_retryTexture.Release();
 	_stageSelectTexture.Release();
-
-	delete[] _endButtonAnimation;
 }

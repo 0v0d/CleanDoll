@@ -4,10 +4,12 @@
 #include	"IBaseEndGameProcess.h"
 #include	"GameClear.h"
 #include	"GameOver.h"
+#include "EndTutorial.h"
 
 enum class ProcessType {
 	GameClear,
-	GameOver
+	GameOver,
+	EndTutorial,
 };
 
 class EndGameProcess
@@ -17,7 +19,7 @@ class EndGameProcess
 
 	GameClear _gameClear;
 	GameOver _gameOver;
-
+	EndTutorial _endTutorial;
 	bool _process;
 public:
 	void Initialize();

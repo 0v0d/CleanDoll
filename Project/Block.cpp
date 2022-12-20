@@ -28,6 +28,9 @@ void Block::SetPosition(int x, int y, float topSpace)
 void Block::SetAdjoinBlockValue(int adjoinBlockValue)
 {
 	_adjoinBlockArray = new Block * [adjoinBlockValue];
+	for (int i = 0;i < adjoinBlockValue;i++) {
+		_adjoinBlockArray[i] = nullptr;
+	}
 }
 
 void Block::SetAdjoinBlock(Block* block, int number)
@@ -109,7 +112,9 @@ void Block::RenderBlcokOnObject() {
 void Block::Delete()
 {
 	_blockOnObject.Delete();
-	delete[] _wallArray;
+
+	if (_wallArray != nullptr)delete[] _wallArray;
+	if (_wallArray != nullptr)delete[] _adjoinBlockArray;
 }
 
 void Block::Release()

@@ -26,7 +26,7 @@ public:
     void Release();
     void StopBGM();
     Field* GetField() { return &_field; }
-
+ 
 private:
     void LoadTexture();
 };

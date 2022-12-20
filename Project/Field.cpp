@@ -19,8 +19,10 @@ void Field::Initialize()
 	_doll.Initialize();
 	_fieldUI.Initialize();
 	_endGameProcess.Initialize();
+	_tutorial.Initialize();
 
 	_doll.SetDumpValue(_dustDumpValue, _waterDumpValue);
+	_tutorial.SetBlockManager(&_blockManager);
 }
 
 void Field::ReLoad()
@@ -29,7 +31,7 @@ void Field::ReLoad()
 	_doll.ReLoad();
 	_fieldUI.ReLoad();
 	_operateDoll.ReLoad();
-
+	_tutorial.ReLoad();
 	
 	_doll.CalcuScale(_blockManager.GetDollOnBlock()->GetBlockSize().y, _blockManager.GetScale());
 	_dustDumpValue = _initalDustValue;
@@ -131,10 +133,11 @@ void Field::PassedMouse(Vector2 mousePosition)
 void Field::AdvanceRoute(Block* mouseOnBlock)
 {
 	if (_remainDistance <= 0 || mouseOnBlock->GetBlockOnObject()->GetFurniture() != nullptr) return;
+	if (!_tutorial.IsEnd() && !_tutorial.CheckInTutorialRoute(mouseOnBlock, _routeBlockArray.size())) return;
 
 	_pickedBlock = mouseOnBlock;
-	_pickedBlock->SetPassedFlg(true);
 	_routeBlockArray.push_back(_pickedBlock);
+	_pickedBlock->SetPassedFlg(true);
 	_remainDistance--;
 
 	if (_pickedBlock->GetBlockOnObject()->GetAccessories() != nullptr)
@@ -146,7 +149,6 @@ void Field::AdvanceRoute(Block* mouseOnBlock)
 			_pickedBlock->GetBlockOnObject()->HiddenAccessoriesFlg(true);
 		}
 	}
-
 	_fieldUI.SetCurrentEnergyValue(_remainDistance);
 }
 
@@ -178,9 +180,12 @@ void Field::BackRoute(Block* mouseOnBlock)
 }
 
 //入力終了
-void Field::EndOfPassed()
-{
+void Field::EndOfPassed(){
 	if (_routeBlockArray.size() <= 0) return;
+
+	if(!_tutorial.IsEnd()){
+		_tutorial.EndOfPassed(_routeBlockArray.size());
+	}
 
 	_operateDoll.SetRouteBlockArray(_routeBlockArray);
 	_lastDistanceBlock = _routeBlockArray.back();
@@ -188,27 +193,26 @@ void Field::EndOfPassed()
 	_recoveryDifferentialArray.clear();
 }
 
-void Field::EndMoveDoll()
-{
-	//ゲームクリア
-	if (_dustDumpValue <= 0 && _waterDumpValue <= 0)
-	{
-		StageSelectScene* stageSelect = dynamic_cast<StageSelectScene*>(SceneManager::Instance().GetScene(SCENE_TYPE::STAGESELECT));
-		if (_doll.IsGetCoin()) {
-			if (!_getCoin) {
-				dynamic_cast<GalleryScene*>(SceneManager::Instance().GetScene(SCENE_TYPE::GALLERY))->AddCoin();
-				stageSelect->GetCoin();
-				_getCoin = true;
-			}
-		}
-		_endGameProcess.SetCurrentProcess(ProcessType::GameClear);
-		stageSelect->StageClear();
-		return;
+void Field::EndMoveDoll(){
+
+	if (!_tutorial.IsEnd()) {
+		_tutorial.EndMoveDoll();
 	}
-	//ゲームオーバー
-	if (_remainDistance <= 0)
+	else
 	{
-		GameOver();
+		//ゲームクリア
+		if (_dustDumpValue <= 0 && _waterDumpValue <= 0) {
+			_endGameProcess.SetCurrentProcess(ProcessType::GameClear);
+			dynamic_cast<StageSelectScene*>(SceneManager::Instance().GetScene(SCENE_TYPE::STAGESELECT))->StageClear();
+			return;
+		}
+		//ゲームオーバー
+		if (_remainDistance <= 0) {
+			GameOver();
+		}
+		if (CheckCantMoveDoll()) {
+			GameOver();
+		}
 	}
 }
 
@@ -243,6 +247,19 @@ void Field::GameOver()
 	_endGameProcess.SetCurrentProcess(ProcessType::GameOver);
 }
 
+bool Field::CheckCantMoveDoll() {
+	Block** adjoinBlockArray = _blockManager.GetDollOnBlock()->GetAdjoinBlockArray();
+
+	for (int i = 0;i < _adjoinBlockValue;i++) {
+		if (adjoinBlockArray[i] == nullptr) continue;
+		if (!adjoinBlockArray[i]->IsPassed() && adjoinBlockArray[i]->GetBlockOnObject()->GetFurniture() == nullptr) {
+			return false;
+		}
+	}
+	return true;
+}
+
+
 void Field::Render()
 {
 	_blockManager.Render();
@@ -257,4 +274,5 @@ void Field::Release()
 	_doll.Release();
 	_fieldUI.Release();
 	_endGameProcess.Release();
+	_tutorial.Release();
 }

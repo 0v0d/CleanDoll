@@ -6,6 +6,7 @@
 #include	"EndGameProcess.h"
 #include	"Doll.h"
 #include	"OperateDoll.h"
+#include	"Tutorial.h"
 
 class Field
 {
@@ -41,6 +42,8 @@ private:
 
 	bool _push;
 
+	Tutorial _tutorial;
+
 	FieldUI _fieldUI;
 	EndGameProcess _endGameProcess;
 	bool _getCoin;
@@ -74,7 +77,11 @@ public:
 
 	void SetDollMove(bool* onMoveDoll) { _onMoveDoll = onMoveDoll; }
 	void SetDollOnBlockNumber( Block* dollOnBlock);
+
 private:
+
 	void AdvanceRoute(Block* mouseOnBlock);
 	void BackRoute(Block* mouseOnBlock);
+	bool CheckCantMoveDoll();
 };
+ 

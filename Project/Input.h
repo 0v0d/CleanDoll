@@ -15,4 +15,9 @@ public:
 private:
 	void InputMouse();
 	void InputKey();
+
+	void SetMousePos();
+	void Push();
+	void Pull();
+
 };

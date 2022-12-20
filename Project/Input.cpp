@@ -8,22 +8,13 @@ void Input::Update() {
 
 void Input::InputMouse() {
 
-	g_pInput->GetMousePos(_mousePos);
-	SceneManager::Instance().SetMousePos(_mousePos);
-	_exitGame->SetMousePos(_mousePos);
-	_menu->SetMousePos(_mousePos);
+	SetMousePos();
 
 	if (g_pInput->IsMouseKeyPush(MOFMOUSE_LBUTTON)) {
-		
-		SceneManager::Instance().Push();
-		_exitGame->Push();
-		_menu->Push();
+		Push();
 	}
-
 	if (g_pInput->IsMouseKeyPull(MOFMOUSE_LBUTTON)) {
-		SceneManager::Instance().Pull();
-		_exitGame->Pull();
-		_menu->Pull();
+		Pull();
 	}
 }
 
@@ -31,4 +22,42 @@ void Input::InputKey() {
 	if (g_pInput->IsKeyPush(MOFKEY_ESCAPE)) {
 		_exitGame->OpenExitDialog();
 	}
+}
+
+void Input::SetMousePos() {
+	g_pInput->GetMousePos(_mousePos);
+
+	if (_exitGame->IsOpenExitDialog()) {
+		_exitGame->SetMousePos(_mousePos);
+		return;
+	}
+
+	_menu->SetMousePos(_mousePos);
+	if (_menu->IsOpenMenu()) return;
+
+	SceneManager::Instance().SetMousePos(_mousePos);
+}
+
+void Input::Push() {
+	if (_exitGame->IsOpenExitDialog()) {
+		_exitGame->Push();
+		return;
+	}
+
+	_menu->Push();
+
+	if (_menu->IsOpenMenu()) return;
+	SceneManager::Instance().Push();
+}
+
+void Input::Pull() {
+	if (_exitGame->IsOpenExitDialog()) {
+		_exitGame->Pull();
+		return;
+	}
+
+	_menu->Pull();
+	if (_menu->IsOpenMenu()) return;
+
+	SceneManager::Instance().Pull();
 }

@@ -13,6 +13,8 @@ GalleryScene gallery;
 
 void SceneManager::Initialize()
 {
+	_effect.Initialize();
+
 	_sceneArray[SCENE_TYPE::TITLE] = &title;
 	_sceneArray[SCENE_TYPE::STAGESELECT] = &stageSelect;
 	_sceneArray[SCENE_TYPE::GAME] = &game;
@@ -25,28 +27,32 @@ void SceneManager::Initialize()
 	}
 
 	_currentScene = _sceneArray[SCENE_TYPE::TITLE];
+	_effect.SetChangeSceneMethod([&]() {StartChangeScene();});
 }
 
-void SceneManager::Update()
-{
+void SceneManager::Update(){
+	
+	_effect.Update();
+	if (!_effect.CheckChangeScene()) return;
 	_currentScene->Update();
 }
 
 void SceneManager::SetMousePos(Vector2 mousePos) {
-	_currentScene->SetMousePos(mousePos);
+	if (_effect.CheckEndEffect()) _currentScene->SetMousePos(mousePos);
 }
 
 void SceneManager::Push() {
-	_currentScene->Push();
+	if (_effect.CheckEndEffect()) _currentScene->Push();
 }
 
 void SceneManager::Pull() {
-	_currentScene->Pull();
+	if (_effect.CheckEndEffect()) _currentScene->Pull();
 }
 
 void SceneManager::Render()
 {
 	_currentScene->Render();
+	_effect.Render();
 }
 
 void SceneManager::Release()
@@ -55,12 +61,17 @@ void SceneManager::Release()
 	{
 		iter->second->Release();
 	}
+	_effect.Release();
 }
 
-void SceneManager::ChangeScene(SCENE_TYPE nextScene)
-{
+void SceneManager::ChangeScene(SCENE_TYPE nextScene) {
+	_effect.StartEffect();
+	_nextSceneType = nextScene;
+}
+
+void SceneManager::StartChangeScene() {
 	_currentScene->StopBGM();
-	_currentScene = _sceneArray[nextScene];
+	_currentScene = _sceneArray[_nextSceneType];
 	_currentScene->ReLoad();
 }
 

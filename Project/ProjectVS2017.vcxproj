@@ -108,7 +108,13 @@
     <ClCompile Include="Button.cpp" />
     <ClCompile Include="ContactFile.cpp" />
     <ClCompile Include="CreateField.cpp" />
+    <ClCompile Include="ChangeSceneEffect.cpp" />
+    <ClCompile Include="EndGameButtonManager.cpp" />
     <ClCompile Include="GalleryCoin.cpp" />
+    <ClCompile Include="EndTutorialDollAnimation.cpp" />
+    <ClCompile Include="EndTutorial.cpp" />
+    <ClCompile Include="EndTutorialBackGround.cpp" />
+    <ClCompile Include="EndTutorialLogoAnimation.cpp" />
     <ClCompile Include="GalleryTexture.cpp" />
     <ClCompile Include="GetCoinNumber.cpp" />
     <ClCompile Include="SetFieldData.cpp" />
@@ -122,6 +128,8 @@
     <ClCompile Include="EnergyValue.cpp" />
     <ClCompile Include="EnergyVessels.cpp" />
     <ClCompile Include="ExitGame.cpp" />
+    <ClCompile Include="FadeIn.cpp" />
+    <ClCompile Include="FadeOut.cpp" />
     <ClCompile Include="Field.cpp" />
     <ClCompile Include="FieldUI.cpp" />
     <ClCompile Include="GalleryBar.cpp" />
@@ -134,6 +142,7 @@
     <ClCompile Include="GameClearLogoAnimation.cpp" />
     <ClCompile Include="GameOver.cpp" />
     <ClCompile Include="GameOverBackGround.cpp" />
+    <ClCompile Include="GameOverDollAnimation .cpp" />
     <ClCompile Include="GameOverLogoAnimation .cpp" />
     <ClCompile Include="GameScene.cpp" />
     <ClCompile Include="IBaseAccessories.cpp" />
@@ -160,7 +169,10 @@
     <ClCompile Include="StageSelectBackGround.cpp" />
     <ClCompile Include="StageSelectDialog.cpp" />
     <ClCompile Include="StageSelectScene.cpp" />
+    <ClCompile Include="TitleClickAnimation.cpp" />
+    <ClCompile Include="TitleLogoAnimation.cpp" />
     <ClCompile Include="TitleScene.cpp" />
+    <ClCompile Include="Tutorial.cpp" />
     <ClCompile Include="Wall.cpp" />
     <ClCompile Include="WindowProc.cpp" />
     <ClCompile Include="WinMain.cpp" />
@@ -175,8 +187,14 @@
     <ClInclude Include="BlockManager.h" />
     <ClInclude Include="BlockOnObject.h" />
     <ClInclude Include="Button.h" />
+    <ClInclude Include="ChangeSceneEffect.h" />
     <ClInclude Include="ContactFile.h" />
     <ClInclude Include="CreateField.h" />
+    <ClInclude Include="EndGameButtonManager.h" />
+    <ClInclude Include="EndTutorial.h" />
+    <ClInclude Include="EndTutorialBackGround.h" />
+    <ClInclude Include="EndTutorialDollAnimation.h" />
+    <ClInclude Include="EndTutorialLogoAnimation.h" />
     <ClInclude Include="GalleryCoin.h" />
     <ClInclude Include="GalleryTexture.h" />
     <ClInclude Include="GetCoinNumber.h" />
@@ -191,6 +209,8 @@
     <ClInclude Include="EnergyValue.h" />
     <ClInclude Include="EnergyVessels.h" />
     <ClInclude Include="ExitGame.h" />
+    <ClInclude Include="FadeIn.h" />
+    <ClInclude Include="FadeOut.h" />
     <ClInclude Include="Field.h" />
     <ClInclude Include="FieldUI.h" />
     <ClInclude Include="GalleryBar.h" />
@@ -203,6 +223,7 @@
     <ClInclude Include="GameClearLogoAnimation.h" />
     <ClInclude Include="GameOver.h" />
     <ClInclude Include="GameOverBackGround.h" />
+    <ClInclude Include="GameOverDollAnimation.h" />
     <ClInclude Include="GameOverLogoAnimation.h" />
     <ClInclude Include="GameScene.h" />
     <ClInclude Include="IBaseAccessories.h" />
@@ -230,7 +251,10 @@
     <ClInclude Include="StageSelectBackGround.h" />
     <ClInclude Include="StageSelectDialog.h" />
     <ClInclude Include="StageSelectScene.h" />
+    <ClInclude Include="TitleClickAnimation.h" />
+    <ClInclude Include="TitleLogoAnimation.h" />
     <ClInclude Include="TitleScene.h" />
+    <ClInclude Include="Tutorial.h" />
     <ClInclude Include="Wall.h" />
     <ClInclude Include="WindowProc.h" />
   </ItemGroup>

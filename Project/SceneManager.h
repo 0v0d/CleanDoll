@@ -1,6 +1,7 @@
 #pragma once
 #include	"map"
 #include	"IBaseScene.h"
+#include	"ChangeSceneEffect.h"
 
 enum class SCENE_TYPE
 {
@@ -15,6 +16,9 @@ class SceneManager
 	static SceneManager* _instance;
 	IBaseScene* _currentScene;
 	std::map<SCENE_TYPE, IBaseScene*> _sceneArray;
+	SCENE_TYPE _nextSceneType;
+	ChangeSceneEffect _effect;
+
 public:
 	void Initialize();
 
@@ -39,4 +43,7 @@ public:
 	void ChangeScene(SCENE_TYPE nextScene);
 	IBaseScene* GetScene(SCENE_TYPE scene) { return _sceneArray[scene]; }
 	SCENE_TYPE GetCurrentSceneType();
+
+private:
+	void StartChangeScene();
 };

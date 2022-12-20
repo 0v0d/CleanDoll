@@ -75,6 +75,11 @@ void StageSelectScene::StartNextStage() {
     _createField.LoadStage(_barManager.GetBar(_barManager.GetCurrentStageNumber())->GetStageDataTextName());
 }
 
+void StageSelectScene::CreateTutorialField()
+{
+    _createField.LoadStage("tutorial.txt");
+}
+
 void StageSelectScene::StageClear() {
     _barManager.StageClear(); 
 }

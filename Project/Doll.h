@@ -29,7 +29,8 @@ class Doll
 	bool _heldMop,_cleanAnimation;
 	bool _getCoin;
 
-	const int wait = 3;
+	//const int wait = 3;
+	const int wait = 0.1;
 	int _motionCount;
 	const int _textureValue = 30;
 	Vector2 _dollTextureSize;
