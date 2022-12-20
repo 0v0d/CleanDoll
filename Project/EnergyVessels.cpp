@@ -20,9 +20,7 @@ void EnergyVessels::Initialize()
 
 	//åƒÇ—èoÇµèáÇ™Ç®Ç©ÇµÇ¢
 	if (_energyBarArray != nullptr) SetBarStatu();
-
-	
-}
+	}
 
 void EnergyVessels::CalucPosition()
 {
@@ -82,7 +80,6 @@ void EnergyVessels::SetBarStatu()
 
 void EnergyVessels::Update()
 {
-
 }
 
 void EnergyVessels::SetCurrentEnergyValue(int currentEnergyValue) {
@@ -114,15 +111,17 @@ void EnergyVessels::CalucScale()
 
 void EnergyVessels::Render()
 {	
-	for (int i = 0;i < _maxEnergyValue;i++) 
-	{
-		_currentEnergyValue > i ? _energyBarArray[i].Render() : _energyBarArray[i].UsedEnergyRender();
-	}
-
+	_energyVesselsCenterTexture.RenderScale(_energyVesselsCenterPosition.x, _energyVesselsCenterPosition.y, _energyVesselsScale);
 	_energyVesselsTexture.RenderScale(_vesselsPosition.x, _vesselsPosition.y, _energyVesselsScale);
 	_remainEnergyTexture.RenderScale(_remainPosition.x, _remainPosition.y, _remainEnergyScale);
-	//_energyVesselsCenterTexture.RenderScale(_energyVesselsCenterPosition.x, _energyVesselsCenterPosition.y, _energyVesselsScale);
+
 	_energyValue.CalcuRect(_currentEnergyValue);
+	for (int i = 0; i < _maxEnergyValue; i++)
+	{
+		if (_currentEnergyValue > i) {
+			_energyBarArray[i].Render();
+		};
+	}
 	_energyValue.Render();
 }
 

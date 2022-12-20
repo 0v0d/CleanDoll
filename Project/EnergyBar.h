@@ -24,6 +24,5 @@ public:
 	void Update();
 	void ChangeColor(MofU32* color) { _renderColor = color; }
 	void Render();
-	void UsedEnergyRender();
 	void Release();
 };
