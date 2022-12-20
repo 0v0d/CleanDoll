@@ -19,10 +19,10 @@ void Field::Initialize()
 	_doll.Initialize();
 	_fieldUI.Initialize();
 	_endGameProcess.Initialize();
+	_tutorial.Initialize();
 
 	_doll.SetDumpValue(_dustDumpValue, _waterDumpValue);
-	_tutorialClear = false;
-	
+	_tutorial.SetBlockManager(&_blockManager);
 }
 
 void Field::ReLoad()
@@ -31,7 +31,7 @@ void Field::ReLoad()
 	_doll.ReLoad();
 	_fieldUI.ReLoad();
 	_operateDoll.ReLoad();
-
+	_tutorial.ReLoad();
 	
 	_doll.CalcuScale(_blockManager.GetDollOnBlock()->GetBlockSize().y, _blockManager.GetScale());
 	_dustDumpValue = _initalDustValue;
@@ -133,32 +133,12 @@ void Field::PassedMouse(Vector2 mousePosition)
 void Field::AdvanceRoute(Block* mouseOnBlock)
 {
 	if (_remainDistance <= 0 || mouseOnBlock->GetBlockOnObject()->GetFurniture() != nullptr) return;
+	if (!_tutorial.IsEnd() && !_tutorial.CheckInTutorialRoute(mouseOnBlock, _routeBlockArray.size())) return;
 
-	if (!_tutorialClear) {
-		int val = 0;
-		for(int i=0;i< _currentNumber+1;i++)
-		{
-			if (i >= 4) break;
-			val += _inputLimitArray[i];
-		}
-		if (_tutorialRouteValue + _routeBlockArray.size() >= val) return;
-
-		if (mouseOnBlock == _blockManager.GetBlock(_tutorialRouteArray[_routeBlockArray.size() + _tutorialRouteValue].first,
-			_tutorialRouteArray[_routeBlockArray.size() + _tutorialRouteValue].second)) {
-
-			_pickedBlock = mouseOnBlock;
-			_routeBlockArray.push_back(_pickedBlock);
-			_pickedBlock->SetPassedFlg(true);
-			_remainDistance--;
-		}
-	}
-	else{
-		_pickedBlock = mouseOnBlock;
-		_routeBlockArray.push_back(_pickedBlock);
-		_pickedBlock->SetPassedFlg(true);
-		_remainDistance--;
-	}
-
+	_pickedBlock = mouseOnBlock;
+	_routeBlockArray.push_back(_pickedBlock);
+	_pickedBlock->SetPassedFlg(true);
+	_remainDistance--;
 
 	if (_pickedBlock->GetBlockOnObject()->GetAccessories() != nullptr)
 	{
@@ -203,18 +183,8 @@ void Field::BackRoute(Block* mouseOnBlock)
 void Field::EndOfPassed(){
 	if (_routeBlockArray.size() <= 0) return;
 
-	if(!_tutorialClear){
-		_tutorialRouteValue += _routeBlockArray.size();
-		int val = 0;
-		for (int i = 0; i < _currentNumber + 1; i++)
-		{
-			if (i >= 4) break;
-			val += _inputLimitArray[i];
-		}
-		if (_tutorialRouteValue >= val)
-		{
-			_currentNumber++;
-		}
+	if(!_tutorial.IsEnd()){
+		_tutorial.EndOfPassed(_routeBlockArray.size());
 	}
 
 	_operateDoll.SetRouteBlockArray(_routeBlockArray);
@@ -225,11 +195,8 @@ void Field::EndOfPassed(){
 
 void Field::EndMoveDoll(){
 
-	if (!_tutorialClear) {
-		if (_currentNumber >= _inputLimitValue) {
-			_tutorialClear = true;
-			_endGameProcess.SetCurrentProcess(ProcessType::EndTutorial);
-		}
+	if (!_tutorial.IsEnd()) {
+		_tutorial.EndMoveDoll();
 	}
 	else
 	{
@@ -307,4 +274,5 @@ void Field::Release()
 	_doll.Release();
 	_fieldUI.Release();
 	_endGameProcess.Release();
+	_tutorial.Release();
 }

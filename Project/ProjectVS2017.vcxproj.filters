@@ -326,7 +326,7 @@
     <ClCompile Include="ChangeSceneEffect.cpp">
       <Filter>ソース ファイル\Scene\Effect</Filter>
     </ClCompile>
-    <ClCompile Include="TutorialScene.cpp">
+    <ClCompile Include="Tutorial.cpp">
       <Filter>ソース ファイル\Scene\GameScene\Tutorial</Filter>
     </ClCompile>
     <ClCompile Include="EndTutorial.cpp">
@@ -568,7 +568,7 @@
     <ClInclude Include="TitleClickAnimation.h">
       <Filter>ソース ファイル\Scene\TitleScene\Animation</Filter>
     </ClInclude>
-    <ClInclude Include="TutorialScene.h">
+    <ClInclude Include="Tutorial.h">
       <Filter>ソース ファイル\Scene\GameScene\Tutorial</Filter>
     </ClInclude>
     <ClInclude Include="EndTutorial.h">
