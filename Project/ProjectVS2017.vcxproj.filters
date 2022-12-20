@@ -285,6 +285,9 @@
       <Filter>ソース ファイル\Scene\GameScene\Field\BlockManager\Object</Filter>
       <Filter>ソース ファイル\Scene\GameScene\EndGameProcess\GameOver</Filter>
     </ClCompile>
+    <ClCompile Include="GetCoinNumber.cpp">
+      <Filter>ソース ファイル\Scene\GalleryScene</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GameApp.h">
@@ -487,12 +490,15 @@
     </ClInclude>
     <ClInclude Include="GalleryCoin.h">
       <Filter>ソース ファイル\Scene\GameScene\Field\BlockManager\Object</Filter>
-	</ClInclude>
+    </ClInclude>
     <ClInclude Include="BGM.h">
       <Filter>ソース ファイル\UI</Filter>
     </ClInclude>
     <ClInclude Include="GameOverLogoAnimation.h">
       <Filter>ソース ファイル\Scene\GameScene\EndGameProcess\GameOver</Filter>
+    </ClInclude>
+    <ClInclude Include="GetCoinNumber.h">
+      <Filter>ソース ファイル\Scene\GalleryScene</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
