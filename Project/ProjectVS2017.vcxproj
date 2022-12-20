@@ -186,8 +186,15 @@
     <ClInclude Include="BlockManager.h" />
     <ClInclude Include="BlockOnObject.h" />
     <ClInclude Include="Button.h" />
+    <ClInclude Include="ChangeSceneEffect.h" />
     <ClInclude Include="ContactFile.h" />
     <ClInclude Include="CreateField.h" />
+    <ClInclude Include="EndGameButtonManager.h" />
+    <ClInclude Include="EndTutorial.h" />
+    <ClInclude Include="EndTutorialBackGround.h" />
+    <ClInclude Include="EndTutorialDollAnimation.h" />
+    <ClInclude Include="EndTutorialLogoAnimation.h" />
+    <ClInclude Include="GalleryCoin.h" />
     <ClInclude Include="GalleryTexture.h" />
     <ClInclude Include="SetFieldData.h" />
     <ClInclude Include="Doll.h" />

@@ -14,7 +14,6 @@ class TitleScene :public IBaseScene
 
 	TitleLogoAnimation _titleLogoAnimation;
 	TitleClickAnimation _titleClickAnimation;
-	TutorialScene _tutorial;
 	BGM _bgm;
 	CSoundBuffer _music;
 	bool _clearTutorial;
