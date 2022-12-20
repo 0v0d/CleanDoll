@@ -9,7 +9,7 @@ void Bar::Initialize()
 	_barHitBox = CRectangle(_pos.x, _pos.y, _pos.x + _baseBarTexture->GetWidth() * _scale, _pos.y + _baseBarTexture->GetHeight() * _scale);
 	_maxMovePosY = (_space / 2 + _screenPos.y + (_baseBarTexture->GetHeight() * _scale + _space) * _stageValue) - _screenEdge.Bottom;
 	_difficultyScale = _barHitBox.GetHeight() / 2 / _difficultyTextureArray[0]->GetHeight()-0.1f;
-	
+	_coinScale = _barHitBox.GetHeight() / _coinTexture->GetHeight();
 	_clear = _getCoin = false;
 }
 
@@ -89,12 +89,19 @@ void Bar::Render()
 			(_pos.x+_difficultyTextureArray[i]->GetWidth()*_difficultyScale*i , posY, _difficultyScale, 
 			 GetRenderRect(Vector2(_pos.x, _pos.y + _barTexture.GetHeight() / 2), _difficultyTextureArray[i], _difficultyScale));
 	}
-
+	if (_getCoin)
+	{
+		posY = CheckOnScreenTopLine(_pos.y, _pos.y + _coinTexture->GetHeight()) ? _screenPos.y : _pos.y;
+		if (IsRenderRange(_coinTexture, Vector2(_barHitBox.Right - _coinTexture->GetWidth() * _coinScale, _pos.y), _coinScale))
+			_coinTexture->RenderScale(_barHitBox.Right - _coinTexture->GetWidth() * _coinScale, posY, _coinScale,
+				GetRenderRect(_pos, _coinTexture, _coinScale));
+	}
 }
 
 void Bar::Release()
 {
 	_previewTexture.Release();
 	_barTexture.Release();
+
 	delete[] _difficultyTextureArray;
 }
