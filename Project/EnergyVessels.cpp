@@ -16,6 +16,7 @@ void EnergyVessels::Initialize()
 		{3,MOF_COLOR_YELLOW},
 		{0,MOF_COLOR_RED},
 	};
+
 	_energyValue.SetScale(_scale);
 	_energyValue.Initialize();
 	_energyValue.SetPosition(Vector2(_vesselsPosition.x + _energyVesselsTexture.GetWidth() * _scale / 2,
