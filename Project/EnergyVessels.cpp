@@ -4,12 +4,7 @@ void EnergyVessels::Initialize()
 {
 	LoadTexture();
 	CalucScale();
-	_vesselsPosition = Vector2(g_pGraphics->GetTargetWidth() - _energyVesselsTexture.GetWidth() * _energyVesselsScale - 50,
-		g_pGraphics->GetTargetHeight() - _energyVesselsTexture.GetHeight() * _energyVesselsScale - 50);
-	_remainPosition = Vector2
-	(_vesselsPosition.x + _energyVesselsTexture.GetWidth() * _energyVesselsScale/ 2 - _remainEnergyTexture.GetWidth() * _remainEnergyScale * 0.5f,
-		_vesselsPosition.y - _remainEnergyTexture.GetHeight() * _energyVesselsScale - _remainEnergyTexture.GetHeight() * _remainEnergyScale/4 );
-
+	CalucPosition();
 
 	_renderColorArray = 
 	{
@@ -17,13 +12,10 @@ void EnergyVessels::Initialize()
 		{3,MOF_COLOR_YELLOW},
 		{0,MOF_COLOR_RED},
 	};
+
 	_energyValue.SetScale(_energyVesselsScale);
 	_energyValue.Initialize();
 	_energyValue.SetPosition(Vector2(_vesselsPosition.x + _energyVesselsTexture.GetWidth() * _energyVesselsScale/ 2,
-		_vesselsPosition.y + _energyVesselsTexture.GetHeight() * _energyVesselsScale/ 2));
-	_dollOnEnergyVessels.SetFacialExpressionValue(_variationValue);
-	_dollOnEnergyVessels.SetScale(_energyVesselsScale);
-	_dollOnEnergyVessels.SetPosition(Vector2(_vesselsPosition.x + _energyVesselsTexture.GetWidth() * _energyVesselsScale/ 2,
 		_vesselsPosition.y + _energyVesselsTexture.GetHeight() * _energyVesselsScale/ 2));
 
 	//呼び出し順がおかしい
@@ -32,13 +24,25 @@ void EnergyVessels::Initialize()
 	
 }
 
+void EnergyVessels::CalucPosition()
+{
+	_vesselsPosition = Vector2(g_pGraphics->GetTargetWidth() - _energyVesselsTexture.GetWidth() * _energyVesselsScale - 50,
+		g_pGraphics->GetTargetHeight() - _energyVesselsTexture.GetHeight() * _energyVesselsScale - 50);
+
+	_remainPosition = Vector2
+	(_vesselsPosition.x + _energyVesselsTexture.GetWidth() * _energyVesselsScale / 2 - _remainEnergyTexture.GetWidth() * _remainEnergyScale * 0.5f,
+		_vesselsPosition.y - _remainEnergyTexture.GetHeight() * _energyVesselsScale - _remainEnergyTexture.GetHeight() * _remainEnergyScale / 4);
+
+	_energyVesselsCenterPosition = Vector2(_vesselsPosition.x + _energyVesselsTexture.GetWidth() * _energyVesselsScale / 2 - _energyVesselsCenterTexture.GetWidth()* _energyVesselsScale / 2,
+		_vesselsPosition.y - _energyVesselsTexture.GetHeight() * _energyVesselsScale / 2 + _energyVesselsCenterTexture.GetHeight()*_energyVesselsScale);
+}
+
 void EnergyVessels::ReLoad()
 {
 	for (int i = 0; i < _maxEnergyValue; i++)
 	{
 		_energyBarArray[i].ChangeColor(&_renderColorArray[5]);
 	}
-	_dollOnEnergyVessels.ChangeFaceEzpression(_variationValue);
 	ChangeEnergyColor();
 }
 
@@ -48,7 +52,6 @@ void EnergyVessels::LoadTexture()
 	_energyBarTexture.Load("EnergyBar.png");
 	_remainEnergyTexture.Load("残りエネルギー.png");
 	_energyVesselsCenterTexture.Load("EnergyVesselsCenter.png");
-	_dollOnEnergyVessels.LoadTexture();
 }
 
 void EnergyVessels::SetMaxEnergyValue(int energyValue)
@@ -102,8 +105,6 @@ void EnergyVessels::ChangeEnergyColor()
 			energyColorCount++;
 		}
 	}
-
-	_dollOnEnergyVessels.ChangeFaceEzpression(_variationValue - energyColorCount);
 }
 
 void EnergyVessels::CalucScale()
@@ -120,8 +121,7 @@ void EnergyVessels::Render()
 
 	_energyVesselsTexture.RenderScale(_vesselsPosition.x, _vesselsPosition.y, _energyVesselsScale);
 	_remainEnergyTexture.RenderScale(_remainPosition.x, _remainPosition.y, _remainEnergyScale);
-	_energyVesselsCenterTexture.RenderScale(0, 0, _energyVesselsScale);
-	_dollOnEnergyVessels.Render();
+	//_energyVesselsCenterTexture.RenderScale(_energyVesselsCenterPosition.x, _energyVesselsCenterPosition.y, _energyVesselsScale);
 	_energyValue.CalcuRect(_currentEnergyValue);
 	_energyValue.Render();
 }
@@ -133,7 +133,6 @@ void EnergyVessels::Release()
 	_energyVesselsTexture.Release();
 	_energyBarTexture.Release();
 	_remainEnergyTexture.Release();
-	_dollOnEnergyVessels.Release();
 	_energyValue.Release();
 	_energyVesselsCenterTexture.Release();
 }

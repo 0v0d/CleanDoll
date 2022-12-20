@@ -1,19 +1,17 @@
 #pragma once
 #include	"Mof.h"
 #include	"EnergyBar.h"
-#include	"DollOnEnergyVessels.h"
 #include "EnergyValue.h"
 #include	"map"
 class EnergyVessels
 {
 private:
 	EnergyValue _energyValue;
-	DollOnEnergyVessels _dollOnEnergyVessels;
 	int _currentEnergyValue, _maxEnergyValue;
 
 	EnergyBar* _energyBarArray = nullptr;
 	CTexture _energyVesselsTexture, _energyBarTexture, _remainEnergyTexture, _energyVesselsCenterTexture;
-	Vector2 _vesselsPosition,_remainPosition;
+	Vector2 _vesselsPosition,_remainPosition, _energyVesselsCenterPosition;
 
 	const float _energyVesselsScale = 0.2f;
 	float _remainEnergyScale;
@@ -31,10 +29,12 @@ public:
 
 	void Render();
 	void Release();
-	void CalucScale();
+	
 private:
 	void LoadTexture();
 	void CreateEnergyBarArray();
 	void SetBarStatu();
 	void ChangeEnergyColor();
+	void CalucScale();
+	void CalucPosition();
 };
