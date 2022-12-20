@@ -111,6 +111,10 @@
     <ClCompile Include="ChangeSceneEffect.cpp" />
     <ClCompile Include="EndGameButtonManager.cpp" />
     <ClCompile Include="GalleryCoin.cpp" />
+    <ClCompile Include="EndTutorialDollAnimation.cpp" />
+    <ClCompile Include="EndTutorial.cpp" />
+    <ClCompile Include="EndTutorialBackGround.cpp" />
+    <ClCompile Include="EndTutorialLogoAnimation.cpp" />
     <ClCompile Include="GalleryTexture.cpp" />
     <ClCompile Include="SetFieldData.cpp" />
     <ClCompile Include="Doll.cpp" />
@@ -167,6 +171,7 @@
     <ClCompile Include="TitleClickAnimation.cpp" />
     <ClCompile Include="TitleLogoAnimation.cpp" />
     <ClCompile Include="TitleScene.cpp" />
+    <ClCompile Include="TutorialScene.cpp" />
     <ClCompile Include="Wall.cpp" />
     <ClCompile Include="WindowProc.cpp" />
     <ClCompile Include="WinMain.cpp" />
@@ -183,9 +188,6 @@
     <ClInclude Include="Button.h" />
     <ClInclude Include="ContactFile.h" />
     <ClInclude Include="CreateField.h" />
-    <ClInclude Include="ChangeSceneEffect.h" />
-    <ClInclude Include="EndGameButtonManager.h" />
-    <ClInclude Include="GalleryCoin.h" />
     <ClInclude Include="GalleryTexture.h" />
     <ClInclude Include="SetFieldData.h" />
     <ClInclude Include="Doll.h" />
@@ -243,6 +245,7 @@
     <ClInclude Include="TitleClickAnimation.h" />
     <ClInclude Include="TitleLogoAnimation.h" />
     <ClInclude Include="TitleScene.h" />
+    <ClInclude Include="TutorialScene.h" />
     <ClInclude Include="Wall.h" />
     <ClInclude Include="WindowProc.h" />
   </ItemGroup>

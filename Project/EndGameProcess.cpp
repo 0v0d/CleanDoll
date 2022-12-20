@@ -5,17 +5,19 @@ void EndGameProcess::Initialize(){
 
 	_gameClear.Initialize();
 	_gameOver.Initialize();
+	_endTutorial.Initialize();
 }
 
 void EndGameProcess::CreateProcessArray() {
 	_processArray[ProcessType::GameClear] = &_gameClear;
 	_processArray[ProcessType::GameOver] = &_gameOver;
+	_processArray[ProcessType::EndTutorial] = &_endTutorial;
 }
 
 void EndGameProcess::ReLoad(){
 	_gameClear.ReLoad();
 	_gameOver.ReLoad();
-
+	_endTutorial.ReLoad();
 	_process = false;
 }
 
@@ -53,4 +55,5 @@ void EndGameProcess::Render(){
 void EndGameProcess::Release(){
 	_gameClear.Release();
 	_gameOver.Release();
+	_endTutorial.Release();
 }

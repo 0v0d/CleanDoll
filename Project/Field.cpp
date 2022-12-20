@@ -21,6 +21,8 @@ void Field::Initialize()
 	_endGameProcess.Initialize();
 
 	_doll.SetDumpValue(_dustDumpValue, _waterDumpValue);
+	_tutorialClear = false;
+	
 }
 
 void Field::ReLoad()
@@ -132,10 +134,31 @@ void Field::AdvanceRoute(Block* mouseOnBlock)
 {
 	if (_remainDistance <= 0 || mouseOnBlock->GetBlockOnObject()->GetFurniture() != nullptr) return;
 
-	_pickedBlock = mouseOnBlock;
-	_pickedBlock->SetPassedFlg(true);
-	_routeBlockArray.push_back(_pickedBlock);
-	_remainDistance--;
+	if (!_tutorialClear) {
+		int val = 0;
+		for(int i=0;i< _currentNumber+1;i++)
+		{
+			if (i >= 4) break;
+			val += _inputLimitArray[i];
+		}
+		if (_tutorialRouteValue + _routeBlockArray.size() >= val) return;
+
+		if (mouseOnBlock == _blockManager.GetBlock(_tutorialRouteArray[_routeBlockArray.size() + _tutorialRouteValue].first,
+			_tutorialRouteArray[_routeBlockArray.size() + _tutorialRouteValue].second)) {
+
+			_pickedBlock = mouseOnBlock;
+			_routeBlockArray.push_back(_pickedBlock);
+			_pickedBlock->SetPassedFlg(true);
+			_remainDistance--;
+		}
+	}
+	else{
+		_pickedBlock = mouseOnBlock;
+		_routeBlockArray.push_back(_pickedBlock);
+		_pickedBlock->SetPassedFlg(true);
+		_remainDistance--;
+	}
+
 
 	if (_pickedBlock->GetBlockOnObject()->GetAccessories() != nullptr)
 	{
@@ -146,7 +169,6 @@ void Field::AdvanceRoute(Block* mouseOnBlock)
 			_pickedBlock->GetBlockOnObject()->HiddenAccessoriesFlg(true);
 		}
 	}
-
 	_fieldUI.SetCurrentEnergyValue(_remainDistance);
 }
 
@@ -178,9 +200,22 @@ void Field::BackRoute(Block* mouseOnBlock)
 }
 
 //入力終了
-void Field::EndOfPassed()
-{
+void Field::EndOfPassed(){
 	if (_routeBlockArray.size() <= 0) return;
+
+	if(!_tutorialClear){
+		_tutorialRouteValue += _routeBlockArray.size();
+		int val = 0;
+		for (int i = 0; i < _currentNumber + 1; i++)
+		{
+			if (i >= 4) break;
+			val += _inputLimitArray[i];
+		}
+		if (_tutorialRouteValue >= val)
+		{
+			_currentNumber++;
+		}
+	}
 
 	_operateDoll.SetRouteBlockArray(_routeBlockArray);
 	_lastDistanceBlock = _routeBlockArray.back();
@@ -188,29 +223,29 @@ void Field::EndOfPassed()
 	_recoveryDifferentialArray.clear();
 }
 
-void Field::EndMoveDoll()
-{
-	//ゲームクリア
-	if (_dustDumpValue <= 0 && _waterDumpValue <= 0)
-	{
-		StageSelectScene* stageSelect = dynamic_cast<StageSelectScene*>(SceneManager::Instance().GetScene(SCENE_TYPE::STAGESELECT));
-		if (_doll.IsGetCoin()) {
-			if (!_getCoin) {
-				dynamic_cast<GalleryScene*>(SceneManager::Instance().GetScene(SCENE_TYPE::GALLERY))->AddCoin();
-				stageSelect->GetCoin();
-				_getCoin = true;
-			}
+void Field::EndMoveDoll(){
+
+	if (!_tutorialClear) {
+		if (_currentNumber >= _inputLimitValue) {
+			_tutorialClear = true;
+			_endGameProcess.SetCurrentProcess(ProcessType::EndTutorial);
 		}
-		_endGameProcess.SetCurrentProcess(ProcessType::GameClear);
-		stageSelect->StageClear();
-		return;
 	}
-	//ゲームオーバー
-	if (_remainDistance <= 0) {
-		GameOver();
-	}
-	if (CheckCantMoveDoll()) {
-		GameOver();
+	else
+	{
+		//ゲームクリア
+		if (_dustDumpValue <= 0 && _waterDumpValue <= 0) {
+			_endGameProcess.SetCurrentProcess(ProcessType::GameClear);
+			dynamic_cast<StageSelectScene*>(SceneManager::Instance().GetScene(SCENE_TYPE::STAGESELECT))->StageClear();
+			return;
+		}
+		//ゲームオーバー
+		if (_remainDistance <= 0) {
+			GameOver();
+		}
+		if (CheckCantMoveDoll()) {
+			GameOver();
+		}
 	}
 }
 

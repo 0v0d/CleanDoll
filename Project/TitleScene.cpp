@@ -1,6 +1,7 @@
 #include "TitleScene.h"
 #include "SceneManager.h"
 
+
 void TitleScene::Initialize()
 {
 	_titleLogoAnimation.Initialize();
@@ -19,6 +20,7 @@ void TitleScene::ReLoad()
 	_bgm.Play();
 	_titleLogoAnimation.ReLoad();
 	_titleClickAnimation.ReLoad();
+	_clearTutorial = true;
 }
 
 void TitleScene::Update()
@@ -35,7 +37,15 @@ void TitleScene::SetMousePos(Vector2 mousePos) {
 }
 
 void TitleScene::Push() {
-	SceneManager::Instance().ChangeScene(SCENE_TYPE::STAGESELECT);
+	
+	if (!_clearTutorial){
+		dynamic_cast<StageSelectScene*>(SceneManager::Instance().GetScene(SCENE_TYPE::STAGESELECT))->CreateTutorialField();
+		SceneManager::Instance().ChangeScene(SCENE_TYPE::GAME);
+	}
+	else{
+
+		SceneManager::Instance().ChangeScene(SCENE_TYPE::STAGESELECT);
+	}
 	_bgm.Stop();
 }
 
