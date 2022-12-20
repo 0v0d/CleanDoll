@@ -49,9 +49,9 @@ private:
 
 	bool _push;
 	bool _tutorialClear;
-	int _routeSize;
 	int _tutorialArrayMaxValue;
-	
+	int _routeSize;
+	int _tutorialRouteValue;
 
 	FieldUI _fieldUI;
 	EndGameProcess _endGameProcess;
