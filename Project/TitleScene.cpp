@@ -1,6 +1,6 @@
 #include "TitleScene.h"
 #include "SceneManager.h"
-
+#include "StageSelectScene.h"
 
 void TitleScene::Initialize()
 {
