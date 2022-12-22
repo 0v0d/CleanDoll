@@ -543,6 +543,7 @@
     </ClInclude>
     <ClInclude Include="GetCoinNumber.h">
       <Filter>ソース ファイル\Scene\GalleryScene</Filter>
+	</ClInclude>
     <ClInclude Include="GameClearBackGround.h">
       <Filter>ソース ファイル\Scene\GameScene\EndGameProcess\GameClear\Animation</Filter>
     </ClInclude>
