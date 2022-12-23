@@ -4,6 +4,7 @@
 #include    "FieldUI.h"
 #include    "BackGround.h"
 #include    "BGM.h"
+#include    "Button.h"
 
 class GameScene :public IBaseScene
 {
@@ -13,6 +14,9 @@ class GameScene :public IBaseScene
     CTexture _gameBackTexture;
     BGM _bgm;
     CSoundBuffer _music;
+
+    Button _resetStageButton;
+    CTexture _resetButtonTexture;
 public:
     void Initialize();
     void ReLoad();
