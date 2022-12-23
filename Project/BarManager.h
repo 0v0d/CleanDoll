@@ -19,8 +19,7 @@ private:
 	CTexture _barTexture,_buttonTexture;
 
 	CTexture _difficultyTexture;
-	
-	
+	CTexture _coinTexture;
 	
 	Vector2 _mousePos;
 
@@ -36,7 +35,7 @@ public:
 	void Pull();
 	void MoveBar(float moveValue);
 
-	//必要ない
+	//必要ないのでは?
 	void StartStage(int barNumber);
 	void StartNextStage();
 	void StageClear();
