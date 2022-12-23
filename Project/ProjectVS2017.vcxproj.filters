@@ -343,6 +343,7 @@
     </ClCompile>
     <ClCompile Include="GetCoinNumber.cpp">
       <Filter>ソース ファイル\Scene\GalleryScene</Filter>
+	</ClCompile>
     <ClCompile Include="StageSelectLogo.cpp">
       <Filter>ソース ファイル\Scene\StageSelectScene</Filter>
     </ClCompile>
