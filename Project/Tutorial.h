@@ -18,6 +18,7 @@ private:
 	CTexture* _tutorialTexureArray;
 	Trim _trimstring;
 	int _textureValue;
+	int _currentClick;
 public:
 
 	void Initialize();

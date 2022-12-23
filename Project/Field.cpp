@@ -96,6 +96,7 @@ void Field::SetMousePos(Vector2 mousePos){
 void Field::Push() {
 	_push = true;
 	_endGameProcess.Push();
+
 }
 
 void Field::Pull() {

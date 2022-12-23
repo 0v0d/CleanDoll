@@ -5,6 +5,11 @@ void Tutorial::Initialize(){
 	LoadTutorialRoute();
 	LoadInputLimit();
 	LoadTexture();
+	_currentClick = 0;
+}
+
+void Tutorial::Push()
+{
 }
 
 void Tutorial::LoadTexture()
@@ -59,11 +64,11 @@ void Tutorial::EndOfPassed(int routeVal) {
 void Tutorial::Render()
 {
 	float a,b;
-	 a = g_pGraphics->GetTargetWidth() / 2 - _tutorialTexureArray[6].GetWidth() / 2;
-	 b = g_pGraphics->GetTargetHeight() - _tutorialTexureArray[6].GetHeight() -20;
+	 a = g_pGraphics->GetTargetWidth() / 2 - _tutorialTexureArray[7].GetWidth() / 2;
+	 b = g_pGraphics->GetTargetHeight() - _tutorialTexureArray[7].GetHeight() -20;
 	 float c,x;
 	 c = x = 0;
-	_tutorialTexureArray[7].Render(c,x);
+	_tutorialTexureArray[_currentClick].Render(c,x);
 }
 
 void Tutorial::ReLoad() {
