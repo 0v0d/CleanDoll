@@ -24,7 +24,7 @@ void EnergyVessels::Initialize()
 
 void EnergyVessels::CalucPosition()
 {
-	_vesselsPosition = Vector2(g_pGraphics->GetTargetWidth() - _energyVesselsTexture.GetWidth() * _energyVesselsScale - 50,
+	_vesselsPosition = Vector2( 50,
 		g_pGraphics->GetTargetHeight() - _energyVesselsTexture.GetHeight() * _energyVesselsScale - 50);
 
 	_remainPosition = Vector2
