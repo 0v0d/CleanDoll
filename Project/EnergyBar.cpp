@@ -21,11 +21,6 @@ void EnergyBar::Render()
 	_barTexture->RenderScaleRotate(_barPosition.x, _barPosition.y, _scale, _rotate, *_renderColor);
 }
 
-void EnergyBar::UsedEnergyRender()
-{
-	_barTexture->RenderScaleRotate(_barPosition.x, _barPosition.y, _scale, _rotate, MOF_COLOR_HBLACK);
-}
-
 void EnergyBar::Release()
 {
 

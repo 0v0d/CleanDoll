@@ -3,6 +3,7 @@
 #include	"string"
 #include	"GalleryBar.h"
 #include	"ContactFile.h"
+#include	"GetCoinNumber.h"
 
 class GalleryBarManager
 {
@@ -18,6 +19,8 @@ class GalleryBarManager
 
 	ContactFile _contactFile;
 
+	GetCoinNumber	_coinNumber;
+
 public:
 	void Initialize();
 	void ReLoad();
@@ -28,7 +31,11 @@ public:
 	void Push();
 	void Pull();
 	void Update();
- 	void AddCoinValue() { _gettedCoinValue++; }
+ 	void AddCoinValue() { 
+		_gettedCoinValue++; 
+		_coinNumber.SetCoinNumberValue(_gettedCoinValue);
+
+	}
 
 	void Render();
 	void Release();

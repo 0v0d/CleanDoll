@@ -16,7 +16,7 @@ class TitleScene :public IBaseScene
 	TitleClickAnimation _titleClickAnimation;
 	BGM _bgm;
 	CSoundBuffer _music;
-	bool _clearTutorial;
+	bool _clearTutorial = false;
 public:
 	void Initialize();
 	void ReLoad();

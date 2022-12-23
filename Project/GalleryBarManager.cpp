@@ -2,7 +2,8 @@
 
 void GalleryBarManager::Initialize() {
 	LoadTexture();
-
+	_coinNumber.SetPosition();
+	_coinNumber.Initialize();
 	_requiredCoinValueArray = new int[_barValue] {2, 5, 8, 11, 15};
 }
 
@@ -10,6 +11,7 @@ void GalleryBarManager::LoadTexture() {
 	_barBackGround.Load("stagepreview_base.png");
 	_barTexture.Load("BaseCleanBar.png");
 	_lockTexture.Load("BaseDirtyBar.png");
+	_coinNumber.LoadTextrue();
 }
 
 void GalleryBarManager::CreateBarArray() {
@@ -23,9 +25,9 @@ void GalleryBarManager::CreateBarArray() {
 		_barArray[i].SetBaseScale(scale);
 		_barArray[i].SetCenterPos(Vector2(posX, CalcuBarCenterPosY(i, space, scale)));
 	}
-
 	SetTexture();
 	SetBarData();
+
 }
 
 float GalleryBarManager::CalcuBarScale(float space) {
@@ -58,6 +60,7 @@ void GalleryBarManager::ReLoad() {
 		_barArray[i].ReLoad();
 	}
 	SetTexture();
+
 }
 
 void GalleryBarManager::SetTexture() {
@@ -108,6 +111,7 @@ void GalleryBarManager::Render() {
 	for (int i = 0;i < _barValue;i++) {
 		_barArray[i].Render();
 	}
+	_coinNumber.Render();
 }
 
 void GalleryBarManager::Release() {
@@ -120,4 +124,5 @@ void GalleryBarManager::Release() {
 	_barBackGround.Release();
 	_barTexture.Release();
 	_lockTexture.Release();
+	_coinNumber.Release();
 }

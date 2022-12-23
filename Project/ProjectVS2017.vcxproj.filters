@@ -326,7 +326,7 @@
     <ClCompile Include="ChangeSceneEffect.cpp">
       <Filter>ソース ファイル\Scene\Effect</Filter>
     </ClCompile>
-    <ClCompile Include="TutorialScene.cpp">
+    <ClCompile Include="Tutorial.cpp">
       <Filter>ソース ファイル\Scene\GameScene\Tutorial</Filter>
     </ClCompile>
     <ClCompile Include="EndTutorial.cpp">
@@ -340,6 +340,9 @@
     </ClCompile>
     <ClCompile Include="EndTutorialDollAnimation.cpp">
       <Filter>ソース ファイル\Scene\GameScene\EndGameProcess\EndTutorial\Animation</Filter>
+    </ClCompile>
+    <ClCompile Include="GetCoinNumber.cpp">
+      <Filter>ソース ファイル\Scene\GalleryScene</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -529,12 +532,18 @@
     <ClInclude Include="GameOverLogoAnimation.h">
       <Filter>ソース ファイル\Scene\GameScene\EndGameProcess\GameOver\Animation</Filter>
     </ClInclude>
+    <ClInclude Include="GalleryCoin.h">
+      <Filter>ソース ファイル\Scene\GameScene\Field\BlockManager\Object</Filter>
+    </ClInclude>
     <ClInclude Include="BGM.h">
       <Filter>ソース ファイル\UI</Filter>
     </ClInclude>
     <ClInclude Include="GameOverLogoAnimation.h">
       <Filter>ソース ファイル\Scene\GameScene\EndGameProcess\GameOver</Filter>
     </ClInclude>
+    <ClInclude Include="GetCoinNumber.h">
+      <Filter>ソース ファイル\Scene\GalleryScene</Filter>
+	</ClInclude>
     <ClInclude Include="GameClearBackGround.h">
       <Filter>ソース ファイル\Scene\GameScene\EndGameProcess\GameClear\Animation</Filter>
     </ClInclude>
@@ -568,7 +577,7 @@
     <ClInclude Include="TitleClickAnimation.h">
       <Filter>ソース ファイル\Scene\TitleScene\Animation</Filter>
     </ClInclude>
-    <ClInclude Include="TutorialScene.h">
+    <ClInclude Include="Tutorial.h">
       <Filter>ソース ファイル\Scene\GameScene\Tutorial</Filter>
     </ClInclude>
     <ClInclude Include="EndTutorial.h">

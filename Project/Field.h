@@ -6,6 +6,7 @@
 #include	"EndGameProcess.h"
 #include	"Doll.h"
 #include	"OperateDoll.h"
+#include	"Tutorial.h"
 
 class Field
 {
@@ -33,25 +34,15 @@ private:
 
 	bool* _onMoveDoll;
 
-
-
 	//アイテムで回復した移動回数
 	std::vector<int> _recoveryDifferentialArray;
 
-	std::pair<int,int>*_tutorialRouteArray;
-	int* _inputLimitArray;//txtfileの要素を格納する
-
-	int _currentNumber;//要素番号
-	//_routeBlockArray.size() 入力回数
-	int _inputLimitValue;//テキストファイルの一番上;
 	int _dustDumpValue, _waterDumpValue;
 	int  _initalDustValue, _initalWaterValue;
 
 	bool _push;
-	bool _tutorialClear;
-	int _tutorialArrayMaxValue;
-	int _routeSize;
-	int _tutorialRouteValue;
+
+	Tutorial _tutorial;
 
 	FieldUI _fieldUI;
 	EndGameProcess _endGameProcess;
@@ -86,16 +77,7 @@ public:
 
 	void SetDollMove(bool* onMoveDoll) { _onMoveDoll = onMoveDoll; }
 	void SetDollOnBlockNumber( Block* dollOnBlock);
-	void SetTutorialRouteArray(std::pair<int, int>** tutorialRouteArray) { _tutorialRouteArray = *tutorialRouteArray; }
-	void SetTutorialRoute(int x, int y)
-	{
-		_tutorialRouteArray[_routeSize].first = x;
-		_tutorialRouteArray[_routeSize].second =y;
-		_routeSize++;
-	}
-	void SetTutorialArrayMaxValue(int maxValue) { _tutorialArrayMaxValue = maxValue; }
-	void SetInputLimitValue(int inputLimitValue) { _inputLimitValue = inputLimitValue; }
-	void SetInputLimitArray(int* inputLimitArray) { _inputLimitArray = inputLimitArray; }
+
 private:
 
 	void AdvanceRoute(Block* mouseOnBlock);
