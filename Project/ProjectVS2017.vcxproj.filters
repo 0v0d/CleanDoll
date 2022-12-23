@@ -341,6 +341,9 @@
     <ClCompile Include="EndTutorialDollAnimation.cpp">
       <Filter>ソース ファイル\Scene\GameScene\EndGameProcess\EndTutorial\Animation</Filter>
     </ClCompile>
+    <ClCompile Include="StageSelectLogo.cpp">
+      <Filter>ソース ファイル\Scene\StageSelectScene</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GameApp.h">
@@ -591,6 +594,9 @@
     </ClInclude>
     <ClInclude Include="GalleryCoin.h">
       <Filter>ソース ファイル\Scene\GameScene\Field\BlockManager\Object</Filter>
+    </ClInclude>
+    <ClInclude Include="StageSelectLogo.h">
+      <Filter>ソース ファイル\Scene\StageSelectScene</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

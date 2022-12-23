@@ -171,6 +171,7 @@
     <ClCompile Include="TitleClickAnimation.cpp" />
     <ClCompile Include="TitleLogoAnimation.cpp" />
     <ClCompile Include="TitleScene.cpp" />
+    <ClCompile Include="StageSelectLogo.cpp" />
     <ClCompile Include="Tutorial.cpp" />
     <ClCompile Include="Wall.cpp" />
     <ClCompile Include="WindowProc.cpp" />
@@ -252,6 +253,7 @@
     <ClInclude Include="TitleClickAnimation.h" />
     <ClInclude Include="TitleLogoAnimation.h" />
     <ClInclude Include="TitleScene.h" />
+    <ClInclude Include="StageSelectLogo.h" />
     <ClInclude Include="Tutorial.h" />
     <ClInclude Include="Wall.h" />
     <ClInclude Include="WindowProc.h" />

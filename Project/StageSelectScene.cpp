@@ -8,6 +8,8 @@ void StageSelectScene::Initialize()
     
     LoadTexture();
 
+    _LogoSlide.Initialize();
+
     _barManager.Initialize();
     _stageSelectDialog.Initialize();
     _preview.Initialize();
@@ -24,6 +26,7 @@ void StageSelectScene::Initialize()
 void StageSelectScene::LoadTexture()
 {
     _backGroundTexture.Load("menu_back.png");
+    _LogoSlide.Load();
 }
 
 void StageSelectScene::ReLoad()
@@ -31,11 +34,13 @@ void StageSelectScene::ReLoad()
     _barManager.ReLoad();
     _stageSelectDialog.ReLoad();
     _bgm.Play();
+    _LogoSlide.ReLoad();
 }
 
 void StageSelectScene::Update()
 {
     _barManager.Update();
+    _LogoSlide.Update();
 }
 
 void StageSelectScene::SetMousePos(Vector2 mousePos) {
@@ -99,6 +104,7 @@ void StageSelectScene::Render()
     _backGround.Render();
     _barManager.Render();
     _preview.Render();
+    _LogoSlide.Render();
 
     _stageSelectDialog.Render();
 }
@@ -113,6 +119,8 @@ void StageSelectScene::Release()
 
     _createField.Release();
     _music.Release();
+
+    _LogoSlide.Release();
 }
 
 void StageSelectScene::StopBGM()
