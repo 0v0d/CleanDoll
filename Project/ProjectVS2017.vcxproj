@@ -120,7 +120,6 @@
     <ClCompile Include="SetFieldData.cpp" />
     <ClCompile Include="Doll.cpp" />
     <ClCompile Include="DollAnimation.cpp" />
-    <ClCompile Include="DollOnEnergyVessels.cpp" />
     <ClCompile Include="Dump.cpp" />
     <ClCompile Include="EndGameButtonAnimation.cpp" />
     <ClCompile Include="EndGameProcess.cpp" />
@@ -201,7 +200,6 @@
     <ClInclude Include="SetFieldData.h" />
     <ClInclude Include="Doll.h" />
     <ClInclude Include="DollAnimation.h" />
-    <ClInclude Include="DollOnEnergyVessels.h" />
     <ClInclude Include="Dump.h" />
     <ClInclude Include="EndGameButtonAnimation.h" />
     <ClInclude Include="EndGameProcess.h" />
