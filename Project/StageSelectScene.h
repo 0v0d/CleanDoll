@@ -7,12 +7,16 @@
 #include	"BGM.h"
 #include	"CreateField.h"
 #include	"ContactFile.h"
+#include "StageSelectLogo.h"
+
 
 class StageSelectScene :public IBaseScene
 {
 private:
 	CreateField _createField;
 	ContactFile _contactFile;
+
+	StageSelectLogo	_LogoSlide;
 
 	BarManager _barManager;
 	StageSelectDialog _stageSelectDialog;

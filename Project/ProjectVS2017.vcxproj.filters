@@ -343,6 +343,8 @@
     </ClCompile>
     <ClCompile Include="GetCoinNumber.cpp">
       <Filter>ソース ファイル\Scene\GalleryScene</Filter>
+    <ClCompile Include="StageSelectLogo.cpp">
+      <Filter>ソース ファイル\Scene\StageSelectScene</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -600,6 +602,9 @@
     </ClInclude>
     <ClInclude Include="GalleryCoin.h">
       <Filter>ソース ファイル\Scene\GameScene\Field\BlockManager\Object</Filter>
+    </ClInclude>
+    <ClInclude Include="StageSelectLogo.h">
+      <Filter>ソース ファイル\Scene\StageSelectScene</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
