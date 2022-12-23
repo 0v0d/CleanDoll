@@ -26,6 +26,7 @@ public:
 	void SetBlockManager(BlockManager* blockManager) { _blockManager = blockManager; }
 	void EndOfPassed(int routeVal);
 	void EndMoveDoll();
+	void Push();
 	void Render();
 	void Release();
 	
