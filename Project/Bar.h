@@ -21,9 +21,6 @@ private:
 	CTexture** _difficultyTextureArray;
 	Vector2 _difficultyPos;
 	float _difficultyScale;
-
-	CTexture* _coinTexture;
-	float _coinScale;
 	
 	std::string _stageDataTextName;
 
@@ -38,7 +35,6 @@ public:
 	void SetData(int stageNumber, std::string previewTextureName, std::string barTextureName, int difficulty, std::string stageDataTextName);
 	void SetStageValue(int stageValue) { _stageValue = stageValue; }
 	void SetBaseBarTexture(CTexture* texture) { _baseBarTexture = texture; }
-	void SetCoinTexture(CTexture* texture) { _coinTexture = texture; }
 
 	void Move(float sliderValue);
 	void Clear() { _clear = true; }

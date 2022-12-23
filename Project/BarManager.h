@@ -19,8 +19,6 @@ private:
 	CTexture _barTexture,_buttonTexture;
 
 	CTexture _difficultyTexture;
-
-	CTexture _coinTexture;
 	
 	
 	
