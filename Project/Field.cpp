@@ -275,6 +275,7 @@ void Field::Render()
 	_blockManager.Render();
 	_fieldUI.Render();
 	_endGameProcess.Render();
+	_tutorial.Render();
 }
 
 void Field::Release()
