@@ -6,6 +6,7 @@ void Tutorial::Initialize(){
 	LoadInputLimit();
 	LoadTexture();
 	LoadTexturePos();
+	LoadTexureHidden();
 	_currentClick = 0;
 	_hidden = false;
 }
@@ -18,9 +19,10 @@ void Tutorial::Push()
 		_currentClick %= _texturePosValue;
 	}
 
-	if(_currentClick == 4)
+	if(_currentClick == _textureHiddenArray[_currentHidden])
 	{
 		_hidden = true;
+		_currentHidden++;
 	}
 }
 
@@ -72,25 +74,33 @@ void Tutorial::LoadTexturePos()
 	_contactFile.CloseFile();
 }
 
+void Tutorial::LoadTexureHidden()
+{
+	_contactFile.OpenFile("tutorialHiddenValue.txt");
+	_textureHiddenValue = _contactFile.GetValue(true);
+	_textureHiddenArray = new int[_textureHiddenValue];
+
+	for (int i = 0; i < _textureHiddenValue; i++) {
+		_textureHiddenArray[i] = _contactFile.GetValue(false);
+	}
+	_contactFile.CloseFile();
+}
+
 void Tutorial::EndOfPassed(int routeVal) {
 	int val = 0;
 	for (int i = 0;i < _currentLimitNumber;i++) {
 		val += _inputLimitArray[i];
 	}
-
 	_currentRouteValue += routeVal;
+	_routeValue = routeVal;
 	if (_currentRouteValue - val >= _inputLimitArray[_currentLimitNumber]) {
 		_currentLimitNumber++;
-		
 	}
 }
 
 void Tutorial::Render()
 {
-	if(_currentLimitNumber>=1)
-	{
-		_hidden = false;
-	}
+
 	if(!_hidden)
 		_tutorialTexureArray[_currentClick].Render(_texturePosArray[_currentClick].first, _texturePosArray[_currentClick].second);
 }
@@ -104,6 +114,16 @@ void Tutorial::EndMoveDoll() {
 	if (_currentLimitNumber >= _inputLimitValue){
 		_end = true;
 	}
+	//int val = 0;
+	//for (int i = 0; i < _currentLimitNumber -1; i++) {
+	//	val += _inputLimitArray[i];
+	//}
+	//
+	//
+	//if (_currentRouteValue - val >= _inputLimitArray[_currentLimitNumber]) {
+	//	//_currentLimitNumber++;
+	//	_hidden = false;
+	//}
 }
 
 bool Tutorial::CheckInTutorialRoute(Block* mouseOnBlock, int routeNumber) {
@@ -121,4 +141,5 @@ void Tutorial::Release(){
 	delete[] _inputLimitArray;
 	delete[] _tutorialTexureArray;
 	delete[] _texturePosArray;
+	delete[] _textureHiddenArray;
 }

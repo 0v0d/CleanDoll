@@ -26,6 +26,10 @@ private:
 	int _currentClick;
 	bool _hidden;
 
+	int _textureHiddenValue;
+	int* _textureHiddenArray;
+	int _currentHidden;
+	int _routeValue;
 public:
 
 	void Initialize();
@@ -45,4 +49,5 @@ private:
 	void LoadInputLimit();
 	void LoadTexture();
 	void LoadTexturePos();
+	void LoadTexureHidden();
 };
