@@ -5,25 +5,23 @@ void Tutorial::Initialize(){
 	LoadTutorialRoute();
 	LoadInputLimit();
 	LoadTexture();
+	LoadTexturePos();
 	_currentClick = 0;
+	_hidden = false;
 }
 
 void Tutorial::Push()
 {
-}
-
-void Tutorial::LoadTexture()
-{
-	_contactFile.OpenFile("TutorialTexture.txt");
-	_textureValue = _contactFile.GetValue(true);
-	_tutorialTexureArray = new CTexture[_textureValue];
-	for(int i = 0; i<_textureValue; i++)
+	if (!_hidden)
 	{
-		_tutorialTexureArray[i].Load(_trimstring.TrimString(_contactFile.GetString(false)).c_str());
+		_currentClick++;
+		_currentClick %= _texturePosValue;
 	}
 
-	
-	_contactFile.CloseFile();
+	if(_currentClick == 4)
+	{
+		_hidden = true;
+	}
 }
 
 void Tutorial::LoadTutorialRoute(){
@@ -49,6 +47,31 @@ void Tutorial::LoadInputLimit()
 	_contactFile.CloseFile();
 }
 
+void Tutorial::LoadTexture()
+{
+	_contactFile.OpenFile("TutorialTexture.txt");
+	_textureValue = _contactFile.GetValue(true);
+	_tutorialTexureArray = new CTexture[_textureValue];
+	for (int i = 0; i < _textureValue; i++)
+	{
+		_tutorialTexureArray[i].Load(_trimstring.TrimString(_contactFile.GetString(false)).c_str());
+	}
+	_contactFile.CloseFile();
+}
+
+void Tutorial::LoadTexturePos()
+{
+	_contactFile.OpenFile("tutorialTexturePos.txt");
+	_texturePosValue = _contactFile.GetValue(true);
+	_texturePosArray = new std::pair<int, int>[_texturePosValue];
+
+	for (int i = 0; i < _texturePosValue; i++) {
+		_texturePosArray[i].first = _contactFile.GetValue(false);
+		_texturePosArray[i].second = _contactFile.GetValue(false);
+	}
+	_contactFile.CloseFile();
+}
+
 void Tutorial::EndOfPassed(int routeVal) {
 	int val = 0;
 	for (int i = 0;i < _currentLimitNumber;i++) {
@@ -58,17 +81,18 @@ void Tutorial::EndOfPassed(int routeVal) {
 	_currentRouteValue += routeVal;
 	if (_currentRouteValue - val >= _inputLimitArray[_currentLimitNumber]) {
 		_currentLimitNumber++;
+		
 	}
 }
 
 void Tutorial::Render()
 {
-	float a,b;
-	 a = g_pGraphics->GetTargetWidth() / 2 - _tutorialTexureArray[7].GetWidth() / 2;
-	 b = g_pGraphics->GetTargetHeight() - _tutorialTexureArray[7].GetHeight() -20;
-	 float c,x;
-	 c = x = 0;
-	_tutorialTexureArray[_currentClick].Render(c,x);
+	if(_currentLimitNumber>=1)
+	{
+		_hidden = false;
+	}
+	if(!_hidden)
+		_tutorialTexureArray[_currentClick].Render(_texturePosArray[_currentClick].first, _texturePosArray[_currentClick].second);
 }
 
 void Tutorial::ReLoad() {
@@ -77,7 +101,7 @@ void Tutorial::ReLoad() {
 }
 
 void Tutorial::EndMoveDoll() {
-	if (_currentLimitNumber >= _inputLimitValue) {
+	if (_currentLimitNumber >= _inputLimitValue){
 		_end = true;
 	}
 }
@@ -96,4 +120,5 @@ void Tutorial::Release(){
 	delete[] _tutorialRouteArray;
 	delete[] _inputLimitArray;
 	delete[] _tutorialTexureArray;
+	delete[] _texturePosArray;
 }

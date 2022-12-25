@@ -78,9 +78,13 @@ void Field::SetWaterDumpValue(int dumpValue) {
 
 void Field::Update()
 {
-	if (_push) {
-		PassedMouse(_mousePos);
+	if(_tutorial.IsHideen())
+	{
+		if (_push) {
+			PassedMouse(_mousePos);
+		}
 	}
+
 	
 	_blockManager.Update();
 	_doll.Update();
@@ -96,7 +100,7 @@ void Field::SetMousePos(Vector2 mousePos){
 void Field::Push() {
 	_push = true;
 	_endGameProcess.Push();
-
+	_tutorial.Push();
 }
 
 void Field::Pull() {
