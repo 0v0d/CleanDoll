@@ -13,14 +13,16 @@ void Tutorial::Initialize(){
 
 void Tutorial::Push()
 {
-	if (!_hidden)
-	{
+	if (!_hidden){
 		_currentClick++;
-		_currentClick %= _texturePosValue;
+		if(_currentClick >=_textureValue)
+		{
+			_currentClick = _textureValue;
+			_hidden = true;
+		}
 	}
 
-	if(_currentClick == _textureHiddenArray[_currentHidden])
-	{
+	if(_currentClick == _textureHiddenArray[_currentHidden]){
 		_hidden = true;
 		_currentHidden++;
 	}
@@ -100,7 +102,6 @@ void Tutorial::EndOfPassed(int routeVal) {
 
 void Tutorial::Render()
 {
-
 	if(!_hidden)
 		_tutorialTexureArray[_currentClick].Render(_texturePosArray[_currentClick].first, _texturePosArray[_currentClick].second);
 }
@@ -114,26 +115,24 @@ void Tutorial::EndMoveDoll() {
 	if (_currentLimitNumber >= _inputLimitValue){
 		_end = true;
 	}
-	//int val = 0;
-	//for (int i = 0; i < _currentLimitNumber -1; i++) {
-	//	val += _inputLimitArray[i];
-	//}
-	//
-	//
-	//if (_currentRouteValue - val >= _inputLimitArray[_currentLimitNumber]) {
-	//	//_currentLimitNumber++;
-	//	_hidden = false;
-	//}
+	int val = 0;
+	for (int i = 0; i < _currentLimitNumber-1; i++) {
+		val += _inputLimitArray[i];
+	}
+	if (_currentRouteValue - val >= _inputLimitArray[_currentLimitNumber-1]) {
+		_hidden = false;
+	}
 }
 
 bool Tutorial::CheckInTutorialRoute(Block* mouseOnBlock, int routeNumber) {
-	int val = _inputLimitArray[0];
-	for (int i = 0;i < _currentLimitNumber;i++) {
+	int val = 0;
+	for (int i = 0; i < _currentLimitNumber + 1; i++) {
 		val += _inputLimitArray[i];
 	}
 	if (_currentRouteValue + routeNumber >= val) return false;
 
-	return mouseOnBlock == _blockManager->GetBlock(_tutorialRouteArray[_currentRouteValue + routeNumber].first, _tutorialRouteArray[_currentRouteValue + routeNumber].second);
+	return mouseOnBlock == _blockManager->GetBlock(_tutorialRouteArray[_currentRouteValue + routeNumber].first,
+		_tutorialRouteArray[_currentRouteValue + routeNumber].second);
 }
 
 void Tutorial::Release(){
