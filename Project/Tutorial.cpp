@@ -6,7 +6,7 @@ void Tutorial::Initialize(){
 	LoadInputLimit();
 	LoadTexture();
 	LoadTexturePos();
-	LoadTexureHidden();
+	LoadTextureHidden();
 	_currentClick = 0;
 	_hidden = false;
 }
@@ -16,11 +16,11 @@ void Tutorial::ReLoad() {
 	else _end = true;
 }
 
-void Tutorial::Push()
-{
+void Tutorial::Push(){
 	if (!_hidden){
 		_currentClick++;
 		if(_currentClick >=_textureValue-1){
+			_end = true;
 			_currentClick = _textureValue - 1;
 			_hidden = true;
 		}
@@ -80,7 +80,7 @@ void Tutorial::LoadTexturePos()
 	_contactFile.CloseFile();
 }
 
-void Tutorial::LoadTexureHidden()
+void Tutorial::LoadTextureHidden()
 {
 	_contactFile.OpenFile("tutorialHiddenValue.txt");
 	_textureHiddenValue = _contactFile.GetValue(true);
@@ -106,10 +106,6 @@ void Tutorial::EndMoveDoll() {
 	if (_currentRouteValue - val >= _inputLimitArray[_currentLimitNumber]) {
 		_hidden = false;
 		_currentLimitNumber++;
-	}
-
-	if (_currentLimitNumber >= _inputLimitValue) {
-		_end = true;
 	}
 }
 

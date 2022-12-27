@@ -40,7 +40,7 @@ public:
 	void Render();
 	void Release();
 	
-	bool IsEnd() { return _end; }
+	bool IsEnd() const { return _end; }
 	bool CheckInTutorialRoute(Block* mouseOnBlock,int routeNumber);
 	bool IsHideen()const { return _hidden; }
 private:
@@ -48,5 +48,5 @@ private:
 	void LoadInputLimit();
 	void LoadTexture();
 	void LoadTexturePos();
-	void LoadTexureHidden();
+	void LoadTextureHidden();
 };
