@@ -31,7 +31,6 @@ private:
 	int _currentHidden;
 	int _routeValue;
 public:
-
 	void Initialize();
 	void ReLoad();
 	void SetBlockManager(BlockManager* blockManager) { _blockManager = blockManager; }

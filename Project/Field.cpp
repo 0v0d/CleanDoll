@@ -200,9 +200,14 @@ void Field::EndOfPassed(){
 
 void Field::EndMoveDoll(){
 
+	//if (_tutorial.IsEnd()) {
+	//	StageSelectScene* stageSelect = dynamic_cast<StageSelectScene*>(SceneManager::Instance().GetScene(SCENE_TYPE::STAGESELECT));
+	//	_endGameProcess.SetCurrentProcess(ProcessType::EndTutorial);
+	//}
 	if (!_tutorial.IsEnd()) {
 		_tutorial.EndMoveDoll();
 	}
+	
 	else
 	{
 		//ÉQÅ[ÉÄÉNÉäÉA
