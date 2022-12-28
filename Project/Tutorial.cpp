@@ -4,21 +4,6 @@ void Tutorial::Initialize(){
 	_end = _start = false;
 	LoadTutorialRoute();
 	LoadInputLimit();
-	LoadTexture();
-}
-
-void Tutorial::LoadTexture()
-{
-	_contactFile.OpenFile("TutorialTexture.txt");
-	_textureValue = _contactFile.GetValue(true);
-	_tutorialTexureArray = new CTexture[_textureValue];
-	for(int i = 0; i<_textureValue; i++)
-	{
-		_tutorialTexureArray[i].Load(_trimstring.TrimString(_contactFile.GetString(false)).c_str());
-	}
-
-	
-	_contactFile.CloseFile();
 }
 
 void Tutorial::LoadTutorialRoute(){
@@ -56,15 +41,6 @@ void Tutorial::EndOfPassed(int routeVal) {
 	}
 }
 
-void Tutorial::Render()
-{
-	float a,b;
-	 a = g_pGraphics->GetTargetWidth() / 2 - _tutorialTexureArray[6].GetWidth() / 2;
-	 b = g_pGraphics->GetTargetHeight() - _tutorialTexureArray[6].GetHeight() -20;
-	 float c,x;
-	 c = x = 0;
-	_tutorialTexureArray[7].Render(c,x);
-}
 
 void Tutorial::ReLoad() {
 	if (!_start) _start = true;
@@ -90,5 +66,4 @@ bool Tutorial::CheckInTutorialRoute(Block* mouseOnBlock, int routeNumber) {
 void Tutorial::Release(){
 	delete[] _tutorialRouteArray;
 	delete[] _inputLimitArray;
-	delete[] _tutorialTexureArray;
 }

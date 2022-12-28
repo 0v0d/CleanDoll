@@ -2,7 +2,6 @@
 #include	"ContactFile.h"
 #include	"BlockManager.h"
 #include	"Block.h"
-#include "Trim.h"
 
 class Tutorial
 {
@@ -14,10 +13,6 @@ private:
 	int _currentRouteValue,_maxRouteValue;
 	int* _inputLimitArray;
 	int _inputLimitValue,_currentLimitNumber;
-
-	CTexture* _tutorialTexureArray;
-	Trim _trimstring;
-	int _textureValue;
 public:
 
 	void Initialize();
@@ -25,7 +20,6 @@ public:
 	void SetBlockManager(BlockManager* blockManager) { _blockManager = blockManager; }
 	void EndOfPassed(int routeVal);
 	void EndMoveDoll();
-	void Render();
 	void Release();
 	
 	bool IsEnd() { return _end; }
@@ -34,5 +28,4 @@ public:
 private:
 	void LoadTutorialRoute();
 	void LoadInputLimit();
-	void LoadTexture();
 };
