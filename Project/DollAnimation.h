@@ -32,4 +32,3 @@ private:
 	int WaitAnimationLoop() { return _currentMotion = (_currentMotion + 1) % 2; }
 	void UpdateAnimation();
 };
-
