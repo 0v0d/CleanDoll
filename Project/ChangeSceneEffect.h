@@ -1,12 +1,12 @@
 #pragma once
 #include	"functional"
-#include	"FadeIn.h"
-#include	"FadeOut.h"
+#include	"SideIn.h"
+#include	"SideOut.h"
 
 class ChangeSceneEffect
 {
-	FadeIn _fadeIn;
-	FadeOut _fadeOut;
+	SideIn _sideIn;
+	SideOut _sideOut;
 	std::function<void()> _changeSceneMethod;
 public:
 	void Initialize();
@@ -17,6 +17,6 @@ public:
 	void Render();
 	void Release();
 
-	bool CheckEndEffect() { return _fadeOut.IsEnd()&&_fadeIn.IsEnd(); }
-	bool CheckChangeScene() { return _fadeOut.IsEnd(); }
+	bool CheckEndEffect() { return _sideOut.IsEnd()&& _sideIn.IsEnd(); }
+	bool CheckChangeScene() { return _sideOut.IsEnd(); }
 };
