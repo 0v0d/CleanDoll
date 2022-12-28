@@ -78,14 +78,25 @@ void Field::SetWaterDumpValue(int dumpValue) {
 
 void Field::Update()
 {
-	if (_push) {
-		PassedMouse(_mousePos);
+	if(_tutorial.IsHideen())
+	{
+		if (_push) {
+			PassedMouse(_mousePos);
+		}
 	}
+
 	
 	_blockManager.Update();
 	_doll.Update();
 	_endGameProcess.Update();
 	_fieldUI.Update();
+
+	//ここに書く理由は、ドールが動いた後にも画像があり、それをclickすることで、クリア判定になります
+	//しかし、EndMoveDoll()に書いてしまうとドールがその後、動かないため永遠にクリア画面を出すことができないからです。
+	if (_tutorial.IsEnd()){
+		StageSelectScene* stageSelect = dynamic_cast<StageSelectScene*>(SceneManager::Instance().GetScene(SCENE_TYPE::STAGESELECT));
+		_endGameProcess.SetCurrentProcess(ProcessType::EndTutorial);
+	}
 }
 
 void Field::SetMousePos(Vector2 mousePos){
@@ -95,7 +106,9 @@ void Field::SetMousePos(Vector2 mousePos){
 
 void Field::Push() {
 	_push = true;
+	_tutorial.Push();
 	_endGameProcess.Push();
+	
 }
 
 void Field::Pull() {
@@ -200,6 +213,7 @@ void Field::EndMoveDoll(){
 	}
 	else
 	{
+
 		//ゲームクリア
 		if (_dustDumpValue <= 0 && _waterDumpValue <= 0) {
 
@@ -275,6 +289,7 @@ void Field::Render()
 	_blockManager.Render();
 	_fieldUI.Render();
 	_endGameProcess.Render();
+	_tutorial.Render();
 }
 
 void Field::Release()
