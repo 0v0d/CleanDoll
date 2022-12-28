@@ -1,32 +1,30 @@
 #include "StageSelectLogo.h"
 
 void StageSelectLogo::Initialize() {
-
-
+	Load();
 }
 
 void StageSelectLogo::Load() {
-	StSelectLogoTexture.Load("stageselect.png");
+	_selectLogoTexture.Load("stageselectlogo.png");
 }
 
 void StageSelectLogo::ReLoad() {
-	posX = -100;
-	posY = 30;
-	Alpha = 0;
+	_pos.x = -200;
+	_pos.y = 10;
+	_alpha = 0;
 }
 
 void StageSelectLogo::Update() {
-		if (Alpha < 255&&posX<=100) {
-			Alpha += 3;
-			posX+= 2;
-		}
+	if (_alpha < 255 && _pos.x <= 0) {
+		_alpha += 3;
+		_pos.x += 2;
+	}
 }
 
 void StageSelectLogo::Render() {
-	StSelectLogoTexture.RenderScale(posX, posY,1,MOF_ARGB(Alpha,255,255,255));
+	_selectLogoTexture.RenderScale(_pos.x, _pos.y,1,MOF_ARGB(_alpha,255,255,255));
 }
 
 void StageSelectLogo::Release() {
-	StSelectLogoTexture.Release();
-
+	_selectLogoTexture.Release();
 }

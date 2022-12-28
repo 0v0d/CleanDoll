@@ -3,17 +3,17 @@
 class StageSelectLogo
 {
 private:
-	CTexture	StSelectLogoTexture;
-	float		posX,posY;
-	bool		SlidIn;
-	int			Alpha;
+	CTexture _selectLogoTexture;
+	Vector2 _pos;
+	bool _slidIn;
+	int _alpha;
 public:
 	void Initialize();
 	void ReLoad();
-	void Load();
 	void Update();
 	void Render();
 	void Release();
-
+private:
+	void Load();
 };
 
