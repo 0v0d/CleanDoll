@@ -22,7 +22,7 @@ void StageSelectLogo::Update() {
 }
 
 void StageSelectLogo::Render() {
-	_selectLogoTexture.RenderScale(_pos.x, _pos.y,1,MOF_ARGB(_alpha,255,255,255));
+	_selectLogoTexture.Render(_pos.x, _pos.y,MOF_ARGB(_alpha,255,255,255));
 }
 
 void StageSelectLogo::Release() {
