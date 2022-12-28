@@ -162,6 +162,8 @@
     <ClCompile Include="SceneManager.cpp" />
     <ClCompile Include="SettingManager.cpp" />
     <ClCompile Include="SetUpSetting.cpp" />
+    <ClCompile Include="SideIn.cpp" />
+    <ClCompile Include="SideOut.cpp" />
     <ClCompile Include="Slider.cpp" />
     <ClCompile Include="SliderBar.cpp" />
     <ClCompile Include="SliderButton.cpp" />
@@ -171,6 +173,8 @@
     <ClCompile Include="TitleClickAnimation.cpp" />
     <ClCompile Include="TitleLogoAnimation.cpp" />
     <ClCompile Include="TitleScene.cpp" />
+    <ClCompile Include="Trim.cpp" />
+    <ClCompile Include="StageSelectLogo.cpp" />
     <ClCompile Include="Tutorial.cpp" />
     <ClCompile Include="Wall.cpp" />
     <ClCompile Include="WindowProc.cpp" />
@@ -243,6 +247,8 @@
     <ClInclude Include="SceneManager.h" />
     <ClInclude Include="SettingManager.h" />
     <ClInclude Include="SetUpSetting.h" />
+    <ClInclude Include="SideIn.h" />
+    <ClInclude Include="SideOut.h" />
     <ClInclude Include="Slider.h" />
     <ClInclude Include="SliderBar.h" />
     <ClInclude Include="SliderButton.h" />
