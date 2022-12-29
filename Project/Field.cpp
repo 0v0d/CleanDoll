@@ -288,6 +288,7 @@ void Field::Render()
 {
 	_blockManager.Render();
 	_fieldUI.Render();
+	_tutorial.Render();
 	_endGameProcess.Render();
 }
 

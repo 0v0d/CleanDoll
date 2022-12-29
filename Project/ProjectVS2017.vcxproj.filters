@@ -350,6 +350,9 @@
     <ClCompile Include="SideOut.cpp">
       <Filter>ソース ファイル\Scene\Effect</Filter>
     </ClCompile>
+    <ClCompile Include="Trim.cpp">
+      <Filter>ソース ファイル</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GameApp.h">
@@ -604,15 +607,13 @@
     <ClInclude Include="GalleryCoin.h">
       <Filter>ソース ファイル\Scene\GameScene\Field\BlockManager\Object</Filter>
     </ClInclude>
-    <ClInclude Include="StageSelectLogo.h">
-      <Filter>ソース ファイル\Scene\StageSelectScene</Filter>
-    </ClInclude>
     <ClInclude Include="SideIn.h">
       <Filter>ソース ファイル\Scene\Effect</Filter>
     </ClInclude>
     <ClInclude Include="SideOut.h">
       <Filter>ソース ファイル\Scene\Effect</Filter>
     </ClInclude>
+    <ClInclude Include="Trim.h" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="Version.rc">
