@@ -8,6 +8,7 @@ private:
 	CTexture* _previewTexture;
 	Vector2 _previewPosition, _basePos;
 	float _baseScale, _previewScale;
+	float _frameScale;
 public:
 	void Initialize();
 	void CalcuBaseScale(float BarBaseTextureHeight);
