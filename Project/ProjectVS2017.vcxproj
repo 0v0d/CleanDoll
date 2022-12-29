@@ -258,6 +258,7 @@
     <ClInclude Include="TitleClickAnimation.h" />
     <ClInclude Include="TitleLogoAnimation.h" />
     <ClInclude Include="TitleScene.h" />
+    <ClInclude Include="Trim.h" />
     <ClInclude Include="Tutorial.h" />
     <ClInclude Include="Wall.h" />
     <ClInclude Include="WindowProc.h" />
