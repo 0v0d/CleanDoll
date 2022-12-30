@@ -13,7 +13,7 @@ void TitleScene::Initialize()
 	_music.Load("BGM.mp3");
 	_bgm.SetBGM(&_music, true);
 	_bgm.Play();
-	_clearTutorial = true;
+	_clearTutorial = false;
 }
 
 void TitleScene::ReLoad()

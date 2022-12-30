@@ -105,6 +105,9 @@
     <Filter Include="ソース ファイル\Scene\GameScene\Tutorial">
       <UniqueIdentifier>{425e3c01-ea50-4cd1-80f0-08d1047b7d92}</UniqueIdentifier>
     </Filter>
+    <Filter Include="ソース ファイル\Scene\StageSelectScene\Animation">
+      <UniqueIdentifier>{a06bc11c-93fa-41bd-bfad-9b059217930d}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="WinMain.cpp">
@@ -154,12 +157,6 @@
     </ClCompile>
     <ClCompile Include="BackGround.cpp">
       <Filter>ソース ファイル\UI</Filter>
-    </ClCompile>
-    <ClCompile Include="StageSelectDialog.cpp">
-      <Filter>ソース ファイル\Scene\StageSelectScene</Filter>
-    </ClCompile>
-    <ClCompile Include="StageSelectBackGround.cpp">
-      <Filter>ソース ファイル\Scene\StageSelectScene</Filter>
     </ClCompile>
     <ClCompile Include="IBaseAccessories.cpp">
       <Filter>ソース ファイル\Interface</Filter>
@@ -340,9 +337,6 @@
     </ClCompile>
     <ClCompile Include="GetCoinNumber.cpp">
       <Filter>ソース ファイル\Scene\GalleryScene</Filter>
-	</ClCompile>
-    <ClCompile Include="StageSelectLogo.cpp">
-      <Filter>ソース ファイル\Scene\StageSelectScene</Filter>
     </ClCompile>
     <ClCompile Include="SideIn.cpp">
       <Filter>ソース ファイル\Scene\Effect</Filter>
@@ -351,9 +345,18 @@
       <Filter>ソース ファイル\Scene\Effect</Filter>
     </ClCompile>
     <ClCompile Include="Trim.cpp">
-	</ClCompile>
+    </ClCompile>
     <ClCompile Include="DollMoveSetting.cpp">
       <Filter>ソース ファイル</Filter>
+    </ClCompile>
+    <ClCompile Include="StageSelectLogo.cpp">
+      <Filter>ソース ファイル\Scene\StageSelectScene\Animation</Filter>
+    </ClCompile>
+    <ClCompile Include="StageSelectDialog.cpp">
+      <Filter>ソース ファイル\Scene\StageSelectScene\Animation</Filter>
+    </ClCompile>
+    <ClCompile Include="StageSelectBackGround.cpp">
+      <Filter>ソース ファイル\Scene\StageSelectScene</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -404,12 +407,6 @@
     </ClInclude>
     <ClInclude Include="BackGround.h">
       <Filter>ソース ファイル\UI</Filter>
-    </ClInclude>
-    <ClInclude Include="StageSelectDialog.h">
-      <Filter>ソース ファイル\Scene\StageSelectScene</Filter>
-    </ClInclude>
-    <ClInclude Include="StageSelectBackGround.h">
-      <Filter>ソース ファイル\Scene\StageSelectScene</Filter>
     </ClInclude>
     <ClInclude Include="IBaseAccessories.h">
       <Filter>ソース ファイル\Interface</Filter>
@@ -618,6 +615,15 @@
     <ClInclude Include="Trim.h" />
     <ClInclude Include="DollMoveSetting.h">
       <Filter>ソース ファイル</Filter>
+    </ClInclude>
+    <ClInclude Include="StageSelectLogo.h">
+      <Filter>ソース ファイル\Scene\StageSelectScene\Animation</Filter>
+    </ClInclude>
+    <ClInclude Include="StageSelectDialog.h">
+      <Filter>ソース ファイル\Scene\StageSelectScene\Animation</Filter>
+    </ClInclude>
+    <ClInclude Include="StageSelectBackGround.h">
+      <Filter>ソース ファイル\Scene\StageSelectScene</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

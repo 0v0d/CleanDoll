@@ -1,35 +1,22 @@
 #include "Tutorial.h"
 
 void Tutorial::Initialize(){
-	_end = _start = false;
 	LoadTutorialRoute();
 	LoadInputLimit();
 	LoadTexture();
 	LoadTexturePos();
 	LoadTextureHidden();
-	_currentClick = 0;
-	_hidden = false;
 }
 
 void Tutorial::ReLoad() {
-	if (!_start) _start = true;
-	else _end = true;
-}
+	 _end = false;
+	 _currentClick = 0;
+	 _hidden = false;
 
-void Tutorial::Push(){
-	if (!_hidden){
-		_currentClick++;
-		if(_currentClick >=_textureValue-1){
-			_end = true;
-			_currentClick = _textureValue - 1;
-			_hidden = true;
-		}
-	}
+	 _currentRouteValue = 0;
+	 _currentLimitNumber = 0;
+	 _currentHidden = 0;
 
-	if(_currentClick == _textureHiddenArray[_currentHidden]){
-		_hidden = true;
-		_currentHidden++;
-	}
 }
 
 void Tutorial::LoadTutorialRoute(){
@@ -47,9 +34,9 @@ void Tutorial::LoadTutorialRoute(){
 void Tutorial::LoadInputLimit()
 {
 	_contactFile.OpenFile("InputLimit.txt");
-	_inputLimitValue = _contactFile.GetValue(true);
-	_inputLimitArray = new int[_inputLimitValue];
-	for (int i = 0; i < _inputLimitValue; i++) {
+	int inputLimitValue = _contactFile.GetValue(true);
+	_inputLimitArray = new int[inputLimitValue];
+	for (int i = 0; i < inputLimitValue; i++) {
 		_inputLimitArray[i] = _contactFile.GetValue(false);
 	}
 	_contactFile.CloseFile();
@@ -70,12 +57,12 @@ void Tutorial::LoadTexture()
 void Tutorial::LoadTexturePos()
 {
 	_contactFile.OpenFile("tutorialTexturePos.txt");
-	_texturePosValue = _contactFile.GetValue(true);
-	_texturePosArray = new std::pair<int, int>[_texturePosValue];
+	int texturePosValue = _contactFile.GetValue(true);
+	_texturePosArray = new Vector2[texturePosValue];
 
-	for (int i = 0; i < _texturePosValue; i++) {
-		_texturePosArray[i].first = _contactFile.GetValue(false);
-		_texturePosArray[i].second = _contactFile.GetValue(false);
+	for (int i = 0; i < texturePosValue; i++) {
+		_texturePosArray[i].x = _contactFile.GetValue(false);
+		_texturePosArray[i].y = _contactFile.GetValue(false);
 	}
 	_contactFile.CloseFile();
 }
@@ -83,13 +70,32 @@ void Tutorial::LoadTexturePos()
 void Tutorial::LoadTextureHidden()
 {
 	_contactFile.OpenFile("tutorialHiddenValue.txt");
-	_textureHiddenValue = _contactFile.GetValue(true);
-	_textureHiddenArray = new int[_textureHiddenValue];
+	int textureHiddenValue = _contactFile.GetValue(true);
+	_textureHiddenArray = new int[textureHiddenValue];
 
-	for (int i = 0; i < _textureHiddenValue; i++) {
+	for (int i = 0; i < textureHiddenValue; i++) {
 		_textureHiddenArray[i] = _contactFile.GetValue(false);
 	}
 	_contactFile.CloseFile();
+}
+
+
+void Tutorial::Push() {
+	if (!_hidden) {
+		_currentClick++;
+		if (_currentClick >= _textureValue - 1) {
+			_end = true;
+			_currentClick = _textureValue - 1;
+			_hidden = true;
+
+			_endGameProcess->SetCurrentProcess(ProcessType::EndTutorial);
+		}
+	}
+
+	if (_currentClick == _textureHiddenArray[_currentHidden]) {
+		_hidden = true;
+		_currentHidden++;
+	}
 }
 
 void Tutorial::EndOfPassed(int routeVal) {
@@ -98,32 +104,34 @@ void Tutorial::EndOfPassed(int routeVal) {
 }
 
 void Tutorial::EndMoveDoll() {
-	int val = 0;
-	for (int i = 0; i < _currentLimitNumber; i++) {
-		val += _inputLimitArray[i];
-	}
 
-	if (_currentRouteValue - val >= _inputLimitArray[_currentLimitNumber]) {
+	if (_currentRouteValue - CalcuCurrentLimitValue() >= _inputLimitArray[_currentLimitNumber]) {
 		_hidden = false;
 		_currentLimitNumber++;
 	}
 }
 
 bool Tutorial::CheckInTutorialRoute(Block* mouseOnBlock, int routeNumber) {
-	int val = 0;
-	for (int i = 0; i < _currentLimitNumber + 1; i++) {
-		val += _inputLimitArray[i];
-	}
+	int val = CalcuCurrentLimitValue() + _inputLimitArray[_currentLimitNumber];
 	if (_currentRouteValue + routeNumber >= val) return false;
 
 	return mouseOnBlock == _blockManager->GetBlock(_tutorialRouteArray[_currentRouteValue + routeNumber].first,
 		_tutorialRouteArray[_currentRouteValue + routeNumber].second);
 }
 
+int Tutorial::CalcuCurrentLimitValue() {
+	int val = 0;
+	for (int i = 0; i < _currentLimitNumber; i++) {
+		val += _inputLimitArray[i];
+	}
+	return val;
+}
+
+
 void Tutorial::Render()
 {
 	if (!_hidden)
-		_tutorialTexureArray[_currentClick].Render(_texturePosArray[_currentClick].first, _texturePosArray[_currentClick].second);
+		_tutorialTexureArray[_currentClick].Render(_texturePosArray[_currentClick].x, _texturePosArray[_currentClick].y);
 }
 
 void Tutorial::Release(){

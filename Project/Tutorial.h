@@ -2,7 +2,8 @@
 #include	"ContactFile.h"
 #include	"BlockManager.h"
 #include	"Block.h"
-#include "Trim.h"
+#include	"Trim.h"
+#include	"EndGameProcess.h"
 
 class Tutorial
 {
@@ -11,29 +12,31 @@ private:
 	ContactFile _contactFile;
 	BlockManager* _blockManager;
 
-	bool _end,_start;
+	bool _end;
 
 	std::pair<int, int>* _tutorialRouteArray;
 	int _currentRouteValue,_maxRouteValue;
 	int* _inputLimitArray;
-	int _inputLimitValue,_currentLimitNumber;
+	int _currentLimitNumber;
 
 	CTexture* _tutorialTexureArray;
 	int _textureValue;
 
-	std::pair<int, int>* _texturePosArray;
-	int _texturePosValue;
+	Vector2* _texturePosArray;
 	int _currentClick;
 	bool _hidden;
 
-	int _textureHiddenValue;
 	int* _textureHiddenArray;
 	int _currentHidden;
-	int _routeValue;
+
+	EndGameProcess* _endGameProcess;
+
 public:
 	void Initialize();
 	void ReLoad();
 	void SetBlockManager(BlockManager* blockManager) { _blockManager = blockManager; }
+	void SetEndGameProcess(EndGameProcess* endGameProcess) { _endGameProcess = endGameProcess; }
+
 	void EndOfPassed(int routeVal);
 	void EndMoveDoll();
 	void Push();
@@ -49,4 +52,5 @@ private:
 	void LoadTexture();
 	void LoadTexturePos();
 	void LoadTextureHidden();
+	int CalcuCurrentLimitValue();
 };

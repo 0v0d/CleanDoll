@@ -23,6 +23,7 @@ void Field::Initialize()
 
 	_doll.SetDumpValue(_dustDumpValue, _waterDumpValue);
 	_tutorial.SetBlockManager(&_blockManager);
+	_tutorial.SetEndGameProcess(&_endGameProcess);
 }
 
 void Field::ReLoad()
@@ -31,7 +32,7 @@ void Field::ReLoad()
 	_doll.ReLoad();
 	_fieldUI.ReLoad();
 	_operateDoll.ReLoad();
-	_tutorial.ReLoad();
+	if(!_tutorial.IsEnd())_tutorial.ReLoad();
 	
 	_doll.CalcuScale(_blockManager.GetDollOnBlock()->GetBlockSize().y, _blockManager.GetScale());
 	_dustDumpValue = _initalDustValue;
@@ -84,19 +85,11 @@ void Field::Update()
 			PassedMouse(_mousePos);
 		}
 	}
-
 	
 	_blockManager.Update();
 	_doll.Update();
 	_endGameProcess.Update();
 	_fieldUI.Update();
-
-	//ここに書く理由は、ドールが動いた後にも画像があり、それをclickすることで、クリア判定になります
-	//しかし、EndMoveDoll()に書いてしまうとドールがその後、動かないため永遠にクリア画面を出すことができないからです。
-	if (_tutorial.IsEnd()){
-		StageSelectScene* stageSelect = dynamic_cast<StageSelectScene*>(SceneManager::Instance().GetScene(SCENE_TYPE::STAGESELECT));
-		_endGameProcess.SetCurrentProcess(ProcessType::EndTutorial);
-	}
 }
 
 void Field::SetMousePos(Vector2 mousePos){
