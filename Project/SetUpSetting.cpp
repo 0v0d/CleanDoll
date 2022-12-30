@@ -1,6 +1,7 @@
 #include "SetUpSetting.h"
 #include	"AudioSetting.h"
 #include	"BackSceneSetting.h"
+#include	"DollMoveSetting.h"
 #include "SceneManager.h"
 
 void SetUpSetting::Initialize()
@@ -10,14 +11,18 @@ void SetUpSetting::Initialize()
 	_audioButton.SetTexture(&_audioButtonTexure);
 	_audioButton.SetPosition(Vector2(g_pGraphics->GetTargetWidth() / 2, 300));
 
+	_dollButton.SetTexture(&_dollButtonTexture);
+	_dollButton.SetPosition(Vector2(g_pGraphics->GetTargetWidth() / 2, 500));
+
 	_backSceneButton.SetTexture(&_backTitleSceneTexture);
-	_backSceneButton.SetPosition(Vector2(g_pGraphics->GetTargetWidth() / 2, 500));
+	_backSceneButton.SetPosition(Vector2(g_pGraphics->GetTargetWidth() / 2, 700));
 
 
 	_closeMenuButton.SetTexture(&_closeMenuTexture);
-	_closeMenuButton.SetPosition(Vector2(g_pGraphics->GetTargetWidth() / 2, 700));
+	_closeMenuButton.SetPosition(Vector2(g_pGraphics->GetTargetWidth() / 2, 900));
 
 	_buttonArray[&_audioButton] = new AudioSetting();
+	_buttonArray[&_dollButton] = new DollMoveSetting();
 	_buttonArray[&_backSceneButton] = new BackSceneSetting();
 
 	for (auto itr = _buttonArray.begin(); itr != _buttonArray.end(); itr++)
@@ -32,6 +37,7 @@ void SetUpSetting::Initialize()
 
 void SetUpSetting::LoadTexture() {
 	_audioButtonTexure.Load("サウンド設定　.png");
+	_dollButtonTexture.Load("ゲームをやめる.png");
 	_backTitleSceneTexture.Load("clictostart.png");
 	_backSelectSceneTexture.Load("ステージ選択へ.png");
 	_closeMenuTexture.Load("閉じる.png");
@@ -117,7 +123,7 @@ void SetUpSetting::DetermineBackScene() {
 		_backSceneButton.SetTexture(&_backSelectSceneTexture);
 		break;
 	}
-	_backSceneButton.SetPosition(Vector2(g_pGraphics->GetTargetWidth() / 2, 500));
+	//_backSceneButton.SetPosition(Vector2(g_pGraphics->GetTargetWidth() / 2, 500));
 
 	dynamic_cast<BackSceneSetting*>(_buttonArray[&_backSceneButton])->SetBackScene(backSceneType);
 }
@@ -142,6 +148,7 @@ void SetUpSetting::Render()
 void SetUpSetting::Release()
 {
 	_audioButtonTexure.Release();
+	_dollButtonTexture.Release();
 	_backTitleSceneTexture.Release();
 	_backSelectSceneTexture.Release();
 	_closeMenuTexture.Release();

@@ -11,8 +11,9 @@ private:
 	bool* _openMenu;
 	IBaseSetting* _currentSetting = nullptr;
 	std::map<Button*, IBaseSetting*> _buttonArray;
-	Button _audioButton, _backSceneButton, _closeMenuButton;
+	Button _audioButton, _dollButton, _backSceneButton, _closeMenuButton;
 	CTexture _audioButtonTexure;
+	CTexture _dollButtonTexture;
 	CTexture _backTitleSceneTexture, _backSelectSceneTexture;
 	CTexture _closeMenuTexture;
 
