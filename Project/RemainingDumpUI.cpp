@@ -13,7 +13,7 @@ void RemainingDumpUI::Initialize() {
 	IconSetTexture(ICON_TYPE::WATER, &_waterIconTexture);
 	IconSetTexture(ICON_TYPE::COIN, &_coinIconTexture);
 
-	_basePosition = Vector2(50, g_pGraphics->GetTargetHeight() - _baseTexture.GetHeight() * _scale - 100);
+	_basePosition = Vector2(g_pGraphics->GetTargetWidth() - _baseTexture.GetWidth() * _scale - 100, g_pGraphics->GetTargetHeight() - _baseTexture.GetHeight() * _scale -50);
 	const float iconSizeX = _dustIconTexture.GetWidth();
 	const float space = (_baseTexture.GetWidth() * _scale - iconSizeX * _scale * _iconArray.size()) / (_iconArray.size() * 2);
 	for (auto itr = _iconArray.begin(); itr != _iconArray.end(); itr++) {
