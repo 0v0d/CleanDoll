@@ -20,7 +20,7 @@ void TitleClickAnimation::Update() {
 	_time += _alphaIncrease;
 	//‘‰Á—Ê‚ª0.5‚ğ’´‚¦‚ÄŠÛ‚ß‚é‚½‚ß‚Éfmod‚ğg‚Á‚Ä‚¢‚é
 	//0.5‚Æ‚¢‚¤‚Ì‚ÍAy‚Ì‘‰Á—Ê‚ª0‚É‚È‚é‚Æ‚«‚Ìx‚Ì‘‰Á—Ê
-	_alpha = CalcAlpha(fmod(_time, 0.5));
+	_alpha = CalcAlpha(fmod(_time, 0.6));
 }
 
 namespace detail
