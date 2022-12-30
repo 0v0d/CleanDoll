@@ -26,7 +26,6 @@ void StageSelectScene::Initialize()
 void StageSelectScene::LoadTexture()
 {
     _backGroundTexture.Load("menu_back.png");
-    _LogoSlide.Load();
 }
 
 void StageSelectScene::ReLoad()
