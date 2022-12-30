@@ -10,13 +10,13 @@ void GameScene::Initialize()
 	_bgm.SetBGM(&_music, true);
 
 	_resetStageButton.SetTexture(&_resetButtonTexture);
-	_resetStageButton.SetPosition(Vector2(100, 100));
+	_resetStageButton.SetPosition(Vector2(100, 130));
 
 }
 
 void GameScene::LoadTexture() {
 	_gameBackTexture.Load("GameBackGround.png");
-	_resetButtonTexture.Load("SE 1.png");
+	_resetButtonTexture.Load("reset_button.png");
 }
 
 void GameScene::ReLoad()
