@@ -5,13 +5,15 @@ void DollMoveSetting::Initialize()
 	LoadTexture();
 	_barPos = Vector2(g_pGraphics->GetTargetWidth() / 2 - _barTexture.GetWidth() / 2, 350);
 	_buttonSpase = _barTexture.GetWidth() / _baseSpaseCount;
+	_selectButtonPos = Vector2(_barPos.x + _buttonSpase * 2, _barPos.y + _barTexture.GetHeight() / 2);
+	
 	for (int i = 0; i < _baseButtonValue; i++)
 	{
 		_buttonArray[i].SetTexture(&_baseSelectButtonTexture);
 		_buttonArray[i].SetPosition(Vector2(_barPos.x + _buttonSpase * i, _barPos.y+ _barTexture.GetHeight()/2));
 	}
 	_selectButton.SetTexture(&_selectButtonTexture);
-	_selectButton.SetPosition(Vector2(_barPos.x+_buttonSpase *2 , _barPos.y + _barTexture.GetHeight() / 2));
+	_selectButton.SetPosition(_selectButtonPos);
 
 	_checkBoxButton.SetTexture(&_checkBoxTexture);
 	_checkBoxButton.SetPosition(Vector2(g_pGraphics->GetTargetWidth() / 2 , 600));
@@ -44,14 +46,31 @@ void DollMoveSetting::Update()
 
 float DollMoveSetting::FindMovedPos()
 {
-	for (int i = _baseButtonValue-1; i > 0; i--)
+	if (_selectButtonPos.x < _mousePos.x)
 	{
-		if (_barPos.x + _buttonSpase * i < _mousePos.x)
+		for (int i = _baseButtonValue-1; i > 0; i--)
 		{
-			return _barPos.x + _buttonSpase * i;
+			if (_barPos.x + _buttonSpase * i < _mousePos.x)
+			{
+				return _selectButtonPos.x = _barPos.x + _buttonSpase * i;	
+			}
 		}
 	}
-	return _barPos.x ;
+	else if (_selectButtonPos.x > _mousePos.x)
+	{
+		for (int i = 0; i < _baseButtonValue-1; i++)
+		{
+			if (_barPos.x + _buttonSpase * i > _mousePos.x)
+			{
+				return _selectButtonPos.x = _barPos.x + _buttonSpase * i;
+			}
+		}
+	}
+	else
+	{
+		return _selectButtonPos.x;
+	}
+	
 }
 
 
@@ -75,7 +94,8 @@ void DollMoveSetting::Push()
 		_buttonArray[i].Push();
 		if (_buttonArray[i].IsPushButton())
 		{
-			_selectButton.SetPosition(Vector2(_barPos.x + _buttonSpase * i, _barPos.y + _barTexture.GetHeight() / 2));
+			_selectButtonPos.x = _barPos.x + _buttonSpase * i;
+			_selectButton.SetPosition(_selectButtonPos);
 		}
 	}
 	

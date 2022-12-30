@@ -18,6 +18,7 @@ class DollMoveSetting:public IBaseSetting
 
 	CTexture  _selectButtonTexture;
 	Button   _selectButton;
+	Vector2    _selectButtonPos;
 	
 	CTexture _checkBoxTexture,_checkTexture;
 	Button   _checkBoxButton,_checkButton;
