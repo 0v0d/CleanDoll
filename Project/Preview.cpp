@@ -6,12 +6,13 @@ void Preview::Initialize() {
 
 void Preview::LoadTexture() {
 	_baseTexture.Load("stagepreview_base.png");
-	_frameTexture.Load("stagepreview_base2.png");
+	_frameTexture.Load("stagepreview_flame.png");
 }
 
 
 void Preview::CalcuBaseScale(float BarBaseTextureHeight) {
 	_baseScale = BarBaseTextureHeight / _baseTexture.GetHeight();
+	_frameScale = (float)_frameTexture.GetHeight() / (float)_baseTexture.GetHeight();
 }
 
 void Preview::CalcuBasePos() {
@@ -27,7 +28,7 @@ void Preview::SetPreviewTexture(CTexture* previewTexture)
 }
 
 void Preview::CalcuPreviewScale() {
-	_previewScale = _baseTexture.GetHeight() * _baseScale / _previewTexture->GetHeight();
+	_previewScale = _baseTexture.GetHeight() * _baseScale / _previewTexture->GetHeight()*0.7;
 }
 
 void Preview::SetPosistion()
@@ -40,7 +41,7 @@ void Preview::Render()
 {
 	_baseTexture.RenderScale(_basePos.x, _basePos.y, _baseScale);
 	_previewTexture->RenderScale(_previewPosition.x, _previewPosition.y, _previewScale);
-	_frameTexture.RenderScale(_basePos.x, _basePos.y, _baseScale);
+	_frameTexture.RenderScale(_basePos.x, _basePos.y, _frameScale);
 }
 
 void Preview::Release() {
