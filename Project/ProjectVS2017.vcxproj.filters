@@ -340,7 +340,6 @@
     </ClCompile>
     <ClCompile Include="GetCoinNumber.cpp">
       <Filter>ソース ファイル\Scene\GalleryScene</Filter>
-    </ClCompile>
 	</ClCompile>
     <ClCompile Include="StageSelectLogo.cpp">
       <Filter>ソース ファイル\Scene\StageSelectScene</Filter>
@@ -352,6 +351,7 @@
       <Filter>ソース ファイル\Scene\Effect</Filter>
     </ClCompile>
     <ClCompile Include="Trim.cpp">
+	</ClCompile>
     <ClCompile Include="DollMoveSetting.cpp">
       <Filter>ソース ファイル</Filter>
     </ClCompile>
