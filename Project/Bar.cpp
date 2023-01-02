@@ -85,7 +85,7 @@ void Bar::Render(){
 		posY = _pos.y + _barTexture.GetHeight() / 2 < _screenPos.y && _pos.y + _barTexture.GetHeight() / 2 + _difficultyTextureArray[i]->GetHeight() * _difficultyScale > _screenPos.y ? _screenPos.y : _pos.y + _barTexture.GetHeight() / 2;
 
 		if (IsRenderRange(_difficultyTextureArray[i],Vector2(_pos.x,_pos.y + _barTexture.GetHeight() / 2),_difficultyScale)) {
-			_difficultyTextureArray[i]->RenderScale((_pos.x + adjust) + ((_difficultyTextureArray[i]->GetWidth()+spaceX) *_difficultyScale*i),
+			_difficultyTextureArray[i]->RenderScale((_pos.x + adjust) + ((_difficultyTextureArray[i]->GetWidth()+spaceX) *_difficultyScale * i),
                       posY - spaceY, _difficultyScale,
                       GetRenderRect(Vector2(_pos.x,_pos.y + _barTexture.GetHeight() / 2 - spaceY),_difficultyTextureArray[i], _difficultyScale));
 		}
