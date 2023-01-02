@@ -79,14 +79,15 @@ void Bar::Render(){
 	if (IsRenderRange(&_barTexture, _pos, _scale))_barTexture.RenderScale(_pos.x, posY, _scale, GetRenderRect(_pos, &_barTexture, _scale));
 
 	for (int i = 0; i < _difficulty; i++){
-		const float space = 30;
+		const float spaceX = 30;
 		const float adjust = 120;
+		const float spaceY = 8;
 		posY = _pos.y + _barTexture.GetHeight() / 2 < _screenPos.y && _pos.y + _barTexture.GetHeight() / 2 + _difficultyTextureArray[i]->GetHeight() * _difficultyScale > _screenPos.y ? _screenPos.y : _pos.y + _barTexture.GetHeight() / 2;
 
 		if (IsRenderRange(_difficultyTextureArray[i],Vector2(_pos.x,_pos.y + _barTexture.GetHeight() / 2),_difficultyScale)) {
-			_difficultyTextureArray[i]->RenderScale((_pos.x + adjust) + ((_difficultyTextureArray[i]->GetWidth()+space) *_difficultyScale*i),
-				posY, _difficultyScale,GetRenderRect(Vector2(_pos.x,_pos.y + _barTexture.GetHeight() / 2),
-					_difficultyTextureArray[i], _difficultyScale));
+			_difficultyTextureArray[i]->RenderScale((_pos.x + adjust) + ((_difficultyTextureArray[i]->GetWidth()+spaceX) *_difficultyScale*i),
+                      posY - spaceY, _difficultyScale,
+                      GetRenderRect(Vector2(_pos.x,_pos.y + _barTexture.GetHeight() / 2 - spaceY),_difficultyTextureArray[i], _difficultyScale));
 		}
 	}
 
