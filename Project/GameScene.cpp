@@ -49,7 +49,7 @@ void GameScene::Pull() {
 void GameScene::Render()
 {
 	_backGround.Render();
-        _resetStageButton.Render();
+	_resetStageButton.Render();
 	_field.Render();
 }
 
