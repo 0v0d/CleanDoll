@@ -2,11 +2,15 @@
 
 void BackSceneSetting::Initialize()
 {
+	Vector2 _basePos;
+	_basePos.x = g_pGraphics->GetTargetWidth() / 2;
+	_basePos.y = g_pGraphics->GetTargetHeight() / 2;
+	const float _space = 100;
 	_backTexture.Load("‚Í‚¢.png");
 	_closeTexture.Load("‚¢‚¢‚¦.png");
 
-	CreateButton(&_backButton, Vector2(g_pGraphics->GetTargetWidth() / 2 - _backTexture.GetWidth() - 30, 450), &_backTexture);
-	CreateButton(&_closeButton, Vector2(g_pGraphics->GetTargetWidth() / 2 + 20, 450), &_closeTexture);
+	CreateButton(&_backButton, Vector2(_basePos.x - _space / 2 - _backTexture.GetWidth() / 2, _basePos.y), &_backTexture);
+	CreateButton(&_closeButton, Vector2(_basePos.x + _space / 2 + _closeTexture.GetWidth() / 2, _basePos.y), &_closeTexture);
 }
 
 void BackSceneSetting::CreateButton(Button* button, Vector2 pos, CTexture* texture) {

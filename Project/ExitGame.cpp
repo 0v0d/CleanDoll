@@ -6,8 +6,8 @@ void ExitGame::Initialize() {
 	_basePos.x = g_pGraphics->GetTargetWidth() / 2;
 	_basePos.y = g_pGraphics->GetTargetHeight() / 2;
 	LoadTexture();
-	CreateButton(&_yesButton, Vector2(_basePos.x - _space / 2 - _yesTexture.GetWidth(), _basePos.y), &_yesTexture);
-	CreateButton(&_noButton, Vector2(_basePos.x + _space / 2, _basePos.y), &_noTexture);
+	CreateButton(&_yesButton, Vector2(_basePos.x - _space / 2 - _yesTexture.GetWidth() / 2, _basePos.y), &_yesTexture);
+	CreateButton(&_noButton, Vector2(_basePos.x + _space / 2 + _noTexture.GetWidth() / 2, _basePos.y), &_noTexture);
 
 	_openExitDialog = false;
 }

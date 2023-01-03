@@ -6,8 +6,8 @@ void StageSelectDialog::Initialize() {
 
 	LoadTexture();
 
-	CreateButton(&_yesButton, Vector2(_basePos.x - _space / 2 - _yesTexture.GetWidth(), _basePos.y), &_yesTexture);
-	CreateButton(&_noButton, Vector2(_basePos.x + _space / 2, _basePos.y), &_noTexture);
+	CreateButton(&_yesButton, Vector2(_basePos.x - _space / 2 -_yesTexture.GetWidth()/2, _basePos.y), &_yesTexture);
+	CreateButton(&_noButton, Vector2(_basePos.x + _space / 2 + _noTexture.GetWidth() / 2, _basePos.y), &_noTexture);
 }
 
 void StageSelectDialog::ReLoad() {
@@ -82,8 +82,9 @@ void StageSelectDialog::Pull() {
 void StageSelectDialog::Render() {
 	if (!_openStaSeleDialog) return;
 
-	CGraphicsUtilities::RenderFillRect(0, 0, g_pGraphics->GetTargetWidth(), g_pGraphics->GetTargetHeight(), MOF_ARGB(125, 0, 0, 0));
-	_backTexture.Render(0, 0);
+	CGraphicsUtilities::RenderFillRect(0, 0, g_pGraphics->GetTargetWidth(), g_pGraphics->GetTargetHeight(), MOF_ARGB(200, 0, 0, 0));
+	_backTexture.RenderScale(g_pGraphics->GetTargetWidth() / 2 - _backTexture.GetWidth() / 2 * _backScale,
+		g_pGraphics->GetTargetHeight() / 2 - _backTexture.GetHeight() / 2 * _backScale, _backScale);
 	_yesButton.Render();
 	_noButton.Render();
 }
