@@ -23,7 +23,7 @@ void DollAnimation::CreateAnimation() {
 	{_wait,17,0},{_wait,18,0},{_wait,19,0},}
 },
 {
-	"Walk",
+	"Walk_Broom",
 	0,640,
 	320,320,
 	true,{{_wait,0,0},{_wait,1,0},{_wait,2,0},{_wait,3,0},{_wait,4,0},{_wait,5,0},{_wait,6,0},{_wait,7,0},
@@ -31,14 +31,43 @@ void DollAnimation::CreateAnimation() {
 	{_wait,17,0},{_wait,18,0},{_wait,19,0}}
 },
 {
-	"Clean",
+	"Clean_Broom",
 	0,960,
 	320,320,
 	false,{{_wait,0,0},{_wait,1,0},{_wait,2,0},{_wait,3,0},{_wait,4,0},{_wait,5,0},{_wait,6,0},{_wait,7,0},
 	{_wait,8,0},{_wait,9,0} ,{_wait,10,0},{_wait,11,0},{_wait,12,0},{_wait,13,0},{_wait,14,0},{_wait,15,0},{_wait,16,0},
 	{_wait,17,0},{_wait,18,0},{_wait,19,0}}
-}
-
+},
+{
+	"Walk_Mop",
+	0,1280,
+	320,320,
+	false,{{_wait,0,0},{_wait,1,0},{_wait,2,0},{_wait,3,0},{_wait,4,0},{_wait,5,0},{_wait,6,0},{_wait,7,0},
+	{_wait,8,0},{_wait,9,0} ,{_wait,10,0},{_wait,11,0},{_wait,12,0},{_wait,13,0},{_wait,14,0},{_wait,15,0},{_wait,16,0},
+	{_wait,17,0},{_wait,18,0},{_wait,19,0}}
+},
+{
+	"Clean_Mop",
+	0,1600,
+	320,320,
+	false,{{_wait,0,0},{_wait,1,0},{_wait,2,0},{_wait,3,0},{_wait,4,0},{_wait,5,0},{_wait,6,0},{_wait,7,0},
+	{_wait,8,0},{_wait,9,0} ,{_wait,10,0},{_wait,11,0},{_wait,12,0},{_wait,13,0},{_wait,14,0},{_wait,15,0},{_wait,16,0},
+	{_wait,17,0},{_wait,18,0},{_wait,19,0}}
+},
+{
+	"Pick_Mop",
+	0,1920,
+	320,320,
+	false,{{_wait,0,0},{_wait,1,0},{_wait,2,0},{_wait,3,0},{_wait,4,0},{_wait,5,0},{_wait,6,0},{_wait,7,0},
+	{_wait,8,0},{_wait,9,0} ,{_wait,10,0},{_wait,11,0},{_wait,12,0},{_wait,13,0},{_wait,14,0},{_wait,15,0},{_wait,16,0},
+	{_wait,17,0},{_wait,18,0},{_wait,19,0}}
+},
+{
+	"Pick_Mop",
+	0,2240,
+	320,320,
+	false,{{_wait,0,0},{_wait,1,0},{_wait,2,0},{_wait,3,0},{_wait,4,0}}
+},
 	};
 	_motionController.Create(_dollAnimation, _motionCount);
 }
@@ -51,7 +80,6 @@ void DollAnimation::ReLoad() {
 void DollAnimation::Update()
 {
 	UpdateAnimation();
-	
 }
 
 void DollAnimation::UpdateAnimation() {
@@ -63,11 +91,25 @@ void DollAnimation::UpdateAnimation() {
 	}
 }
 
-void DollAnimation::SetMoveAnimationFlg(bool playMove) {
+void DollAnimation::StartSwitchToMopAnimation() {
+	_motionController.ChangeMotion(PICK_MOP_1);
+}
+
+
+void DollAnimation::SetMoveBroomAnimationFlg(bool playMove) {
 	if (!playMove) {
 		_motionController.ChangeMotion(WaitAnimationLoop());
 	}
-	else if (_motionController.GetMotionNo() != WALK){
-		_motionController.ChangeMotion(WALK);
+	else if (_motionController.GetMotionNo() != WALK_BROOM) {
+		_motionController.ChangeMotion(WALK_BROOM);
+	}
+}
+
+void DollAnimation::SetMoveMopAnimationFlg(bool playMove) {
+	if (!playMove) {
+		_motionController.ChangeMotion(WaitAnimationLoop());
+	}
+	else if (_motionController.GetMotionNo() != WALK_MOP) {
+		_motionController.ChangeMotion(WALK_MOP);
 	}
 }

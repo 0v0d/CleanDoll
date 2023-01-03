@@ -14,19 +14,19 @@ class Doll
 	float _scale;
 	bool _inversion;
 	CRectangle _inversionRenderRect;
-	
+
 	class Field* _field;
 	Block* _nextBlock = nullptr;
 
 	bool _move;
 	Vector2 _nextPosition;
 	//1ブロック移動するのにかかるフレーム数
-	const int _moveSpeed =40;
+	const int _moveSpeed = 40;
 	int _moveCount;
 	std::function<void()> _endMoveMethod;
 
-	int _dustDumpValue,_waterDumpValue;
-	bool _heldMop,_cleanAnimation;
+	int _dustDumpValue, _waterDumpValue;
+	bool _heldMop, _cleanAnimation;
 	bool _getCoin;
 
 	//const int wait = 3;
@@ -51,7 +51,7 @@ public:
 	void Render();
 	void Release();
 
-	bool IsGetCoin(){ return _getCoin; }
+	bool IsGetCoin() { return _getCoin; }
 private:
 	void DollAnimationUpdate();
 	void SetNextPosition();
@@ -59,4 +59,5 @@ private:
 	void CleanDump();
 	void SwitchToMop();
 	void CollectCandy();
+	void SetMoveAnimation();
 };
