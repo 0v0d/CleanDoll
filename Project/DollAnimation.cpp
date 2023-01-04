@@ -93,6 +93,9 @@ void DollAnimation::UpdateAnimation() {
 
 void DollAnimation::StartSwitchToMopAnimation() {
 	_motionController.ChangeMotion(PICK_MOP_1);
+	if(_motionController.GetMotionNo() == PICK_MOP_1 && _motionController.IsEndMotion()){
+		_motionController.ChangeMotion(PICK_MOP_2);
+	}
 }
 
 

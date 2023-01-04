@@ -1,7 +1,6 @@
 #include "Doll.h"
 #include "Field.h"
 #include "Dump.h"
-#include "Item.h"
 
 void Doll::Initialize()
 {
@@ -17,7 +16,7 @@ void Doll::ReLoad()
 	_moveCount = 0;
 	_inversion = false;
 	_heldMop = false;
-	_cleanAnimation = false;
+	_animationflg = false;
 	_getCoin = false;
 
 	_animation.ReLoad();
@@ -49,7 +48,7 @@ void Doll::SetNextBlock(Block* blcok) {
 	SetNextPosition();
 
 	_move = true;
-	if (!_cleanAnimation) {
+	if (!_animationflg) {
 		SetMoveAnimation();
 	}
 }
@@ -72,7 +71,7 @@ void Doll::Update()
 
 void Doll::Move()
 {
-	if (_cleanAnimation) return;
+	if (_animationflg) return;
 
 	_dollPosition.x += _nextPosition.x / _moveSpeed;
 	_dollPosition.y += _nextPosition.y / _moveSpeed;
@@ -91,7 +90,7 @@ void Doll::Move()
 void Doll::EndMove() {
 	_field->EndMoveDoll();
 	_move = false;
-	if (!_cleanAnimation) {
+	if (!_animationflg) {
 		_animation.SetMoveBroomAnimationFlg(false);
 		_animation.SetMoveMopAnimationFlg(false);
 
@@ -115,7 +114,8 @@ void Doll::ActionAccessories()
 		break;
 
 	case ACCESSORIES_TYPE::ITEM:
-		CollectCandy();
+		//CollectCandy();
+		_nextBlock->GetBlockOnObject()->HiddenAccessoriesFlg(true);
 		break;
 
 	case ACCESSORIES_TYPE::COIN:
@@ -136,13 +136,13 @@ void Doll::CleanDump()
 	blockOnDump->StartCleanflg(true);
 	if (_heldMop) {
 		_animation.StartCleanMopAnimation();
-		_cleanAnimation = true;
+		_animationflg = true;
 		_waterDumpValue--;
 		_field->CleanWater();
 	}
 	else {
 		_animation.StartCleanBroomAnimation();
-		_cleanAnimation = true;
+		_animationflg = true;
 		_dustDumpValue--;
 		_field->CleanDust();
 	}
@@ -151,16 +151,19 @@ void Doll::CleanDump()
 
 void Doll::CollectCandy()
 {
-	Item* blockOnCandy = dynamic_cast<Item*>(_nextBlock->GetBlockOnObject()->GetAccessories());
-	blockOnCandy->SetShow(false);
+	//飴のモーション実装
+	/*_animation.StartGetCandyAnimation();
+	_animationflg = true;*/
 }
 
 void Doll::SwitchToMop()
 {
+	_animation.StartSwitchToMopAnimation();
+	_animationflg = true;
 	_heldMop = true;
+	
 	//ゲームオーバー
-	if (_dustDumpValue > 0)
-	{
+	if (_dustDumpValue > 0){
 		_field->GameOver();
 		_move = false;
 	}
@@ -168,15 +171,15 @@ void Doll::SwitchToMop()
 
 void Doll::DollAnimationUpdate()
 {
-	if (_cleanAnimation && _animation.IsEndCurrentAnimation()) {
-		_cleanAnimation = false;
+	if (_animationflg && _animation.IsEndCurrentAnimation()) {
+		_animationflg = false;
 		SetMoveAnimation();
 	}
 
 	_animation.Update();
 	_renderRect = _animation.GetRenderRect();
 
-	if (!_cleanAnimation) {
+	if (!_animationflg) {
 		_inversion = _nextPosition.x > 0;
 	}
 	if (_inversion) {
@@ -201,4 +204,3 @@ void Doll::Release()
 {
 	_dollTexture.Release();
 }
-

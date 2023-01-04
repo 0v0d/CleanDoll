@@ -26,11 +26,8 @@ class Doll
 	std::function<void()> _endMoveMethod;
 
 	int _dustDumpValue, _waterDumpValue;
-	bool _heldMop, _cleanAnimation;
+	bool _heldMop, _animationflg;
 	bool _getCoin;
-
-	//const int wait = 3;
-	const int wait = 0.1;
 	int _motionCount;
 	const int _textureValue = 30;
 	Vector2 _dollTextureSize;

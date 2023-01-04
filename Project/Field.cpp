@@ -152,7 +152,6 @@ void Field::AdvanceRoute(Block* mouseOnBlock)
 		{
 			_recoveryDifferentialArray.push_back(_maxDistance - _remainDistance);
 			_remainDistance += _maxDistance - _remainDistance;
-			_pickedBlock->GetBlockOnObject()->HiddenAccessoriesFlg(true);
 		}
 	}
 	_fieldUI.SetCurrentEnergyValue(_remainDistance);
