@@ -1,14 +1,15 @@
 #pragma once
 #include	"SetUpSetting.h"
-#include	"OpenSetting.h"
+#include	"Button.h"
 
 class SettingManager
 {
 	bool _openMenu;
 	Vector2 _mousePos;
 	SetUpSetting _setUpSetting;
-	OpenSetting _openSettingButton;
-	CTexture _menuTexture;
+	Button _openSettingButton;
+	CTexture _menuTexture, _openButtonTexture;
+	CSoundBuffer _buttonSe;
 public:
 	void Initialize();
 	void Update();
@@ -20,4 +21,7 @@ public:
 	void Release();
 
 	bool IsOpenMenu() { return _openMenu; }
+
+private:
+	void CreateButton();
 };

@@ -206,9 +206,6 @@
     <ClCompile Include="SettingManager.cpp">
       <Filter>ソース ファイル\Menu\SettingManager</Filter>
     </ClCompile>
-    <ClCompile Include="OpenSetting.cpp">
-      <Filter>ソース ファイル\Menu\SettingManager</Filter>
-    </ClCompile>
     <ClCompile Include="AudioSetting.cpp">
       <Filter>ソース ファイル\Menu\SettingManager\SetUpSetting</Filter>
     </ClCompile>
@@ -358,6 +355,9 @@
     <ClCompile Include="StageSelectBackGround.cpp">
       <Filter>ソース ファイル\Scene\StageSelectScene</Filter>
     </ClCompile>
+    <ClCompile Include="SE.cpp">
+      <Filter>ソース ファイル\UI</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GameApp.h">
@@ -454,9 +454,6 @@
       <Filter>ソース ファイル\Scene\GameScene</Filter>
     </ClInclude>
     <ClInclude Include="SettingManager.h">
-      <Filter>ソース ファイル\Menu\SettingManager</Filter>
-    </ClInclude>
-    <ClInclude Include="OpenSetting.h">
       <Filter>ソース ファイル\Menu\SettingManager</Filter>
     </ClInclude>
     <ClInclude Include="AudioSetting.h">
@@ -624,6 +621,9 @@
     </ClInclude>
     <ClInclude Include="StageSelectBackGround.h">
       <Filter>ソース ファイル\Scene\StageSelectScene</Filter>
+    </ClInclude>
+    <ClInclude Include="SE.h">
+      <Filter>ソース ファイル\UI</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

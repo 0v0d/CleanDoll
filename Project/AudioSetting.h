@@ -23,6 +23,9 @@ class AudioSetting :public IBaseSetting
 	Vector2 _BGMPos, _SEPos;
 	const float _textureHeight = 50;
 	float _audioScale, _BGMScale, _SEScale;
+
+	CSoundBuffer _buttonSe;
+
 public:
 	void Initialize();
 	void SetOpenSetting(bool* openSetting) { _openAudioSetting = openSetting; }

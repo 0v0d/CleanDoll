@@ -5,6 +5,9 @@ void AudioSetting::Initialize()
 	LoadTexture();
 	CalcuScale();
 
+	_closeButton.SetStatu(false, true, [&]() {*_openAudioSetting = false;});
+	_closeButton.SetSeSound(&_buttonSe);
+
 	_sliderArray = new Slider[_sliderValue];
 	Vector2 _barSize = Vector2(_barTexture.GetWidth(), _barTexture.GetHeight());
 	Vector2 _buttonSize = Vector2(_buttonTexture.GetWidth(), _buttonTexture.GetHeight());
@@ -89,9 +92,6 @@ void AudioSetting::Pull()
 	}
 
 	_closeButton.Pull();
-	if (_closeButton.IsPullButton()) {
-		*_openAudioSetting = false;
-	}
 }
 
 void AudioSetting::Render()

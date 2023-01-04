@@ -7,22 +7,21 @@
 void SetUpSetting::Initialize()
 {
 	LoadTexture();
-
 	_audioButton.SetTexture(&_audioButtonTexure);
 	_audioButton.SetPosition(Vector2(g_pGraphics->GetTargetWidth() / 2, 300));
 
-	_dollButton.SetTexture(&_dollButtonTexture);
-	_dollButton.SetPosition(Vector2(g_pGraphics->GetTargetWidth() / 2, 500));
+	/*_dollButton.SetTexture(&_dollButtonTexture);
+	_dollButton.SetPosition(Vector2(g_pGraphics->GetTargetWidth() / 2, 500));*/
 
 	_backSceneButton.SetTexture(&_backTitleSceneTexture);
 	_backSceneButton.SetPosition(Vector2(g_pGraphics->GetTargetWidth() / 2, 700));
 
-
 	_closeMenuButton.SetTexture(&_closeMenuTexture);
 	_closeMenuButton.SetPosition(Vector2(g_pGraphics->GetTargetWidth() / 2, 900));
 
+
 	_buttonArray[&_audioButton] = new AudioSetting();
-	_buttonArray[&_dollButton] = new DollMoveSetting();
+	//_buttonArray[&_dollButton] = new DollMoveSetting();
 	_buttonArray[&_backSceneButton] = new BackSceneSetting();
 
 	for (auto itr = _buttonArray.begin(); itr != _buttonArray.end(); itr++)
@@ -30,6 +29,8 @@ void SetUpSetting::Initialize()
 		itr->second->Initialize();
 		itr->second->SetOpenSetting(&_openSetting);
 	}
+
+	CreateButton();
 
 	dynamic_cast<BackSceneSetting*>(_buttonArray[&_backSceneButton])->SetOpenMenu(_openMenu);
 	_openSetting = false;
@@ -41,7 +42,24 @@ void SetUpSetting::LoadTexture() {
 	_backTitleSceneTexture.Load("clictostart.png");
 	_backSelectSceneTexture.Load("ステージ選択へ.png");
 	_closeMenuTexture.Load("閉じる.png");
+
+	_buttonSe.Load("ClicktoStart.mp3");
 }
+
+void SetUpSetting::CreateButton() {
+	for (auto itr = _buttonArray.begin(); itr != _buttonArray.end(); itr++)
+	{
+		itr->first->SetSeSound(&_buttonSe);
+		itr->first->SetStatu(false, true, [&]() {
+			_openSetting = true;
+			_currentSetting = itr->second;
+			});
+	}
+
+	_closeMenuButton.SetSeSound(&_buttonSe);
+	_closeMenuButton.SetStatu(false, true, [&]() {*_openMenu = false;});
+}
+
 
 void SetUpSetting::Update()
 {
@@ -87,23 +105,6 @@ void SetUpSetting::Pull()
 		_closeMenuButton.Pull();
 		for (auto itr = _buttonArray.begin(); itr != _buttonArray.end(); itr++) {
 			itr->first->Pull();
-		}
-		CheckPullButton();
-	}
-}
-
-void SetUpSetting::CheckPullButton() {
-	if (_closeMenuButton.IsPullButton()) {
-		*_openMenu = false;
-	}
-
-	for (auto itr = _buttonArray.begin(); itr != _buttonArray.end(); itr++)
-	{
-		if (itr->first->IsPullButton())
-		{
-			_openSetting = true;
-			_currentSetting = itr->second;
-			break;
 		}
 	}
 }
@@ -154,5 +155,8 @@ void SetUpSetting::Release()
 	_closeMenuTexture.Release();
 	for (auto itr = _buttonArray.begin(); itr != _buttonArray.end(); itr++) {
 		itr->second->Release();
+		delete itr->second;
 	}
+
+	_buttonSe.Release();
 }

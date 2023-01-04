@@ -6,8 +6,12 @@ void StageSelectDialog::Initialize() {
 
 	LoadTexture();
 
-	CreateButton(&_yesButton, Vector2(_basePos.x - _space / 2 - _yesTexture.GetWidth(), _basePos.y), &_yesTexture);
-	CreateButton(&_noButton, Vector2(_basePos.x + _space / 2, _basePos.y), &_noTexture);
+	CreateButton(&_yesButton, Vector2(_basePos.x - _space / 2 - _yesTexture.GetWidth(), _basePos.y), &_yesTexture, [&]() {_loadStageMethod(_pickStageNumber);});
+	CreateButton(&_noButton, Vector2(_basePos.x + _space / 2, _basePos.y), &_noTexture, [&]() {
+		_openStaSeleDialog = false;
+		_clickCount = 0;
+		_pickStageNumber = -1;
+		});
 }
 
 void StageSelectDialog::ReLoad() {
@@ -20,11 +24,16 @@ void StageSelectDialog::LoadTexture() {
 	_yesTexture.Load("はい.png");
 	_noTexture.Load("いいえ.png");
 	_backTexture.Load("ステージ選択後背景.png");
+
+	_buttonSe.Load("ClicktoStart.mp3");
 }
 
-void StageSelectDialog::CreateButton(Button* button, Vector2 pos, CTexture* texture) {
+void StageSelectDialog::CreateButton(Button* button, Vector2 pos, CTexture* texture,std::function<void()> callMethod) {
 	button->SetTexture(texture);
 	button->SetPosition(pos);
+
+	button->SetStatu(false,true,callMethod);
+	button->SetSeSound(&_buttonSe);
 }
 
 void StageSelectDialog::Update() {
@@ -67,16 +76,6 @@ void StageSelectDialog::Push(){
 void StageSelectDialog::Pull() {
 	_yesButton.Pull();
 	_noButton.Pull();
-
-	if (_yesButton.IsPullButton()) {
-		_loadStageMethod(_pickStageNumber);
-	}
-
-	if (_noButton.IsPullButton()) {
-		_openStaSeleDialog = false;
-		_clickCount = 0;
-		_pickStageNumber = -1;
-	}
 }
 
 void StageSelectDialog::Render() {
@@ -92,4 +91,6 @@ void StageSelectDialog::Release() {
 	_yesTexture.Release();
 	_noTexture.Release();
 	_backTexture.Release();
+
+	_buttonSe.Release();
 }
