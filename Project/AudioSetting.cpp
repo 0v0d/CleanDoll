@@ -43,6 +43,7 @@ void AudioSetting::LoadTexture() {
 	_SETexture.Load("SE 1.png");
 	_barTexture.Load("s (1).png");
 	_buttonTexture.Load("s (2).png");
+	_buttonSe.Load("BottanClick.mp3");
 }
 void AudioSetting::Update()
 {
@@ -127,6 +128,7 @@ void AudioSetting::Release()
 	}
 	_BGMTexture.Release();
 	_SETexture.Release();
+	_buttonSe.Release();
 
 	delete[] _audioTexture;
 	delete[] _audioPos;

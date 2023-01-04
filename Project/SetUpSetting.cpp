@@ -43,18 +43,23 @@ void SetUpSetting::LoadTexture() {
 	_backSelectSceneTexture.Load("ステージ選択へ.png");
 	_closeMenuTexture.Load("閉じる.png");
 
-	_buttonSe.Load("ClicktoStart.mp3");
+	_buttonSe.Load("BottanClick.mp3");
 }
 
 void SetUpSetting::CreateButton() {
-	for (auto itr = _buttonArray.begin(); itr != _buttonArray.end(); itr++)
-	{
+	for (auto itr = _buttonArray.begin(); itr != _buttonArray.end(); itr++){
 		itr->first->SetSeSound(&_buttonSe);
-		itr->first->SetStatu(false, true, [&]() {
-			_openSetting = true;
-			_currentSetting = itr->second;
-			});
 	}
+
+	_audioButton.SetStatu(false, true, [&]() {
+		_openSetting = true;
+		_currentSetting = _buttonArray[&_audioButton];
+		});
+	
+	_backSceneButton.SetStatu(false, true, [&]() {
+		_openSetting = true;
+		_currentSetting = _buttonArray[&_backSceneButton];
+		});
 
 	_closeMenuButton.SetSeSound(&_buttonSe);
 	_closeMenuButton.SetStatu(false, true, [&]() {*_openMenu = false;});

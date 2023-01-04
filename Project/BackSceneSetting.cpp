@@ -4,7 +4,7 @@ void BackSceneSetting::Initialize()
 {
 	_backTexture.Load("‚Í‚¢.png");
 	_closeTexture.Load("‚¢‚¢‚¦.png");
-	_buttonSe.Load("ClicktoStart.mp3");
+	_buttonSe.Load("BottanClick.mp3");
 
 	CreateButton(&_backButton, Vector2(g_pGraphics->GetTargetWidth() / 2 - _backTexture.GetWidth() - 30, 450), &_backTexture, [&]() {
 		SceneManager::Instance().ChangeScene(_backScene);
