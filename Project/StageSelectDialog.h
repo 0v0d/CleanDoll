@@ -12,7 +12,7 @@ class StageSelectDialog
 	Button  _yesButton, _noButton;
 	CSoundBuffer _buttonSe;
 	const float _space = 100;
-
+	const float _backScale = 0.95f;
 	bool  _openStaSeleDialog;
 	int   _clickCount;
 	int   _pickStageNumber;

@@ -72,25 +72,26 @@ bool Bar::IsRenderRange(CTexture* texture, Vector2 pos, float scale) {
 	return CRectangle(pos.x, pos.y, pos.x + texture->GetWidth() * scale, pos.y + texture->GetHeight() * scale).CollisionRect(_screenEdge);
 }
 
-void Bar::Render()
-{
+void Bar::Render(){
 	float posY = CheckOnScreenTopLine(_pos.y, _pos.y+_baseBarTexture->GetHeight()) ? _screenPos.y : _pos.y;
 
 	if (IsRenderRange(_baseBarTexture, _pos, _scale))_baseBarTexture->RenderScale(_pos.x, posY, _scale, GetRenderRect(_pos, _baseBarTexture,_scale));
 	if (IsRenderRange(&_barTexture, _pos, _scale))_barTexture.RenderScale(_pos.x, posY, _scale, GetRenderRect(_pos, &_barTexture, _scale));
-	
-	
-	
-	for (int i = 0; i < _difficulty; i++)
-	{
+
+	for (int i = 0; i < _difficulty; i++){
+		const float spaceX = 30;
+		const float adjust = 120;
+		const float spaceY = 8;
 		posY = _pos.y + _barTexture.GetHeight() / 2 < _screenPos.y && _pos.y + _barTexture.GetHeight() / 2 + _difficultyTextureArray[i]->GetHeight() * _difficultyScale > _screenPos.y ? _screenPos.y : _pos.y + _barTexture.GetHeight() / 2;
-		if (IsRenderRange(_difficultyTextureArray[i], Vector2(_pos.x, _pos.y + _barTexture.GetHeight() / 2), _difficultyScale))
-			_difficultyTextureArray[i]->RenderScale
-			(_pos.x+_difficultyTextureArray[i]->GetWidth()*_difficultyScale*i , posY, _difficultyScale, 
-			 GetRenderRect(Vector2(_pos.x, _pos.y + _barTexture.GetHeight() / 2), _difficultyTextureArray[i], _difficultyScale));
+
+		if (IsRenderRange(_difficultyTextureArray[i],Vector2(_pos.x,_pos.y + _barTexture.GetHeight() / 2),_difficultyScale)) {
+			_difficultyTextureArray[i]->RenderScale((_pos.x + adjust) + ((_difficultyTextureArray[i]->GetWidth()+spaceX) *_difficultyScale * i),
+                      posY - spaceY, _difficultyScale,
+                      GetRenderRect(Vector2(_pos.x,_pos.y + _barTexture.GetHeight() / 2 - spaceY),_difficultyTextureArray[i], _difficultyScale));
+		}
 	}
-	if (_getCoin)
-	{
+
+	if (_getCoin){
 		posY = CheckOnScreenTopLine(_pos.y, _pos.y + _coinTexture->GetHeight()) ? _screenPos.y : _pos.y;
 		if (IsRenderRange(_coinTexture, Vector2(_barHitBox.Right - _coinTexture->GetWidth() * _coinScale, _pos.y), _coinScale))
 			_coinTexture->RenderScale(_barHitBox.Right - _coinTexture->GetWidth() * _coinScale, posY, _coinScale,

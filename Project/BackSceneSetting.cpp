@@ -2,6 +2,10 @@
 
 void BackSceneSetting::Initialize()
 {
+	Vector2 _basePos;
+	_basePos.x = g_pGraphics->GetTargetWidth() / 2;
+	_basePos.y = g_pGraphics->GetTargetHeight() / 2;
+	const float _space = 100;
 	_backTexture.Load("‚Í‚¢.png");
 	_closeTexture.Load("‚¢‚¢‚¦.png");
 	_buttonSe.Load("BottanClick.mp3");
