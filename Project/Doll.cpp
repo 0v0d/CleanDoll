@@ -40,7 +40,6 @@ void Doll::SetPosition(Vector2 blockCenterPosition)
 	_dollPosition.y = blockCenterPosition.y - _dollTextureSize.y * _scale;
 }
 
-
 void Doll::SetNextBlock(Block* blcok) {
 
 	_nextBlock = blcok;
@@ -67,6 +66,7 @@ void Doll::Update()
 	}
 
 	DollAnimationUpdate();
+	_animation.WaitBroomAnimation();
 }
 
 void Doll::Move()
@@ -93,7 +93,6 @@ void Doll::EndMove() {
 	if (!_animationflg) {
 		_animation.SetMoveBroomAnimationFlg(false);
 		_animation.SetMoveMopAnimationFlg(false);
-
 	}
 }
 
@@ -190,7 +189,7 @@ void Doll::DollAnimationUpdate()
 }
 
 void Doll::SetMoveAnimation() {
-	_heldMop ? _animation.SetMoveMopAnimationFlg(_move) :
+	//_heldMop ? _animation.SetMoveMopAnimationFlg(_move) :
 		_animation.SetMoveBroomAnimationFlg(_move);
 }
 

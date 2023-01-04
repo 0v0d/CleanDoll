@@ -28,6 +28,7 @@ class Doll
 	int _dustDumpValue, _waterDumpValue;
 	bool _heldMop, _animationflg;
 	bool _getCoin;
+
 	int _motionCount;
 	const int _textureValue = 30;
 	Vector2 _dollTextureSize;
