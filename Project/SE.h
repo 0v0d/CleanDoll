@@ -1,11 +1,10 @@
 #pragma once
 #include	"Mof.h"
-class BGM
+class SE
 {
-private:
-	CSoundBuffer* _bgm;
+	CSoundBuffer* _se;
 public:
-	void SetBGM(CSoundBuffer* bgm,bool loop);
+	void SetSE(CSoundBuffer* se) { _se = se; }
 	void Play();
 	void SetVolume(float volume);
 	void Stop();

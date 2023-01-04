@@ -7,6 +7,7 @@ void GameOver::Initialize()
 	_backGroundAnim.Initialize();
 	_logoAnim.Initialize();
 	_dollAnim.Initialize();
+	_endGameButtonManager.Initialize();
 
 	CreateButtonArray();
 }

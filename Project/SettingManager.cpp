@@ -4,9 +4,22 @@ void SettingManager::Initialize()
 {
 	_setUpSetting.SetOpenMenu(&_openMenu);
 	_setUpSetting.Initialize();
-	_openSettingButton.Initialize();
+	CreateButton();
 	_openMenu = false;
 	_menuTexture.Load("ƒƒjƒ…[@UI.png");
+}
+
+void SettingManager::CreateButton() {
+	_openButtonTexture.Load("Ý’èƒƒS.png");
+	_buttonSe.Load("BottanClick.mp3");
+
+	_openSettingButton.SetTexture(&_openButtonTexture);
+	_openSettingButton.SetPosition(Vector2(g_pGraphics->GetTargetWidth() - 150, 100));
+	_openSettingButton.SetSeSound(&_buttonSe);
+	_openSettingButton.SetStatu(false, true, [&]() {
+		_openMenu = true;
+		_setUpSetting.DetermineBackScene();
+		});
 }
 
 void SettingManager::Update()
@@ -37,11 +50,6 @@ void SettingManager::Push() {
 void SettingManager::Pull() {
 	if (!_openMenu) {
 		_openSettingButton.Pull();
-		if (_openSettingButton.CheckPullButton())
-		{
-			_openMenu = true;
-			_setUpSetting.DetermineBackScene();
-		}
 	}
 	else{
 		_setUpSetting.Pull();
@@ -62,6 +70,7 @@ void SettingManager::Render()
 void SettingManager::Release()
 {
 	_setUpSetting.Release();
-	_openSettingButton.Release();
+	_buttonSe.Release();
 	_menuTexture.Release();
+	_openButtonTexture.Release();
 }

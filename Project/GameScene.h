@@ -13,7 +13,7 @@ class GameScene :public IBaseScene
     BackGround _backGround;
     CTexture _gameBackTexture;
     BGM _bgm;
-    CSoundBuffer _music;
+    CSoundBuffer _music,_buttonSe;
 
     Button _resetStageButton;
     CTexture _resetButtonTexture;
