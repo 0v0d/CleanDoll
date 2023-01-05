@@ -3,7 +3,7 @@
 class DollMopAnimation
 {
 	CSpriteMotionController	_motionController;
-	const float _wait = 5;
+	const float _wait = 3;
 	enum {
 		WAIT_1,
 		WAIT_2,
