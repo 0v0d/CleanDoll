@@ -153,7 +153,7 @@ void TitleLogoAnimation::Update() {
 }
 
 void TitleLogoAnimation::SetNextAnimation() {
-	if (!_currentAniamtion->IsEndMotion()) return;
+
 
 	if (_loopAnimation) {
 		if (_logoCount > _loopLogoAnimationValue) {

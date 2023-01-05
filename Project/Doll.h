@@ -1,13 +1,15 @@
 #pragma once
 #include	"Mof.h"
 #include	"Block.h"
-#include	"DollAnimation.h"
 #include	"vector"
 #include	"functional"
+#include "DollMopAnimation.h"
+#include "DollBroomAnimation.h"
 
 class Doll
 {
-	DollAnimation _animation;
+	DollMopAnimation _mopAnimation;
+	DollBroomAnimation _broomAnimation;
 	CTexture _dollTexture;
 	Vector2 _dollPosition;
 	CRectangle _renderRect;
@@ -26,7 +28,7 @@ class Doll
 	std::function<void()> _endMoveMethod;
 
 	int _dustDumpValue, _waterDumpValue;
-	bool _heldMop, _animationflg;
+	bool _holdMop, _animationflg;
 	bool _getCoin;
 
 	int _motionCount;

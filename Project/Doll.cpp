@@ -6,8 +6,9 @@ void Doll::Initialize()
 {
 	_dollTexture.Load("doll.png");
 	_field->SetDollMove(&_move);
-	_animation.Initialize();
-	_dollTextureSize = Vector2(_dollTexture.GetWidth() / _textureValue, _dollTexture.GetHeight() / _animation.GetMotionValue());
+	_broomAnimation.Initialize();
+	_mopAnimation.Initialize();
+	_dollTextureSize = Vector2(_dollTexture.GetWidth() / _textureValue, _dollTexture.GetHeight() /( _broomAnimation.GetMotionValue()+_mopAnimation.GetMotionValue()));
 }
 
 void Doll::ReLoad()
@@ -15,11 +16,12 @@ void Doll::ReLoad()
 	_move = false;
 	_moveCount = 0;
 	_inversion = false;
-	_heldMop = false;
+	_holdMop = false;
 	_animationflg = false;
 	_getCoin = false;
 
-	_animation.ReLoad();
+	_mopAnimation.ReLoad();
+	_broomAnimation.ReLoad();
 }
 
 void Doll::CalcuScale(float boxSizeY, float scale)
@@ -66,7 +68,7 @@ void Doll::Update()
 	}
 
 	DollAnimationUpdate();
-	_animation.WaitBroomAnimation();
+	_holdMop ? _mopAnimation.WaitAnimation(): _broomAnimation.WaitAnimation();
 }
 
 void Doll::Move()
@@ -91,8 +93,8 @@ void Doll::EndMove() {
 	_field->EndMoveDoll();
 	_move = false;
 	if (!_animationflg) {
-		_animation.SetMoveBroomAnimationFlg(false);
-		_animation.SetMoveMopAnimationFlg(false);
+		_broomAnimation.SetMoveAnimationFlg(false);
+		_mopAnimation.SetMoveAnimationFlg(false);
 	}
 }
 
@@ -128,19 +130,19 @@ void Doll::ActionAccessories()
 void Doll::CleanDump()
 {
 	Dump* blockOnDump = dynamic_cast<Dump*>(_nextBlock->GetBlockOnObject()->GetAccessories());
-	if ((!_heldMop && blockOnDump->GetDumpType() == DUMP_TYPE::WATER) ||
-		(_heldMop && blockOnDump->GetDumpType() == DUMP_TYPE::DUST))return;
+	if ((!_holdMop && blockOnDump->GetDumpType() == DUMP_TYPE::WATER) ||
+		(_holdMop && blockOnDump->GetDumpType() == DUMP_TYPE::DUST))return;
 
-	blockOnDump->CalucAlphaValue(_animation.GetCleanTime());
+	blockOnDump->CalucAlphaValue(_holdMop ? _mopAnimation.GetCleanTime() :_broomAnimation.GetCleanTime());
 	blockOnDump->StartCleanflg(true);
-	if (_heldMop) {
-		_animation.StartCleanMopAnimation();
+	if (_holdMop) {
+		_mopAnimation.StartCleanAnimation();
 		_animationflg = true;
 		_waterDumpValue--;
 		_field->CleanWater();
 	}
 	else {
-		_animation.StartCleanBroomAnimation();
+		_broomAnimation.StartCleanAnimation();
 		_animationflg = true;
 		_dustDumpValue--;
 		_field->CleanDust();
@@ -157,10 +159,10 @@ void Doll::CollectCandy()
 
 void Doll::SwitchToMop()
 {
-	_animation.StartSwitchToMopAnimation();
+	_holdMop = true;
+	_mopAnimation.StartSwitchToMopAnimation();
 	_animationflg = true;
-	_heldMop = true;
-	
+
 	//ゲームオーバー
 	if (_dustDumpValue > 0){
 		_field->GameOver();
@@ -170,14 +172,23 @@ void Doll::SwitchToMop()
 
 void Doll::DollAnimationUpdate()
 {
-	if (_animationflg && _animation.IsEndCurrentAnimation()) {
+	if (_animationflg && _broomAnimation.IsEndCurrentAnimation() || _animationflg && _mopAnimation.IsEndCurrentAnimation()) {
 		_animationflg = false;
 		SetMoveAnimation();
 	}
 
-	_animation.Update();
-	_renderRect = _animation.GetRenderRect();
+	
+	if(_holdMop){
+		
+		_mopAnimation.Update();
+		_renderRect = _mopAnimation.GetRenderRect();
+	}
+	else{
+		_broomAnimation.Update();
+		_renderRect = _broomAnimation.GetRenderRect();
+	}
 
+	
 	if (!_animationflg) {
 		_inversion = _nextPosition.x > 0;
 	}
@@ -189,8 +200,8 @@ void Doll::DollAnimationUpdate()
 }
 
 void Doll::SetMoveAnimation() {
-	//_heldMop ? _animation.SetMoveMopAnimationFlg(_move) :
-		_animation.SetMoveBroomAnimationFlg(_move);
+	_mopAnimation.SetMoveAnimationFlg(_move);
+	_broomAnimation.SetMoveAnimationFlg(_move);
 }
 
 void Doll::Render()
