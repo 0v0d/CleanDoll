@@ -148,12 +148,12 @@ void TitleLogoAnimation::ReLoad(){
 
 void TitleLogoAnimation::Update() {
 	_currentAniamtion->AddTimer(CUtilities::GetFrameSecond());
-	SetNextAnimation();
 	_renderRect = _currentAniamtion->GetSrcRect();
+	SetNextAnimation();
 }
 
 void TitleLogoAnimation::SetNextAnimation() {
-
+	if (!_currentAniamtion->IsEndMotion()) return;
 
 	if (_loopAnimation) {
 		if (_logoCount > _loopLogoAnimationValue) {

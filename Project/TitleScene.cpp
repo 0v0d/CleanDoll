@@ -28,37 +28,33 @@ void TitleScene::Update()
 {
 	_titleLogoAnimation.Update();
 	_titleClickAnimation.Update();
-
 	//デバッグ
 	if (g_pInput->IsKeyPush(MOFKEY_SPACE)) SceneManager::Instance().ChangeScene(SCENE_TYPE::GALLERY);
 }
 
 void TitleScene::SetMousePos(Vector2 mousePos) {
-
 }
 
 void TitleScene::Push() {
-	
-	if (!_clearTutorial){
+}
+
+void TitleScene::Pull() {
+	if (!_clearTutorial) {
 		dynamic_cast<StageSelectScene*>(SceneManager::Instance().GetScene(SCENE_TYPE::STAGESELECT))->CreateTutorialField();
 		SceneManager::Instance().ChangeScene(SCENE_TYPE::GAME);
 	}
-	else{
+	else {
 
 		SceneManager::Instance().ChangeScene(SCENE_TYPE::STAGESELECT);
 	}
 	_bgm.Stop();
 }
 
-void TitleScene::Pull() {
-
-}
-
 void TitleScene::Render()
 {
 	_backGround.Render();
-	_titleLogoAnimation.Render();
 	_titleClickAnimation.Render();
+	_titleLogoAnimation.Render();
 }
 
 void TitleScene::Release()
