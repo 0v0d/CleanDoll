@@ -7,13 +7,10 @@ void GameScene::Initialize()
 	_backGround.SetTextureStatus(&_gameBackTexture, REPEATSCREEN);
 	_field.Initialize();
 	_music.Load("BGM.mp3");
-	_buttonSe.Load("ClicktoStart.mp3");
 	_bgm.SetBGM(&_music, true);
 
 	_resetStageButton.SetTexture(&_resetButtonTexture);
 	_resetStageButton.SetPosition(Vector2(100, 130));
-	_resetStageButton.SetSeSound(&_buttonSe);
-	_resetStageButton.SetStatu(false, true, [&]() {_field.ReLoad();});
 
 }
 
@@ -46,13 +43,14 @@ void GameScene::Push() {
 void GameScene::Pull() {
 	_field.Pull();
 	_resetStageButton.Pull();
+	if (_resetStageButton.IsPullButton()) _field.ReLoad();
 }
 
 void GameScene::Render()
 {
 	_backGround.Render();
-	_resetStageButton.Render();
 	_field.Render();
+	_resetStageButton.Render();
 }
 
 void GameScene::Release()
@@ -61,7 +59,6 @@ void GameScene::Release()
 	_field.Release();
 	_music.Release();
 	_resetButtonTexture.Release();
-	_buttonSe.Release();
 }
 
 void GameScene::StopBGM()

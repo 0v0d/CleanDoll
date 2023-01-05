@@ -1,14 +1,14 @@
 #pragma once
 #include	"Mof.h"
 #include	"functional"
+#include	"map"
 #include	"Button.h"
 #include	"EndGameButtonAnimation.h"
 
 class EndGameButtonManager
 {
-	std::vector<Button*> _buttonArray;
+	std::vector<std::pair<Button*, std::function<void()>>*> _buttonArray;
 	std::vector<EndGameButtonAnimation*> _animationArray;
-	CSoundBuffer _buttonSe;
 public:
 
 	void Initialize();

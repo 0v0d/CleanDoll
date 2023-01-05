@@ -5,9 +5,6 @@ void AudioSetting::Initialize()
 	LoadTexture();
 	CalcuScale();
 
-	_closeButton.SetStatu(false, true, [&]() {*_openAudioSetting = false;});
-	_closeButton.SetSeSound(&_buttonSe);
-
 	_sliderArray = new Slider[_sliderValue];
 	Vector2 _barSize = Vector2(_barTexture.GetWidth(), _barTexture.GetHeight());
 	Vector2 _buttonSize = Vector2(_buttonTexture.GetWidth(), _buttonTexture.GetHeight());
@@ -43,7 +40,6 @@ void AudioSetting::LoadTexture() {
 	_SETexture.Load("SE 1.png");
 	_barTexture.Load("s (1).png");
 	_buttonTexture.Load("s (2).png");
-	_buttonSe.Load("BottanClick.mp3");
 }
 void AudioSetting::Update()
 {
@@ -93,6 +89,9 @@ void AudioSetting::Pull()
 	}
 
 	_closeButton.Pull();
+	if (_closeButton.IsPullButton()) {
+		*_openAudioSetting = false;
+	}
 }
 
 void AudioSetting::Render()
@@ -128,7 +127,6 @@ void AudioSetting::Release()
 	}
 	_BGMTexture.Release();
 	_SETexture.Release();
-	_buttonSe.Release();
 
 	delete[] _audioTexture;
 	delete[] _audioPos;

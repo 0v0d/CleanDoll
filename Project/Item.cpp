@@ -7,7 +7,6 @@ Item::Item(CTexture* itemTexture, ACCESSORIES_TYPE accessoriesType) :
 
 void Item::Initialize()
 {
-	_show = false;
 }
 
 void Item::ReLoad()
@@ -27,10 +26,7 @@ void Item::Update()
 
 void Item::Render()
 {
-	if (_show)
-	{
-		_itemTexture->RenderScale(_position.x, _position.y, _scale);
-	}
+	_itemTexture->RenderScale(_position.x, _position.y, _scale);
 }
 
 void Item::Release()

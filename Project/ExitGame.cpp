@@ -6,8 +6,8 @@ void ExitGame::Initialize() {
 	_basePos.x = g_pGraphics->GetTargetWidth() / 2;
 	_basePos.y = g_pGraphics->GetTargetHeight() / 2;
 	LoadTexture();
-	CreateButton(&_yesButton, Vector2(_basePos.x - _space / 2 - _yesTexture.GetWidth(), _basePos.y), &_yesTexture, [&]() {PostQuitMessage(0);});
-	CreateButton(&_noButton, Vector2(_basePos.x + _space / 2, _basePos.y), &_noTexture, [&]() {	_openExitDialog = false;});
+	CreateButton(&_yesButton, Vector2(_basePos.x - _space / 2 - _yesTexture.GetWidth(), _basePos.y), &_yesTexture);
+	CreateButton(&_noButton, Vector2(_basePos.x + _space / 2, _basePos.y), &_noTexture);
 
 	_openExitDialog = false;
 }
@@ -15,8 +15,6 @@ void ExitGame::Initialize() {
 void ExitGame::LoadTexture() {
 	_yesTexture.Load("‚Í‚¢.png");
 	_noTexture.Load("‚¢‚¢‚¦.png");
-
-	_buttonSe.Load("ClicktoStart.mp3");
 }
 
 
@@ -24,12 +22,9 @@ void ExitGame::Update() {
 
 }
 
-void ExitGame::CreateButton(Button* button, Vector2 pos, CTexture* texture,std::function<void()> callMethod) {
+void ExitGame::CreateButton(Button* button, Vector2 pos, CTexture* texture) {
 	button->SetTexture(texture);
 	button->SetPosition(pos);
-
-	button->SetStatu(false, true, callMethod);
-	button->SetSeSound(&_buttonSe);
 }
 
 void ExitGame::SetMousePos(Vector2 mousePos) {
@@ -51,6 +46,13 @@ void ExitGame::Pull() {
 
 	_yesButton.Pull();
 	_noButton.Pull();
+
+	if (_yesButton.IsPullButton()) {
+		PostQuitMessage(0);
+	}
+	if (_noButton.IsPullButton()) {
+		_openExitDialog = false;
+	}
 }
 
 void ExitGame::Render() {
@@ -64,6 +66,4 @@ void ExitGame::Render() {
 void ExitGame::Release() {
 	_yesTexture.Release();
 	_noTexture.Release();
-
-	_buttonSe.Release();
 }

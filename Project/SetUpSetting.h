@@ -16,7 +16,6 @@ private:
 	CTexture _dollButtonTexture;
 	CTexture _backTitleSceneTexture, _backSelectSceneTexture;
 	CTexture _closeMenuTexture;
-	CSoundBuffer _buttonSe;
 
 	Vector2 _mousePos;
 
@@ -36,5 +35,5 @@ public:
 
 private:
 	void LoadTexture();
-	void CreateButton();
+	void CheckPullButton();
 };

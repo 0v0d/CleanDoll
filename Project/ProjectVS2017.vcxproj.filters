@@ -108,6 +108,9 @@
     <Filter Include="ソース ファイル\Scene\StageSelectScene\Animation">
       <UniqueIdentifier>{a06bc11c-93fa-41bd-bfad-9b059217930d}</UniqueIdentifier>
     </Filter>
+    <Filter Include="ソース ファイル\Scene\GameScene\Field\Doll\Animation">
+      <UniqueIdentifier>{412fc54d-0acb-4860-a636-2af4bb0057d8}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="WinMain.cpp">
@@ -206,6 +209,9 @@
     <ClCompile Include="SettingManager.cpp">
       <Filter>ソース ファイル\Menu\SettingManager</Filter>
     </ClCompile>
+    <ClCompile Include="OpenSetting.cpp">
+      <Filter>ソース ファイル\Menu\SettingManager</Filter>
+    </ClCompile>
     <ClCompile Include="AudioSetting.cpp">
       <Filter>ソース ファイル\Menu\SettingManager\SetUpSetting</Filter>
     </ClCompile>
@@ -241,9 +247,6 @@
     </ClCompile>
     <ClCompile Include="GameOver.cpp">
       <Filter>ソース ファイル\Scene\GameScene\EndGameProcess\GameOver</Filter>
-    </ClCompile>
-    <ClCompile Include="DollAnimation.cpp">
-      <Filter>ソース ファイル\Scene\GameScene\Field\Doll</Filter>
     </ClCompile>
     <ClCompile Include="EnergyValue.cpp">
       <Filter>ソース ファイル\Scene\GameScene\FieldUI\EnergyUI</Filter>
@@ -355,8 +358,11 @@
     <ClCompile Include="StageSelectBackGround.cpp">
       <Filter>ソース ファイル\Scene\StageSelectScene</Filter>
     </ClCompile>
-    <ClCompile Include="SE.cpp">
-      <Filter>ソース ファイル\UI</Filter>
+    <ClCompile Include="DollBroomAnimation.cpp">
+      <Filter>ソース ファイル\Scene\GameScene\Field\Doll\Animation</Filter>
+    </ClCompile>
+    <ClCompile Include="DollMopAnimation.cpp">
+      <Filter>ソース ファイル\Scene\GameScene\Field\Doll\Animation</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -456,6 +462,9 @@
     <ClInclude Include="SettingManager.h">
       <Filter>ソース ファイル\Menu\SettingManager</Filter>
     </ClInclude>
+    <ClInclude Include="OpenSetting.h">
+      <Filter>ソース ファイル\Menu\SettingManager</Filter>
+    </ClInclude>
     <ClInclude Include="AudioSetting.h">
       <Filter>ソース ファイル\Menu\SettingManager\SetUpSetting</Filter>
     </ClInclude>
@@ -491,9 +500,6 @@
     </ClInclude>
     <ClInclude Include="GameOver.h">
       <Filter>ソース ファイル\Scene\GameScene\EndGameProcess\GameOver</Filter>
-    </ClInclude>
-    <ClInclude Include="DollAnimation.h">
-      <Filter>ソース ファイル\Scene\GameScene\Field\Doll</Filter>
     </ClInclude>
     <ClInclude Include="EnergyValue.h">
       <Filter>ソース ファイル\Scene\GameScene\FieldUI\EnergyUI</Filter>
@@ -622,8 +628,11 @@
     <ClInclude Include="StageSelectBackGround.h">
       <Filter>ソース ファイル\Scene\StageSelectScene</Filter>
     </ClInclude>
-    <ClInclude Include="SE.h">
-      <Filter>ソース ファイル\UI</Filter>
+    <ClInclude Include="DollBroomAnimation.h">
+      <Filter>ソース ファイル\Scene\GameScene\Field\Doll\Animation</Filter>
+    </ClInclude>
+    <ClInclude Include="DollMopAnimation.h">
+      <Filter>ソース ファイル\Scene\GameScene\Field\Doll\Animation</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

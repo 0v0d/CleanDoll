@@ -1,14 +1,14 @@
 #include "Doll.h"
 #include "Field.h"
 #include "Dump.h"
-#include "Item.h"
 
 void Doll::Initialize()
 {
 	_dollTexture.Load("doll.png");
 	_field->SetDollMove(&_move);
-	_animation.Initialize();
-	_dollTextureSize = Vector2(_dollTexture.GetWidth() / _textureValue, _dollTexture.GetHeight() / _animation.GetMotionValue());
+	_broomAnimation.Initialize();
+	_mopAnimation.Initialize();
+	_dollTextureSize = Vector2(_dollTexture.GetWidth() / _textureValue, _dollTexture.GetHeight() /( _broomAnimation.GetMotionValue()+_mopAnimation.GetMotionValue()));
 }
 
 void Doll::ReLoad()
@@ -16,11 +16,12 @@ void Doll::ReLoad()
 	_move = false;
 	_moveCount = 0;
 	_inversion = false;
-	_heldMop = false;
-	_cleanAnimation = false;
+	_holdMop = false;
+	_animationflg = false;
 	_getCoin = false;
 
-	_animation.ReLoad();
+	_mopAnimation.ReLoad();
+	_broomAnimation.ReLoad();
 }
 
 void Doll::CalcuScale(float boxSizeY, float scale)
@@ -41,7 +42,6 @@ void Doll::SetPosition(Vector2 blockCenterPosition)
 	_dollPosition.y = blockCenterPosition.y - _dollTextureSize.y * _scale;
 }
 
-
 void Doll::SetNextBlock(Block* blcok) {
 
 	_nextBlock = blcok;
@@ -49,28 +49,31 @@ void Doll::SetNextBlock(Block* blcok) {
 	SetNextPosition();
 
 	_move = true;
-	if (!_cleanAnimation)_animation.SetMoveAnimationFlg(_move);
+	if (!_animationflg) {
+		SetMoveAnimation();
+	}
 }
 
 void Doll::SetNextPosition()
 {
-	_nextPosition.x = _nextBlock->GetCenterPosition().x -_dollPosition.x - _dollTextureSize.x * _scale / 2;
-	_nextPosition.y = _nextBlock->GetCenterPosition().y -_dollPosition.y - _dollTextureSize.y * _scale;
+	_nextPosition.x = _nextBlock->GetCenterPosition().x - _dollPosition.x - _dollTextureSize.x * _scale / 2;
+	_nextPosition.y = _nextBlock->GetCenterPosition().y - _dollPosition.y - _dollTextureSize.y * _scale;
 }
 
 void Doll::Update()
 {
-	
-	if (_move){
+
+	if (_move) {
 		Move();
 	}
 
 	DollAnimationUpdate();
+	_holdMop ? _mopAnimation.WaitAnimation(): _broomAnimation.WaitAnimation();
 }
 
 void Doll::Move()
 {
-	if (_cleanAnimation) return;
+	if (_animationflg) return;
 
 	_dollPosition.x += _nextPosition.x / _moveSpeed;
 	_dollPosition.y += _nextPosition.y / _moveSpeed;
@@ -89,7 +92,10 @@ void Doll::Move()
 void Doll::EndMove() {
 	_field->EndMoveDoll();
 	_move = false;
-	if (!_cleanAnimation)_animation.SetMoveAnimationFlg(false);
+	if (!_animationflg) {
+		_broomAnimation.SetMoveAnimationFlg(false);
+		_mopAnimation.SetMoveAnimationFlg(false);
+	}
 }
 
 void Doll::ActionAccessories()
@@ -109,7 +115,8 @@ void Doll::ActionAccessories()
 		break;
 
 	case ACCESSORIES_TYPE::ITEM:
-		CollectCandy();
+		//CollectCandy();
+		_nextBlock->GetBlockOnObject()->HiddenAccessoriesFlg(true);
 		break;
 
 	case ACCESSORIES_TYPE::COIN:
@@ -123,36 +130,41 @@ void Doll::ActionAccessories()
 void Doll::CleanDump()
 {
 	Dump* blockOnDump = dynamic_cast<Dump*>(_nextBlock->GetBlockOnObject()->GetAccessories());
-	if ((!_heldMop && blockOnDump->GetDumpType() == DUMP_TYPE::WATER) ||
-		(_heldMop && blockOnDump->GetDumpType() == DUMP_TYPE::DUST))return;
-	
-	blockOnDump->CalucAlphaValue(_animation.GetCleanTime());
+	if ((!_holdMop && blockOnDump->GetDumpType() == DUMP_TYPE::WATER) ||
+		(_holdMop && blockOnDump->GetDumpType() == DUMP_TYPE::DUST))return;
+
+	blockOnDump->CalucAlphaValue(_holdMop ? _mopAnimation.GetCleanTime() :_broomAnimation.GetCleanTime());
 	blockOnDump->StartCleanflg(true);
-	if (_heldMop) {
+	if (_holdMop) {
+		_mopAnimation.StartCleanAnimation();
+		_animationflg = true;
 		_waterDumpValue--;
 		_field->CleanWater();
 	}
 	else {
+		_broomAnimation.StartCleanAnimation();
+		_animationflg = true;
 		_dustDumpValue--;
 		_field->CleanDust();
 	}
-	_animation.StartCleanAnimation();
-	_cleanAnimation = true;
+
 }
 
 void Doll::CollectCandy()
 {
-	Item* blockOnCandy = dynamic_cast<Item*>(_nextBlock->GetBlockOnObject()->GetAccessories());
-	blockOnCandy->SetShow(false);
+	//飴のモーション実装
+	/*_animation.StartGetCandyAnimation();
+	_animationflg = true;*/
 }
 
 void Doll::SwitchToMop()
 {
-	_heldMop = true;
+	_holdMop = true;
+	_mopAnimation.StartSwitchToMopAnimation();
+	_animationflg = true;
 
 	//ゲームオーバー
-	if (_dustDumpValue > 0)
-	{
+	if (_dustDumpValue > 0){
 		_field->GameOver();
 		_move = false;
 	}
@@ -160,35 +172,45 @@ void Doll::SwitchToMop()
 
 void Doll::DollAnimationUpdate()
 {
-	if (_cleanAnimation && _animation.IsEndCurrentAnimation()) {
-		_cleanAnimation = false;
-		_animation.SetMoveAnimationFlg(_move);
+	if (_animationflg && _broomAnimation.IsEndCurrentAnimation() || _animationflg && _mopAnimation.IsEndCurrentAnimation()) {
+		_animationflg = false;
+		SetMoveAnimation();
 	}
 
-	_animation.Update();
-	_renderRect = _animation.GetRenderRect();
+	
+	if(_holdMop){
+		
+		_mopAnimation.Update();
+		_renderRect = _mopAnimation.GetRenderRect();
+	}
+	else{
+		_broomAnimation.Update();
+		_renderRect = _broomAnimation.GetRenderRect();
+	}
 
-	if (!_cleanAnimation)
-	{
+	
+	if (!_animationflg) {
 		_inversion = _nextPosition.x > 0;
 	}
-	if (_inversion)
-	{
+	if (_inversion) {
 		_inversionRenderRect = _renderRect;
 		_inversionRenderRect.Right = _renderRect.Left;
 		_inversionRenderRect.Left = _renderRect.Right;
 	}
 }
 
+void Doll::SetMoveAnimation() {
+	_mopAnimation.SetMoveAnimationFlg(_move);
+	_broomAnimation.SetMoveAnimationFlg(_move);
+}
+
 void Doll::Render()
 {
 	_inversion ? _dollTexture.RenderScale(_dollPosition.x, _dollPosition.y, _scale, _inversionRenderRect) :
 		_dollTexture.RenderScale(_dollPosition.x, _dollPosition.y, _scale, _renderRect);
-	
 }
 
 void Doll::Release()
 {
 	_dollTexture.Release();
 }
-

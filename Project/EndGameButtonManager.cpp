@@ -2,7 +2,6 @@
 
 void EndGameButtonManager::Initialize(){
 
-	_buttonSe.Load("ClicktoStart.mp3");
 }
 
 void EndGameButtonManager::ReLoad(){
@@ -17,8 +16,6 @@ void EndGameButtonManager::CreateButton(CTexture* texture, float sizeX, float si
 	button->SetTexture(texture);
 	button->CalcuScale(sizeX, sizeY);
 	button->SetPosition(centerPos);
-	button->SetStatu(false,true,method);
-	button->SetSeSound(&_buttonSe);
 
 	EndGameButtonAnimation* animation = new EndGameButtonAnimation();
 
@@ -29,7 +26,8 @@ void EndGameButtonManager::CreateButton(CTexture* texture, float sizeX, float si
 	animation->CalcuCenterPos(centerPos);
 	animation->CalcuAnimationSpeed(animationTime);
 
-	_buttonArray.push_back(button);
+	auto pair = new std::pair<Button*, std::function<void()>>{ button,method };
+	_buttonArray.push_back(pair);
 	_animationArray.push_back(animation);
 }
 
@@ -43,7 +41,7 @@ void EndGameButtonManager::Update() {
 
 void EndGameButtonManager::SetMousePos(Vector2 mousePos){
 	for (int i = 0;i < _buttonArray.size();i++) {
-		_buttonArray[i]->SetMousePos(mousePos);
+		_buttonArray[i]->first->SetMousePos(mousePos);
 	}
 }
 
@@ -51,7 +49,7 @@ void EndGameButtonManager::Push(){
 	if (!_animationArray[_animationArray.size() - 1]->IsEndAnimation()) return;
 
 	for (int i = 0;i < _buttonArray.size();i++) {
-		_buttonArray[i]->Push();
+		_buttonArray[i]->first->Push();
 	}
 }
 
@@ -59,7 +57,8 @@ void EndGameButtonManager::Pull(){
 	if (!_animationArray[_animationArray.size() - 1]->IsEndAnimation()) return;
 
 	for (int i = 0;i < _buttonArray.size();i++) {
-		_buttonArray[i]->Pull();
+		_buttonArray[i]->first->Pull();
+		if (_buttonArray[i]->first->IsPullButton())_buttonArray[i]->second();
 	}
 }
 
@@ -73,7 +72,7 @@ void EndGameButtonManager::Render(){
 
 	if (_animationArray[_animationArray.size() - 1]->IsEndAnimation()) {
 		for (int i = 0;i < _buttonArray.size();i++) {
-			_buttonArray[i]->Render();
+			_buttonArray[i]->first->Render();
 		}
 	}
 	else {
@@ -86,8 +85,7 @@ void EndGameButtonManager::Render(){
 void EndGameButtonManager::Release(){
 
 	for (int i = 0;i < _buttonArray.size();i++) {
-		delete _buttonArray[i];
+		delete _buttonArray[i]->first;
 		delete _animationArray[i];
 	}
-	_buttonSe.Release();
 }

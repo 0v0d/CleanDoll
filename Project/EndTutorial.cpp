@@ -9,7 +9,6 @@ void EndTutorial::Initialize(){
 	_backGroundAnim.Initialize();
 	_dollAnim.Initialize();
 	_logoAnim.Initialize();
-	_endGameButtonManager.Initialize();
 
 	CreateButtonArray();
 }
@@ -80,6 +79,4 @@ void EndTutorial::Release(){
 	_backGroundAnim.Release();
 	_dollAnim.Release();
 	_logoAnim.Release();
-
-	_endGameButtonManager.Release();
 }

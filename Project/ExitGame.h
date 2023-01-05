@@ -7,7 +7,6 @@ private:
 	Button		 _yesButton, _noButton;
 	const float	 _space = 100;
 	bool		 _openExitDialog;
-	CSoundBuffer _buttonSe;
 public:
 	void Initialize();
 
@@ -24,6 +23,6 @@ public:
 
 private:
 	void LoadTexture();
-	void CreateButton(Button*, Vector2 pos, CTexture* ,std::function<void()> callMethod);
+	void CreateButton(Button*, Vector2 pos, CTexture*);
 
 };

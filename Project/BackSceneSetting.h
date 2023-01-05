@@ -12,7 +12,6 @@ private:
 	Button _closeButton, _backButton;
 	CTexture _closeTexture, _backTexture;
 	SCENE_TYPE _backScene;
-	CSoundBuffer _buttonSe;
 
 public:
 	void Initialize();
@@ -28,5 +27,6 @@ public:
 	void Render();
 	void Release();
 private:
-	void CreateButton(Button*, Vector2 pos, CTexture*, std::function<void()> callMethod);
+	void CheckPullButtonCheck();
+	void CreateButton(Button*, Vector2 pos, CTexture*);
 };

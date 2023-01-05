@@ -109,6 +109,8 @@
     <ClCompile Include="ContactFile.cpp" />
     <ClCompile Include="CreateField.cpp" />
     <ClCompile Include="ChangeSceneEffect.cpp" />
+    <ClCompile Include="DollBroomAnimation.cpp" />
+    <ClCompile Include="DollMopAnimation.cpp" />
     <ClCompile Include="DollMoveSetting.cpp" />
     <ClCompile Include="EndGameButtonManager.cpp" />
     <ClCompile Include="GalleryCoin.cpp" />
@@ -118,10 +120,8 @@
     <ClCompile Include="EndTutorialLogoAnimation.cpp" />
     <ClCompile Include="GalleryTexture.cpp" />
     <ClCompile Include="GetCoinNumber.cpp" />
-    <ClCompile Include="SE.cpp" />
     <ClCompile Include="SetFieldData.cpp" />
     <ClCompile Include="Doll.cpp" />
-    <ClCompile Include="DollAnimation.cpp" />
     <ClCompile Include="Dump.cpp" />
     <ClCompile Include="EndGameButtonAnimation.cpp" />
     <ClCompile Include="EndGameProcess.cpp" />
@@ -155,6 +155,7 @@
     <ClCompile Include="BarManager.cpp" />
     <ClCompile Include="Menu.cpp" />
     <ClCompile Include="Object.cpp" />
+    <ClCompile Include="OpenSetting.cpp" />
     <ClCompile Include="OperateDoll.cpp" />
     <ClCompile Include="Preview.cpp" />
     <ClCompile Include="RemainingDumpUI.cpp" />
@@ -194,6 +195,8 @@
     <ClInclude Include="ChangeSceneEffect.h" />
     <ClInclude Include="ContactFile.h" />
     <ClInclude Include="CreateField.h" />
+    <ClInclude Include="DollBroomAnimation.h" />
+    <ClInclude Include="DollMopAnimation.h" />
     <ClInclude Include="DollMoveSetting.h" />
     <ClInclude Include="EndGameButtonManager.h" />
     <ClInclude Include="EndTutorial.h" />
@@ -203,10 +206,8 @@
     <ClInclude Include="GalleryCoin.h" />
     <ClInclude Include="GalleryTexture.h" />
     <ClInclude Include="GetCoinNumber.h" />
-    <ClInclude Include="SE.h" />
     <ClInclude Include="SetFieldData.h" />
     <ClInclude Include="Doll.h" />
-    <ClInclude Include="DollAnimation.h" />
     <ClInclude Include="Dump.h" />
     <ClInclude Include="EndGameButtonAnimation.h" />
     <ClInclude Include="EndGameProcess.h" />
@@ -240,6 +241,7 @@
     <ClInclude Include="BarManager.h" />
     <ClInclude Include="Menu.h" />
     <ClInclude Include="Object.h" />
+    <ClInclude Include="OpenSetting.h" />
     <ClInclude Include="OperateDoll.h" />
     <ClInclude Include="Preview.h" />
     <ClInclude Include="RemainingDumpUI.h" />
