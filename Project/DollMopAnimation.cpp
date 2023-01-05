@@ -7,7 +7,6 @@ void DollMopAnimation::Initialize() {
 void DollMopAnimation::CreateAnimation() {
 	SpriteAnimationCreate _dollAnimation[] = {
 {
-
 	"Wait_Mop",
 	0,1280,
 	320,320,
