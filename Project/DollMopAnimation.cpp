@@ -27,7 +27,7 @@ void DollMopAnimation::CreateAnimation() {
 	"Walk_Mop",
 	0,1920,
 	320,320,
-	false,{{_wait,0,0},{_wait,1,0},{_wait,2,0},{_wait,3,0},{_wait,4,0},{_wait,5,0},{_wait,6,0},{_wait,7,0},
+	true,{{_wait,0,0},{_wait,1,0},{_wait,2,0},{_wait,3,0},{_wait,4,0},{_wait,5,0},{_wait,6,0},{_wait,7,0},
 	{_wait,8,0},{_wait,9,0} ,{_wait,10,0},{_wait,11,0},{_wait,12,0},{_wait,13,0},{_wait,14,0},{_wait,15,0},{_wait,16,0},
 	{_wait,17,0},{_wait,18,0},{_wait,19,0}}
 },
