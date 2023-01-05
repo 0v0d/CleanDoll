@@ -120,6 +120,7 @@
     <ClCompile Include="EndTutorialLogoAnimation.cpp" />
     <ClCompile Include="GalleryTexture.cpp" />
     <ClCompile Include="GetCoinNumber.cpp" />
+    <ClCompile Include="SE.cpp" />
     <ClCompile Include="SetFieldData.cpp" />
     <ClCompile Include="Doll.cpp" />
     <ClCompile Include="Dump.cpp" />
@@ -155,7 +156,6 @@
     <ClCompile Include="BarManager.cpp" />
     <ClCompile Include="Menu.cpp" />
     <ClCompile Include="Object.cpp" />
-    <ClCompile Include="OpenSetting.cpp" />
     <ClCompile Include="OperateDoll.cpp" />
     <ClCompile Include="Preview.cpp" />
     <ClCompile Include="RemainingDumpUI.cpp" />
@@ -206,6 +206,7 @@
     <ClInclude Include="GalleryCoin.h" />
     <ClInclude Include="GalleryTexture.h" />
     <ClInclude Include="GetCoinNumber.h" />
+    <ClInclude Include="SE.h" />
     <ClInclude Include="SetFieldData.h" />
     <ClInclude Include="Doll.h" />
     <ClInclude Include="Dump.h" />
@@ -241,7 +242,6 @@
     <ClInclude Include="BarManager.h" />
     <ClInclude Include="Menu.h" />
     <ClInclude Include="Object.h" />
-    <ClInclude Include="OpenSetting.h" />
     <ClInclude Include="OperateDoll.h" />
     <ClInclude Include="Preview.h" />
     <ClInclude Include="RemainingDumpUI.h" />

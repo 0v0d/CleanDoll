@@ -8,6 +8,7 @@ void GameClear::Initialize()
 	_logoAnim.Initialize();
 	_backGroundAnim.Initialize();
 	_dollAnim.Initialize();
+	_endGameButtonManager.Initialize();
 
 	CreateButtonArray();
 }

@@ -10,6 +10,7 @@ class StageSelectDialog
 	CTexture _backTexture;
 	CTexture _yesTexture,_noTexture;
 	Button  _yesButton, _noButton;
+	CSoundBuffer _buttonSe;
 	const float _space = 100;
 
 	bool  _openStaSeleDialog;
@@ -37,5 +38,5 @@ public:
 
 private:
 	void LoadTexture();
-	void CreateButton(Button*, Vector2 pos, CTexture*);
+	void CreateButton(Button*, Vector2 pos, CTexture*, std::function<void()>);
 };

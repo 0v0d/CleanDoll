@@ -1,5 +1,4 @@
 #pragma once
-
 #include	"Mof.h"
 class BGM
 {
@@ -11,4 +10,3 @@ public:
 	void SetVolume(float volume);
 	void Stop();
 };
-
