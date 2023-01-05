@@ -41,7 +41,24 @@ void SetUpSetting::LoadTexture() {
 	_backTitleSceneTexture.Load("clictostart.png");
 	_backSelectSceneTexture.Load("ステージ選択へ.png");
 	_closeMenuTexture.Load("閉じる.png");
+
+	_buttonSe.Load("ClicktoStart.mp3");
 }
+
+void SetUpSetting::CreateButton() {
+	for (auto itr = _buttonArray.begin(); itr != _buttonArray.end(); itr++)
+	{
+		itr->first->SetSeSound(&_buttonSe);
+		itr->first->SetStatu(false, true, [&]() {
+			_openSetting = true;
+			_currentSetting = itr->second;
+			});
+	}
+
+	_closeMenuButton.SetSeSound(&_buttonSe);
+	_closeMenuButton.SetStatu(false, true, [&]() {*_openMenu = false;});
+}
+
 
 void SetUpSetting::Update()
 {
@@ -87,23 +104,6 @@ void SetUpSetting::Pull()
 		_closeMenuButton.Pull();
 		for (auto itr = _buttonArray.begin(); itr != _buttonArray.end(); itr++) {
 			itr->first->Pull();
-		}
-		CheckPullButton();
-	}
-}
-
-void SetUpSetting::CheckPullButton() {
-	if (_closeMenuButton.IsPullButton()) {
-		*_openMenu = false;
-	}
-
-	for (auto itr = _buttonArray.begin(); itr != _buttonArray.end(); itr++)
-	{
-		if (itr->first->IsPullButton())
-		{
-			_openSetting = true;
-			_currentSetting = itr->second;
-			break;
 		}
 	}
 }
