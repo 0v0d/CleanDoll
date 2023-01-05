@@ -55,7 +55,7 @@ void DollMopAnimation::CreateAnimation() {
 
 void DollMopAnimation::ReLoad() {
 	_currentMotion = 0;
-	_motionController.ChangeMotion(WaitMopAnimationLoop());
+	_motionController.ChangeMotion(WaitAnimationLoop());
 }
 
 void DollMopAnimation::Update() {
@@ -66,18 +66,18 @@ void DollMopAnimation::Update() {
 		_motionController.ChangeMotion(PICK_MOP_2);
 }
 
-void DollMopAnimation::WaitMopAnimation() {
-	if ((_motionController.GetMotionNo() == WAIT_MOP_1 || _motionController.GetMotionNo() == WAIT_MOP_2) && _motionController.IsEndMotion()) {
-		_motionController.ChangeMotion(WaitMopAnimationLoop());
+void DollMopAnimation::WaitAnimation() {
+	if ((_motionController.GetMotionNo() == WAIT_1 || _motionController.GetMotionNo() == WAIT_2) && _motionController.IsEndMotion()) {
+		_motionController.ChangeMotion(WaitAnimationLoop());
 	}
 }
 
-void DollMopAnimation::SetMoveMopAnimationFlg(bool playMove) {
+void DollMopAnimation::SetMoveAnimationFlg(bool playMove) {
 	if (!playMove) {
-		_motionController.ChangeMotion(WaitMopAnimationLoop());
+		_motionController.ChangeMotion(WaitAnimationLoop());
 	}
-	else if (_motionController.GetMotionNo() != WALK_MOP) {
-		_motionController.ChangeMotion(WALK_MOP);
+	else if (_motionController.GetMotionNo() != WALK) {
+		_motionController.ChangeMotion(WALK);
 	}
 }
 

@@ -5,10 +5,10 @@ class DollBroomAnimation
 	CSpriteMotionController	_motionController;
 	const float _wait = 3;
 	enum {
-		WAIT_BROOM_1,
-		WAIT_BROOM_2,
-		WALK_BROOM,
-		CLEAN_BROOM,
+		WAIT_1,
+		WAIT_2,
+		WALK,
+		CLEAN,
 		//GET_CANDY
 	};
 	CRectangle _renderRect;
@@ -20,18 +20,18 @@ public:
 	void ReLoad();
 	void Update();
 
-	void SetMoveBroomAnimationFlg(bool playMove);
-	void StartCleanBroomAnimation() { _motionController.ChangeMotion(CLEAN_BROOM); }
+	void SetMoveAnimationFlg(bool playMove);
+	void StartCleanAnimation() { _motionController.ChangeMotion(CLEAN); }
 
 	void StartGetCandyAnimation();// {_motionController.ChangeMotion(GET_CANDY); }
 
-	void WaitBroomAnimation();
+	void WaitAnimation();
 	int GetMotionValue() const { return _motionCount; }
 	CRectangle GetRenderRect() { return _renderRect; }
 	bool IsEndCurrentAnimation() { return _motionController.IsEndMotion(); }
 	float GetCleanTime() { return CUtilities::GetFPS() * _motionValue; }
 private:
 	void CreateAnimation();
-	int WaitBroomAnimationLoop() { return _currentMotion = (_currentMotion + 1) % 2; }
+	int WaitAnimationLoop() { return _currentMotion = (_currentMotion + 1) % 2; }
 };
 
