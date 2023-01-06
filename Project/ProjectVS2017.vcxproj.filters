@@ -364,6 +364,7 @@
     <ClCompile Include="BGM.cpp">
       <Filter>ソース ファイル\Sound</Filter>
     </ClCompile>
+	 </ClCompile>
     <ClCompile Include="SE.cpp">
       <Filter>ソース ファイル\Sound</Filter>
     </ClCompile>
@@ -637,6 +638,8 @@
     <ClInclude Include="BGM.h">
       <Filter>ソース ファイル\Sound</Filter>
     </ClInclude>
+	 <Filter>ソース ファイル\Scene\GameScene\Field\Doll\Animation</Filter> 
+	</ClInclude>
     <ClInclude Include="SE.h">
       <Filter>ソース ファイル\Sound</Filter>
     </ClInclude>

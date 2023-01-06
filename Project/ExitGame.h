@@ -5,7 +5,6 @@ class ExitGame
 private:
 	CTexture	 _yesTexture, _noTexture;
 	Button		 _yesButton, _noButton;
-	const float	 _space = 100;
 	bool		 _openExitDialog;
 	CSoundBuffer _buttonSe;
 public:
