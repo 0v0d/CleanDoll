@@ -360,6 +360,7 @@
     </ClCompile>
     <ClCompile Include="DollMopAnimation.cpp">
       <Filter>ソース ファイル\Scene\GameScene\Field\Doll\Animation</Filter>
+	 </ClCompile>
     <ClCompile Include="SE.cpp">
       <Filter>ソース ファイル\UI</Filter>
     </ClCompile>
@@ -628,7 +629,8 @@
       <Filter>ソース ファイル\Scene\GameScene\Field\Doll\Animation</Filter>
     </ClInclude>
     <ClInclude Include="DollMopAnimation.h">
-      <Filter>ソース ファイル\Scene\GameScene\Field\Doll\Animation</Filter>
+	 <Filter>ソース ファイル\Scene\GameScene\Field\Doll\Animation</Filter> 
+	</ClInclude>
     <ClInclude Include="SE.h">
       <Filter>ソース ファイル\UI</Filter>
     </ClInclude>
