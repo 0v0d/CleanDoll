@@ -39,7 +39,7 @@ void BarManager::LoadTexture() {
 	_barTexture.Load("スクロールバー1.png");
 	_buttonTexture.Load("スクロールバー2.png");
 	_difficultyTexture.Load("difficulty.png");
-	_coinTexture.Load("stageselectcoin.png");
+	_coinTexture.Load("stageselect_coin.png");
 }
 
 void BarManager::CalcuScale() {
