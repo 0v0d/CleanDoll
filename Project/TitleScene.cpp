@@ -11,14 +11,11 @@ void TitleScene::Initialize()
 	_backGround.SetTextureStatus(&_titleBackTexture, FULLSCREEN);
 
 	_music.Load("BGM.mp3");
-	_bgm.SetBGM(&_music, true);
-	_bgm.Play();
 	_clearTutorial = false;
 }
 
 void TitleScene::ReLoad()
 {
-	_bgm.Play();
 	_titleLogoAnimation.ReLoad();
 	_titleClickAnimation.ReLoad();
 	_clearTutorial = true;
@@ -47,7 +44,6 @@ void TitleScene::Pull() {
 
 		SceneManager::Instance().ChangeScene(SCENE_TYPE::STAGESELECT);
 	}
-	_bgm.Stop();
 }
 
 void TitleScene::Render()
@@ -64,9 +60,4 @@ void TitleScene::Release()
 	_titleBackTexture.Release();
 
 	_music.Release();
-}
-
-void TitleScene::StopBGM()
-{
-	_bgm.Stop();
 }

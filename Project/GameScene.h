@@ -12,7 +12,6 @@ class GameScene :public IBaseScene
     FieldUI _fieldUI;
     BackGround _backGround;
     CTexture _gameBackTexture;
-    BGM _bgm;
     CSoundBuffer _music,_buttonSe;
 
     Button _resetStageButton;
@@ -28,9 +27,9 @@ public:
 
     void Render();
     void Release();
-    void StopBGM();
+
     Field* GetField() { return &_field; }
- 
+    CSoundBuffer* GetBGM() { return &_music; }
 private:
     void LoadTexture();
 };

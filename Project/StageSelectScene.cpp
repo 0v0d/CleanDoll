@@ -19,7 +19,6 @@ void StageSelectScene::Initialize()
     _preview.CalcuBasePos();
     _preview.SetPreviewTexture(_barManager.GetBar(0)->GetPreviewTexture());
     _music.Load("BGM.mp3");
-    _bgm.SetBGM(&_music, true);
     _stageSelectDialog.SetLoadStageMethod([&](int stageNumber) {return LoadStage(stageNumber);});
 }
 
@@ -32,7 +31,6 @@ void StageSelectScene::ReLoad()
 {
     _barManager.ReLoad();
     _stageSelectDialog.ReLoad();
-    _bgm.Play();
     _LogoSlide.ReLoad();
 }
 
@@ -120,9 +118,4 @@ void StageSelectScene::Release()
     _music.Release();
 
     _LogoSlide.Release();
-}
-
-void StageSelectScene::StopBGM()
-{
-    _bgm.Stop();
 }

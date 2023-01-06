@@ -97,6 +97,7 @@
     </ResourceCompile>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="AudioMixer.cpp" />
     <ClCompile Include="AudioSetting.cpp" />
     <ClCompile Include="BackGround.cpp" />
     <ClCompile Include="BackSceneSetting.cpp" />
@@ -120,6 +121,7 @@
     <ClCompile Include="EndTutorialLogoAnimation.cpp" />
     <ClCompile Include="GalleryTexture.cpp" />
     <ClCompile Include="GetCoinNumber.cpp" />
+    <ClCompile Include="IBaseSound.cpp" />
     <ClCompile Include="SE.cpp" />
     <ClCompile Include="SetFieldData.cpp" />
     <ClCompile Include="Doll.cpp" />
@@ -183,6 +185,7 @@
     <ClCompile Include="WinMain.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="AudioMixer.h" />
     <ClInclude Include="AudioSetting.h" />
     <ClInclude Include="BackGround.h" />
     <ClInclude Include="BackSceneSetting.h" />
@@ -206,6 +209,7 @@
     <ClInclude Include="GalleryCoin.h" />
     <ClInclude Include="GalleryTexture.h" />
     <ClInclude Include="GetCoinNumber.h" />
+    <ClInclude Include="IBaseSound.h" />
     <ClInclude Include="SE.h" />
     <ClInclude Include="SetFieldData.h" />
     <ClInclude Include="Doll.h" />

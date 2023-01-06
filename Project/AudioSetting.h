@@ -2,14 +2,15 @@
 #include	"Button.h"
 #include	"IBaseSetting.h"
 #include	"Slider.h"
+#include	"IBaseSound.h"
 
 class AudioSetting :public IBaseSetting
 {
 	bool* _openAudioSetting;
-	bool* _muted = new bool[_sliderValue];
+	bool* _muted;
 	const int _sliderValue = 2;
 	Slider* _sliderArray;
-	int _BGMVolume, _SEVolume;
+	float _BGMVolume, _SEVolume;
 	Button _closeButton;
 	Vector2 _mousePos;
 	CTexture _closeButtonTexture;

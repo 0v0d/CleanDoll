@@ -13,6 +13,8 @@ void GalleryScene::Initialize(){
 	_galleryTexture.SetBasePos(Vector2(g_pGraphics->GetTargetWidth() / 2 + space, barManagerPos.y - _barManager.GetBackTextureSize().y / 2));
 
 	_barManager.CreateBarArray();
+
+	_music.Load("BGM.mp3");
 }
 
 void GalleryScene::ReLoad(){
@@ -49,4 +51,6 @@ void GalleryScene::Render(){
 void GalleryScene::Release(){
 	_barManager.Release();
 	_galleryTexture.Release();
+
+	_music.Release();
 }

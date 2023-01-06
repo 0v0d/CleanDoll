@@ -23,13 +23,13 @@ private:
 	Preview _preview;
 	CTexture _backGroundTexture;
 	BackGround _backGround;
-	BGM _bgm;
 	CSoundBuffer _music;
 
 	Vector2 _mousePos;
 
 public:
 	void Initialize();
+	void CreateTutorialField();
 	void ReLoad();
 	void Update();
 	void SetMousePos(Vector2);
@@ -41,9 +41,9 @@ public:
 
 	void Render();
 	void Release();
-	void StopBGM();
+
 	CreateField* GetCreateField() { return &_createField; }
-	void CreateTutorialField();
+	CSoundBuffer* GetBGM() { return &_music; }
 private:
 	void LoadTexture();
 	void LoadStage(int stageNumber);

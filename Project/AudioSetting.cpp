@@ -1,4 +1,5 @@
 ﻿#include "AudioSetting.h"
+#include "AudioMixer.h"
 
 void AudioSetting::Initialize()
 {
@@ -13,12 +14,18 @@ void AudioSetting::Initialize()
 	Vector2 _buttonSize = Vector2(_buttonTexture.GetWidth(), _buttonTexture.GetHeight());
 	Vector2 _barPos = Vector2(g_pGraphics->GetTargetWidth() / 2+100, 400);
 
+	_muted = new bool[_sliderValue];
+
+	int InitVolume = 70;
+	_BGMVolume = _SEVolume = InitVolume;
+	AudioMixer::Instance().SetBgmVolume(_BGMVolume);
+	AudioMixer::Instance().SetSeVolume(_SEVolume);
+
 	for (int i = 0; i < _sliderValue; i++)
 	{
-		_sliderArray[i].SetStatu(Vector2(_barPos.x, (_barPos.y + _barSize.y/2) + i * 250),&_barTexture, &_buttonTexture, 0.7f, HORIZON);
+		_sliderArray[i].SetStatu(Vector2(_barPos.x, (_barPos.y + _barSize.y/2) + i * 250),&_barTexture, &_buttonTexture,(float)InitVolume /100, HORIZON);
 		_muted[i] = false;
 	}
-	
 
 	_closeButton.SetTexture(&_closeButtonTexture);
 	_closeButton.SetPosition(Vector2(g_pGraphics->GetTargetWidth() / 2, 870));
@@ -51,6 +58,12 @@ void AudioSetting::Update()
 		_sliderArray[i].Update();
 	}
 	SetMute();
+
+	_BGMVolume = _sliderArray[0].GetValue()/100;
+	_SEVolume = _sliderArray[1].GetValue()/100;
+
+	AudioMixer::Instance().SetBgmVolume(_BGMVolume);
+	AudioMixer::Instance().SetSeVolume(_SEVolume);
 }
 
 void AudioSetting::CalcuScale() {
@@ -119,7 +132,6 @@ void AudioSetting::Release()
 	_closeButtonTexture.Release();
 	_barTexture.Release();
 	_buttonTexture.Release();
-	delete[] _sliderArray;
 
 	for (int i = 0; i < _sliderValue; i++) {
 		_audioTexture[i].Release();
@@ -130,5 +142,7 @@ void AudioSetting::Release()
 
 	delete[] _audioTexture;
 	delete[] _audioPos;
+	delete[] _sliderArray;
+	delete[] _muted;
 	//for (int i = 0;i < _sliderValue;i++) _sliderArray[i].Release();
 }

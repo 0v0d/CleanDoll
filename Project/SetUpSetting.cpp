@@ -1,7 +1,7 @@
 #include "SetUpSetting.h"
-#include	"AudioSetting.h"
-#include	"BackSceneSetting.h"
-#include	"DollMoveSetting.h"
+#include "AudioSetting.h"
+#include "BackSceneSetting.h"
+#include "DollMoveSetting.h"
 #include "SceneManager.h"
 
 void SetUpSetting::Initialize()
@@ -10,8 +10,8 @@ void SetUpSetting::Initialize()
 	_audioButton.SetTexture(&_audioButtonTexure);
 	_audioButton.SetPosition(Vector2(g_pGraphics->GetTargetWidth() / 2, 300));
 
-	/*_dollButton.SetTexture(&_dollButtonTexture);
-	_dollButton.SetPosition(Vector2(g_pGraphics->GetTargetWidth() / 2, 500));*/
+	//_dollButton.SetTexture(&_dollButtonTexture);
+	//_dollButton.SetPosition(Vector2(g_pGraphics->GetTargetWidth() / 2, 500));
 
 	_backSceneButton.SetTexture(&_backTitleSceneTexture);
 	_backSceneButton.SetPosition(Vector2(g_pGraphics->GetTargetWidth() / 2, 700));

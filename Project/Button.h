@@ -1,7 +1,6 @@
 #pragma once
 #include	"functional"
 #include	"Mof.h"
-#include	"SE.h"
 
 class Button
 {
@@ -14,14 +13,14 @@ class Button
 	bool _pushCallMethod, _pullCallMethod;
 
 	std::function<void()> _callMethod = nullptr;
- 	SE _se;
+	CSoundBuffer* _se;
 
 public:
 	Button();
 
 	void SetStatu(bool push, bool pull, std::function<void()> callMethod);
 	void SetTexture(CTexture* buttonTexture) { _texture = buttonTexture; }
-	void SetSeSound(CSoundBuffer* seSound) { _se.SetSE(seSound); }
+	void SetSeSound(CSoundBuffer* seSound) { _se = seSound; }
 	void SetPosition(Vector2 buttonCenterPosition);
 	void CalcuScale(float sizeX,float sizeY);
 

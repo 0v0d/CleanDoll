@@ -6,6 +6,7 @@ class GalleryScene :public IBaseScene
 {
 	GalleryBarManager _barManager;
 	GalleryTexture _galleryTexture;
+	CSoundBuffer _music;
 public:
 	void Initialize();
 	void ReLoad();
@@ -18,5 +19,5 @@ public:
 
 	void Render();
 	void Release();
-	void StopBGM() {}
+	CSoundBuffer* GetBGM() { return &_music; }
 };

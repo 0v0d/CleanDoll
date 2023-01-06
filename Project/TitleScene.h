@@ -14,7 +14,6 @@ class TitleScene :public IBaseScene
 
 	TitleLogoAnimation _titleLogoAnimation;
 	TitleClickAnimation _titleClickAnimation;
-	BGM _bgm;
 	CSoundBuffer _music;
 	bool _clearTutorial;
 public:
@@ -27,5 +26,6 @@ public:
 
 	void Render();
 	void Release();
-	void StopBGM() ;
+
+	CSoundBuffer* GetBGM() { return &_music; }
 };

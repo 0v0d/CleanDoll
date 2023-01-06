@@ -1,4 +1,5 @@
 #include "Button.h"
+#include "AudioMixer.h"
 
 Button::Button(){
 	_push = _pull = _mouseOnButton = false;
@@ -53,7 +54,7 @@ void Button::Push() {
 	if (_mouseOnButton) _push = true;
 	if (_pushCallMethod) {
 		_callMethod();
-		_se.Play();
+		AudioMixer::Instance().PlaySe(_se);
 	}
 }
 
@@ -65,7 +66,7 @@ void Button::Pull() {
 
 	if (_pull&&_pullCallMethod) {
 		_callMethod();
-		_se.Play();
+		AudioMixer::Instance().PlaySe(_se);
 	}
 }
 

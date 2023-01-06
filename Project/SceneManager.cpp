@@ -3,6 +3,7 @@
 #include "StageSelectScene.h"
 #include "GameScene.h"
 #include "GalleryScene.h"
+#include "AudioMixer.h"
 
 SceneManager* SceneManager::_instance = nullptr;
 
@@ -28,6 +29,7 @@ void SceneManager::Initialize()
 
 	_currentScene = _sceneArray[SCENE_TYPE::TITLE];
 	_effect.SetChangeSceneMethod([&]() {StartChangeScene();});
+	AudioMixer::Instance().PlayBgm(_currentScene->GetBGM());
 }
 
 void SceneManager::Update(){
@@ -70,9 +72,9 @@ void SceneManager::ChangeScene(SCENE_TYPE nextScene) {
 }
 
 void SceneManager::StartChangeScene() {
-	_currentScene->StopBGM();
 	_currentScene = _sceneArray[_nextSceneType];
 	_currentScene->ReLoad();
+	AudioMixer::Instance().PlayBgm(_currentScene->GetBGM());
 }
 
 SCENE_TYPE SceneManager::GetCurrentSceneType() {

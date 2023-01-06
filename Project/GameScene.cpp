@@ -8,7 +8,6 @@ void GameScene::Initialize()
 	_field.Initialize();
 	_music.Load("BGM.mp3");
 	_buttonSe.Load("ClicktoStart.mp3");
-	_bgm.SetBGM(&_music, true);
 
 	_resetStageButton.SetTexture(&_resetButtonTexture);
 	_resetStageButton.SetPosition(Vector2(100, 130));
@@ -25,7 +24,6 @@ void GameScene::LoadTexture() {
 void GameScene::ReLoad()
 {
 	_field.ReLoad();
-	_bgm.Play();
 }
 
 void GameScene::Update()
@@ -62,9 +60,4 @@ void GameScene::Release()
 	_music.Release();
 	_resetButtonTexture.Release();
 	_buttonSe.Release();
-}
-
-void GameScene::StopBGM()
-{
-	_bgm.Stop();
 }
