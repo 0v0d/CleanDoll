@@ -22,7 +22,6 @@ private:
 	CTexture _coinTexture;
 	
 	Vector2 _mousePos;
-
 public:
 	void Initialize();
 	void ReLoad();
@@ -35,6 +34,7 @@ public:
 	void Pull();
 	void MoveBar(float moveValue);
 
+	void ScaleUp();
 	//•K—v‚È‚¢‚Ì‚Å‚Í?
 	void StartStage(int barNumber);
 	void StartNextStage();

@@ -18,7 +18,6 @@ void BarManager::Initialize()
 		_barArray[i].SetCoinTexture(&_coinTexture);
 		_barArray[i].Initialize();
 	}
-
 	_slider.SetStatu(Vector2(_basePosition.x + _baseTexture.GetWidth() - _space * _baseBarScale, _basePosition.y + _baseTexture.GetHeight() / 2),
 		&_barTexture, &_buttonTexture, 0, VERTICAL);
 
@@ -55,17 +54,29 @@ void BarManager::CreateBarArray(int stageValue)
 void BarManager::SetBarStatu(int stageNumber, std::string previewTextureName, std::string barTextureName, int difficulty, std::string stageDataTextName)
 {
 	if (_stageValue <= stageNumber || stageNumber < 0) return;
-
 	_barArray[stageNumber].SetStageValue(_stageValue);
 	_barArray[stageNumber].SetData(stageNumber, previewTextureName, barTextureName, difficulty, stageDataTextName);
+
 }
 
 void BarManager::Update()
 {
 	_slider.Update();
 	MoveBar(_slider.GetValue());
+	ScaleUp();
 }
 
+void BarManager::ScaleUp() {
+	for (int i = 0; i < _stageValue; i++) {
+		if (_barArray[i].CheckOnMouse(_mousePos)) {
+			_barArray[i].ScaleUp(_baseBarScale*1.1f);
+		}
+		else{
+			_barArray[i].ScaleUp(_baseBarScale);
+		}
+	}
+
+}
 void BarManager::Push()
 {
 	_slider.PushSlider();
@@ -101,6 +112,7 @@ void BarManager::MoveBar(float moveValue)
 	for (int i = 0; i < _stageValue; i++){
 		_barArray[i].Move(moveValue);
 	}
+
 }
 
 Bar* BarManager::GetBar(int barNumber) {
@@ -127,8 +139,8 @@ void BarManager::Render()
 
 	_slider.Render();
 	_frameTexture.Render(_basePosition.x, _basePosition.y);
-}
 
+}
 void BarManager::Release()
 {
 	for (int i = 0; i < _stageValue; i++)

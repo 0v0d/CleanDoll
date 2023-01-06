@@ -11,6 +11,7 @@ void Bar::Initialize()
 	_difficultyScale = _barHitBox.GetHeight() / 2 / _difficultyTextureArray[0]->GetHeight()-0.1f;
 	_coinScale = _barHitBox.GetHeight() / _coinTexture->GetHeight();
 	_clear = _getCoin = false;
+
 }
 
 void Bar::SetScreenStatu(Vector2 screenPos, Vector2 screenSize) {
@@ -19,6 +20,7 @@ void Bar::SetScreenStatu(Vector2 screenPos, Vector2 screenSize) {
 }
 
 void Bar::SetStatu(float scale, float space) {
+
 	_scale = scale;
 	_space = space * _scale;
 }
@@ -63,6 +65,8 @@ CRectangle Bar::GetRenderRect(Vector2 pos, CTexture* texture, float scale) {
 
 	return CRectangle(0, 0, texture->GetWidth(), texture->GetHeight());
 }
+
+
 
 bool Bar::CheckOnScreenTopLine(float top,float bottom) {
 	return top < _screenPos.y&& bottom > _screenPos.y;
