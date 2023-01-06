@@ -23,6 +23,7 @@ private:
 	float _difficultyScale;
 
 	CTexture* _coinTexture;
+	Vector2 _coinPos;
 	float _coinScale;
 	
 	std::string _stageDataTextName;

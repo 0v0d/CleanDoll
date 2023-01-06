@@ -8,8 +8,8 @@ void Bar::Initialize()
 	_pos = _initialPos;
 	_barHitBox = CRectangle(_pos.x, _pos.y, _pos.x + _baseBarTexture->GetWidth() * _scale, _pos.y + _baseBarTexture->GetHeight() * _scale);
 	_maxMovePosY = (_space / 2 + _screenPos.y + (_baseBarTexture->GetHeight() * _scale + _space) * _stageValue) - _screenEdge.Bottom;
-	_difficultyScale = _barHitBox.GetHeight() / 2 / _difficultyTextureArray[0]->GetHeight()-0.1f;
-	_coinScale = _barHitBox.GetHeight() / _coinTexture->GetHeight();
+	_difficultyScale = _barHitBox.GetHeight() / 2 / _difficultyTextureArray[0]->GetHeight() - 0.1f;
+	_coinScale = _barHitBox.GetHeight() / _coinTexture->GetHeight() - 0.12f;
 	_clear = _getCoin = false;
 }
 
@@ -64,37 +64,46 @@ CRectangle Bar::GetRenderRect(Vector2 pos, CTexture* texture, float scale) {
 	return CRectangle(0, 0, texture->GetWidth(), texture->GetHeight());
 }
 
-bool Bar::CheckOnScreenTopLine(float top,float bottom) {
+bool Bar::CheckOnScreenTopLine(float top, float bottom) {
 	return top < _screenPos.y&& bottom > _screenPos.y;
 }
 
-bool Bar::IsRenderRange(CTexture* texture, Vector2 pos, float scale) {
+bool Bar::IsRenderRange(CTexture* texture, const Vector2 pos, float scale) {
 	return CRectangle(pos.x, pos.y, pos.x + texture->GetWidth() * scale, pos.y + texture->GetHeight() * scale).CollisionRect(_screenEdge);
 }
 
 void Bar::Render()
 {
-	float posY = CheckOnScreenTopLine(_pos.y, _pos.y+_baseBarTexture->GetHeight()) ? _screenPos.y : _pos.y;
+	float posY = CheckOnScreenTopLine(_pos.y, _pos.y + _baseBarTexture->GetHeight()) ? _screenPos.y : _pos.y;
 
-	if (IsRenderRange(_baseBarTexture, _pos, _scale))_baseBarTexture->RenderScale(_pos.x, posY, _scale, GetRenderRect(_pos, _baseBarTexture,_scale));
+	if (IsRenderRange(_baseBarTexture, _pos, _scale))_baseBarTexture->RenderScale(_pos.x, posY, _scale, GetRenderRect(_pos, _baseBarTexture, _scale));
 	if (IsRenderRange(&_barTexture, _pos, _scale))_barTexture.RenderScale(_pos.x, posY, _scale, GetRenderRect(_pos, &_barTexture, _scale));
-	
-	
-	
-	for (int i = 0; i < _difficulty; i++)
-	{
-		posY = _pos.y + _barTexture.GetHeight() / 2 < _screenPos.y && _pos.y + _barTexture.GetHeight() / 2 + _difficultyTextureArray[i]->GetHeight() * _difficultyScale > _screenPos.y ? _screenPos.y : _pos.y + _barTexture.GetHeight() / 2;
-		if (IsRenderRange(_difficultyTextureArray[i], Vector2(_pos.x, _pos.y + _barTexture.GetHeight() / 2), _difficultyScale))
+
+
+
+	for (int i = 0; i < _difficulty; i++) {
+		const auto space = Vector2(113, 12);
+		_difficultyPos = Vector2(_pos.x + space.x, _pos.y + _barTexture.GetHeight() / 2 - space.y);
+		posY = _difficultyPos.y < _screenPos.y&& _pos.y + _difficultyPos.y + _difficultyTextureArray[i]->GetHeight() * _difficultyScale > _screenPos.y ?
+			_screenPos.y : _difficultyPos.y;
+
+		if (IsRenderRange(_difficultyTextureArray[i], Vector2(_difficultyPos.x, _difficultyPos.y), _difficultyScale)){
+			constexpr auto interval = 5;
 			_difficultyTextureArray[i]->RenderScale
-			(_pos.x+_difficultyTextureArray[i]->GetWidth()*_difficultyScale*i , posY, _difficultyScale, 
-			 GetRenderRect(Vector2(_pos.x, _pos.y + _barTexture.GetHeight() / 2), _difficultyTextureArray[i], _difficultyScale));
+			(_difficultyPos.x + (_difficultyTextureArray[i]->GetWidth() * _difficultyScale + interval) * i, posY, _difficultyScale,
+				GetRenderRect(_difficultyPos, _difficultyTextureArray[i], _difficultyScale));
+		}
+			
 	}
-	if (_getCoin)
-	{
-		posY = CheckOnScreenTopLine(_pos.y, _pos.y + _coinTexture->GetHeight()) ? _screenPos.y : _pos.y;
-		if (IsRenderRange(_coinTexture, Vector2(_barHitBox.Right - _coinTexture->GetWidth() * _coinScale, _pos.y), _coinScale))
-			_coinTexture->RenderScale(_barHitBox.Right - _coinTexture->GetWidth() * _coinScale, posY, _coinScale,
-				GetRenderRect(_pos, _coinTexture, _coinScale));
+	if (_getCoin) {
+		const auto space = Vector2(10, 20);
+		_coinPos = Vector2(_barHitBox.Right - _coinTexture->GetWidth() * _coinScale - space.x, _pos.y + space.y);
+		posY = CheckOnScreenTopLine(_coinPos.y, _coinPos.y + _coinTexture->GetHeight()) ? _screenPos.y : _coinPos.y;
+
+		if (IsRenderRange(_coinTexture, Vector2(_coinPos.x, _coinPos.y), _coinScale)) {
+			_coinTexture->RenderScale(_coinPos.x, posY, _coinScale,
+				GetRenderRect(_coinPos, _coinTexture, _coinScale));
+		}
 	}
 }
 
