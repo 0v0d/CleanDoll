@@ -4,6 +4,7 @@
 #include	"Slider.h"
 
 class DollMoveSetting:public IBaseSetting
+
 {
 	bool* _openAudioSetting;
 	
@@ -17,9 +18,11 @@ class DollMoveSetting:public IBaseSetting
 	int _baseSpaseCount=4;
 	float _bottonBetweenDistance;
 
+
 	CTexture  _selectButtonTexture;
 	Button   _selectButton;
 	Vector2    _selectButtonPos;
+	bool     _push;
 	
 	CTexture _checkBoxTexture,_checkTexture;
 	Button   _checkBoxButton,_checkButton;
@@ -49,5 +52,6 @@ public:
 private:
 	void LoadTexture();
 	float GetFindMovedPos();
+	void LimitMove();
 };
 
