@@ -11,6 +11,7 @@ void Bar::Initialize()
 	_difficultyScale = _barHitBox.GetHeight() / 2 / _difficultyTextureArray[0]->GetHeight() - 0.1f;
 	_coinScale = _barHitBox.GetHeight() / _coinTexture->GetHeight() - 0.12f;
 	_clear = _getCoin = false;
+
 }
 
 void Bar::SetScreenStatu(Vector2 screenPos, Vector2 screenSize) {
@@ -19,6 +20,7 @@ void Bar::SetScreenStatu(Vector2 screenPos, Vector2 screenSize) {
 }
 
 void Bar::SetStatu(float scale, float space) {
+
 	_scale = scale;
 	_space = space * _scale;
 }

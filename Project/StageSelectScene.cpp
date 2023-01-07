@@ -46,7 +46,6 @@ void StageSelectScene::SetMousePos(Vector2 mousePos) {
     if (!_stageSelectDialog.IsOpenDialog()) {
         _barManager.SetMousePos(mousePos);
     }
-
     _stageSelectDialog.SetMousePos(mousePos);
 }
 

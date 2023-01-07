@@ -30,8 +30,10 @@ private:
 
 	Vector2 _screenPos, _screenSize;
 
-	bool _clear, _getCoin;
+	bool _clear, _getCoin;	
+
 public:
+
 	void Initialize();
 	void ReLoad();
 	void SetStatu(float scale, float space);
@@ -54,6 +56,8 @@ public:
 	bool IsClear() { return _clear; }
 	bool IsGetCoin() { return _getCoin; }
 	void SetDifficulutyTexture(CTexture* texture);
+
+	void ScaleUp(float scale) { _scale = scale; }
 
 private:
 	bool CheckOnScreenTopLine(float top,float bottom);
