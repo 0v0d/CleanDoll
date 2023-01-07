@@ -51,8 +51,10 @@ bool Button::CheckOnMouse(Vector2 mousePosition) {
 
 
 void Button::Push() {
-	if (_mouseOnButton) _push = true;
-	if (_pushCallMethod) {
+	if (_mouseOnButton) {
+		_push = true;
+	}
+	if (_push && _pushCallMethod) {
 		_callMethod();
 		AudioMixer::Instance().PlaySe(_se);
 	}
