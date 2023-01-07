@@ -10,8 +10,8 @@ void SetUpSetting::Initialize()
 	_audioButton.SetTexture(&_audioButtonTexure);
 	_audioButton.SetPosition(Vector2(g_pGraphics->GetTargetWidth() / 2, 300));
 
-	//_dollButton.SetTexture(&_dollButtonTexture);
-	//_dollButton.SetPosition(Vector2(g_pGraphics->GetTargetWidth() / 2, 500));
+	_dollButton.SetTexture(&_dollButtonTexture);
+	_dollButton.SetPosition(Vector2(g_pGraphics->GetTargetWidth() / 2, 500));
 
 	_backSceneButton.SetTexture(&_backTitleSceneTexture);
 	_backSceneButton.SetPosition(Vector2(g_pGraphics->GetTargetWidth() / 2, 700));
@@ -21,7 +21,7 @@ void SetUpSetting::Initialize()
 
 
 	_buttonArray[&_audioButton] = new AudioSetting();
-	//_buttonArray[&_dollButton] = new DollMoveSetting();
+	_buttonArray[&_dollButton] = new DollMoveSetting();
 	_buttonArray[&_backSceneButton] = new BackSceneSetting();
 
 	for (auto itr = _buttonArray.begin(); itr != _buttonArray.end(); itr++)
@@ -54,6 +54,11 @@ void SetUpSetting::CreateButton() {
 	_audioButton.SetStatu(false, true, [&]() {
 		_openSetting = true;
 		_currentSetting = _buttonArray[&_audioButton];
+		});
+
+	_dollButton.SetStatu(false,true, [&]() {
+		_openSetting = true;
+		_currentSetting = _buttonArray[&_dollButton];
 		});
 
 	_backSceneButton.SetStatu(false, true, [&]() {

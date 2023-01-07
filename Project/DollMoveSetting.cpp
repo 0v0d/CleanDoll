@@ -5,26 +5,36 @@ void DollMoveSetting::Initialize()
 	LoadTexture();
 	_barPos = Vector2(g_pGraphics->GetTargetWidth() / 2 - _barTexture.GetWidth() / 2, 350);
 	_bottonBetweenDistance = _barTexture.GetWidth() / _baseSpaseCount;
-	_selectButtonPos = Vector2(_barPos.x + _bottonBetweenDistance * 2, _barPos.y + _barTexture.GetHeight() / 2);
+	_selectButtonPos = Vector2(_barPos.x + _bottonBetweenDistance * 1, _barPos.y + _barTexture.GetHeight() / 2);
+	
 	
 	for (int i = 0; i < _baseButtonValue; i++)
 	{
 		_buttonArray[i].SetTexture(&_baseSelectButtonTexture);
 		_buttonArray[i].SetPosition(Vector2(_barPos.x + _bottonBetweenDistance * i, _barPos.y+ _barTexture.GetHeight()/2));
+		_buttonArray[i].SetStatu(false, true,
+			[&]() {_selectButtonPos.x = _barPos.x + _bottonBetweenDistance * i;
+		_selectButton.SetPosition(_selectButtonPos); });
+		_buttonArray[i].SetSeSound(&_se);
 	}
 	_selectButton.SetTexture(&_selectButtonTexture);
 	_selectButton.SetPosition(_selectButtonPos);
+	_selectButton.SetStatu(true, false, [&]() {_push = true;  });
+	_selectButton.SetSeSound(&_se);
 
 	_checkBoxButton.SetTexture(&_checkBoxTexture);
 	_checkBoxButton.SetPosition(Vector2(g_pGraphics->GetTargetWidth() / 2 , 600));
+	_checkBoxButton.SetStatu(false, true, [&]() {_checkBox = !_checkBox; });
+	_checkBox = false;
 
 	_checkButton.SetTexture(&_checkTexture);
 	_checkButton.SetPosition(Vector2(g_pGraphics->GetTargetWidth() / 2, 600));
 
 	_closeButton.SetTexture(&_closeButtonTexture);
 	_closeButton.SetPosition(Vector2(g_pGraphics->GetTargetWidth() / 2, 870));
-	
-	_checkBox = false;
+	_closeButton.SetStatu(false, true, [&]() {*_openAudioSetting = false; });
+	_closeButton.SetSeSound(&_se);
+
 	
 }
 
@@ -35,20 +45,39 @@ void DollMoveSetting::LoadTexture()
 	_selectButtonTexture.Load("選択.png");
 	_checkBoxTexture.Load("チェックボックス.png");
 	_checkTexture.Load("チェック.png");
-
 	_closeButtonTexture.Load("戻る　テキスト.png");
+
+	_se.Load("BottanClick.mp3");
 	
 }
 void DollMoveSetting::Update()
 {
+	
 	if (_push)
 	{
 		_selectButtonPos.x = _mousePos.x;
 		LimitMove();
 		_selectButton.SetPosition(_selectButtonPos);
+		CalcuLastPos();
 	}
 	
+	
 }
+void DollMoveSetting::CalcuLastPos()
+{
+	for (int i = _baseButtonValue; i >0; i--)
+	{
+		if (_selectButtonPos.x >= _barPos.x + _bottonBetweenDistance * i - _baseSelectButtonTexture.GetWidth() / 2 &&
+			_selectButtonPos.x <= _barPos.x + _bottonBetweenDistance * i + _baseSelectButtonTexture.GetWidth() / 2)
+		{
+			_lastSelectButtonPosX = _barPos.x + _bottonBetweenDistance * i;
+			return ;
+		}
+	}
+	_lastSelectButtonPosX = _barPos.x ;
+	
+}
+
 void DollMoveSetting::LimitMove()
 {
 	if (_selectButtonPos.x < _barPos.x)
@@ -63,7 +92,7 @@ void DollMoveSetting::LimitMove()
 float DollMoveSetting::GetFindMovedPos()
 {
 
-	if (_selectButtonPos.x <= _mousePos.x)
+	/*if (_selectButtonPos.x >= _lastSelectButtonPosX)
 	{
 		for (int i = _baseSpaseCount; i >= 0; i--)
 		{
@@ -75,7 +104,7 @@ float DollMoveSetting::GetFindMovedPos()
 
 		}
 	}
-	else if (_selectButtonPos.x >= _mousePos.x)
+	else if (_selectButtonPos.x <= _lastSelectButtonPosX)
 	{
 		for (int i = 0; i <= _baseSpaseCount; i++)
 		{
@@ -87,8 +116,8 @@ float DollMoveSetting::GetFindMovedPos()
 
 		}
 	}
-		return _selectButtonPos.x;
-
+		return _selectButtonPos.x;*/
+	return 0;
 }
 
 
@@ -116,44 +145,31 @@ void DollMoveSetting::Push()
 	_checkBoxButton.Push();
 	_checkButton.Push();
 	_selectButton.Push();
-	if (_selectButton.IsPushButton())
-	{
-		_push = true;
-	}
+	
 	_closeButton.Push();
 }
 
 void DollMoveSetting::Pull()
 {
+	_selectButton.Pull();
+	if (_push)
+	{
+		_push = false;
+		_selectButton.SetPosition(Vector2(_lastSelectButtonPosX, _barPos.y + _barTexture.GetHeight() / 2));
+
+	}
+
 	for (int i = 0; i < _baseButtonValue; i++)
 	{
 		_buttonArray[i].Pull();
-		if (_buttonArray[i].IsPullButton())
-		{
-			_selectButtonPos.x = _barPos.x + _bottonBetweenDistance * i;
-			_selectButton.SetPosition(_selectButtonPos);
-			break;
-		}
+		
 	}
 
-	
-	_selectButton.Pull();
-	if (_selectButton.IsPullButton())
-	{
-		_push = false;
-		_selectButton.SetPosition(Vector2(GetFindMovedPos(), _barPos.y + _barTexture.GetHeight() / 2));
-	}
 	_checkBoxButton.Pull();
-	if (_checkBoxButton.IsPullButton())
-	{
-		_checkBox = !_checkBox;
-	}
 	_checkButton.Pull();
 
 	_closeButton.Pull();
-	if (_closeButton.IsPullButton()) {
-		*_openAudioSetting = false;
-	}
+	
 }
 
 
@@ -185,6 +201,7 @@ void DollMoveSetting::Release()
 	_closeButtonTexture.Release();
 	_checkBoxTexture.Release();
 	_checkTexture.Release();
+	_se.Release();
 
 	delete _buttonArray;
 	

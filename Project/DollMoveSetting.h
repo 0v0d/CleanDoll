@@ -18,11 +18,15 @@ class DollMoveSetting:public IBaseSetting
 	int _baseSpaseCount=4;
 	float _bottonBetweenDistance;
 
+	
+
 
 	CTexture  _selectButtonTexture;
 	Button   _selectButton;
 	Vector2    _selectButtonPos;
 	bool     _push;
+
+	float _lastSelectButtonPosX;
 	
 	CTexture _checkBoxTexture,_checkTexture;
 	Button   _checkBoxButton,_checkButton;
@@ -32,6 +36,9 @@ class DollMoveSetting:public IBaseSetting
 	Button _closeButton;
 	Vector2 _mousePos;
 	CTexture _closeButtonTexture;
+
+
+	CSoundBuffer _se;
 
 
 
@@ -53,5 +60,6 @@ private:
 	void LoadTexture();
 	float GetFindMovedPos();
 	void LimitMove();
+	void CalcuLastPos();
 };
 
