@@ -47,6 +47,7 @@ void Doll::SetNextBlock(Block* blcok) {
 	_nextBlock = blcok;
 	_field->SetDollOnBlockNumber(_nextBlock);
 	SetNextPosition();
+	_inversion = _nextPosition.x > 0;
 
 	_move = true;
 	if (!_animationflg) {
@@ -62,7 +63,6 @@ void Doll::SetNextPosition()
 
 void Doll::Update()
 {
-
 	if (_move) {
 		Move();
 	}
@@ -147,7 +147,6 @@ void Doll::CleanDump()
 		_dustDumpValue--;
 		_field->CleanDust();
 	}
-
 }
 
 void Doll::CollectCandy()
@@ -177,7 +176,6 @@ void Doll::DollAnimationUpdate()
 		SetMoveAnimation();
 	}
 
-	
 	if(_holdMop){
 		
 		_mopAnimation.Update();
@@ -188,15 +186,15 @@ void Doll::DollAnimationUpdate()
 		_renderRect = _broomAnimation.GetRenderRect();
 	}
 
-	
-	if (!_animationflg) {
-		_inversion = _nextPosition.x > 0;
-	}
 	if (_inversion) {
-		_inversionRenderRect = _renderRect;
-		_inversionRenderRect.Right = _renderRect.Left;
-		_inversionRenderRect.Left = _renderRect.Right;
+		Inversion();
 	}
+}
+
+void Doll::Inversion() {
+	_inversionRenderRect = _renderRect;
+	_inversionRenderRect.Right = _renderRect.Left;
+	_inversionRenderRect.Left = _renderRect.Right;
 }
 
 void Doll::SetMoveAnimation() {

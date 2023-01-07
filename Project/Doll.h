@@ -60,4 +60,5 @@ private:
 	void SwitchToMop();
 	void CollectCandy();
 	void SetMoveAnimation();
+	void Inversion();
 };
