@@ -15,8 +15,8 @@ void GameClearButton::CreateButton() {
 	_button.SetPosition(Vector2(_clearButtonTexture.GetWidth() , _clearButtonTexture.GetHeight() / 2));
 	_button.SetSeSound(&_buttonSe);
 	_button.SetStatu(false, true, [&]() {
-		PostQuitMessage(0);
-		});
+		_pull = true;
+	});
 }
 
 void GameClearButton::ReLoad() {
@@ -26,6 +26,11 @@ void GameClearButton::ReLoad() {
 
 void GameClearButton::SetMousePos(Vector2 mousePos) {
 	_button.SetMousePos(mousePos);
+}
+
+void GameClearButton::Push() {
+	if (!_show)return;
+	_button.Push();
 }
 
 void GameClearButton::Pull() {

@@ -8,8 +8,8 @@ void ExitGame::Initialize() {
 	const float	 spaceX = 100;
 	const int spaceY = 60;
 	LoadTexture();
-	CreateButton(&_yesButton, Vector2(_basePos.x - spaceX / 2 - _yesTexture.GetWidth() / 2, _basePos.y + spaceY), &_yesTexture, [&]() {PostQuitMessage(0); });
-	CreateButton(&_noButton, Vector2(_basePos.x + spaceX / 2 + _noTexture.GetWidth() / 2, _basePos.y + spaceY), &_noTexture, [&]() {	_openExitDialog = false; });
+	CreateButton(&_yesButton, Vector2(_basePos.x - spaceX / 2 - _yesTexture.GetWidth() / 2, _basePos.y + spaceY), &_yesTexture, [&] {PostQuitMessage(0); });
+	CreateButton(&_noButton, Vector2(_basePos.x + spaceX / 2 + _noTexture.GetWidth() / 2, _basePos.y + spaceY), &_noTexture, [&] {	_openExitDialog = false; });
 
 	_openExitDialog = false;
 }

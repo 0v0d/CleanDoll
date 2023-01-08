@@ -16,6 +16,10 @@ void FieldUI::SetMousePos(Vector2 mousePos) {
 	_gameClearButton.SetMousePos(mousePos);
 }
 
+void FieldUI::Push() {
+	_gameClearButton.Push();
+}
+
 void FieldUI::Pull() {
 	_gameClearButton.Pull();
 }

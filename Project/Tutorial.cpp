@@ -9,15 +9,13 @@ void Tutorial::Initialize(){
 }
 
 void Tutorial::ReLoad() {
-	 //_end = true;
 	_end = false;
-	 _currentClick = 0;
-	 _hidden = false;
+	_currentClick = 0;
+	_hidden = false;
 
-	 _currentRouteValue = 0;
-	 _currentLimitNumber = 0;
-	 _currentHidden = 0;
-
+	_currentRouteValue = 0;
+	_currentLimitNumber = 0;
+	_currentHidden = 0;
 }
 
 void Tutorial::LoadTutorialRoute(){

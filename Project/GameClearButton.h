@@ -14,6 +14,7 @@ public:
 	void Initialize();
 	void ReLoad();
 	void Pull();
+	void Push();
 	void Update();
 	void Render();
 	void Release();

@@ -100,6 +100,7 @@ void Field::SetMousePos(Vector2 mousePos){
 
 void Field::Push() {
 	_push = true;
+	_fieldUI.Push();
 	_tutorial.Push();
 	_endGameProcess.Push();
 	
@@ -207,22 +208,22 @@ void Field::EndMoveDoll(){
 	}
 	else
 	{
-
 		//ゲームクリア
 		if (_fieldUI.IsPull()) {
 			StageSelectScene* stageSelect = dynamic_cast<StageSelectScene*>(SceneManager::Instance().GetScene(SCENE_TYPE::STAGESELECT));
 			_endGameProcess.SetCurrentProcess(ProcessType::GameClear);
 			stageSelect->StageClear();
-
-			if (_doll.IsGetCoin()) {
-				if (!_getCoin) {
-					dynamic_cast<GalleryScene*>(SceneManager::Instance().GetScene(SCENE_TYPE::GALLERY))->AddCoin();
-					stageSelect->GetCoin();
-					_getCoin = true;
-				}
+		}
+		if (_doll.IsGetCoin()) {
+			if (!_getCoin) {
+				StageSelectScene* stageSelect = dynamic_cast<StageSelectScene*>(SceneManager::Instance().GetScene(SCENE_TYPE::STAGESELECT));
+				dynamic_cast<GalleryScene*>(SceneManager::Instance().GetScene(SCENE_TYPE::GALLERY))->AddCoin();
+				stageSelect->GetCoin();
+				_getCoin = true;
 			}
 			return;
 		}
+		
 		//ゲームオーバー
 		if (_remainDistance <= 0) {
 			GameOver();
@@ -260,19 +261,7 @@ void Field::ReSetStage()
 }
 
 void Field::GameClear() {
-	if (_fieldUI.IsPull()) {
-		StageSelectScene* stageSelect = dynamic_cast<StageSelectScene*>(SceneManager::Instance().GetScene(SCENE_TYPE::STAGESELECT));
-		_endGameProcess.SetCurrentProcess(ProcessType::GameClear);
-		stageSelect->StageClear();
-
-		if (_doll.IsGetCoin()) {
-			if (!_getCoin) {
-				dynamic_cast<GalleryScene*>(SceneManager::Instance().GetScene(SCENE_TYPE::GALLERY))->AddCoin();
-				stageSelect->GetCoin();
-				_getCoin = true;
-			}
-		}
-	}
+	
 }
 
 void Field::GameOver()

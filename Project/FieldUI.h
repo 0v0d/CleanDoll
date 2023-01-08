@@ -15,6 +15,7 @@ public:
 	void SetDustDumpValue(int dumpValue);
 	void SetWaterDumpValue(int dumpValue);
 	void GettedGalleryCoin() { _remainingDumpUI.GettedCoin(); }
+	void Push();
 	void Pull();
 	void SetMousePos(Vector2 mousePos);
 	void Update();
