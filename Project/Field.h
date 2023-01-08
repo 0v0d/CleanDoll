@@ -83,5 +83,6 @@ private:
 	void AdvanceRoute(Block* mouseOnBlock);
 	void BackRoute(Block* mouseOnBlock);
 	bool CheckCantMoveDoll();
+	void GameClear();
 };
  
