@@ -9,8 +9,8 @@ void Tutorial::Initialize(){
 }
 
 void Tutorial::ReLoad() {
-	 _end = true;
-	// _end = false;
+	 //_end = true;
+	_end = false;
 	 _currentClick = 0;
 	 _hidden = false;
 
