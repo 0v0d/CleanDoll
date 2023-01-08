@@ -107,8 +107,8 @@ void Field::Push() {
 
 void Field::Pull() {
 	_push = false;
-	EndOfPassed();
 	_fieldUI.Pull();
+	EndOfPassed();
 	_endGameProcess.Pull();
 }
 

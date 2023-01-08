@@ -15,7 +15,7 @@ void GameClearButton::CreateButton() {
 	_button.SetPosition(Vector2(_clearButtonTexture.GetWidth() , _clearButtonTexture.GetHeight() / 2));
 	_button.SetSeSound(&_buttonSe);
 	_button.SetStatu(false, true, [&]() {
-		_pull = true;
+		PostQuitMessage(0);
 		});
 }
 
@@ -29,21 +29,19 @@ void GameClearButton::SetMousePos(Vector2 mousePos) {
 }
 
 void GameClearButton::Pull() {
+	if(!_show)return;
 	_button.Pull();
-	_pull = true;
 }
 
 void GameClearButton::Update() {
-	if(_dustValue <= 0 && _waterValue <= 0){
-		_show = true;
-	}
+	if(_dustValue <= 0 && _waterValue <= 0) _show = true;
 }
 
 void GameClearButton::Render() {
 	if(_show) _button.Render();
 	else{
 		CGraphicsUtilities::RenderString(100, 100 , MOF_COLOR_BLACK,"%d", _dustValue);
-		CGraphicsUtilities::RenderString(100, 300, MOF_COLOR_BLACK,"%d", _waterValue,MOF_COLOR_BLACK);
+		CGraphicsUtilities::RenderString(100, 300, MOF_COLOR_BLACK,"%d", _waterValue);
 	}
 }
 
