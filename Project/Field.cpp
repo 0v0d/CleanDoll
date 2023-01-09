@@ -79,13 +79,9 @@ void Field::SetWaterDumpValue(int dumpValue) {
 
 void Field::Update()
 {
-	if(_tutorial.IsHideen())
-	{
-		if (_push) {
-			PassedMouse(_mousePos);
-		}
+	if(_tutorial.IsHideen()&& _push){
+		PassedMouse(_mousePos);
 	}
-	GameClear();
 	_blockManager.Update();
 	_doll.Update();
 	_endGameProcess.Update();
@@ -103,13 +99,13 @@ void Field::Push() {
 	_fieldUI.Push();
 	_tutorial.Push();
 	_endGameProcess.Push();
-	
 }
 
 void Field::Pull() {
 	_push = false;
 	_fieldUI.Pull();
 	EndOfPassed();
+	GameClear();
 	_endGameProcess.Pull();
 }
 
@@ -209,11 +205,6 @@ void Field::EndMoveDoll(){
 	else
 	{
 		//ÉQÅ[ÉÄÉNÉäÉA
-		if (_fieldUI.IsPull()) {
-			StageSelectScene* stageSelect = dynamic_cast<StageSelectScene*>(SceneManager::Instance().GetScene(SCENE_TYPE::STAGESELECT));
-			_endGameProcess.SetCurrentProcess(ProcessType::GameClear);
-			stageSelect->StageClear();
-		}
 		if (_doll.IsGetCoin()) {
 			if (!_getCoin) {
 				StageSelectScene* stageSelect = dynamic_cast<StageSelectScene*>(SceneManager::Instance().GetScene(SCENE_TYPE::STAGESELECT));
@@ -261,7 +252,11 @@ void Field::ReSetStage()
 }
 
 void Field::GameClear() {
-	
+	if (_fieldUI.IsPull()) {
+		StageSelectScene* stageSelect = dynamic_cast<StageSelectScene*>(SceneManager::Instance().GetScene(SCENE_TYPE::STAGESELECT));
+		_endGameProcess.SetCurrentProcess(ProcessType::GameClear);
+		stageSelect->StageClear();
+	}
 }
 
 void Field::GameOver()

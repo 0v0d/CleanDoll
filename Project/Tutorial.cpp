@@ -95,6 +95,7 @@ void Tutorial::Push() {
 		_hidden = true;
 		_currentHidden++;
 	}
+
 }
 
 void Tutorial::EndOfPassed(int routeVal) {

@@ -114,6 +114,42 @@
     <Filter Include="ソース ファイル\Sound">
       <UniqueIdentifier>{495611f8-5d3e-4fa7-9d8e-8bdc534bb047}</UniqueIdentifier>
     </Filter>
+    <Filter Include="ソース ファイル\Utility">
+      <UniqueIdentifier>{c0b494d7-c470-4664-b741-db1754e2ddc5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\UI\BackGround">
+      <UniqueIdentifier>{809244a6-859d-4a9e-9774-b32a9414de70}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\Sound\BGM">
+      <UniqueIdentifier>{e6f3d79d-8355-4553-9fb8-271ee1e1161f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\Sound\SE">
+      <UniqueIdentifier>{95390b50-d7e3-4adf-aa18-4e51c2a72379}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\Utility\Trim">
+      <UniqueIdentifier>{16560ef8-01b3-4404-8f83-ae71e95b7d94}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\Scene\GameScene\FieldUI\GameClearButton">
+      <UniqueIdentifier>{1cfa1b0b-14f7-4ffd-b03e-7bb2b2e72f58}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\Scene\Effect\ChangeScene">
+      <UniqueIdentifier>{df135600-a702-40e3-bd43-089808a7740d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\Menu\SettingManager\SetUpSetting\Audio">
+      <UniqueIdentifier>{952644be-d1e6-45e6-9e19-989cc9cd1908}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\Menu\SettingManager\SetUpSetting\BackScene">
+      <UniqueIdentifier>{ed0bc319-167a-4e55-876e-3a00fc503f3d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\Scene\Effect\FadeInOut">
+      <UniqueIdentifier>{ee0fa89d-4a4f-4762-9267-d8865f6d6331}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\Scene\Effect\SideInOut">
+      <UniqueIdentifier>{3e4f6c65-3548-4aef-b8cc-66f31a8e2a27}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\Scene\GalleryScene\BarManager">
+      <UniqueIdentifier>{c3cab5e0-9933-4681-aabd-170950e8e3d3}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="WinMain.cpp">
@@ -160,9 +196,6 @@
     </ClCompile>
     <ClCompile Include="Button.cpp">
       <Filter>ソース ファイル\UI\Button</Filter>
-    </ClCompile>
-    <ClCompile Include="BackGround.cpp">
-      <Filter>ソース ファイル\UI</Filter>
     </ClCompile>
     <ClCompile Include="IBaseAccessories.cpp">
       <Filter>ソース ファイル\Interface</Filter>
@@ -212,15 +245,6 @@
     <ClCompile Include="SettingManager.cpp">
       <Filter>ソース ファイル\Menu\SettingManager</Filter>
     </ClCompile>
-    <ClCompile Include="AudioSetting.cpp">
-      <Filter>ソース ファイル\Menu\SettingManager\SetUpSetting</Filter>
-    </ClCompile>
-    <ClCompile Include="BackSceneSetting.cpp">
-      <Filter>ソース ファイル\Menu\SettingManager\SetUpSetting</Filter>
-    </ClCompile>
-    <ClCompile Include="SetUpSetting.cpp">
-      <Filter>ソース ファイル\Menu\SettingManager\SetUpSetting</Filter>
-    </ClCompile>
     <ClCompile Include="Bar.cpp">
       <Filter>ソース ファイル\Scene\StageSelectScene\BarManager</Filter>
     </ClCompile>
@@ -260,12 +284,6 @@
     <ClCompile Include="WindowProc.cpp">
       <Filter>ソース ファイル</Filter>
     </ClCompile>
-    <ClCompile Include="GalleryBar.cpp">
-      <Filter>ソース ファイル\Scene\GalleryScene</Filter>
-    </ClCompile>
-    <ClCompile Include="GalleryBarManager.cpp">
-      <Filter>ソース ファイル\Scene\GalleryScene</Filter>
-    </ClCompile>
     <ClCompile Include="GalleryScene.cpp">
       <Filter>ソース ファイル\Scene\GalleryScene</Filter>
     </ClCompile>
@@ -302,20 +320,11 @@
     <ClCompile Include="GameOverDollAnimation .cpp">
       <Filter>ソース ファイル\Scene\GameScene\EndGameProcess\GameOver\Animation</Filter>
     </ClCompile>
-    <ClCompile Include="FadeIn.cpp">
-      <Filter>ソース ファイル\Scene\Effect</Filter>
-    </ClCompile>
-    <ClCompile Include="FadeOut.cpp">
-      <Filter>ソース ファイル\Scene\Effect</Filter>
-    </ClCompile>
     <ClCompile Include="TitleLogoAnimation.cpp">
       <Filter>ソース ファイル\Scene\TitleScene\Animation</Filter>
     </ClCompile>
     <ClCompile Include="TitleClickAnimation.cpp">
       <Filter>ソース ファイル\Scene\TitleScene\Animation</Filter>
-    </ClCompile>
-    <ClCompile Include="ChangeSceneEffect.cpp">
-      <Filter>ソース ファイル\Scene\Effect</Filter>
     </ClCompile>
     <ClCompile Include="Tutorial.cpp">
       <Filter>ソース ファイル\Scene\GameScene\Tutorial</Filter>
@@ -335,14 +344,6 @@
     <ClCompile Include="GetCoinNumber.cpp">
       <Filter>ソース ファイル\Scene\GalleryScene</Filter>
     </ClCompile>
-    <ClCompile Include="SideIn.cpp">
-      <Filter>ソース ファイル\Scene\Effect</Filter>
-    </ClCompile>
-    <ClCompile Include="SideOut.cpp">
-      <Filter>ソース ファイル\Scene\Effect</Filter>
-    </ClCompile>
-    <ClCompile Include="Trim.cpp">
-    </ClCompile>
     <ClCompile Include="DollMoveSetting.cpp">
       <Filter>ソース ファイル</Filter>
     </ClCompile>
@@ -361,17 +362,56 @@
     <ClCompile Include="DollMopAnimation.cpp">
       <Filter>ソース ファイル\Scene\GameScene\Field\Doll\Animation</Filter>
     </ClCompile>
-    <ClCompile Include="BGM.cpp">
-      <Filter>ソース ファイル\Sound</Filter>
-	 </ClCompile>
-    <ClCompile Include="SE.cpp">
+    <ClCompile Include="AudioMixer.cpp">
       <Filter>ソース ファイル\Sound</Filter>
     </ClCompile>
     <ClCompile Include="IBaseSound.cpp">
-      <Filter>ソース ファイル</Filter>
+      <Filter>ソース ファイル\Interface</Filter>
     </ClCompile>
-    <ClCompile Include="AudioMixer.cpp">
-      <Filter>ソース ファイル\Sound</Filter>
+    <ClCompile Include="BackGround.cpp">
+      <Filter>ソース ファイル\UI\BackGround</Filter>
+    </ClCompile>
+    <ClCompile Include="BGM.cpp">
+      <Filter>ソース ファイル\Sound\BGM</Filter>
+    </ClCompile>
+    <ClCompile Include="SE.cpp">
+      <Filter>ソース ファイル\Sound\SE</Filter>
+    </ClCompile>
+    <ClCompile Include="AudioSetting.cpp">
+      <Filter>ソース ファイル\Menu\SettingManager\SetUpSetting\Audio</Filter>
+    </ClCompile>
+    <ClCompile Include="BackSceneSetting.cpp">
+      <Filter>ソース ファイル\Menu\SettingManager\SetUpSetting\BackScene</Filter>
+    </ClCompile>
+    <ClCompile Include="SetUpSetting.cpp">
+      <Filter>ソース ファイル\Menu\SettingManager\SetUpSetting</Filter>
+    </ClCompile>
+    <ClCompile Include="Trim.cpp">
+      <Filter>ソース ファイル\Utility\Trim</Filter>
+    </ClCompile>
+    <ClCompile Include="GameClearButton.cpp">
+      <Filter>ソース ファイル\Scene\GameScene\FieldUI\GameClearButton</Filter>
+    </ClCompile>
+    <ClCompile Include="ChangeSceneEffect.cpp">
+      <Filter>ソース ファイル\Scene\Effect\ChangeScene</Filter>
+    </ClCompile>
+    <ClCompile Include="FadeIn.cpp">
+      <Filter>ソース ファイル\Scene\Effect\FadeInOut</Filter>
+    </ClCompile>
+    <ClCompile Include="FadeOut.cpp">
+      <Filter>ソース ファイル\Scene\Effect\FadeInOut</Filter>
+    </ClCompile>
+    <ClCompile Include="SideIn.cpp">
+      <Filter>ソース ファイル\Scene\Effect\SideInOut</Filter>
+    </ClCompile>
+    <ClCompile Include="SideOut.cpp">
+      <Filter>ソース ファイル\Scene\Effect\SideInOut</Filter>
+    </ClCompile>
+    <ClCompile Include="GalleryBarManager.cpp">
+      <Filter>ソース ファイル\Scene\GalleryScene\BarManager</Filter>
+    </ClCompile>
+    <ClCompile Include="GalleryBar.cpp">
+      <Filter>ソース ファイル\Scene\GalleryScene\BarManager</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -419,9 +459,6 @@
     </ClInclude>
     <ClInclude Include="Button.h">
       <Filter>ソース ファイル\UI\Button</Filter>
-    </ClInclude>
-    <ClInclude Include="BackGround.h">
-      <Filter>ソース ファイル\UI</Filter>
     </ClInclude>
     <ClInclude Include="IBaseAccessories.h">
       <Filter>ソース ファイル\Interface</Filter>
@@ -471,15 +508,6 @@
     <ClInclude Include="SettingManager.h">
       <Filter>ソース ファイル\Menu\SettingManager</Filter>
     </ClInclude>
-    <ClInclude Include="AudioSetting.h">
-      <Filter>ソース ファイル\Menu\SettingManager\SetUpSetting</Filter>
-    </ClInclude>
-    <ClInclude Include="BackSceneSetting.h">
-      <Filter>ソース ファイル\Menu\SettingManager\SetUpSetting</Filter>
-    </ClInclude>
-    <ClInclude Include="SetUpSetting.h">
-      <Filter>ソース ファイル\Menu\SettingManager\SetUpSetting</Filter>
-    </ClInclude>
     <ClInclude Include="Bar.h">
       <Filter>ソース ファイル\Scene\StageSelectScene\BarManager</Filter>
     </ClInclude>
@@ -519,12 +547,6 @@
     <ClInclude Include="WindowProc.h">
       <Filter>ソース ファイル</Filter>
     </ClInclude>
-    <ClInclude Include="GalleryBar.h">
-      <Filter>ソース ファイル\Scene\GalleryScene</Filter>
-    </ClInclude>
-    <ClInclude Include="GalleryBarManager.h">
-      <Filter>ソース ファイル\Scene\GalleryScene</Filter>
-    </ClInclude>
     <ClInclude Include="GalleryScene.h">
       <Filter>ソース ファイル\Scene\GalleryScene</Filter>
     </ClInclude>
@@ -542,9 +564,6 @@
     </ClInclude>
     <ClInclude Include="GalleryCoin.h">
       <Filter>ソース ファイル\Scene\GameScene\Field\BlockManager\Object</Filter>
-    </ClInclude>
-    <ClInclude Include="BGM.h">
-      <Filter>ソース ファイル\UI</Filter>
     </ClInclude>
     <ClInclude Include="GameOverLogoAnimation.h">
       <Filter>ソース ファイル\Scene\GameScene\EndGameProcess\GameOver</Filter>
@@ -573,12 +592,6 @@
     <ClInclude Include="GameOverDollAnimation.h">
       <Filter>ソース ファイル\Scene\GameScene\EndGameProcess\GameOver\Animation</Filter>
     </ClInclude>
-    <ClInclude Include="FadeIn.h">
-      <Filter>ソース ファイル\Scene\Effect</Filter>
-    </ClInclude>
-    <ClInclude Include="FadeOut.h">
-      <Filter>ソース ファイル\Scene\Effect</Filter>
-    </ClInclude>
     <ClInclude Include="TitleLogoAnimation.h">
       <Filter>ソース ファイル\Scene\TitleScene\Animation</Filter>
     </ClInclude>
@@ -603,19 +616,9 @@
     <ClInclude Include="EndTutorialLogoAnimation.h">
       <Filter>ソース ファイル\Scene\GameScene\EndGameProcess\EndTutorial\Animation</Filter>
     </ClInclude>
-    <ClInclude Include="ChangeSceneEffect.h">
-      <Filter>ソース ファイル\Scene\Effect</Filter>
-    </ClInclude>
     <ClInclude Include="GalleryCoin.h">
       <Filter>ソース ファイル\Scene\GameScene\Field\BlockManager\Object</Filter>
     </ClInclude>
-    <ClInclude Include="SideIn.h">
-      <Filter>ソース ファイル\Scene\Effect</Filter>
-    </ClInclude>
-    <ClInclude Include="SideOut.h">
-      <Filter>ソース ファイル\Scene\Effect</Filter>
-    </ClInclude>
-    <ClInclude Include="Trim.h" />
     <ClInclude Include="DollMoveSetting.h">
       <Filter>ソース ファイル</Filter>
     </ClInclude>
@@ -637,18 +640,62 @@
     <ClInclude Include="BGM.h">
       <Filter>ソース ファイル\Sound</Filter>
     </ClInclude>
-	  <ClInclude Include="DollMopAnimation.h">
-	 <Filter>ソース ファイル\Scene\GameScene\Field\Doll\Animation</Filter> 
-	</ClInclude>
-    <ClInclude Include="SE.h">
-      <Filter>ソース ファイル\Sound</Filter>
+    <ClInclude Include="DollMopAnimation.h">
+      <Filter>ソース ファイル\Scene\GameScene\Field\Doll\Animation</Filter>
     </ClInclude>
-    <ClInclude Include="IBaseSound.h" />
     <ClInclude Include="BGM.h">
       <Filter>ソース ファイル\Sound</Filter>
     </ClInclude>
     <ClInclude Include="AudioMixer.h">
       <Filter>ソース ファイル\Sound</Filter>
+    </ClInclude>
+    <ClInclude Include="IBaseSound.h">
+      <Filter>ソース ファイル\Interface</Filter>
+    </ClInclude>
+    <ClInclude Include="BackGround.h">
+      <Filter>ソース ファイル\UI\BackGround</Filter>
+    </ClInclude>
+    <ClInclude Include="BGM.h">
+      <Filter>ソース ファイル\Sound\BGM</Filter>
+    </ClInclude>
+    <ClInclude Include="SE.h">
+      <Filter>ソース ファイル\Sound\SE</Filter>
+    </ClInclude>
+    <ClInclude Include="AudioSetting.h">
+      <Filter>ソース ファイル\Menu\SettingManager\SetUpSetting\Audio</Filter>
+    </ClInclude>
+    <ClInclude Include="BackSceneSetting.h">
+      <Filter>ソース ファイル\Menu\SettingManager\SetUpSetting\BackScene</Filter>
+    </ClInclude>
+    <ClInclude Include="SetUpSetting.h">
+      <Filter>ソース ファイル\Menu\SettingManager\SetUpSetting</Filter>
+    </ClInclude>
+    <ClInclude Include="Trim.h">
+      <Filter>ソース ファイル\Utility\Trim</Filter>
+    </ClInclude>
+    <ClInclude Include="GameClearButton.h">
+      <Filter>ソース ファイル\Scene\GameScene\FieldUI\GameClearButton</Filter>
+    </ClInclude>
+    <ClInclude Include="ChangeSceneEffect.h">
+      <Filter>ソース ファイル\Scene\Effect\ChangeScene</Filter>
+    </ClInclude>
+    <ClInclude Include="FadeIn.h">
+      <Filter>ソース ファイル\Scene\Effect\FadeInOut</Filter>
+    </ClInclude>
+    <ClInclude Include="FadeOut.h">
+      <Filter>ソース ファイル\Scene\Effect\FadeInOut</Filter>
+    </ClInclude>
+    <ClInclude Include="SideIn.h">
+      <Filter>ソース ファイル\Scene\Effect\SideInOut</Filter>
+    </ClInclude>
+    <ClInclude Include="SideOut.h">
+      <Filter>ソース ファイル\Scene\Effect\SideInOut</Filter>
+    </ClInclude>
+    <ClInclude Include="GalleryBar.h">
+      <Filter>ソース ファイル\Scene\GalleryScene\BarManager</Filter>
+    </ClInclude>
+    <ClInclude Include="GalleryBarManager.h">
+      <Filter>ソース ファイル\Scene\GalleryScene\BarManager</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
