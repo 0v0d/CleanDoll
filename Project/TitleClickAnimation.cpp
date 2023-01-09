@@ -2,8 +2,7 @@
 
 void TitleClickAnimation::Initialize(){
 	LoadTexture();
-
-	_alpha = _maxAlpha;
+	_time = 0;
 }
 
 void TitleClickAnimation::LoadTexture(){
@@ -11,16 +10,18 @@ void TitleClickAnimation::LoadTexture(){
 }
 
 void TitleClickAnimation::ReLoad(){
-
+	_time = 0;
 }
 
 void TitleClickAnimation::Update() {
 	//Click to startのアニメーション用
 	//_alphaIncreaseが1秒の増加量
 	_time += _alphaIncrease;
+	if (_time > 1) _time = 0;
 	//増加量が0.5を超えて丸めるためにfmodを使っている
 	//0.5というのは、yの増加量が0になるときのxの増加量
-	_alpha = CalcAlpha(fmod(_time, 0.6));
+
+	CalcAlpha();
 }
 
 namespace detail
@@ -31,13 +32,13 @@ namespace detail
 	float EasingFunction(float time)
 	{
 		//2次関数y=-(4 x-1)^(2)+1
-		return  -pow((4 * time - 1), 2) + 1;
+		return  -pow((2 * time - 1), 2) + 1;
 	}
 }
 
-int TitleClickAnimation::CalcAlpha(float time)
+void TitleClickAnimation::CalcAlpha()
 {
-	return detail::EasingFunction(time) * _maxAlpha;
+	_alpha = detail::EasingFunction(_time) * (_maxAlpha * (1 - miniAlphaPercentage))+ (_maxAlpha *  miniAlphaPercentage);
 }
 
 void TitleClickAnimation::Render(){

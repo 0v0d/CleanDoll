@@ -343,9 +343,6 @@
     </ClCompile>
     <ClCompile Include="Trim.cpp">
     </ClCompile>
-    <ClCompile Include="DollMoveSetting.cpp">
-      <Filter>ソース ファイル</Filter>
-    </ClCompile>
     <ClCompile Include="StageSelectLogo.cpp">
       <Filter>ソース ファイル\Scene\StageSelectScene\Animation</Filter>
     </ClCompile>
@@ -363,15 +360,18 @@
     </ClCompile>
     <ClCompile Include="BGM.cpp">
       <Filter>ソース ファイル\Sound</Filter>
-	 </ClCompile>
+    </ClCompile>
     <ClCompile Include="SE.cpp">
       <Filter>ソース ファイル\Sound</Filter>
     </ClCompile>
-    <ClCompile Include="IBaseSound.cpp">
-      <Filter>ソース ファイル</Filter>
-    </ClCompile>
     <ClCompile Include="AudioMixer.cpp">
       <Filter>ソース ファイル\Sound</Filter>
+    </ClCompile>
+    <ClCompile Include="IBaseSound.cpp">
+      <Filter>ソース ファイル\Interface</Filter>
+    </ClCompile>
+    <ClCompile Include="DollMoveSetting.cpp">
+      <Filter>ソース ファイル\Menu\SettingManager\SetUpSetting</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -616,9 +616,6 @@
       <Filter>ソース ファイル\Scene\Effect</Filter>
     </ClInclude>
     <ClInclude Include="Trim.h" />
-    <ClInclude Include="DollMoveSetting.h">
-      <Filter>ソース ファイル</Filter>
-    </ClInclude>
     <ClInclude Include="StageSelectLogo.h">
       <Filter>ソース ファイル\Scene\StageSelectScene\Animation</Filter>
     </ClInclude>
@@ -637,18 +634,23 @@
     <ClInclude Include="BGM.h">
       <Filter>ソース ファイル\Sound</Filter>
     </ClInclude>
-	  <ClInclude Include="DollMopAnimation.h">
-	 <Filter>ソース ファイル\Scene\GameScene\Field\Doll\Animation</Filter> 
-	</ClInclude>
+    <ClInclude Include="DollMopAnimation.h">
+      <Filter>ソース ファイル\Scene\GameScene\Field\Doll\Animation</Filter>
+    </ClInclude>
     <ClInclude Include="SE.h">
       <Filter>ソース ファイル\Sound</Filter>
     </ClInclude>
-    <ClInclude Include="IBaseSound.h" />
     <ClInclude Include="BGM.h">
       <Filter>ソース ファイル\Sound</Filter>
     </ClInclude>
     <ClInclude Include="AudioMixer.h">
       <Filter>ソース ファイル\Sound</Filter>
+    </ClInclude>
+    <ClInclude Include="IBaseSound.h">
+      <Filter>ソース ファイル\Interface</Filter>
+    </ClInclude>
+    <ClInclude Include="DollMoveSetting.h">
+      <Filter>ソース ファイル\Menu\SettingManager\SetUpSetting</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
