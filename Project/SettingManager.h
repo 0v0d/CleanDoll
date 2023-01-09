@@ -5,7 +5,6 @@
 class SettingManager
 {
 	bool _openMenu;
-	Vector2 _mousePos;
 	SetUpSetting _setUpSetting;
 	Button _openSettingButton;
 	CTexture _menuTexture, _openButtonTexture;

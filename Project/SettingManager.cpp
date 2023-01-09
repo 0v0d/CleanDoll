@@ -31,7 +31,6 @@ void SettingManager::Update()
 }
 
 void SettingManager::SetMousePos(Vector2 mousePos) {
-	_mousePos = mousePos;
 	_setUpSetting.SetMousePos(mousePos);
 	_openSettingButton.SetMousePos(mousePos);
 }

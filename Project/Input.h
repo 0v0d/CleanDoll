@@ -20,4 +20,6 @@ private:
 	void Push();
 	void Pull();
 
+private:
+	bool CheckActionMenu();
 };
