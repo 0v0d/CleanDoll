@@ -44,7 +44,7 @@ void Input::Push() {
 		return;
 	}
 
-	_menu->Push();
+	if (CheckActionMenu()) _menu->Push();
 
 	if (_menu->IsOpenMenu()) return;
 	SceneManager::Instance().Push();
@@ -56,8 +56,13 @@ void Input::Pull() {
 		return;
 	}
 
-	_menu->Pull();
-	if (_menu->IsOpenMenu()) return;
+	if(CheckActionMenu()) _menu->Pull();
 
+	if (_menu->IsOpenMenu()) return;
 	SceneManager::Instance().Pull();
+}
+
+bool Input::CheckActionMenu() {
+	SCENE_TYPE currentSceneType = SceneManager::Instance().GetCurrentSceneType();
+	return (currentSceneType == SCENE_TYPE::STAGESELECT || currentSceneType == SCENE_TYPE::GAME);
 }
