@@ -44,6 +44,7 @@ public:
 	void Release();
 	
 	bool IsEnd() const { return _end; }
+	void SetEnd(bool clearFlg) { _end = clearFlg; }
 	bool CheckInTutorialRoute(Block* mouseOnBlock,int routeNumber);
 	bool IsHideen()const { return _hidden; }
 private:

@@ -83,10 +83,8 @@ void Tutorial::Push() {
 	if (!_hidden) {
 		_currentClick++;
 		if (_currentClick >= _textureValue - 1) {
-			_end = true;
 			_currentClick = _textureValue - 1;
 			_hidden = true;
-
 			_endGameProcess->SetCurrentProcess(ProcessType::EndTutorial);
 		}
 	}
@@ -109,6 +107,8 @@ void Tutorial::EndMoveDoll() {
 		_hidden = false;
 		_currentLimitNumber++;
 	}
+	//ƒSƒ~‚Ì”‚ğ
+	_end = true;
 }
 
 bool Tutorial::CheckInTutorialRoute(Block* mouseOnBlock, int routeNumber) {

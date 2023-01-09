@@ -23,9 +23,8 @@ public:
 	void SetWaterValue(int dumpValue) { _waterValue = dumpValue; }
 	void CleanDust() { _dustValue--; }
 	void CleanWater() { _waterValue--; }
-	bool IsPull() { return _pull; }
+	bool IsPull() const{ return _pull; }
 private:
-	void GameClear();
 	void Load();
 	void CreateButton();
 };

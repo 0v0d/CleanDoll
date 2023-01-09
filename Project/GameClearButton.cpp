@@ -12,11 +12,9 @@ void GameClearButton::Load() {
 
 void GameClearButton::CreateButton() {
 	_button.SetTexture(&_clearButtonTexture);
-	_button.SetPosition(Vector2(_clearButtonTexture.GetWidth() , _clearButtonTexture.GetHeight() / 2));
+	_button.SetPosition(Vector2(_clearButtonTexture.GetWidth() , _clearButtonTexture.GetHeight() / 3));
 	_button.SetSeSound(&_buttonSe);
-	_button.SetStatu(false, true, [&]() {
-		_pull = true;
-	});
+	_button.SetStatu(false, true, [&]() {_pull = true;});
 }
 
 void GameClearButton::ReLoad() {
@@ -44,10 +42,6 @@ void GameClearButton::Update() {
 
 void GameClearButton::Render() {
 	if(_show) _button.Render();
-	else{
-		CGraphicsUtilities::RenderString(100, 100 , MOF_COLOR_BLACK,"%d", _dustValue);
-		CGraphicsUtilities::RenderString(100, 300, MOF_COLOR_BLACK,"%d", _waterValue);
-	}
 }
 
 void GameClearButton::Release() {

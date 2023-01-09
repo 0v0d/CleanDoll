@@ -105,8 +105,8 @@ void Field::Pull() {
 	_push = false;
 	_fieldUI.Pull();
 	EndOfPassed();
-	GameClear();
 	_endGameProcess.Pull();
+	GameClear();
 }
 
 //ブロックを押したとき
@@ -202,8 +202,7 @@ void Field::EndMoveDoll(){
 	if (!_tutorial.IsEnd()) {
 		_tutorial.EndMoveDoll();
 	}
-	else
-	{
+	else{
 		//ゲームクリア
 		if (_doll.IsGetCoin()) {
 			if (!_getCoin) {
@@ -214,7 +213,6 @@ void Field::EndMoveDoll(){
 			}
 			return;
 		}
-		
 		//ゲームオーバー
 		if (_remainDistance <= 0) {
 			GameOver();
@@ -234,33 +232,34 @@ void Field::GetCoin() {
 	_fieldUI.GetGalleryCoin();
 }
 
-void Field::CleanDust()
-{
+void Field::CleanDust(){
 	_dustDumpValue--;
 	_fieldUI.CleanDust();
 }
 
-void Field::CleanWater()
-{
+void Field::CleanWater(){
 	_waterDumpValue--;
 	_fieldUI.CleanWater();
 }
 
-void Field::ReSetStage()
-{
+void Field::ReSetStage(){
 	ReLoad();
 }
 
 void Field::GameClear() {
 	if (_fieldUI.IsPull()) {
 		StageSelectScene* stageSelect = dynamic_cast<StageSelectScene*>(SceneManager::Instance().GetScene(SCENE_TYPE::STAGESELECT));
-		_endGameProcess.SetCurrentProcess(ProcessType::GameClear);
-		stageSelect->StageClear();
+		if(!_tutorial.IsEnd()){
+			_endGameProcess.SetCurrentProcess(ProcessType::EndTutorial);
+		}
+		else{
+			_endGameProcess.SetCurrentProcess(ProcessType::GameClear);
+			stageSelect->StageClear();
+		}
 	}
 }
 
-void Field::GameOver()
-{
+void Field::GameOver(){
 	_endGameProcess.SetCurrentProcess(ProcessType::GameOver);
 }
 
