@@ -344,8 +344,6 @@
     <ClCompile Include="GetCoinNumber.cpp">
       <Filter>ソース ファイル\Scene\GalleryScene</Filter>
     </ClCompile>
-    <ClCompile Include="DollMoveSetting.cpp">
-      <Filter>ソース ファイル</Filter>
     <ClCompile Include="SideIn.cpp">
       <Filter>ソース ファイル\Scene\Effect</Filter>
     </ClCompile>
@@ -419,6 +417,7 @@
     </ClCompile>
     <ClCompile Include="GalleryBar.cpp">
       <Filter>ソース ファイル\Scene\GalleryScene\BarManager</Filter>
+    </ClCompile>
     <ClCompile Include="BGM.cpp">
       <Filter>ソース ファイル\Sound</Filter>
     </ClCompile>
@@ -430,6 +429,9 @@
     </ClCompile>
     <ClCompile Include="IBaseSound.cpp">
       <Filter>ソース ファイル\Interface</Filter>
+    </ClCompile>
+    <ClCompile Include="DollMoveSetting.cpp">
+      <Filter>ソース ファイル\Menu\SettingManager\SetUpSetting</Filter>
     </ClCompile>
     <ClCompile Include="DollMoveSetting.cpp">
       <Filter>ソース ファイル\Menu\SettingManager\SetUpSetting</Filter>
@@ -640,9 +642,6 @@
     <ClInclude Include="GalleryCoin.h">
       <Filter>ソース ファイル\Scene\GameScene\Field\BlockManager\Object</Filter>
     </ClInclude>
-    <ClInclude Include="DollMoveSetting.h">
-      <Filter>ソース ファイル</Filter>
-    </ClInclude>
     <ClInclude Include="SideIn.h">
       <Filter>ソース ファイル\Scene\Effect</Filter>
     </ClInclude>
@@ -727,6 +726,9 @@
     </ClInclude>
     <ClInclude Include="GalleryBarManager.h">
       <Filter>ソース ファイル\Scene\GalleryScene\BarManager</Filter>
+    </ClInclude>
+    <ClInclude Include="DollMoveSetting.h">
+      <Filter>ソース ファイル\Menu\SettingManager\SetUpSetting</Filter>
     </ClInclude>
     <ClInclude Include="DollMoveSetting.h">
       <Filter>ソース ファイル\Menu\SettingManager\SetUpSetting</Filter>
