@@ -47,6 +47,12 @@ private:
 	FieldUI _fieldUI;
 	EndGameProcess _endGameProcess;
 	bool _getCoin;
+
+	Button _clearButton;
+	CTexture _clearButtonTexture;
+	CSoundBuffer _buttonSe;
+	bool _show;
+
 public:
 	void SetDollPosition(int x, int y);
 	void Initialize();
@@ -83,4 +89,6 @@ private:
 	void BackRoute(Block* mouseOnBlock);
 	bool CheckCantMoveDoll();
 	void GameClear();
+	void CreateButton();
+	void LoadTexture();
 };

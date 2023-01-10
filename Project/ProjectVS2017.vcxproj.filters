@@ -129,9 +129,6 @@
     <Filter Include="ソース ファイル\Utility\Trim">
       <UniqueIdentifier>{16560ef8-01b3-4404-8f83-ae71e95b7d94}</UniqueIdentifier>
     </Filter>
-    <Filter Include="ソース ファイル\Scene\GameScene\FieldUI\GameClearButton">
-      <UniqueIdentifier>{1cfa1b0b-14f7-4ffd-b03e-7bb2b2e72f58}</UniqueIdentifier>
-    </Filter>
     <Filter Include="ソース ファイル\Scene\Effect\ChangeScene">
       <UniqueIdentifier>{df135600-a702-40e3-bd43-089808a7740d}</UniqueIdentifier>
     </Filter>
@@ -393,9 +390,6 @@
     </ClCompile>
     <ClCompile Include="Trim.cpp">
       <Filter>ソース ファイル\Utility\Trim</Filter>
-    </ClCompile>
-    <ClCompile Include="GameClearButton.cpp">
-      <Filter>ソース ファイル\Scene\GameScene\FieldUI\GameClearButton</Filter>
     </ClCompile>
     <ClCompile Include="ChangeSceneEffect.cpp">
       <Filter>ソース ファイル\Scene\Effect\ChangeScene</Filter>
@@ -702,9 +696,6 @@
     </ClInclude>
     <ClInclude Include="Trim.h">
       <Filter>ソース ファイル\Utility\Trim</Filter>
-    </ClInclude>
-    <ClInclude Include="GameClearButton.h">
-      <Filter>ソース ファイル\Scene\GameScene\FieldUI\GameClearButton</Filter>
     </ClInclude>
     <ClInclude Include="ChangeSceneEffect.h">
       <Filter>ソース ファイル\Scene\Effect\ChangeScene</Filter>

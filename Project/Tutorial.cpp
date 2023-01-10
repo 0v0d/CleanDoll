@@ -46,8 +46,7 @@ void Tutorial::LoadTexture()
 	_contactFile.OpenFile("TutorialTexture.txt");
 	_textureValue = _contactFile.GetValue(true);
 	_tutorialTexureArray = new CTexture[_textureValue];
-	for (int i = 0; i < _textureValue; i++)
-	{
+	for (int i = 0; i < _textureValue; i++){
 		_tutorialTexureArray[i].Load(_trimstring.TrimString(_contactFile.GetString(false)).c_str());
 	}
 	_contactFile.CloseFile();
@@ -85,7 +84,6 @@ void Tutorial::Push() {
 		if (_currentClick >= _textureValue - 1) {
 			_currentClick = _textureValue - 1;
 			_hidden = true;
-			_endGameProcess->SetCurrentProcess(ProcessType::EndTutorial);
 		}
 	}
 
