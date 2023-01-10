@@ -2,7 +2,7 @@
 
 void EndGameButtonManager::Initialize(){
 
-	_buttonSe.Load("ClicktoStart.mp3");
+	_buttonSe.Load("BottanClick.mp3");
 }
 
 void EndGameButtonManager::ReLoad(){

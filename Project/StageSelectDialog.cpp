@@ -26,7 +26,7 @@ void StageSelectDialog::LoadTexture() {
 	_noTexture.Load("いいえ.png");
 	_backTexture.Load("ステージ選択後背景.png");
 
-	_buttonSe.Load("ClicktoStart.mp3");
+	_buttonSe.Load("BottanClick.mp3");
 }
 
 void StageSelectDialog::CreateButton(Button* button, Vector2 pos, CTexture* texture,std::function<void()> callMethod) {

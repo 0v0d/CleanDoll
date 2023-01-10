@@ -7,7 +7,7 @@ void GameScene::Initialize()
 	_backGround.SetTextureStatus(&_gameBackTexture, REPEATSCREEN);
 	_field.Initialize();
 	_music.Load("BGM.mp3");
-	_buttonSe.Load("ClicktoStart.mp3");
+	_buttonSe.Load("BottanClick.mp3");
 
 	_resetStageButton.SetTexture(&_resetButtonTexture);
 	_resetStageButton.SetPosition(Vector2(100, 130));

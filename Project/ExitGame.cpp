@@ -21,7 +21,7 @@ void ExitGame::LoadTexture() {
 	_yesTexture.Load("‚Í‚¢.png");
 	_noTexture.Load("‚¢‚¢‚¦.png");
 
-	_buttonSe.Load("ClicktoStart.mp3");
+	_buttonSe.Load("BottanClick.mp3");
 }
 
 
