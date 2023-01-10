@@ -36,6 +36,7 @@ MofBool CGameApp::Render()
 		_menu.Render();
 	}
 	_exit.Render();
+	SceneManager::Instance().RenderEffect();
 	g_pGraphics->RenderEnd();
 	return TRUE;
 }

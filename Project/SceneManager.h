@@ -28,6 +28,7 @@ public:
 	void Pull();
 
 	void Render();
+	void RenderEffect();
 	void Release();
 
 	static SceneManager& Instance()

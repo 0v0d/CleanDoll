@@ -54,6 +54,9 @@ void SceneManager::Pull() {
 void SceneManager::Render()
 {
 	_currentScene->Render();
+}
+
+void SceneManager::RenderEffect() {
 	_effect.Render();
 }
 
