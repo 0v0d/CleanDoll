@@ -32,6 +32,7 @@ void Input::SetMousePos() {
 		return;
 	}
 
+	if (!SceneManager::Instance().CheckEndEffect()) return;
 	_menu->SetMousePos(_mousePos);
 	if (_menu->IsOpenMenu()) return;
 
@@ -44,6 +45,7 @@ void Input::Push() {
 		return;
 	}
 
+	if (!SceneManager::Instance().CheckEndEffect()) return;
 	if (CheckActionMenu()) _menu->Push();
 
 	if (_menu->IsOpenMenu()) return;
@@ -56,6 +58,7 @@ void Input::Pull() {
 		return;
 	}
 
+	if (!SceneManager::Instance().CheckEndEffect()) return;
 	if(CheckActionMenu()) _menu->Pull();
 
 	if (_menu->IsOpenMenu()) return;

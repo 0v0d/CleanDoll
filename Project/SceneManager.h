@@ -44,6 +44,7 @@ public:
 	void ChangeScene(SCENE_TYPE nextScene);
 	IBaseScene* GetScene(SCENE_TYPE scene) { return _sceneArray[scene]; }
 	SCENE_TYPE GetCurrentSceneType();
+	bool CheckEndEffect() { return _effect.CheckEndEffect(); }
 
 private:
 	void StartChangeScene();

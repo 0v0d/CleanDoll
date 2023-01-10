@@ -35,8 +35,8 @@ MofBool CGameApp::Render()
 	if (currentSceneType == SCENE_TYPE::STAGESELECT || currentSceneType == SCENE_TYPE::GAME) {
 		_menu.Render();
 	}
-	_exit.Render();
 	SceneManager::Instance().RenderEffect();
+	_exit.Render();
 	g_pGraphics->RenderEnd();
 	return TRUE;
 }
