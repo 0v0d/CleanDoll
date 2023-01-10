@@ -115,14 +115,19 @@ void Field::Push() {
 	_push = true;
 	_tutorial.Push();
 	_endGameProcess.Push();
-	_clearButton.Push();
+	if (_show){
+		_clearButton.Push();
+	}
+	
 }
 
 void Field::Pull() {
 	_push = false;
 	EndOfPassed();
 	_endGameProcess.Pull();
-	_clearButton.Pull();
+	if (_show) {
+		_clearButton.Pull();
+	}
 }
 
 //ÉuÉçÉbÉNÇâüÇµÇΩÇ∆Ç´
@@ -264,11 +269,13 @@ void Field::GameClear() {
 	if (!_tutorial.IsEnd()&& _show) {
 		_endGameProcess.SetCurrentProcess(ProcessType::EndTutorial);
 		_tutorial.SetEnd(true);
+		_show = false;
 	}
 	else {
 		StageSelectScene* stageSelect = dynamic_cast<StageSelectScene*>(SceneManager::Instance().GetScene(SCENE_TYPE::STAGESELECT));
 		_endGameProcess.SetCurrentProcess(ProcessType::GameClear);
 		stageSelect->StageClear();
+		_show = false;
 	}
 }
 
