@@ -67,7 +67,10 @@ void SetUpSetting::CreateButton() {
 		});
 
 	_closeMenuButton.SetSeSound(&_buttonSe);
-	_closeMenuButton.SetStatu(false, true, [&]() {*_openMenu = false;});
+	_closeMenuButton.SetStatu(false, true, [&]() {
+		*_openMenu = false;
+		SetMousePos(Vector2(0, 0));
+		});
 }
 
 void SetUpSetting::Update()
