@@ -11,7 +11,7 @@ void Bar::Initialize()
 	_difficultyScale = _barHitBox.GetHeight() / 2 / _difficultyTextureArray[0]->GetHeight() - 0.1f;
 	_coinScale = _barHitBox.GetHeight() / _coinTexture->GetHeight() - 0.12f;
 	_clear = _getCoin = false;
-
+	interval = 5;
 }
 
 void Bar::SetScreenStatu(Vector2 screenPos, Vector2 screenSize) {
@@ -90,7 +90,7 @@ void Bar::Render()
 			_screenPos.y : _difficultyPos.y;
 
 		if (IsRenderRange(_difficultyTextureArray[i], Vector2(_difficultyPos.x, _difficultyPos.y), _difficultyScale)){
-			constexpr auto interval = 5;
+			//constexpr auto interval = 5;
 			_difficultyTextureArray[i]->RenderScale
 			(_difficultyPos.x + (_difficultyTextureArray[i]->GetWidth() * _difficultyScale + interval) * i, posY, _difficultyScale,
 				GetRenderRect(_difficultyPos, _difficultyTextureArray[i], _difficultyScale));
