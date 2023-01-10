@@ -77,6 +77,7 @@ void SceneManager::ChangeScene(SCENE_TYPE nextScene) {
 void SceneManager::StartChangeScene() {
 	_currentScene = _sceneArray[_nextSceneType];
 	_currentScene->ReLoad();
+	_currentScene->SetMousePos(Vector2(0, 0));
 	AudioMixer::Instance().PlayBgm(_currentScene->GetBGM());
 }
 
