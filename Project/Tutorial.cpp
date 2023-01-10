@@ -9,7 +9,8 @@ void Tutorial::Initialize(){
 }
 
 void Tutorial::ReLoad() {
-	_end = false;
+	//_end = false;
+	_end = true;
 	_currentClick = 0;
 	_hidden = false;
 
@@ -93,22 +94,17 @@ void Tutorial::Push() {
 		_hidden = true;
 		_currentHidden++;
 	}
-
 }
 
 void Tutorial::EndOfPassed(int routeVal) {
-
 	_currentRouteValue += routeVal;
 }
 
 void Tutorial::EndMoveDoll() {
-
 	if (_currentRouteValue - CalcuCurrentLimitValue() >= _inputLimitArray[_currentLimitNumber]) {
 		_hidden = false;
 		_currentLimitNumber++;
 	}
-	//ƒSƒ~‚Ì”‚ğ
-	_end = true;
 }
 
 bool Tutorial::CheckInTutorialRoute(Block* mouseOnBlock, int routeNumber) {

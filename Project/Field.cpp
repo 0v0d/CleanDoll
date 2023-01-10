@@ -201,20 +201,24 @@ void Field::EndMoveDoll(){
 
 	if (!_tutorial.IsEnd()) {
 		_tutorial.EndMoveDoll();
+		if (_dustDumpValue <= 0 && _waterDumpValue <= 0){
+			//_tutorial.SetEnd(true);
+		}
 	}
 	else{
 		//ゲームクリア
-		if (_doll.IsGetCoin()) {
+		if (_doll.IsGetCoin()&& _dustDumpValue <= 0 && _waterDumpValue <= 0) {
 			if (!_getCoin) {
 				StageSelectScene* stageSelect = dynamic_cast<StageSelectScene*>(SceneManager::Instance().GetScene(SCENE_TYPE::STAGESELECT));
 				dynamic_cast<GalleryScene*>(SceneManager::Instance().GetScene(SCENE_TYPE::GALLERY))->AddCoin();
+				_endGameProcess.SetCurrentProcess(ProcessType::GameClear);
+				stageSelect->StageClear();
 				stageSelect->GetCoin();
 				_getCoin = true;
 			}
-			return;
 		}
 		//ゲームオーバー
-		if (_remainDistance <= 0) {
+		else if (_remainDistance <= 0) {
 			GameOver();
 		}
 		if (CheckCantMoveDoll()) {
