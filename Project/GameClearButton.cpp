@@ -7,7 +7,7 @@ void GameClearButton::Initialize() {
 
 void GameClearButton::Load() {
 	_clearButtonTexture.Load("clearButton.png");
-	_buttonSe.Load("ClicktoStart.mp3");
+	_buttonSe.Load("BottanClick.mp3");
 }
 
 void GameClearButton::CreateButton() {

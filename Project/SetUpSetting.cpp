@@ -43,7 +43,7 @@ void SetUpSetting::LoadTexture() {
 	_backSelectSceneTexture.Load("ステージ選択へ.png");
 	_closeMenuTexture.Load("閉じる.png");
 
-	_buttonSe.Load("ClicktoStart.mp3");
+	_buttonSe.Load("BottanClick.mp3");
 }
 
 void SetUpSetting::CreateButton() {

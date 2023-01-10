@@ -9,7 +9,7 @@ void BackSceneSetting::Initialize()
 	const float spaceY = 100;
 	_backTexture.Load("‚Í‚¢.png");
 	_closeTexture.Load("‚¢‚¢‚¦.png");
-	_buttonSe.Load("ClicktoStart.mp3");
+	_buttonSe.Load("BottanClick.mp3");
 
 	CreateButton(&_backButton, Vector2(_basePos.x - spaceX / 2 - _backTexture.GetWidth() / 2, _basePos.y + spaceY), &_backTexture, [&]() {
 		SceneManager::Instance().ChangeScene(_backScene);
