@@ -32,8 +32,8 @@ void Field::ReLoad()
 	_doll.ReLoad();
 	_fieldUI.ReLoad();
 	_operateDoll.ReLoad();
-	if(!_tutorial.IsEnd())_tutorial.ReLoad();
-	
+	if (!_tutorial.IsEnd())_tutorial.ReLoad();
+
 	_doll.CalcuScale(_blockManager.GetDollOnBlock()->GetBlockSize().y, _blockManager.GetScale());
 	_dustDumpValue = _initalDustValue;
 	_waterDumpValue = _initalWaterValue;
@@ -64,7 +64,7 @@ void Field::SetDollPosition(int x, int y)
 	_dollInitialPositionX = x;
 	_dollInitialPositionY = y;
 
-	SetDollOnBlockNumber(_blockManager.GetBlock(x,y));
+	SetDollOnBlockNumber(_blockManager.GetBlock(x, y));
 }
 
 void Field::SetDustDumpValue(int dumpValue) {
@@ -79,7 +79,7 @@ void Field::SetWaterDumpValue(int dumpValue) {
 
 void Field::Update()
 {
-	if(_tutorial.IsHideen()&& _push){
+	if (_tutorial.IsHideen() && _push) {
 		PassedMouse(_mousePos);
 	}
 	_blockManager.Update();
@@ -88,7 +88,7 @@ void Field::Update()
 	_fieldUI.Update();
 }
 
-void Field::SetMousePos(Vector2 mousePos){
+void Field::SetMousePos(Vector2 mousePos) {
 	_mousePos = mousePos;
 	_endGameProcess.SetMousePos(mousePos);
 	_fieldUI.SetMousePos(mousePos);
@@ -106,7 +106,7 @@ void Field::Pull() {
 	_fieldUI.Pull();
 	EndOfPassed();
 	_endGameProcess.Pull();
-	GameClear();
+	 GameClear();
 }
 
 //ブロックを押したとき
@@ -184,10 +184,10 @@ void Field::BackRoute(Block* mouseOnBlock)
 }
 
 //入力終了
-void Field::EndOfPassed(){
+void Field::EndOfPassed() {
 	if (_routeBlockArray.size() <= 0) return;
 
-	if(!_tutorial.IsEnd()){
+	if (!_tutorial.IsEnd()) {
 		_tutorial.EndOfPassed(_routeBlockArray.size());
 	}
 
@@ -197,23 +197,23 @@ void Field::EndOfPassed(){
 	_recoveryDifferentialArray.clear();
 }
 
-void Field::EndMoveDoll(){
+void Field::EndMoveDoll() {
 
 	if (!_tutorial.IsEnd()) {
 		_tutorial.EndMoveDoll();
-		if (_dustDumpValue <= 0 && _waterDumpValue <= 0){
-			//_tutorial.SetEnd(true);
-		}
 	}
-	else{
+	else {
 		//ゲームクリア
-		if (_doll.IsGetCoin()&& _dustDumpValue <= 0 && _waterDumpValue <= 0) {
-			if (!_getCoin) {
-				StageSelectScene* stageSelect = dynamic_cast<StageSelectScene*>(SceneManager::Instance().GetScene(SCENE_TYPE::STAGESELECT));
+		if(_dustDumpValue <= 0 && _waterDumpValue <= 0)
+		{
+			StageSelectScene* stageSelect = dynamic_cast<StageSelectScene*>(SceneManager::Instance().GetScene(SCENE_TYPE::STAGESELECT));
+			_endGameProcess.SetCurrentProcess(ProcessType::GameClear);
+			stageSelect->StageClear();
+			if (_doll.IsGetCoin()&& !_getCoin) {
 				dynamic_cast<GalleryScene*>(SceneManager::Instance().GetScene(SCENE_TYPE::GALLERY))->AddCoin();
 				_endGameProcess.SetCurrentProcess(ProcessType::GameClear);
-				stageSelect->StageClear();
 				stageSelect->GetCoin();
+				stageSelect->StageClear();
 				_getCoin = true;
 			}
 		}
@@ -236,41 +236,42 @@ void Field::GetCoin() {
 	_fieldUI.GetGalleryCoin();
 }
 
-void Field::CleanDust(){
+void Field::CleanDust() {
 	_dustDumpValue--;
 	_fieldUI.CleanDust();
 }
 
-void Field::CleanWater(){
+void Field::CleanWater() {
 	_waterDumpValue--;
 	_fieldUI.CleanWater();
 }
 
-void Field::ReSetStage(){
+void Field::ReSetStage() {
 	ReLoad();
 }
 
 void Field::GameClear() {
 	if (_fieldUI.IsPull()) {
-		StageSelectScene* stageSelect = dynamic_cast<StageSelectScene*>(SceneManager::Instance().GetScene(SCENE_TYPE::STAGESELECT));
-		if(!_tutorial.IsEnd()){
+		if (!_tutorial.IsEnd()) {
 			_endGameProcess.SetCurrentProcess(ProcessType::EndTutorial);
+			_tutorial.SetEnd(true);
 		}
-		else{
+		else {
+			StageSelectScene* stageSelect = dynamic_cast<StageSelectScene*>(SceneManager::Instance().GetScene(SCENE_TYPE::STAGESELECT));
 			_endGameProcess.SetCurrentProcess(ProcessType::GameClear);
 			stageSelect->StageClear();
 		}
 	}
 }
 
-void Field::GameOver(){
+void Field::GameOver() {
 	_endGameProcess.SetCurrentProcess(ProcessType::GameOver);
 }
 
 bool Field::CheckCantMoveDoll() {
 	Block** adjoinBlockArray = _blockManager.GetDollOnBlock()->GetAdjoinBlockArray();
 
-	for (int i = 0;i < _adjoinBlockValue;i++) {
+	for (int i = 0; i < _adjoinBlockValue; i++) {
 		if (adjoinBlockArray[i] == nullptr) continue;
 		if (!adjoinBlockArray[i]->IsPassed() && adjoinBlockArray[i]->GetBlockOnObject()->GetFurniture() == nullptr) {
 			return false;

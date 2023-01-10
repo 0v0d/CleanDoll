@@ -1,6 +1,6 @@
 #include "Tutorial.h"
 
-void Tutorial::Initialize(){
+void Tutorial::Initialize() {
 	LoadTutorialRoute();
 	LoadInputLimit();
 	LoadTexture();
@@ -18,12 +18,12 @@ void Tutorial::ReLoad() {
 	_currentHidden = 0;
 }
 
-void Tutorial::LoadTutorialRoute(){
+void Tutorial::LoadTutorialRoute() {
 	_contactFile.OpenFile("tutorialRoute.txt");
 	_maxRouteValue = _contactFile.GetValue(true);
 	_tutorialRouteArray = new std::pair<int, int>[_maxRouteValue];
 
-	for (int i = 0; i < _maxRouteValue; i++){
+	for (int i = 0; i < _maxRouteValue; i++) {
 		_tutorialRouteArray[i].first = _contactFile.GetValue(false);
 		_tutorialRouteArray[i].second = _contactFile.GetValue(false);
 	}
@@ -125,11 +125,11 @@ int Tutorial::CalcuCurrentLimitValue() {
 
 void Tutorial::Render()
 {
-	if (!_hidden)
+	if (!_hidden&&!_end)
 		_tutorialTexureArray[_currentClick].Render(_texturePosArray[_currentClick].x, _texturePosArray[_currentClick].y);
 }
 
-void Tutorial::Release(){
+void Tutorial::Release() {
 	delete[] _tutorialRouteArray;
 	delete[] _inputLimitArray;
 	delete[] _tutorialTexureArray;
