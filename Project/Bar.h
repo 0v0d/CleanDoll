@@ -31,6 +31,7 @@ private:
 	Vector2 _screenPos, _screenSize;
 
 	bool _clear, _getCoin;	
+	int		interval;
 
 public:
 
@@ -58,7 +59,8 @@ public:
 	void SetDifficulutyTexture(CTexture* texture);
 
 	void ScaleUp(float scale) { _scale = scale; }
-
+	void DifficultScale(float difficltscale, int _intarval) {
+		_difficultyScale = (_barHitBox.GetHeight() / 2 / _difficultyTextureArray[0]->GetHeight() - 0.1f) * difficltscale;   interval = _intarval;}
 private:
 	bool CheckOnScreenTopLine(float top,float bottom);
 	CRectangle GetRenderRect(Vector2, CTexture*,float scale);

@@ -70,9 +70,11 @@ void BarManager::ScaleUp() {
 	for (int i = 0; i < _stageValue; i++) {
 		if (_barArray[i].CheckOnMouse(_mousePos)) {
 			_barArray[i].ScaleUp(_baseBarScale*1.1f);
+			_barArray[i].DifficultScale(1.2f,0);
 		}
 		else{
 			_barArray[i].ScaleUp(_baseBarScale);
+			_barArray[i].DifficultScale(1.0f,5);
 		}
 	}
 
