@@ -2,11 +2,11 @@
 
 void BlockOnObject::Initialzie(){
 	if (_accessories->GetType() != ACCESSORIES_TYPE::COIN) _accessories->Initialize();
-	else _hiddenAccessories = false;
 }
 
 void BlockOnObject::ReLoad() {
 	if (_accessories != nullptr) _accessories->ReLoad();
+	_hiddenAccessories = false;
 }
 
 void BlockOnObject::SetObject(Object* object, bool onSwap){
