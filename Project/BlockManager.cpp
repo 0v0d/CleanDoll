@@ -120,8 +120,8 @@ void BlockManager::Render()
 	}
 	for (int y = 0;y < _blockValueY;y++) {
 		for (int x = 0; x < _blockValueX; x++) {
-			if (x == _dollOnBlockX && y == _dollOnBlockY)_doll->Render();
 			_blockArray[x][y].RenderBlcokOnObject();
+			if (x == _dollOnBlockX && y == _dollOnBlockY)_doll->Render();
 		}
 	}
 }
