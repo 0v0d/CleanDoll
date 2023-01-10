@@ -120,7 +120,6 @@
     <ClCompile Include="EndTutorialBackGround.cpp" />
     <ClCompile Include="EndTutorialLogoAnimation.cpp" />
     <ClCompile Include="GalleryTexture.cpp" />
-    <ClCompile Include="GameClearButton.cpp" />
     <ClCompile Include="GetCoinNumber.cpp" />
     <ClCompile Include="IBaseSound.cpp" />
     <ClCompile Include="SE.cpp" />
@@ -209,7 +208,6 @@
     <ClInclude Include="EndTutorialLogoAnimation.h" />
     <ClInclude Include="GalleryCoin.h" />
     <ClInclude Include="GalleryTexture.h" />
-    <ClInclude Include="GameClearButton.h" />
     <ClInclude Include="GetCoinNumber.h" />
     <ClInclude Include="IBaseSound.h" />
     <ClInclude Include="SE.h" />

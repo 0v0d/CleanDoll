@@ -5,6 +5,8 @@
 
 void Field::Initialize()
 {
+	LoadTexture();
+	CreateButton();
 	_operateDoll.SetBlockManager(&_blockManager);
 	_operateDoll.SetDoll(&_doll);
 	_doll.SetField(this);
@@ -23,7 +25,20 @@ void Field::Initialize()
 
 	_doll.SetDumpValue(_dustDumpValue, _waterDumpValue);
 	_tutorial.SetBlockManager(&_blockManager);
-	_tutorial.SetEndGameProcess(&_endGameProcess);
+}
+
+void Field::LoadTexture()
+{
+	_clearButtonTexture.Load("clearButton.png");
+	_buttonSe.Load("ClicktoStart.mp3");
+}
+
+void Field::CreateButton()
+{
+	_clearButton.SetTexture(&_clearButtonTexture);
+	_clearButton.SetPosition(Vector2(_clearButtonTexture.GetWidth(), _clearButtonTexture.GetHeight() / 3));
+	_clearButton.SetSeSound(&_buttonSe);
+	_clearButton.SetStatu(false, true, [&]() {GameClear(); });
 }
 
 void Field::ReLoad()
@@ -55,6 +70,7 @@ void Field::ReLoad()
 	if (_getCoin)_fieldUI.GettedGalleryCoin();
 
 	_push = false;
+	_show = false;
 }
 
 void Field::SetDollPosition(int x, int y)
@@ -91,22 +107,21 @@ void Field::Update()
 void Field::SetMousePos(Vector2 mousePos) {
 	_mousePos = mousePos;
 	_endGameProcess.SetMousePos(mousePos);
-	_fieldUI.SetMousePos(mousePos);
+	_clearButton.SetMousePos(mousePos);
 }
 
 void Field::Push() {
 	_push = true;
-	_fieldUI.Push();
 	_tutorial.Push();
 	_endGameProcess.Push();
+	_clearButton.Push();
 }
 
 void Field::Pull() {
 	_push = false;
-	_fieldUI.Pull();
 	EndOfPassed();
 	_endGameProcess.Pull();
-	 GameClear();
+	_clearButton.Pull();
 }
 
 //ブロックを押したとき
@@ -117,17 +132,14 @@ void Field::PassedMouse(Vector2 mousePosition)
 	Block* mouseOnBlock = _blockManager.GetMouseOnBlock(mousePosition);
 	if (mouseOnBlock == nullptr) return;
 
-	for (int i = 0; i < _adjoinBlockValue; i++)
-	{
+	for (int i = 0; i < _adjoinBlockValue; i++){
 		if (mouseOnBlock != _pickedBlock->GetAdjoinBlockArray()[i])continue;
 		//押されていないブロックを押したとき、押したブロックを記録
-		if (!mouseOnBlock->IsPassed())
-		{
+		if (!mouseOnBlock->IsPassed()){
 			AdvanceRoute(mouseOnBlock);
 		}
 		//1回以上入力していて、既に押されているブロックを押したとき、巻き戻し
-		else if (_routeBlockArray.size() > 0)
-		{
+		else if (_routeBlockArray.size() > 0){
 			BackRoute(mouseOnBlock);
 		}
 		return;
@@ -145,10 +157,8 @@ void Field::AdvanceRoute(Block* mouseOnBlock)
 	_pickedBlock->SetPassedFlg(true);
 	_remainDistance--;
 
-	if (_pickedBlock->GetBlockOnObject()->GetAccessories() != nullptr)
-	{
-		if (_pickedBlock->GetBlockOnObject()->GetAccessories()->GetType() == ACCESSORIES_TYPE::ITEM)
-		{
+	if (_pickedBlock->GetBlockOnObject()->GetAccessories() != nullptr){
+		if (_pickedBlock->GetBlockOnObject()->GetAccessories()->GetType() == ACCESSORIES_TYPE::ITEM){
 			_recoveryDifferentialArray.push_back(_maxDistance - _remainDistance);
 			_remainDistance += _maxDistance - _remainDistance;
 		}
@@ -166,10 +176,8 @@ void Field::BackRoute(Block* mouseOnBlock)
 	//[_routeBlockArray.size() - 2]は1つ前に押したブロックの要素を表す
 
 	//巻き戻し処理
-	if (_pickedBlock->GetBlockOnObject()->GetAccessories() != nullptr)
-	{
-		if (_pickedBlock->GetBlockOnObject()->GetAccessories()->GetType() == ACCESSORIES_TYPE::ITEM)
-		{
+	if (_pickedBlock->GetBlockOnObject()->GetAccessories() != nullptr){
+		if (_pickedBlock->GetBlockOnObject()->GetAccessories()->GetType() == ACCESSORIES_TYPE::ITEM){
 			_remainDistance -= _recoveryDifferentialArray.back();
 			_recoveryDifferentialArray.pop_back();
 			_pickedBlock->GetBlockOnObject()->HiddenAccessoriesFlg(false);
@@ -201,15 +209,16 @@ void Field::EndMoveDoll() {
 
 	if (!_tutorial.IsEnd()) {
 		_tutorial.EndMoveDoll();
+		if(_dustDumpValue <= 0 && _waterDumpValue <= 0){
+			_show = true;
+		}
 	}
 	else {
 		//ゲームクリア
-		if(_dustDumpValue <= 0 && _waterDumpValue <= 0)
-		{
-			StageSelectScene* stageSelect = dynamic_cast<StageSelectScene*>(SceneManager::Instance().GetScene(SCENE_TYPE::STAGESELECT));
-			_endGameProcess.SetCurrentProcess(ProcessType::GameClear);
-			stageSelect->StageClear();
+		if(_dustDumpValue <= 0 && _waterDumpValue <= 0){
+			_show = true;
 			if (_doll.IsGetCoin()&& !_getCoin) {
+				StageSelectScene* stageSelect = dynamic_cast<StageSelectScene*>(SceneManager::Instance().GetScene(SCENE_TYPE::STAGESELECT));
 				dynamic_cast<GalleryScene*>(SceneManager::Instance().GetScene(SCENE_TYPE::GALLERY))->AddCoin();
 				_endGameProcess.SetCurrentProcess(ProcessType::GameClear);
 				stageSelect->GetCoin();
@@ -251,16 +260,14 @@ void Field::ReSetStage() {
 }
 
 void Field::GameClear() {
-	if (_fieldUI.IsPull()) {
-		if (!_tutorial.IsEnd()) {
-			_endGameProcess.SetCurrentProcess(ProcessType::EndTutorial);
-			_tutorial.SetEnd(true);
-		}
-		else {
-			StageSelectScene* stageSelect = dynamic_cast<StageSelectScene*>(SceneManager::Instance().GetScene(SCENE_TYPE::STAGESELECT));
-			_endGameProcess.SetCurrentProcess(ProcessType::GameClear);
-			stageSelect->StageClear();
-		}
+	if (!_tutorial.IsEnd()&& _show) {
+		_endGameProcess.SetCurrentProcess(ProcessType::EndTutorial);
+		_tutorial.SetEnd(true);
+	}
+	else {
+		StageSelectScene* stageSelect = dynamic_cast<StageSelectScene*>(SceneManager::Instance().GetScene(SCENE_TYPE::STAGESELECT));
+		_endGameProcess.SetCurrentProcess(ProcessType::GameClear);
+		stageSelect->StageClear();
 	}
 }
 
@@ -285,6 +292,9 @@ void Field::Render()
 {
 	_blockManager.Render();
 	_fieldUI.Render();
+	if (_show){
+		_clearButton.Render();
+	}
 	_tutorial.Render();
 	_endGameProcess.Render();
 }
@@ -297,4 +307,6 @@ void Field::Release()
 	_fieldUI.Release();
 	_endGameProcess.Release();
 	_tutorial.Release();
+	_clearButtonTexture.Release();
+	_buttonSe.Release();
 }

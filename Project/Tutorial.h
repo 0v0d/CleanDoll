@@ -3,7 +3,6 @@
 #include	"BlockManager.h"
 #include	"Block.h"
 #include	"Trim.h"
-#include	"EndGameProcess.h"
 
 class Tutorial
 {
@@ -29,13 +28,11 @@ private:
 	int* _textureHiddenArray;
 	int _currentHidden;
 
-	EndGameProcess* _endGameProcess;
 
 public:
 	void Initialize();
 	void ReLoad();
 	void SetBlockManager(BlockManager* blockManager) { _blockManager = blockManager; }
-	void SetEndGameProcess(EndGameProcess* endGameProcess) { _endGameProcess = endGameProcess; }
 
 	void EndOfPassed(int routeVal);
 	void EndMoveDoll();
