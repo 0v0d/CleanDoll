@@ -52,6 +52,7 @@ void Field::ReLoad()
 	_fieldUI.SetCurrentEnergyValue(_remainDistance);
 	_fieldUI.SetDustDumpValue(_initalDustValue);
 	_fieldUI.SetWaterDumpValue(_initalWaterValue);
+	
 	if (_getCoin)_fieldUI.GettedGalleryCoin();
 
 	_push = false;

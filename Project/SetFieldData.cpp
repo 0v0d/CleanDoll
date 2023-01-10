@@ -147,6 +147,6 @@ void SetFieldData::SetDoll(int x, int y)
 }
 
 void SetFieldData::SetCoin(int x, int y,bool getCoin) {
-	if(getCoin)_field->SetGettedCoinFlg(true);
-	else _blockManager->SetCoin(x, y);
+	if(!getCoin)_blockManager->SetCoin(x, y);
+	_field->SetGettedCoinFlg(getCoin);
 }
