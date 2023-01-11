@@ -13,7 +13,7 @@ void StageSelectScene::Initialize()
     _barManager.Initialize();
     _stageSelectDialog.Initialize();
     _preview.Initialize();
-    _backGround.SetTextureStatus(&_backGroundTexture,SCREEN_TYPE::FULLSCREEN);
+    _backGround.SetTexture(&_backGroundTexture);
 
     _preview.CalcuBaseScale(_barManager.GetBaseSizeY());
     _preview.CalcuBasePos();
@@ -24,7 +24,7 @@ void StageSelectScene::Initialize()
 
 void StageSelectScene::LoadTexture()
 {
-    _backGroundTexture.Load("menu_back.png");
+    _backGroundTexture.Load("StageSelectBackGround.png");
 }
 
 void StageSelectScene::ReLoad()
@@ -38,6 +38,7 @@ void StageSelectScene::Update()
 {
     _barManager.Update();
     _LogoSlide.Update();
+    _backGround.Update();
 }
 
 void StageSelectScene::SetMousePos(Vector2 mousePos) {

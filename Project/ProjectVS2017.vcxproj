@@ -122,6 +122,7 @@
     <ClCompile Include="GalleryTexture.cpp" />
     <ClCompile Include="GetCoinNumber.cpp" />
     <ClCompile Include="IBaseSound.cpp" />
+    <ClCompile Include="MoveBackGround.cpp" />
     <ClCompile Include="SE.cpp" />
     <ClCompile Include="SetFieldData.cpp" />
     <ClCompile Include="Doll.cpp" />
@@ -210,6 +211,7 @@
     <ClInclude Include="GalleryTexture.h" />
     <ClInclude Include="GetCoinNumber.h" />
     <ClInclude Include="IBaseSound.h" />
+    <ClInclude Include="MoveBackGround.h" />
     <ClInclude Include="SE.h" />
     <ClInclude Include="SetFieldData.h" />
     <ClInclude Include="Doll.h" />

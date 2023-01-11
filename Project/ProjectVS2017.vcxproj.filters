@@ -430,6 +430,9 @@
     <ClCompile Include="DollMoveSetting.cpp">
       <Filter>ソース ファイル\Menu\SettingManager\SetUpSetting</Filter>
     </ClCompile>
+    <ClCompile Include="MoveBackGround.cpp">
+      <Filter>ソース ファイル\UI\BackGround</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GameApp.h">
@@ -723,6 +726,9 @@
     </ClInclude>
     <ClInclude Include="DollMoveSetting.h">
       <Filter>ソース ファイル\Menu\SettingManager\SetUpSetting</Filter>
+    </ClInclude>
+    <ClInclude Include="MoveBackGround.h">
+      <Filter>ソース ファイル\UI\BackGround</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

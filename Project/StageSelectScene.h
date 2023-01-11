@@ -3,7 +3,7 @@
 #include	"BarManager.h"
 #include	"Slider.h"
 #include	"StageSelectDialog.h"
-#include	"BackGround.h"
+#include	"MoveBackGround.h"
 #include	"BGM.h"
 #include	"CreateField.h"
 #include	"ContactFile.h"
@@ -22,7 +22,7 @@ private:
 	StageSelectDialog _stageSelectDialog;
 	Preview _preview;
 	CTexture _backGroundTexture;
-	BackGround _backGround;
+	MoveBackGround _backGround;
 	CSoundBuffer _music;
 
 	Vector2 _mousePos;
