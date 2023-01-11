@@ -115,7 +115,7 @@ void Doll::ActionAccessories()
 		break;
 
 	case ACCESSORIES_TYPE::ITEM:
-		//CollectCandy();
+		CollectCandy();
 		_nextBlock->GetBlockOnObject()->HiddenAccessoriesFlg(true);
 		break;
 
@@ -151,9 +151,8 @@ void Doll::CleanDump()
 
 void Doll::CollectCandy()
 {
-	//ˆ¹‚Ìƒ‚[ƒVƒ‡ƒ“À‘•
-	/*_animation.StartGetCandyAnimation();
-	_animationflg = true;*/
+	_holdMop? _mopAnimation.StartGetCandyAnimation():_broomAnimation.StartGetCandyAnimation();
+	_animationflg = true;
 }
 
 void Doll::SwitchToMop()

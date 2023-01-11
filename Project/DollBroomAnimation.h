@@ -9,11 +9,11 @@ class DollBroomAnimation
 		WAIT_2,
 		WALK,
 		CLEAN,
-		//GET_CANDY
+		GET_CANDY
 	};
 	CRectangle _renderRect;
 	int _currentMotion;
-	const int _motionCount = 4;
+	const int _motionCount = 5;
 	const int _motionValue = 20;
 public:
 	void Initialize();
@@ -22,8 +22,7 @@ public:
 
 	void SetMoveAnimationFlg(bool playMove);
 	void StartCleanAnimation() { _motionController.ChangeMotion(CLEAN); }
-
-	void StartGetCandyAnimation();// {_motionController.ChangeMotion(GET_CANDY); }
+	void StartGetCandyAnimation() {_motionController.ChangeMotion(GET_CANDY); }
 
 	void WaitAnimation();
 	int GetMotionValue() const { return _motionCount; }

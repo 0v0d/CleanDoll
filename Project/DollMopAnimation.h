@@ -9,12 +9,13 @@ class DollMopAnimation
 		WAIT_2,
 		WALK,
 		CLEAN,
+		GET_CANDY,
 		PICK_MOP_1,
 		PICK_MOP_2,
 	};
 	CRectangle _renderRect;
 	int _currentMotion;
-	const int _motionCount = 6;
+	const int _motionCount = 7;
 	const int _motionValue = 20;
 public:
 	void Initialize();
@@ -23,7 +24,8 @@ public:
 
 	void SetMoveAnimationFlg(bool playMove);
 	void StartCleanAnimation() { _motionController.ChangeMotion(CLEAN); }
-	
+	void StartGetCandyAnimation() { _motionController.ChangeMotion(GET_CANDY); }
+
 	void StartSwitchToMopAnimation();
 	void EndSwitchToMopAnimation();
 	void WaitAnimation();
