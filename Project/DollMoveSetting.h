@@ -31,16 +31,13 @@ class DollMoveSetting:public IBaseSetting
 	CTexture _checkBoxTexture,_checkTexture;
 	Button   _checkBoxButton,_checkButton;
 	bool     _checkBox;
-
 		
 	Button _closeButton;
 	Vector2 _mousePos;
 	CTexture _closeButtonTexture;
-
-
 	CSoundBuffer _se;
 
-
+	float* _factorArray;
 
 public:
 	void Initialize();
@@ -58,8 +55,8 @@ public:
 	
 private:
 	void LoadTexture();
-	float GetFindMovedPos();
 	void LimitMove();
 	void CalcuLastPos();
+	void SetMethodButton();
 };
 

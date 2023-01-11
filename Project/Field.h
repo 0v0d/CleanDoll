@@ -75,6 +75,7 @@ public:
 	void SetGettedCoinFlg(bool flg) { _getCoin = flg; }
 	void GetCoin();
 	void GameOver();
+	void SetDollSpeedFactor(float factor) { _doll.CalcuSpeed(factor); }
 
 	void Render();
 	void Release();

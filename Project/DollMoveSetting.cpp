@@ -1,4 +1,6 @@
 #include "DollMoveSetting.h"
+#include "SceneManager.h"
+#include "GameScene.h"
 
 void DollMoveSetting::Initialize()
 {
@@ -18,11 +20,7 @@ void DollMoveSetting::Initialize()
 		_buttonArray[i].SetSeSound(&_se);
 	}
 
-	_buttonArray[0].SetStatu(false, true, [&]() {_selectButtonPos.x = _barPos.x + _bottonBetweenDistance * 0;_selectButton.SetPosition(_selectButtonPos); });
-	_buttonArray[1].SetStatu(false, true, [&]() {_selectButtonPos.x = _barPos.x + _bottonBetweenDistance * 1;_selectButton.SetPosition(_selectButtonPos); });
-	_buttonArray[2].SetStatu(false, true, [&]() {_selectButtonPos.x = _barPos.x + _bottonBetweenDistance * 2;_selectButton.SetPosition(_selectButtonPos); });
-	_buttonArray[3].SetStatu(false, true, [&]() {_selectButtonPos.x = _barPos.x + _bottonBetweenDistance * 3;_selectButton.SetPosition(_selectButtonPos); });
-	_buttonArray[4].SetStatu(false, true, [&]() {_selectButtonPos.x = _barPos.x + _bottonBetweenDistance * 4;_selectButton.SetPosition(_selectButtonPos); });
+	SetMethodButton();
 
 	_selectButton.SetTexture(&_selectButtonTexture);
 	_selectButton.SetPosition(_selectButtonPos);
@@ -43,6 +41,9 @@ void DollMoveSetting::Initialize()
 	_closeButton.SetSeSound(&_se);
 
 	_push = false;
+
+	_factorArray = new float[_baseButtonValue] {0.5f, 1, 1.5f, 2, 4};
+	dynamic_cast<GameScene*>(SceneManager::Instance().GetScene(SCENE_TYPE::GAME))->GetField()->SetDollSpeedFactor(_factorArray[initButtonNumber]);
 }
 
 void DollMoveSetting::LoadTexture() 
@@ -57,6 +58,35 @@ void DollMoveSetting::LoadTexture()
 	_se.Load("BottanClick.mp3");
 	
 }
+
+void DollMoveSetting::SetMethodButton() {
+	_buttonArray[0].SetStatu(false, true, [&]() {
+		_selectButtonPos.x = _barPos.x + _bottonBetweenDistance * 0;
+		_selectButton.SetPosition(_selectButtonPos);
+		CalcuLastPos();
+		});
+	_buttonArray[1].SetStatu(false, true, [&]() {
+		_selectButtonPos.x = _barPos.x + _bottonBetweenDistance * 1;
+		_selectButton.SetPosition(_selectButtonPos);
+		CalcuLastPos();
+		});
+	_buttonArray[2].SetStatu(false, true, [&]() {
+		_selectButtonPos.x = _barPos.x + _bottonBetweenDistance * 2;
+		_selectButton.SetPosition(_selectButtonPos);
+		CalcuLastPos();
+		});
+	_buttonArray[3].SetStatu(false, true, [&]() {
+		_selectButtonPos.x = _barPos.x + _bottonBetweenDistance * 3;
+		_selectButton.SetPosition(_selectButtonPos);
+		CalcuLastPos();
+		});
+	_buttonArray[4].SetStatu(false, true, [&]() {
+		_selectButtonPos.x = _barPos.x + _bottonBetweenDistance * 4;
+		_selectButton.SetPosition(_selectButtonPos);
+		CalcuLastPos();
+		});
+}
+
 void DollMoveSetting::Update()
 {
 	
@@ -77,6 +107,8 @@ void DollMoveSetting::CalcuLastPos()
 			_selectButtonPos.x <= _barPos.x + _bottonBetweenDistance * i + _baseSelectButtonTexture.GetWidth() / 2)
 		{
 			_lastSelectButtonPosX = _barPos.x + _bottonBetweenDistance * i;
+
+			dynamic_cast<GameScene*>(SceneManager::Instance().GetScene(SCENE_TYPE::GAME))->GetField()->SetDollSpeedFactor(_factorArray[i]);
 			return;
 		}
 	}
@@ -93,38 +125,6 @@ void DollMoveSetting::LimitMove()
 		_selectButtonPos.x = _barPos.x + _bottonBetweenDistance * _baseSpaseCount;
 	}
 }
-float DollMoveSetting::GetFindMovedPos()
-{
-
-	/*if (_selectButtonPos.x >= _lastSelectButtonPosX)
-	{
-		for (int i = _baseSpaseCount; i >= 0; i--)
-		{
-			if (_barPos.x + _bottonBetweenDistance * i <= _mousePos.x)
-			{
-				_selectButtonPos.x = _barPos.x + _bottonBetweenDistance * i;
-				break;
-			}
-
-		}
-	}
-	else if (_selectButtonPos.x <= _lastSelectButtonPosX)
-	{
-		for (int i = 0; i <= _baseSpaseCount; i++)
-		{
-			if (_barPos.x + _bottonBetweenDistance * i >= _mousePos.x)
-			{
-				 _selectButtonPos.x = _barPos.x + _bottonBetweenDistance * i;
-				 break;
-			}
-
-		}
-	}
-		return _selectButtonPos.x;*/
-	return 0;
-}
-
-
 
 void DollMoveSetting::SetMousePos(Vector2 mousePos) {
 	_mousePos = mousePos;
@@ -143,7 +143,6 @@ void DollMoveSetting::Push()
 	for (int i = 0; i < _baseButtonValue; i++)
 	{
 		_buttonArray[i].Push();
-		
 	}
 	
 	_checkBoxButton.Push();
@@ -160,23 +159,18 @@ void DollMoveSetting::Pull()
 	{
 		_push = false;
 		_selectButton.SetPosition(Vector2(_lastSelectButtonPosX, _barPos.y + _barTexture.GetHeight() / 2));
-
 	}
 
 	for (int i = 0; i < _baseButtonValue; i++)
 	{
 		_buttonArray[i].Pull();
-		
 	}
 
 	_checkBoxButton.Pull();
 	_checkButton.Pull();
 
 	_closeButton.Pull();
-	
 }
-
-
 
 void DollMoveSetting::Render()
 {
@@ -193,8 +187,6 @@ void DollMoveSetting::Render()
 	{
 		_checkButton.Render();
 	}
-	
-	
 }
 
 void DollMoveSetting::Release()
@@ -208,5 +200,5 @@ void DollMoveSetting::Release()
 	_se.Release();
 
 	delete[] _buttonArray;
-	
+	delete[] _factorArray;
 }

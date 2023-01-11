@@ -23,7 +23,9 @@ class Doll
 	bool _move;
 	Vector2 _nextPosition;
 	//1ブロック移動するのにかかるフレーム数
-	const int _moveSpeed = 40;
+	const int _framePBlock = 40;
+	//倍率をかけた速さ
+	float _moveSpeed;
 	int _moveCount;
 	std::function<void()> _endMoveMethod;
 
@@ -42,6 +44,7 @@ public:
 	void CalcuScale(float boxSizeY, float scale);
 	void SetDumpValue(int dustDumpValue, int waterDumpValue);
 	void SetEndMoveMethod(std::function<void()> method) { _endMoveMethod = method; }
+	void CalcuSpeed(float speedFactor) { _moveSpeed = _framePBlock / speedFactor; }
 
 	void Update();
 	void SetNextBlock(Block* blcok);
