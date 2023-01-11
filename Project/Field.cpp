@@ -118,7 +118,6 @@ void Field::Push() {
 	if (_show){
 		_clearButton.Push();
 	}
-	
 }
 
 void Field::Pull() {
@@ -269,14 +268,13 @@ void Field::GameClear() {
 	if (!_tutorial.IsEnd()&& _show) {
 		_endGameProcess.SetCurrentProcess(ProcessType::EndTutorial);
 		_tutorial.SetEnd(true);
-		_show = false;
 	}
 	else {
 		StageSelectScene* stageSelect = dynamic_cast<StageSelectScene*>(SceneManager::Instance().GetScene(SCENE_TYPE::STAGESELECT));
 		_endGameProcess.SetCurrentProcess(ProcessType::GameClear);
 		stageSelect->StageClear();
-		_show = false;
 	}
+	_show = false;
 }
 
 void Field::GameOver() {
@@ -285,7 +283,7 @@ void Field::GameOver() {
 
 bool Field::CheckCantMoveDoll() {
 	Block** adjoinBlockArray = _blockManager.GetDollOnBlock()->GetAdjoinBlockArray();
-
+	
 	for (int i = 0; i < _adjoinBlockValue; i++) {
 		if (adjoinBlockArray[i] == nullptr) continue;
 		if (!adjoinBlockArray[i]->IsPassed() && adjoinBlockArray[i]->GetBlockOnObject()->GetFurniture() == nullptr) {
