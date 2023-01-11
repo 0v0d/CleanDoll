@@ -347,8 +347,6 @@
     <ClCompile Include="SideOut.cpp">
       <Filter>ソース ファイル\Scene\Effect</Filter>
     </ClCompile>
-    <ClCompile Include="Trim.cpp">
-    </ClCompile>
     <ClCompile Include="StageSelectLogo.cpp">
       <Filter>ソース ファイル\Scene\StageSelectScene\Animation</Filter>
     </ClCompile>
@@ -432,6 +430,9 @@
     </ClCompile>
     <ClCompile Include="MoveBackGround.cpp">
       <Filter>ソース ファイル\UI\BackGround</Filter>
+    </ClCompile>
+    <ClCompile Include="Trim.cpp">
+      <Filter>ソース ファイル\Utility\Trim</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -645,7 +646,6 @@
     <ClInclude Include="SideOut.h">
       <Filter>ソース ファイル\Scene\Effect</Filter>
     </ClInclude>
-    <ClInclude Include="Trim.h" />
     <ClInclude Include="StageSelectLogo.h">
       <Filter>ソース ファイル\Scene\StageSelectScene\Animation</Filter>
     </ClInclude>
@@ -729,6 +729,9 @@
     </ClInclude>
     <ClInclude Include="MoveBackGround.h">
       <Filter>ソース ファイル\UI\BackGround</Filter>
+    </ClInclude>
+    <ClInclude Include="Trim.h">
+      <Filter>ソース ファイル\Utility\Trim</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

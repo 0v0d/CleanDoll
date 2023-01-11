@@ -13,7 +13,7 @@ void TitleScene::Initialize()
 	_music.Load("BGM.mp3");
 	_clearTutorial = false;
 
-	_fadeIn.SetTime(50);
+	_fadeIn.SetTime(100);
 	_fadeIn.Start();
 }
 
