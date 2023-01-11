@@ -7,18 +7,20 @@
 enum ICON_TYPE {
 	DUST,
 	WATER,
-	COIN
 };
 
 class RemainingDumpUI
 {
-	RemainingValue _remainingValue;
+	RemainingValue _remainingDustValue, _remainingWaterValue;
 	int _dustValue, _waterValue;
 	CTexture _baseTexture, _markTexture, _notExistTexture;
 	CTexture _dustIconTexture, _waterIconTexture, _coinIconTexture;
+	CTexture _numTexture;
 	Vector2 _basePosition;
 	std::map<ICON_TYPE, RemainingIcon*> _iconArray;
 	float _scale, _objectiveSizeX;
+	const int _iconValue = 2;
+	
 public:
 	void Initialize();
 	void ReLoad();
@@ -26,7 +28,7 @@ public:
 	void Update();
 	void SetDustValue(int dumpValue);
 	void SetWaterValue(int dumpValue);
-	void GettedCoin() { _iconArray[ICON_TYPE::COIN]->SetNotExistFlg(true); }
+	void GettedCoin();
 	void CleanDust();
 	void CleanWater();
 	void MarkIcon(ICON_TYPE);
