@@ -12,6 +12,9 @@ void TitleScene::Initialize()
 
 	_music.Load("BGM.mp3");
 	_clearTutorial = false;
+
+	_fadeIn.SetTime(50);
+	_fadeIn.Start();
 }
 
 void TitleScene::ReLoad()
@@ -23,6 +26,9 @@ void TitleScene::ReLoad()
 
 void TitleScene::Update()
 {
+	_fadeIn.Update();
+	if (!_fadeIn.IsEnd()) return;
+
 	_titleLogoAnimation.Update();
 	_titleClickAnimation.Update();
 	//デバッグ
@@ -51,6 +57,8 @@ void TitleScene::Render()
 	_backGround.Render();
 	_titleClickAnimation.Render();
 	_titleLogoAnimation.Render();
+
+	_fadeIn.Render();
 }
 
 void TitleScene::Release()

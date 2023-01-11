@@ -9,6 +9,7 @@ MofBool CGameApp::Initialize()
 	SceneManager::Instance().Initialize();
 	_menu.Initialize();
 	_exit.Initialize();
+
 	return TRUE;
 }
 
@@ -27,6 +28,7 @@ MofBool CGameApp::Update()
 
 MofBool CGameApp::Render()
 {
+
 	g_pGraphics->RenderStart();
 	g_pGraphics->ClearTarget(0.0f,0.0f,1.0f,0.0f,1.0f,0);
 

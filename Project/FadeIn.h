@@ -1,10 +1,9 @@
 #pragma once
 #include	"Mof.h"
-
 class FadeIn
 {
 private:
-	int _alpha,_subAlphaValue;
+	int _alpha, _subAlphaValue;
 	const int _maxAlpha = 255;
 	bool _end;
 public:

@@ -5,6 +5,7 @@
 #include	"BGM.h"
 #include	"TitleLogoAnimation.h"
 #include	"TitleClickAnimation.h"
+#include	"FadeIn.h"
 
 class TitleScene :public IBaseScene
 {
@@ -16,6 +17,9 @@ class TitleScene :public IBaseScene
 	TitleClickAnimation _titleClickAnimation;
 	CSoundBuffer _music;
 	bool _clearTutorial;
+
+	FadeIn _fadeIn;
+
 public:
 	void Initialize();
 	void ReLoad();

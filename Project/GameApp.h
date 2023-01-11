@@ -9,6 +9,7 @@ class CGameApp : public CSingleGameApplication
 	Input _input;
 	Menu _menu;
 	ExitGame _exit;
+
 public:
 	CGameApp(){}
 	virtual ~CGameApp(){	Release();	}

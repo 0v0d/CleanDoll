@@ -7,6 +7,7 @@ void TitleLogoAnimation::Initialize(){
 	_currentAniamtion = &_logoAnimation;
 	_currentAnimationTexture = &_logoTexture;
 	_loopAnimation = false;
+	_renderRect = _currentAniamtion->GetSrcRect();
 }
 
 void TitleLogoAnimation::LoadTexture(){
