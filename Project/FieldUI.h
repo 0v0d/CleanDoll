@@ -17,7 +17,7 @@ public:
 	void SetCurrentEnergyValue(int energyValue);
 	void CleanDust();
 	void CleanWater();
-	void GetGalleryCoin() { _remainingDumpUI.MarkIcon(ICON_TYPE::COIN); }
+	void GetGalleryCoin();
 
 	void Render();
 	void Release();

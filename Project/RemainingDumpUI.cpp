@@ -2,28 +2,30 @@
 
 void RemainingDumpUI::Initialize() {
 	LoadTexture();
-	_objectiveSizeX = 400;
+	_objectiveSizeX = 100;
 	CalcuScale();
 
 	_iconArray[ICON_TYPE::DUST] = new RemainingIcon();
 	_iconArray[ICON_TYPE::WATER] = new RemainingIcon();
-	_iconArray[ICON_TYPE::COIN] = new RemainingIcon();
 
 	IconSetTexture(ICON_TYPE::DUST, &_dustIconTexture);
 	IconSetTexture(ICON_TYPE::WATER, &_waterIconTexture);
-	IconSetTexture(ICON_TYPE::COIN, &_coinIconTexture);
 
-	_basePosition = Vector2(g_pGraphics->GetTargetWidth() - _baseTexture.GetWidth() * _scale - 100, g_pGraphics->GetTargetHeight() - _baseTexture.GetHeight() * _scale -50);
+	_basePosition = Vector2(10,30);
 	const float iconSizeX = _dustIconTexture.GetWidth();
-	const float space = (_baseTexture.GetWidth() * _scale - iconSizeX * _scale * _iconArray.size()) / (_iconArray.size() * 2);
+	const auto space = Vector2(40,30);
 	for (auto itr = _iconArray.begin(); itr != _iconArray.end(); itr++) {
 		itr->second->SetScale(_scale);
-		itr->second->SetPosition(Vector2(_basePosition.x + space * ((int)itr->first * 2 + 1) + iconSizeX * _scale * (int)itr->first, _basePosition.y + _baseTexture.GetHeight() * _scale - space));
+		itr->second->SetPosition(Vector2(_basePosition.x + space.x * ((int)itr->first * 2 + 1) + iconSizeX * _scale * (int)itr->first, _basePosition.y + _baseTexture.GetHeight() * 2 + space.y));
+		float  a = _basePosition.x + space.x * ((int)itr->first * 2 + 1) + iconSizeX * _scale * (int)itr->first;
 	}
-	_remainingValue.Initialize();
-	_remainingValue.SetOnValueCircleScale(_scale);
-	_remainingValue.SetPosition(_basePosition);
-	
+	constexpr  auto adjustment = 5;
+	_remainingDustValue.Initialize();
+	_remainingWaterValue.Initialize();
+	_remainingDustValue.SetPosition(Vector2(_basePosition.x + (DUST * 2 + 1) + iconSizeX * _scale * DUST + _dustIconTexture.GetWidth() / 4 - adjustment, _basePosition.y + _baseTexture.GetHeight() * 2 + space.y));
+	_remainingWaterValue.SetPosition(Vector2(_basePosition.x + (WATER * 2 + 1) + iconSizeX * _scale * WATER + _waterIconTexture.GetWidth() / 2 + adjustment, _basePosition.y + _baseTexture.GetHeight() * 2 + space.y));
+
+
 }
 
 void RemainingDumpUI::LoadTexture() {
@@ -37,8 +39,10 @@ void RemainingDumpUI::LoadTexture() {
 
 void RemainingDumpUI::Update()
 {
-	_remainingValue.SetMaxRemaingingValue(_dustValue+_waterValue);
-	_remainingValue.CalucRect();
+	_remainingDustValue.SetValue(_dustValue);
+	_remainingWaterValue.SetValue(_waterValue);
+	_remainingDustValue.CalucRect();
+	_remainingWaterValue.CalucRect();
 }
 
 void RemainingDumpUI::IconSetTexture(ICON_TYPE iconType, CTexture* iconTexture) {
@@ -70,27 +74,34 @@ void RemainingDumpUI::SetWaterValue(int dumpValue) {
 
 void RemainingDumpUI::CleanDust() {
 	_dustValue--;
-	_remainingValue.SupRemaingValue();
+	_remainingDustValue.SupRemaingValue();
+
 	if (CheckLostDump(_dustValue))MarkIcon(ICON_TYPE::DUST);
 }
 
 void RemainingDumpUI::CleanWater() {
 	_waterValue--;
-	_remainingValue.SupRemaingValue();
+	_remainingWaterValue.SupRemaingValue();
 	if (CheckLostDump(_waterValue))MarkIcon(ICON_TYPE::WATER);
 }
 
 void RemainingDumpUI::MarkIcon(ICON_TYPE iconType) {
 	_iconArray[iconType]->MarkIcon();
 }
-
+void RemainingDumpUI::GettedCoin() {
+	
+}
 void RemainingDumpUI::Render() {
 
-	_baseTexture.RenderScale(_basePosition.x, _basePosition.y, _scale);
+	_baseTexture.Render(_basePosition.x, _basePosition.y);
 	for (auto itr = _iconArray.begin(); itr != _iconArray.end(); itr++) {
 		itr->second->Render();
 	}
-	_remainingValue.Render();
+	constexpr auto _space = 10.0f;
+	_coinIconTexture.Render(_basePosition.x + _baseTexture.GetWidth() + _space,_basePosition.y);
+	_remainingDustValue.Render();
+	_remainingWaterValue.Render();
+	
 }
 
 void RemainingDumpUI::Release() {
@@ -105,5 +116,6 @@ void RemainingDumpUI::Release() {
 	_dustIconTexture.Release();
 	_waterIconTexture.Release();
 	_coinIconTexture.Release();
-	_remainingValue.Release();
-}
+	_remainingDustValue.Release();
+	_remainingWaterValue.Release();
+} 

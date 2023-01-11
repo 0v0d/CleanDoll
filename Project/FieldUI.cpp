@@ -38,6 +38,10 @@ void FieldUI::SetCurrentEnergyValue(int energyValue) {
 	_energyVessels.SetCurrentEnergyValue(energyValue);
 }
 
+void FieldUI::GetGalleryCoin() {
+
+}
+
 void FieldUI::Render(){
 	_energyVessels.Render();
 	_remainingDumpUI.Render();
