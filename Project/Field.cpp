@@ -220,7 +220,6 @@ void Field::EndMoveDoll() {
 	}
 	else {
 		//ÉQÅ[ÉÄÉNÉäÉA
-		
 		if (_dustDumpValue <= 0 && _waterDumpValue <= 0) {
 			_show = true;
 			StageSelectScene* stageSelect = dynamic_cast<StageSelectScene*>(SceneManager::Instance().GetScene(SCENE_TYPE::STAGESELECT));
@@ -231,7 +230,6 @@ void Field::EndMoveDoll() {
 				dynamic_cast<GalleryScene*>(SceneManager::Instance().GetScene(SCENE_TYPE::GALLERY))->AddCoin();
 				stageSelect->StageClear();
 				stageSelect->GetCoin();
-				
 				_getCoin = true;
 			}
 			if(_getCoin){
