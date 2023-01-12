@@ -1,46 +1,23 @@
 #include "RemainingValue.h"
 
-void RemainingValue::CalucScale()
+void RemainingValue::SetStuts(CTexture* numberTexture)
 {
-	_numberScale = 0.05f;
+	_numberTexture = numberTexture;
 }
 
-void RemainingValue::SetPosition(Vector2 numPosition)
+void RemainingValue::SetPosition(Vector2 numberPosition)
 {
-	CalucScale();
-	_numberPos.x = numPosition.x;
-	_numberPos.y = numPosition.y;
-}
-
-void RemainingValue::Initialize()
-{
-	LoadTexture();
-}
-
-void RemainingValue::LoadTexture()
-{
-	_numberTexture.Load("num.png");
+	_numberPos.x = numberPosition.x;
+	_numberPos.y = numberPosition.y;
 }
 
 void RemainingValue::CalucRect()
 {
-	_renderRect = CRectangle(_numberTexture.GetWidth() / _numberValue * _currentRemaingValue, 0,
-		_numberTexture.GetWidth() / _numberValue * (_currentRemaingValue + 1), _numberTexture.GetHeight());
+	_renderRect = CRectangle(_numberTexture->GetWidth() / _numberValue * _currentRemaingValue, 0,
+		_numberTexture->GetWidth() / _numberValue * (_currentRemaingValue + 1), _numberTexture->GetHeight());
 }
 
 void RemainingValue::Render()
 {
-	_numberTexture.RenderScale(_numberPos.x,_numberPos.y,_numberScale,_renderRect);
+	_numberTexture->RenderScale(_numberPos.x,_numberPos.y,_numberScale,_renderRect);
 }
-
-void RemainingValue::Release()
-{
-	_numberTexture.Release();
-}
-
-void RemainingValue::SupRemaingValue()
-{
-	_currentRemaingValue -= 1;
-}
-
-
