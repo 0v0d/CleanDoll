@@ -9,7 +9,7 @@ void Bar::Initialize()
 	_barHitBox = CRectangle(_pos.x, _pos.y, _pos.x + _baseBarTexture->GetWidth() * _scale, _pos.y + _baseBarTexture->GetHeight() * _scale);
 	_maxMovePosY = (_space / 2 + _screenPos.y + (_baseBarTexture->GetHeight() * _scale + _space) * _stageValue) - _screenEdge.Bottom;
 	_difficultyScale = _barHitBox.GetHeight() / 2 / _difficultyTextureArray[0]->GetHeight() - 0.1f;
-	_coinScale = _barHitBox.GetHeight() / _coinTexture->GetHeight() - 0.12f;
+	
 	_clear = _getCoin = false;
 	interval = 5;
 }
@@ -42,6 +42,10 @@ void Bar::SetDifficulutyTexture(CTexture* texture)
 	{
 		_difficultyTextureArray[i] = texture;
 	}
+}
+
+void Bar::CalcuCoinScale() {
+	_coinScale = _baseBarTexture->GetHeight() * _scale / _coinTexture->GetHeight();
 }
 
 void Bar::ReLoad() {
@@ -80,8 +84,6 @@ void Bar::Render()
 
 	if (IsRenderRange(_baseBarTexture, _pos, _scale))_baseBarTexture->RenderScale(_pos.x, posY, _scale, GetRenderRect(_pos, _baseBarTexture, _scale));
 	if (IsRenderRange(&_barTexture, _pos, _scale))_barTexture.RenderScale(_pos.x, posY, _scale, GetRenderRect(_pos, &_barTexture, _scale));
-
-
 
 	for (int i = 0; i < _difficulty; i++) {
 		const auto space = Vector2(113, 12);

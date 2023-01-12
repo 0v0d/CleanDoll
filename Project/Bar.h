@@ -42,7 +42,7 @@ public:
 	void SetData(int stageNumber, std::string previewTextureName, std::string barTextureName, int difficulty, std::string stageDataTextName);
 	void SetStageValue(int stageValue) { _stageValue = stageValue; }
 	void SetBaseBarTexture(CTexture* texture) { _baseBarTexture = texture; }
-	void SetCoinTexture(CTexture* texture) { _coinTexture = texture; }
+	void SetCoinTexture(CTexture* texture) { _coinTexture = texture; CalcuCoinScale(); }
 
 	void Move(float sliderValue);
 	void Clear() { _clear = true; }
@@ -65,5 +65,6 @@ private:
 	bool CheckOnScreenTopLine(float top,float bottom);
 	CRectangle GetRenderRect(Vector2, CTexture*,float scale);
 	bool IsRenderRange(CTexture*, Vector2, float scale);
+	void CalcuCoinScale();
 	
 };
