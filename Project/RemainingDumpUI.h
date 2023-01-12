@@ -23,8 +23,6 @@ class RemainingDumpUI
 	float _getCoinScale;
 	const int _iconValue = 2;
 	bool _getCoin;
-
-
 public:
 	void Initialize();
 	void ReLoad();
@@ -32,16 +30,15 @@ public:
 	void Update();
 	void SetDustValue(int dumpValue);
 	void SetWaterValue(int dumpValue);
-	void GettedCoin() { _getCoin = true; }
+	void GetCoin(){ _getCoin = true; }
 	void CleanDust();
 	void CleanWater();
-	void MarkIcon(ICON_TYPE);
-
 
 	void Render();
 	void Release();
 
 private:
+	void MarkIcon(ICON_TYPE);
 	void LoadTexture();
 	void IconSetTexture(ICON_TYPE, CTexture*);
 	void CalcuScale();

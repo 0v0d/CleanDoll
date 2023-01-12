@@ -68,7 +68,7 @@ void Field::ReLoad()
 	_fieldUI.SetDustDumpValue(_initalDustValue);
 	_fieldUI.SetWaterDumpValue(_initalWaterValue);
 	
-	if (_getCoin)_fieldUI.GettedGalleryCoin();
+	if (_getCoin)_fieldUI.GetGalleryCoin();
 
 	_push = false;
 	_show = false;
@@ -211,7 +211,6 @@ void Field::EndOfPassed() {
 }
 
 void Field::EndMoveDoll() {
-
 	if (!_tutorial.IsEnd()) {
 		_tutorial.EndMoveDoll();
 		if(_dustDumpValue <= 0 && _waterDumpValue <= 0){

@@ -12,13 +12,11 @@ public:
 	void SetMaxEnergyValue(int energyValue);
 	void SetDustDumpValue(int dumpValue);
 	void SetWaterDumpValue(int dumpValue);
-	void GettedGalleryCoin() { _remainingDumpUI.GettedCoin(); }
+	void GetGalleryCoin() { _remainingDumpUI.GetCoin(); }
 	void Update();
 	void SetCurrentEnergyValue(int energyValue);
 	void CleanDust();
 	void CleanWater();
-	void GetGalleryCoin();
-
 	void Render();
 	void Release();
 };
