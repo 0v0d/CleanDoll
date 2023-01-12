@@ -219,15 +219,22 @@ void Field::EndMoveDoll() {
 	}
 	else {
 		//ゲームクリア
-		if(_dustDumpValue <= 0 && _waterDumpValue <= 0){
+		if (_dustDumpValue <= 0 && _waterDumpValue <= 0) {
 			_show = true;
-			if (_doll.IsGetCoin()&& !_getCoin) {
-				StageSelectScene* stageSelect = dynamic_cast<StageSelectScene*>(SceneManager::Instance().GetScene(SCENE_TYPE::STAGESELECT));
-				dynamic_cast<GalleryScene*>(SceneManager::Instance().GetScene(SCENE_TYPE::GALLERY))->AddCoin();
+			StageSelectScene* stageSelect = dynamic_cast<StageSelectScene*>(SceneManager::Instance().GetScene(SCENE_TYPE::STAGESELECT));
+			if (_doll.IsGetCoin() && !_getCoin) {
+				_show = false;
 				_endGameProcess.SetCurrentProcess(ProcessType::GameClear);
-				stageSelect->GetCoin();
+
+				dynamic_cast<GalleryScene*>(SceneManager::Instance().GetScene(SCENE_TYPE::GALLERY))->AddCoin();
 				stageSelect->StageClear();
+				stageSelect->GetCoin();
 				_getCoin = true;
+			}
+			if(_getCoin){
+				_show = false;
+				_endGameProcess.SetCurrentProcess(ProcessType::GameClear);
+				stageSelect->StageClear();
 			}
 		}
 		//ゲームオーバー
