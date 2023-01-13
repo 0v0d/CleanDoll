@@ -36,6 +36,9 @@ class Doll
 	int _motionCount;
 	const int _textureValue = 30;
 	Vector2 _dollTextureSize;
+
+	CSoundBuffer HokoriSound;
+	CSoundBuffer MopSound;
 public:
 	void Initialize();
 	void ReLoad();

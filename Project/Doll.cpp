@@ -22,6 +22,8 @@ void Doll::ReLoad()
 
 	_mopAnimation.ReLoad();
 	_broomAnimation.ReLoad();
+	HokoriSound.Load("HokorisouziEX.mp3");
+	MopSound.Load("キュッキュッと拭く1.mp3");
 }
 
 void Doll::CalcuScale(float boxSizeY, float scale)
@@ -140,12 +142,15 @@ void Doll::CleanDump()
 		_animationflg = true;
 		_waterDumpValue--;
 		_field->CleanWater();
+		MopSound.Play();
+
 	}
 	else {
 		_broomAnimation.StartCleanAnimation();
 		_animationflg = true;
 		_dustDumpValue--;
 		_field->CleanDust();
+		HokoriSound.Play();
 	}
 }
 
@@ -210,4 +215,6 @@ void Doll::Render()
 void Doll::Release()
 {
 	_dollTexture.Release();
+	HokoriSound.Release();
+	MopSound.Release();
 }
