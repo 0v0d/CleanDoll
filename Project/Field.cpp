@@ -25,6 +25,8 @@ void Field::Initialize()
 
 	_doll.SetDumpValue(_dustDumpValue, _waterDumpValue);
 	_tutorial.SetBlockManager(&_blockManager);
+	_clearletter.Initialize();
+
 }
 
 void Field::LoadTexture()
@@ -109,6 +111,7 @@ void Field::Update()
 	if (_push) {
 		PassedMouse(_mousePos);
 	}
+	_clearletter.Update();
 }
 
 void Field::SetMousePos(Vector2 mousePos) {
@@ -314,6 +317,7 @@ void Field::Render()
 	_fieldUI.Render();
 	if (_show){
 		_clearButton.Render();
+		_clearletter.Rnder();
 	}
 	_tutorial.Render();
 	_endGameProcess.Render();
@@ -329,4 +333,5 @@ void Field::Release()
 	_tutorial.Release();
 	_clearButtonTexture.Release();
 	_buttonSe.Release();
+	_clearletter.Release();
 }
