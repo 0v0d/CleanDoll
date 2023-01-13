@@ -99,13 +99,16 @@ void Field::SetWaterDumpValue(int dumpValue) {
 
 void Field::Update()
 {
-	if (_tutorial.IsHideen() && _push) {
-		PassedMouse(_mousePos);
-	}
 	_blockManager.Update();
 	_doll.Update();
 	_endGameProcess.Update();
 	_fieldUI.Update();
+
+	if (!_tutorial.IsEnd() && !_tutorial.IsHideen()) return;
+
+	if (_push) {
+		PassedMouse(_mousePos);
+	}
 }
 
 void Field::SetMousePos(Vector2 mousePos) {
