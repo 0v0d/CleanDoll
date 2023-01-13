@@ -9,6 +9,8 @@ void GameScene::Initialize()
 	_music.Load("BGM.mp3");
 	_buttonSe.Load("BottanClick.mp3");
 
+	_startAnimation.Initialize();
+
 	_resetStageButton.SetTexture(&_resetButtonTexture);
 	_resetStageButton.SetPosition(Vector2(g_pGraphics->GetTargetWidth() - _resetButtonTexture.GetWidth() , g_pGraphics->GetTargetHeight() - _resetButtonTexture.GetHeight()));
 	_resetStageButton.SetSeSound(&_buttonSe);
@@ -22,11 +24,13 @@ void GameScene::LoadTexture() {
 
 void GameScene::ReLoad()
 {
+	_startAnimation.ReLoad();
 	_field.ReLoad();
 }
 
 void GameScene::Update()
 {
+	_startAnimation.Update();
 	_field.Update();
 }
 
@@ -36,6 +40,7 @@ void GameScene::SetMousePos(Vector2 mousePos) {
 }
 
 void GameScene::Push() {
+	if (!_startAnimation.IsEndAnimation()) return;
 	_field.Push();
 	_resetStageButton.Push();
 }
@@ -50,6 +55,8 @@ void GameScene::Render()
 	_backGround.Render();
 	_resetStageButton.Render();
 	_field.Render();
+	if(!_field.IsEndTutorial())return;
+	_startAnimation.Render();
 }
 
 void GameScene::Release()
@@ -59,4 +66,5 @@ void GameScene::Release()
 	_music.Release();
 	_resetButtonTexture.Release();
 	_buttonSe.Release();
+	_startAnimation.Release();
 }

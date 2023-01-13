@@ -28,7 +28,7 @@ public:
 
 	void StartCleanAnimation() { _motionController.ChangeMotion(STARTANIM_1); }
 	
-	bool IsEndAnimation() { return _motionController.IsEndMotion(); }
+	bool IsEndAnimation() { return _motionController.IsEndMotion()&&_motionController.GetMotionNo() == STARTANIM_5; }
 private:
 	void CalcuPosition(Vector2 rectSize);
 	void CreateAnimation();
