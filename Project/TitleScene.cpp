@@ -1,17 +1,16 @@
 #include "TitleScene.h"
-#include "SceneManager.h"
-#include "StageSelectScene.h"
 
 void TitleScene::Initialize()
 {
 	_titleLogoAnimation.Initialize();
 	_titleClickAnimation.Initialize();
+	_transition.Initialize();
 
 	_titleBackTexture.Load("titleback.png");
 	_backGround.SetTextureStatus(&_titleBackTexture, FULLSCREEN);
 
 	_music.Load("BGM.mp3");
-	_clearTutorial = false;
+	_openTransition = false;
 
 	_fadeIn.SetTime(100);
 	_fadeIn.Start();
@@ -21,7 +20,9 @@ void TitleScene::ReLoad()
 {
 	_titleLogoAnimation.ReLoad();
 	_titleClickAnimation.ReLoad();
-	_clearTutorial = true;
+	_transition.ReLoad();
+
+	_openTransition = false;
 }
 
 void TitleScene::Update()
@@ -31,32 +32,35 @@ void TitleScene::Update()
 
 	_titleLogoAnimation.Update();
 	_titleClickAnimation.Update();
-	//デバッグ
-	if (g_pInput->IsKeyPush(MOFKEY_SPACE)) SceneManager::Instance().ChangeScene(SCENE_TYPE::GALLERY);
 }
 
 void TitleScene::SetMousePos(Vector2 mousePos) {
+	if (_openTransition)_transition.SetMousePos(mousePos);
+
 }
 
 void TitleScene::Push() {
+	if(_openTransition)_transition.Push();
 }
 
 void TitleScene::Pull() {
-	if (!_clearTutorial) {
-		dynamic_cast<StageSelectScene*>(SceneManager::Instance().GetScene(SCENE_TYPE::STAGESELECT))->CreateTutorialField();
-		SceneManager::Instance().ChangeScene(SCENE_TYPE::GAME);
-	}
-	else {
 
-		SceneManager::Instance().ChangeScene(SCENE_TYPE::STAGESELECT);
-	}
+	if (_openTransition)_transition.Pull();
+	else _openTransition = true;
 }
 
 void TitleScene::Render()
 {
+
 	_backGround.Render();
-	_titleClickAnimation.Render();
 	_titleLogoAnimation.Render();
+
+	if (_openTransition) {
+		_transition.Render();
+	}
+	else {
+		_titleClickAnimation.Render();
+	}
 
 	_fadeIn.Render();
 }
@@ -66,6 +70,7 @@ void TitleScene::Release()
 	_titleLogoAnimation.Release();
 	_titleClickAnimation.Release();
 	_titleBackTexture.Release();
+	_transition.Release();
 
 	_music.Release();
 }

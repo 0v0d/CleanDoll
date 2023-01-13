@@ -434,6 +434,9 @@
     <ClCompile Include="Trim.cpp">
       <Filter>ソース ファイル\Utility\Trim</Filter>
     </ClCompile>
+    <ClCompile Include="TitleSceneTransition.cpp">
+      <Filter>ソース ファイル\Scene\TitleScene</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GameApp.h">
@@ -732,6 +735,9 @@
     </ClInclude>
     <ClInclude Include="Trim.h">
       <Filter>ソース ファイル\Utility\Trim</Filter>
+    </ClInclude>
+    <ClInclude Include="TitleSceneTransition.h">
+      <Filter>ソース ファイル\Scene\TitleScene</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

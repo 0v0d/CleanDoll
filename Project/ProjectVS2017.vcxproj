@@ -178,6 +178,7 @@
     <ClCompile Include="TitleClickAnimation.cpp" />
     <ClCompile Include="TitleLogoAnimation.cpp" />
     <ClCompile Include="TitleScene.cpp" />
+    <ClCompile Include="TitleSceneTransition.cpp" />
     <ClCompile Include="Trim.cpp" />
     <ClCompile Include="StageSelectLogo.cpp" />
     <ClCompile Include="Tutorial.cpp" />
@@ -269,6 +270,7 @@
     <ClInclude Include="TitleClickAnimation.h" />
     <ClInclude Include="TitleLogoAnimation.h" />
     <ClInclude Include="TitleScene.h" />
+    <ClInclude Include="TitleSceneTransition.h" />
     <ClInclude Include="Trim.h" />
     <ClInclude Include="Tutorial.h" />
     <ClInclude Include="Wall.h" />
