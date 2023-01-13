@@ -34,6 +34,8 @@ public:
 	void Render();
 	void Release();
 
+	bool IsOpenSetting() { return _openSetting; }
+
 private:
 	void LoadTexture();
 	void CreateButton();
