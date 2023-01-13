@@ -53,6 +53,8 @@ private:
 	CSoundBuffer _buttonSe;
 	bool _show;
 
+	bool _pushReset;
+
 public:
 	void SetDollPosition(int x, int y);
 	void Initialize();

@@ -25,6 +25,8 @@ void Field::Initialize()
 
 	_doll.SetDumpValue(_dustDumpValue, _waterDumpValue);
 	_tutorial.SetBlockManager(&_blockManager);
+
+	_pushReset = true;
 }
 
 void Field::LoadTexture()
@@ -47,7 +49,15 @@ void Field::ReLoad()
 	_doll.ReLoad();
 	_fieldUI.ReLoad();
 	_operateDoll.ReLoad();
-	if (!_tutorial.IsEnd())_tutorial.ReLoad();
+	if (!_tutorial.IsEnd()) {
+		if (_pushReset) {
+			_pushReset = false;
+			_tutorial.ReLoad();
+		}
+		else {
+			_tutorial.SetEnd(true);
+		}
+	}
 
 	_doll.CalcuScale(_blockManager.GetDollOnBlock()->GetBlockSize().y, _blockManager.GetScale());
 	_dustDumpValue = _initalDustValue;
@@ -67,7 +77,7 @@ void Field::ReLoad()
 	_fieldUI.SetCurrentEnergyValue(_remainDistance);
 	_fieldUI.SetDustDumpValue(_initalDustValue);
 	_fieldUI.SetWaterDumpValue(_initalWaterValue);
-	
+
 	if (_getCoin) {
 		_fieldUI.GetGalleryCoin();
 		_blockManager.HiddenCoin();
@@ -272,6 +282,7 @@ void Field::CleanWater() {
 }
 
 void Field::ReSetStage() {
+	_pushReset = true;
 	ReLoad();
 }
 
