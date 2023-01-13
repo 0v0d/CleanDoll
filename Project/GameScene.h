@@ -5,7 +5,7 @@
 #include    "BackGround.h"
 #include    "BGM.h"
 #include    "Button.h"
-
+#include    "SlideInUI.h"
 class GameScene :public IBaseScene
 {
     Field _field;
@@ -13,9 +13,11 @@ class GameScene :public IBaseScene
     BackGround _backGround;
     CTexture _gameBackTexture;
     CSoundBuffer _music,_buttonSe;
-
+    Vector2 _resetButtonPos;
+    float _slideInPos;
     Button _resetStageButton;
     CTexture _resetButtonTexture;
+    SlideInUI _slideInUI;
 public:
     void Initialize();
     void ReLoad();

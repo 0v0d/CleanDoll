@@ -23,6 +23,7 @@ void FieldUI::SetWaterDumpValue(int dumpValue) {
 }
 
 void FieldUI::Update(){
+	_energyVessels.Update();
 	_remainingDumpUI.Update();
 }
 

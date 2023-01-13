@@ -20,7 +20,8 @@ void EnergyVessels::Initialize()
 
 	//ŒÄ‚Ño‚µ‡‚ª‚¨‚©‚µ‚¢
 	if (_energyBarArray != nullptr) SetBarStatu();
-	}
+}
+
 
 void EnergyVessels::CalucPosition()
 {
@@ -37,11 +38,14 @@ void EnergyVessels::CalucPosition()
 
 void EnergyVessels::ReLoad()
 {
-	for (int i = 0; i < _maxEnergyValue; i++)
-	{
+	for (int i = 0; i < _maxEnergyValue; i++){
 		_energyBarArray[i].ChangeColor(&_renderColorArray[5]);
 	}
 	ChangeEnergyColor();
+	_slideInVessels.SetPosition(_vesselsPosition.x, &_vesselsPosition.x, true);
+	_slideInVesselsCenter.SetPosition(_energyVesselsCenterPosition.x, &_energyVesselsCenterPosition.x, true);
+	_slideInRemainEnergy.SetPosition(_remainPosition.x, &_remainPosition.x, true);
+	_energyValue.ReLoad();
 }
 
 void EnergyVessels::LoadTexture()
@@ -80,6 +84,11 @@ void EnergyVessels::SetBarStatu()
 
 void EnergyVessels::Update()
 {
+	
+	_slideInVessels.Update();
+	_slideInVesselsCenter.Update();
+	_slideInRemainEnergy.Update();
+	_energyValue.Update();
 }
 
 void EnergyVessels::SetCurrentEnergyValue(int currentEnergyValue) {
@@ -91,12 +100,9 @@ void EnergyVessels::ChangeEnergyColor()
 {
 	int energyColorCount = 0;
 
-	for (auto itr = _renderColorArray.begin();itr != _renderColorArray.end();itr++) 
-	{
-		if (_currentEnergyValue >= itr->first) 
-		{
-			for (int i = 0;i < _currentEnergyValue;i++)
-			{
+	for (auto itr = _renderColorArray.begin();itr != _renderColorArray.end();itr++) {
+		if (_currentEnergyValue >= itr->first) {
+			for (int i = 0;i < _currentEnergyValue;i++){
 				_energyBarArray[i].ChangeColor(&itr->second);
 			}
 			energyColorCount++;

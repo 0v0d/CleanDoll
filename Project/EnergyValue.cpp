@@ -3,7 +3,6 @@
 void EnergyValue::Initialize()
 {
 	LoadTexture();
-	//CalcuScale();
 }
 
 void EnergyValue::CalcuScale()
@@ -14,12 +13,20 @@ void EnergyValue::CalcuScale()
 void EnergyValue::LoadTexture()
 {
 	_numberTexture.Load("num.png");
-	//_numberTexture.Load("numbers.png");
+}
+
+void EnergyValue::ReLoad()
+{
+	_slideInUI.SetPosition(_numberPos.x,&_numberPos.x,true);
+}
+
+void EnergyValue::Update()
+{
+	_slideInUI.Update();
 }
 
 void EnergyValue::SetPosition(Vector2 vesselsCenterPosition)
 {
-	
 	_numberPos.x = vesselsCenterPosition.x - _numberTexture.GetWidth() / _numberValue * _numberScale / 2;
 	_numberPos.y = vesselsCenterPosition.y - _numberTexture.GetHeight() * _numberScale / 2;
 }
