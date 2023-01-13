@@ -22,7 +22,7 @@ class TitleScene :public IBaseScene
 
 	bool _openTransition;
 	TitleSceneTransition _transition;
-
+	CSoundBuffer		_ClickSound;
 public:
 	void Initialize();
 	void ReLoad();
