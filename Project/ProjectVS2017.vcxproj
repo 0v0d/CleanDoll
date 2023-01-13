@@ -107,6 +107,7 @@
     <ClCompile Include="BlockManager.cpp" />
     <ClCompile Include="BlockOnObject.cpp" />
     <ClCompile Include="Button.cpp" />
+    <ClCompile Include="ClearletterAnimation.cpp" />
     <ClCompile Include="ContactFile.cpp" />
     <ClCompile Include="CreateField.cpp" />
     <ClCompile Include="ChangeSceneEffect.cpp" />
@@ -198,6 +199,7 @@
     <ClInclude Include="BlockOnObject.h" />
     <ClInclude Include="Button.h" />
     <ClInclude Include="ChangeSceneEffect.h" />
+    <ClInclude Include="ClearletterAnimation.h" />
     <ClInclude Include="ContactFile.h" />
     <ClInclude Include="CreateField.h" />
     <ClInclude Include="DollBroomAnimation.h" />

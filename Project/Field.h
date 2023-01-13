@@ -7,6 +7,7 @@
 #include	"Doll.h"
 #include	"OperateDoll.h"
 #include	"Tutorial.h"
+#include "ClearletterAnimation.h"
 
 class Field
 {
@@ -52,6 +53,8 @@ private:
 	CTexture _clearButtonTexture;
 	CSoundBuffer _buttonSe;
 	bool _show;
+	ClearletterAnimation  _clearletter;
+
 
 public:
 	void SetDollPosition(int x, int y);
