@@ -5,7 +5,7 @@
 #include    "BackGround.h"
 #include    "BGM.h"
 #include    "Button.h"
-
+#include  "GameStartAnimation.h"
 class GameScene :public IBaseScene
 {
     Field _field;
@@ -13,7 +13,7 @@ class GameScene :public IBaseScene
     BackGround _backGround;
     CTexture _gameBackTexture;
     CSoundBuffer _music,_buttonSe;
-
+    GameStartAnimation _startAnimation;
     Button _resetStageButton;
     CTexture _resetButtonTexture;
 public:

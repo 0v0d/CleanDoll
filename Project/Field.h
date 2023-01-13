@@ -85,6 +85,7 @@ public:
 	void SetDollMove(bool* onMoveDoll) { _onMoveDoll = onMoveDoll; }
 	void SetDollOnBlockNumber(Block* dollOnBlock);
 
+	bool IsEndTutorial()const { return _tutorial.IsEnd(); }
 private:
 	void AdvanceRoute(Block* mouseOnBlock);
 	void BackRoute(Block* mouseOnBlock);
