@@ -36,6 +36,7 @@ public:
 	void CalcuScale(float blockSizeY);
 	void SetDollOnBlock(Block* dollOnBlock);
 	void SetCoin(int x, int y);
+	void HiddenCoin();
 private:
 	void SetAdjoinBlock();
 };

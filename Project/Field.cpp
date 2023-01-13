@@ -68,7 +68,10 @@ void Field::ReLoad()
 	_fieldUI.SetDustDumpValue(_initalDustValue);
 	_fieldUI.SetWaterDumpValue(_initalWaterValue);
 	
-	if (_getCoin)_fieldUI.GetGalleryCoin();
+	if (_getCoin) {
+		_fieldUI.GetGalleryCoin();
+		_blockManager.HiddenCoin();
+	}
 
 	_push = false;
 	_show = false;
@@ -222,16 +225,18 @@ void Field::EndMoveDoll() {
 		if (_dustDumpValue <= 0 && _waterDumpValue <= 0) {
 			_show = true;
 			StageSelectScene* stageSelect = dynamic_cast<StageSelectScene*>(SceneManager::Instance().GetScene(SCENE_TYPE::STAGESELECT));
-			if (_doll.IsGetCoin() && !_getCoin) {
-				_show = false;
-				_endGameProcess.SetCurrentProcess(ProcessType::GameClear);
+			if (!_getCoin) {
+				if (_doll.IsGetCoin()) {
+					dynamic_cast<GalleryScene*>(SceneManager::Instance().GetScene(SCENE_TYPE::GALLERY))->AddCoin();
+					stageSelect->GetCoin();
+					_getCoin = true;
 
-				dynamic_cast<GalleryScene*>(SceneManager::Instance().GetScene(SCENE_TYPE::GALLERY))->AddCoin();
-				stageSelect->StageClear();
-				stageSelect->GetCoin();
-				_getCoin = true;
+					_show = false;
+					_endGameProcess.SetCurrentProcess(ProcessType::GameClear);
+					stageSelect->StageClear();
+				}
 			}
-			if(_getCoin){
+			else{
 				_show = false;
 				_endGameProcess.SetCurrentProcess(ProcessType::GameClear);
 				stageSelect->StageClear();

@@ -72,7 +72,7 @@ public:
 	void SetWaterDumpValue(int dumpValue);
 	void CleanDust();
 	void CleanWater();
-	void SetGettedCoinFlg(bool flg) { _getCoin = flg; }
+	void SetGettedCoinFlg(bool flg) {_getCoin = flg; }
 	void GetCoin();
 	void GameOver();
 	void SetDollSpeedFactor(float factor) { _doll.CalcuSpeed(factor); }

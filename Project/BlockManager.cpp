@@ -86,6 +86,18 @@ void BlockManager::SetCoin(int x, int y) {
 	_blockArray[x][y].GetBlockOnObject()->SetAccessories(_galleryCoin);
 }
 
+void BlockManager::HiddenCoin() {
+	for (int y = 0;y < _blockValueY;y++) {
+		for (int x = 0; x < _blockValueX; x++) {
+			if (_blockArray[x][y].GetBlockOnObject()->GetAccessories() == nullptr) continue;
+			if (_blockArray[x][y].GetBlockOnObject()->GetAccessoriesTypr()==ACCESSORIES_TYPE::COIN) {
+				_blockArray[x][y].GetBlockOnObject()->HiddenAccessoriesFlg(true);
+				return;
+			}
+		}
+	}
+}
+
 void BlockManager::Update()
 {
 	for (int y = 0; y < _blockValueY; y++) {
