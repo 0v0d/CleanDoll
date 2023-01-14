@@ -56,6 +56,8 @@ private:
 	ClearletterAnimation  _clearletter;
 
 
+	bool _pushReset;
+
 public:
 	void SetDollPosition(int x, int y);
 	void Initialize();
