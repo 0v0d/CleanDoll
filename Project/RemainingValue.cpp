@@ -17,6 +17,16 @@ void RemainingValue::CalucRect()
 		_numberTexture->GetWidth() / _numberValue * (_currentRemaingValue + 1), _numberTexture->GetHeight());
 }
 
+void RemainingValue::ReLoad()
+{
+	_slideInUI.SetPosition(_numberPos.x, &_numberPos.x, true);
+}
+
+void RemainingValue::Update()
+{
+	_slideInUI.Update();
+}
+
 void RemainingValue::Render()
 {
 	_numberTexture->RenderScale(_numberPos.x,_numberPos.y,_numberScale,_renderRect);

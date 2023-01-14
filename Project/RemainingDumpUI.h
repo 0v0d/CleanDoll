@@ -2,8 +2,8 @@
 #include	"Mof.h"
 #include	"RemainingIcon.h"
 #include	"map"
-#include "RemainingValue.h"
-
+#include	"RemainingValue.h"
+#include	"SlideInUI.h"
 enum ICON_TYPE {
 	DUST,
 	WATER,
@@ -12,6 +12,7 @@ enum ICON_TYPE {
 class RemainingDumpUI
 {
 	RemainingValue* _remainingValue;
+	SlideInUI _slideInUI;
 	int _dustValue, _waterValue;
 	CTexture _baseTexture, _markTexture, _notExistTexture;
 	CTexture _dustIconTexture, _waterIconTexture;

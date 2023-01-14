@@ -11,8 +11,8 @@ void GameScene::Initialize()
 
 	_startAnimation.Initialize();
 
+	_resetButtonPos = Vector2(g_pGraphics->GetTargetWidth() - _resetButtonTexture.GetWidth(), g_pGraphics->GetTargetHeight() - _resetButtonTexture.GetHeight());
 	_resetStageButton.SetTexture(&_resetButtonTexture);
-	_resetStageButton.SetPosition(Vector2(g_pGraphics->GetTargetWidth() - _resetButtonTexture.GetWidth() , g_pGraphics->GetTargetHeight() - _resetButtonTexture.GetHeight()));
 	_resetStageButton.SetSeSound(&_buttonSe);
 	_resetStageButton.SetStatu(false, true, [&]() {_field.ReSetStage();});
 }
@@ -25,12 +25,15 @@ void GameScene::LoadTexture() {
 void GameScene::ReLoad()
 {
 	_startAnimation.ReLoad();
+	_slideInUI.SetPosition(_resetButtonPos.x, &_resetButtonPos.x, false);
 	_field.ReLoad();
 }
 
 void GameScene::Update()
 {
 	_startAnimation.Update();
+	_slideInUI.Update();
+	_resetStageButton.SetPosition(_resetButtonPos);
 	_field.Update();
 }
 
