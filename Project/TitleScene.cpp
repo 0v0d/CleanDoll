@@ -14,6 +14,8 @@ void TitleScene::Initialize()
 
 	_fadeIn.SetTime(100);
 	_fadeIn.Start();
+	_ClickSound.Load("ClicktoStart.mp3");
+
 }
 
 void TitleScene::ReLoad()
@@ -46,7 +48,10 @@ void TitleScene::Push() {
 void TitleScene::Pull() {
 
 	if (_openTransition)_transition.Pull();
-	else _openTransition = true;
+	else {
+		_openTransition = true;
+		_ClickSound.Play();
+	}
 }
 
 void TitleScene::Render()
@@ -73,4 +78,5 @@ void TitleScene::Release()
 	_transition.Release();
 
 	_music.Release();
+	_ClickSound.Release();
 }
