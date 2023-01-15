@@ -56,7 +56,6 @@ void TitleScene::Pull() {
 
 void TitleScene::Render()
 {
-
 	_backGround.Render();
 	_titleLogoAnimation.Render();
 
