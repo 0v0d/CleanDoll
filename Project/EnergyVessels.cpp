@@ -20,6 +20,10 @@ void EnergyVessels::Initialize()
 
 	//åƒÇ—èoÇµèáÇ™Ç®Ç©ÇµÇ¢
 	if (_energyBarArray != nullptr) SetBarStatu();
+
+	_slideInVessels.SetStatu(_vesselsPosition.x, &_vesselsPosition.x, true);
+	_slideInVesselsCenter.SetStatu(_energyVesselsCenterPosition.x, &_energyVesselsCenterPosition.x,  true);
+	_slideInRemainEnergy.SetStatu(_remainPosition.x, &_remainPosition.x, true);
 }
 
 
@@ -42,9 +46,9 @@ void EnergyVessels::ReLoad()
 		_energyBarArray[i].ChangeColor(&_renderColorArray[5]);
 	}
 	ChangeEnergyColor();
-	_slideInVessels.SetPosition(_vesselsPosition.x, &_vesselsPosition.x, true);
-	_slideInVesselsCenter.SetPosition(_energyVesselsCenterPosition.x, &_energyVesselsCenterPosition.x, true);
-	_slideInRemainEnergy.SetPosition(_remainPosition.x, &_remainPosition.x, true);
+	_slideInVessels.Start();
+	_slideInVesselsCenter.Start();
+	_slideInRemainEnergy.Start();
 	_energyValue.ReLoad();
 }
 

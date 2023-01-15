@@ -7,7 +7,7 @@
 #include	"Doll.h"
 #include	"OperateDoll.h"
 #include	"Tutorial.h"
-#include "ClearletterAnimation.h"
+#include	"ClearletterAnimation.h"
 
 class Field
 {

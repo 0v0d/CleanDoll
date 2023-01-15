@@ -15,6 +15,7 @@ void RemainingIcon::SetPosition(Vector2 pos) {
 	_position.y = pos.y - _iconTexture->GetWidth() * _scale;
 
 	CalcuMarkPosition();
+	_slideInUI.SetStatu(_position.x, &_position.x, true);
 }
 
 void RemainingIcon::CalcuMarkPosition() {
@@ -24,7 +25,7 @@ void RemainingIcon::CalcuMarkPosition() {
 
 void RemainingIcon::ReLoad() {
 	_mark = false;
-	_slideInUI.SetPosition(_position.x,&_position.x,true);
+	_slideInUI.Start();
 }
 
 void RemainingIcon::Update()
