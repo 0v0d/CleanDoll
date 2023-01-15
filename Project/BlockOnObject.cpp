@@ -20,7 +20,7 @@ void BlockOnObject::SetObject(Object* object, bool onSwap){
 void BlockOnObject::SetAccessories(IBaseAccessories* accessories){
 	_accessories = accessories;
 	_accessories->CalcuScale(_blockSize.x * _blockScale);
-	_accessories->SetPosotion(_blockCenterPos);
+	_accessories->SetPosotion(Vector2(_blockCenterPos.x, _blockCenterPos.y + _blockSize.y / 2 * _blockScale));
 }
 
 void BlockOnObject::Update(){
