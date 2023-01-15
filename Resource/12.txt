@@ -1,1 +1,0 @@
-12.png,title_stage12.png,3,stage12.txt,
