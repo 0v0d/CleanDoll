@@ -82,7 +82,6 @@ void GalleryBarManager::SetTexture() {
 
 void GalleryBarManager::Update() {
 	_coinNumber.SetValue(_gettedCoinValue);
-	
 }
 
 void GalleryBarManager::SetMousePos(Vector2 mousePos) {
