@@ -176,8 +176,7 @@ void DollMoveSetting::Render()
 	_closeButton.Render();
 	_selectButton.Render();
 
-	const float logoScale = 0.3f;
-	_logoTexture.RenderScale(g_pGraphics->GetTargetWidth() / 2 - _logoTexture.GetWidth() / 2 * logoScale, 100, logoScale);
+	_logoTexture.Render(g_pGraphics->GetTargetWidth() / 2 - _logoTexture.GetWidth() / 2, 100);
 }
 
 void DollMoveSetting::Release()
