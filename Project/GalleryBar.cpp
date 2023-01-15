@@ -1,11 +1,6 @@
 #include "GalleryBar.h"
 
-GalleryBar::GalleryBar() :
-	_watch(false)
-{}
-
 void GalleryBar::Initialize() {
-
 }
 
 void GalleryBar::ReLoad() {
@@ -41,10 +36,7 @@ bool GalleryBar::CheckOnMouse(Vector2 mousePos) {
 
 void GalleryBar::Render() {
 	_baseTexture->RenderScale(_pos.x, _pos.y, _scale);
-	if (!_watch) _lockedTextTexture.Render(_pos.x, _pos.y, _scale);
 }
 
 void GalleryBar::Release() {
-	_lockedTextTexture.Release();
-	_galleryTexture.Release();
 }

@@ -23,6 +23,9 @@ class GalleryBarManager
 	GetCoinNumber	_coinNumber;
 	CTexture* _lockedBarTexureArray;
 	CTexture* _openedBarTexureArray;
+	CTexture* _lockedTexureArray;
+	CTexture* _openedTexureArray;
+
 public:
 	void Initialize();
 	void ReLoad();
@@ -50,8 +53,6 @@ private:
 	void SetTexture();
 	void PickUpBar();
 
-	void SetBarData();
-
-	void LoadLockedTexture();
-	void LoadOpenedTexture();
+	void LoadGalleryTexture();
+	void LoadBarTexture();
 };
