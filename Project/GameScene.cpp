@@ -30,8 +30,8 @@ void GameScene::LoadTexture() {
 
 void GameScene::ReLoad()
 {
-	_startAnimation.ReLoad();
 	_field.ReLoad();
+	if (_field.IsEndTutorial()) _startAnimation.StartCleanAnimation();
 }
 
 void GameScene::Update()
@@ -63,7 +63,6 @@ void GameScene::Render()
 	_backGround.Render();
 	_resetStageButton.Render();
 	_field.Render();
-	if(!_field.IsEndTutorial())return;
 	_startAnimation.Render();
 }
 

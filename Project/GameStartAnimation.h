@@ -10,25 +10,17 @@ class GameStartAnimation
 	Vector2 _pos;
 	CRectangle _renderRect;
 	int _currentMotion;
-
-	enum {
-		STARTANIM_1,
-		STARTANIM_2,
-		STARTANIM_3,
-		STARTANIM_4,
-		STARTANIM_5,
-	};
+	bool _end;
 
 public:
 	void Initialize();
-	void ReLoad();
+	void StartCleanAnimation();
+
 	void Update();
 	void Render();
 	void Release();
-
-	void StartCleanAnimation() { _motionController.ChangeMotion(STARTANIM_1); }
 	
-	bool IsEndAnimation() { return _motionController.IsEndMotion()&&_motionController.GetMotionNo() == STARTANIM_5; }
+	bool IsEndAnimation() { return _end; }
 private:
 	void CalcuPosition(Vector2 rectSize);
 	void CreateAnimation();
