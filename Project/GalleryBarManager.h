@@ -10,7 +10,7 @@ class GalleryBarManager
 	Trim _trimstring;
 	const int _barValue = 4;
 	GalleryBar* _barArray;
-	int _gettedCoinValue;
+	int _gotCoinValue;
 	int* _requiredCoinValueArray;
 	Vector2 _mousePos;
 
@@ -38,9 +38,7 @@ public:
 	void Push();
 	void Pull();
 	void Update();
- 	void AddCoinValue() { 
-		_gettedCoinValue++;
-	}
+	void AddCoinValue();
 
 	void Render();
 	void Release();
@@ -55,6 +53,7 @@ private:
 	void SetTexture();
 	void PickUpBar();
 
+	void LoadRequiredCoinValue();
 	void LoadGalleryTexture();
 	void LoadBarTexture();
 };
