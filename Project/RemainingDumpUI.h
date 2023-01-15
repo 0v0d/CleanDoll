@@ -2,7 +2,7 @@
 #include	"Mof.h"
 #include	"RemainingIcon.h"
 #include	"map"
-#include	"RemainingValue.h"
+#include	"Number.h"
 #include	"SlideInUI.h"
 enum ICON_TYPE {
 	DUST,
@@ -11,7 +11,7 @@ enum ICON_TYPE {
 
 class RemainingDumpUI
 {
-	RemainingValue* _remainingValue;
+	Number* _remainingValue;
 	SlideInUI _slideInUI;
 	int _dustValue, _waterValue;
 	CTexture _baseTexture, _markTexture, _notExistTexture;
@@ -24,6 +24,8 @@ class RemainingDumpUI
 	float _getCoinScale;
 	const int _iconValue = 2;
 	bool _getCoin;
+	const int _numberValue = 10;
+	const float _numberScale = 0.05f;
 public:
 	void Initialize();
 	void ReLoad();

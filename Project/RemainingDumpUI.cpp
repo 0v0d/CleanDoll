@@ -18,14 +18,16 @@ void RemainingDumpUI::Initialize() {
 		itr->second->SetScale(_scale);
 		itr->second->SetPosition(Vector2(_basePosition.x + space.x * ((int)itr->first * 2 + 1) + iconSizeX * _scale * (int)itr->first, _basePosition.y + _baseTexture.GetHeight() * 2 + space.y));
 	}
-	constexpr auto adjustment = 5;
-	_remainingValue = new RemainingValue[_iconValue];
-	for (auto i = 0; i < _iconValue;i++) {
-		_remainingValue[i].SetStuts(&_numberTexture);
-	}
 
+	constexpr auto adjustment = 5;
+	_remainingValue = new Number[_iconValue];
 	_remainingValue[ICON_TYPE::DUST].SetPosition(Vector2(_basePosition.x + (ICON_TYPE::DUST * 2 + 1) + iconSizeX * _scale * ICON_TYPE::DUST + _dustIconTexture.GetWidth() / 4 - adjustment, _basePosition.y + _baseTexture.GetHeight() * 2 + space.y));
 	_remainingValue[ICON_TYPE::WATER].SetPosition(Vector2(_basePosition.x + (ICON_TYPE::WATER * 2 + 1) + iconSizeX * _scale * ICON_TYPE::WATER + _waterIconTexture.GetWidth() / 2 + adjustment, _basePosition.y + _baseTexture.GetHeight() * 2 + space.y));
+	for (auto i = 0; i < _iconValue;i++) {
+		_remainingValue[i].SetStats(&_numberTexture, _numberScale,_numberValue);
+		_remainingValue[i].SetMove(true);
+	}
+
 
 	_slideInUI.SetStatu(_basePosition.x, &_basePosition.x, true);
 }
@@ -61,7 +63,6 @@ void RemainingDumpUI::Update()
 	_remainingValue[ICON_TYPE::DUST].SetValue(_dustValue);
 	_remainingValue[ICON_TYPE::WATER].SetValue(_waterValue);
 	for (auto i = 0; i < _iconValue; i++) {
-		_remainingValue[i].CalucRect();
 		_remainingValue[i].Update();
 	}
 }

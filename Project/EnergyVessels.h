@@ -1,14 +1,14 @@
 #pragma once
 #include	"Mof.h"
 #include	"EnergyBar.h"
-#include "EnergyValue.h"
+#include	"Number.h"
 #include	"map"
-#include "SlideInUI.h"
+#include	"SlideInUI.h"
 
 class EnergyVessels
 {
 private:
-	EnergyValue _energyValue;
+	Number _energyValue;
 	SlideInUI _slideInVessels;
 	SlideInUI _slideInRemainEnergy;
 	SlideInUI _slideInVesselsCenter;
@@ -17,6 +17,9 @@ private:
 	EnergyBar* _energyBarArray = nullptr;
 	CTexture _energyVesselsTexture, _energyBarTexture, _remainEnergyTexture, _energyVesselsCenterTexture;
 	Vector2 _vesselsPosition,_remainPosition, _energyVesselsCenterPosition;
+
+	CTexture _numberTexture;
+	const int _numberValue = 10;
 
 	const float _energyVesselsScale = 0.2f;
 	float _remainEnergyScale;
