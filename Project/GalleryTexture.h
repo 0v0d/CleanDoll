@@ -3,16 +3,16 @@
 
 class GalleryTexture
 {
-	CTexture _backTexture;
+	CTexture _backFlameTexture;
 	CTexture* _galleryTexture = nullptr;
-	Vector2 _basePos,_galleryPos;
-	float _baseScale, _galleryScale;
-
+	Vector2 _flamePos,_galleryPos;
+	float _galleryScale;
+	float _backTextureHeight;
 public:
 	void Initialize();
 	void ReLoad();
-	void SetBasePos(Vector2 pos) { _basePos = pos; }
-	void CalcuBaseScale(float height);
+	
+	void SetBackTextureHeight(float height) { _backTextureHeight = height; }
 	void SetGalleryTexture(CTexture* texture);
 	
 	void Render();

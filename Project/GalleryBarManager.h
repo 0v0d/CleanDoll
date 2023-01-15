@@ -4,9 +4,11 @@
 #include	"GalleryBar.h"
 #include	"ContactFile.h"
 #include	"GetCoinNumber.h"
+#include "Trim.h"
 
 class GalleryBarManager
 {
+	Trim _trimstring;
 	const int _barValue = 4;
 	GalleryBar* _barArray;
 	int _gettedCoinValue;
@@ -15,16 +17,15 @@ class GalleryBarManager
 
 	Vector2 _backPos;
 	CTexture _barBackGround;
-	CTexture _barTexture, _lockTexture;
 
 	ContactFile _contactFile;
 
 	GetCoinNumber	_coinNumber;
-
+	CTexture* _lockedBarTexureArray;
+	CTexture* _openedBarTexureArray;
 public:
 	void Initialize();
 	void ReLoad();
-	void SetBasePos(Vector2 centerPos);
 	void CreateBarArray();
 
 	void SetMousePos(Vector2);
@@ -50,4 +51,7 @@ private:
 	void PickUpBar();
 
 	void SetBarData();
+
+	void LoadLockedTexture();
+	void LoadOpenedTexture();
 };
