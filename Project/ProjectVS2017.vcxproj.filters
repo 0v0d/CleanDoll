@@ -147,6 +147,18 @@
     <Filter Include="ソース ファイル\Scene\GalleryScene\BarManager">
       <UniqueIdentifier>{c3cab5e0-9933-4681-aabd-170950e8e3d3}</UniqueIdentifier>
     </Filter>
+    <Filter Include="ソース ファイル\Exit">
+      <UniqueIdentifier>{ff63267e-2fb4-483c-a78f-9e6dbcd28ec3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\Input">
+      <UniqueIdentifier>{5e9cd43e-99be-488f-8bbe-a2e363fc141b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\UI\Number">
+      <UniqueIdentifier>{1171d990-f767-4839-881e-f0897e82f4fa}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\Scene\GameScene\Animation">
+      <UniqueIdentifier>{4512bafe-af36-476c-a717-8dbd9c8695d8}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="WinMain.cpp">
@@ -199,9 +211,6 @@
     </ClCompile>
     <ClCompile Include="IBaseSetting.cpp">
       <Filter>ソース ファイル\Interface</Filter>
-    </ClCompile>
-    <ClCompile Include="Input.cpp">
-      <Filter>ソース ファイル</Filter>
     </ClCompile>
     <ClCompile Include="EndGameProcess.cpp">
       <Filter>ソース ファイル\Scene\GameScene\EndGameProcess</Filter>
@@ -272,15 +281,6 @@
     <ClCompile Include="EnergyValue.cpp">
       <Filter>ソース ファイル\Scene\GameScene\FieldUI\EnergyUI</Filter>
     </ClCompile>
-    <ClCompile Include="RemainingValue.cpp">
-      <Filter>ソース ファイル\Scene\GameScene\FieldUI\RemainningDump</Filter>
-    </ClCompile>
-    <ClCompile Include="ExitGame.cpp">
-      <Filter>ソース ファイル</Filter>
-    </ClCompile>
-    <ClCompile Include="WindowProc.cpp">
-      <Filter>ソース ファイル</Filter>
-    </ClCompile>
     <ClCompile Include="GalleryScene.cpp">
       <Filter>ソース ファイル\Scene\GalleryScene</Filter>
     </ClCompile>
@@ -340,12 +340,6 @@
     </ClCompile>
     <ClCompile Include="GetCoinNumber.cpp">
       <Filter>ソース ファイル\Scene\GalleryScene</Filter>
-    </ClCompile>
-    <ClCompile Include="SideIn.cpp">
-      <Filter>ソース ファイル\Scene\Effect</Filter>
-    </ClCompile>
-    <ClCompile Include="SideOut.cpp">
-      <Filter>ソース ファイル\Scene\Effect</Filter>
     </ClCompile>
     <ClCompile Include="StageSelectLogo.cpp">
       <Filter>ソース ファイル\Scene\StageSelectScene\Animation</Filter>
@@ -438,13 +432,31 @@
       <Filter>ソース ファイル\Scene\TitleScene</Filter>
     </ClCompile>
     <ClCompile Include="ClearletterAnimation.cpp">
-      <Filter>ソース ファイル</Filter>
+      <Filter>ソース ファイル\Scene\GameScene\Animation</Filter>
     </ClCompile>
     <ClCompile Include="GameStartAnimation.cpp">
-      <Filter>ソース ファイル</Filter>
+      <Filter>ソース ファイル\Scene\GameScene\Animation</Filter>
+    </ClCompile>
+    <ClCompile Include="Input.cpp">
+      <Filter>ソース ファイル\Input</Filter>
+    </ClCompile>
+    <ClCompile Include="ExitGame.cpp">
+      <Filter>ソース ファイル\Exit</Filter>
+    </ClCompile>
+    <ClCompile Include="SideIn.cpp">
+      <Filter>ソース ファイル\Scene\Effect\SideInOut</Filter>
+    </ClCompile>
+    <ClCompile Include="SideOut.cpp">
+      <Filter>ソース ファイル\Scene\Effect\SideInOut</Filter>
     </ClCompile>
     <ClCompile Include="SlideInUI.cpp">
-      <Filter>ソース ファイル</Filter>
+      <Filter>ソース ファイル\Scene\Effect\SideInOut</Filter>
+    </ClCompile>
+    <ClCompile Include="WindowProc.cpp">
+      <Filter>ソース ファイル\Exit</Filter>
+    </ClCompile>
+    <ClCompile Include="RemainingValue.cpp">
+      <Filter>ソース ファイル\Scene\GameScene\FieldUI\RemainningDump</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -498,9 +510,6 @@
     </ClInclude>
     <ClInclude Include="IBaseSetting.h">
       <Filter>ソース ファイル\Interface</Filter>
-    </ClInclude>
-    <ClInclude Include="Input.h">
-      <Filter>ソース ファイル</Filter>
     </ClInclude>
     <ClInclude Include="EndGameProcess.h">
       <Filter>ソース ファイル\Scene\GameScene\EndGameProcess</Filter>
@@ -571,15 +580,6 @@
     <ClInclude Include="EnergyValue.h">
       <Filter>ソース ファイル\Scene\GameScene\FieldUI\EnergyUI</Filter>
     </ClInclude>
-    <ClInclude Include="RemainingValue.h">
-      <Filter>ソース ファイル\Scene\GameScene\FieldUI\RemainningDump</Filter>
-    </ClInclude>
-    <ClInclude Include="ExitGame.h">
-      <Filter>ソース ファイル</Filter>
-    </ClInclude>
-    <ClInclude Include="WindowProc.h">
-      <Filter>ソース ファイル</Filter>
-    </ClInclude>
     <ClInclude Include="GalleryScene.h">
       <Filter>ソース ファイル\Scene\GalleryScene</Filter>
     </ClInclude>
@@ -648,12 +648,6 @@
     </ClInclude>
     <ClInclude Include="GalleryCoin.h">
       <Filter>ソース ファイル\Scene\GameScene\Field\BlockManager\Object</Filter>
-    </ClInclude>
-    <ClInclude Include="SideIn.h">
-      <Filter>ソース ファイル\Scene\Effect</Filter>
-    </ClInclude>
-    <ClInclude Include="SideOut.h">
-      <Filter>ソース ファイル\Scene\Effect</Filter>
     </ClInclude>
     <ClInclude Include="StageSelectLogo.h">
       <Filter>ソース ファイル\Scene\StageSelectScene\Animation</Filter>
@@ -742,14 +736,38 @@
     <ClInclude Include="TitleSceneTransition.h">
       <Filter>ソース ファイル\Scene\TitleScene</Filter>
     </ClInclude>
-    <ClInclude Include="ClearletterAnimation.h" />
-    <ClInclude Include="GameStartAnimation.h" />
-    <ClInclude Include="SlideInUI.h" />
     <ClInclude Include="SE.h">
       <Filter>ソース ファイル\Sound\SE</Filter>
     </ClInclude>
     <ClInclude Include="BGM.h">
       <Filter>ソース ファイル\Sound\BGM</Filter>
+    </ClInclude>
+    <ClInclude Include="ClearletterAnimation.h">
+      <Filter>ソース ファイル\Scene\GameScene\Animation</Filter>
+    </ClInclude>
+    <ClInclude Include="GameStartAnimation.h">
+      <Filter>ソース ファイル\Scene\GameScene\Animation</Filter>
+    </ClInclude>
+    <ClInclude Include="Input.h">
+      <Filter>ソース ファイル\Input</Filter>
+    </ClInclude>
+    <ClInclude Include="ExitGame.h">
+      <Filter>ソース ファイル\Exit</Filter>
+    </ClInclude>
+    <ClInclude Include="SideIn.h">
+      <Filter>ソース ファイル\Scene\Effect\SideInOut</Filter>
+    </ClInclude>
+    <ClInclude Include="SideOut.h">
+      <Filter>ソース ファイル\Scene\Effect\SideInOut</Filter>
+    </ClInclude>
+    <ClInclude Include="SlideInUI.h">
+      <Filter>ソース ファイル\Scene\Effect\SideInOut</Filter>
+    </ClInclude>
+    <ClInclude Include="WindowProc.h">
+      <Filter>ソース ファイル\Exit</Filter>
+    </ClInclude>
+    <ClInclude Include="RemainingValue.h">
+      <Filter>ソース ファイル\Scene\GameScene\FieldUI\RemainningDump</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
