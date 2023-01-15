@@ -440,6 +440,12 @@
     <ClCompile Include="ClearletterAnimation.cpp">
       <Filter>ソース ファイル</Filter>
     </ClCompile>
+    <ClCompile Include="GameStartAnimation.cpp">
+      <Filter>ソース ファイル</Filter>
+    </ClCompile>
+    <ClCompile Include="SlideInUI.cpp">
+      <Filter>ソース ファイル</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GameApp.h">
@@ -610,9 +616,6 @@
     <ClInclude Include="EndGameButtonAnimation.h">
       <Filter>ソース ファイル\Scene\GameScene\EndGameProcess\EndGameButton</Filter>
     </ClInclude>
-    <ClInclude Include="BGM.h">
-      <Filter>ソース ファイル\UI</Filter>
-    </ClInclude>
     <ClInclude Include="GameOverLogoAnimation.h">
       <Filter>ソース ファイル\Scene\GameScene\EndGameProcess\GameOver</Filter>
     </ClInclude>
@@ -672,9 +675,6 @@
     </ClInclude>
     <ClInclude Include="DollMopAnimation.h">
       <Filter>ソース ファイル\Scene\GameScene\Field\Doll\Animation</Filter>
-    </ClInclude>
-    <ClInclude Include="SE.h">
-      <Filter>ソース ファイル\Sound</Filter>
     </ClInclude>
     <ClInclude Include="BGM.h">
       <Filter>ソース ファイル\Sound</Filter>
@@ -743,6 +743,14 @@
       <Filter>ソース ファイル\Scene\TitleScene</Filter>
     </ClInclude>
     <ClInclude Include="ClearletterAnimation.h" />
+    <ClInclude Include="GameStartAnimation.h" />
+    <ClInclude Include="SlideInUI.h" />
+    <ClInclude Include="SE.h">
+      <Filter>ソース ファイル\Sound\SE</Filter>
+    </ClInclude>
+    <ClInclude Include="BGM.h">
+      <Filter>ソース ファイル\Sound\BGM</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="Version.rc">

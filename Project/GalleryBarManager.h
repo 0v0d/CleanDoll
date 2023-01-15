@@ -7,7 +7,7 @@
 
 class GalleryBarManager
 {
-	const int _barValue = 5;
+	const int _barValue = 4;
 	GalleryBar* _barArray;
 	int _gettedCoinValue;
 	int* _requiredCoinValueArray;
@@ -34,14 +34,13 @@ public:
  	void AddCoinValue() { 
 		_gettedCoinValue++; 
 		_coinNumber.SetCoinNumberValue(_gettedCoinValue);
-
 	}
 
 	void Render();
 	void Release();
 
 	CTexture* GetPickTexture();
-	Vector2 GetBackTextureSize() { return Vector2(_barBackGround.GetWidth(),_barBackGround.GetHeight()); }
+	Vector2 GetBackTextureSize() const { return Vector2(_barBackGround.GetWidth(),_barBackGround.GetHeight()); }
 
 private:
 	void LoadTexture();

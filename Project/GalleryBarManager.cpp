@@ -4,7 +4,7 @@ void GalleryBarManager::Initialize() {
 	LoadTexture();
 	_coinNumber.SetPosition();
 	_coinNumber.Initialize();
-	_requiredCoinValueArray = new int[_barValue] {2, 5, 8, 11, 15};
+	_requiredCoinValueArray = new int[_barValue] {2, 4, 7, 10};
 }
 
 void GalleryBarManager::LoadTexture() {
@@ -31,7 +31,7 @@ void GalleryBarManager::CreateBarArray() {
 }
 
 float GalleryBarManager::CalcuBarScale(float space) {
-	return ((_barBackGround.GetHeight() - space) / _barValue - space) / _barTexture.GetHeight();
+	return ((_barBackGround.GetHeight() - space*2) / _barValue - space * 2) / _barTexture.GetHeight();
 }
 
 float GalleryBarManager::CalcuBarCenterPosY(int number, float space, float scale) {
@@ -51,7 +51,7 @@ void GalleryBarManager::SetBarData() {
 }
 
 void GalleryBarManager::SetBasePos(Vector2 centerPos) {
-	_backPos = Vector2(centerPos.x, g_pGraphics->GetTargetHeight() / 2 - _barBackGround.GetHeight() / 2);
+	_backPos = Vector2(70,300);
 }
 
 
@@ -106,8 +106,7 @@ CTexture* GalleryBarManager::GetPickTexture() {
 
 
 void GalleryBarManager::Render() {
-	
-	_barBackGround.Render(_backPos.x, _backPos.y);
+
 	for (int i = 0;i < _barValue;i++) {
 		_barArray[i].Render();
 	}
