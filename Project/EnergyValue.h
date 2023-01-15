@@ -13,14 +13,16 @@ private:
 	SlideInUI _slideInUI;
 public:
 	void Initialize();
-	void CalcuRect(int currentEnergyValue);
-	void ReLoad();
-	void Update();
-	void Render();
-	void Release();
 	void SetScale(float scale) { _numberScale = scale; }
 	void SetPosition(Vector2 vesselsCenterPosition);
+	void ReLoad();
+
+	void Update();
+	void CalcuRect(int currentEnergyValue);
+
+	void Render();
+	void Release();
+
 private:
 	void LoadTexture();
-	void CalcuScale();
 };

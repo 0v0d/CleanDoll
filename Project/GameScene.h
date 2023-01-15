@@ -5,7 +5,7 @@
 #include    "BackGround.h"
 #include    "BGM.h"
 #include    "Button.h"
-#include  "GameStartAnimation.h"
+#include    "GameStartAnimation.h"
 #include    "SlideInUI.h"
 class GameScene :public IBaseScene
 {

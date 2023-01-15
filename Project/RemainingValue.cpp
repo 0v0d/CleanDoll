@@ -9,6 +9,8 @@ void RemainingValue::SetPosition(Vector2 numberPosition)
 {
 	_numberPos.x = numberPosition.x;
 	_numberPos.y = numberPosition.y;
+
+	_slideInUI.SetStatu(_numberPos.x, &_numberPos.x,true);
 }
 
 void RemainingValue::CalucRect()
@@ -19,7 +21,7 @@ void RemainingValue::CalucRect()
 
 void RemainingValue::ReLoad()
 {
-	_slideInUI.SetPosition(_numberPos.x, &_numberPos.x, true);
+	_slideInUI.Start();
 }
 
 void RemainingValue::Update()

@@ -457,6 +457,14 @@
     </ClCompile>
     <ClCompile Include="RemainingValue.cpp">
       <Filter>ソース ファイル\Scene\GameScene\FieldUI\RemainningDump</Filter>
+    <ClCompile Include="GameStartAnimation.cpp">
+      <Filter>ソース ファイル</Filter>
+    </ClCompile>
+    <ClCompile Include="SlideInUI.cpp">
+      <Filter>ソース ファイル</Filter>
+    </ClCompile>
+    <ClCompile Include="ClearletterAnimation.cpp">
+      <Filter>ソース ファイル\Scene\GameScene\Field</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -768,6 +776,10 @@
     </ClInclude>
     <ClInclude Include="RemainingValue.h">
       <Filter>ソース ファイル\Scene\GameScene\FieldUI\RemainningDump</Filter>
+    <ClInclude Include="GameStartAnimation.h" />
+    <ClInclude Include="SlideInUI.h" />
+    <ClInclude Include="ClearletterAnimation.h">
+      <Filter>ソース ファイル\Scene\GameScene\Field</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
