@@ -1,10 +1,9 @@
 #pragma once
 #include	"Mof.h"
-#include	"string"
 #include	"GalleryBar.h"
 #include	"ContactFile.h"
-#include	"GetCoinNumber.h"
-#include "Trim.h"
+#include	"Number.h"
+#include	"Trim.h"
 
 class GalleryBarManager
 {
@@ -20,12 +19,16 @@ class GalleryBarManager
 
 	ContactFile _contactFile;
 
-	GetCoinNumber	_coinNumber;
 	CTexture* _lockedBarTexureArray;
 	CTexture* _openedBarTexureArray;
 	CTexture* _lockedTexureArray;
 	CTexture* _openedTexureArray;
 
+	Number	_coinNumber;
+	Number	_maxCoinValue;
+	const int _numberValue = 11;
+	const float _numberScale = 0.3f;
+	CTexture _numberTexture;
 public:
 	void Initialize();
 	void ReLoad();
@@ -36,8 +39,7 @@ public:
 	void Pull();
 	void Update();
  	void AddCoinValue() { 
-		_gettedCoinValue++; 
-		_coinNumber.SetCoinNumberValue(_gettedCoinValue);
+		_gettedCoinValue++;
 	}
 
 	void Render();

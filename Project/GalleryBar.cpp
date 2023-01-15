@@ -4,7 +4,6 @@ void GalleryBar::Initialize() {
 }
 
 void GalleryBar::ReLoad() {
-
 }
 
 void GalleryBar::SetBaseTexture(CTexture* texture) {
@@ -18,7 +17,6 @@ void GalleryBar::CalcuPosition() {
 }
 
 void GalleryBar::Update() {
-
 }
 
 void GalleryBar::PickUpFlg(bool flg) {
@@ -26,7 +24,6 @@ void GalleryBar::PickUpFlg(bool flg) {
 	_scale = flg ? _baseScale * _largeScale : _baseScale;
 	CalcuPosition();
 }
-
 
 bool GalleryBar::CheckOnMouse(Vector2 mousePos) {
 	CRectangle rect = CRectangle(_pos.x, _pos.y, _pos.x + _baseTexture->GetWidth() * _scale, _pos.y + _baseTexture->GetHeight() * _scale);

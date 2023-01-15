@@ -122,10 +122,9 @@
     <ClCompile Include="EndTutorialLogoAnimation.cpp" />
     <ClCompile Include="GalleryTexture.cpp" />
     <ClCompile Include="GameStartAnimation.cpp" />
-    <ClCompile Include="GetCoinNumber.cpp" />
     <ClCompile Include="IBaseSound.cpp" />
     <ClCompile Include="MoveBackGround.cpp" />
-    <ClCompile Include="RemainingValue.cpp" />
+    <ClCompile Include="Number.cpp" />
     <ClCompile Include="SE.cpp" />
     <ClCompile Include="SetFieldData.cpp" />
     <ClCompile Include="Doll.cpp" />
@@ -133,7 +132,6 @@
     <ClCompile Include="EndGameButtonAnimation.cpp" />
     <ClCompile Include="EndGameProcess.cpp" />
     <ClCompile Include="EnergyBar.cpp" />
-    <ClCompile Include="EnergyValue.cpp" />
     <ClCompile Include="EnergyVessels.cpp" />
     <ClCompile Include="ExitGame.cpp" />
     <ClCompile Include="FadeIn.cpp" />
@@ -215,10 +213,9 @@
     <ClInclude Include="GalleryCoin.h" />
     <ClInclude Include="GalleryTexture.h" />
     <ClInclude Include="GameStartAnimation.h" />
-    <ClInclude Include="GetCoinNumber.h" />
     <ClInclude Include="IBaseSound.h" />
     <ClInclude Include="MoveBackGround.h" />
-    <ClInclude Include="RemainingValue.h" />
+    <ClInclude Include="Number.h" />
     <ClInclude Include="SE.h" />
     <ClInclude Include="SetFieldData.h" />
     <ClInclude Include="Doll.h" />
@@ -226,7 +223,6 @@
     <ClInclude Include="EndGameButtonAnimation.h" />
     <ClInclude Include="EndGameProcess.h" />
     <ClInclude Include="EnergyBar.h" />
-    <ClInclude Include="EnergyValue.h" />
     <ClInclude Include="EnergyVessels.h" />
     <ClInclude Include="ExitGame.h" />
     <ClInclude Include="FadeIn.h" />

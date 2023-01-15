@@ -12,7 +12,6 @@ void GalleryTexture::LoadTexture(){
 }
 
 void GalleryTexture::ReLoad(){
-
 }
 
 void GalleryTexture::SetGalleryTexture(CTexture* texture) {
@@ -29,8 +28,9 @@ void GalleryTexture::CalcuGalleryScale() {
 
 void GalleryTexture::Render(){
 	_backFlameTexture.Render(_flamePos.x, _flamePos.y);
-	if (_galleryTexture != nullptr)_galleryTexture->RenderScale(_galleryPos.x, _galleryPos.y, _galleryScale);
-	
+	if (_galleryTexture != nullptr){
+		_galleryTexture->RenderScale(_galleryPos.x, _galleryPos.y, _galleryScale);
+	}
 }
 
 void GalleryTexture::Release(){

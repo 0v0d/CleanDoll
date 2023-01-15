@@ -2,15 +2,22 @@
 
 void GalleryBarManager::Initialize() {
 	LoadTexture();
-	_coinNumber.SetPosition();
-	_coinNumber.Initialize();
+	constexpr float maxCoinNumberSpace = 70;
+	_maxCoinValue.SetStats(&_numberTexture, _numberScale, _numberValue);
+	_maxCoinValue.SetPosition(Vector2(g_pGraphics->GetTargetWidth() - _numberTexture.GetWidth() * _numberScale / _numberValue - maxCoinNumberSpace, 50));
+	_maxCoinValue.SetValue(_numberValue - 1);
+
+	constexpr float coinNumberSpace = 200;
+	_coinNumber.SetStats(&_numberTexture, _numberScale, _numberValue);
+	_coinNumber.SetPosition(Vector2(g_pGraphics->GetTargetWidth() -_numberTexture.GetWidth()*_numberScale/_numberValue - coinNumberSpace,50));
+
 	_requiredCoinValueArray = new int[_barValue] {2, 4, 7, 10};
 	_backPos = Vector2(70, 300);
 }
 
 void GalleryBarManager::LoadTexture() {
 	_barBackGround.Load("stagepreview_base.png");
-	_coinNumber.LoadTextrue();
+	_numberTexture.Load("coinnum.png");
 	LoadBarTexture();
 	LoadGalleryTexture();
 }
@@ -74,6 +81,8 @@ void GalleryBarManager::SetTexture() {
 }
 
 void GalleryBarManager::Update() {
+	_coinNumber.SetValue(_gettedCoinValue);
+	
 }
 
 void GalleryBarManager::SetMousePos(Vector2 mousePos) {
@@ -94,7 +103,6 @@ void GalleryBarManager::PickUpBar() {
 }
 
 void GalleryBarManager::Pull() {
-	
 }
 
 CTexture* GalleryBarManager::GetPickTexture() {
@@ -106,11 +114,11 @@ CTexture* GalleryBarManager::GetPickTexture() {
 	return nullptr;
 }
 
-
 void GalleryBarManager::Render() {
 	for (int i = 0;i < _barValue;i++) {
 		_barArray[i].Render();
 	}
+	_maxCoinValue.Render();
 	_coinNumber.Render();
 }
 
@@ -124,7 +132,6 @@ void GalleryBarManager::Release() {
 	delete[] _lockedBarTexureArray;
 	delete[] _openedTexureArray;
 	delete[] _lockedTexureArray;
-	
+	_numberTexture.Release();
 	_barBackGround.Release();
-	_coinNumber.Release();
 }

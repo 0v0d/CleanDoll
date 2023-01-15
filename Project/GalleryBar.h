@@ -1,6 +1,5 @@
 #pragma once
 #include	"Mof.h"
-#include	"string"
 
 class GalleryBar
 {
@@ -9,7 +8,6 @@ class GalleryBar
 	float _baseScale, _scale;
 	const float _largeScale = 1.1f;
 	bool _pickUp;
-
 public:
 	void Initialize();
 	void ReLoad();
@@ -23,7 +21,6 @@ public:
 	void Release();
 	bool CheckOnMouse(Vector2 mousePos);
 	bool IsPickUp() const{return _pickUp;}
-
 private:
 	void CalcuPosition();
 };
