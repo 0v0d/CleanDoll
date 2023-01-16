@@ -3,6 +3,8 @@
 void GameStartAnimation::Initialize() {
 	LoadTexture();
 	CreateAnimation();
+
+	_end = true;
 }
 
 void GameStartAnimation::LoadTexture() {
@@ -60,11 +62,15 @@ void GameStartAnimation::CalcuPosition(Vector2 rectSize) {
 	_pos.y = g_pGraphics->GetTargetHeight() / 2 - rectSize.y / 2;
 }
 
-void GameStartAnimation::ReLoad() {
+void GameStartAnimation::StartCleanAnimation() {
 	_currentMotion = 0;
+	_motionController.ChangeMotion(0); 
+	_end = false;
 }
 
 void GameStartAnimation::Update() {
+	if (_end) return;
+
 	_motionController.AddTimer(CUtilities::GetFrameSecond());
 	_renderRect = _motionController.GetSrcRect();
 	SetNextAnimation();
@@ -72,16 +78,18 @@ void GameStartAnimation::Update() {
 
 void GameStartAnimation::SetNextAnimation() {
 	if (!_motionController.IsEndMotion()) return;
+
 	_motionController.ChangeMotion(_currentMotion);
 	_currentMotion++;
+
+	if (_motionController.IsEndMotion() && _motionController.GetMotionNo() == _motionValue - 1)_end = true;
 }
 
 void GameStartAnimation::Render() {
+	if (_end) return;
 	_animationTexture.Render(_pos.x, _pos.y, _renderRect);
 }
 
 void GameStartAnimation::Release() {
 	_animationTexture.Release();
 }
-
-
