@@ -20,7 +20,7 @@ void Dump::ReLoad()
 void Dump::SetPosotion(Vector2 pos)
 {
 	_position.x = pos.x - _dumpTexture->GetWidth() * _scale / 2;
-	_position.y = pos.y - _dumpTexture->GetHeight() * _scale / 2;
+	_position.y = pos.y - _dumpTexture->GetHeight() * _scale;
 }
 
 void Dump::Update()

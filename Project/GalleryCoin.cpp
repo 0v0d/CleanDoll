@@ -16,7 +16,7 @@ void GalleryCoin::ReLoad()
 void GalleryCoin::SetPosotion(Vector2 pos)
 {
 	_position.x = pos.x - _coinTexture.GetWidth() * _scale / 2;
-	_position.y = pos.y - _coinTexture.GetHeight() * _scale / 2;
+	_position.y = pos.y - _coinTexture.GetHeight() * _scale;
 }
 
 void GalleryCoin::Update()

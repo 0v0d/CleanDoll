@@ -16,7 +16,7 @@ void Item::ReLoad()
 void Item::SetPosotion(Vector2 pos)
 {
 	_position.x = pos.x - _itemTexture->GetWidth() * _scale / 2;
-	_position.y = pos.y - _itemTexture->GetHeight() * _scale / 2;
+	_position.y = pos.y - _itemTexture->GetHeight() * _scale;
 }
 
 void Item::Update()
