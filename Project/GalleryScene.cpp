@@ -37,15 +37,21 @@ void GalleryScene::Update() {
 void GalleryScene::SetMousePos(Vector2 mousePos){
 	_barManager.SetMousePos(mousePos);
 	_titleButton.SetMousePos(mousePos);
+	_galleryTexture.SetMousePos(mousePos);
 }
 
 void GalleryScene::Push(){
-	_barManager.Push();
 	_galleryTexture.SetGalleryTexture(_barManager.GetPickTexture());
+	_galleryTexture.SetPopUpTexture(_barManager.GetOpenedTexture());
+	_galleryTexture.Push();
+	if (_galleryTexture.IsPopUp())return;
+	_barManager.Push();
 	_titleButton.Push();
 }
 
 void GalleryScene::Pull(){
+	_galleryTexture.Pull();
+	if (_galleryTexture.IsPopUp())return;
 	_barManager.Pull();
 	_titleButton.Pull();
 }
@@ -53,14 +59,13 @@ void GalleryScene::Pull(){
 void GalleryScene::Render(){
 	_backGround.Render();
 	_barManager.Render();
-	_galleryTexture.Render();
 	_titleButton.Render();
+	_galleryTexture.Render();
 }
 
 void GalleryScene::Release(){
 	_barManager.Release();
 	_galleryTexture.Release();
-
 	_music.Release();
 	_buttonSe.Release();
 	_buttonTexture.Release();

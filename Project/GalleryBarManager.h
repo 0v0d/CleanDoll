@@ -44,8 +44,8 @@ public:
 	void Release();
 
 	CTexture* GetPickTexture();
+	CTexture* GetOpenedTexture();
 	Vector2 GetBackTextureSize() const { return Vector2(_barBackGround.GetWidth(),_barBackGround.GetHeight()); }
-
 private:
 	void LoadTexture();
 	float CalcuBarScale(float space);

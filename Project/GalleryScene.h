@@ -15,6 +15,7 @@ class GalleryScene :public IBaseScene
 	CSoundBuffer _buttonSe;
 	CTexture _buttonTexture;
 	CTexture _backGroundTexture;
+
 public:
 	void Initialize();
 	void ReLoad();

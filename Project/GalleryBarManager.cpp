@@ -127,6 +127,16 @@ CTexture* GalleryBarManager::GetPickTexture() {
 	return nullptr;
 }
 
+CTexture* GalleryBarManager::GetOpenedTexture() {
+	for (int i = 0; i < _barValue; i++) {
+		if (_gotCoinValue >= _requiredCoinValueArray[i]) {
+			return &_openedTexureArray[i];
+		}
+	}
+	return nullptr;
+}
+
+
 void GalleryBarManager::Render() {
 	for (int i = 0;i < _barValue;i++) {
 		_barArray[i].Render();
