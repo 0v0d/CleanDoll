@@ -45,10 +45,15 @@ void EnergyVessels::ReLoad()
 		_energyBarArray[i].ChangeColor(&_renderColorArray[5]);
 	}
 	ChangeEnergyColor();
+	_energyValue.ReLoad();
+}
+
+void EnergyVessels::StartSlideInUI() {
 	_slideInVessels.Start();
 	_slideInVesselsCenter.Start();
 	_slideInRemainEnergy.Start();
-	_energyValue.ReLoad();
+
+	_energyValue.StartSlideIn();
 }
 
 void EnergyVessels::LoadTexture()

@@ -16,6 +16,7 @@ public:
 	void SetPosition(Vector2 numberPosition);
 	void SetMove(bool left);
 	void ReLoad();
+	void StartSlideIn();
 	void Update();
 	void Render();
 

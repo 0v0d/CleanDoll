@@ -9,6 +9,7 @@ class FieldUI
 public:
 	void Initialize();
 	void ReLoad();
+	void StartSlideInUI();
 	void SetMaxEnergyValue(int energyValue);
 	void SetDustDumpValue(int dumpValue);
 	void SetWaterDumpValue(int dumpValue);

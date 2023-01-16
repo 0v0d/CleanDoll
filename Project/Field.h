@@ -81,6 +81,7 @@ public:
 	void GetCoin();
 	void GameOver();
 	void SetDollSpeedFactor(float factor) { _doll.CalcuSpeed(factor); }
+	void PushResetButton() { _pushReset = true; }
 
 	void Render();
 	void Release();

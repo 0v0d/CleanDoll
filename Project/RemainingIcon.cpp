@@ -25,7 +25,11 @@ void RemainingIcon::CalcuMarkPosition() {
 
 void RemainingIcon::ReLoad() {
 	_mark = false;
+}
+
+void RemainingIcon::StartSlideUI() {
 	_slideInUI.Start();
+
 }
 
 void RemainingIcon::Update()

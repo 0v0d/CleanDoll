@@ -18,6 +18,10 @@ void Number::SetMove(bool left) {
 }
 
 void Number::ReLoad() {
+	
+}
+
+void Number::StartSlideIn() {
 	_slideInUI.Start();
 }
 
