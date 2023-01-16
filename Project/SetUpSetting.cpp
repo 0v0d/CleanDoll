@@ -39,7 +39,7 @@ void SetUpSetting::Initialize()
 void SetUpSetting::LoadTexture() {
 	_audioButtonTexure.Load("サウンド設定　.png");
 	_dollButtonTexture.Load("ドール速度設定.png");
-	_backTitleSceneTexture.Load("clictostart.png");
+	_backTitleSceneTexture.Load("go_title.png");
 	_backSelectSceneTexture.Load("ステージ選択へ.png");
 	_closeMenuTexture.Load("閉じる.png");
 
