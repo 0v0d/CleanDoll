@@ -26,7 +26,7 @@ class AudioSetting :public IBaseSetting
 	float _audioScale, _BGMScale, _SEScale;
 
 	CSoundBuffer _buttonSe;
-
+	CTexture _logoTexture;
 public:
 	void Initialize();
 	void SetOpenSetting(bool* openSetting) { _openAudioSetting = openSetting; }

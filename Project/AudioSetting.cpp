@@ -50,6 +50,7 @@ void AudioSetting::LoadTexture() {
 	_SETexture.Load("SE 1.png");
 	_barTexture.Load("s (1).png");
 	_buttonTexture.Load("s (2).png");
+	_logoTexture.Load("サウンド設定　.png");
 }
 void AudioSetting::Update()
 {
@@ -125,6 +126,7 @@ void AudioSetting::Render()
 	}
 	_BGMTexture.RenderScale(_BGMPos.x, _BGMPos.y, _BGMScale);
 	_SETexture.RenderScale(_SEPos.x, _SEPos.y, _SEScale);
+	_logoTexture.Render(g_pGraphics->GetTargetWidth() / 2 - _logoTexture.GetWidth() / 2, 100);
 }
 
 void AudioSetting::Release()
@@ -139,7 +141,7 @@ void AudioSetting::Release()
 	}
 	_BGMTexture.Release();
 	_SETexture.Release();
-
+	_logoTexture.Release();
 	delete[] _audioTexture;
 	delete[] _audioPos;
 	delete[] _sliderArray;
