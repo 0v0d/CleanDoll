@@ -11,11 +11,11 @@ void BarManager::Initialize()
 	_basePosition = Vector2(50, g_pGraphics->GetTargetHeight() / 2 - _baseTexture.GetHeight() / 2);
 
 	for (int i = 0; i < _stageValue; i++) {
-		_barArray[i].SetStatu(_baseBarScale, _space);
 		_barArray[i].SetBaseBarTexture(&_baseDirtyBarTexture);
 		_barArray[i].SetScreenStatu(_basePosition, Vector2(_baseTexture.GetWidth(), _baseTexture.GetHeight()));
 		_barArray[i].SetDifficulutyTexture(&_difficultyTexture);
 		_barArray[i].SetCoinTexture(&_coinTexture);
+		_barArray[i].SetScale(_baseBarScale);
 		_barArray[i].Initialize();
 	}
 	_slider.SetStatu(Vector2(_basePosition.x + _baseTexture.GetWidth() - _space * _baseBarScale, _basePosition.y + _baseTexture.GetHeight() / 2),
@@ -69,12 +69,10 @@ void BarManager::Update()
 void BarManager::ScaleUp() {
 	for (int i = 0; i < _stageValue; i++) {
 		if (_barArray[i].CheckOnMouse(_mousePos)) {
-			_barArray[i].ScaleUp(_baseBarScale*1.1f);
-			_barArray[i].DifficultScale(1.2f,0);
+			_barArray[i].SetScale(_baseBarScale * 1.1f);
 		}
 		else{
-			_barArray[i].ScaleUp(_baseBarScale);
-			_barArray[i].DifficultScale(1.0f,5);
+			_barArray[i].SetScale(_baseBarScale);
 		}
 	}
 
