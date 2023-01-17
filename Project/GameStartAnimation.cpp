@@ -73,14 +73,13 @@ void GameStartAnimation::Update() {
 
 	_motionController.AddTimer(CUtilities::GetFrameSecond());
 	_renderRect = _motionController.GetSrcRect();
-	SetNextAnimation();
+	if (_motionController.IsEndMotion()) SetNextAnimation();
 }
 
 void GameStartAnimation::SetNextAnimation() {
-	if (!_motionController.IsEndMotion()) return;
 
-	_motionController.ChangeMotion(_currentMotion);
 	_currentMotion++;
+	_motionController.ChangeMotion(_currentMotion);
 
 	if (_motionController.IsEndMotion() && _motionController.GetMotionNo() == _motionValue - 1)_end = true;
 }
