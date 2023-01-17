@@ -11,7 +11,6 @@ class GalleryTexture
 	float _galleryScale;
 	float _backTextureHeight;
 	bool _popUpShow;
-	bool _openedFlg;
 public:
 	void Initialize();
 	void ReLoad();
@@ -24,7 +23,7 @@ public:
 	void SetPopUpFlg(bool flg) { _popUpShow = flg; }
 	void Render();
 	void Release();
-
+	
 	bool IsPopUp()const { return _popUpShow; }
 	bool CheckPushGallery();
 private:
