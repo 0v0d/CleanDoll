@@ -452,14 +452,14 @@
     <ClCompile Include="GameStartAnimation.cpp">
       <Filter>ソース ファイル</Filter>
     </ClCompile>
-    <ClCompile Include="SlideInUI.cpp">
-      <Filter>ソース ファイル</Filter>
-    </ClCompile>
     <ClCompile Include="ClearletterAnimation.cpp">
       <Filter>ソース ファイル\Scene\GameScene\Field</Filter>
     </ClCompile>
     <ClCompile Include="Number.cpp">
       <Filter>ソース ファイル\UI\Number</Filter>
+    </ClCompile>
+    <ClCompile Include="SlideInUI.cpp">
+      <Filter>ソース ファイル\Scene\GameScene\Animation\SlideInUI</Filter>
     </ClCompile>
     <ClCompile Include="SlideInUI.cpp">
       <Filter>ソース ファイル\Scene\GameScene\Animation\SlideInUI</Filter>
@@ -764,12 +764,14 @@
       <Filter>ソース ファイル\Exit</Filter>
     </ClInclude>
     <ClInclude Include="GameStartAnimation.h" />
-    <ClInclude Include="SlideInUI.h" />
     <ClInclude Include="ClearletterAnimation.h">
       <Filter>ソース ファイル\Scene\GameScene\Field</Filter>
     </ClInclude>
     <ClInclude Include="Number.h">
       <Filter>ソース ファイル\UI\Number</Filter>
+    </ClInclude>
+    <ClInclude Include="SlideInUI.h">
+      <Filter>ソース ファイル\Scene\GameScene\Animation\SlideInUI</Filter>
     </ClInclude>
     <ClInclude Include="SlideInUI.h">
       <Filter>ソース ファイル\Scene\GameScene\Animation\SlideInUI</Filter>

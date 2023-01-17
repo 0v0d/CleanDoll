@@ -7,6 +7,7 @@ void SlideInUI::SetStatu(float targetPos, float* posX, bool left)
 	int dir = left ? 1 : -1;
 	_initPosX = targetPos - moveVal * dir;
 	_speed = (float)moveVal / _time * dir;
+	_end = true;
 }
 
 void SlideInUI::Start() {

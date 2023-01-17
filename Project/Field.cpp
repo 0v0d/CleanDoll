@@ -47,7 +47,7 @@ void Field::CreateButton()
 void Field::ReLoad()
 {
 	ReSetStage();
-	_fieldUI.StartSlideInUI();
+	if(_tutorial.IsEnd()) _fieldUI.StartSlideInUI();
 }
 
 void Field::ReSetStage() {
