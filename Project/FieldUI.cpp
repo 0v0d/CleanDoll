@@ -1,8 +1,10 @@
 #include "FieldUI.h"
 
 void FieldUI::Initialize(){
+	_energyAnimation.SetEnergyVessels(&_energyVessels);
 	_energyVessels.Initialize();
 	_remainingDumpUI.Initialize();
+	_energyAnimation.SetStatu(50, 8);
 }
 
 void FieldUI::ReLoad(){
@@ -28,8 +30,17 @@ void FieldUI::SetWaterDumpValue(int dumpValue) {
 }
 
 void FieldUI::Update(){
+
+	bool endSlide = _energyVessels.IsEndSlide();
 	_energyVessels.Update();
 	_remainingDumpUI.Update();
+	_energyAnimation.Update();
+
+	if (!endSlide) {
+		if (_energyVessels.IsEndSlide()) {
+			_energyAnimation.Start();
+		}
+	}
 }
 
 void FieldUI::CleanDust() {

@@ -452,9 +452,6 @@
     <ClCompile Include="GameStartAnimation.cpp">
       <Filter>ソース ファイル</Filter>
     </ClCompile>
-    <ClCompile Include="SlideInUI.cpp">
-      <Filter>ソース ファイル</Filter>
-    </ClCompile>
     <ClCompile Include="ClearletterAnimation.cpp">
       <Filter>ソース ファイル\Scene\GameScene\Field</Filter>
     </ClCompile>
@@ -463,6 +460,12 @@
     </ClCompile>
     <ClCompile Include="SlideInUI.cpp">
       <Filter>ソース ファイル\Scene\GameScene\Animation\SlideInUI</Filter>
+    </ClCompile>
+    <ClCompile Include="SlideInUI.cpp">
+      <Filter>ソース ファイル\Scene\GameScene\Animation\SlideInUI</Filter>
+    </ClCompile>
+    <ClCompile Include="EnergyAnimation.cpp">
+      <Filter>ソース ファイル\Scene\GameScene\FieldUI</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -764,7 +767,6 @@
       <Filter>ソース ファイル\Exit</Filter>
     </ClInclude>
     <ClInclude Include="GameStartAnimation.h" />
-    <ClInclude Include="SlideInUI.h" />
     <ClInclude Include="ClearletterAnimation.h">
       <Filter>ソース ファイル\Scene\GameScene\Field</Filter>
     </ClInclude>
@@ -773,6 +775,12 @@
     </ClInclude>
     <ClInclude Include="SlideInUI.h">
       <Filter>ソース ファイル\Scene\GameScene\Animation\SlideInUI</Filter>
+    </ClInclude>
+    <ClInclude Include="SlideInUI.h">
+      <Filter>ソース ファイル\Scene\GameScene\Animation\SlideInUI</Filter>
+    </ClInclude>
+    <ClInclude Include="EnergyAnimation.h">
+      <Filter>ソース ファイル\Scene\GameScene\FieldUI</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

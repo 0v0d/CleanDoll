@@ -45,6 +45,7 @@ void EnergyVessels::ReLoad()
 		_energyBarArray[i].ChangeColor(&_renderColorArray[5]);
 	}
 	ChangeEnergyColor();
+	SetCurrentEnergyValue(0);
 	_energyValue.ReLoad();
 }
 
@@ -107,14 +108,11 @@ void EnergyVessels::SetCurrentEnergyValue(int currentEnergyValue) {
 
 void EnergyVessels::ChangeEnergyColor()
 {
-	int energyColorCount = 0;
-
 	for (auto itr = _renderColorArray.begin();itr != _renderColorArray.end();itr++) {
-		if (_currentEnergyValue >= itr->first) {
-			for (int i = 0;i < _currentEnergyValue;i++){
-				_energyBarArray[i].ChangeColor(&itr->second);
-			}
-			energyColorCount++;
+		if (_currentEnergyValue < itr->first) continue;
+
+		for (int i = 0;i < _currentEnergyValue;i++) {
+			_energyBarArray[i].ChangeColor(&itr->second);
 		}
 	}
 }
