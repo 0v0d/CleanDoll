@@ -18,12 +18,10 @@ void GalleryTexture::ReLoad(){
 
 void GalleryTexture::Push()
 {
-
 }
 
 void GalleryTexture::Pull()
 {
-
 }
 
 void GalleryTexture::SetGalleryTexture(CTexture* texture) {
@@ -34,7 +32,8 @@ void GalleryTexture::SetGalleryTexture(CTexture* texture) {
 }
 
 void GalleryTexture::CalcuGalleryScale() {
-	_galleryScale = _backFlameTexture.GetHeight()  / _galleryTexture->GetHeight();
+	constexpr auto flameHeightSpace = 32;
+	_galleryScale = (float)(_backFlameTexture.GetHeight() - flameHeightSpace) / _galleryTexture->GetHeight();
 }
 
 bool GalleryTexture::CheckPushGallery() {
@@ -43,7 +42,7 @@ bool GalleryTexture::CheckPushGallery() {
 }
 
 void GalleryTexture::Render(){
-	_backFlameTexture.Render(_flamePos.x, _flamePos.y);
+	
 	if (_galleryTexture != nullptr){
 		_galleryTexture->RenderScale(_galleryPos.x, _galleryPos.y, _galleryScale);
 	}
@@ -52,6 +51,7 @@ void GalleryTexture::Render(){
 		CGraphicsUtilities::RenderFillRect(0, 0, g_pGraphics->GetTargetWidth(), g_pGraphics->GetTargetHeight(), MOF_ARGB(230, 0, 0, 0));
 		_popUpTexture->RenderScale(g_pGraphics->GetTargetWidth() / 2 - _popUpTexture->GetWidth() * _scale / 2, g_pGraphics->GetTargetHeight() / 2 - _popUpTexture->GetHeight() * _scale / 2, _scale);
 	}
+	_backFlameTexture.Render(_flamePos.x, _flamePos.y);
 }
 
 void GalleryTexture::Release(){
