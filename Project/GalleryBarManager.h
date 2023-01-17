@@ -47,7 +47,7 @@ public:
 
 	CTexture* GetMouseOnBarTexture();
 	CTexture* GetGalleryTexture(int number);
-	Vector2 GetBackTextureSize() const { return Vector2(_barBackGround.GetWidth(),_barBackGround.GetHeight()); }
+	Vector2 GetBackTextureSize()  { return Vector2(_barBackGround.GetWidth(),_barBackGround.GetHeight()); }
 	bool IsLockedPopUpTexture() { return _lockedPopUpTexture; }
 private:
 	void LoadTexture();
