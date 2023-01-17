@@ -34,6 +34,8 @@ void SetUpSetting::Initialize()
 
 	dynamic_cast<BackSceneSetting*>(_buttonArray[&_backSceneButton])->SetOpenMenu(_openMenu);
 	_openSetting = false;
+	_openbackTitle = false;
+	_openbaclSelectScene = false;
 }
 
 void SetUpSetting::LoadTexture() {
@@ -42,6 +44,8 @@ void SetUpSetting::LoadTexture() {
 	_backTitleSceneTexture.Load("go_title.png");
 	_backSelectSceneTexture.Load("ステージ選択へ.png");
 	_closeMenuTexture.Load("閉じる.png");
+
+
 
 	_buttonSe.Load("BottanClick.mp3");
 }
@@ -129,11 +133,14 @@ void SetUpSetting::DetermineBackScene() {
 	case  SCENE_TYPE::STAGESELECT:
 		backSceneType = SCENE_TYPE::TITLE;
 		_backSceneButton.SetTexture(&_backTitleSceneTexture);
+		dynamic_cast<BackSceneSetting*>(_buttonArray[&_backSceneButton])->SetBackTitle(true);
 		break;
 
 	case  SCENE_TYPE::GAME:
 		backSceneType = SCENE_TYPE::STAGESELECT;
 		_backSceneButton.SetTexture(&_backSelectSceneTexture);
+		_openbaclSelectScene = true;
+		dynamic_cast<BackSceneSetting*>(_buttonArray[&_backSceneButton])->SetBackSelectScene(true);
 		break;
 	}
 	//_backSceneButton.SetPosition(Vector2(g_pGraphics->GetTargetWidth() / 2, 500));
@@ -154,8 +161,11 @@ void SetUpSetting::Render()
 		{
 			itr->first->Render();
 		}
+
+	
 		_closeMenuButton.Render();
 	}
+
 }
 
 void SetUpSetting::Release()
@@ -169,6 +179,6 @@ void SetUpSetting::Release()
 		itr->second->Release();
 		delete itr->second;
 	}
-
+	
 	_buttonSe.Release();
 }
