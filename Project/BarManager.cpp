@@ -33,8 +33,8 @@ void BarManager::ReLoad() {
 void BarManager::LoadTexture() {
 	_baseTexture.Load("stageselect_base.png");
 	_frameTexture.Load("stageselect_flame.png");
-	_baseCleanBarTexture.Load("BaseCleanBar.png");
-	_baseDirtyBarTexture.Load("BaseDirtyBar.png");
+	_baseCleanBarTexture.Load("stageselectbuttonclear.png");
+	_baseDirtyBarTexture.Load("stageselectbutton.png");
 	_barTexture.Load("スクロールバー1.png");
 	_buttonTexture.Load("スクロールバー2.png");
 	_difficultyTexture.Load("difficulty.png");

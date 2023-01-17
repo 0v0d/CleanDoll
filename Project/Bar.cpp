@@ -101,7 +101,7 @@ void Bar::RenderDifficulty() {
 	space *= _scale;
 	float baseY = _pos.y + _baseBarTexture->GetHeight() / 2 * _scale + space;
 	float posY = CheckOnScreenTopLine(baseY,baseY+ _difficultyTextureArray[0]->GetHeight()*_difficultyScale) ? _screenPos.y : baseY;
-	Vector2 baseDifficultyPos = Vector2(_pos.x + space + 400 * _scale, baseY);
+	Vector2 baseDifficultyPos = Vector2(_pos.x + space + 450 * _scale, baseY);
 	
 	if (IsRenderRange(_difficultyTextureArray[0], baseDifficultyPos, _difficultyScale)) {
 		for (int i = 0; i < _maxDifficulty; i++) {
