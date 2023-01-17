@@ -9,6 +9,7 @@ class EnergyAnimation
 	bool _end;
 
 public:
+	EnergyAnimation();
 	void SetEnergyVessels(EnergyVessels* energyVess) { _energyVessels = energyVess; }
 	void SetStatu(int time, int energyVal);
 	void Start();

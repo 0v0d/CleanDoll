@@ -1,5 +1,9 @@
 #include "EnergyAnimation.h"
 
+EnergyAnimation::EnergyAnimation() {
+	_end = false;
+}
+
 void EnergyAnimation::SetStatu(int time, int energyVal) {
 
 	_energyValue = energyVal;

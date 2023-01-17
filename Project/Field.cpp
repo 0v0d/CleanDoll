@@ -81,7 +81,6 @@ void Field::ReSetStage() {
 	_recoveryDifferentialArray.clear();
 
 	_remainDistance = _maxDistance;
-	_fieldUI.SetCurrentEnergyValue(_remainDistance);
 	_fieldUI.SetDustDumpValue(_initalDustValue);
 	_fieldUI.SetWaterDumpValue(_initalWaterValue);
 
