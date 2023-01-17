@@ -1,18 +1,18 @@
 #pragma once
 #include "Mof.h"
 #include "IBaseEndGameProcess.h"
-#include "EndTutorialBackGround.h"
+#include "GameClearBackGround.h"
 #include "EndTutorialDollAnimation.h"
-#include "EndTutorialLogoAnimation.h"
+#include "GameClearLogoAnimation.h"
 #include	"EndGameButtonManager.h"
 
 class EndTutorial :public IBaseEndGameProcess
 {
 	CTexture _stageSelectTexture;
 	EndGameButtonManager _endGameButtonManager;
-	EndTutorialLogoAnimation _logoAnim;
+	GameClearLogoAnimation _logoAnim;
 	EndTutorialDollAnimation _dollAnim;
-	EndTutorialBackGround _backGroundAnim;
+	GameClearBackGround _backGroundAnim;
 public:
 	void Initialize();
 	void ReLoad();

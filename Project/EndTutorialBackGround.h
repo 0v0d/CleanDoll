@@ -3,22 +3,21 @@
 class EndTutorialBackGround
 {
 private:
-	CTexture _backGroundTexture;
+	CSpriteMotionController _animation;
+	CTexture _endTutorialGameClearTexture;
 	Vector2 _pos;
-	CRectangle _logRect;
+	CRectangle _endTutorialGameClearRect;
 
-	float _scale;
-	bool _fixedScale;
+	float _scale = 4.0f;
 public:
 	void Initialize();
 	void ReLoad();
 	void Update();
+	void CalcuPosition();
 	void Render();
 	void Release();
-	bool IsFixedScale() const { return _fixedScale; }
-
-private:
-	void LoadTexture();
-	void CalcuScale();
-	void CalcuPosition();
+	bool IsEndMotion() { return _animation.IsEndMotion(); }
 };
+
+
+

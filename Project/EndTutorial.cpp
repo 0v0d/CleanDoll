@@ -38,7 +38,7 @@ void EndTutorial::Update(){
 
 void EndTutorial::UpdateAnimation()
 {
-	if (!_backGroundAnim.IsFixedScale()) {
+	if (!_backGroundAnim.IsEndMotion()) {
 		_backGroundAnim.Update();
 		return;
 	}

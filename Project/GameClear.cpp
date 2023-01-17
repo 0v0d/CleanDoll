@@ -57,7 +57,7 @@ void GameClear::Update()
 
 void GameClear::UpdateAnimation() {
 
-	if (!_backGroundAnim.IsFixedScale()) {
+	if (!_backGroundAnim.IsEndMotion()) {
 		_backGroundAnim.Update();
 		return;
 	}
