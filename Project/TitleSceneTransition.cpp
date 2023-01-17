@@ -9,6 +9,7 @@ void TitleSceneTransition::Initialize() {
 	CreateButton(&_transitionStageSelectButton, Vector2(ws / 2, 750), &_stageSelectTexture, [&]() {
 		dynamic_cast<StageSelectScene*>(SceneManager::Instance().GetScene(SCENE_TYPE::STAGESELECT))->CreateTutorialField();
 		SceneManager::Instance().ChangeScene(SCENE_TYPE::GAME);
+		_transitionStageSelectButton.SetStatu(false, true, [&]() {SceneManager::Instance().ChangeScene(SCENE_TYPE::STAGESELECT);});
 		});
 	CreateButton(&_transitionGalleryButton, Vector2(ws / 2, 900), &_galleryTexture, [&]() {SceneManager::Instance().ChangeScene(SCENE_TYPE::GALLERY);});
 }
@@ -32,7 +33,6 @@ void TitleSceneTransition::ReLoad(){
 	_transitionStageSelectButton.SetMousePos(Vector2(0,0));
 	_transitionGalleryButton.SetMousePos(Vector2(0, 0));
 
-	_transitionStageSelectButton.SetStatu(false, true, [&]() {SceneManager::Instance().ChangeScene(SCENE_TYPE::STAGESELECT);});
 }
 
 void TitleSceneTransition::SetMousePos(Vector2 mousePos){
