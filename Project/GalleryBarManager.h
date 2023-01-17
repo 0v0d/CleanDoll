@@ -29,6 +29,8 @@ class GalleryBarManager
 	const int _numberValue = 11;
 	const float _numberScale = 0.3f;
 	CTexture _numberTexture;
+
+	bool _lockedPopUpTexture;
 public:
 	void Initialize();
 	void ReLoad();
@@ -43,9 +45,10 @@ public:
 	void Render();
 	void Release();
 
-	CTexture* GetPickTexture();
-	CTexture* GetOpenedTexture();
+	CTexture* GetMouseOnBarTexture();
+	CTexture* GetGalleryTexture(int number);
 	Vector2 GetBackTextureSize() const { return Vector2(_barBackGround.GetWidth(),_barBackGround.GetHeight()); }
+	bool IsLockedPopUpTexture() { return _lockedPopUpTexture; }
 private:
 	void LoadTexture();
 	float CalcuBarScale(float space);

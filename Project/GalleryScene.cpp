@@ -10,12 +10,15 @@ void GalleryScene::Initialize(){
 
 	_galleryTexture.Initialize();
 	_galleryTexture.SetBackTextureHeight(_barManager.GetBackTextureSize().y);
-	_galleryTexture.SetGalleryTexture(_barManager.GetPickTexture());
 
 	_titleButton.SetTexture(&_buttonTexture);
 	_titleButton.SetPosition(Vector2(100, 100));
 	_titleButton.SetSeSound(&_buttonSe);
 	_titleButton.SetStatu(false, true, [&]() {SceneManager::Instance().ChangeScene(SCENE_TYPE::TITLE);});
+
+	//デバッグ
+	AddCoin();
+	AddCoin();
 }
 
 void GalleryScene::LoadTexture() {
@@ -28,6 +31,8 @@ void GalleryScene::LoadTexture() {
 void GalleryScene::ReLoad(){
 	_barManager.ReLoad();
 	_galleryTexture.ReLoad();
+
+	_galleryTexture.SetGalleryTexture(_barManager.GetGalleryTexture(0));
 }
 
 void GalleryScene::Update() {
@@ -41,12 +46,20 @@ void GalleryScene::SetMousePos(Vector2 mousePos){
 }
 
 void GalleryScene::Push(){
-	_galleryTexture.SetGalleryTexture(_barManager.GetPickTexture());
-	_galleryTexture.SetPopUpTexture(_barManager.GetOpenedTexture());
-	_galleryTexture.Push();
-	if (_galleryTexture.IsPopUp())return;
-	_barManager.Push();
-	_titleButton.Push();
+	
+	if (_galleryTexture.IsPopUp()) {
+		_galleryTexture.SetPopUpFlg(false);
+	}
+	else {
+		_barManager.Push();
+		_titleButton.Push();
+		_galleryTexture.Push();
+
+		_galleryTexture.SetGalleryTexture(_barManager.GetMouseOnBarTexture());
+		if (_galleryTexture.CheckPushGallery() && !_barManager.IsLockedPopUpTexture()) {
+			_galleryTexture.SetPopUpFlg(true);
+		}
+	}
 }
 
 void GalleryScene::Pull(){

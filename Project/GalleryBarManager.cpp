@@ -116,24 +116,23 @@ void GalleryBarManager::PickUpBar() {
 }
 
 void GalleryBarManager::Pull() {
+
 }
 
-CTexture* GalleryBarManager::GetPickTexture() {
-	for (int i = 0;i < _barValue;i++) {
-		if (_barArray[i].IsPickUp()) {
-			return _gotCoinValue >= _requiredCoinValueArray[i] ? &_openedTexureArray[i] : &_lockedTexureArray[i];
-		}
-	}
-	return nullptr;
-}
+CTexture* GalleryBarManager::GetMouseOnBarTexture() {
 
-CTexture* GalleryBarManager::GetOpenedTexture() {
 	for (int i = 0; i < _barValue; i++) {
-		if (_gotCoinValue >= _requiredCoinValueArray[i]) {
-			return &_openedTexureArray[i];
-		}
+		if (!_barArray[i].CheckOnMouse(_mousePos)) continue;
+		_lockedPopUpTexture = _gotCoinValue < _requiredCoinValueArray[i];
+		return _lockedPopUpTexture ? &_lockedTexureArray[i] : &_openedTexureArray[i];
 	}
 	return nullptr;
+}
+
+CTexture* GalleryBarManager::GetGalleryTexture(int number) {
+
+	if (0 > number || number >= _barValue) number = 0;
+	return  _gotCoinValue < _requiredCoinValueArray[number] ? &_lockedTexureArray[number] : &_openedTexureArray[number];
 }
 
 
