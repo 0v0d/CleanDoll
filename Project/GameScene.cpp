@@ -18,8 +18,8 @@ void GameScene::Initialize()
 	_resetStageButton.SetTexture(&_resetButtonTexture);
 	_resetStageButton.SetSeSound(&_buttonSe);
 	_resetStageButton.SetStatu(false, true, [&]() {
-		_field.ReSetStage();
 		_field.PushResetButton();
+		_field.ReSetStage();
 		});
 
 	_slideUI = false;
