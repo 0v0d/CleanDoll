@@ -56,7 +56,6 @@ private:
 	void SetTexture();
 	void PickUpBar();
 
-	void LoadRequiredCoinValue();
 	void LoadGalleryTexture();
 	void LoadBarTexture();
 };

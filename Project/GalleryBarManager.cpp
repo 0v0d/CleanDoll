@@ -2,7 +2,7 @@
 
 void GalleryBarManager::Initialize() {
 	LoadTexture();
-	LoadRequiredCoinValue();
+	_requiredCoinValueArray = new int[_barValue]{2,4,7,10 };
 	constexpr float maxCoinNumberSpace = 70;
 	_maxCoinValue.SetStats(&_numberTexture, _numberScale, _numberValue);
 	_maxCoinValue.SetPosition(Vector2(g_pGraphics->GetTargetWidth() - _numberTexture.GetWidth() * _numberScale / _numberValue - maxCoinNumberSpace, 50));
@@ -32,16 +32,6 @@ void GalleryBarManager::CreateBarArray() {
 		_barArray[i].SetCenterPos(Vector2(posX, CalcuBarCenterPosY(i, space, CalcuBarScale(space))));
 	}
 	SetTexture();
-}
-
-void GalleryBarManager::LoadRequiredCoinValue() {
-	_contactFile.OpenFile("RequiredCoinValue.txt");
-	int requiredCoinValue = _contactFile.GetValue(true);
-	_requiredCoinValueArray = new int[_barValue];
-	for (int i = 0; i < _barValue;i++) {
-		_requiredCoinValueArray[i] = _contactFile.GetValue(false);
-	}
-	_contactFile.CloseFile();
 }
 
 void GalleryBarManager::LoadGalleryTexture() {
