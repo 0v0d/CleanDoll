@@ -42,16 +42,16 @@ bool GalleryTexture::CheckPushGallery() {
 }
 
 void GalleryTexture::Render(){
-	
+	_backFlameTexture.Render(_flamePos.x, _flamePos.y);
 	if (_galleryTexture != nullptr){
 		_galleryTexture->RenderScale(_galleryPos.x, _galleryPos.y, _galleryScale);
 	}
 	if (_popUpTexture != nullptr&& _popUpShow) {
 		constexpr float _scale = 1.4;
 		CGraphicsUtilities::RenderFillRect(0, 0, g_pGraphics->GetTargetWidth(), g_pGraphics->GetTargetHeight(), MOF_ARGB(230, 0, 0, 0));
-		_popUpTexture->RenderScale(g_pGraphics->GetTargetWidth() / 2 - _popUpTexture->GetWidth() * _scale / 2, g_pGraphics->GetTargetHeight() / 2 - _popUpTexture->GetHeight() * _scale / 2, _scale);
+		_popUpTexture->RenderScale(g_pGraphics->GetTargetWidth() / 2 - _popUpTexture->GetWidth() * _galleryScale / 2, g_pGraphics->GetTargetHeight() / 2 - _popUpTexture->GetHeight() * _galleryScale / 2, _galleryScale);
 	}
-	_backFlameTexture.Render(_flamePos.x, _flamePos.y);
+	
 }
 
 void GalleryTexture::Release(){
