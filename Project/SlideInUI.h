@@ -16,4 +16,5 @@ public:
 	void Start();
 	void SetStatu(float targetPos, float* posX, bool left);
 	void Update();
+	bool IsEnd() { return _end; }
 };

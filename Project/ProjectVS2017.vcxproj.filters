@@ -159,6 +159,9 @@
     <Filter Include="ソース ファイル\Scene\GameScene\Animation">
       <UniqueIdentifier>{4512bafe-af36-476c-a717-8dbd9c8695d8}</UniqueIdentifier>
     </Filter>
+    <Filter Include="ソース ファイル\Scene\GameScene\Animation\SlideInUI">
+      <UniqueIdentifier>{13a6189c-f5f0-4cb6-adea-283081a36f25}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="WinMain.cpp">
@@ -443,15 +446,9 @@
     <ClCompile Include="SideOut.cpp">
       <Filter>ソース ファイル\Scene\Effect\SideInOut</Filter>
     </ClCompile>
-    <ClCompile Include="SlideInUI.cpp">
-      <Filter>ソース ファイル\Scene\Effect\SideInOut</Filter>
-    </ClCompile>
     <ClCompile Include="WindowProc.cpp">
       <Filter>ソース ファイル\Exit</Filter>
     </ClCompile>
-    <ClCompile Include="RemainingValue.cpp">
-      <Filter>ソース ファイル\Scene\GameScene\FieldUI\RemainningDump</Filter>
-	</ClCompile>
     <ClCompile Include="GameStartAnimation.cpp">
       <Filter>ソース ファイル</Filter>
     </ClCompile>
@@ -463,6 +460,9 @@
     </ClCompile>
     <ClCompile Include="Number.cpp">
       <Filter>ソース ファイル\UI\Number</Filter>
+    </ClCompile>
+    <ClCompile Include="SlideInUI.cpp">
+      <Filter>ソース ファイル\Scene\GameScene\Animation\SlideInUI</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -760,15 +760,9 @@
     <ClInclude Include="SideOut.h">
       <Filter>ソース ファイル\Scene\Effect\SideInOut</Filter>
     </ClInclude>
-    <ClInclude Include="SlideInUI.h">
-      <Filter>ソース ファイル\Scene\Effect\SideInOut</Filter>
-    </ClInclude>
     <ClInclude Include="WindowProc.h">
       <Filter>ソース ファイル\Exit</Filter>
     </ClInclude>
-    <ClInclude Include="RemainingValue.h">
-      <Filter>ソース ファイル\Scene\GameScene\FieldUI\RemainningDump</Filter>
-		</ClInclude>
     <ClInclude Include="GameStartAnimation.h" />
     <ClInclude Include="SlideInUI.h" />
     <ClInclude Include="ClearletterAnimation.h">
@@ -776,6 +770,9 @@
     </ClInclude>
     <ClInclude Include="Number.h">
       <Filter>ソース ファイル\UI\Number</Filter>
+    </ClInclude>
+    <ClInclude Include="SlideInUI.h">
+      <Filter>ソース ファイル\Scene\GameScene\Animation\SlideInUI</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

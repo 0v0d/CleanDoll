@@ -7,6 +7,7 @@
 #include    "Button.h"
 #include    "GameStartAnimation.h"
 #include    "SlideInUI.h"
+
 class GameScene :public IBaseScene
 {
     Field _field;
@@ -20,6 +21,8 @@ class GameScene :public IBaseScene
     Button _resetStageButton;
     CTexture _resetButtonTexture;
     SlideInUI _slideInUI;
+    bool _slideUI;
+
 public:
     void Initialize();
     void ReLoad();

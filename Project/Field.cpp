@@ -27,7 +27,6 @@ void Field::Initialize()
 	_tutorial.SetBlockManager(&_blockManager);
 	_clearletter.Initialize();
 
-
 	_pushReset = true;
 }
 
@@ -47,6 +46,12 @@ void Field::CreateButton()
 
 void Field::ReLoad()
 {
+	ReSetStage();
+	_fieldUI.StartSlideInUI();
+}
+
+void Field::ReSetStage() {
+
 	_blockManager.ReLoad();
 	_doll.ReLoad();
 	_fieldUI.ReLoad();
@@ -87,6 +92,7 @@ void Field::ReLoad()
 
 	_push = false;
 	_show = false;
+	_pushReset = false;
 }
 
 void Field::SetDollPosition(int x, int y)
@@ -285,11 +291,6 @@ void Field::CleanDust() {
 void Field::CleanWater() {
 	_waterDumpValue--;
 	_fieldUI.CleanWater();
-}
-
-void Field::ReSetStage() {
-	_pushReset = true;
-	ReLoad();
 }
 
 void Field::GameClear() {

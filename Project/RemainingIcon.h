@@ -16,6 +16,7 @@ public:
 	void SetTexture(CTexture*, CTexture*, CTexture*);
 	void SetPosition(Vector2);
 	void SetScale(float scale);
+	void StartSlideUI();
 
 	void MarkIcon() { _mark = true; }
 	void SetNotExistFlg(bool flg) { _notExist = flg; }

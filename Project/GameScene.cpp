@@ -18,9 +18,11 @@ void GameScene::Initialize()
 	_resetStageButton.SetTexture(&_resetButtonTexture);
 	_resetStageButton.SetSeSound(&_buttonSe);
 	_resetStageButton.SetStatu(false, true, [&]() {
+		_field.PushResetButton();
 		_field.ReSetStage();
-		_slideInUI.Start();
 		});
+
+	_slideUI = false;
 }
 
 void GameScene::LoadTexture() {
@@ -31,7 +33,7 @@ void GameScene::LoadTexture() {
 void GameScene::ReLoad()
 {
 	_field.ReLoad();
-	if (_field.IsEndTutorial()) _startAnimation.StartCleanAnimation();
+	if(_field.IsEndTutorial()) _slideUI = true;
 }
 
 void GameScene::Update()
@@ -40,6 +42,13 @@ void GameScene::Update()
 	_slideInUI.Update();
 	_resetStageButton.SetPosition(_resetButtonPos);
 	_field.Update();
+
+	if (_slideUI && _slideInUI.IsEnd()) {
+		if (_field.IsEndTutorial()) {
+			_startAnimation.StartCleanAnimation();
+			_slideUI = false;
+		}
+	}
 }
 
 void GameScene::SetMousePos(Vector2 mousePos) {

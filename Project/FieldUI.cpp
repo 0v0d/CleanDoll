@@ -10,6 +10,11 @@ void FieldUI::ReLoad(){
 	_remainingDumpUI.ReLoad();
 }
 
+void FieldUI::StartSlideInUI() {
+	_energyVessels.StartSlideInUI();
+	_remainingDumpUI.StartSlideInUI();
+}
+
 void FieldUI::SetMaxEnergyValue(int energyValue) {
 	_energyVessels.SetMaxEnergyValue(energyValue);
 }

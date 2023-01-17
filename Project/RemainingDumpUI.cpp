@@ -28,7 +28,6 @@ void RemainingDumpUI::Initialize() {
 		_remainingValue[i].SetMove(true);
 	}
 
-
 	_slideInUI.SetStatu(_basePosition.x, &_basePosition.x, true);
 }
 
@@ -48,9 +47,19 @@ void RemainingDumpUI::ReLoad() {
 		itr->second->ReLoad();
 	}
 	_getCoin = false;
-	_slideInUI.Start();
+	
 	for (auto i = 0; i < _iconValue; i++){
 		_remainingValue[i].ReLoad();
+	}
+}
+
+void RemainingDumpUI::StartSlideInUI() {
+	_slideInUI.Start();
+	for (auto itr = _iconArray.begin(); itr != _iconArray.end(); itr++) {
+		itr->second->StartSlideUI();
+	}
+	for (auto i = 0; i < _iconValue;i++) {
+		_remainingValue[i].StartSlideIn();
 	}
 }
 

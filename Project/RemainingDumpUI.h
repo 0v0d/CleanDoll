@@ -4,13 +4,14 @@
 #include	"map"
 #include	"Number.h"
 #include	"SlideInUI.h"
-enum ICON_TYPE {
-	DUST,
-	WATER,
-};
 
 class RemainingDumpUI
 {
+	enum ICON_TYPE {
+		DUST,
+		WATER,
+	};
+
 	Number* _remainingValue;
 	SlideInUI _slideInUI;
 	int _dustValue, _waterValue;
@@ -29,6 +30,7 @@ class RemainingDumpUI
 public:
 	void Initialize();
 	void ReLoad();
+	void StartSlideInUI();
 	
 	void Update();
 	void SetDustValue(int dumpValue);
