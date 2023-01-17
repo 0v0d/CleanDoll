@@ -7,6 +7,7 @@ void BackSceneSetting::Initialize()
 	_basePos.y = g_pGraphics->GetTargetHeight() / 2;
 	const float spaceX = 100;
 	const float spaceY = 100;
+	_titleDialog = _stageSelectDialog = false;
 	_backTexture.Load("‚Í‚¢.png");
 	_closeTexture.Load("‚¢‚¢‚¦.png");
 	_buttonSe.Load("BottanClick.mp3");
@@ -59,11 +60,11 @@ void BackSceneSetting::SetBackScene(SCENE_TYPE backScene) {
 
 void BackSceneSetting::Render()
 {
-	if (_Titledialog) {
+	if (_titleDialog) {
 		_backTitleTextureDialog.RenderScale(g_pGraphics->GetTargetWidth() / 2 - _backTitleTextureDialog.GetWidth() / 2 * _backScale,
 			g_pGraphics->GetTargetHeight() / 2 - _backTitleTextureDialog.GetHeight() / 2 * _backScale, _backScale);
 	}
-	if (_SelectSecnedialog) {
+	else if (_stageSelectDialog) {
 		_backSelectSceneDialog.RenderScale(g_pGraphics->GetTargetWidth() / 2 - _backSelectSceneDialog.GetWidth() / 2 * _backScale,
 			g_pGraphics->GetTargetHeight() / 2 - _backSelectSceneDialog.GetHeight() / 2 * _backScale, _backScale);
 	}

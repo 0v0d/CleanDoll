@@ -133,14 +133,14 @@ void SetUpSetting::DetermineBackScene() {
 	case  SCENE_TYPE::STAGESELECT:
 		backSceneType = SCENE_TYPE::TITLE;
 		_backSceneButton.SetTexture(&_backTitleSceneTexture);
-		dynamic_cast<BackSceneSetting*>(_buttonArray[&_backSceneButton])->SetBackTitle(true);
+		dynamic_cast<BackSceneSetting*>(_buttonArray[&_backSceneButton])->SetBackTitle();
 		break;
 
 	case  SCENE_TYPE::GAME:
 		backSceneType = SCENE_TYPE::STAGESELECT;
 		_backSceneButton.SetTexture(&_backSelectSceneTexture);
 		_openbaclSelectScene = true;
-		dynamic_cast<BackSceneSetting*>(_buttonArray[&_backSceneButton])->SetBackSelectScene(true);
+		dynamic_cast<BackSceneSetting*>(_buttonArray[&_backSceneButton])->SetBackSelectScene();
 		break;
 	}
 	//_backSceneButton.SetPosition(Vector2(g_pGraphics->GetTargetWidth() / 2, 500));
