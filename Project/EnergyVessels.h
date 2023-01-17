@@ -39,6 +39,8 @@ public:
 	void Render();
 	void Release();
 	
+	bool IsEndSlide() { return _slideInVessels.IsEnd(); }
+
 private:
 	void LoadTexture();
 	void CreateEnergyBarArray();

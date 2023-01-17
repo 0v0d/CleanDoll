@@ -464,6 +464,9 @@
     <ClCompile Include="SlideInUI.cpp">
       <Filter>ソース ファイル\Scene\GameScene\Animation\SlideInUI</Filter>
     </ClCompile>
+    <ClCompile Include="EnergyAnimation.cpp">
+      <Filter>ソース ファイル\Scene\GameScene\FieldUI</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GameApp.h">
@@ -775,6 +778,9 @@
     </ClInclude>
     <ClInclude Include="SlideInUI.h">
       <Filter>ソース ファイル\Scene\GameScene\Animation\SlideInUI</Filter>
+    </ClInclude>
+    <ClInclude Include="EnergyAnimation.h">
+      <Filter>ソース ファイル\Scene\GameScene\FieldUI</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

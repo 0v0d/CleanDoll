@@ -115,6 +115,7 @@
     <ClCompile Include="DollMopAnimation.cpp" />
     <ClCompile Include="DollMoveSetting.cpp" />
     <ClCompile Include="EndGameButtonManager.cpp" />
+    <ClCompile Include="EnergyAnimation.cpp" />
     <ClCompile Include="GalleryCoin.cpp" />
     <ClCompile Include="EndTutorialDollAnimation.cpp" />
     <ClCompile Include="EndTutorial.cpp" />
@@ -210,6 +211,7 @@
     <ClInclude Include="EndTutorialBackGround.h" />
     <ClInclude Include="EndTutorialDollAnimation.h" />
     <ClInclude Include="EndTutorialLogoAnimation.h" />
+    <ClInclude Include="EnergyAnimation.h" />
     <ClInclude Include="GalleryCoin.h" />
     <ClInclude Include="GalleryTexture.h" />
     <ClInclude Include="GameStartAnimation.h" />
