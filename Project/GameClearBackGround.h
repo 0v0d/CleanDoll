@@ -3,23 +3,21 @@
 class GameClearBackGround
 {
 private:
-	CTexture _backGroundTexture;
+	CSpriteMotionController _animation;
+	CTexture _gameClearBackGroundTexture;
 	Vector2 _pos;
-	CRectangle _clearLogRect;
+	CRectangle _gameClearBackGroundRect;
 
-	float _scale;
-	bool _fixedScale;//scale’l‚ª1.0‚†‚É‚È‚ê‚Îtrue‚É‚È‚é
+	float _scale = 4.0f;
 public:
 	void Initialize();
 	void ReLoad();
 	void Update();
+	void CalcuPosition();
 	void Render();
 	void Release();
-	bool IsFixedScale() { return _fixedScale; }
-
-private:
-	void LoadTexture();
-	void CalcuScale();
-	void CalcuPosition();
+	bool IsEndMotion() { return _animation.IsEndMotion(); }
 };
+
+
 
