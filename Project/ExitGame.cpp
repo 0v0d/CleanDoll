@@ -20,7 +20,7 @@ void ExitGame::Initialize() {
 void ExitGame::LoadTexture() {
 	_yesTexture.Load("‚Í‚¢.png");
 	_noTexture.Load("‚¢‚¢‚¦.png");
-
+	_exitDialogTexture.Load("ƒQ[ƒ€‚ðI—¹‚µ‚Ü‚·‚©H.png");
 	_buttonSe.Load("BottanClick.mp3");
 }
 
@@ -61,14 +61,17 @@ void ExitGame::Pull() {
 void ExitGame::Render() {
 	if (_openExitDialog) {
 		CGraphicsUtilities::RenderFillRect(0, 0, g_pGraphics->GetTargetWidth(), g_pGraphics->GetTargetHeight(), MOF_ARGB(125, 0, 0, 0));
+		_exitDialogTexture.RenderScale(g_pGraphics->GetTargetWidth() / 2 - _exitDialogTexture.GetWidth() / 2 * _backScale,
+			g_pGraphics->GetTargetHeight() / 2 - _exitDialogTexture.GetHeight() / 2 * _backScale, _backScale);
 		_yesButton.Render();
 		_noButton.Render();
 	}
+	
 }
 
 void ExitGame::Release() {
 	_yesTexture.Release();
 	_noTexture.Release();
-
+	_exitDialogTexture.Release();
 	_buttonSe.Release();
 }
