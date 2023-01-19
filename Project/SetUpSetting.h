@@ -9,7 +9,6 @@ class SetUpSetting
 private:
 	bool _openSetting;
 	bool* _openMenu;
-	bool  _openbackTitle, _openbaclSelectScene;
 	
 	IBaseSetting* _currentSetting = nullptr;
 	std::map<Button*, IBaseSetting*> _buttonArray;

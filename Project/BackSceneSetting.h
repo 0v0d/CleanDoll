@@ -26,8 +26,8 @@ public:
 	void Push();
 	void Pull();
 	void SetBackScene(SCENE_TYPE backScene);
-	void SetBackTitle() { _titleDialog = true; }
-	void SetBackSelectScene() { _stageSelectDialog = true; }
+	void SetBackTitle(bool titleDialog) { _titleDialog = titleDialog; }
+	void SetBackSelectScene(bool stageSelectDialog) { _stageSelectDialog = stageSelectDialog; }
 	void Render();
 	void Release();
 private:
