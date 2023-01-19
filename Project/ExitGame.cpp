@@ -60,7 +60,7 @@ void ExitGame::Pull() {
 
 void ExitGame::Render() {
 	if (_openExitDialog) {
-		CGraphicsUtilities::RenderFillRect(0, 0, g_pGraphics->GetTargetWidth(), g_pGraphics->GetTargetHeight(), MOF_ARGB(125, 0, 0, 0));
+		CGraphicsUtilities::RenderFillRect(0, 0, g_pGraphics->GetTargetWidth(), g_pGraphics->GetTargetHeight(), MOF_ARGB(230, 0, 0, 0));
 		_exitDialogTexture.RenderScale(g_pGraphics->GetTargetWidth() / 2 - _exitDialogTexture.GetWidth() / 2 * _backScale,
 			g_pGraphics->GetTargetHeight() / 2 - _exitDialogTexture.GetHeight() / 2 * _backScale, _backScale);
 		_yesButton.Render();
