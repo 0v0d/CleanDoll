@@ -60,7 +60,7 @@ void SettingManager::Render()
 	_openSettingButton.Render();
 	if (_openMenu)
 	{
-		CGraphicsUtilities::RenderFillRect(0, 0, g_pGraphics->GetTargetWidth(), g_pGraphics->GetTargetHeight(), MOF_ARGB(125, 0, 0, 0));
+		CGraphicsUtilities::RenderFillRect(0, 0, g_pGraphics->GetTargetWidth(), g_pGraphics->GetTargetHeight(), MOF_ARGB(230, 0, 0, 0));
 		_setUpSetting.Render();
 		if(!_setUpSetting.IsOpenSetting())_menuTexture.Render(g_pGraphics->GetTargetWidth() / 2 - _menuTexture.GetWidth() / 2, 50);
 	}

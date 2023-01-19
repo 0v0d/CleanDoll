@@ -63,7 +63,7 @@ void BackSceneSetting::Render()
 		_backTitleTextureDialog.RenderScale(g_pGraphics->GetTargetWidth() / 2 - _backTitleTextureDialog.GetWidth() / 2 * _backScale,
 			g_pGraphics->GetTargetHeight() / 2 - _backTitleTextureDialog.GetHeight() / 2 * _backScale, _backScale);
 	}
-	if (_SelectSecnedialog) {
+	else if (_SelectSecnedialog) {
 		_backSelectSceneDialog.RenderScale(g_pGraphics->GetTargetWidth() / 2 - _backSelectSceneDialog.GetWidth() / 2 * _backScale,
 			g_pGraphics->GetTargetHeight() / 2 - _backSelectSceneDialog.GetHeight() / 2 * _backScale, _backScale);
 	}
