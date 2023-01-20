@@ -267,7 +267,7 @@ void Field::EndMoveDoll() {
 		else if (_remainDistance <= 0) {
 			GameOver();
 		}
-		if (CheckCantMoveDoll()) {
+		else if (CheckCantMoveDoll()) {
 			GameOver();
 		}
 	}
