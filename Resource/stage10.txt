@@ -9,7 +9,7 @@
 1,1,1,1,1,1,1,1,
 1,1,1,1,1,1,1,1,
 
-7,.\desk.png,.\isu_front.png,.\isu_back.png,.\gas_stove.png,.\sink.png,.\dishcase.png,.\bookshelf.png,
+7,.\desk.png,.\isu_right_reverse.png,.\isu_left_reverse.png,.\gas_stove.png,.\sink.png,.\dishcase.png,.\bookshelf_reverse.png,
 -7,-7,-7,-7,0,0,0,0,
 0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,

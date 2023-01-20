@@ -7,11 +7,11 @@
 1,1,1,1,1,1,
 1,1,1,1,1,1,
 
-4,.\desk.png,.\bookshelf.png,.\isu_front.png,.\isu_back.png,
+5,.\desk_reverse.png,.\bookshelf.png,.\isu_right_reverse.png,.\isu_back.png,.\isu_left_reverse.png,
 2,0,0,0,0,0,
 2,0,0,-3,0,0,
 0,0,0,-1,4,0,
-0,0,0,-4,0,0,
+0,0,0,-5,0,0,
 0,0,0,0,0,0,
 0,0,0,0,0,0,
 

@@ -9,7 +9,7 @@
 1,1,1,1,1,1,1,
 
 
-6,.\desk.png,.\bookshelf.png,.\isu_front.png,.\isu_back.png,.\sink.png,.\dishcase.png,
+6,.\desk_reverse.png,.\bookshelf.png,.\isu_right_reverse.png,.\isu_left_reverse.png,.\sink_reverse.png,.\dishcase_reverse.png,
 -5,-6,-6,0,0,0,0,
 0,0,0,0,0,0,0,
 0,0,0,-3,0,0,0,

@@ -7,7 +7,7 @@
 0,0,0,1,1,0,
 0,0,0,1,1,0,
 
-2,.\desk.png,.\isu_front.png,
+2,.\desk_reverse.png,.\isu_front.png,
 0,0,0,0,0,0,
 0,0,0,0,0,0,
 0,0,2,-1,0,0,

@@ -8,7 +8,7 @@
 1,1,1,1,1,
 1,1,1,1,1,
 
-3,.\desk.png,.\bookshelf.png,.\isu_front.png,
+3,.\desk.png,.\bookshelf_reverse.png,.\isu_front.png,
 -2,-2,0,0,0,
 0,0,0,0,0,
 0,0,0,0,0,
