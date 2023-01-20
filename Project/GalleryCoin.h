@@ -10,6 +10,7 @@ class GalleryCoin :public IBaseAccessories
 public:
 	GalleryCoin(ACCESSORIES_TYPE accessoriesType);
 	void Initialize();
+	void LoadTexture();
 	void ReLoad();
 	void CalcuScale(float blockSizeX) { _scale = blockSizeX / _coinTexture.GetWidth(); }
 	void Update();

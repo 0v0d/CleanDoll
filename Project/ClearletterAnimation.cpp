@@ -1,7 +1,7 @@
 #include "ClearletterAnimation.h"
 
 void ClearletterAnimation::Initialize() {
-	LetterTexture.Load("‚¨‘|œ‚ğŠ®—¹‚·‚é ˜AŒ‹.png");
+	LoadTexture();
 	SpriteAnimationCreate anim = {
 		"‚¨‘|œŠ®—¹",
 		0,0,
@@ -11,6 +11,10 @@ void ClearletterAnimation::Initialize() {
 	LetterMotion.Create(anim);
 
 	scale = 1.0f;
+}
+
+void ClearletterAnimation::LoadTexture() {
+	LetterTexture.Load("‚¨‘|œ‚ğŠ®—¹‚·‚é ˜AŒ‹.png");
 }
 
 void ClearletterAnimation::Update() {

@@ -25,6 +25,8 @@ class TitleScene :public IBaseScene
 	CSoundBuffer		_ClickSound;
 public:
 	void Initialize();
+	void LoadTexture();
+	void LoadSound();
 	void ReLoad();
 	void Update();
 	void SetMousePos(Vector2);

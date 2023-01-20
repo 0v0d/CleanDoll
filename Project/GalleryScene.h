@@ -32,4 +32,5 @@ public:
 
 private:
 	void LoadTexture();
+	void LoadSound();
 };

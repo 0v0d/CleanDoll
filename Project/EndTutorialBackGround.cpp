@@ -2,7 +2,7 @@
 
 void EndTutorialBackGround::Initialize()
 {
-	_endTutorialGameClearTexture.Load("clearback.png");
+	LoadTexture();
 	CalcuPosition();
 	SpriteAnimationCreate anim[] =
 	{
@@ -19,6 +19,11 @@ void EndTutorialBackGround::Initialize()
 		},
 	};
 	_animation.Create(anim, 1);
+}
+
+void EndTutorialBackGround::LoadTexture() {
+	_endTutorialGameClearTexture.Load("clearback.png");
+
 }
 
 void EndTutorialBackGround::ReLoad() {

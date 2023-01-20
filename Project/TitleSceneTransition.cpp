@@ -4,7 +4,7 @@
 
 void TitleSceneTransition::Initialize() {
 	LoadTexture();
-	
+	LoadSound();
 	int ws = g_pGraphics->GetTargetWidth();
 	CreateButton(&_transitionStageSelectButton, Vector2(ws / 2, 750), &_stageSelectTexture, [&]() {
 		dynamic_cast<StageSelectScene*>(SceneManager::Instance().GetScene(SCENE_TYPE::STAGESELECT))->CreateTutorialField();
@@ -18,6 +18,10 @@ void TitleSceneTransition::LoadTexture() {
 	_stageSelectTexture.Load("ƒQ[ƒ€‚ğn‚ß‚é.png");
 	_galleryTexture.Load("ƒMƒƒƒ‰ƒŠ[.png");
 
+	_buttonSe.Load("BottanClick.mp3");
+}
+
+void TitleSceneTransition::LoadSound() {
 	_buttonSe.Load("BottanClick.mp3");
 }
 

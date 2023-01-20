@@ -4,6 +4,7 @@
 void GalleryScene::Initialize(){
 
 	LoadTexture();
+	LoadSound();
 	_backGround.SetTextureStatus(&_backGroundTexture, FULLSCREEN);
 	_barManager.Initialize();
 	_barManager.CreateBarArray();
@@ -22,10 +23,13 @@ void GalleryScene::Initialize(){
 }
 
 void GalleryScene::LoadTexture() {
-	_music.Load("BGM.mp3");
-	_buttonSe.Load("BottanClick.mp3");
 	_buttonTexture.Load("backSceneButton.png");
 	_backGroundTexture.Load("galleryBack.png");
+}
+
+void GalleryScene::LoadSound() {
+	_music.Load("BGM.mp3");
+	_buttonSe.Load("BottanClick.mp3");
 }
 
 void GalleryScene::ReLoad(){

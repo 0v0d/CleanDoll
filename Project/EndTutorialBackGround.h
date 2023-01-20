@@ -11,6 +11,7 @@ private:
 	float _scale = 4.0f;
 public:
 	void Initialize();
+	void LoadTexture();
 	void ReLoad();
 	void Update();
 	void CalcuPosition();

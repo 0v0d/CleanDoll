@@ -7,6 +7,7 @@
 void SetUpSetting::Initialize()
 {
 	LoadTexture();
+	LoadSound();
 	_audioButton.SetTexture(&_audioButtonTexure);
 	_audioButton.SetPosition(Vector2(g_pGraphics->GetTargetWidth() / 2, 300));
 
@@ -45,7 +46,11 @@ void SetUpSetting::LoadTexture() {
 
 
 
+}
+
+void SetUpSetting::LoadSound() {
 	_buttonSe.Load("BottanClick.mp3");
+
 }
 
 void SetUpSetting::CreateButton() {

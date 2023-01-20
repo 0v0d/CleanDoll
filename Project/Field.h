@@ -99,4 +99,5 @@ private:
 	void GameClear();
 	void CreateButton();
 	void LoadTexture();
+	void LoadSound();
 };

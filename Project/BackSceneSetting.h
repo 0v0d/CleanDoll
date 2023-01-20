@@ -18,6 +18,8 @@ private:
 	const float _backScale = 0.95f;
 public:
 	void Initialize();
+	void LoadTexture();
+	void LoadSound();
 	void SetOpenMenu(bool* openMenu) { _openMenu = openMenu; }
 	void SetOpenSetting(bool* openSetting) { _openBackSceneSetting = openSetting; }
 

@@ -7,7 +7,7 @@ void StageSelectScene::Initialize()
     _createField.Initialize();
     
     LoadTexture();
-
+    LaodSound();
     _LogoSlide.Initialize();
 
     _barManager.Initialize();
@@ -18,13 +18,17 @@ void StageSelectScene::Initialize()
     _preview.CalcuBaseScale(_barManager.GetBaseSizeY());
     _preview.CalcuBasePos();
     _preview.SetPreviewTexture(_barManager.GetBar(0)->GetPreviewTexture());
-    _music.Load("BGM.mp3");
     _stageSelectDialog.SetLoadStageMethod([&](int stageNumber) {return LoadStage(stageNumber);});
 }
 
 void StageSelectScene::LoadTexture()
 {
     _backGroundTexture.Load("StageSelectBackGround.png");
+}
+
+void StageSelectScene::LaodSound()
+{
+    _music.Load("BGM.mp3");
 }
 
 void StageSelectScene::ReLoad()

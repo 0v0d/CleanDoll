@@ -8,6 +8,7 @@ private:
 	float scale;
 public:
 	void Initialize();
+	void LoadTexture();
 	void Update();
 	void Rnder();
 	void Release();

@@ -39,4 +39,5 @@ public:
     CSoundBuffer* GetBGM() { return &_music; }
 private:
     void LoadTexture();
+    void LoadSound();
 };

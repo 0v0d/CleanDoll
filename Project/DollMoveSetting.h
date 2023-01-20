@@ -47,6 +47,7 @@ public:
 
 private:
 	void LoadTexture();
+	void LoadSound();
 	void LimitMove();
 	void CalcuLastPos();
 	void SetMethodButton();

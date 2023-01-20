@@ -22,5 +22,7 @@ public:
 	bool IsOpenMenu() { return _openMenu; }
 
 private:
+	void LoadTexture();
+	void LoadSound();
 	void CreateButton();
 };

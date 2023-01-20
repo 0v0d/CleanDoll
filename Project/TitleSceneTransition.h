@@ -24,5 +24,6 @@ public:
 
 private:
 	void LoadTexture();
+	void LoadSound();
 	void CreateButton(Button*,Vector2 pos,CTexture*,std::function<void()>);
 };

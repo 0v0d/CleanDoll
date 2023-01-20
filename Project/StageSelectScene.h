@@ -46,5 +46,6 @@ public:
 	CSoundBuffer* GetBGM() { return &_music; }
 private:
 	void LoadTexture();
+	void LaodSound();
 	void LoadStage(int stageNumber);
 };

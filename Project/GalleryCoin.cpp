@@ -6,7 +6,12 @@ GalleryCoin::GalleryCoin(ACCESSORIES_TYPE accessoriesType) :
 
 void GalleryCoin::Initialize()
 {
+	LoadTexture();
+}
+
+void GalleryCoin::LoadTexture() {
 	_coinTexture.Load("coin.png");
+
 }
 
 void GalleryCoin::ReLoad()

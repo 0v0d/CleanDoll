@@ -6,7 +6,7 @@ void StageSelectDialog::Initialize() {
 	const float spaceX = 100;
 	const int spaceY = 60;
 	LoadTexture();
-
+	LaodSound():
 	CreateButton(&_yesButton, Vector2(_basePos.x - spaceX / 2 - _yesTexture.GetWidth() / 2, _basePos.y + spaceY), &_yesTexture, [&]() {_loadStageMethod(_pickStageNumber); });
 	CreateButton(&_noButton, Vector2(_basePos.x + spaceX / 2 + _noTexture.GetWidth() / 2, _basePos.y + spaceY), &_noTexture, [&]() {
 		_openStaSeleDialog = false;
@@ -26,6 +26,9 @@ void StageSelectDialog::LoadTexture() {
 	_noTexture.Load("いいえ.png");
 	_backTexture.Load("ステージ選択後背景.png");
 
+}
+
+void StageSelectDialog::LaodSound() {
 	_buttonSe.Load("BottanClick.mp3");
 }
 

@@ -8,12 +8,8 @@ void BackSceneSetting::Initialize()
 	const float spaceX = 100;
 	const float spaceY = 100;
 	_titleDialog = _stageSelectDialog = false;
-	_backTexture.Load("はい.png");
-	_closeTexture.Load("いいえ.png");
-	_buttonSe.Load("BottanClick.mp3");
-	_backTitleTextureDialog.Load("タイトルに戻りますか？.png");
-	_backSelectSceneDialog.Load("ステージ選択に戻りますか？.png");
-
+	LoadTexture();
+	LoadSound();
 	CreateButton(&_backButton, Vector2(_basePos.x - spaceX / 2 - _backTexture.GetWidth() / 2, _basePos.y + spaceY), &_backTexture, [&]() {
 		SceneManager::Instance().ChangeScene(_backScene);
 	*_openMenu = false;
@@ -23,6 +19,17 @@ void BackSceneSetting::Initialize()
 	CreateButton(&_closeButton, Vector2(_basePos.x + spaceX / 2 + _closeTexture.GetWidth() / 2, _basePos.y + spaceY), &_closeTexture, [&]() {
 		*_openBackSceneSetting = false;
 		});
+}
+
+void BackSceneSetting::LoadTexture() {
+	_backTexture.Load("はい.png");
+	_closeTexture.Load("いいえ.png");
+	_backTitleTextureDialog.Load("タイトルに戻りますか？.png");
+	_backSelectSceneDialog.Load("ステージ選択に戻りますか？.png");
+}
+
+void BackSceneSetting::LoadSound() {
+	_buttonSe.Load("BottanClick.mp3");
 }
 
 void BackSceneSetting::CreateButton(Button* button, Vector2 pos, CTexture* texture, std::function<void()> callMethod) {

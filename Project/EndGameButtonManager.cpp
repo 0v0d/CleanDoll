@@ -1,8 +1,12 @@
 #include "EndGameButtonManager.h"
 
 void EndGameButtonManager::Initialize(){
+	LoadSound();
+}
 
+void EndGameButtonManager::LoadSound() {
 	_buttonSe.Load("BottanClick.mp3");
+
 }
 
 void EndGameButtonManager::ReLoad(){

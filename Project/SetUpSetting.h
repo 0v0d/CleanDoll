@@ -38,5 +38,6 @@ public:
 
 private:
 	void LoadTexture();
+	void LoadSound();
 	void CreateButton();
 };

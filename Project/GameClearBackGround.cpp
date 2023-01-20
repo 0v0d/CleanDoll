@@ -2,7 +2,7 @@
 
 void GameClearBackGround::Initialize()
 {
-	_gameClearBackGroundTexture.Load("clearback.png");
+	LoadTexture();
 	CalcuPosition();
 	SpriteAnimationCreate anim[] =
 	{
@@ -19,6 +19,11 @@ void GameClearBackGround::Initialize()
 		},
 	};
 	_animation.Create(anim, 1);
+}
+
+void GameClearBackGround::LoadTexture() {
+	_gameClearBackGroundTexture.Load("clearback.png");
+
 }
 
 void GameClearBackGround::ReLoad() {
