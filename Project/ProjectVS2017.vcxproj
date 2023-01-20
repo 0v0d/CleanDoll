@@ -122,6 +122,7 @@
     <ClCompile Include="EndTutorialBackGround.cpp" />
     <ClCompile Include="EndTutorialLogoAnimation.cpp" />
     <ClCompile Include="GalleryTexture.cpp" />
+    <ClCompile Include="GameOverAnimation.cpp" />
     <ClCompile Include="GameStartAnimation.cpp" />
     <ClCompile Include="IBaseSound.cpp" />
     <ClCompile Include="MoveBackGround.cpp" />
@@ -214,6 +215,7 @@
     <ClInclude Include="EnergyAnimation.h" />
     <ClInclude Include="GalleryCoin.h" />
     <ClInclude Include="GalleryTexture.h" />
+    <ClInclude Include="GameOverAnimation.h" />
     <ClInclude Include="GameStartAnimation.h" />
     <ClInclude Include="IBaseSound.h" />
     <ClInclude Include="MoveBackGround.h" />
