@@ -1,6 +1,6 @@
 #include "GalleryTexture.h"
 
-void GalleryTexture::Initialize(){
+void GalleryTexture::Initialize() {
 	LoadTexture();
 
 	const  Vector2 supPos = Vector2(10, 250);
@@ -9,11 +9,11 @@ void GalleryTexture::Initialize(){
 	_galleryPos = Vector2(_flamePos.x + space, _flamePos.y + space);
 }
 
-void GalleryTexture::LoadTexture(){
+void GalleryTexture::LoadTexture() {
 	_backFlameTexture.Load("galleryflame.png");
 }
 
-void GalleryTexture::ReLoad(){
+void GalleryTexture::ReLoad() {
 }
 
 void GalleryTexture::Push()
@@ -32,28 +32,30 @@ void GalleryTexture::SetGalleryTexture(CTexture* texture) {
 }
 
 void GalleryTexture::CalcuGalleryScale() {
-	constexpr auto flameHeightSpace = 32;
+	constexpr auto flameHeightSpace = 44;
 	_galleryScale = (float)(_backFlameTexture.GetHeight() - flameHeightSpace) / _galleryTexture->GetHeight();
 }
 
 bool GalleryTexture::CheckPushGallery() {
-	return ((_mousePos.x >= _galleryPos.x && _mousePos.x <= _galleryPos.x + _galleryTexture->GetWidth() * _galleryScale)&&
+	return ((_mousePos.x >= _galleryPos.x && _mousePos.x <= _galleryPos.x + _galleryTexture->GetWidth() * _galleryScale) &&
 		(_mousePos.y >= _galleryPos.y && _mousePos.y <= _galleryPos.y + _galleryTexture->GetHeight() * _galleryScale));
 }
 
-void GalleryTexture::Render(){
+void GalleryTexture::Render() {
 	_backFlameTexture.Render(_flamePos.x, _flamePos.y);
-	if (_galleryTexture != nullptr){
+	if (_galleryTexture != nullptr) {
 		_galleryTexture->RenderScale(_galleryPos.x, _galleryPos.y, _galleryScale);
 	}
-	if (_popUpTexture != nullptr&& _popUpShow) {
+
+
+	if (_popUpTexture != nullptr && _popUpShow) {
 		constexpr float _scale = 1.4;
 		CGraphicsUtilities::RenderFillRect(0, 0, g_pGraphics->GetTargetWidth(), g_pGraphics->GetTargetHeight(), MOF_ARGB(230, 0, 0, 0));
 		_popUpTexture->RenderScale(g_pGraphics->GetTargetWidth() / 2 - _popUpTexture->GetWidth() * _galleryScale / 2, g_pGraphics->GetTargetHeight() / 2 - _popUpTexture->GetHeight() * _galleryScale / 2, _galleryScale);
 	}
-	
+
 }
 
-void GalleryTexture::Release(){
+void GalleryTexture::Release() {
 	_backFlameTexture.Release();
 }
