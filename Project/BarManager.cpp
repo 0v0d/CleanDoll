@@ -98,7 +98,7 @@ void BarManager::StartStage(int barNumber){
 
 void BarManager::StartNextStage() {
 	_currentStage++;
-	if (_currentStage > _stageValue)_currentStage = _stageValue;
+	_currentStage %= _stageValue;
 	
 	StartStage(_currentStage);
 }
