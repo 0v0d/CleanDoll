@@ -34,8 +34,6 @@ void SetUpSetting::Initialize()
 
 	dynamic_cast<BackSceneSetting*>(_buttonArray[&_backSceneButton])->SetOpenMenu(_openMenu);
 	_openSetting = false;
-	_openbackTitle = false;
-	_openbaclSelectScene = false;
 }
 
 void SetUpSetting::LoadTexture() {
@@ -79,8 +77,7 @@ void SetUpSetting::CreateButton() {
 
 void SetUpSetting::Update()
 {
-	if (_openSetting)
-	{
+	if (_openSetting){
 		_currentSetting->Update();
 	}
 }
@@ -116,6 +113,7 @@ void SetUpSetting::Pull()
 {
 	if (_openSetting) {
 		_currentSetting->Pull();
+		
 	}
 	else {
 		_closeMenuButton.Pull();
@@ -128,19 +126,20 @@ void SetUpSetting::Pull()
 void SetUpSetting::DetermineBackScene() {
 	SCENE_TYPE currentSceneType = SceneManager::Instance().GetCurrentSceneType();
 	SCENE_TYPE backSceneType = SCENE_TYPE::TITLE;
-
+	BackSceneSetting* backSceneSetting = dynamic_cast<BackSceneSetting*>(_buttonArray[&_backSceneButton]);
 	switch (currentSceneType) {
 	case  SCENE_TYPE::STAGESELECT:
 		backSceneType = SCENE_TYPE::TITLE;
 		_backSceneButton.SetTexture(&_backTitleSceneTexture);
-		dynamic_cast<BackSceneSetting*>(_buttonArray[&_backSceneButton])->SetBackTitle(true);
+		backSceneSetting->SetBackSelectScene(false);
+		backSceneSetting->SetBackTitle(true);
 		break;
 
 	case  SCENE_TYPE::GAME:
 		backSceneType = SCENE_TYPE::STAGESELECT;
 		_backSceneButton.SetTexture(&_backSelectSceneTexture);
-		_openbaclSelectScene = true;
-		dynamic_cast<BackSceneSetting*>(_buttonArray[&_backSceneButton])->SetBackSelectScene(true);
+		backSceneSetting->SetBackTitle(false);
+		backSceneSetting->SetBackSelectScene(true);
 		break;
 	}
 	//_backSceneButton.SetPosition(Vector2(g_pGraphics->GetTargetWidth() / 2, 500));
@@ -151,18 +150,13 @@ void SetUpSetting::DetermineBackScene() {
 
 void SetUpSetting::Render()
 {
-	if (_openSetting)
-	{
+	if (_openSetting){
 		_currentSetting->Render();
 	}
-	else
-	{
-		for (auto itr = _buttonArray.begin(); itr != _buttonArray.end(); itr++)
-		{
+	else{
+		for (auto itr = _buttonArray.begin(); itr != _buttonArray.end(); itr++){
 			itr->first->Render();
 		}
-
-	
 		_closeMenuButton.Render();
 	}
 

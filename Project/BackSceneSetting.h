@@ -13,7 +13,7 @@ private:
 	CTexture _closeTexture, _backTexture;
 	SCENE_TYPE _backScene;
 	CSoundBuffer _buttonSe;
-	bool _Titledialog,_SelectSecnedialog;
+	bool _titleDialog, _stageSelectDialog;
 	CTexture _backTitleTextureDialog, _backSelectSceneDialog;
 	const float _backScale = 0.95f;
 public:
@@ -26,8 +26,8 @@ public:
 	void Push();
 	void Pull();
 	void SetBackScene(SCENE_TYPE backScene);
-	void SetBackTitle(bool backTitle) { _Titledialog = backTitle; }
-	void SetBackSelectScene(bool backSelectScene) { _SelectSecnedialog = backSelectScene; }
+	void SetBackTitle(bool titleDialog) { _titleDialog = titleDialog; }
+	void SetBackSelectScene(bool stageSelectDialog) { _stageSelectDialog = stageSelectDialog; }
 	void Render();
 	void Release();
 private:
