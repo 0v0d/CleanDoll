@@ -75,6 +75,7 @@ void Doll::Update()
 
 void Doll::Move()
 {
+
 	if (_animationflg) return;
 
 	_dollPosition.x += _nextPosition.x / _moveSpeed;
@@ -204,6 +205,13 @@ void Doll::Inversion() {
 void Doll::SetMoveAnimation() {
 	_mopAnimation.SetMoveAnimationFlg(_move);
 	_broomAnimation.SetMoveAnimationFlg(_move);
+}
+
+void Doll::CalcuSpeed(float speedFactor)
+{
+	_moveSpeed = _framePBlock / speedFactor;
+	_mopAnimation.SetMoveSpeed(speedFactor);
+	_broomAnimation.SetMoveSpeed(speedFactor);
 }
 
 void Doll::Render()

@@ -68,7 +68,7 @@ void DollMopAnimation::ReLoad() {
 }
 
 void DollMopAnimation::Update() {
-	_motionController.AddTimer(CUtilities::GetFrameSecond());
+	_motionController.AddTimer(CUtilities::GetFrameSecond() * _moveSpeed);
 	_renderRect = _motionController.GetSrcRect();
 
 	if ((_motionController.GetMotionNo() == PICK_MOP_1) && _motionController.IsEndMotion())

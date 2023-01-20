@@ -47,7 +47,7 @@ public:
 	void CalcuScale(float boxSizeY, float scale);
 	void SetDumpValue(int dustDumpValue, int waterDumpValue);
 	void SetEndMoveMethod(std::function<void()> method) { _endMoveMethod = method; }
-	void CalcuSpeed(float speedFactor) { _moveSpeed = _framePBlock / speedFactor; }
+	void CalcuSpeed(float speedFactor);
 
 	void Update();
 	void SetNextBlock(Block* blcok);
