@@ -18,7 +18,7 @@ void TitleScene::Initialize()
 }
 
 void TitleScene::LoadTexture() {
-	_titleBackTexture.Load("titleback.png");
+	_titleBackTexture.Load("BackGround.png");
 }
 
 void TitleScene::LoadSound() {

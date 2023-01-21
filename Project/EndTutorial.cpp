@@ -6,9 +6,8 @@ void EndTutorial::Initialize(){
 
 	Vector2 _stageSelectButtonPos = Vector2(g_pGraphics->GetTargetWidth()/2 - _stageSelectTexture.GetWidth()/2, g_pGraphics->GetTargetHeight()/2);
 
-	_backGroundAnim.Initialize();
+	_clearAnimation.Initialize();
 	_dollAnim.Initialize();
-	_logoAnim.Initialize();
 	_endGameButtonManager.Initialize();
 
 	CreateButtonArray();
@@ -29,7 +28,7 @@ void EndTutorial::CreateButtonArray() {
 }
 
 void EndTutorial::ReLoad(){
-	_backGroundAnim.ReLoad();
+	_clearAnimation.ReLoad();
 }
 
 void EndTutorial::Update(){
@@ -38,16 +37,10 @@ void EndTutorial::Update(){
 
 void EndTutorial::UpdateAnimation()
 {
-	if (!_backGroundAnim.IsEndMotion()) {
-		_backGroundAnim.Update();
+	if (!_clearAnimation.IsEndMotion()) {
+		_clearAnimation.Update();
 		return;
 	}
-
-	if (!_logoAnim.IsEndeMotion()) {
-		_logoAnim.Update();
-		return;
-	}
-
 	_dollAnim.Update();
 	_endGameButtonManager.Update();
 }
@@ -66,10 +59,9 @@ void EndTutorial::Pull() {
 
 void EndTutorial::Render(){
 	CGraphicsUtilities::RenderFillRect(0, 0, g_pGraphics->GetTargetWidth(), g_pGraphics->GetTargetHeight(), MOF_ARGB(210, 0, 0, 0));
-	_backGroundAnim.Render();
-	_logoAnim.Render();
+	_clearAnimation.Render();
 
-	if (!_logoAnim.IsEndeMotion()) return;
+	if (!_clearAnimation.IsEndMotion()) return;
 
 	_dollAnim.Render();
 	_endGameButtonManager.Render();
@@ -77,9 +69,9 @@ void EndTutorial::Render(){
 
 void EndTutorial::Release(){
 	_stageSelectTexture.Release();
-	_backGroundAnim.Release();
+	_clearAnimation.Release();
 	_dollAnim.Release();
-	_logoAnim.Release();
+	
 
 	_endGameButtonManager.Release();
 }

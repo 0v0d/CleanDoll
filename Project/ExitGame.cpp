@@ -20,7 +20,7 @@ void ExitGame::Initialize() {
 
 void ExitGame::LoadTexture() {
 	_yesTexture.Load("ÇÕÇ¢.png");
-	_noTexture.Load("NoButton.png");
+	_noTexture.Load("Ç¢Ç¢Ç¶.png");
 	_exitDialogTexture.Load("ÉQÅ[ÉÄÇèIóπÇµÇ‹Ç∑Ç©ÅH.png");
 }
 

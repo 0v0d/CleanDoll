@@ -3,7 +3,7 @@
 void GameOverAnimation::Initialize() {
 	LoadTexture();
 	CreateAnimation();
-
+	_pos = Vector2(0, 0);
 }
 
 void GameOverAnimation::LoadTexture() {
@@ -70,7 +70,7 @@ void GameOverAnimation::SetNextAnimation() {
 }
 
 void GameOverAnimation::Render() {
-	_gameOverTexture.Render(0, 0, _renderRect);
+	_gameOverTexture.Render(_pos.x, _pos.y, _renderRect);
 }
 
 void GameOverAnimation::Release() {

@@ -293,13 +293,7 @@
     <ClCompile Include="GalleryCoin.cpp">
       <Filter>ソース ファイル\Scene\GameScene\Field\BlockManager\Object</Filter>
     </ClCompile>
-    <ClCompile Include="GameClearBackGround.cpp">
-      <Filter>ソース ファイル\Scene\GameScene\EndGameProcess\GameClear\Animation</Filter>
-    </ClCompile>
     <ClCompile Include="GameClearDollAnimation.cpp">
-      <Filter>ソース ファイル\Scene\GameScene\EndGameProcess\GameClear\Animation</Filter>
-    </ClCompile>
-    <ClCompile Include="GameClearLogoAnimation.cpp">
       <Filter>ソース ファイル\Scene\GameScene\EndGameProcess\GameClear\Animation</Filter>
     </ClCompile>
     <ClCompile Include="EndGameButtonAnimation.cpp">
@@ -464,6 +458,9 @@
     <ClCompile Include="GameOverAnimation.cpp">
       <Filter>ソース ファイル\Scene\GameScene\EndGameProcess\GameOver\Animation</Filter>
     </ClCompile>
+    <ClCompile Include="GameClearAnimation.cpp">
+      <Filter>ソース ファイル\Scene\GameScene\EndGameProcess\GameClear\Animation</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GameApp.h">
@@ -595,16 +592,7 @@
     <ClInclude Include="GalleryCoin.h">
       <Filter>ソース ファイル\Scene\GameScene\Field\BlockManager\Object</Filter>
     </ClInclude>
-    <ClInclude Include="GameOverLogoAnimation.h">
-      <Filter>ソース ファイル\Scene\GameScene\EndGameProcess\GameOver</Filter>
-    </ClInclude>
-    <ClInclude Include="GameClearBackGround.h">
-      <Filter>ソース ファイル\Scene\GameScene\EndGameProcess\GameClear\Animation</Filter>
-    </ClInclude>
     <ClInclude Include="GameClearDollAnimation.h">
-      <Filter>ソース ファイル\Scene\GameScene\EndGameProcess\GameClear\Animation</Filter>
-    </ClInclude>
-    <ClInclude Include="GameClearLogoAnimation.h">
       <Filter>ソース ファイル\Scene\GameScene\EndGameProcess\GameClear\Animation</Filter>
     </ClInclude>
     <ClInclude Include="EndGameButtonAnimation.h">
@@ -775,6 +763,9 @@
     </ClInclude>
     <ClInclude Include="GameOverAnimation.h">
       <Filter>ソース ファイル\Scene\GameScene\EndGameProcess\GameOver\Animation</Filter>
+    </ClInclude>
+    <ClInclude Include="GameClearAnimation.h">
+      <Filter>ソース ファイル\Scene\GameScene\EndGameProcess\GameClear\Animation</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

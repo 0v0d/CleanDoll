@@ -1,14 +1,12 @@
 #pragma once
 #include	"IBaseEndGameProcess.h"
-#include	"GameClearLogoAnimation.h"
-#include	"GameClearBackGround.h"
 #include	"GameClearDollAnimation.h"
 #include	"EndGameButtonManager.h"
+#include	"GameClearAnimation.h"
 
 class GameClear:public IBaseEndGameProcess
 {
-	GameClearLogoAnimation _logoAnim;
-	GameClearBackGround _backGroundAnim;
+	GameClearAnimation _clearAnimation;
 	GameClearDollAnimation _dollAnim;
 
 	EndGameButtonManager _endGameButtonManager;

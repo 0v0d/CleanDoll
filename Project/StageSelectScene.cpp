@@ -23,7 +23,7 @@ void StageSelectScene::Initialize()
 
 void StageSelectScene::LoadTexture()
 {
-    _backGroundTexture.Load("StageSelectBackGround.png");
+    _backGroundTexture.Load("BackGround.png");
 }
 
 void StageSelectScene::LaodSound()
