@@ -85,7 +85,7 @@ void GameClear::Pull() {
 
 void GameClear::Render()
 {
-	CGraphicsUtilities::RenderFillRect(0, 0, g_pGraphics->GetTargetWidth(), g_pGraphics->GetTargetHeight(), MOF_ARGB(125, 0, 0, 0));
+	CGraphicsUtilities::RenderFillRect(0, 0, g_pGraphics->GetTargetWidth(), g_pGraphics->GetTargetHeight(), MOF_ARGB(210, 0, 0, 0));
 	_backGroundAnim.Render();
 	_logoAnim.Render();
 
