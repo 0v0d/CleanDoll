@@ -8,6 +8,7 @@ void TitleLogoAnimation::Initialize(){
 	_currentAnimationTexture = &_logoTextureArray[0];
 	_loopAnimation = false;
 	_renderRect = _currentAniamtion->GetSrcRect();
+	CalcuPosition(Vector2(_renderRect.Right, _renderRect.Bottom));
 }
 
 void TitleLogoAnimation::LoadTexture(){
@@ -34,7 +35,6 @@ void TitleLogoAnimation::CreateAnimation() {
 void TitleLogoAnimation::CreateLogoAnimation(int logoNumber) {
 	const int animationValueX = 5;
 	Vector2 rectSize = Vector2(_logoTextureArray[logoNumber].GetWidth() / animationValueX, _logoTextureArray[logoNumber].GetHeight() / _animationY);
-	CalcuPosition(rectSize);
 	int number = 0;
 
 	const int frame = 2;
