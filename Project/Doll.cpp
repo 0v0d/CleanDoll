@@ -138,9 +138,10 @@ void Doll::ActionAccessories()
 void Doll::CleanDump()
 {
 	Dump* blockOnDump = dynamic_cast<Dump*>(_nextBlock->GetBlockOnObject()->GetAccessories());
-	if ((!_holdMop && blockOnDump->GetDumpType() == DUMP_TYPE::WATER) ||
-		(_holdMop && blockOnDump->GetDumpType() == DUMP_TYPE::DUST))return;
-
+	if (!_holdMop && blockOnDump->GetDumpType() == DUMP_TYPE::WATER) {
+		_field->GameOver();
+	}
+	else if ((!_holdMop && blockOnDump->GetDumpType() == DUMP_TYPE::WATER)||(_holdMop && blockOnDump->GetDumpType() == DUMP_TYPE::DUST))return;
 	blockOnDump->CalucAlphaValue(_holdMop ? _mopAnimation.GetCleanTime() :_broomAnimation.GetCleanTime());
 	blockOnDump->StartCleanflg(true);
 	if (_holdMop) {
