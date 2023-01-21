@@ -6,6 +6,7 @@
 void Field::Initialize()
 {
 	LoadTexture();
+	LoadSound();
 	CreateButton();
 	_operateDoll.SetBlockManager(&_blockManager);
 	_operateDoll.SetDoll(&_doll);
@@ -33,6 +34,9 @@ void Field::Initialize()
 void Field::LoadTexture()
 {
 	_clearButtonTexture.Load("clearButton.png");
+}
+
+void Field::LoadSound() {
 	_buttonSe.Load("ClicktoStart.mp3");
 }
 

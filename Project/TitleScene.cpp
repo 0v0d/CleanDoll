@@ -2,18 +2,27 @@
 
 void TitleScene::Initialize()
 {
+	LoadTexture();
+	LoadSound();
 	_titleLogoAnimation.Initialize();
 	_titleClickAnimation.Initialize();
 	_transition.Initialize();
 
-	_titleBackTexture.Load("titleback.png");
 	_backGround.SetTextureStatus(&_titleBackTexture, FULLSCREEN);
 
-	_music.Load("BGM.mp3");
 	_openTransition = false;
 
 	_fadeIn.SetTime(100);
 	_fadeIn.Start();
+
+}
+
+void TitleScene::LoadTexture() {
+	_titleBackTexture.Load("titleback.png");
+}
+
+void TitleScene::LoadSound() {
+	_music.Load("BGM.mp3");
 	_ClickSound.Load("ClicktoStart.mp3");
 
 }

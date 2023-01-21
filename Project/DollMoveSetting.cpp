@@ -8,6 +8,7 @@ void DollMoveSetting::Initialize()
 	_factorTextureArray = new CTexture[_baseButtonValue];
 
 	LoadTexture();
+	LoadSound();
 	_barPos = Vector2(g_pGraphics->GetTargetWidth() / 2 - _barTexture.GetWidth() / 2, 350);
 	_bottonBetweenDistance = _barTexture.GetWidth() / _baseSpaseCount;
 	
@@ -48,8 +49,6 @@ void DollMoveSetting::LoadTexture()
 	_selectButtonTexture.Load("選択.png");
 	_closeButtonTexture.Load("戻る　テキスト.png");
 
-	_se.Load("BottanClick.mp3");
-
 	_factorTextureArray[0].Load("×0.5.png");
 	_factorTextureArray[1].Load("×1.png");
 	_factorTextureArray[2].Load("×1.5.png");
@@ -57,6 +56,10 @@ void DollMoveSetting::LoadTexture()
 	_factorTextureArray[4].Load("×4.png");
 
 	_logoTexture.Load("ドール速度設定.png");
+}
+
+void DollMoveSetting::LoadSound() {
+	_se.Load("BottanClick.mp3");
 }
 
 void DollMoveSetting::SetMethodButton() {

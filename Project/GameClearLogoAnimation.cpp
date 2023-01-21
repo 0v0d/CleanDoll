@@ -2,7 +2,7 @@
 
 void GameClearLogoAnimation::Initialize()
 {
-	_stageClearTexture.Load("cleartext.png");
+	LoadTexture();
 	_pos = Vector2(0, 0);
 	SpriteAnimationCreate anim[] =
 	{
@@ -16,6 +16,11 @@ void GameClearLogoAnimation::Initialize()
 		},
 	};
 	_animation.Create(anim, 1);
+}
+
+void GameClearLogoAnimation::LoadTexture() {
+	_stageClearTexture.Load("cleartext.png");
+
 }
 
 void GameClearLogoAnimation::ReLoad() {

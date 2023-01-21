@@ -5,13 +5,22 @@ void SettingManager::Initialize()
 	_setUpSetting.SetOpenMenu(&_openMenu);
 	_setUpSetting.Initialize();
 	CreateButton();
+	LoadTexture();
+	LoadSound();
 	_openMenu = false;
+}
+
+void SettingManager::LoadTexture() {
 	_menuTexture.Load("ƒƒjƒ…[@UI.png");
+	_openButtonTexture.Load("Ý’èƒƒS.png");
+
+}
+
+void SettingManager ::LoadSound () {
+	_buttonSe.Load("BottanClick.mp3");
 }
 
 void SettingManager::CreateButton() {
-	_openButtonTexture.Load("Ý’èƒƒS.png");
-	_buttonSe.Load("BottanClick.mp3");
 
 	_openSettingButton.SetTexture(&_openButtonTexture);
 	_openSettingButton.SetPosition(Vector2(g_pGraphics->GetTargetWidth() - 150, 100));

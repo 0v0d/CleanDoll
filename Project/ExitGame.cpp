@@ -8,6 +8,7 @@ void ExitGame::Initialize() {
 	const float	 spaceX = 100;
 	const int spaceY = 60;
 	LoadTexture();
+	LaodSound();
 	CreateButton(&_yesButton, Vector2(_basePos.x - spaceX / 2 - _yesTexture.GetWidth() / 2, _basePos.y + spaceY), &_yesTexture, [&] {PostQuitMessage(0); });
 	CreateButton(&_noButton, Vector2(_basePos.x + spaceX / 2 + _noTexture.GetWidth() / 2, _basePos.y + spaceY), &_noTexture, [&] {	
 		SetMousePos(Vector2(0, 0));
@@ -21,9 +22,11 @@ void ExitGame::LoadTexture() {
 	_yesTexture.Load("ÇÕÇ¢.png");
 	_noTexture.Load("Ç¢Ç¢Ç¶.png");
 	_exitDialogTexture.Load("ÉQÅ[ÉÄÇèIóπÇµÇ‹Ç∑Ç©ÅH.png");
-	_buttonSe.Load("BottanClick.mp3");
 }
 
+void ExitGame::LaodSound() {
+	_buttonSe.Load("BottanClick.mp3");
+}
 
 void ExitGame::Update() {
 

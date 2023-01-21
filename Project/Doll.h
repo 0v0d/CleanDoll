@@ -41,6 +41,7 @@ class Doll
 	CSoundBuffer MopSound;
 public:
 	void Initialize();
+	void LoadTexture();
 	void ReLoad();
 	void SetField(Field* field) { _field = field; }
 	void SetPosition(Vector2 blockCenterPosisiton);

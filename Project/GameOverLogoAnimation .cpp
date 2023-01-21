@@ -2,7 +2,7 @@
 
 void GameOverLogoAnimation::Initialize()
 {
-	_missTakeLogTexture.Load("gameover.png");
+	LoadTexture();
 	_pos = Vector2(-100, 0);
 	float _speed = 5;
 	SpriteAnimationCreate anim[] =
@@ -18,6 +18,11 @@ void GameOverLogoAnimation::Initialize()
 		},
 	};
 	_animation.Create(anim, 1);
+}
+
+void GameOverLogoAnimation::LoadTexture() {
+	_missTakeLogTexture.Load("gameover.png");
+
 }
 
 void GameOverLogoAnimation::ReLoad() {

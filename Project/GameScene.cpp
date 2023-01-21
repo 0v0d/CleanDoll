@@ -3,11 +3,10 @@
 void GameScene::Initialize()
 {
 	LoadTexture();
-
+	LoadSound();
 	_backGround.SetTextureStatus(&_gameBackTexture, REPEATSCREEN);
 	_field.Initialize();
-	_music.Load("BGM.mp3");
-	_buttonSe.Load("BottanClick.mp3");
+	
 
 	_startAnimation.Initialize();
 
@@ -28,6 +27,11 @@ void GameScene::Initialize()
 void GameScene::LoadTexture() {
 	_gameBackTexture.Load("GameBackGround.png");
 	_resetButtonTexture.Load("reset_button.png");
+}
+
+void GameScene::LoadSound() {
+	_music.Load("BGM.mp3");
+	_buttonSe.Load("BottanClick.mp3");
 }
 
 void GameScene::ReLoad()

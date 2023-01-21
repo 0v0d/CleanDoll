@@ -2,7 +2,7 @@
 
 void GameClearDollAnimation::Initialize()
 {
-	_clearDollTexture.Load("gamecleardoll.png");
+	LoadTexture();
 	_pos = Vector2(1000, 350);
 	SpriteAnimationCreate anim[] =
 	{
@@ -16,6 +16,11 @@ void GameClearDollAnimation::Initialize()
 		},
 	};
 	_animation.Create(anim, 1);
+}
+
+void GameClearDollAnimation::LoadTexture() {
+	_clearDollTexture.Load("gamecleardoll.png");
+
 }
 
 void GameClearDollAnimation::ReLoad() {

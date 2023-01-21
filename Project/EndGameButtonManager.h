@@ -12,6 +12,7 @@ class EndGameButtonManager
 public:
 
 	void Initialize();
+	void LoadSound();
 	void ReLoad();
 	void CreateButton(CTexture*, float sizeX, float sizeY, Vector2 centerPos,std::function<void()>);
 	

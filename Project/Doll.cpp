@@ -4,11 +4,16 @@
 
 void Doll::Initialize()
 {
-	_dollTexture.Load("doll.png");
+	LoadTexture();
 	_field->SetDollMove(&_move);
 	_broomAnimation.Initialize();
 	_mopAnimation.Initialize();
 	_dollTextureSize = Vector2(_dollTexture.GetWidth() / _textureValue, _dollTexture.GetHeight() /( _broomAnimation.GetMotionValue()+_mopAnimation.GetMotionValue()));
+}
+
+void Doll::LoadTexture() {
+	_dollTexture.Load("doll.png");
+
 }
 
 void Doll::ReLoad()
