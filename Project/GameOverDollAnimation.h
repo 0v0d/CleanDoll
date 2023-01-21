@@ -17,4 +17,3 @@ public:
 	void Release();
 	bool IsEndeMotion() { return _animation.IsEndMotion(); }
 };
-
