@@ -122,6 +122,7 @@
     <ClCompile Include="EndTutorialBackGround.cpp" />
     <ClCompile Include="EndTutorialLogoAnimation.cpp" />
     <ClCompile Include="GalleryTexture.cpp" />
+    <ClCompile Include="GameOverAnimation.cpp" />
     <ClCompile Include="GameStartAnimation.cpp" />
     <ClCompile Include="IBaseSound.cpp" />
     <ClCompile Include="MoveBackGround.cpp" />
@@ -148,9 +149,7 @@
     <ClCompile Include="GameClearDollAnimation.cpp" />
     <ClCompile Include="GameClearLogoAnimation.cpp" />
     <ClCompile Include="GameOver.cpp" />
-    <ClCompile Include="GameOverBackGround.cpp" />
     <ClCompile Include="GameOverDollAnimation .cpp" />
-    <ClCompile Include="GameOverLogoAnimation .cpp" />
     <ClCompile Include="GameScene.cpp" />
     <ClCompile Include="IBaseAccessories.cpp" />
     <ClCompile Include="IBaseEndGameProcess.cpp" />
@@ -214,6 +213,7 @@
     <ClInclude Include="EnergyAnimation.h" />
     <ClInclude Include="GalleryCoin.h" />
     <ClInclude Include="GalleryTexture.h" />
+    <ClInclude Include="GameOverAnimation.h" />
     <ClInclude Include="GameStartAnimation.h" />
     <ClInclude Include="IBaseSound.h" />
     <ClInclude Include="MoveBackGround.h" />
@@ -240,9 +240,7 @@
     <ClInclude Include="GameClearDollAnimation.h" />
     <ClInclude Include="GameClearLogoAnimation.h" />
     <ClInclude Include="GameOver.h" />
-    <ClInclude Include="GameOverBackGround.h" />
     <ClInclude Include="GameOverDollAnimation.h" />
-    <ClInclude Include="GameOverLogoAnimation.h" />
     <ClInclude Include="GameScene.h" />
     <ClInclude Include="IBaseAccessories.h" />
     <ClInclude Include="IBaseEndGameProcess.h" />

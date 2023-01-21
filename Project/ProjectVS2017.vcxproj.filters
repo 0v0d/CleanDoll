@@ -290,12 +290,6 @@
     <ClCompile Include="SetFieldData.cpp">
       <Filter>ソース ファイル\Scene\ContactFile</Filter>
     </ClCompile>
-    <ClCompile Include="GameOverBackGround.cpp">
-      <Filter>ソース ファイル\Scene\GameScene\EndGameProcess\GameOver\Animation</Filter>
-    </ClCompile>
-    <ClCompile Include="GameOverLogoAnimation .cpp">
-      <Filter>ソース ファイル\Scene\GameScene\EndGameProcess\GameOver\Animation</Filter>
-    </ClCompile>
     <ClCompile Include="GalleryCoin.cpp">
       <Filter>ソース ファイル\Scene\GameScene\Field\BlockManager\Object</Filter>
     </ClCompile>
@@ -467,6 +461,9 @@
     <ClCompile Include="EnergyAnimation.cpp">
       <Filter>ソース ファイル\Scene\GameScene\FieldUI</Filter>
     </ClCompile>
+    <ClCompile Include="GameOverAnimation.cpp">
+      <Filter>ソース ファイル\Scene\GameScene\EndGameProcess\GameOver\Animation</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GameApp.h">
@@ -594,12 +591,6 @@
     </ClInclude>
     <ClInclude Include="SetFieldData.h">
       <Filter>ソース ファイル\Scene\ContactFile</Filter>
-    </ClInclude>
-    <ClInclude Include="GameOverBackGround.h">
-      <Filter>ソース ファイル\Scene\GameScene\EndGameProcess\GameOver\Animation</Filter>
-    </ClInclude>
-    <ClInclude Include="GameOverLogoAnimation.h">
-      <Filter>ソース ファイル\Scene\GameScene\EndGameProcess\GameOver\Animation</Filter>
     </ClInclude>
     <ClInclude Include="GalleryCoin.h">
       <Filter>ソース ファイル\Scene\GameScene\Field\BlockManager\Object</Filter>
@@ -781,6 +772,9 @@
     </ClInclude>
     <ClInclude Include="EnergyAnimation.h">
       <Filter>ソース ファイル\Scene\GameScene\FieldUI</Filter>
+    </ClInclude>
+    <ClInclude Include="GameOverAnimation.h">
+      <Filter>ソース ファイル\Scene\GameScene\EndGameProcess\GameOver\Animation</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
