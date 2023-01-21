@@ -467,6 +467,9 @@
     <ClCompile Include="EnergyAnimation.cpp">
       <Filter>ソース ファイル\Scene\GameScene\FieldUI</Filter>
     </ClCompile>
+    <ClCompile Include="GameOverAnimation.cpp">
+      <Filter>ソース ファイル</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GameApp.h">
@@ -781,6 +784,9 @@
     </ClInclude>
     <ClInclude Include="EnergyAnimation.h">
       <Filter>ソース ファイル\Scene\GameScene\FieldUI</Filter>
+    </ClInclude>
+    <ClInclude Include="GameOverAnimation.h">
+      <Filter>ソース ファイル</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

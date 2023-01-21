@@ -7,6 +7,7 @@ class GameOverAnimation
 	Vector2 _pos;
 	CRectangle _renderRect;
 	const int _animationValue = 5;
+	const int _animationMaxCount = 4;
 	int _animationCount;
 public:
 	void Initialize();
@@ -16,7 +17,6 @@ public:
 	void Release();
 	bool IsEndMotion() { return _animation.IsEndMotion(); }
 private:
-	void CalcuPosition(Vector2 rectSize);
 	void LoadTexture();
 	void CreateAnimation();
 	void SetNextAnimation();

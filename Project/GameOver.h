@@ -1,16 +1,14 @@
 #pragma once
 #include	"Mof.h"
 #include	"IBaseEndGameProcess.h"
-#include	"GameOverBackGround.h"
-#include	"GameOverLogoAnimation.h"
 #include	"GameOverDollAnimation.h"
 #include	"EndGameButtonManager.h"
+#include "GameOverAnimation.h"
 
 class GameOver:public IBaseEndGameProcess
 {
 private:
-	GameOverBackGround _backGroundAnim;
-	GameOverLogoAnimation _logoAnim;
+	GameOverAnimation _gameOverAnimation;
 	GameOverDollAnimation _dollAnim;
 
 	EndGameButtonManager _endGameButtonManager;

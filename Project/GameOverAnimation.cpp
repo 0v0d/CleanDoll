@@ -14,9 +14,8 @@ void GameOverAnimation::CreateAnimation() {
 	const int animationValueX = 6;
 	const int animationValueY = 5;
 	Vector2 rectSize = Vector2(_gameOverTexture.GetWidth() / animationValueX, _gameOverTexture.GetHeight() / animationValueY);
-	CalcuPosition(rectSize);
 	int number = 0;
-	const float frame = 2;
+	const float frame = 5;
 	SpriteAnimationCreate animation[] =
 	{
 		{
@@ -61,13 +60,13 @@ void GameOverAnimation::ReLoad() {
 void GameOverAnimation::Update() {
 	_animation.AddTimer(CUtilities::GetFrameSecond());
 	_renderRect = _animation.GetSrcRect();
-
+	SetNextAnimation();
 }
 
 void GameOverAnimation::SetNextAnimation() {
 	if (!_animation.IsEndMotion()) return;
-	_animation.ChangeMotion(_animationCount);
 	_animationCount++;
+	_animation.ChangeMotion(_animationCount);
 }
 
 void GameOverAnimation::Render() {
