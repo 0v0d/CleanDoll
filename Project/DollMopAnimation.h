@@ -17,6 +17,7 @@ class DollMopAnimation
 	int _currentMotion;
 	const int _motionCount = 7;
 	const int _motionValue = 20;
+	float _moveSpeed;
 public:
 	void Initialize();
 	void ReLoad();
@@ -33,6 +34,8 @@ public:
 	CRectangle GetRenderRect() { return _renderRect; }
 	bool IsEndCurrentAnimation() { return _motionController.IsEndMotion(); }
 	float GetCleanTime() { return CUtilities::GetFPS() * _motionValue; }
+
+	void SetMoveSpeed(float moveSpeed) { _moveSpeed = moveSpeed; }
 private:
 	void CreateAnimation();
 	int WaitAnimationLoop() { return _currentMotion = (_currentMotion + 1) % 2; }

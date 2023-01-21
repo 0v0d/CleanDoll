@@ -55,7 +55,7 @@ void DollBroomAnimation::ReLoad() {
 }
 
 void DollBroomAnimation::Update() {
-	_motionController.AddTimer(CUtilities::GetFrameSecond());
+	_motionController.AddTimer(CUtilities::GetFrameSecond()*_moveSpeed);
 	_renderRect = _motionController.GetSrcRect();
 }
 
