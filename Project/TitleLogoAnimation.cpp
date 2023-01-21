@@ -37,7 +37,7 @@ void TitleLogoAnimation::CreateLogoAnimation(int logoNumber) {
 	CalcuPosition(rectSize);
 	int number = 0;
 
-	const int frame = 3;
+	const int frame = 2;
 
 	SpriteAnimationCreate logoAnimation[] =
 	{
@@ -98,6 +98,10 @@ void TitleLogoAnimation::SetNextAnimation() {
 
 	_logoCount++;
 	_animationCount = 0;
+
+	if (_logoCount >= _animationValue) {
+		_logoCount = _animationValue - 2;
+	}
 
 	_logoAnimation[_logoCount].ChangeMotion(_animationCount);
 	_currentAniamtion = &_logoAnimation[_logoCount];
