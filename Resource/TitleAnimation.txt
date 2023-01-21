@@ -1,2 +1,12 @@
-1,
-titleAnimation1.png,
+10
+,titleAnimation1.png
+,titleAnimation2.png
+,titleAnimation3.png
+,titleAnimation4.png
+,titleAnimation5.png
+,titleAnimation6.png
+,titleAnimation7.png
+,titleAnimation8.png
+,titleAnimation9.png
+,titleAnimation10.png
+,
