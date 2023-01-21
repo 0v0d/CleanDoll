@@ -1,20 +1,25 @@
 #pragma once
 #include	"Mof.h"
+#include	"ContactFile.h"
+#include	"Trim.h"
 
 class TitleLogoAnimation
 {
-	CTexture _logoTexture,_loopLogoTexture;
+	CTexture* _logoTextureArray;
 	CTexture* _currentAnimationTexture;
-	CSpriteMotionController	_logoAnimation,_loopLogoAnimation;
+	CSpriteMotionController* _logoAnimation;
 	CSpriteMotionController* _currentAniamtion;
 	CRectangle _renderRect;
 	Vector2 _pos;
+	
+	ContactFile _contactFile;
+	Trim _trim;
 
-	const int _logoAnimationValue = 9;
-	const int _loopLogoAnimationValue = 5;
+	int _animationValue;
+	int _animationY, _animationCount;
 	int _logoCount = 0;
 	bool _loopAnimation;
-	const float _scale = 3.0f;
+	const float _scale = 1.5f;
 
 public:
 	void Initialize();
@@ -26,6 +31,7 @@ public:
 private:
 	void LoadTexture();
 	void CreateAnimation();
+	void CreateLogoAnimation(int logoNumber);
 	void CalcuPosition(Vector2 rectSize);
 	void SetNextAnimation();
 };
