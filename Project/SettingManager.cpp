@@ -23,7 +23,7 @@ void SettingManager ::LoadSound () {
 void SettingManager::CreateButton() {
 
 	_openSettingButton.SetTexture(&_openButtonTexture);
-	_openSettingButton.SetPosition(Vector2(g_pGraphics->GetTargetWidth() - 150, 100));
+	_openSettingButton.SetPosition(Vector2(g_pGraphics->GetTargetWidth() - 90, 70));
 	_openSettingButton.SetSeSound(&_buttonSe);
 	_openSettingButton.SetStatu(false, true, [&]() {
 		_openMenu = true;

@@ -15,7 +15,7 @@ void GameOverAnimation::CreateAnimation() {
 	const int animationValueY = 5;
 	Vector2 rectSize = Vector2(_gameOverTexture.GetWidth() / animationValueX, _gameOverTexture.GetHeight() / animationValueY);
 	int number = 0;
-	const float frame = 5;
+	const float frame = 3;
 	SpriteAnimationCreate animation[] =
 	{
 		{
