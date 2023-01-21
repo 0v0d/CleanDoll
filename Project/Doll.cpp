@@ -12,8 +12,10 @@ void Doll::Initialize()
 }
 
 void Doll::LoadTexture() {
-	_dollTexture.Load("doll.png");
-
+	if (!_dollTexture.Load("doll.png")) {
+		//ピンで確認する用
+		_move = false;
+	}
 }
 
 void Doll::ReLoad()
