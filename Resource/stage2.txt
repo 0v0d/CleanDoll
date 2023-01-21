@@ -6,10 +6,10 @@
 1,1,1,1,1,
 1,1,1,1,1,
 
-4,.\bookshelf.png,.\isu_back.png,.\isu_front.png,.\desk.png,
+4,.\bookshelf.png,.\isu_right_reverse.png,.\isu_front.png,.\desk.png,
 0,0,0,0,0,
 0,0,0,0,0,
-1,0,0,-3,0,
+1,0,0,-2,0,
 1,0,3,4,0,
 0,0,0,0,0,
 
