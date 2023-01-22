@@ -5,7 +5,9 @@
 class Bar
 {
 private:
-	CTexture _barTexture, _previewTexture;
+	CTexture* _barTexture;
+	CRectangle _renderRect;
+	CTexture _previewTexture;
 	CTexture* _baseBarTexture;
 	Vector2 _pos, _initialPos;
 	float _space;
@@ -42,6 +44,7 @@ public:
 	void SetBaseBarTexture(CTexture* texture) { _baseBarTexture = texture; }
 	void SetCoinTexture(CTexture* texture) { _coinTexture = texture; CalcuCoinScale(); }
 	void SetDifficulutyTexture(CTexture* texture);
+	void SetBarTextureData(CTexture* texture, CRectangle renderRect);
 
 	void SetScale(float scale);
 	void Move(float sliderValue);
@@ -62,7 +65,7 @@ public:
 private:
 	bool CheckOnScreenTopLine(float top,float bottom);
 	CRectangle GetRenderRect(Vector2 pos, CRectangle rect, float scale);
-	bool IsRenderRange(CTexture*, Vector2, float scale);
+	bool IsRenderRange(float sizeY, Vector2 pos, float scale);
 	void CalcuCoinScale();
 	void CalcuDifficultyScale();
 

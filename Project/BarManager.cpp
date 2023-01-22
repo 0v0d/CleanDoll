@@ -16,6 +16,8 @@ void BarManager::Initialize()
 		_barArray[i].SetDifficulutyTexture(&_difficultyTexture);
 		_barArray[i].SetCoinTexture(&_coinTexture);
 		_barArray[i].SetScale(_baseBarScale);
+		Vector2 size = Vector2(_barTextTexture.GetWidth(), _barTextTexture.GetHeight() / _stageValue);
+		_barArray[i].SetBarTextureData(&_barTextTexture, CRectangle(0, size.y * i, size.x, size.y * (i + 1)));
 		_barArray[i].Initialize();
 	}
 	_slider.SetStatu(Vector2(_basePosition.x + _baseTexture.GetWidth() - _space * _baseBarScale, _basePosition.y + _baseTexture.GetHeight() / 2),
@@ -39,6 +41,7 @@ void BarManager::LoadTexture() {
 	_buttonTexture.Load("スクロールバー2.png");
 	_difficultyTexture.Load("difficulty.png");
 	_coinTexture.Load("stageselect_coin.png");
+	_barTextTexture.Load("StageSelectBar.png");
 }
 
 void BarManager::CalcuScale() {
@@ -112,7 +115,6 @@ void BarManager::MoveBar(float moveValue)
 	for (int i = 0; i < _stageValue; i++){
 		_barArray[i].Move(moveValue);
 	}
-
 }
 
 Bar* BarManager::GetBar(int barNumber) {
@@ -156,4 +158,5 @@ void BarManager::Release()
 	_buttonTexture.Release();
 	_difficultyTexture.Release();
 	_coinTexture.Release();
+	_barTextTexture.Release();
 }

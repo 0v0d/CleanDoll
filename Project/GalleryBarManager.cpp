@@ -2,6 +2,8 @@
 
 void GalleryBarManager::Initialize() {
 	LoadTexture();
+	CreateBarArray();
+
 	_requiredCoinValueArray = new int[_barValue]{2,4,7,10 };
 	constexpr float maxCoinNumberSpace = 70;
 	_maxCoinValue.SetStats(&_numberTexture, _numberScale, _numberValue);
@@ -12,26 +14,30 @@ void GalleryBarManager::Initialize() {
 	_coinNumber.SetStats(&_numberTexture, _numberScale, _numberValue);
 	_coinNumber.SetPosition(Vector2(g_pGraphics->GetTargetWidth() -_numberTexture.GetWidth()*_numberScale/_numberValue - coinNumberSpace,50));
 
-	_backPos = Vector2(70, 300);
+	for (int i = 0;i < _barValue;i++) {
+		_barArray[i].SetBaseTexture(&_barTexture);
+		_barArray[i].CalcuRect(i, _barValue, true);
+		_barArray[i].CalcuPos();
+	}
 }
 
 void GalleryBarManager::LoadTexture() {
-	_barBackGround.Load("stagepreview_base.png");
+	_barTexture.Load("gallerybar.png");
 	_numberTexture.Load("coinnum.png");
-	LoadBarTexture();
+
 	LoadGalleryTexture();
 }
 
 void GalleryBarManager::CreateBarArray() {
 	_barArray = new GalleryBar[_barValue];
 	const float space = 30;
-	float posX = _backPos.x + _barBackGround.GetWidth() / 2;
+	float posX = _backPos.x + _barBackSize.x / 2 + space;
+	float scale = CalcuBarScale(space);
 	for (int i = 0;i < _barValue;i++) {
 		_barArray[i].Initialize();
-		_barArray[i].SetBaseScale(CalcuBarScale(space));
-		_barArray[i].SetCenterPos(Vector2(posX, CalcuBarCenterPosY(i, space, CalcuBarScale(space))));
+		_barArray[i].SetBaseScale(scale);
+		_barArray[i].SetCenterPos(Vector2(posX, CalcuBarCenterPosY(i, space, scale)));
 	}
-	SetTexture();
 }
 
 void GalleryBarManager::LoadGalleryTexture() {
@@ -47,36 +53,18 @@ void GalleryBarManager::LoadGalleryTexture() {
 	_contactFile.CloseFile();
 }
 
-void GalleryBarManager::LoadBarTexture() {
-	_contactFile.OpenFile("galleryBar.txt");
-	int textureValue = _contactFile.GetValue(true);
-	_openedBarTexureArray = new CTexture[_barValue];
-	_lockedBarTexureArray = new CTexture[_barValue];
-	for (int i = 0; i < _barValue; i++) {
-		_lockedBarTexureArray[i].Load(_trimstring.TrimString(_contactFile.GetString(false)).c_str());
-		_openedBarTexureArray[i].Load(_trimstring.TrimString(_contactFile.GetString(false)).c_str());
-	}
-	_contactFile.CloseFile();
-}
-
 float GalleryBarManager::CalcuBarScale(float space) {
-	return ((_barBackGround.GetHeight() - space*2) / _barValue - space * 2) / _lockedBarTexureArray->GetHeight();
+	return ((_barBackSize.y - space * 2 * _barValue)-space) / _barValue / _barTexture.GetHeight();
 }
 
 float GalleryBarManager::CalcuBarCenterPosY(int number, float space, float scale) {
-	return _backPos.y + space + _lockedBarTexureArray->GetHeight() * scale / 2 + (space + _lockedBarTexureArray->GetHeight() * scale) * number;
+	return _backPos.y + space + _barTexture.GetHeight() * scale / 2 + (space + _barTexture.GetHeight() * scale) * number;
 }
 
 void GalleryBarManager::ReLoad() {
 	for (int i = 0;i < _barValue;i++) {
 		_barArray[i].ReLoad();
-	}
-	SetTexture();
-}
-
-void GalleryBarManager::SetTexture() {
-	for (int i = 0;i < _barValue;i++) {
-		_barArray[i].SetBaseTexture(_gotCoinValue >= _requiredCoinValueArray[i] ? &_openedBarTexureArray[i] : &_lockedBarTexureArray[i]);
+		_barArray[i].CalcuRect(i, _barValue, _gotCoinValue >= _requiredCoinValueArray[i]);
 	}
 }
 
@@ -145,5 +133,5 @@ void GalleryBarManager::Release() {
 	delete[] _openedTexureArray;
 	delete[] _lockedTexureArray;
 	_numberTexture.Release();
-	_barBackGround.Release();
+	_barTexture.Release();
 }
