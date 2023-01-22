@@ -23,6 +23,7 @@ void EnergyVessels::Initialize()
 	_slideInVessels.SetStatu(_vesselsPosition.x, &_vesselsPosition.x, true);
 	_slideInVesselsCenter.SetStatu(_energyVesselsCenterPosition.x, &_energyVesselsCenterPosition.x,  true);
 	_slideInRemainEnergy.SetStatu(_remainPosition.x, &_remainPosition.x, true);
+	SetCurrentEnergyValue(0);
 }
 
 
@@ -45,7 +46,7 @@ void EnergyVessels::ReLoad()
 		_energyBarArray[i].ChangeColor(&_renderColorArray[5]);
 	}
 	ChangeEnergyColor();
-	SetCurrentEnergyValue(0);
+	SetCurrentEnergyValue(_maxEnergyValue);
 	_energyValue.ReLoad();
 }
 
