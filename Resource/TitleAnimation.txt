@@ -1,4 +1,4 @@
-6
+10
 ,titleAnimation1.png
 ,titleAnimation2.png
 ,titleAnimation3.png
