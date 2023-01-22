@@ -14,7 +14,7 @@ void ClearletterAnimation::Initialize() {
 }
 
 void ClearletterAnimation::LoadTexture() {
-	LetterTexture.Load("‚¨‘|œ‚ğŠ®—¹‚·‚é ˜AŒ‹.png");
+	LetterTexture.Load("clearbuttonanim.png");
 }
 
 void ClearletterAnimation::Update() {
