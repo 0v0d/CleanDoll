@@ -1,4 +1,5 @@
 #pragma once
+#include "Button.h"
 #include "IBaseScene.h"
 
 class CreditScene :public IBaseScene
@@ -6,6 +7,7 @@ class CreditScene :public IBaseScene
 	CSoundBuffer _music;
 	CSoundBuffer _buttonSe;
 	CTexture _buttonTexture;
+	Button _titleButton;
 public:
 	void Initialize();
 	void ReLoad();
