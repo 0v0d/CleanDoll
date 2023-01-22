@@ -8,7 +8,8 @@ enum class SCENE_TYPE
 	TITLE,
 	STAGESELECT,
 	GAME,
-	GALLERY
+	GALLERY,
+	CREDIT,
 };
 
 class SceneManager
