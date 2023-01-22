@@ -37,8 +37,9 @@ class Doll
 	const int _textureValue = 30;
 	Vector2 _dollTextureSize;
 
-	CSoundBuffer HokoriSound;
-	CSoundBuffer MopSound;
+	CSoundBuffer _broomSound;
+	CSoundBuffer _mopSound;
+	CSoundBuffer _candySound;
 public:
 	void Initialize();
 	void LoadTexture();

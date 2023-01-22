@@ -1,5 +1,7 @@
 #include "TitleScene.h"
 
+#include "AudioMixer.h"
+
 void TitleScene::Initialize()
 {
 	LoadTexture();
@@ -23,8 +25,7 @@ void TitleScene::LoadTexture() {
 
 void TitleScene::LoadSound() {
 	_music.Load("BGM.mp3");
-	_ClickSound.Load("ClicktoStart.mp3");
-
+	_clickSound.Load("ClicktoStart.mp3");
 }
 
 void TitleScene::ReLoad()
@@ -59,7 +60,7 @@ void TitleScene::Pull() {
 	if (_openTransition)_transition.Pull();
 	else {
 		_openTransition = true;
-		_ClickSound.Play();
+		AudioMixer::Instance().PlaySe(&_clickSound);
 	}
 }
 
@@ -86,5 +87,5 @@ void TitleScene::Release()
 	_transition.Release();
 
 	_music.Release();
-	_ClickSound.Release();
+	_clickSound.Release();
 }

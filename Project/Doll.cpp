@@ -1,4 +1,6 @@
 #include "Doll.h"
+
+#include "AudioMixer.h"
 #include "Field.h"
 #include "Dump.h"
 
@@ -29,8 +31,9 @@ void Doll::ReLoad()
 
 	_mopAnimation.ReLoad();
 	_broomAnimation.ReLoad();
-	HokoriSound.Load("HokorisouziEX.mp3");
-	MopSound.Load("キュッキュッと拭く1.mp3");
+	_broomSound.Load("HokorisouziEX.mp3");
+	_mopSound.Load("キュッキュッと拭く1.mp3");
+	_candySound.Load("Energy.mp3");
 }
 
 void Doll::CalcuScale(float boxSizeY, float scale)
@@ -151,15 +154,15 @@ void Doll::CleanDump()
 		_animationflg = true;
 		_waterDumpValue--;
 		_field->CleanWater();
-		MopSound.Play();
-
+		_mopSound.Play();
+		AudioMixer::Instance().PlaySe(&_mopSound);
 	}
 	else {
 		_broomAnimation.StartCleanAnimation();
 		_animationflg = true;
 		_dustDumpValue--;
 		_field->CleanDust();
-		HokoriSound.Play();
+		AudioMixer::Instance().PlaySe(&_broomSound);
 	}
 }
 
@@ -167,6 +170,7 @@ void Doll::CollectCandy()
 {
 	_holdMop? _mopAnimation.StartGetCandyAnimation():_broomAnimation.StartGetCandyAnimation();
 	_animationflg = true;
+	AudioMixer::Instance().PlaySe(&_candySound);
 }
 
 void Doll::SwitchToMop()
@@ -190,7 +194,6 @@ void Doll::DollAnimationUpdate()
 	}
 
 	if(_holdMop){
-		
 		_mopAnimation.Update();
 		_renderRect = _mopAnimation.GetRenderRect();
 	}
@@ -220,6 +223,10 @@ void Doll::CalcuSpeed(float speedFactor)
 	_moveSpeed = _framePBlock / speedFactor;
 	_mopAnimation.SetMoveSpeed(speedFactor);
 	_broomAnimation.SetMoveSpeed(speedFactor);
+
+	_mopSound.SetPitch(speedFactor);
+	_broomSound.SetPitch(speedFactor);
+	_candySound.SetPitch(speedFactor);
 }
 
 void Doll::Render()
@@ -231,6 +238,7 @@ void Doll::Render()
 void Doll::Release()
 {
 	_dollTexture.Release();
-	HokoriSound.Release();
-	MopSound.Release();
+	_broomSound.Release();
+	_mopSound.Release();
+	_candySound.Release();
 }
