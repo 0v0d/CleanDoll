@@ -14,8 +14,8 @@ class GalleryBarManager
 	int* _requiredCoinValueArray;
 	Vector2 _mousePos;
 
-	Vector2 _backPos;
-	CTexture _barBackGround;
+	Vector2 _backPos = Vector2(70, 300);
+	Vector2 _barBackSize = Vector2(750, 750);
 
 	ContactFile _contactFile;
 
@@ -29,12 +29,12 @@ class GalleryBarManager
 	const int _numberValue = 11;
 	const float _numberScale = 0.3f;
 	CTexture _numberTexture;
+	CTexture _barTexture;
 
 	bool _lockedPopUpTexture;
 public:
 	void Initialize();
 	void ReLoad();
-	void CreateBarArray();
 
 	void SetMousePos(Vector2);
 	void Push();
@@ -47,15 +47,14 @@ public:
 
 	CTexture* GetMouseOnBarTexture();
 	CTexture* GetGalleryTexture(int number);
-	Vector2 GetBackTextureSize() { return Vector2(_barBackGround.GetWidth(),_barBackGround.GetHeight()); }
+	Vector2 GetBackTextureSize() { return _barBackSize; }
 	bool IsLockedPopUpTexture() { return _lockedPopUpTexture; }
 private:
 	void LoadTexture();
 	float CalcuBarScale(float space);
 	float CalcuBarCenterPosY(int number,float space,float scale);
-	void SetTexture();
 	void PickUpBar();
+	void CreateBarArray();
 
 	void LoadGalleryTexture();
-	void LoadBarTexture();
 };

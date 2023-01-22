@@ -5,9 +5,9 @@ void GalleryScene::Initialize(){
 
 	LoadTexture();
 	LoadSound();
+
 	_backGround.SetTextureStatus(&_backGroundTexture, FULLSCREEN);
 	_barManager.Initialize();
-	_barManager.CreateBarArray();
 
 	_galleryTexture.Initialize();
 	_galleryTexture.SetBackTextureHeight(_barManager.GetBackTextureSize().y);
