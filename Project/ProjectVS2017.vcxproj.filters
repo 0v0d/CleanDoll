@@ -120,12 +120,6 @@
     <Filter Include="ソース ファイル\UI\BackGround">
       <UniqueIdentifier>{809244a6-859d-4a9e-9774-b32a9414de70}</UniqueIdentifier>
     </Filter>
-    <Filter Include="ソース ファイル\Sound\BGM">
-      <UniqueIdentifier>{e6f3d79d-8355-4553-9fb8-271ee1e1161f}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="ソース ファイル\Sound\SE">
-      <UniqueIdentifier>{95390b50-d7e3-4adf-aa18-4e51c2a72379}</UniqueIdentifier>
-    </Filter>
     <Filter Include="ソース ファイル\Utility\Trim">
       <UniqueIdentifier>{16560ef8-01b3-4404-8f83-ae71e95b7d94}</UniqueIdentifier>
     </Filter>
@@ -349,12 +343,6 @@
     </ClCompile>
     <ClCompile Include="BackGround.cpp">
       <Filter>ソース ファイル\UI\BackGround</Filter>
-    </ClCompile>
-    <ClCompile Include="BGM.cpp">
-      <Filter>ソース ファイル\Sound\BGM</Filter>
-    </ClCompile>
-    <ClCompile Include="SE.cpp">
-      <Filter>ソース ファイル\Sound\SE</Filter>
     </ClCompile>
     <ClCompile Include="AudioSetting.cpp">
       <Filter>ソース ファイル\Menu\SettingManager\SetUpSetting\Audio</Filter>
@@ -598,9 +586,6 @@
     <ClInclude Include="EndGameButtonAnimation.h">
       <Filter>ソース ファイル\Scene\GameScene\EndGameProcess\EndGameButton</Filter>
     </ClInclude>
-    <ClInclude Include="GameOverLogoAnimation.h">
-      <Filter>ソース ファイル\Scene\GameScene\EndGameProcess\GameOver</Filter>
-    </ClInclude>
     <ClInclude Include="GameOverDollAnimation.h">
       <Filter>ソース ファイル\Scene\GameScene\EndGameProcess\GameOver\Animation</Filter>
     </ClInclude>
@@ -646,9 +631,6 @@
     <ClInclude Include="DollMopAnimation.h">
       <Filter>ソース ファイル\Scene\GameScene\Field\Doll\Animation</Filter>
     </ClInclude>
-    <ClInclude Include="BGM.h">
-      <Filter>ソース ファイル\Sound</Filter>
-    </ClInclude>
     <ClInclude Include="DollMopAnimation.h">
       <Filter>ソース ファイル\Scene\GameScene\Field\Doll\Animation</Filter>
     </ClInclude>
@@ -666,9 +648,6 @@
     </ClInclude>
     <ClInclude Include="BGM.h">
       <Filter>ソース ファイル\Sound\BGM</Filter>
-    </ClInclude>
-    <ClInclude Include="SE.h">
-      <Filter>ソース ファイル\Sound\SE</Filter>
     </ClInclude>
     <ClInclude Include="AudioSetting.h">
       <Filter>ソース ファイル\Menu\SettingManager\SetUpSetting\Audio</Filter>
