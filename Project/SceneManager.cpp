@@ -4,6 +4,7 @@
 #include "GameScene.h"
 #include "GalleryScene.h"
 #include "AudioMixer.h"
+#include "CreditScene.h"
 
 SceneManager* SceneManager::_instance = nullptr;
 
@@ -11,6 +12,7 @@ TitleScene title;
 StageSelectScene stageSelect;
 GameScene game;
 GalleryScene gallery;
+CreditScene credit;
 
 void SceneManager::Initialize()
 {
@@ -20,6 +22,7 @@ void SceneManager::Initialize()
 	_sceneArray[SCENE_TYPE::STAGESELECT] = &stageSelect;
 	_sceneArray[SCENE_TYPE::GAME] = &game;
 	_sceneArray[SCENE_TYPE::GALLERY] = &gallery;
+	_sceneArray[SCENE_TYPE::CREDIT] = &credit;
 
 	stageSelect.GetCreateField()->GetSetFieldData()->SetField(game.GetField());
 

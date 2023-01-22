@@ -6,8 +6,9 @@ class TitleSceneTransition
 {
 	Button _transitionStageSelectButton;
 	Button _transitionGalleryButton;
+	Button _transitionCreditButton;
 	
-	CTexture _stageSelectTexture, _galleryTexture;
+	CTexture _stageSelectTexture, _galleryTexture, _creditTexture;
 	CSoundBuffer _buttonSe;
 
 public:
