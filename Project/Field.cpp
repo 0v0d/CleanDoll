@@ -250,6 +250,11 @@ void Field::EndMoveDoll() {
 		if (_dustDumpValue <= 0 && _waterDumpValue <= 0) {
 			_show = true;
 			StageSelectScene* stageSelect = dynamic_cast<StageSelectScene*>(SceneManager::Instance().GetScene(SCENE_TYPE::STAGESELECT));
+			if (_remainDistance <= 0) {
+				_endGameProcess.SetCurrentProcess(ProcessType::GameClear);
+				stageSelect->StageClear();
+				_show = false;
+			}
 			if (!_getCoin) {
 				if (_doll.IsGetCoin()) {
 					dynamic_cast<GalleryScene*>(SceneManager::Instance().GetScene(SCENE_TYPE::GALLERY))->AddCoin();
