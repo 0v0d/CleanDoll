@@ -1,7 +1,7 @@
 #include "EnergyAnimation.h"
 
 EnergyAnimation::EnergyAnimation() {
-	_end = false;
+	_end = true;
 }
 
 void EnergyAnimation::SetStatu(int time, int energyVal) {
