@@ -5,7 +5,6 @@
 void DollMoveSetting::Initialize()
 {
 	_baseSpaseCount = _baseButtonValue - 1;
-	_factorTextureArray = new CTexture[_baseButtonValue];
 
 	LoadTexture();
 	LoadSound();
@@ -22,6 +21,8 @@ void DollMoveSetting::Initialize()
 		_buttonArray[i].SetTexture(&_baseSelectButtonTexture);
 		_buttonArray[i].SetPosition(Vector2(_barPos.x + _bottonBetweenDistance * i, _barPos.y+ _barTexture.GetHeight()/2));
 		_buttonArray[i].SetSeSound(&_se);
+		Vector2 size = Vector2(_factorTexture.GetWidth(), _factorTexture.GetHeight()/_baseButtonValue);
+		_factorRectArray[i] = CRectangle(0, size.y * i, size.x, size.y * (i + 1));
 	}
 
 	SetMethodButton();
@@ -49,11 +50,7 @@ void DollMoveSetting::LoadTexture()
 	_selectButtonTexture.Load("ëIë.png");
 	_closeButtonTexture.Load("ñﬂÇÈÅ@ÉeÉLÉXÉg.png");
 
-	_factorTextureArray[0].Load("Å~0.5.png");
-	_factorTextureArray[1].Load("Å~1.png");
-	_factorTextureArray[2].Load("Å~1.5.png");
-	_factorTextureArray[3].Load("Å~2.png");
-	_factorTextureArray[4].Load("Å~4.png");
+	_factorTexture.Load("SpeedFactor.png");
 
 	_logoTexture.Load("ÉhÅ[Éãë¨ìxê›íË.png");
 }
@@ -174,7 +171,7 @@ void DollMoveSetting::Render()
 	{
 		_buttonArray[i].Render();
 		const float iconScale = 0.2f;
-		_factorTextureArray[i].RenderScale(_barPos.x + _bottonBetweenDistance * i - _factorTextureArray[i].GetWidth()/2*iconScale, _barPos.y + _barTexture.GetHeight() + 50, iconScale);
+		_factorTexture.RenderScale(_barPos.x + _bottonBetweenDistance * i - _factorTexture.GetWidth() / 2 * iconScale, _barPos.y + _barTexture.GetHeight() / _baseButtonValue + 50, iconScale,_factorRectArray[i]);
 	}
 	_closeButton.Render();
 	_selectButton.Render();
@@ -190,12 +187,9 @@ void DollMoveSetting::Release()
 	_closeButtonTexture.Release();
 	_se.Release();
 	_logoTexture.Release();
-
-	for (int i = 0;i < _baseButtonValue;i++) {
-		_factorTextureArray->Release();
-	}
+	_factorTexture.Release();
 
 	delete[] _buttonArray;
 	delete[] _factorArray;
-	delete[] _factorTextureArray;
+	delete[] _factorRectArray;
 }

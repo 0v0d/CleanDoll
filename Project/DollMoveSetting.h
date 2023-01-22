@@ -10,7 +10,6 @@ class DollMoveSetting:public IBaseSetting
 	CTexture _barTexture;
 	Vector2  _barPos;
 	
-	
 	CTexture  _baseSelectButtonTexture;
 	const int _baseButtonValue = 5;
 	Button* _buttonArray = new Button[_baseButtonValue];
@@ -30,7 +29,8 @@ class DollMoveSetting:public IBaseSetting
 	CSoundBuffer _se;
 
 	float* _factorArray;
-	CTexture* _factorTextureArray;
+	CTexture _factorTexture;
+	CRectangle* _factorRectArray = new CRectangle[_baseButtonValue];
 	CTexture _logoTexture;
 
 public:
