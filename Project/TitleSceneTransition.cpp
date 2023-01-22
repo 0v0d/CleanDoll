@@ -12,13 +12,13 @@ void TitleSceneTransition::Initialize() {
 		_transitionStageSelectButton.SetStatu(false, true, [&]() {SceneManager::Instance().ChangeScene(SCENE_TYPE::STAGESELECT);});
 		});
 	CreateButton(&_transitionGalleryButton, Vector2(ws / 2, 900), &_galleryTexture, [&]() {SceneManager::Instance().ChangeScene(SCENE_TYPE::GALLERY);});
-	CreateButton(&_transitionCreditButton, Vector2(230, 1000), &_creditTexture, [&]() {SceneManager::Instance().ChangeScene(SCENE_TYPE::CREDIT); });
+	CreateButton(&_transitionCreditButton, Vector2(180, 1010), &_creditTexture, [&]() {SceneManager::Instance().ChangeScene(SCENE_TYPE::CREDIT); });
 }
 
 void TitleSceneTransition::LoadTexture() {
 	_stageSelectTexture.Load("ƒQ[ƒ€‚ğn‚ß‚é.png");
 	_galleryTexture.Load("ƒMƒƒƒ‰ƒŠ[.png");
-	_creditTexture.Load("ƒMƒƒƒ‰ƒŠ[.png");
+	_creditTexture.Load("credit.png");
 
 	_buttonSe.Load("BottanClick.mp3");
 }
