@@ -25,7 +25,6 @@ void GalleryScene::Initialize(){
 void GalleryScene::LoadTexture() {
 	_buttonTexture.Load("backSceneButton.png");
 	_backGroundTexture.Load("galleryBack.png");
-	_clickTexture.Load("ƒNƒŠƒbƒN‚ÅŠg‘å.png");
 }
 
 void GalleryScene::LoadSound() {
@@ -78,10 +77,6 @@ void GalleryScene::Render(){
 	_backGround.Render();
 	_barManager.Render();
 	_titleButton.Render();
-	const auto space = Vector2(250, 130);
-	if (!_barManager.IsLockedPopUpTexture()) {
-		_clickTexture.Render(g_pGraphics->GetTargetWidth() - space.x, g_pGraphics->GetTargetHeight() - space.y);
-	}
 	_galleryTexture.Render();
 }
 
@@ -92,5 +87,4 @@ void GalleryScene::Release(){
 	_buttonSe.Release();
 	_buttonTexture.Release();
 	_backGroundTexture.Release();
-	_clickTexture.Release();
 }
