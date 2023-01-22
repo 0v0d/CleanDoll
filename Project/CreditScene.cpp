@@ -38,8 +38,8 @@ void CreditScene::Update() {
 }
 
 void CreditScene::Render() {
-	CGraphicsUtilities::RenderFillRect(0, 0, g_pGraphics->GetTargetWidth(), g_pGraphics->GetTargetHeight(), MOF_ARGB(255, 0, 0, 0));
-	CGraphicsUtilities::RenderString(g_pGraphics->GetTargetWidth()/2 -50, g_pGraphics->GetTargetHeight() / 2, "\nBGM\nŠÃ’ƒ‚Ì‰¹ŠyH–[\nhttps://amachamusic.chagasi.com/index.htm\nSE\nŒø‰Ê‰¹ƒ‰ƒ{\nhttps ://soundeffect-lab.info/");
+	CGraphicsUtilities::RenderFillRect(0, 0, g_pGraphics->GetTargetWidth(), g_pGraphics->GetTargetHeight(), MOF_ARGB(200, 10,10, 10));
+	CGraphicsUtilities::RenderString(g_pGraphics->GetTargetWidth()/2 -200, g_pGraphics->GetTargetHeight() / 2, "\nBGM\nŠÃ’ƒ‚Ì‰¹ŠyH–[\nhttps://amachamusic.chagasi.com/index.htm\nSE\nŒø‰Ê‰¹ƒ‰ƒ{\nhttps ://soundeffect-lab.info/");
 	_titleButton.Render();
 }
 
