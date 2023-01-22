@@ -45,7 +45,7 @@ void Field::CreateButton()
 	_clearButton.SetTexture(&_clearButtonTexture);
 	_clearButton.SetPosition(Vector2(_clearButtonTexture.GetWidth(), _clearButtonTexture.GetHeight() / 3));
 	_clearButton.SetSeSound(&_buttonSe);
-	_clearButton.SetStatu(false, true, [&]() {GameClear(); });
+	//_clearButton.SetStatu(false, true, [&]() {GameClear(); });
 }
 
 void Field::ReLoad()
@@ -94,8 +94,9 @@ void Field::ReSetStage() {
 	}
 
 	_push = false;
-	_show = false;
 	_pushReset = false;
+	//デバック
+	_show = true;
 }
 
 void Field::SetDollPosition(int x, int y)
