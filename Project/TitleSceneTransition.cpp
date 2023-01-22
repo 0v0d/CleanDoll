@@ -12,7 +12,7 @@ void TitleSceneTransition::Initialize() {
 		_transitionStageSelectButton.SetStatu(false, true, [&]() {SceneManager::Instance().ChangeScene(SCENE_TYPE::STAGESELECT);});
 		});
 	CreateButton(&_transitionGalleryButton, Vector2(ws / 2, 900), &_galleryTexture, [&]() {SceneManager::Instance().ChangeScene(SCENE_TYPE::GALLERY);});
-	CreateButton(&_transitionCreditButton, Vector2(ws / 2, 1050), &_creditTexture, [&]() {SceneManager::Instance().ChangeScene(SCENE_TYPE::CREDIT); });
+	CreateButton(&_transitionCreditButton, Vector2(230, 1000), &_creditTexture, [&]() {SceneManager::Instance().ChangeScene(SCENE_TYPE::CREDIT); });
 }
 
 void TitleSceneTransition::LoadTexture() {

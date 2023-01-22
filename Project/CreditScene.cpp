@@ -6,6 +6,15 @@ void CreditScene::Initialize() {
 void CreditScene::ReLoad() {
 }
 
+void CreditScene::LoadTexture() {
+	_buttonTexture.Load("");
+}
+
+void CreditScene::LoadSound() {
+	_music.Load("BGM.mp3");
+	_buttonSe.Load("BottanClick.mp3");
+}
+
 void CreditScene::SetMousePos(Vector2) {
 }
 
