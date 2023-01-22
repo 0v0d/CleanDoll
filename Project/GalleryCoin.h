@@ -3,8 +3,14 @@
 class GalleryCoin :public IBaseAccessories
 {
 	CTexture _coinTexture;
-	Vector2 _position;
-	float _scale;
+	Vector2 _coinPos;
+	float _coinScale;
+	
+	CTexture _coinShadowTexture;
+	Vector2 _coinShadowPos;
+	float _coinShadowScale;
+	uint8_t  _alpha;
+	
 	float _time;
 	float _incPosY;
 
@@ -14,12 +20,13 @@ public:
 	void Initialize();
 	void LoadTexture();
 	void ReLoad();
-	void CalcuScale(float blockSizeX) { _scale = blockSizeX / _coinTexture.GetWidth(); }
 	void Update();
 	void Render();
 	void Release();
 	void SetPosotion(Vector2 pos);
+	void CalcuScale(float blockSizeX);
 	ACCESSORIES_TYPE GetType() { return _accessoriesType; }
-	//y=sin(1/2xƒÎ)+1
+private:
 	void CalcPosY();
+	void CalcAlpha();
 };
