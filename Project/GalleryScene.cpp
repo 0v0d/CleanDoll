@@ -16,10 +16,6 @@ void GalleryScene::Initialize(){
 	_titleButton.SetPosition(Vector2(100, 100));
 	_titleButton.SetSeSound(&_buttonSe);
 	_titleButton.SetStatu(false, true, [&]() {SceneManager::Instance().ChangeScene(SCENE_TYPE::TITLE);});
-
-	//デバッグ
-	AddCoin();
-	AddCoin();
 }
 
 void GalleryScene::LoadTexture() {
