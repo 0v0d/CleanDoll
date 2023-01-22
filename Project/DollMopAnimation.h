@@ -33,7 +33,7 @@ public:
 	int GetMotionValue() const { return _motionCount; }
 	CRectangle GetRenderRect() { return _renderRect; }
 	bool IsEndCurrentAnimation() { return _motionController.IsEndMotion(); }
-	float GetCleanTime() { return CUtilities::GetFPS() * _motionValue; }
+	float GetCleanTime() { return CUtilities::GetFPS() * _motionValue * _moveSpeed; }
 
 	void SetMoveSpeed(float moveSpeed) { _moveSpeed = moveSpeed; }
 private:
