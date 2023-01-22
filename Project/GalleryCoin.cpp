@@ -16,6 +16,7 @@ void GalleryCoin::LoadTexture() {
 
 void GalleryCoin::ReLoad()
 {
+	_time = 0;
 }
 
 void GalleryCoin::SetPosotion(Vector2 pos)
