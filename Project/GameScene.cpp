@@ -63,7 +63,9 @@ void GameScene::SetMousePos(Vector2 mousePos) {
 void GameScene::Push() {
 	if (!_startAnimation.IsEndAnimation()) return;
 	_field.Push();
-	_resetStageButton.Push();
+	if (!_field.IsEndProcess()) {
+		_resetStageButton.Push();
+	}
 }
 
 void GameScene::Pull() {
