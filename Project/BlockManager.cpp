@@ -1,5 +1,13 @@
 #include "BlockManager.h"
 
+BlockManager::BlockManager() {
+	_galleryCoin = new GalleryCoin(ACCESSORIES_TYPE::COIN);
+}
+
+BlockManager::~BlockManager() {
+	delete _galleryCoin;
+}
+
 void BlockManager::Initialize()
 {
 	_galleryCoin->Initialize();
@@ -153,6 +161,6 @@ void BlockManager::Delete()
 
 void BlockManager::Release()
 {
-	_galleryCoin->Release();
 	Delete();
+	_galleryCoin->Release();
 }

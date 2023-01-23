@@ -12,7 +12,7 @@ class DollMoveSetting:public IBaseSetting
 	
 	CTexture  _baseSelectButtonTexture;
 	const int _baseButtonValue = 5;
-	Button* _buttonArray = new Button[_baseButtonValue];
+	Button* _buttonArray;
 	int _baseSpaseCount;
 	float _bottonBetweenDistance;
 
@@ -30,7 +30,7 @@ class DollMoveSetting:public IBaseSetting
 
 	float* _factorArray;
 	CTexture _factorTexture;
-	CRectangle* _factorRectArray = new CRectangle[_baseButtonValue];
+	CRectangle* _factorRectArray;
 	CTexture _logoTexture;
 
 public:

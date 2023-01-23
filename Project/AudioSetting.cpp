@@ -141,6 +141,7 @@ void AudioSetting::Release()
 	}
 	_BGMTexture.Release();
 	_SETexture.Release();
+	_buttonSe.Release();
 	_logoTexture.Release();
 	delete[] _audioTexture;
 	delete[] _audioPos;

@@ -8,6 +8,7 @@ void DollMoveSetting::Initialize()
 
 	LoadTexture();
 	LoadSound();
+
 	_barPos = Vector2(g_pGraphics->GetTargetWidth() / 2 - _barTexture.GetWidth() / 2, 350);
 	_bottonBetweenDistance = _barTexture.GetWidth() / _baseSpaseCount;
 	
@@ -16,6 +17,9 @@ void DollMoveSetting::Initialize()
 	_selectButtonPos = Vector2(_barPos.x + _bottonBetweenDistance * initButtonNumber, _barPos.y + _barTexture.GetHeight() / 2);
 	_lastSelectButtonPosX = _barPos.x + _bottonBetweenDistance * initButtonNumber;
 	
+	_factorRectArray = new CRectangle[_baseButtonValue];
+	_buttonArray = new Button[_baseButtonValue];
+
 	for (int i = 0; i < _baseButtonValue; i++)
 	{
 		_buttonArray[i].SetTexture(&_baseSelectButtonTexture);

@@ -15,8 +15,11 @@ private:
 	const int _adjoinBlockValue = 4;
 
 	Doll* _doll;
-	GalleryCoin* _galleryCoin = new GalleryCoin(ACCESSORIES_TYPE::COIN);
+	GalleryCoin* _galleryCoin;
 public:
+	BlockManager();
+	~BlockManager();
+
 	void Initialize();
 	void SetDoll(Doll* doll) { _doll = doll; }
 	void ReLoad();
