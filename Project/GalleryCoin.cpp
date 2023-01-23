@@ -54,7 +54,7 @@ void  GalleryCoin::CalcPosY()
 void GalleryCoin::CalcAlpha()
 {
 	const float  _pi = 3.14159265359;
-	const float  _incAlpha = 50;
+	const float  _incAlpha = 70;
 	_alpha = _incAlpha * (sin(0.5 * _time * _pi)) + _incAlpha;
 }
 
