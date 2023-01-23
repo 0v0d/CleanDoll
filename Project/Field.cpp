@@ -245,7 +245,6 @@ void Field::EndMoveDoll() {
 		_tutorial.EndMoveDoll();
 		if(_dustDumpValue <= 0 && _waterDumpValue <= 0){
 			_show = true;
-			_endProcess = true;
 		}
 	}
 	else {
