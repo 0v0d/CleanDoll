@@ -55,6 +55,7 @@ void GameClearAnimation::CreateAnimation() {
 
 void GameClearAnimation::ReLoad() {
 	_animationCount = 0;
+	_animation.ChangeMotion(_animationCount);
 }
 
 void GameClearAnimation::Update() {

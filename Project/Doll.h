@@ -42,7 +42,6 @@ class Doll
 	CSoundBuffer _candySound;
 public:
 	void Initialize();
-	void LoadTexture();
 	void ReLoad();
 	void SetField(Field* field) { _field = field; }
 	void SetPosition(Vector2 blockCenterPosisiton);
@@ -61,6 +60,8 @@ public:
 
 	bool IsGetCoin() { return _getCoin; }
 private:
+	void LoadTexture();
+	void LoadSound();
 	void DollAnimationUpdate();
 	void SetNextPosition();
 	void ActionAccessories();

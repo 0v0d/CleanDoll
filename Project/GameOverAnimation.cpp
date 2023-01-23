@@ -7,7 +7,7 @@ void GameOverAnimation::Initialize() {
 }
 
 void GameOverAnimation::LoadTexture() {
-	_gameOverTexture.Load("Gameover.png");
+	_gameOverTexture.Load("gameover.png");
 }
 
 void GameOverAnimation::CreateAnimation() {
@@ -55,6 +55,7 @@ void GameOverAnimation::CreateAnimation() {
 
 void GameOverAnimation::ReLoad() {
 	_animationCount = 0;
+	_animation.ChangeMotion(_animationCount);
 }
 
 void GameOverAnimation::Update() {
