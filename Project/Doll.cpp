@@ -14,10 +14,14 @@ void Doll::Initialize()
 }
 
 void Doll::LoadTexture() {
-	if (!_dollTexture.Load("doll.png")) {
-		//ピンで確認する用
-		_move = false;
-	}
+	!_dollTexture.Load("doll.png");
+}
+
+void Doll::LoadSound()
+{
+	_broomSound.Load("HokorisouziEX.mp3");
+	_mopSound.Load("キュッキュッと拭く1.mp3");
+	_candySound.Load("Energy.mp3");
 }
 
 void Doll::ReLoad()
@@ -31,9 +35,6 @@ void Doll::ReLoad()
 
 	_mopAnimation.ReLoad();
 	_broomAnimation.ReLoad();
-	_broomSound.Load("HokorisouziEX.mp3");
-	_mopSound.Load("キュッキュッと拭く1.mp3");
-	_candySound.Load("Energy.mp3");
 }
 
 void Doll::CalcuScale(float boxSizeY, float scale)
