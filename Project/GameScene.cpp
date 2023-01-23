@@ -68,7 +68,9 @@ void GameScene::Push() {
 
 void GameScene::Pull() {
 	_field.Pull();
-	_resetStageButton.Pull();
+	if (!_field.IsEndProcess()) {
+		_resetStageButton.Pull();
+	}
 }
 
 void GameScene::Render()

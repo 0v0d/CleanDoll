@@ -57,7 +57,7 @@ private:
 
 
 	bool _pushReset;
-
+	bool _endProcess;
 public:
 	void SetDollPosition(int x, int y);
 	void Initialize();
@@ -92,6 +92,7 @@ public:
 	void SetDollOnBlockNumber(Block* dollOnBlock);
 
 	bool IsEndTutorial()const { return _tutorial.IsEnd(); }
+	bool IsEndProcess() { return _endProcess; }
 private:
 	void AdvanceRoute(Block* mouseOnBlock);
 	void BackRoute(Block* mouseOnBlock);
