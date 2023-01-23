@@ -11,7 +11,6 @@ void Bar::Initialize()
 	_maxMovePosY = (space / 2 + _screenPos.y + (_baseBarTexture->GetHeight() * _scale + space) * _stageValue) - _screenEdge.Bottom;
 	CalcuDifficultyScale();
 
-	_clear = _getCoin = false;
 }
 
 void Bar::SetScreenStatu(Vector2 screenPos, Vector2 screenSize) {

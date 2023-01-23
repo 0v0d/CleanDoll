@@ -6,11 +6,17 @@ void TitleSceneTransition::Initialize() {
 	LoadTexture();
 	LoadSound();
 	int ws = g_pGraphics->GetTargetWidth();
-	CreateButton(&_transitionStageSelectButton, Vector2(ws / 2, 750), &_stageSelectTexture, [&]() {
-		dynamic_cast<StageSelectScene*>(SceneManager::Instance().GetScene(SCENE_TYPE::STAGESELECT))->CreateTutorialField();
-		SceneManager::Instance().ChangeScene(SCENE_TYPE::GAME);
-		_transitionStageSelectButton.SetStatu(false, true, [&]() {SceneManager::Instance().ChangeScene(SCENE_TYPE::STAGESELECT);});
-		});
+	if (_first) {
+		CreateButton(&_transitionStageSelectButton, Vector2(ws / 2, 750), &_stageSelectTexture, [&]() {
+			dynamic_cast<StageSelectScene*>(SceneManager::Instance().GetScene(SCENE_TYPE::STAGESELECT))->CreateTutorialField();
+			SceneManager::Instance().ChangeScene(SCENE_TYPE::GAME);
+			_transitionStageSelectButton.SetStatu(false, true, [&]() {SceneManager::Instance().ChangeScene(SCENE_TYPE::STAGESELECT); });
+			});
+		_first = false;
+	}
+	else {
+		CreateButton(&_transitionStageSelectButton, Vector2(ws / 2, 750), &_stageSelectTexture, (false, true, [&]() {SceneManager::Instance().ChangeScene(SCENE_TYPE::STAGESELECT); }));
+	}
 	CreateButton(&_transitionGalleryButton, Vector2(ws / 2, 900), &_galleryTexture, [&]() {SceneManager::Instance().ChangeScene(SCENE_TYPE::GALLERY);});
 	CreateButton(&_transitionCreditButton, Vector2(180, 1010), &_creditTexture, [&]() {SceneManager::Instance().ChangeScene(SCENE_TYPE::CREDIT); });
 }

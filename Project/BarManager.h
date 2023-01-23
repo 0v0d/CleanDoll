@@ -25,6 +25,7 @@ private:
 	
 	Vector2 _mousePos;
 public:
+	~BarManager();
 	void Initialize();
 	void ReLoad();
 	void CreateBarArray(int stageValue);

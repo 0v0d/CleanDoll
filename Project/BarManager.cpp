@@ -1,6 +1,10 @@
 #include "BarManager.h"
 #include "SceneManager.h"
 
+BarManager::~BarManager() {
+	delete[] _barArray;
+}
+
 void BarManager::Initialize()
 {
 	LoadTexture();
@@ -11,7 +15,7 @@ void BarManager::Initialize()
 	_basePosition = Vector2(50, g_pGraphics->GetTargetHeight() / 2 - _baseTexture.GetHeight() / 2);
 
 	for (int i = 0; i < _stageValue; i++) {
-		_barArray[i].SetBaseBarTexture(&_baseDirtyBarTexture);
+		_barArray[i].SetBaseBarTexture(_barArray[i].IsClear() ? &_baseCleanBarTexture : &_baseDirtyBarTexture);
 		_barArray[i].SetScreenStatu(_basePosition, Vector2(_baseTexture.GetWidth(), _baseTexture.GetHeight()));
 		_barArray[i].SetDifficulutyTexture(&_difficultyTexture);
 		_barArray[i].SetCoinTexture(&_coinTexture);
@@ -50,6 +54,7 @@ void BarManager::CalcuScale() {
 
 void BarManager::CreateBarArray(int stageValue)
 {
+	if (_barArray != nullptr) return;
 	_stageValue = stageValue;
 	_barArray = new Bar[_stageValue];
 }
@@ -149,7 +154,7 @@ void BarManager::Release()
 	{
 		_barArray[i].Release();
 	}
-	delete[] _barArray;
+	
 	_baseTexture.Release();
 	_frameTexture.Release();
 	_baseCleanBarTexture.Release();

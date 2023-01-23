@@ -11,6 +11,8 @@ class TitleSceneTransition
 	CTexture _stageSelectTexture, _galleryTexture, _creditTexture;
 	CSoundBuffer _buttonSe;
 
+	bool _first = true; 
+
 public:
 
 	void Initialize();

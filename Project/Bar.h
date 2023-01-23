@@ -32,7 +32,8 @@ private:
 
 	Vector2 _screenPos, _screenSize;
 
-	bool _clear, _getCoin;
+	bool _clear = false;
+	bool _getCoin = false;
 
 public:
 
@@ -41,7 +42,7 @@ public:
 	void SetScreenStatu(Vector2 screenPos, Vector2 screenSize);
 	void SetData(int stageNumber, std::string previewTextureName, std::string barTextureName, int difficulty, std::string stageDataTextName);
 	void SetStageValue(int stageValue) { _stageValue = stageValue; }
-	void SetBaseBarTexture(CTexture* texture) { _baseBarTexture = texture; }
+	void SetBaseBarTexture(CTexture* texture) { _baseBarTexture = texture;}
 	void SetCoinTexture(CTexture* texture) { _coinTexture = texture; CalcuCoinScale(); }
 	void SetDifficulutyTexture(CTexture* texture);
 	void SetBarTextureData(CTexture* texture, CRectangle renderRect);
