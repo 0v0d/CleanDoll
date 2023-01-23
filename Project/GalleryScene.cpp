@@ -1,7 +1,7 @@
 #include "GalleryScene.h"
 #include "SceneManager.h"
 
-void GalleryScene::Initialize(){
+void GalleryScene::Initialize() {
 
 	LoadTexture();
 	LoadSound();
@@ -21,6 +21,7 @@ void GalleryScene::Initialize(){
 void GalleryScene::LoadTexture() {
 	_buttonTexture.Load("backSceneButton.png");
 	_backGroundTexture.Load("galleryBack.png");
+	_clickTexture.Load("ƒNƒŠƒbƒN‚ÅŠg‘å.png");
 }
 
 void GalleryScene::LoadSound() {
@@ -28,7 +29,7 @@ void GalleryScene::LoadSound() {
 	_buttonSe.Load("BottanClick.mp3");
 }
 
-void GalleryScene::ReLoad(){
+void GalleryScene::ReLoad() {
 	_barManager.ReLoad();
 	_galleryTexture.ReLoad();
 
@@ -39,14 +40,14 @@ void GalleryScene::Update() {
 	_barManager.Update();
 }
 
-void GalleryScene::SetMousePos(Vector2 mousePos){
+void GalleryScene::SetMousePos(Vector2 mousePos) {
 	_barManager.SetMousePos(mousePos);
 	_titleButton.SetMousePos(mousePos);
 	_galleryTexture.SetMousePos(mousePos);
 }
 
-void GalleryScene::Push(){
-	
+void GalleryScene::Push() {
+
 	if (_galleryTexture.IsPopUp()) {
 		_galleryTexture.SetPopUpFlg(false);
 	}
@@ -62,25 +63,30 @@ void GalleryScene::Push(){
 	}
 }
 
-void GalleryScene::Pull(){
+void GalleryScene::Pull() {
 	_galleryTexture.Pull();
 	if (_galleryTexture.IsPopUp())return;
 	_barManager.Pull();
 	_titleButton.Pull();
 }
 
-void GalleryScene::Render(){
+void GalleryScene::Render() {
 	_backGround.Render();
 	_barManager.Render();
 	_titleButton.Render();
+	const auto space = Vector2(250, 130);
+	if (!_barManager.IsLockedPopUpTexture()) {
+		_clickTexture.Render(g_pGraphics->GetTargetWidth() - space.x, g_pGraphics->GetTargetHeight() - space.y);
+	}
 	_galleryTexture.Render();
 }
 
-void GalleryScene::Release(){
+void GalleryScene::Release() {
 	_barManager.Release();
 	_galleryTexture.Release();
 	_music.Release();
 	_buttonSe.Release();
 	_buttonTexture.Release();
 	_backGroundTexture.Release();
+	_clickTexture.Release();
 }
