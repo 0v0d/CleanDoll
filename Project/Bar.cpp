@@ -137,6 +137,5 @@ void Bar::Release()
 {
 	_previewTexture.Release();
 	
-
 	delete[] _difficultyTextureArray;
 }

@@ -2,17 +2,18 @@
 #include "Mof.h"
 #include "IBaseEndGameProcess.h"
 #include "EndTutorialDollAnimation.h"
-#include	"EndGameButtonManager.h"
+#include "EndGameButtonManager.h"
 #include "GameClearAnimation.h"
 
 class EndTutorial :public IBaseEndGameProcess
 {
 	CTexture _stageSelectTexture;
 	EndGameButtonManager _endGameButtonManager;
-	GameClearAnimation _clearAnimation;
+	GameClearAnimation* _clearAnimation;
 	EndTutorialDollAnimation _dollAnim;
 
 public:
+	void SetGameClearAnimation(GameClearAnimation* anim) { _clearAnimation = anim; }
 	void Initialize();
 	void ReLoad();
 

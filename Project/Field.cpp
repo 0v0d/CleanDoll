@@ -27,8 +27,6 @@ void Field::Initialize()
 	_doll.SetDumpValue(_dustDumpValue, _waterDumpValue);
 	_tutorial.SetBlockManager(&_blockManager);
 	_clearletter.Initialize();
-
-	_pushReset = true;
 }
 
 void Field::LoadTexture()

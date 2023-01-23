@@ -11,7 +11,7 @@ private:
 	ContactFile _contactFile;
 	BlockManager* _blockManager;
 
-	bool _end;
+	bool _end = false;
 
 	std::pair<int, int>* _tutorialRouteArray;
 	int _currentRouteValue,_maxRouteValue;

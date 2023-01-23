@@ -39,7 +39,6 @@ public:
 			_instance = new SceneManager();
 		}
 		return *_instance;
-
 	}
 
 	void ChangeScene(SCENE_TYPE nextScene);

@@ -1,13 +1,11 @@
 #include "TitleLogoAnimation.h"
+#include "SceneManager.h"
 
 void TitleLogoAnimation::Initialize(){
 	LoadTexture();
 	CreateAnimation();
-
-	_currentAniamtion = &_logoAnimation[0];
-	_currentAnimationTexture = &_logoTextureArray[0];
-	_loopAnimation = false;
-	_renderRect = _currentAniamtion->GetSrcRect();
+	_logoCount = 0;
+	_renderRect = _logoAnimation[_logoCount].GetSrcRect();
 	CalcuPosition(Vector2(_renderRect.Right, _renderRect.Bottom));
 }
 
@@ -17,7 +15,7 @@ void TitleLogoAnimation::LoadTexture(){
 	_animationValue = _contactFile.GetValue(true);
 	_logoTextureArray = new CTexture[_animationValue];
 
-	for (int i = 0;i < _animationValue;i++){
+	for (int i = 0;i < _animationValue;i++) {
 		_logoTextureArray[i].Load(_trim.TrimString(_contactFile.GetString(false)).c_str());
 	}
 
@@ -27,15 +25,16 @@ void TitleLogoAnimation::LoadTexture(){
 void TitleLogoAnimation::CreateAnimation() {
 	_animationY = 3;
 	_logoAnimation = new CSpriteMotionController[_animationValue];
+
 	for (int i = 0;i < _animationValue;i++) {
 		CreateLogoAnimation(i);
 	}
 }
 
-void TitleLogoAnimation::CreateLogoAnimation(int logoNumber) {
+void TitleLogoAnimation::CreateLogoAnimation(int number) {
 	const int animationValueX = 5;
-	Vector2 rectSize = Vector2(_logoTextureArray[logoNumber].GetWidth() / animationValueX, _logoTextureArray[logoNumber].GetHeight() / _animationY);
-	int number = 0;
+	Vector2 rectSize = Vector2(_logoTextureArray[number].GetWidth() / animationValueX, _logoTextureArray[number].GetHeight() / _animationY);
+	int animNumber = 0;
 
 	const int frame = 2;
 
@@ -43,24 +42,24 @@ void TitleLogoAnimation::CreateLogoAnimation(int logoNumber) {
 	{
 	  {
 		  "1-1",
-		  0,rectSize.y * number++,
+		  0,rectSize.y * animNumber++,
 		  rectSize.x,rectSize.y,
 		  FALSE,{{frame,0,0},{frame,1,0},{frame,2,0},{frame,3,0},{frame,4,0}}
 	  },
 	  {
 		  "1-2",
-		  0,rectSize.y * number++,
+		  0,rectSize.y * animNumber++,
 		  rectSize.x,rectSize.y,
 		  FALSE,{{frame,0,0},{frame,1,0},{frame,2,0},{frame,3,0},{frame,4,0}}
 	  },
 	  {
 		  "1-3",
-		  0,rectSize.y * number++,
+		  0,rectSize.y * animNumber++,
 		  rectSize.x,rectSize.y,
 		  FALSE,{{frame,0,0},{frame,1,0},{frame,2,0},{frame,3,0},{frame,4,0}}
 	  }
 	};
-	_logoAnimation[logoNumber].Create(logoAnimation, _animationY);
+	_logoAnimation[number].Create(logoAnimation, _animationY);
 }
 
 void TitleLogoAnimation::CalcuPosition(Vector2 rectSize) {
@@ -71,23 +70,19 @@ void TitleLogoAnimation::CalcuPosition(Vector2 rectSize) {
 	_pos.y = g_pGraphics->GetTargetHeight() / 2 - rectSize.y / 2 * _scale + supY;
 }
 
-
 void TitleLogoAnimation::ReLoad(){
-	_currentAniamtion = &_logoAnimation[0];
-	_currentAnimationTexture = &_logoTextureArray[0];
 
 	_logoCount = 0;
-	_loopAnimation = false;
 }
 
 void TitleLogoAnimation::Update() {
-	_currentAniamtion->AddTimer(CUtilities::GetFrameSecond());
-	_renderRect = _currentAniamtion->GetSrcRect();
+	_logoAnimation[_logoCount].AddTimer(CUtilities::GetFrameSecond());
+	_renderRect = _logoAnimation[_logoCount].GetSrcRect();
 	SetNextAnimation();
 }
 
 void TitleLogoAnimation::SetNextAnimation() {
-	if (!_currentAniamtion->IsEndMotion()) return;
+	if (!_logoAnimation[_logoCount].IsEndMotion()) return;
 
 	_animationCount++;
 
@@ -100,23 +95,22 @@ void TitleLogoAnimation::SetNextAnimation() {
 	_animationCount = 0;
 
 	if (_logoCount >= _animationValue) {
-		_logoCount = _animationValue - 2;
+		_logoCount = _animationValue - _loopNumber;
 	}
 
 	_logoAnimation[_logoCount].ChangeMotion(_animationCount);
-	_currentAniamtion = &_logoAnimation[_logoCount];
-	_currentAnimationTexture = &_logoTextureArray[_logoCount];
-	_renderRect = _currentAniamtion->GetSrcRect();
+	_renderRect = _logoAnimation[_logoCount].GetSrcRect();
 }
 
 void TitleLogoAnimation::Render() {
-	_currentAnimationTexture->RenderScale(_pos.x, _pos.y, _scale, _renderRect);
+	_logoTextureArray[_logoCount].RenderScale(_pos.x, _pos.y, _scale, _renderRect);
 }
 
 void TitleLogoAnimation::Release(){
 	for (int i = 0;i < _animationValue;i++) {
 		_logoTextureArray[i].Release();
 	}
+
 	delete[] _logoTextureArray;
 	delete[] _logoAnimation;
 }

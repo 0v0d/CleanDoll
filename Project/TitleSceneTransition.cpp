@@ -20,7 +20,6 @@ void TitleSceneTransition::LoadTexture() {
 	_galleryTexture.Load("ƒMƒƒƒ‰ƒŠ[.png");
 	_creditTexture.Load("credit.png");
 
-	_buttonSe.Load("BottanClick.mp3");
 }
 
 void TitleSceneTransition::LoadSound() {

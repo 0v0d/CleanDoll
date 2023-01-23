@@ -2,9 +2,6 @@
 
 void BlockManager::Initialize()
 {
-	_topSpace = 300;
-	_bottomSpace = 100;
-
 	_galleryCoin->Initialize();
 }
 
@@ -140,20 +137,18 @@ void BlockManager::Render()
 
 void BlockManager::Delete()
 {
-	for (int y = 0;y < _blockValueY;y++)
-	{
-		for (int x = 0; x < _blockValueX; x++)
-		{
+	if (_blockArray == nullptr) return;
+
+	for (int y = 0;y < _blockValueY;y++) {
+		for (int x = 0; x < _blockValueX; x++) {
 			_blockArray[x][y].Delete();
 		}
 	}
 
-	if (_blockArray != nullptr) {
-		for (int i = 0; i < _blockValueX; i++) delete[] _blockArray[i];
-		delete[] _blockArray;
+	for (int i = 0; i < _blockValueX; i++) delete[] _blockArray[i];
+	delete[] _blockArray;
 
-		_blockArray = nullptr;
-	}
+	_blockArray = nullptr;
 }
 
 void BlockManager::Release()
