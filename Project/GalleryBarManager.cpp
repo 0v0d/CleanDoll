@@ -110,7 +110,8 @@ CTexture* GalleryBarManager::GetMouseOnBarTexture() {
 CTexture* GalleryBarManager::GetGalleryTexture(int number) {
 
 	if (0 > number || number >= _barValue) number = 0;
-	return  _gotCoinValue < _requiredCoinValueArray[number] ? &_lockedTexureArray[number] : &_openedTexureArray[number];
+	_lockedPopUpTexture = _gotCoinValue < _requiredCoinValueArray[number];
+	return   _lockedPopUpTexture ? &_lockedTexureArray[number] : &_openedTexureArray[number];
 }
 
 
