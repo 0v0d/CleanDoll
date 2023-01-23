@@ -7,7 +7,7 @@ void GameClearAnimation::Initialize() {
 }
 
 void GameClearAnimation::LoadTexture() {
-	_gameOverTexture.Load("Gameclear.png");
+	_gameOverTexture.Load("Gameclear.dds");
 }
 
 void GameClearAnimation::CreateAnimation() {

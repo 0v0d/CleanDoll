@@ -7,7 +7,7 @@ void GameOverAnimation::Initialize() {
 }
 
 void GameOverAnimation::LoadTexture() {
-	_gameOverTexture.Load("gameover.png");
+	_gameOverTexture.Load("gameover.dds");
 }
 
 void GameOverAnimation::CreateAnimation() {
