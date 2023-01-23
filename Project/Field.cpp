@@ -94,6 +94,7 @@ void Field::ReSetStage() {
 	_push = false;
 	_pushReset = false;
 	_show = false;
+	_endProcess = false;
 }
 
 void Field::SetDollPosition(int x, int y)
@@ -252,6 +253,7 @@ void Field::EndMoveDoll() {
 				_endGameProcess.SetCurrentProcess(ProcessType::GameClear);
 				stageSelect->StageClear();
 				_show = false;
+				_endProcess = true;
 			}
 			if (!_getCoin) {
 				if (_doll.IsGetCoin()) {
@@ -262,20 +264,24 @@ void Field::EndMoveDoll() {
 					_show = false;
 					_endGameProcess.SetCurrentProcess(ProcessType::GameClear);
 					stageSelect->StageClear();
+					_endProcess = true;
 				}
 			}
 			else{
 				_show = false;
 				_endGameProcess.SetCurrentProcess(ProcessType::GameClear);
 				stageSelect->StageClear();
+				_endProcess = true;
 			}
 		}
 		//ゲームオーバー
 		else if (_remainDistance <= 0) {
 			GameOver();
+			_endProcess = true;
 		}
 		else if (CheckCantMoveDoll()) {
 			GameOver();
+			_endProcess = true;
 		}
 	}
 }
@@ -309,6 +315,7 @@ void Field::GameClear() {
 		_endGameProcess.SetCurrentProcess(ProcessType::GameClear);
 		stageSelect->StageClear();
 	}
+	_endProcess = true;
 	_show = false;
 }
 
