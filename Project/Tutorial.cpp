@@ -6,7 +6,6 @@ void Tutorial::Initialize() {
 	LoadTexture();
 	LoadTexturePos();
 	LoadTextureHidden();
-	_end = false;
 }
 
 void Tutorial::ReLoad() {

@@ -7,7 +7,8 @@ class BlockManager
 private:
 	Block** _blockArray = nullptr;
 	int _blockValueX, _blockValueY;
-	float _topSpace, _bottomSpace;
+	const float _topSpace = 300;
+	const float _bottomSpace = 100;
 	float _scale;
 	int _dollOnBlockX, _dollOnBlockY;
 

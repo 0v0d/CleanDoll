@@ -1,7 +1,6 @@
 #include "CreateField.h"
 
-void CreateField::Initialize()
-{
+CreateField::CreateField() {
 	_mapTextureArray.LineXValue = 1;
 	_objectTextureArray.LineXValue = 1;
 	_itemTextureArray.LineXValue = 1;
@@ -10,7 +9,10 @@ void CreateField::Initialize()
 	_waterDumpTextureArray.LineXValue = 1;
 	_wallTextureArray.LineXValue = 3;
 	_wallObjectTextureArray.LineXValue = 2;
+}
 
+void CreateField::Initialize()
+{
 	LoadStageSelectData();
 }
 
@@ -132,7 +134,9 @@ void CreateField::LoadDoll()
 }
 
 void CreateField::LoadCoin() {
-	if (_barManager->GetBar(_barManager->GetCurrentStageNumber())->IsGetCoin()) {
+	int stageNumber = _barManager->GetCurrentStageNumber();
+	//-1はチュートリアル
+	if (stageNumber != -1 && _barManager->GetBar(stageNumber)->IsGetCoin()) {
 		_setFieldData.SetCoin(0, 0, true);
 		return;
 	}

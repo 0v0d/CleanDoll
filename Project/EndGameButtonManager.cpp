@@ -93,5 +93,8 @@ void EndGameButtonManager::Release(){
 		delete _buttonArray[i];
 		delete _animationArray[i];
 	}
+	_buttonArray.clear();
+	_animationArray.clear();
+
 	_buttonSe.Release();
 }

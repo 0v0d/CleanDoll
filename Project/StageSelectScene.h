@@ -28,6 +28,7 @@ private:
 	Vector2 _mousePos;
 
 public:
+	StageSelectScene();
 	void Initialize();
 	void CreateTutorialField();
 	void ReLoad();

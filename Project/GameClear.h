@@ -6,13 +6,14 @@
 
 class GameClear:public IBaseEndGameProcess
 {
-	GameClearAnimation _clearAnimation;
+	GameClearAnimation* _clearAnimation;
 	GameClearDollAnimation _dollAnim;
 
 	EndGameButtonManager _endGameButtonManager;
 	CTexture _nextStageTexture, _stageSelectTexture, _retryTexture;
 
 public:
+	void SetGameClearAnimation(GameClearAnimation* anim) { _clearAnimation = anim; }
 	void Initialize();
 	void ReLoad();
 

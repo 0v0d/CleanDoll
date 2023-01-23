@@ -28,6 +28,8 @@ class RemainingDumpUI
 	const int _numberValue = 10;
 	const float _numberScale = 0.05f;
 public:
+	RemainingDumpUI();
+	~RemainingDumpUI();
 	void Initialize();
 	void ReLoad();
 	void StartSlideInUI();

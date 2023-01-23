@@ -26,11 +26,9 @@ void SceneManager::Initialize()
 
 	stageSelect.GetCreateField()->GetSetFieldData()->SetField(game.GetField());
 
-	for (auto iter = _sceneArray.begin(); iter != _sceneArray.end(); iter++) {
-		iter->second->Initialize();
-	}
-
 	_currentScene = _sceneArray[SCENE_TYPE::TITLE];
+	_currentScene->Initialize();
+
 	_effect.SetChangeSceneMethod([&]() {StartChangeScene();});
 	AudioMixer::Instance().PlayBgm(_currentScene->GetBGM());
 }
@@ -65,12 +63,13 @@ void SceneManager::RenderEffect() {
 
 void SceneManager::Release()
 {
-	for (auto iter = _sceneArray.begin(); iter != _sceneArray.end(); iter++)
-	{
-		iter->second->Release();
+	if (_currentScene == _sceneArray[SCENE_TYPE::GAME]) {
+		_sceneArray[SCENE_TYPE::STAGESELECT]->Release();
 	}
+	_currentScene->Release();
 	_effect.Release();
 }
+
 
 void SceneManager::ChangeScene(SCENE_TYPE nextScene) {
 	_effect.StartEffect();
@@ -78,6 +77,15 @@ void SceneManager::ChangeScene(SCENE_TYPE nextScene) {
 }
 
 void SceneManager::StartChangeScene() {
+
+	if (_currentScene == _sceneArray[SCENE_TYPE::GAME]) {
+		_sceneArray[SCENE_TYPE::STAGESELECT]->Release();
+	}
+	if (!(_currentScene == _sceneArray[SCENE_TYPE::STAGESELECT] && _nextSceneType == SCENE_TYPE::GAME)) {
+		_currentScene->Release();
+	}
+	_sceneArray[_nextSceneType]->Initialize();
+
 	_currentScene = _sceneArray[_nextSceneType];
 	_currentScene->ReLoad();
 	_currentScene->SetMousePos(Vector2(0, 0));

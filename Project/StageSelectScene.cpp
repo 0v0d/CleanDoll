@@ -1,9 +1,12 @@
 #include "StageSelectScene.h"
 #include "SceneManager.h"
 
+StageSelectScene::StageSelectScene() {
+    _createField.SetBarManager(&_barManager);
+}
+
 void StageSelectScene::Initialize()
 {
-    _createField.SetBarManager(&_barManager);
     _createField.Initialize();
     
     LoadTexture();

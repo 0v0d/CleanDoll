@@ -12,7 +12,8 @@ private:
 	CTexture _baseCleanBarTexture, _baseDirtyBarTexture;
 	CTexture _barTextTexture;
 	Vector2 _basePosition;
-	int _stageValue, _currentStage;
+	int _stageValue;
+	int _currentStage = -1;
 
 	float _baseBarScale;
 	float _space;

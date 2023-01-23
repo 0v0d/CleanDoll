@@ -35,6 +35,7 @@ class CreateField
 	BarManager* _barManager;
 
 public:
+	CreateField();
 	~CreateField() { Release(); }
 	void Initialize();
 	void SetBarManager(BarManager* barManager) { _barManager = barManager; }

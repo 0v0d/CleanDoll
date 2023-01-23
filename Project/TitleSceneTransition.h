@@ -7,12 +7,12 @@ class TitleSceneTransition
 	Button _transitionStageSelectButton;
 	Button _transitionGalleryButton;
 	Button _transitionCreditButton;
-	
+
 	CTexture _stageSelectTexture, _galleryTexture, _creditTexture;
 	CSoundBuffer _buttonSe;
 
 public:
-	
+
 	void Initialize();
 	void ReLoad();
 
@@ -26,5 +26,5 @@ public:
 private:
 	void LoadTexture();
 	void LoadSound();
-	void CreateButton(Button*,Vector2 pos,CTexture*,std::function<void()>);
+	void CreateButton(Button*, Vector2 pos, CTexture*, std::function<void()>);
 };

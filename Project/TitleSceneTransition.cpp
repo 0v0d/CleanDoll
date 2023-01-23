@@ -19,8 +19,6 @@ void TitleSceneTransition::LoadTexture() {
 	_stageSelectTexture.Load("ƒQ[ƒ€‚ğn‚ß‚é.png");
 	_galleryTexture.Load("ƒMƒƒƒ‰ƒŠ[.png");
 	_creditTexture.Load("ƒMƒƒƒ‰ƒŠ[.png");
-
-	_buttonSe.Load("BottanClick.mp3");
 }
 
 void TitleSceneTransition::LoadSound() {

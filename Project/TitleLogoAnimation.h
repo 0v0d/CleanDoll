@@ -5,10 +5,9 @@
 
 class TitleLogoAnimation
 {
-	CTexture* _logoTextureArray;
-	CTexture* _currentAnimationTexture;
+	CTexture* _logoTextureArray = nullptr;
+	const int _loopNumber = 2;
 	CSpriteMotionController* _logoAnimation;
-	CSpriteMotionController* _currentAniamtion;
 	CRectangle _renderRect;
 	Vector2 _pos;
 	
@@ -18,7 +17,6 @@ class TitleLogoAnimation
 	int _animationValue;
 	int _animationY, _animationCount;
 	int _logoCount = 0;
-	bool _loopAnimation;
 	const float _scale = 1.5f;
 
 public:
@@ -26,12 +24,13 @@ public:
 	void ReLoad();
 	void Update();
 	void Render();
+
 	void Release();
 
 private:
 	void LoadTexture();
 	void CreateAnimation();
-	void CreateLogoAnimation(int logoNumber);
+	void CreateLogoAnimation(int number);
 	void CalcuPosition(Vector2 rectSize);
 	void SetNextAnimation();
 };
