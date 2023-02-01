@@ -17,7 +17,7 @@ void ContactFile::OpenFile(std::string fileName)
 void ContactFile::CloseFile()
 {
     fclose(_file);
-    delete _buffer;
+    delete[] _buffer;
 }
 
 int ContactFile::GetValue(bool firstContact)

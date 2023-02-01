@@ -1,14 +1,27 @@
 #include "Doll.h"
+
+#include "AudioMixer.h"
 #include "Field.h"
 #include "Dump.h"
 
 void Doll::Initialize()
 {
-	_dollTexture.Load("doll.png");
+	LoadTexture();
 	_field->SetDollMove(&_move);
 	_broomAnimation.Initialize();
 	_mopAnimation.Initialize();
 	_dollTextureSize = Vector2(_dollTexture.GetWidth() / _textureValue, _dollTexture.GetHeight() /( _broomAnimation.GetMotionValue()+_mopAnimation.GetMotionValue()));
+}
+
+void Doll::LoadTexture() {
+	!_dollTexture.Load("doll.png");
+}
+
+void Doll::LoadSound()
+{
+	_broomSound.Load("HokorisouziEX.mp3");
+	_mopSound.Load("キュッキュッと拭く1.mp3");
+	_candySound.Load("Energy.mp3");
 }
 
 void Doll::ReLoad()
@@ -73,6 +86,7 @@ void Doll::Update()
 
 void Doll::Move()
 {
+
 	if (_animationflg) return;
 
 	_dollPosition.x += _nextPosition.x / _moveSpeed;
@@ -130,9 +144,10 @@ void Doll::ActionAccessories()
 void Doll::CleanDump()
 {
 	Dump* blockOnDump = dynamic_cast<Dump*>(_nextBlock->GetBlockOnObject()->GetAccessories());
-	if ((!_holdMop && blockOnDump->GetDumpType() == DUMP_TYPE::WATER) ||
-		(_holdMop && blockOnDump->GetDumpType() == DUMP_TYPE::DUST))return;
-
+	if (!_holdMop && blockOnDump->GetDumpType() == DUMP_TYPE::WATER) {
+		_field->GameOver();
+	}
+	else if ((!_holdMop && blockOnDump->GetDumpType() == DUMP_TYPE::WATER)||(_holdMop && blockOnDump->GetDumpType() == DUMP_TYPE::DUST))return;
 	blockOnDump->CalucAlphaValue(_holdMop ? _mopAnimation.GetCleanTime() :_broomAnimation.GetCleanTime());
 	blockOnDump->StartCleanflg(true);
 	if (_holdMop) {
@@ -140,12 +155,15 @@ void Doll::CleanDump()
 		_animationflg = true;
 		_waterDumpValue--;
 		_field->CleanWater();
+		_mopSound.Play();
+		AudioMixer::Instance().PlaySe(&_mopSound);
 	}
 	else {
 		_broomAnimation.StartCleanAnimation();
 		_animationflg = true;
 		_dustDumpValue--;
 		_field->CleanDust();
+		AudioMixer::Instance().PlaySe(&_broomSound);
 	}
 }
 
@@ -153,6 +171,7 @@ void Doll::CollectCandy()
 {
 	_holdMop? _mopAnimation.StartGetCandyAnimation():_broomAnimation.StartGetCandyAnimation();
 	_animationflg = true;
+	AudioMixer::Instance().PlaySe(&_candySound);
 }
 
 void Doll::SwitchToMop()
@@ -176,7 +195,6 @@ void Doll::DollAnimationUpdate()
 	}
 
 	if(_holdMop){
-		
 		_mopAnimation.Update();
 		_renderRect = _mopAnimation.GetRenderRect();
 	}
@@ -201,6 +219,17 @@ void Doll::SetMoveAnimation() {
 	_broomAnimation.SetMoveAnimationFlg(_move);
 }
 
+void Doll::CalcuSpeed(float speedFactor)
+{
+	_moveSpeed = _framePBlock / speedFactor;
+	_mopAnimation.SetMoveSpeed(speedFactor);
+	_broomAnimation.SetMoveSpeed(speedFactor);
+
+	_mopSound.SetPitch(speedFactor);
+	_broomSound.SetPitch(speedFactor);
+	_candySound.SetPitch(speedFactor);
+}
+
 void Doll::Render()
 {
 	_inversion ? _dollTexture.RenderScale(_dollPosition.x, _dollPosition.y, _scale, _inversionRenderRect) :
@@ -210,4 +239,7 @@ void Doll::Render()
 void Doll::Release()
 {
 	_dollTexture.Release();
+	_broomSound.Release();
+	_mopSound.Release();
+	_candySound.Release();
 }

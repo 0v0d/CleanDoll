@@ -15,6 +15,7 @@ void RemainingIcon::SetPosition(Vector2 pos) {
 	_position.y = pos.y - _iconTexture->GetWidth() * _scale;
 
 	CalcuMarkPosition();
+	_slideInUI.SetStatu(_position.x, &_position.x, true);
 }
 
 void RemainingIcon::CalcuMarkPosition() {
@@ -24,11 +25,21 @@ void RemainingIcon::CalcuMarkPosition() {
 
 void RemainingIcon::ReLoad() {
 	_mark = false;
+	_notExist = false;
+}
+
+void RemainingIcon::StartSlideUI() {
+	_slideInUI.Start();
+}
+
+void RemainingIcon::Update()
+{
+	_slideInUI.Update();
 }
 
 void RemainingIcon::Render() {
 	_iconTexture->RenderScale(_position.x, _position.y, _scale);
 
 	if (_notExist)_notExistTexture->RenderScale(_position.x, _position.y, _scale);
-	else if (_mark)_markTexture->RenderScale(_markPosition.x, _markPosition.y, _scale);
+	else if(_mark)_markTexture->RenderScale(_markPosition.x, _markPosition.y, _scale);
 }

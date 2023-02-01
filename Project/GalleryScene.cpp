@@ -4,70 +4,89 @@
 void GalleryScene::Initialize() {
 
 	LoadTexture();
+	LoadSound();
 
+	_backGround.SetTextureStatus(&_backGroundTexture, FULLSCREEN);
 	_barManager.Initialize();
+
 	_galleryTexture.Initialize();
-
-	_galleryTexture.CalcuBaseScale(_barManager.GetBackTextureSize().y);
-
-	int space = 20;
-	Vector2 barManagerPos = Vector2(g_pGraphics->GetTargetWidth() / 2 - _barManager.GetBackTextureSize().x - space, g_pGraphics->GetTargetHeight() / 2);
-	_barManager.SetBasePos(barManagerPos);
-	_galleryTexture.SetBasePos(Vector2(g_pGraphics->GetTargetWidth() / 2 + space, barManagerPos.y - _barManager.GetBackTextureSize().y / 2));
-
-	_barManager.CreateBarArray();
+	_galleryTexture.SetBackTextureHeight(_barManager.GetBackTextureSize().y);
 
 	_titleButton.SetTexture(&_buttonTexture);
-	_titleButton.SetPosition(Vector2(barManagerPos.x, 100));
+	_titleButton.SetPosition(Vector2(100, 100));
 	_titleButton.SetSeSound(&_buttonSe);
 	_titleButton.SetStatu(false, true, [&]() {SceneManager::Instance().ChangeScene(SCENE_TYPE::TITLE);});
 }
 
 void GalleryScene::LoadTexture() {
+	_buttonTexture.Load("backSceneButton.png");
+	_backGroundTexture.Load("galleryBack.png");
+	_clickTexture.Load("クリックで拡大.png");
+}
+
+void GalleryScene::LoadSound() {
 	_music.Load("BGM.mp3");
 	_buttonSe.Load("BottanClick.mp3");
-	_buttonTexture.Load("チェックボックス.png");
 }
 
-void GalleryScene::ReLoad(){
+void GalleryScene::ReLoad() {
 	_barManager.ReLoad();
 	_galleryTexture.ReLoad();
-}
 
+	_galleryTexture.SetGalleryTexture(_barManager.GetGalleryTexture(0));
+}
 
 void GalleryScene::Update() {
 	_barManager.Update();
 }
 
-void GalleryScene::SetMousePos(Vector2 mousePos){
+void GalleryScene::SetMousePos(Vector2 mousePos) {
 	_barManager.SetMousePos(mousePos);
 	_titleButton.SetMousePos(mousePos);
-
+	_galleryTexture.SetMousePos(mousePos);
 }
 
-void GalleryScene::Push(){
-	_barManager.Push();
-	_galleryTexture.SetGalleryTexture(_barManager.GetPickTexture());
-	_titleButton.Push();
+void GalleryScene::Push() {
+
+	if (_galleryTexture.IsPopUp()) {
+		_galleryTexture.SetPopUpFlg(false);
+	}
+	else {
+		_barManager.Push();
+		_titleButton.Push();
+		_galleryTexture.Push();
+
+		_galleryTexture.SetGalleryTexture(_barManager.GetMouseOnBarTexture());
+		if (_galleryTexture.CheckPushGallery() && !_barManager.IsLockedPopUpTexture()) {
+			_galleryTexture.SetPopUpFlg(true);
+		}
+	}
 }
 
-void GalleryScene::Pull(){
+void GalleryScene::Pull() {
+	_galleryTexture.Pull();
+	if (_galleryTexture.IsPopUp())return;
 	_barManager.Pull();
 	_titleButton.Pull();
 }
 
-
-void GalleryScene::Render(){
+void GalleryScene::Render() {
+	_backGround.Render();
 	_barManager.Render();
-	_galleryTexture.Render();
 	_titleButton.Render();
+	const auto space = Vector2(250, 130);
+	if (!_barManager.IsLockedPopUpTexture()) {
+		_clickTexture.Render(g_pGraphics->GetTargetWidth() - space.x, g_pGraphics->GetTargetHeight() - space.y);
+	}
+	_galleryTexture.Render();
 }
 
-void GalleryScene::Release(){
+void GalleryScene::Release() {
 	_barManager.Release();
 	_galleryTexture.Release();
-
 	_music.Release();
 	_buttonSe.Release();
 	_buttonTexture.Release();
+	_backGroundTexture.Release();
+	_clickTexture.Release();
 }

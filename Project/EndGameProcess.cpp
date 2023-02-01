@@ -1,8 +1,13 @@
 #include "EndGameProcess.h"
 
+EndGameProcess::EndGameProcess() {
+	_gameClear.SetGameClearAnimation(&_gameClearAnimation);
+	_endTutorial.SetGameClearAnimation(&_gameClearAnimation);
+}
+
 void EndGameProcess::Initialize(){
 	CreateProcessArray();
-
+	_gameClearAnimation.Initialize();
 	_gameClear.Initialize();
 	_gameOver.Initialize();
 	_endTutorial.Initialize();
@@ -56,4 +61,5 @@ void EndGameProcess::Release(){
 	_gameClear.Release();
 	_gameOver.Release();
 	_endTutorial.Release();
+	_gameClearAnimation.Release();
 }

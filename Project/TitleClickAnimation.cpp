@@ -2,7 +2,8 @@
 
 void TitleClickAnimation::Initialize(){
 	LoadTexture();
-	_time = 0;
+	_time = 0.5f;
+	CalcAlpha();
 }
 
 void TitleClickAnimation::LoadTexture(){
@@ -10,7 +11,7 @@ void TitleClickAnimation::LoadTexture(){
 }
 
 void TitleClickAnimation::ReLoad(){
-	_time = 0;
+	_time = 0.5f;
 }
 
 void TitleClickAnimation::Update() {

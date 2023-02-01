@@ -9,6 +9,7 @@ class SetUpSetting
 private:
 	bool _openSetting;
 	bool* _openMenu;
+	
 	IBaseSetting* _currentSetting = nullptr;
 	std::map<Button*, IBaseSetting*> _buttonArray;
 	Button _audioButton, _dollButton, _backSceneButton, _closeMenuButton;
@@ -17,7 +18,6 @@ private:
 	CTexture _backTitleSceneTexture, _backSelectSceneTexture;
 	CTexture _closeMenuTexture;
 	CSoundBuffer _buttonSe;
-
 	Vector2 _mousePos;
 
 public:
@@ -34,7 +34,10 @@ public:
 	void Render();
 	void Release();
 
+	bool IsOpenSetting() { return _openSetting; }
+
 private:
 	void LoadTexture();
+	void LoadSound();
 	void CreateButton();
 };

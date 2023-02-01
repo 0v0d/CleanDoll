@@ -7,6 +7,7 @@
 void SetUpSetting::Initialize()
 {
 	LoadTexture();
+	LoadSound();
 	_audioButton.SetTexture(&_audioButtonTexure);
 	_audioButton.SetPosition(Vector2(g_pGraphics->GetTargetWidth() / 2, 300));
 
@@ -38,12 +39,18 @@ void SetUpSetting::Initialize()
 
 void SetUpSetting::LoadTexture() {
 	_audioButtonTexure.Load("サウンド設定　.png");
-	_dollButtonTexture.Load("ゲームをやめる.png");
-	_backTitleSceneTexture.Load("clictostart.png");
+	_dollButtonTexture.Load("ドール速度設定.png");
+	_backTitleSceneTexture.Load("go_title.png");
 	_backSelectSceneTexture.Load("ステージ選択へ.png");
 	_closeMenuTexture.Load("閉じる.png");
 
+
+
+}
+
+void SetUpSetting::LoadSound() {
 	_buttonSe.Load("BottanClick.mp3");
+
 }
 
 void SetUpSetting::CreateButton() {
@@ -75,8 +82,7 @@ void SetUpSetting::CreateButton() {
 
 void SetUpSetting::Update()
 {
-	if (_openSetting)
-	{
+	if (_openSetting){
 		_currentSetting->Update();
 	}
 }
@@ -112,6 +118,7 @@ void SetUpSetting::Pull()
 {
 	if (_openSetting) {
 		_currentSetting->Pull();
+		
 	}
 	else {
 		_closeMenuButton.Pull();
@@ -124,16 +131,20 @@ void SetUpSetting::Pull()
 void SetUpSetting::DetermineBackScene() {
 	SCENE_TYPE currentSceneType = SceneManager::Instance().GetCurrentSceneType();
 	SCENE_TYPE backSceneType = SCENE_TYPE::TITLE;
-
+	BackSceneSetting* backSceneSetting = dynamic_cast<BackSceneSetting*>(_buttonArray[&_backSceneButton]);
 	switch (currentSceneType) {
 	case  SCENE_TYPE::STAGESELECT:
 		backSceneType = SCENE_TYPE::TITLE;
 		_backSceneButton.SetTexture(&_backTitleSceneTexture);
+		backSceneSetting->SetBackSelectScene(false);
+		backSceneSetting->SetBackTitle(true);
 		break;
 
 	case  SCENE_TYPE::GAME:
 		backSceneType = SCENE_TYPE::STAGESELECT;
 		_backSceneButton.SetTexture(&_backSelectSceneTexture);
+		backSceneSetting->SetBackTitle(false);
+		backSceneSetting->SetBackSelectScene(true);
 		break;
 	}
 	//_backSceneButton.SetPosition(Vector2(g_pGraphics->GetTargetWidth() / 2, 500));
@@ -144,18 +155,16 @@ void SetUpSetting::DetermineBackScene() {
 
 void SetUpSetting::Render()
 {
-	if (_openSetting)
-	{
+	if (_openSetting){
 		_currentSetting->Render();
 	}
-	else
-	{
-		for (auto itr = _buttonArray.begin(); itr != _buttonArray.end(); itr++)
-		{
+	else{
+		for (auto itr = _buttonArray.begin(); itr != _buttonArray.end(); itr++){
 			itr->first->Render();
 		}
 		_closeMenuButton.Render();
 	}
+
 }
 
 void SetUpSetting::Release()
@@ -169,6 +178,6 @@ void SetUpSetting::Release()
 		itr->second->Release();
 		delete itr->second;
 	}
-
+	
 	_buttonSe.Release();
 }

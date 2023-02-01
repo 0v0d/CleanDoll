@@ -1,8 +1,12 @@
 #include "EndGameButtonManager.h"
 
 void EndGameButtonManager::Initialize(){
+	LoadSound();
+}
 
+void EndGameButtonManager::LoadSound() {
 	_buttonSe.Load("BottanClick.mp3");
+
 }
 
 void EndGameButtonManager::ReLoad(){
@@ -89,5 +93,8 @@ void EndGameButtonManager::Release(){
 		delete _buttonArray[i];
 		delete _animationArray[i];
 	}
+	_buttonArray.clear();
+	_animationArray.clear();
+
 	_buttonSe.Release();
 }

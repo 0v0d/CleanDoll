@@ -3,10 +3,12 @@
 class ExitGame
 {
 private:
-	CTexture	 _yesTexture, _noTexture;
-	Button		 _yesButton, _noButton;
-	bool		 _openExitDialog;
+	CTexture _yesTexture, _noTexture;
+	Button _yesButton, _noButton;
+	CTexture _exitDialogTexture;
+	bool _openExitDialog;
 	CSoundBuffer _buttonSe;
+	const float _backScale = 0.95f;
 public:
 	void Initialize();
 
@@ -23,6 +25,7 @@ public:
 
 private:
 	void LoadTexture();
+	void LaodSound();
 	void CreateButton(Button*, Vector2 pos, CTexture* ,std::function<void()> callMethod);
 
 };

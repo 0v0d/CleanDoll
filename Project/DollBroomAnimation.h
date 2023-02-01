@@ -15,6 +15,7 @@ class DollBroomAnimation
 	int _currentMotion;
 	const int _motionCount = 5;
 	const int _motionValue = 20;
+	float _moveSpeed;
 public:
 	void Initialize();
 	void ReLoad();
@@ -28,7 +29,9 @@ public:
 	int GetMotionValue() const { return _motionCount; }
 	CRectangle GetRenderRect() { return _renderRect; }
 	bool IsEndCurrentAnimation() { return _motionController.IsEndMotion(); }
-	float GetCleanTime() { return CUtilities::GetFPS() * _motionValue; }
+	float GetCleanTime() { return CUtilities::GetFPS() * _motionValue * _moveSpeed; }
+
+	void SetMoveSpeed(float moveSpeed) { _moveSpeed = moveSpeed; }
 private:
 	void CreateAnimation();
 	int WaitAnimationLoop() { return _currentMotion = (_currentMotion + 1) % 2; }

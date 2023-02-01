@@ -1,4 +1,5 @@
 #pragma once
+#include	"BackGround.h"
 #include	"IBaseScene.h"
 #include	"GalleryBarManager.h"
 #include	"GalleryTexture.h"
@@ -9,11 +10,12 @@ class GalleryScene :public IBaseScene
 	GalleryBarManager _barManager;
 	GalleryTexture _galleryTexture;
 	CSoundBuffer _music;
-
+	BackGround _backGround;
 	Button _titleButton;
 	CSoundBuffer _buttonSe;
 	CTexture _buttonTexture;
-
+	CTexture _backGroundTexture;
+	CTexture _clickTexture;
 public:
 	void Initialize();
 	void ReLoad();
@@ -22,7 +24,7 @@ public:
 	void Push();
 	void Pull();
 	void Update();
-	void AddCoin() { _barManager.AddCoinValue();}
+	void AddCoin() { _barManager.AddCoinValue(); }
 
 	void Render();
 	void Release();
@@ -30,4 +32,5 @@ public:
 
 private:
 	void LoadTexture();
+	void LoadSound();
 };

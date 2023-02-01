@@ -6,6 +6,7 @@
 void Field::Initialize()
 {
 	LoadTexture();
+	LoadSound();
 	CreateButton();
 	_operateDoll.SetBlockManager(&_blockManager);
 	_operateDoll.SetDoll(&_doll);
@@ -25,11 +26,15 @@ void Field::Initialize()
 
 	_doll.SetDumpValue(_dustDumpValue, _waterDumpValue);
 	_tutorial.SetBlockManager(&_blockManager);
+	_clearletter.Initialize();
 }
 
 void Field::LoadTexture()
 {
 	_clearButtonTexture.Load("clearButton.png");
+}
+
+void Field::LoadSound() {
 	_buttonSe.Load("ClicktoStart.mp3");
 }
 
@@ -43,11 +48,25 @@ void Field::CreateButton()
 
 void Field::ReLoad()
 {
+	ReSetStage();
+	if(_tutorial.IsEnd()) _fieldUI.StartSlideInUI();
+}
+
+void Field::ReSetStage() {
+
 	_blockManager.ReLoad();
 	_doll.ReLoad();
 	_fieldUI.ReLoad();
 	_operateDoll.ReLoad();
-	if (!_tutorial.IsEnd())_tutorial.ReLoad();
+	if (!_tutorial.IsEnd()) {
+		if (_pushReset) {
+			_pushReset = false;
+			_tutorial.ReLoad();
+		}
+		else {
+			_tutorial.SetEnd(true);
+		}
+	}
 
 	_doll.CalcuScale(_blockManager.GetDollOnBlock()->GetBlockSize().y, _blockManager.GetScale());
 	_dustDumpValue = _initalDustValue;
@@ -64,14 +83,18 @@ void Field::ReLoad()
 	_recoveryDifferentialArray.clear();
 
 	_remainDistance = _maxDistance;
-	_fieldUI.SetCurrentEnergyValue(_remainDistance);
 	_fieldUI.SetDustDumpValue(_initalDustValue);
 	_fieldUI.SetWaterDumpValue(_initalWaterValue);
-	
-	if (_getCoin)_fieldUI.GetGalleryCoin();
+
+	if (_getCoin) {
+		_fieldUI.GetGalleryCoin();
+		_blockManager.HiddenCoin();
+	}
 
 	_push = false;
+	_pushReset = false;
 	_show = false;
+	_endProcess = false;
 }
 
 void Field::SetDollPosition(int x, int y)
@@ -96,13 +119,17 @@ void Field::SetWaterDumpValue(int dumpValue) {
 
 void Field::Update()
 {
-	if (_tutorial.IsHideen() && _push) {
-		PassedMouse(_mousePos);
-	}
 	_blockManager.Update();
 	_doll.Update();
 	_endGameProcess.Update();
 	_fieldUI.Update();
+
+	if (!_tutorial.IsEnd() && !_tutorial.IsHideen()) return;
+
+	if (_push) {
+		PassedMouse(_mousePos);
+	}
+	_clearletter.Update();
 }
 
 void Field::SetMousePos(Vector2 mousePos) {
@@ -222,27 +249,39 @@ void Field::EndMoveDoll() {
 		if (_dustDumpValue <= 0 && _waterDumpValue <= 0) {
 			_show = true;
 			StageSelectScene* stageSelect = dynamic_cast<StageSelectScene*>(SceneManager::Instance().GetScene(SCENE_TYPE::STAGESELECT));
-			if (_doll.IsGetCoin() && !_getCoin) {
-				_show = false;
+			if (_remainDistance <= 0) {
 				_endGameProcess.SetCurrentProcess(ProcessType::GameClear);
-
-				dynamic_cast<GalleryScene*>(SceneManager::Instance().GetScene(SCENE_TYPE::GALLERY))->AddCoin();
 				stageSelect->StageClear();
-				stageSelect->GetCoin();
-				_getCoin = true;
+				_show = false;
+				_endProcess = true;
 			}
-			if(_getCoin){
+			if (!_getCoin) {
+				if (_doll.IsGetCoin()) {
+					dynamic_cast<GalleryScene*>(SceneManager::Instance().GetScene(SCENE_TYPE::GALLERY))->AddCoin();
+					stageSelect->GetCoin();
+					_getCoin = true;
+
+					_show = false;
+					_endGameProcess.SetCurrentProcess(ProcessType::GameClear);
+					stageSelect->StageClear();
+					_endProcess = true;
+				}
+			}
+			else{
 				_show = false;
 				_endGameProcess.SetCurrentProcess(ProcessType::GameClear);
 				stageSelect->StageClear();
+				_endProcess = true;
 			}
 		}
 		//ゲームオーバー
 		else if (_remainDistance <= 0) {
 			GameOver();
+			_endProcess = true;
 		}
-		if (CheckCantMoveDoll()) {
+		else if (CheckCantMoveDoll()) {
 			GameOver();
+			_endProcess = true;
 		}
 	}
 }
@@ -266,10 +305,6 @@ void Field::CleanWater() {
 	_fieldUI.CleanWater();
 }
 
-void Field::ReSetStage() {
-	ReLoad();
-}
-
 void Field::GameClear() {
 	if (!_tutorial.IsEnd()&& _show) {
 		_endGameProcess.SetCurrentProcess(ProcessType::EndTutorial);
@@ -280,6 +315,7 @@ void Field::GameClear() {
 		_endGameProcess.SetCurrentProcess(ProcessType::GameClear);
 		stageSelect->StageClear();
 	}
+	_endProcess = true;
 	_show = false;
 }
 
@@ -306,6 +342,7 @@ void Field::Render()
 	_fieldUI.Render();
 	if (_show){
 		_clearButton.Render();
+		_clearletter.Rnder();
 	}
 	_tutorial.Render();
 	_endGameProcess.Render();
@@ -321,4 +358,5 @@ void Field::Release()
 	_tutorial.Release();
 	_clearButtonTexture.Release();
 	_buttonSe.Release();
+	_clearletter.Release();
 }

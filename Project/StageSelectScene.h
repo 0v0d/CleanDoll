@@ -28,6 +28,7 @@ private:
 	Vector2 _mousePos;
 
 public:
+	StageSelectScene();
 	void Initialize();
 	void CreateTutorialField();
 	void ReLoad();
@@ -46,5 +47,6 @@ public:
 	CSoundBuffer* GetBGM() { return &_music; }
 private:
 	void LoadTexture();
+	void LaodSound();
 	void LoadStage(int stageNumber);
 };

@@ -13,14 +13,19 @@ void EnergyVessels::Initialize()
 		{0,MOF_COLOR_RED},
 	};
 
-	_energyValue.SetScale(_energyVesselsScale);
-	_energyValue.Initialize();
-	_energyValue.SetPosition(Vector2(_vesselsPosition.x + _energyVesselsTexture.GetWidth() * _energyVesselsScale/ 2,
-		_vesselsPosition.y + _energyVesselsTexture.GetHeight() * _energyVesselsScale/ 2));
-
+	_energyValue.SetStats(&_numberTexture,_energyVesselsScale,_numberValue);
+	_energyValue.SetPosition(Vector2(_vesselsPosition.x + _energyVesselsTexture.GetWidth() * _energyVesselsScale/ 2 - _numberTexture.GetWidth() / _numberValue * _energyVesselsScale / 2,
+		_vesselsPosition.y + _energyVesselsTexture.GetHeight() * _energyVesselsScale/ 2 - _numberTexture.GetHeight() * _energyVesselsScale / 2));
+	_energyValue.SetMove(true);
 	//呼び出し順がおかしい
 	if (_energyBarArray != nullptr) SetBarStatu();
-	}
+
+	_slideInVessels.SetStatu(_vesselsPosition.x, &_vesselsPosition.x, true);
+	_slideInVesselsCenter.SetStatu(_energyVesselsCenterPosition.x, &_energyVesselsCenterPosition.x,  true);
+	_slideInRemainEnergy.SetStatu(_remainPosition.x, &_remainPosition.x, true);
+	SetCurrentEnergyValue(_maxEnergyValue);
+}
+
 
 void EnergyVessels::CalucPosition()
 {
@@ -37,11 +42,21 @@ void EnergyVessels::CalucPosition()
 
 void EnergyVessels::ReLoad()
 {
-	for (int i = 0; i < _maxEnergyValue; i++)
-	{
+	for (int i = 0; i < _maxEnergyValue; i++){
 		_energyBarArray[i].ChangeColor(&_renderColorArray[5]);
 	}
 	ChangeEnergyColor();
+	SetCurrentEnergyValue(_maxEnergyValue);
+	_energyValue.ReLoad();
+}
+
+void EnergyVessels::StartSlideInUI() {
+	SetCurrentEnergyValue(0);
+	_slideInVessels.Start();
+	_slideInVesselsCenter.Start();
+	_slideInRemainEnergy.Start();
+
+	_energyValue.StartSlideIn();
 }
 
 void EnergyVessels::LoadTexture()
@@ -50,6 +65,7 @@ void EnergyVessels::LoadTexture()
 	_energyBarTexture.Load("EnergyBar.png");
 	_remainEnergyTexture.Load("残りエネルギー.png");
 	_energyVesselsCenterTexture.Load("EnergyVesselsCenter.png");
+	_numberTexture.Load("num.png");
 }
 
 void EnergyVessels::SetMaxEnergyValue(int energyValue)
@@ -66,8 +82,7 @@ void EnergyVessels::CreateEnergyBarArray()
 
 void EnergyVessels::SetBarStatu()
 {
-	for (int i = 0;i < _maxEnergyValue;i++)
-	{
+	for (int i = 0;i < _maxEnergyValue;i++){
 		_energyBarArray[i].SetTexture(&_energyBarTexture);
 		_energyBarArray[i].SetBarValue(_maxEnergyValue);
 		_energyBarArray[i].SetNumber(i);
@@ -79,27 +94,27 @@ void EnergyVessels::SetBarStatu()
 }
 
 void EnergyVessels::Update()
-{
+{	
+	_slideInVessels.Update();
+	_slideInVesselsCenter.Update();
+	_slideInRemainEnergy.Update();
+	_energyValue.Update();
+	
 }
 
 void EnergyVessels::SetCurrentEnergyValue(int currentEnergyValue) {
-	_currentEnergyValue = currentEnergyValue; 
+	_currentEnergyValue = currentEnergyValue;
+	_energyValue.SetValue(_currentEnergyValue);
 	ChangeEnergyColor();
 }
 
 void EnergyVessels::ChangeEnergyColor()
 {
-	int energyColorCount = 0;
+	for (auto itr = _renderColorArray.begin();itr != _renderColorArray.end();itr++) {
+		if (_currentEnergyValue < itr->first) continue;
 
-	for (auto itr = _renderColorArray.begin();itr != _renderColorArray.end();itr++) 
-	{
-		if (_currentEnergyValue >= itr->first) 
-		{
-			for (int i = 0;i < _currentEnergyValue;i++)
-			{
-				_energyBarArray[i].ChangeColor(&itr->second);
-			}
-			energyColorCount++;
+		for (int i = 0;i < _currentEnergyValue;i++) {
+			_energyBarArray[i].ChangeColor(&itr->second);
 		}
 	}
 }
@@ -115,12 +130,10 @@ void EnergyVessels::Render()
 	_energyVesselsTexture.RenderScale(_vesselsPosition.x, _vesselsPosition.y, _energyVesselsScale);
 	_remainEnergyTexture.RenderScale(_remainPosition.x, _remainPosition.y, _remainEnergyScale);
 
-	_energyValue.CalcuRect(_currentEnergyValue);
-	for (int i = 0; i < _maxEnergyValue; i++)
-	{
+	for (int i = 0; i < _maxEnergyValue; i++){
 		if (_currentEnergyValue > i) {
 			_energyBarArray[i].Render();
-		};
+		}
 	}
 	_energyValue.Render();
 }
@@ -132,6 +145,6 @@ void EnergyVessels::Release()
 	_energyVesselsTexture.Release();
 	_energyBarTexture.Release();
 	_remainEnergyTexture.Release();
-	_energyValue.Release();
+	_numberTexture.Release();
 	_energyVesselsCenterTexture.Release();
 }

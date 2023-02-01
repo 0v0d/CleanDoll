@@ -5,8 +5,6 @@
 void GameClear::Initialize()
 {
 	LoadTexture();
-	_logoAnim.Initialize();
-	_backGroundAnim.Initialize();
 	_dollAnim.Initialize();
 	_endGameButtonManager.Initialize();
 
@@ -42,11 +40,9 @@ void GameClear::CreateButtonArray() {
 }
 
 void GameClear::ReLoad() {
-	_backGroundAnim.ReLoad();
-	_logoAnim.ReLoad();
+	_clearAnimation->ReLoad();
 	_dollAnim.ReLoad();
 
-	_backGroundAnim.ReLoad();
 	_endGameButtonManager.ReLoad();
 }
 
@@ -57,13 +53,8 @@ void GameClear::Update()
 
 void GameClear::UpdateAnimation() {
 
-	if (!_backGroundAnim.IsFixedScale()) {
-		_backGroundAnim.Update();
-		return;
-	}
-
-	if (!_logoAnim.IsEndeMotion()) {
-		_logoAnim.Update();
+	if (!_clearAnimation->IsEndMotion()) {
+		_clearAnimation->Update();
 		return;
 	}
 
@@ -85,11 +76,10 @@ void GameClear::Pull() {
 
 void GameClear::Render()
 {
-	CGraphicsUtilities::RenderFillRect(0, 0, g_pGraphics->GetTargetWidth(), g_pGraphics->GetTargetHeight(), MOF_ARGB(125, 0, 0, 0));
-	_backGroundAnim.Render();
-	_logoAnim.Render();
+	CGraphicsUtilities::RenderFillRect(0, 0, g_pGraphics->GetTargetWidth(), g_pGraphics->GetTargetHeight(), MOF_ARGB(210, 0, 0, 0));
+	_clearAnimation->Render();
 
-	if (!_logoAnim.IsEndeMotion()) return;
+	if (!_clearAnimation->IsEndMotion()) return;
 
 	_dollAnim.Render();
 	_endGameButtonManager.Render();
@@ -97,8 +87,6 @@ void GameClear::Render()
 
 void GameClear::Release()
 {
-	_logoAnim.Release();
-	_backGroundAnim.Release();	
 	_dollAnim.Release();
 	_endGameButtonManager.Release();
 

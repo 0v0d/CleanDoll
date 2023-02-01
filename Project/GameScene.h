@@ -5,6 +5,8 @@
 #include    "BackGround.h"
 #include    "BGM.h"
 #include    "Button.h"
+#include    "GameStartAnimation.h"
+#include    "SlideInUI.h"
 
 class GameScene :public IBaseScene
 {
@@ -13,9 +15,14 @@ class GameScene :public IBaseScene
     BackGround _backGround;
     CTexture _gameBackTexture;
     CSoundBuffer _music,_buttonSe;
-
+    Vector2 _resetButtonPos;
+    float _slideInPos;
+    GameStartAnimation _startAnimation;
     Button _resetStageButton;
     CTexture _resetButtonTexture;
+    SlideInUI _slideInUI;
+    bool _slideUI;
+
 public:
     void Initialize();
     void ReLoad();
@@ -32,4 +39,5 @@ public:
     CSoundBuffer* GetBGM() { return &_music; }
 private:
     void LoadTexture();
+    void LoadSound();
 };

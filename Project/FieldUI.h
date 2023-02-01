@@ -1,14 +1,18 @@
 #pragma once
 #include "EnergyVessels.h"
+#include "EnergyAnimation.h"
 #include "RemainingDumpUI.h"
 
 class FieldUI
 {
 	RemainingDumpUI _remainingDumpUI;
 	EnergyVessels _energyVessels;
+	EnergyAnimation _energyAnimation;
+
 public:
 	void Initialize();
 	void ReLoad();
+	void StartSlideInUI();
 	void SetMaxEnergyValue(int energyValue);
 	void SetDustDumpValue(int dumpValue);
 	void SetWaterDumpValue(int dumpValue);

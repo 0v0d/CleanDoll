@@ -10,8 +10,10 @@ private:
 	Bar* _barArray = nullptr;
 	CTexture _baseTexture, _frameTexture;
 	CTexture _baseCleanBarTexture, _baseDirtyBarTexture;
+	CTexture _barTextTexture;
 	Vector2 _basePosition;
-	int _stageValue, _currentStage;
+	int _stageValue;
+	int _currentStage = -1;
 
 	float _baseBarScale;
 	float _space;
@@ -23,6 +25,7 @@ private:
 	
 	Vector2 _mousePos;
 public:
+	~BarManager();
 	void Initialize();
 	void ReLoad();
 	void CreateBarArray(int stageValue);

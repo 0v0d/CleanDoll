@@ -2,7 +2,7 @@
 
 void GameOverBackGround::Initialize()
 {
-	_gameOverBackGroundTexture.Load("GameOverBackGround.png");
+	LoadTexture();
 	CalcuPosition();
 	SpriteAnimationCreate anim[] =
 	{
@@ -19,6 +19,11 @@ void GameOverBackGround::Initialize()
 		},
 	};
 	_animation.Create(anim, 1);
+}
+
+void GameOverBackGround::LoadTexture() {
+	_gameOverBackGroundTexture.Load("GameOverBackGround.png");
+
 }
 
 void GameOverBackGround::ReLoad() {

@@ -3,21 +3,29 @@
 
 class GalleryTexture
 {
-	CTexture _backTexture;
-	CTexture* _galleryTexture = nullptr;
-	Vector2 _basePos,_galleryPos;
-	float _baseScale, _galleryScale;
-
+	CTexture _backFlameTexture;
+	CTexture* _galleryTexture;
+	CTexture* _popUpTexture = nullptr;
+	Vector2 _flamePos,_galleryPos;
+	Vector2 _mousePos;
+	float _galleryScale;
+	float _backTextureHeight;
+	bool _popUpShow;
 public:
 	void Initialize();
 	void ReLoad();
-	void SetBasePos(Vector2 pos) { _basePos = pos; }
-	void CalcuBaseScale(float height);
+	void Push();
+	void Pull();
+
+	void SetBackTextureHeight(float height) { _backTextureHeight = height; }
 	void SetGalleryTexture(CTexture* texture);
-	
+	void SetMousePos(Vector2 mousePos) { _mousePos = mousePos; }
+	void SetPopUpFlg(bool flg) { _popUpShow = flg; }
 	void Render();
 	void Release();
-
+	
+	bool IsPopUp()const { return _popUpShow; }
+	bool CheckPushGallery();
 private:
 	void LoadTexture();
 	void CalcuGalleryScale();

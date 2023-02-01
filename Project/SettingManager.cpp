@@ -5,16 +5,25 @@ void SettingManager::Initialize()
 	_setUpSetting.SetOpenMenu(&_openMenu);
 	_setUpSetting.Initialize();
 	CreateButton();
+	LoadTexture();
+	LoadSound();
 	_openMenu = false;
+}
+
+void SettingManager::LoadTexture() {
 	_menuTexture.Load("ƒƒjƒ…[@UI.png");
+	_openButtonTexture.Load("Ý’èƒƒS.png");
+
+}
+
+void SettingManager ::LoadSound () {
+	_buttonSe.Load("BottanClick.mp3");
 }
 
 void SettingManager::CreateButton() {
-	_openButtonTexture.Load("Ý’èƒƒS.png");
-	_buttonSe.Load("BottanClick.mp3");
 
 	_openSettingButton.SetTexture(&_openButtonTexture);
-	_openSettingButton.SetPosition(Vector2(g_pGraphics->GetTargetWidth() - 150, 100));
+	_openSettingButton.SetPosition(Vector2(g_pGraphics->GetTargetWidth() - 90, 70));
 	_openSettingButton.SetSeSound(&_buttonSe);
 	_openSettingButton.SetStatu(false, true, [&]() {
 		_openMenu = true;
@@ -60,9 +69,9 @@ void SettingManager::Render()
 	_openSettingButton.Render();
 	if (_openMenu)
 	{
-		CGraphicsUtilities::RenderFillRect(0, 0, g_pGraphics->GetTargetWidth(), g_pGraphics->GetTargetHeight(), MOF_ARGB(125, 0, 0, 0));
+		CGraphicsUtilities::RenderFillRect(0, 0, g_pGraphics->GetTargetWidth(), g_pGraphics->GetTargetHeight(), MOF_ARGB(210, 0, 0, 0));
 		_setUpSetting.Render();
-		_menuTexture.Render(g_pGraphics->GetTargetWidth() / 2 - _menuTexture.GetWidth() / 2, 50);
+		if(!_setUpSetting.IsOpenSetting())_menuTexture.Render(g_pGraphics->GetTargetWidth() / 2 - _menuTexture.GetWidth() / 2, 50);
 	}
 }
 

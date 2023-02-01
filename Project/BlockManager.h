@@ -7,15 +7,19 @@ class BlockManager
 private:
 	Block** _blockArray = nullptr;
 	int _blockValueX, _blockValueY;
-	float _topSpace, _bottomSpace;
+	const float _topSpace = 300;
+	const float _bottomSpace = 100;
 	float _scale;
 	int _dollOnBlockX, _dollOnBlockY;
 
 	const int _adjoinBlockValue = 4;
 
 	Doll* _doll;
-	GalleryCoin* _galleryCoin = new GalleryCoin(ACCESSORIES_TYPE::COIN);
+	GalleryCoin* _galleryCoin;
 public:
+	BlockManager();
+	~BlockManager();
+
 	void Initialize();
 	void SetDoll(Doll* doll) { _doll = doll; }
 	void ReLoad();
@@ -36,6 +40,7 @@ public:
 	void CalcuScale(float blockSizeY);
 	void SetDollOnBlock(Block* dollOnBlock);
 	void SetCoin(int x, int y);
+	void HiddenCoin();
 private:
 	void SetAdjoinBlock();
 };

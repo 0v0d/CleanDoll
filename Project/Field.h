@@ -7,6 +7,7 @@
 #include	"Doll.h"
 #include	"OperateDoll.h"
 #include	"Tutorial.h"
+#include	"ClearletterAnimation.h"
 
 class Field
 {
@@ -52,7 +53,11 @@ private:
 	CTexture _clearButtonTexture;
 	CSoundBuffer _buttonSe;
 	bool _show;
+	ClearletterAnimation  _clearletter;
 
+
+	bool _pushReset = true;
+	bool _endProcess;
 public:
 	void SetDollPosition(int x, int y);
 	void Initialize();
@@ -72,10 +77,11 @@ public:
 	void SetWaterDumpValue(int dumpValue);
 	void CleanDust();
 	void CleanWater();
-	void SetGettedCoinFlg(bool flg) { _getCoin = flg; }
+	void SetGettedCoinFlg(bool flg) {_getCoin = flg; }
 	void GetCoin();
 	void GameOver();
 	void SetDollSpeedFactor(float factor) { _doll.CalcuSpeed(factor); }
+	void PushResetButton() { _pushReset = true;}
 
 	void Render();
 	void Release();
@@ -85,6 +91,8 @@ public:
 	void SetDollMove(bool* onMoveDoll) { _onMoveDoll = onMoveDoll; }
 	void SetDollOnBlockNumber(Block* dollOnBlock);
 
+	bool IsEndTutorial()const { return _tutorial.IsEnd(); }
+	bool IsEndProcess() { return _endProcess; }
 private:
 	void AdvanceRoute(Block* mouseOnBlock);
 	void BackRoute(Block* mouseOnBlock);
@@ -92,4 +100,5 @@ private:
 	void GameClear();
 	void CreateButton();
 	void LoadTexture();
+	void LoadSound();
 };

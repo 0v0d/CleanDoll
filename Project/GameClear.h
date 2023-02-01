@@ -1,20 +1,19 @@
 #pragma once
 #include	"IBaseEndGameProcess.h"
-#include	"GameClearLogoAnimation.h"
-#include	"GameClearBackGround.h"
 #include	"GameClearDollAnimation.h"
 #include	"EndGameButtonManager.h"
+#include	"GameClearAnimation.h"
 
 class GameClear:public IBaseEndGameProcess
 {
-	GameClearLogoAnimation _logoAnim;
-	GameClearBackGround _backGroundAnim;
+	GameClearAnimation* _clearAnimation;
 	GameClearDollAnimation _dollAnim;
 
 	EndGameButtonManager _endGameButtonManager;
 	CTexture _nextStageTexture, _stageSelectTexture, _retryTexture;
 
 public:
+	void SetGameClearAnimation(GameClearAnimation* anim) { _clearAnimation = anim; }
 	void Initialize();
 	void ReLoad();
 

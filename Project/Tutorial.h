@@ -11,7 +11,7 @@ private:
 	ContactFile _contactFile;
 	BlockManager* _blockManager;
 
-	bool _end,_start;
+	bool _end = false;
 
 	std::pair<int, int>* _tutorialRouteArray;
 	int _currentRouteValue,_maxRouteValue;
@@ -27,7 +27,6 @@ private:
 
 	int* _textureHiddenArray;
 	int _currentHidden;
-
 
 public:
 	void Initialize();

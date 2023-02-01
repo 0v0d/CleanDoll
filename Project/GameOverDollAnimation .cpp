@@ -3,7 +3,7 @@
 
 void GameOverDollAnimation::Initialize()
 {
-	_dollTexture.Load("gameoverdoll.png");
+	LoadTexture();
 	_pos = Vector2(1000, 350);
 	SpriteAnimationCreate anim[] =
 	{
@@ -19,6 +19,9 @@ void GameOverDollAnimation::Initialize()
 		},
 	};
 	_animation.Create(anim, 1);
+}
+void GameOverDollAnimation ::LoadTexture () {
+	_dollTexture.Load("gameoverdoll.png");
 }
 
 void GameOverDollAnimation::ReLoad() {

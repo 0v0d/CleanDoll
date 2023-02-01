@@ -1,12 +1,24 @@
 #include "RemainingDumpUI.h"
 
+RemainingDumpUI::RemainingDumpUI() {
+	_remainingValue = new Number[_iconValue];
+	_iconArray[ICON_TYPE::DUST] = new RemainingIcon();
+	_iconArray[ICON_TYPE::WATER] = new RemainingIcon();
+}
+
+RemainingDumpUI::~RemainingDumpUI() {
+	delete[] _remainingValue;
+	/*for (auto iter = _iconArray.begin();iter != _iconArray.end();iter++) {
+		delete iter->second;
+	}*/
+	delete _iconArray[ICON_TYPE::DUST];
+	delete _iconArray[ICON_TYPE::WATER];
+}
+
 void RemainingDumpUI::Initialize() {
 	LoadTexture();
 	_objectiveSizeX = 100;
 	CalcuScale();
-
-	_iconArray[ICON_TYPE::DUST] = new RemainingIcon();
-	_iconArray[ICON_TYPE::WATER] = new RemainingIcon();
 
 	IconSetTexture(ICON_TYPE::DUST, &_dustIconTexture);
 	IconSetTexture(ICON_TYPE::WATER, &_waterIconTexture);
@@ -18,16 +30,17 @@ void RemainingDumpUI::Initialize() {
 		itr->second->SetScale(_scale);
 		itr->second->SetPosition(Vector2(_basePosition.x + space.x * ((int)itr->first * 2 + 1) + iconSizeX * _scale * (int)itr->first, _basePosition.y + _baseTexture.GetHeight() * 2 + space.y));
 	}
-	constexpr  auto adjustment = 5;
-	_remainingValue = new RemainingValue[_iconValue];
-	for (auto i = 0; i < _iconValue;i++) {
-		_remainingValue[i].SetStuts(&_numberTexture);
-	}
 
+	constexpr auto adjustment = 5;
+	
 	_remainingValue[ICON_TYPE::DUST].SetPosition(Vector2(_basePosition.x + (ICON_TYPE::DUST * 2 + 1) + iconSizeX * _scale * ICON_TYPE::DUST + _dustIconTexture.GetWidth() / 4 - adjustment, _basePosition.y + _baseTexture.GetHeight() * 2 + space.y));
 	_remainingValue[ICON_TYPE::WATER].SetPosition(Vector2(_basePosition.x + (ICON_TYPE::WATER * 2 + 1) + iconSizeX * _scale * ICON_TYPE::WATER + _waterIconTexture.GetWidth() / 2 + adjustment, _basePosition.y + _baseTexture.GetHeight() * 2 + space.y));
+	for (auto i = 0; i < _iconValue;i++) {
+		_remainingValue[i].SetStats(&_numberTexture, _numberScale,_numberValue);
+		_remainingValue[i].SetMove(true);
+	}
 
-	
+	_slideInUI.SetStatu(_basePosition.x, &_basePosition.x, true);
 }
 
 void RemainingDumpUI::LoadTexture() {
@@ -41,12 +54,37 @@ void RemainingDumpUI::LoadTexture() {
 	_numberTexture.Load("num.png");
 }
 
+void RemainingDumpUI::ReLoad() {
+	for (auto itr = _iconArray.begin(); itr != _iconArray.end(); itr++) {
+		itr->second->ReLoad();
+	}
+	_getCoin = false;
+	
+	for (auto i = 0; i < _iconValue; i++){
+		_remainingValue[i].ReLoad();
+	}
+}
+
+void RemainingDumpUI::StartSlideInUI() {
+	_slideInUI.Start();
+	for (auto itr = _iconArray.begin(); itr != _iconArray.end(); itr++) {
+		itr->second->StartSlideUI();
+	}
+	for (auto i = 0; i < _iconValue;i++) {
+		_remainingValue[i].StartSlideIn();
+	}
+}
+
 void RemainingDumpUI::Update()
 {
+	_slideInUI.Update();
+	for (auto itr = _iconArray.begin(); itr != _iconArray.end(); itr++) {
+		itr->second->Update();
+	}
 	_remainingValue[ICON_TYPE::DUST].SetValue(_dustValue);
 	_remainingValue[ICON_TYPE::WATER].SetValue(_waterValue);
 	for (auto i = 0; i < _iconValue; i++) {
-		_remainingValue[i].CalucRect();
+		_remainingValue[i].Update();
 	}
 }
 
@@ -54,12 +92,6 @@ void RemainingDumpUI::IconSetTexture(ICON_TYPE iconType, CTexture* iconTexture) 
 	_iconArray[iconType]->SetTexture(iconTexture, &_markTexture, &_notExistTexture);
 }
 
-void RemainingDumpUI::ReLoad() {
-	for (auto itr = _iconArray.begin(); itr != _iconArray.end(); itr++) {
-		itr->second->ReLoad();
-	}
-	_getCoin = false;
-}
 
 void RemainingDumpUI::CalcuScale() {
 	_scale = _objectiveSizeX / _baseTexture.GetWidth();
@@ -112,10 +144,7 @@ void RemainingDumpUI::Render() {
 }
 
 void RemainingDumpUI::Release() {
-	for (auto itr = _iconArray.begin(); itr != _iconArray.end(); itr++) {
-		delete itr->second;
-	}
-	delete[] _remainingValue;
+	
 	_baseTexture.Release();
 	_markTexture.Release();
 	_notExistTexture.Release();

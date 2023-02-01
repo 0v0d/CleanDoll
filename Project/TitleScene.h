@@ -22,9 +22,11 @@ class TitleScene :public IBaseScene
 
 	bool _openTransition;
 	TitleSceneTransition _transition;
-
+	CSoundBuffer _clickSound;
 public:
 	void Initialize();
+	void LoadTexture();
+	void LoadSound();
 	void ReLoad();
 	void Update();
 	void SetMousePos(Vector2);

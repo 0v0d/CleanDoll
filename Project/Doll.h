@@ -36,6 +36,10 @@ class Doll
 	int _motionCount;
 	const int _textureValue = 30;
 	Vector2 _dollTextureSize;
+
+	CSoundBuffer _broomSound;
+	CSoundBuffer _mopSound;
+	CSoundBuffer _candySound;
 public:
 	void Initialize();
 	void ReLoad();
@@ -44,7 +48,7 @@ public:
 	void CalcuScale(float boxSizeY, float scale);
 	void SetDumpValue(int dustDumpValue, int waterDumpValue);
 	void SetEndMoveMethod(std::function<void()> method) { _endMoveMethod = method; }
-	void CalcuSpeed(float speedFactor) { _moveSpeed = _framePBlock / speedFactor; }
+	void CalcuSpeed(float speedFactor);
 
 	void Update();
 	void SetNextBlock(Block* blcok);
@@ -56,6 +60,8 @@ public:
 
 	bool IsGetCoin() { return _getCoin; }
 private:
+	void LoadTexture();
+	void LoadSound();
 	void DollAnimationUpdate();
 	void SetNextPosition();
 	void ActionAccessories();

@@ -16,7 +16,7 @@ int WINAPI _tWinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPTSTR lpCmdL
 	CWindowProc* proc = new CWindowProc();
 	proc->SetExitGame(app->GetExitGame());
 	Info.WindowCreateInfo.pProc = proc;
-
+	Info.WindowCreateInfo.Title = "Clean Doll";
 	//Info.WindowCreateInfo.Style = WS_POPUP;
 	if (pFrame->Initialize(&Info))
 	{

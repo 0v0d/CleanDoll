@@ -13,9 +13,13 @@ private:
 	CTexture _closeTexture, _backTexture;
 	SCENE_TYPE _backScene;
 	CSoundBuffer _buttonSe;
-
+	bool _titleDialog, _stageSelectDialog;
+	CTexture _backTitleTextureDialog, _backSelectSceneDialog;
+	const float _backScale = 0.95f;
 public:
 	void Initialize();
+	void LoadTexture();
+	void LoadSound();
 	void SetOpenMenu(bool* openMenu) { _openMenu = openMenu; }
 	void SetOpenSetting(bool* openSetting) { _openBackSceneSetting = openSetting; }
 
@@ -24,7 +28,8 @@ public:
 	void Push();
 	void Pull();
 	void SetBackScene(SCENE_TYPE backScene);
-
+	void SetBackTitle(bool titleDialog) { _titleDialog = titleDialog; }
+	void SetBackSelectScene(bool stageSelectDialog) { _stageSelectDialog = stageSelectDialog; }
 	void Render();
 	void Release();
 private:

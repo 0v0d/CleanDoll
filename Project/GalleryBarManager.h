@@ -1,54 +1,60 @@
 #pragma once
 #include	"Mof.h"
-#include	"string"
 #include	"GalleryBar.h"
 #include	"ContactFile.h"
-#include	"GetCoinNumber.h"
+#include	"Number.h"
+#include	"Trim.h"
 
 class GalleryBarManager
 {
-	const int _barValue = 5;
+	Trim _trimstring;
+	const int _barValue = 4;
 	GalleryBar* _barArray;
-	int _gettedCoinValue;
+	int _gotCoinValue;
 	int* _requiredCoinValueArray;
 	Vector2 _mousePos;
 
-	Vector2 _backPos;
-	CTexture _barBackGround;
-	CTexture _barTexture, _lockTexture;
+	Vector2 _backPos = Vector2(70, 300);
+	Vector2 _barBackSize = Vector2(750, 750);
 
 	ContactFile _contactFile;
 
-	GetCoinNumber	_coinNumber;
+	CTexture* _lockedBarTexureArray;
+	CTexture* _openedBarTexureArray;
+	CTexture* _lockedTexureArray;
+	CTexture* _openedTexureArray;
 
+	Number	_coinNumber;
+	Number	_maxCoinValue;
+	const int _numberValue = 11;
+	const float _numberScale = 0.3f;
+	CTexture _numberTexture;
+	CTexture _barTexture;
+
+	bool _lockedPopUpTexture;
 public:
 	void Initialize();
 	void ReLoad();
-	void SetBasePos(Vector2 centerPos);
-	void CreateBarArray();
 
 	void SetMousePos(Vector2);
 	void Push();
 	void Pull();
 	void Update();
- 	void AddCoinValue() { 
-		_gettedCoinValue++; 
-		_coinNumber.SetCoinNumberValue(_gettedCoinValue);
-
-	}
+	void AddCoinValue();
 
 	void Render();
 	void Release();
 
-	CTexture* GetPickTexture();
-	Vector2 GetBackTextureSize() { return Vector2(_barBackGround.GetWidth(),_barBackGround.GetHeight()); }
-
+	CTexture* GetMouseOnBarTexture();
+	CTexture* GetGalleryTexture(int number);
+	Vector2 GetBackTextureSize() { return _barBackSize; }
+	bool IsLockedPopUpTexture() { return _lockedPopUpTexture; }
 private:
 	void LoadTexture();
 	float CalcuBarScale(float space);
 	float CalcuBarCenterPosY(int number,float space,float scale);
-	void SetTexture();
 	void PickUpBar();
+	void CreateBarArray();
 
-	void SetBarData();
+	void LoadGalleryTexture();
 };

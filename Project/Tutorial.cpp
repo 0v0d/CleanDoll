@@ -6,16 +6,9 @@ void Tutorial::Initialize() {
 	LoadTexture();
 	LoadTexturePos();
 	LoadTextureHidden();
-	_start = false;
 }
 
 void Tutorial::ReLoad() {
-	
-	if (!_start) {
-		_start = true;
-		_end = false;
-	}
-	else _end = true;
 
 	_currentClick = 0;
 	_hidden = false;
